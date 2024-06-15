@@ -1,5 +1,7 @@
 # About
 
+[Cairo](https://www.cairo-lang.org/) is a Rust-inspired language that aims to make it easy to build scalable [dApps](https://en.wikipedia.org/wiki/Decentralized_application) with the power of [validity proofs](https://en.wikipedia.org/wiki/Zero-knowledge_proof).
+
 <!-- TODO: write document
 
   This document contains a short introduction to the language.
