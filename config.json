@@ -16,10 +16,19 @@
     "highlightjs_language": "rust"
   },
   "files": {
-    "solution": [],
-    "test": [],
-    "example": [],
-    "exemplar": []
+    "solution": [
+      "src/lib.cairo",
+      "Scarb.toml"
+    ],
+    "test": [
+      "src/tests.cairo"
+    ],
+    "example": [
+      ".meta/example.cairo"
+    ],
+    "exemplar": [
+      ".meta/exemplar.cairo"
+    ]
   },
   "exercises": {
     "concept": [],
