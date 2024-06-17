@@ -8,11 +8,12 @@
     "representer": false,
     "analyzer": false
   },
-  "blurb": "TODO: add blurb",
+  "blurb": "Cairo is a general purpose language for writing ZK provable programs, without the need for a deep understanding of ZK concepts. Cairo is most often used for building trustless applications on Starknet.",
   "version": 3,
   "online_editor": {
     "indent_style": "space",
-    "indent_size": 4
+    "indent_size": 4,
+    "highlightjs_language": "rust"
   },
   "files": {
     "solution": [],
