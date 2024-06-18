@@ -62,6 +62,23 @@
         "topics": [
           "conditionals"
         ]
+      },
+      {
+        "slug": "armstrong-numbers",
+        "name": "Armstrong Numbers",
+        "uuid": "4aaa153d-3416-4101-8143-35b068a15451",
+        "practices": [
+          "functions",
+          "integers",
+          "enums"
+        ],
+        "prerequisites": [],
+        "difficulty": 1,
+        "topics": [
+          "math",
+          "option_type",
+          "result_type"
+        ]
       }
     ]
   },
@@ -77,9 +94,29 @@
       "name": "Integers"
     },
     {
+      "uuid": "fe33b75a-8064-419d-9e09-16b49e6a5c6d",
+      "slug": "felts",
+      "name": "Felt Type"
+    },
+    {
       "uuid": "de254443-42ee-4787-bc1e-3d0d2039c4f5",
       "slug": "booleans",
       "name": "Booleans"
+    },
+    {
+      "uuid": "6ba0e79b-9e70-4116-8f26-cce676a7b05e",
+      "slug": "functions",
+      "name": "Functions"
+    },
+    {
+      "uuid": "cff7568f-423e-4d6b-b238-1ebbce31d991",
+      "slug": "enums",
+      "name": "Enums"
+    },
+    {
+      "uuid": "2cc6431d-fc19-47f3-b7f1-999ed16e5244",
+      "slug": "match-basics",
+      "name": "Match Basics"
     }
   ],
   "key_features": [
