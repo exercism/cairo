@@ -34,22 +34,72 @@
     ]
   },
   "exercises": {
-    "concept": [],
-    "practice": []
+    "practice": [
+      {
+        "slug": "hello-world",
+        "name": "Hello World",
+        "uuid": "1a0e23d9-e8f9-493a-af46-2be040173b64",
+        "practices": [
+          "strings"
+        ],
+        "prerequisites": [],
+        "difficulty": 1,
+        "topics": [
+          "test_driven_development"
+        ]
+      }
+    ]
   },
-  "concepts": [],
-  "key_features": [],
+  "concepts": [
+    {
+      "uuid": "4eb800f7-f6c5-4b28-8492-229b6a51829e",
+      "slug": "strings",
+      "name": "Strings"
+    }
+  ],
+  "key_features": [
+    {
+      "title": "Developer-friendly",
+      "content": "Write Rust-like code and generate proofs for program execution - math isn't a barrier.",
+      "icon": "easy"
+    },  
+    {
+      "title": "Provable",
+      "content": "Produces provable programs, making it possible to compute trustworthy values on untrusted machines.",
+      "icon": "safe"
+    },
+    {
+      "title": "Efficient",
+      "content": "Cairo compiles down to an ad-hoc assembly engineered specifically for efficient proof generation.",
+      "icon": "fast"
+    },
+    {
+      "title": "Immutable",
+      "content": "Cairo uses the immutable memory model, improving data integrity and security.",
+      "icon": "immutable"
+    },
+    {
+      "title": "General purpose",
+      "content": "From onchain gaming to provable ML, Cairo makes building trustless applications possible.",
+      "icon": "general-purpose"
+    },
+    {
+      "title": "Innovative",
+      "content": "Cairo is a fast-growing language that keeps delivering new and exciting features to its developers.",
+      "icon": "evolving"
+    }
+  ],
   "tags": [
+    "execution_mode/compiled",
     "paradigm/functional",
     "paradigm/imperative",
     "paradigm/procedural",
+    "platform/linux",
+    "platform/mac",
+    "platform/windows",
+    "runtime/standalone_executable",
     "typing/static",
     "typing/strong",
-    "execution_mode/compiled",
-    "platform/windows",
-    "platform/mac",
-    "platform/linux",
-    "runtime/standalone_executable",
     "used_for/artificial_intelligence",
     "used_for/backends",
     "used_for/financial_systems",
