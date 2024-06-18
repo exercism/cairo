@@ -1,0 +1,10 @@
+[
+    {
+        "url": "https://book.cairo-lang.org/ch02-02-data-types.html#felt-type",
+        "description": "Felt type in the Cairo book"
+    },
+    {
+        "url": "https://starknet-by-example.voyager.online/getting-started/cairo_cheatsheet/felt.html",
+        "description": "Starknet by Example section on felts"
+    }
+]

@@ -40,7 +40,8 @@
         "name": "Hello World",
         "uuid": "1a0e23d9-e8f9-493a-af46-2be040173b64",
         "practices": [
-          "strings"
+          "strings",
+          "felts"
         ],
         "prerequisites": [],
         "difficulty": 1,
@@ -53,7 +54,8 @@
         "name": "Leap",
         "uuid": "9b586e17-928c-42bf-95ed-67539daea9a8",
         "practices": [
-          "booleans"
+          "booleans",
+          "integers"
         ],
         "prerequisites": [],
         "difficulty": 1,
