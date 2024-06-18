@@ -47,6 +47,19 @@
         "topics": [
           "test_driven_development"
         ]
+      },
+      {
+        "slug": "leap",
+        "name": "Leap",
+        "uuid": "9b586e17-928c-42bf-95ed-67539daea9a8",
+        "practices": [
+          "booleans"
+        ],
+        "prerequisites": [],
+        "difficulty": 1,
+        "topics": [
+          "conditionals"
+        ]
       }
     ]
   },
@@ -55,6 +68,16 @@
       "uuid": "4eb800f7-f6c5-4b28-8492-229b6a51829e",
       "slug": "strings",
       "name": "Strings"
+    },
+    {
+      "uuid": "9f7e96c1-a3ab-4ab9-b021-563453b1e664",
+      "slug": "integers",
+      "name": "Integers"
+    },
+    {
+      "uuid": "de254443-42ee-4787-bc1e-3d0d2039c4f5",
+      "slug": "booleans",
+      "name": "Booleans"
     }
   ],
   "key_features": [
@@ -62,7 +85,7 @@
       "title": "Developer-friendly",
       "content": "Write Rust-like code and generate proofs for program execution - math isn't a barrier.",
       "icon": "easy"
-    },  
+    },
     {
       "title": "Provable",
       "content": "Produces provable programs, making it possible to compute trustworthy values on untrusted machines.",

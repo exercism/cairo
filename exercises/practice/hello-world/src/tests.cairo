@@ -1,4 +1,4 @@
 #[test]
-fn test_hello_world() {
+fn say_hi() {
     assert_eq!(hello_world::hello(), "Hello, World!");
 }
