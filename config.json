@@ -50,6 +50,13 @@
       }
     ]
   },
+  "concepts": [
+    {
+      "uuid": "4eb800f7-f6c5-4b28-8492-229b6a51829e",
+      "slug": "strings",
+      "name": "Strings"
+    }
+  ],
   "key_features": [
     {
       "title": "Developer-friendly",
