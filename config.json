@@ -34,48 +34,60 @@
     ]
   },
   "exercises": {
-    "concept": [],
-    "practice": []
+    "practice": [
+      {
+        "slug": "hello-world",
+        "name": "Hello World",
+        "uuid": "1a0e23d9-e8f9-493a-af46-2be040173b64",
+        "practices": [
+          "strings"
+        ],
+        "prerequisites": [],
+        "difficulty": 1,
+        "topics": [
+          "test_driven_development"
+        ]
+      }
+    ]
   },
-  "concepts": [],
   "key_features": [
     {
-      "icon": "easy",
       "title": "Developer-friendly",
-      "content": "Write Rust-like code and generate proofs for program execution—math isn’t a barrier."
+      "content": "Write Rust-like code and generate proofs for program execution—math isn’t a barrier.",
+      "icon": "easy"
     },
     {
-      "icon": "safe",
       "title": "Provable",
-      "content": "Cairo allows for the creation of provable programs, which is a significant advantage in cryptographic and blockchain applications."
+      "content": "Cairo allows for the creation of provable programs, which is a significant advantage in cryptographic and blockchain applications.",
+      "icon": "safe"
     },
     {
-      "icon": "fast",
       "title": "Efficient",
-      "content": "Cairo compiles down to an ad-hoc assembly, which was engineered specifically for efficient proof generation."
+      "content": "Cairo compiles down to an ad-hoc assembly, which was engineered specifically for efficient proof generation.",
+      "icon": "fast"
     },
     {
-      "icon": "immutable",
       "title": "Immutable",
-      "content": "Cairo uses the immutable memory model, improving data integrity and security."
+      "content": "Cairo uses the immutable memory model, improving data integrity and security.",
+      "icon": "immutable"
     },
     {
-      "icon": "evolving",
       "title": "Innovative",
-      "content": "Unshackled by EVM, Cairo is a fast-growing language that keeps delivering new and exciting features to its developers."
+      "content": "Unshackled by EVM, Cairo is a fast-growing language that keeps delivering new and exciting features to its developers.",
+      "icon": "evolving"
     }
   ],
   "tags": [
+    "execution_mode/compiled",
     "paradigm/functional",
     "paradigm/imperative",
     "paradigm/procedural",
+    "platform/linux",
+    "platform/mac",
+    "platform/windows",
+    "runtime/standalone_executable",
     "typing/static",
     "typing/strong",
-    "execution_mode/compiled",
-    "platform/windows",
-    "platform/mac",
-    "platform/linux",
-    "runtime/standalone_executable",
     "used_for/artificial_intelligence",
     "used_for/backends",
     "used_for/financial_systems",
