@@ -5,3 +5,6 @@ fn is_leap_year(year: u64) -> bool {
 fn has_factor(year: u64, factor: u64) -> bool {
     year % factor == 0
 }
+
+#[cfg(test)]
+mod tests;
