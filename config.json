@@ -44,10 +44,7 @@
           "felts"
         ],
         "prerequisites": [],
-        "difficulty": 1,
-        "topics": [
-          "test_driven_development"
-        ]
+        "difficulty": 1
       },
       {
         "slug": "leap",
@@ -58,10 +55,7 @@
           "integers"
         ],
         "prerequisites": [],
-        "difficulty": 1,
-        "topics": [
-          "conditionals"
-        ]
+        "difficulty": 1
       },
       {
         "slug": "armstrong-numbers",
@@ -73,12 +67,7 @@
           "enums"
         ],
         "prerequisites": [],
-        "difficulty": 1,
-        "topics": [
-          "math",
-          "option_type",
-          "result_type"
-        ]
+        "difficulty": 1
       }
     ]
   },
