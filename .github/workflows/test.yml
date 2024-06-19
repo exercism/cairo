@@ -13,7 +13,7 @@
 # Requires scripts:
 # - bin/verify-exercises
 
-name: Cairo / Test
+name: CI
 
 # Run this workflow every time a new commit is pushed to the repository
 on:
