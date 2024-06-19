@@ -21,20 +21,45 @@
 # Example: verify single exercise
 # ./bin/verify-exercises two-fer
 
-slug="${1:-*}"
+repo=$(git rev-parse --show-toplevel)
 
-# Verify the Concept Exercises
-for concept_exercise_dir in ./exercises/concept/${slug}/; do
-    if [ -d $concept_exercise_dir ]; then
-        echo "Checking $(basename "${concept_exercise_dir}") exercise..."
-        # TODO: run command to verify that the exemplar solution passes the tests
-    fi
-done
+lib_cairo="./src/lib.cairo"
 
-# Verify the Practice Exercises
-for practice_exercise_dir in ./exercises/practice/${slug}/; do
-    if [ -d $practice_exercise_dir ]; then
-        echo "Checking $(basename "${practice_exercise_dir}") exercise..."
-        # TODO: run command to verify that the example solution passes the tests
-    fi
-done
+verify_exercise() {
+    exercises_path="$repo/exercises/$1"
+    source_file_name="$2"
+    tmp_file=$(mktemp)
+    
+    for exercise_dir in "$exercises_path"/*; do
+        if [ -z $exercise_dir ]; then
+            continue
+        fi
+        
+        slug=$(basename "$exercise_dir")
+        echo "Checking $slug exercise..."
+        
+        cd "$exercise_dir"
+        
+        solution_file=".meta/$source_file_name.cairo"
+        if [ -z "$solution_file" ]; then
+            echo "Could not find solution for $1"
+            exit 1
+        fi
+        
+        # since we're testing the solution, we need to temporarily replace
+        # the exercise's solution files with its exemplar/example files
+        cp "$lib_cairo" "$tmp_file"
+        cp "$solution_file" "$lib_cairo"
+        
+        scarb cairo-test
+        
+        cp "$tmp_file" "$lib_cairo"
+    done
+    
+    rm $tmp_file
+}
+
+# https://github.com/exercism/docs/blob/main/anatomy/tracks/concept-exercises.md#file-exemplar-implementation
+# verify_exercise "concept" "exemplar"
+# https://github.com/exercism/docs/blob/main/anatomy/tracks/practice-exercises.md#file-example-implementation
+verify_exercise "practice" "example"

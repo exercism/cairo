@@ -4,3 +4,4 @@ bin/configlet
 bin/configlet.exe
 **/target
 exercises/*/*/Scarb.lock
+.vscode
