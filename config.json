@@ -104,6 +104,11 @@
       "uuid": "2cc6431d-fc19-47f3-b7f1-999ed16e5244",
       "slug": "match-basics",
       "name": "Match Basics"
+    },
+    {
+      "uuid": "52684fe6-9b8d-4974-8de4-f65d42fbf9c1",
+      "slug": "external-crates",
+      "name": "Packages and Crates"
     }
   ],
   "key_features": [
