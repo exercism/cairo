@@ -66,16 +66,6 @@
         ],
         "prerequisites": [],
         "difficulty": 1
-      },
-      {
-        "slug": "semi-structured-logs",
-        "name": "semi-structured-logs",
-        "uuid": "2b0cd2a4-4767-4494-a239-7b3c0e9b0268",
-        "practices": [
-          "enums"
-        ],
-        "prerequisites": [],
-        "difficulty": 1
       }
     ]
   },
