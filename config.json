@@ -62,8 +62,16 @@
         "name": "Armstrong Numbers",
         "uuid": "4aaa153d-3416-4101-8143-35b068a15451",
         "practices": [
-          "functions",
-          "integers",
+          "external-crates"
+        ],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
+        "slug": "semi-structured-logs",
+        "name": "semi-structured-logs",
+        "uuid": "2b0cd2a4-4767-4494-a239-7b3c0e9b0268",
+        "practices": [
           "enums"
         ],
         "prerequisites": [],
