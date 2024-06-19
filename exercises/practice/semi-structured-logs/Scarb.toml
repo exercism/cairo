@@ -1,0 +1,4 @@
+[package]
+name = "semi_structured_logs"
+version = "0.1.0"
+edition = "2023_11"
