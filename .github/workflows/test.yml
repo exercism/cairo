@@ -13,27 +13,70 @@
 # Requires scripts:
 # - bin/verify-exercises
 
-name: <track> / Test
+name: Cairo / Test
 
+# Run this workflow every time a new commit is pushed to the repository
 on:
   push:
     branches: [main]
   pull_request:
   workflow_dispatch:
+  schedule:
+    # Weekly.
+    - cron: "0 0 * * 0"
 
 jobs:
-  ci:
-    runs-on: <image-name>
+  markdownlint:
+    name: markdown lint
+    runs-on: ubuntu-22.04
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29
 
-      - name: Use <setup tooling>
-        uses: <action to setup tooling>
-
-      - name: Install project dependencies
-        run: <install dependencies>
-
+      - name: Run markdown lint
+        run: ./bin/lint_markdown.sh
+        
+  build:
+    name: Check build
+    runs-on: ubuntu-22.04
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29
+        
+      - name: Fetch origin/main
+        run: git fetch --depth=1 origin main
+      
+      - name: Getting scarb
+        uses: software-mansion/setup-scarb@v1
+        with:
+          scarb-version: "2.6.3"
+          
       - name: Verify all exercises
+        env:
+          DENYWARNINGS: "1"
         run: bin/verify-exercises
+
+  format:
+    name: Check Cairo formatting
+    runs-on: ubuntu-22.04
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29
+      
+      - name: Getting scarb
+        uses: software-mansion/setup-scarb@v1
+        with:
+          scarb-version: "2.6.3"
+
+      - name: Format
+        run: ./bin/format_exercises.sh
+
+      - name: Diff
+        run: |
+          if ! git diff --color --exit-code; then
+            echo "Please run cargo fmt, or see the diff above:"
+            exit 1
+          fi
