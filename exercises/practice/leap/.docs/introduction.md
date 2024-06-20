@@ -4,7 +4,7 @@ A leap year (in the Gregorian calendar) occurs:
 
 - In every year that is evenly divisible by 4.
 - Unless the year is evenly divisible by 100, in which case it's only a leap
-year if the year is also evenly divisible by 400.
+  year if the year is also evenly divisible by 400.
 
 Some examples:
 
@@ -13,6 +13,6 @@ Some examples:
 - 2000 was a leap year!
 
 > For a delightful, four-minute explanation of the whole phenomenon of leap
-years, check out [this YouTube video][video].
+> years, check out [this YouTube video][video].
 
 [video]: https://www.youtube.com/watch?v=xX96xng7sAE

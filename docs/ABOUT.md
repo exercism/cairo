@@ -6,6 +6,7 @@ scalable [dApps][dapps] with the power of [validity proofs][zkp].
 [cairo]: https://www.cairo-lang.org/
 [dapps]: https://en.wikipedia.org/wiki/Decentralized_application
 [zkp]: https://en.wikipedia.org/wiki/Zero-knowledge_proof
+
 <!-- TODO: write document
 
   This document contains a short introduction to the language.
