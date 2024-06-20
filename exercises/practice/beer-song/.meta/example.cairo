@@ -15,7 +15,7 @@ pub fn verse(n: u32) -> ByteArray {
     }
 }
 
-pub fn sing(start: u32, end: u32) -> ByteArray {
+pub fn verses(start: u32, end: u32) -> ByteArray {
     let mut lyrics: ByteArray = "";
     let mut n = start;
     while n >= end {
@@ -27,6 +27,10 @@ pub fn sing(start: u32, end: u32) -> ByteArray {
         n -= 1;
     };
     lyrics
+}
+
+pub fn song() -> ByteArray {
+    verses(99, 0)
 }
 
 #[cfg(test)]
