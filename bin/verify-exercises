@@ -31,7 +31,7 @@ verify_exercise() {
     tmp_file=$(mktemp)
     
     for exercise_dir in "$exercises_path"/*; do
-        if [ -z $exercise_dir ]; then
+        if [ -z "$exercise_dir" ]; then
             continue
         fi
         
@@ -56,7 +56,7 @@ verify_exercise() {
         cp "$tmp_file" "$lib_cairo"
     done
     
-    rm $tmp_file
+    rm "$tmp_file"
 }
 
 # https://github.com/exercism/docs/blob/main/anatomy/tracks/concept-exercises.md#file-exemplar-implementation
