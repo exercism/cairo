@@ -87,6 +87,17 @@
         ],
         "prerequisites": [],
         "difficulty": 1
+      },
+      {
+        "slug": "beer-song",
+        "name": "Beer Song",
+        "uuid": "d96a8ba2-6e80-45ce-91d6-5b4cac391db6",
+        "practices": [
+          "control-flow",
+          "strings"
+        ],
+        "prerequisites": [],
+        "difficulty": 2
       }
     ]
   },
@@ -130,6 +141,11 @@
       "uuid": "52684fe6-9b8d-4974-8de4-f65d42fbf9c1",
       "slug": "external-crates",
       "name": "Packages and Crates"
+    },
+    {
+      "uuid": "887864e6-8d80-433c-8a1e-b11a5f79ae35",
+      "slug": "control-flow",
+      "name": "Control Flow"
     }
   ],
   "key_features": [
