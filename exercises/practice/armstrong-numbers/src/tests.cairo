@@ -46,24 +46,11 @@ fn seven_digit_non_armstrong_number() {
 }
 
 #[test]
-fn nine_digit_armstrong_number() {
-    assert!(is_armstrong_number(912_985_153));
+fn armstrong_number_containing_seven_zeroes() {
+    assert!(is_armstrong_number(186_709_961_001_538_790_100_634_132_976_990));
 }
 
 #[test]
-fn nine_digit_non_armstrong_number() {
-    assert!(!is_armstrong_number(999_999_999));
-}
-
-#[test]
-fn ten_digit_non_armstrong_number() {
-    assert!(!is_armstrong_number(3_999_999_999));
-}
-
-// The following number has an Armstrong sum equal to 2^32 plus itself,
-// and therefore will be detected as an Armstrong number if you are
-// incorrectly using wrapping arithmetic.
-#[test]
-fn properly_handles_overflow() {
-    assert!(!is_armstrong_number(4_106_098_957));
+fn the_largest_and_last_armstrong_number() {
+    assert!(is_armstrong_number(115_132_219_018_763_992_565_095_597_973_971_522_401));
 }

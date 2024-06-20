@@ -1,6 +1,6 @@
 use alexandria_math::armstrong_number;
 
-fn is_armstrong_number(num: u32) -> bool {
+fn is_armstrong_number(num: u128) -> bool {
     armstrong_number::is_armstrong_number(num.into())
 }
 
