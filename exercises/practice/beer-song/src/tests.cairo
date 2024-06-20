@@ -1,28 +1,4 @@
 #[test]
-fn verse_with_0_bottles() {
-    assert_eq!(
-        beer_song::verse(0),
-        "No more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.\n"
-    );
-}
-
-#[test]
-fn verse_with_1_bottle() {
-    assert_eq!(
-        beer_song::verse(1),
-        "1 bottle of beer on the wall, 1 bottle of beer.\nTake it down and pass it around, no more bottles of beer on the wall.\n"
-    );
-}
-
-#[test]
-fn verse_with_2_bottles() {
-    assert_eq!(
-        beer_song::verse(2),
-        "2 bottles of beer on the wall, 2 bottles of beer.\nTake one down and pass it around, 1 bottle of beer on the wall.\n"
-    );
-}
-
-#[test]
 fn first_generic_verse() {
     assert_eq!(
         beer_song::verse(99),
@@ -35,6 +11,30 @@ fn last_generic_verse() {
     assert_eq!(
         beer_song::verse(3),
         "3 bottles of beer on the wall, 3 bottles of beer.\nTake one down and pass it around, 2 bottles of beer on the wall.\n"
+    );
+}
+
+#[test]
+fn verse_with_2_bottles() {
+    assert_eq!(
+        beer_song::verse(2),
+        "2 bottles of beer on the wall, 2 bottles of beer.\nTake one down and pass it around, 1 bottle of beer on the wall.\n"
+    );
+}
+
+#[test]
+fn verse_with_1_bottle() {
+    assert_eq!(
+        beer_song::verse(1),
+        "1 bottle of beer on the wall, 1 bottle of beer.\nTake it down and pass it around, no more bottles of beer on the wall.\n"
+    );
+}
+
+#[test]
+fn verse_with_0_bottles() {
+    assert_eq!(
+        beer_song::verse(0),
+        "No more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.\n"
     );
 }
 
