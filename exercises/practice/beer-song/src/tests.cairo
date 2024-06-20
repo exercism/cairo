@@ -41,7 +41,7 @@ fn last_generic_verse() {
 #[test]
 fn first_two_verses() {
     assert_eq!(
-        beer_song::verses(99, 98),
+        beer_song::verses(99, 1),
         "99 bottles of beer on the wall, 99 bottles of beer.\nTake one down and pass it around, 98 bottles of beer on the wall.\n\n98 bottles of beer on the wall, 98 bottles of beer.\nTake one down and pass it around, 97 bottles of beer on the wall.\n"
     );
 }
@@ -49,7 +49,7 @@ fn first_two_verses() {
 #[test]
 fn last_three_verses() {
     assert_eq!(
-        beer_song::verses(2, 0),
+        beer_song::verses(2, 2),
         "2 bottles of beer on the wall, 2 bottles of beer.\nTake one down and pass it around, 1 bottle of beer on the wall.\n\n1 bottle of beer on the wall, 1 bottle of beer.\nTake it down and pass it around, no more bottles of beer on the wall.\n\nNo more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.\n"
     );
 }
