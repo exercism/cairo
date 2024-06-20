@@ -2,18 +2,6 @@
 
 # Synopsis:
 # Test the track's exercises.
-# 
-# At a minimum, this file must check if the example/exemplar solution of each 
-# Practice/Concept Exercise passes the exercise's tests.
-#
-# To check this, you usually have to (temporarily) replace the exercise's solution files
-# with its exemplar/example files.
-#
-# If your track uses skipped tests, make sure to (temporarily) enable these tests
-# before running the tests.
-#
-# The path to the solution/example/exemplar files can be found in the exercise's
-# .meta/config.json file, or possibly inferred from the exercise's directory name.
 
 # Example: verify all exercises
 # ./bin/verify-exercises
@@ -25,38 +13,39 @@ repo=$(git rev-parse --show-toplevel)
 
 lib_cairo="./src/lib.cairo"
 
+slug="${1:-*}"
+
 verify_exercise() {
-    exercises_path="$repo/exercises/$1"
+    exercises_path="$repo/exercises/$1/$slug"
     source_file_name="$2"
     tmp_file=$(mktemp)
-    
-    for exercise_dir in "$exercises_path"/*; do
-        if [ -z $exercise_dir ]; then
+    trap 'rm $tmp_file' EXIT INT TERM
+
+    for exercise_dir in $exercises_path; do
+        if [ -z "$exercise_dir" ]; then
             continue
         fi
-        
-        slug=$(basename "$exercise_dir")
-        echo "Checking $slug exercise..."
-        
-        cd "$exercise_dir"
-        
+
+        exercise=$(basename "$exercise_dir")
+        echo "Checking $exercise exercise..."
+
+        cd "$exercise_dir" || exit 1
+
         solution_file=".meta/$source_file_name.cairo"
         if [ -z "$solution_file" ]; then
-            echo "Could not find solution for $1"
+            echo "Could not find solution file for $exercise"
             exit 1
         fi
-        
+
         # since we're testing the solution, we need to temporarily replace
         # the exercise's solution files with its exemplar/example files
         cp "$lib_cairo" "$tmp_file"
         cp "$solution_file" "$lib_cairo"
-        
+
         scarb cairo-test
-        
+
         cp "$tmp_file" "$lib_cairo"
     done
-    
-    rm $tmp_file
 }
 
 # https://github.com/exercism/docs/blob/main/anatomy/tracks/concept-exercises.md#file-exemplar-implementation
