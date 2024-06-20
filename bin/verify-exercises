@@ -2,18 +2,6 @@
 
 # Synopsis:
 # Test the track's exercises.
-# 
-# At a minimum, this file must check if the example/exemplar solution of each 
-# Practice/Concept Exercise passes the exercise's tests.
-#
-# To check this, you usually have to (temporarily) replace the exercise's solution files
-# with its exemplar/example files.
-#
-# If your track uses skipped tests, make sure to (temporarily) enable these tests
-# before running the tests.
-#
-# The path to the solution/example/exemplar files can be found in the exercise's
-# .meta/config.json file, or possibly inferred from the exercise's directory name.
 
 # Example: verify all exercises
 # ./bin/verify-exercises
@@ -25,20 +13,21 @@ repo=$(git rev-parse --show-toplevel)
 
 lib_cairo="./src/lib.cairo"
 
+slug="${1:-*}"
+
 verify_exercise() {
-    exercises_path="$repo/exercises/$1"
+    exercises_path="$repo/exercises/$1/$slug"
     source_file_name="$2"
     tmp_file=$(mktemp)
     
-    for exercise_dir in "$exercises_path"/*; do
+    for exercise_dir in $exercises_path; do
         if [ -z "$exercise_dir" ]; then
             continue
         fi
         
-        slug=$(basename "$exercise_dir")
-        echo "Checking $slug exercise..."
+        echo "Checking $(basename "$exercise_dir") exercise..."
         
-        cd "$exercise_dir"
+        cd "$exercise_dir" || exit 1
         
         solution_file=".meta/$source_file_name.cairo"
         if [ -z "$solution_file" ]; then
