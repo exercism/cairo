@@ -1,4 +1,4 @@
-fn is_armstrong_number(num: u32) -> bool {
+fn is_armstrong_number(num: u128) -> bool {
     panic!("true if {num} is an armstrong number")
 }
 
