@@ -103,10 +103,29 @@
         "slug": "low-power-embedded-game",
         "name": "low-power-embedded-game",
         "uuid": "f3b7ce44-1667-42b4-b792-401d36aee2f1",
-        "practices": ["tuples", "traits", "control-flow"],
+        "practices": [
+          "tuples",
+          "traits",
+          "control-flow"
+        ],
         "prerequisites": [],
         "difficulty": 2
+      },
+      {
+        "slug": "custom-set",
+        "name": "Custom Set",
+        "uuid": "aad80498-750c-4a7d-b82a-f52f90c54e11",
+        "practices": [
+          "structs",
+          "traits",
+          "control-flow"
+        ],
+        "prerequisites": [],
+        "difficulty": 4
       }
+    ],
+    "foregone": [
+      "hangman"
     ]
   },
   "concepts": [
