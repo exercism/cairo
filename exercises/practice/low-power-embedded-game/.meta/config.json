@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "misicnenad"
+  ],
+  "files": {
+    "solution": [
+      "src/lib.cairo",
+      "Scarb.toml"
+    ],
+    "test": [
+      "src/tests.cairo"
+    ],
+    "example": [
+      ".meta/example.cairo"
+    ]
+  },
+  "blurb": "Learn tuples while writing convenience functions for a low-power embedded game"
+}
