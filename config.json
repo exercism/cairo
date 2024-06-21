@@ -98,6 +98,14 @@
         ],
         "prerequisites": [],
         "difficulty": 2
+      },
+      {
+        "slug": "low-power-embedded-game",
+        "name": "low-power-embedded-game",
+        "uuid": "f3b7ce44-1667-42b4-b792-401d36aee2f1",
+        "practices": ["tuples", "traits", "control-flow"],
+        "prerequisites": [],
+        "difficulty": 2
       }
     ]
   },
@@ -146,6 +154,16 @@
       "uuid": "887864e6-8d80-433c-8a1e-b11a5f79ae35",
       "slug": "control-flow",
       "name": "Control Flow"
+    },
+    {
+      "uuid": "4665675b-1abe-47ea-9701-32fb0220c159",
+      "slug": "tuples",
+      "name": "The Tuple Type"
+    },
+    {
+      "uuid": "fe83c9a6-cf50-47b1-9993-21ddd1e895ee",
+      "slug": "traits",
+      "name": "Traits"
     }
   ],
   "key_features": [
