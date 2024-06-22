@@ -1,12 +1,15 @@
+use core::clone::Clone;
 use core::array::ArrayTrait;
 use core::box::BoxTrait;
 
-#[derive(Drop)]
+#[derive(Drop, Debug)]
 pub struct CustomSet<T> {
     collection: Array<T>,
 }
 
-pub impl CustomSetEq<T, +Copy<T>, +Drop<T>, +PartialEq<T>> of PartialEq<CustomSet<T>> {
+pub impl CustomSetEq<
+    T, +Copy<T>, +Drop<T>, +PartialEq<T>, +core::fmt::Display<T>
+> of PartialEq<CustomSet<T>> {
     fn eq(lhs: @CustomSet<T>, rhs: @CustomSet<T>) -> bool {
         if lhs.collection.len() != rhs.collection.len() {
             return false;
@@ -20,15 +23,19 @@ pub impl CustomSetEq<T, +Copy<T>, +Drop<T>, +PartialEq<T>> of PartialEq<CustomSe
 }
 
 #[generate_trait]
-pub impl CustomSetImpl<T, +Copy<T>, +Drop<T>, +PartialEq<T>> of CustomSetTrait<T> {
+pub impl CustomSetImpl<
+    T, +Copy<T>, +Drop<T>, +core::fmt::Display<T>, +PartialEq<T>
+> of CustomSetTrait<T> {
     fn new(inputs: @Array<T>) -> CustomSet<T> {
-        let mut s = CustomSet::<T> { collection: array![], };
-        let mut i = 0;
-        while let Option::Some(val) = inputs.get(i) {
-            let unboxed = val.unbox();
-            s.add(*unboxed);
-        };
-        s
+        let mut set = CustomSet::<T> { collection: array![], };
+        let mut i = inputs.len();
+        while let Option::Some(val) = inputs
+            .get(i) {
+                let unboxed = val.unbox();
+                set.add(unboxed.clone());
+                i += 1;
+            };
+        set
     }
 
     fn add(ref self: CustomSet<T>, element: T) {
@@ -42,7 +49,7 @@ pub impl CustomSetImpl<T, +Copy<T>, +Drop<T>, +PartialEq<T>> of CustomSetTrait<T
         let mut i = 0;
         while let Option::Some(boxed) = self
             .collection
-            .get(0) {
+            .get(i) {
                 let val = boxed.unbox();
                 if val == other {
                     is_contained = true;
@@ -74,62 +81,106 @@ pub impl CustomSetImpl<T, +Copy<T>, +Drop<T>, +PartialEq<T>> of CustomSetTrait<T
     }
 
     fn is_disjoint(self: @CustomSet<T>, other: @CustomSet<T>) -> bool {
-        let mut are_disjoint = false;
+        let mut are_disjoint = true;
 
-        let mut i = self.collection.len();
+        // a more efficient way is to iterate the smaller set
         let mut to_iterate = self;
         let mut to_compare = other;
-        if i > other.collection.len() {
-            i = other.collection.len();
+        if to_iterate.collection.len() > to_compare.collection.len() {
             to_iterate = other;
             to_compare = self;
         };
 
+        let mut i = to_iterate.collection.len();
         while i != 0 {
             i -= 1;
             if to_compare.contains(to_iterate.collection[i]) {
-                are_disjoint = true;
+                are_disjoint = false;
                 break;
             }
         };
 
         are_disjoint
     }
-//     #[must_use]
-//     pub fn intersection(&self, other: &Self) -> CustomSet<T> {
-//         CustomSet::new(
-//             &self
-//                 .collection
-//                 .iter()
-//                 .filter(|c| other.contains(c))
-//                 .cloned()
-//                 .collect::<Vec<_>>(),
-//         )
-//     }
 
-//     #[must_use]
-//     pub fn union(&self, other: &Self) -> CustomSet<T> {
-//         CustomSet::new(
-//             &self
-//                 .collection
-//                 .iter()
-//                 .chain(other.collection.iter())
-//                 .cloned()
-//                 .collect::<Vec<_>>(),
-//         )
-//     }
+    #[must_use]
+    fn intersection(self: @CustomSet<T>, other: @CustomSet<T>) -> CustomSet<T> {
+        let mut collection: Array<T> = array![];
 
-//     #[must_use]
-//     pub fn difference(&self, other: &Self) -> CustomSet<T> {
-//         CustomSet::new(
-//             &self
-//                 .collection
-//                 .iter()
-//                 .filter(|c| !other.contains(c))
-//                 .cloned()
-//                 .collect::<Vec<_>>(),
-//         )
-//     }
+        // a more efficient way is to iterate the smaller set
+        let mut to_iterate = self;
+        let mut to_compare = other;
+        if to_iterate.collection.len() > to_compare.collection.len() {
+            to_iterate = other;
+            to_compare = self;
+        };
+
+        let mut i = to_iterate.collection.len();
+        while i != 0 {
+            i -= 1;
+            if to_compare.contains(to_iterate.collection[i]) {
+                collection.append(*to_iterate.collection[i]);
+            }
+        };
+
+        CustomSetImpl::<T>::new(@collection)
+    }
+
+    #[must_use]
+    fn union(self: @CustomSet<T>, other: @CustomSet<T>) -> CustomSet<T> {
+        let mut collection: Array<T> = array![];
+
+        let mut i = self.collection.len();
+        while i != 0 {
+            i -= 1;
+            collection.append(*self.collection[i]);
+        };
+        println!("self appended");
+        i = other.collection.len();
+        while i != 0 {
+            i -= 1;
+            collection.append(*other.collection[i]);
+        };
+        println!("other appended");
+        CustomSetImpl::<T>::new(@collection)
+    }
+
+    #[must_use]
+    fn difference(self: @CustomSet<T>, other: @CustomSet<T>) -> CustomSet<T> {
+        let mut set = CustomSetImpl::<T>::new(@array![]);
+
+        let mut smaller_set = self;
+        let mut larger_set = other;
+        if smaller_set.collection.len() > larger_set.collection.len() {
+            smaller_set = other;
+            larger_set = self;
+        };
+
+        let mut i = 0;
+        while i < smaller_set
+            .collection
+            .len() {
+                if !larger_set.contains(smaller_set.collection[i]) {
+                    set.add(smaller_set.collection[i].clone());
+                }
+                if !smaller_set.contains(larger_set.collection[i]) {
+                    set.add(larger_set.collection[i].clone());
+                }
+                i += 1;
+            };
+
+        // iterate the remaining items in the larger set
+        while i < larger_set
+            .collection
+            .len() {
+                if !smaller_set.contains(larger_set.collection[i]) {
+                    set.add(larger_set.collection[i].clone());
+                }
+                i += 1;
+            };
+
+        set
+    }
 }
 
 
