@@ -4,7 +4,7 @@ use core::box::BoxTrait;
 
 #[derive(Drop, Debug)]
 pub struct CustomSet<T> {
-    collection: Array<T>,
+    pub collection: Array<T>,
 }
 
 pub impl CustomSetEq<
@@ -28,7 +28,7 @@ pub impl CustomSetImpl<
 > of CustomSetTrait<T> {
     fn new(inputs: @Array<T>) -> CustomSet<T> {
         let mut set = CustomSet::<T> { collection: array![], };
-        let mut i = inputs.len();
+        let mut i = 0;
         while let Option::Some(val) = inputs
             .get(i) {
                 let unboxed = val.unbox();
@@ -147,39 +147,20 @@ pub impl CustomSetImpl<
 
     #[must_use]
     fn difference(self: @CustomSet<T>, other: @CustomSet<T>) -> CustomSet<T> {
-        let mut set = CustomSetImpl::<T>::new(@array![]);
-
-        let mut smaller_set = self;
-        let mut larger_set = other;
-        if smaller_set.collection.len() > larger_set.collection.len() {
-            smaller_set = other;
-            larger_set = self;
-        };
+        let mut diff = CustomSetImpl::<T>::new(@array![]);
 
         let mut i = 0;
-        while i < smaller_set
+        while let Option::Some(val) = self
             .collection
-            .len() {
-                if !larger_set.contains(smaller_set.collection[i]) {
-                    set.add(smaller_set.collection[i].clone());
-                }
-                if !smaller_set.contains(larger_set.collection[i]) {
-                    set.add(larger_set.collection[i].clone());
+            .get(i) {
+                let unboxed = val.unbox();
+                if !other.contains(unboxed) {
+                    diff.add(unboxed.clone());
                 }
                 i += 1;
             };
 
-        // iterate the remaining items in the larger set
-        while i < larger_set
-            .collection
-            .len() {
-                if !smaller_set.contains(larger_set.collection[i]) {
-                    set.add(larger_set.collection[i].clone());
-                }
-                i += 1;
-            };
-
-        set
+        diff
     }
 }
 
