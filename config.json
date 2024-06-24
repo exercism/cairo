@@ -34,6 +34,20 @@
     ]
   },
   "exercises": {
+    "concept": [
+      {
+        "slug": "low-power-embedded-game",
+        "name": "low-power-embedded-game",
+        "uuid": "f3b7ce44-1667-42b4-b792-401d36aee2f1",
+        "concepts": [
+          "tuples",
+          "traits"
+        ],
+        "prerequisites": [],
+        "difficulty": 2,
+        "status": "wip"
+      }
+    ],
     "practice": [
       {
         "slug": "hello-world",
@@ -95,17 +109,6 @@
         "practices": [
           "control-flow",
           "strings"
-        ],
-        "prerequisites": [],
-        "difficulty": 2
-      },
-      {
-        "slug": "low-power-embedded-game",
-        "name": "low-power-embedded-game",
-        "uuid": "f3b7ce44-1667-42b4-b792-401d36aee2f1",
-        "practices": [
-          "tuples",
-          "traits"
         ],
         "prerequisites": [],
         "difficulty": 2

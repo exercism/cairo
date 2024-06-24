@@ -49,6 +49,6 @@ verify_exercise() {
 }
 
 # https://github.com/exercism/docs/blob/main/anatomy/tracks/concept-exercises.md#file-exemplar-implementation
-# verify_exercise "concept" "exemplar"
+verify_exercise "concept" "exemplar"
 # https://github.com/exercism/docs/blob/main/anatomy/tracks/practice-exercises.md#file-example-implementation
 verify_exercise "practice" "example"

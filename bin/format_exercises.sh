@@ -48,6 +48,6 @@ format_exercises() {
 }
 
 # https://github.com/exercism/docs/blob/main/anatomy/tracks/concept-exercises.md#file-exemplar-implementation
-# format_exercises "concept" "exemplar"
+format_exercises "concept" "exemplar"
 # https://github.com/exercism/docs/blob/main/anatomy/tracks/practice-exercises.md#file-example-implementation
 format_exercises "practice" "example"

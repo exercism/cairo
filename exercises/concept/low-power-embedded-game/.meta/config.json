@@ -10,8 +10,8 @@
     "test": [
       "src/tests.cairo"
     ],
-    "example": [
-      ".meta/example.cairo"
+    "exemplar": [
+      ".meta/exemplar.cairo"
     ]
   },
   "blurb": "Learn tuples while writing convenience functions for a low-power embedded game"
