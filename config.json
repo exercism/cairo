@@ -105,8 +105,7 @@
         "uuid": "f3b7ce44-1667-42b4-b792-401d36aee2f1",
         "practices": [
           "tuples",
-          "traits",
-          "control-flow"
+          "traits"
         ],
         "prerequisites": [],
         "difficulty": 2
@@ -118,7 +117,7 @@
         "practices": [
           "structs",
           "traits",
-          "control-flow"
+          "operator-overload"
         ],
         "prerequisites": [],
         "difficulty": 4
@@ -183,6 +182,16 @@
       "uuid": "fe83c9a6-cf50-47b1-9993-21ddd1e895ee",
       "slug": "traits",
       "name": "Traits"
+    },
+    {
+      "uuid": "4e1f6433-3125-4428-837d-47b0c10fddea",
+      "slug": "structs",
+      "name": "Structs"
+    },
+    {
+      "uuid": "0b069f59-f8b4-4979-935a-c3172538f4c9",
+      "slug": "operator-overload",
+      "name": "Operator Overload"
     }
   ],
   "key_features": [
