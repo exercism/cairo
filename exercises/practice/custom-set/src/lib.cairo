@@ -69,14 +69,16 @@ pub impl CustomSetImpl<
             return false;
         }
         let mut result = true;
-        let mut i = self.collection.len();
-        while i != 0 {
-            i -= 1;
-            if !other.contains(self.collection[i]) {
-                result = false;
-                break;
-            }
-        };
+        let mut i = 0;
+        while let Option::Some(val) = self
+            .collection
+            .get(i) {
+                if !other.contains(val.unbox()) {
+                    result = false;
+                    break;
+                }
+                i += 1;
+            };
         result
     }
 
@@ -91,14 +93,16 @@ pub impl CustomSetImpl<
             to_compare = self;
         };
 
-        let mut i = to_iterate.collection.len();
-        while i != 0 {
-            i -= 1;
-            if to_compare.contains(to_iterate.collection[i]) {
-                are_disjoint = false;
-                break;
-            }
-        };
+        let mut i = 0;
+        while let Option::Some(val) = to_iterate
+            .collection
+            .get(i) {
+                if to_compare.contains(val.unbox()) {
+                    are_disjoint = false;
+                    break;
+                }
+                i += 1;
+            };
 
         are_disjoint
     }
@@ -115,13 +119,16 @@ pub impl CustomSetImpl<
             to_compare = self;
         };
 
-        let mut i = to_iterate.collection.len();
-        while i != 0 {
-            i -= 1;
-            if to_compare.contains(to_iterate.collection[i]) {
-                collection.append(*to_iterate.collection[i]);
-            }
-        };
+        let mut i = 0;
+        while let Option::Some(val) = to_iterate
+            .collection
+            .get(i) {
+                let unboxed = val.unbox();
+                if to_compare.contains(unboxed) {
+                    collection.append(*unboxed);
+                }
+                i += 1;
+            };
 
         CustomSetImpl::<T>::new(@collection)
     }
@@ -129,38 +136,37 @@ pub impl CustomSetImpl<
     #[must_use]
     fn union(self: @CustomSet<T>, other: @CustomSet<T>) -> CustomSet<T> {
         let mut collection: Array<T> = array![];
-
-        let mut i = self.collection.len();
-        while i != 0 {
-            i -= 1;
-            collection.append(*self.collection[i]);
-        };
-        println!("self appended");
-        i = other.collection.len();
-        while i != 0 {
-            i -= 1;
-            collection.append(*other.collection[i]);
-        };
-        println!("other appended");
+        let mut i = 0;
+        while let Option::Some(val) = self
+            .collection
+            .get(i) {
+                collection.append(*val.unbox());
+                i += 1;
+            };
+        i = 0;
+        while let Option::Some(val) = other
+            .collection
+            .get(i) {
+                collection.append(*val.unbox());
+                i += 1;
+            };
         CustomSetImpl::<T>::new(@collection)
     }
 
     #[must_use]
     fn difference(self: @CustomSet<T>, other: @CustomSet<T>) -> CustomSet<T> {
-        let mut diff = CustomSetImpl::<T>::new(@array![]);
-
+        let mut collection: Array<T> = array![];
         let mut i = 0;
         while let Option::Some(val) = self
             .collection
             .get(i) {
                 let unboxed = val.unbox();
                 if !other.contains(unboxed) {
-                    diff.add(unboxed.clone());
+                    collection.append(unboxed.clone());
                 }
                 i += 1;
             };
-
-        diff
+        CustomSetImpl::<T>::new(@collection)
     }
 }
 
