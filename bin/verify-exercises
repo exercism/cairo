@@ -17,6 +17,9 @@ slug="${1:-*}"
 
 verify_exercise() {
     exercises_path="$repo/exercises/$1/$slug"
+    if ! test -d "$exercises_path"; then 
+        return
+    fi
     source_file_name="$2"
     tmp_file=$(mktemp)
     trap 'rm $tmp_file' EXIT INT TERM

@@ -44,7 +44,6 @@
           "traits"
         ],
         "prerequisites": [],
-        "difficulty": 2,
         "status": "wip"
       }
     ],
@@ -124,6 +123,18 @@
         ],
         "prerequisites": [],
         "difficulty": 4
+      },
+      {
+        "slug": "roman-numerals",
+        "name": "Roman Numerals",
+        "uuid": "3fb4bd2f-bc5f-4a67-b9cc-49a786245876",
+        "practices": [
+           "tuples",
+           "traits",
+           "type-casting"
+        ],
+        "prerequisites": [],
+        "difficulty": 2
       }
     ],
     "foregone": [
@@ -195,6 +206,11 @@
       "uuid": "0b069f59-f8b4-4979-935a-c3172538f4c9",
       "slug": "operator-overload",
       "name": "Operator Overload"
+    },
+    {
+      "uuid": "b0ea24b3-3520-42c2-9177-0550247fa2bd",
+      "slug": "type-casting",
+      "name": "Type Casting"
     }
   ],
   "key_features": [
