@@ -6,6 +6,8 @@ pub struct Roman {
 #[generate_trait]
 impl RomanImpl of RomanTrait {
     fn from_u32(num: u32) -> Roman {
+        // it will soon be possible to use constant array variables
+        // for now we have to define them within the function
         let mut ROMAN_MAP: Array<(u32, ByteArray)> = array![
             (1000, "M"),
             (900, "CM"),
