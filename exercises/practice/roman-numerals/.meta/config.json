@@ -1,0 +1,20 @@
+{
+  "authors": [
+    "misicnenad"
+  ],
+  "files": {
+    "solution": [
+      "src/lib.cairo",
+      "Scarb.toml"
+    ],
+    "test": [
+      "src/tests.cairo"
+    ],
+    "example": [
+      ".meta/example.cairo"
+    ]
+  },
+  "blurb": "Convert modern Arabic numbers into Roman numerals.",
+  "source": "The Roman Numeral Kata",
+  "source_url": "https://codingdojo.org/kata/RomanNumerals/"
+}
