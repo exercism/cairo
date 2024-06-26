@@ -6,6 +6,12 @@ pub enum Error {
     IndexOutOfBounds
 }
 
+#[derive(Drop, Copy)]
+struct Product {
+    value: u64,
+    from: u32,
+}
+
 pub fn lsp(input: @ByteArray, span: i32) -> Result<u64, Error> {
     // validate span
     if span == 0 {
@@ -24,40 +30,35 @@ pub fn lsp(input: @ByteArray, span: i32) -> Result<u64, Error> {
 
     // calculate first max product
     // use '?' to propagate the error if it occurred
-    let Product { value, from } = product_from(input, 0, span)?;
+    let product = product_from(input, 0, span)?;
 
-    next_max_product(input, span, value, value, from)
+    next_max_product(input, span, product.value, product)
 }
 
 fn next_max_product(
-    input: @ByteArray, span: u32, max: u64, current_product: u64, from: u32
+    input: @ByteArray, span: u32, max: u64, current_product: Product
 ) -> Result<u64, Error> {
-    if from + span >= input.len() {
+    if current_product.from + span >= input.len() {
         return Result::Ok(max);
     }
 
     // safe to unwrap, we already processed this digit before 
-    let reduced_value = current_product / input.at(from).try_into_digit().unwrap();
+    let reduced_value = current_product.value
+        / input.at(current_product.from).try_into_digit().unwrap();
 
-    let next_digit = input.at(from + span).try_into_digit()?;
+    let next_digit = input.at(current_product.from + span).try_into_digit()?;
 
     let product = if next_digit == 0 {
-        product_from(input, from + span + 1, span)?
+        product_from(input, current_product.from + span + 1, span)?
     } else {
-        Product { value: reduced_value * next_digit, from: from + 1 }
+        Product { value: reduced_value * next_digit, from: current_product.from + 1 }
     };
 
     if product.value > max {
-        next_max_product(input, span, product.value, product.value, product.from)
+        next_max_product(input, span, product.value, product)
     } else {
-        next_max_product(input, span, max, product.value, product.from)
+        next_max_product(input, span, max, product)
     }
-}
-
-#[derive(Drop, Copy)]
-struct Product {
-    value: u64,
-    from: u32,
 }
 
 fn product_from(input: @ByteArray, from: u32, span: usize) -> Result<Product, Error> {
