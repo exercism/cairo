@@ -152,9 +152,13 @@
         "slug": "largest-series-product",
         "name": "Largest Series Product",
         "uuid": "d0cae4fa-22a8-4604-9f0f-f90751245ce3",
-        "practices": [],
+        "practices": [
+          "enums",
+          "error-handling",
+          "control-flow"
+        ],
         "prerequisites": [],
-        "difficulty": 1
+        "difficulty": 4
       }
     ],
     "foregone": [
@@ -236,6 +240,11 @@
       "uuid": "6b6dafdb-7868-4089-855a-eb6735b5de5c",
       "slug": "arrays",
       "name": "Arrays"
+    },
+    {
+      "uuid": "cf49c14b-ed9a-4df6-a43a-3923e8489900",
+      "slug": "error-handling",
+      "name": "Error Handling"
     }
   ],
   "key_features": [
