@@ -1,1 +1,1 @@
-# Boolean Types
+# The Boolean Type
