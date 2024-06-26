@@ -75,7 +75,7 @@
         "name": "Armstrong Numbers",
         "uuid": "4aaa153d-3416-4101-8143-35b068a15451",
         "practices": [
-          "external-crates"
+          "packages-crates-modules"
         ],
         "prerequisites": [],
         "difficulty": 1
@@ -191,8 +191,8 @@
     },
     {
       "uuid": "52684fe6-9b8d-4974-8de4-f65d42fbf9c1",
-      "slug": "external-crates",
-      "name": "Packages and Crates"
+      "slug": "packages-crates-modules",
+      "name": "Packages, Crates and Modules"
     },
     {
       "uuid": "887864e6-8d80-433c-8a1e-b11a5f79ae35",
