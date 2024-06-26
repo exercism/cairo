@@ -2,13 +2,20 @@
 pub enum Error {
     SpanTooLong,
     InvalidDigit: u8,
+    NegativeSpan,
     IndexOutOfBounds: u32
 }
 
-pub fn lsp(string_digits: @ByteArray, span: usize) -> Result<u64, Error> {
+pub fn lsp(string_digits: @ByteArray, span: i32) -> Result<u64, Error> {
     if span == 0 {
         return Result::Ok(1);
     }
+
+    if span < 0 {
+        return Result::Err(Error::NegativeSpan);
+    }
+    // shadowing
+    let span: u32 = span.try_into().unwrap();
 
     if span > string_digits.len() {
         return Result::Err(Error::SpanTooLong);

@@ -7,73 +7,91 @@ fn return_is_a_result() {
 }
 
 #[test]
-fn find_the_largest_product_when_span_equals_length() {
+fn finds_the_largest_product_when_span_equals_length() {
     let string_digits: ByteArray = "29";
-    assert_eq!(Result::Ok(18_u64), lsp(@string_digits, 2));
+    assert_eq!(Result::Ok(18), lsp(@string_digits, 2));
 }
 
 #[test]
-fn find_the_largest_product_of_two_with_numbers_in_order() {
+fn can_find_the_largest_product_of_2_with_numbers_in_order() {
     let string_digits: ByteArray = "0123456789";
-    assert_eq!(Result::Ok(72_u64), lsp(@string_digits, 2));
+    assert_eq!(Result::Ok(72), lsp(@string_digits, 2));
 }
 
 #[test]
-fn find_the_largest_product_of_two_with_numbers_not_in_order() {
+fn can_find_the_largest_product_of_2() {
     let string_digits: ByteArray = "576802143";
-    assert_eq!(Result::Ok(48_u64), lsp(@string_digits, 2));
+    assert_eq!(Result::Ok(48), lsp(@string_digits, 2));
 }
 
 #[test]
-fn find_the_largest_product_of_three_with_numbers_in_order() {
+fn can_find_the_largest_product_of_3_with_numbers_in_order() {
     let string_digits: ByteArray = "0123456789";
-    assert_eq!(Result::Ok(504_u64), lsp(@string_digits, 3));
+    assert_eq!(Result::Ok(504), lsp(@string_digits, 3));
 }
 
 #[test]
-fn find_the_largest_product_of_three_with_numbers_not_in_order() {
+fn can_find_the_largest_product_of_3() {
     let string_digits: ByteArray = "1027839564";
-    assert_eq!(Result::Ok(270_u64), lsp(@string_digits, 3));
+    assert_eq!(Result::Ok(270), lsp(@string_digits, 3));
 }
 
 #[test]
-fn find_the_largest_product_of_five_with_numbers_in_order() {
+fn can_find_the_largest_product_of_5_with_numbers_in_order() {
     let string_digits: ByteArray = "0123456789";
-    assert_eq!(Result::Ok(15_120_u64), lsp(@string_digits, 5));
+    assert_eq!(Result::Ok(15120), lsp(@string_digits, 5));
 }
 
 #[test]
-fn span_of_six_in_a_large_number() {
+fn can_get_the_largest_product_of_a_big_number() {
     let string_digits: ByteArray = "73167176531330624919225119674426574742355349194934";
-    assert_eq!(Result::Ok(23_520_u64), lsp(@string_digits, 6));
+    assert_eq!(Result::Ok(23520), lsp(@string_digits, 6));
 }
 
 #[test]
-fn returns_zero_if_number_is_zeros() {
+fn reports_zero_if_the_only_digits_are_zero() {
     let string_digits: ByteArray = "0000";
-    assert_eq!(Result::Ok(0_u64), lsp(@string_digits, 2));
+    assert_eq!(Result::Ok(0), lsp(@string_digits, 2));
 }
 
 #[test]
-fn returns_zero_if_all_products_are_zero() {
+fn reports_zero_if_all_spans_include_zero() {
     let string_digits: ByteArray = "99099";
-    assert_eq!(Result::Ok(0_u64), lsp(@string_digits, 3));
+    assert_eq!(Result::Ok(0), lsp(@string_digits, 3));
 }
 
 #[test]
-fn a_span_is_longer_than_number_is_an_error() {
+fn rejects_span_longer_than_string_length() {
     let string_digits: ByteArray = "123";
     assert_eq!(Result::Err(Error::SpanTooLong), lsp(@string_digits, 4));
 }
 
 #[test]
-fn empty_string_and_non_zero_span_is_an_error() {
+fn reports_1_for_empty_string_and_0_span() {
+    let string_digits: ByteArray = "";
+    assert_eq!(Result::Ok(1), lsp(@string_digits, 0));
+}
+
+#[test]
+fn reports_1_for_nonempty_string_and_0_span() {
+    let string_digits: ByteArray = "1234";
+    assert_eq!(Result::Ok(1), lsp(@string_digits, 0));
+}
+
+#[test]
+fn rejects_empty_string_and_nonzero_span() {
     let string_digits: ByteArray = "";
     assert_eq!(Result::Err(Error::SpanTooLong), lsp(@string_digits, 1));
 }
 
 #[test]
-fn a_string_with_non_digits_is_an_error() {
+fn rejects_invalid_character_in_digits() {
     let string_digits: ByteArray = "1234a5";
     assert_eq!(Result::Err(Error::InvalidDigit('a')), lsp(@string_digits, 2));
+}
+
+#[test]
+fn rejects_negative_span() {
+    let string_digits: ByteArray = "12345";
+    assert_eq!(Result::Err(Error::NegativeSpan), lsp(@string_digits, -1));
 }
