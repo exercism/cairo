@@ -1,4 +1,4 @@
-#[derive(Drop, Copy, Debug, PartialEq)]
+#[derive(Drop, Debug, PartialEq)]
 pub enum Error {
     SpanTooLong,
     InvalidDigit: u8,
@@ -23,49 +23,35 @@ pub fn lsp(input: @ByteArray, span: i32) -> Result<u64, Error> {
     }
 
     // calculate first max product
-    let mut current_product = product_from(input, 0, span);
     // use '?' to propagate the error if it occurred
-    let mut max_product = current_product?.value;
+    let Product { value, from } = product_from(input, 0, span)?;
 
-    while let Result::Ok(Product { value, from }) =
-        current_product {
-            if from + span >= input.len() {
-                break;
-            }
+    next_max_product(input, span, value, value, from)
+}
 
-            // safe to unwrap, we already processed this digit before 
-            let reduced_value = value / input.at(from).try_into_digit().unwrap();
+fn next_max_product(
+    input: @ByteArray, span: u32, max: u64, current_product: u64, from: u32
+) -> Result<u64, Error> {
+    if from + span >= input.len() {
+        return Result::Ok(max);
+    }
 
-            match input.at(from + span).try_into_digit() {
-                Result::Ok(next_digit) => {
-                    if next_digit == 0 {
-                        current_product = product_from(input, from + span + 1, span);
-                    } else {
-                        current_product =
-                            Result::Ok(
-                                Product { value: reduced_value * next_digit, from: from + 1 }
-                            );
-                    }
-                    match current_product {
-                        Result::Ok(prod) => {
-                            if prod.value > max_product {
-                                max_product = prod.value;
-                            };
-                        },
-                        Result::Err(_) => { break; }
-                    }
-                },
-                Result::Err(err) => {
-                    current_product = Result::Err(err);
-                    break;
-                }
-            };
-        };
+    // safe to unwrap, we already processed this digit before 
+    let reduced_value = current_product / input.at(from).try_into_digit().unwrap();
 
-    // propagate the error if it occurred
-    current_product?;
+    let next_digit = input.at(from + span).try_into_digit()?;
 
-    Result::Ok(max_product)
+    let product = if next_digit == 0 {
+        product_from(input, from + span + 1, span)?
+    } else {
+        Product { value: reduced_value * next_digit, from: from + 1 }
+    };
+
+    if product.value > max {
+        next_max_product(input, span, product.value, product.value, product.from)
+    } else {
+        next_max_product(input, span, max, product.value, product.from)
+    }
 }
 
 #[derive(Drop, Copy)]
