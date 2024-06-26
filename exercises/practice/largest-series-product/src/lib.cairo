@@ -1,4 +1,3 @@
-use core::byte_array::ByteArrayTrait;
 #[derive(Drop, Copy, Debug, PartialEq)]
 pub enum Error {
     SpanTooLong,
@@ -25,45 +24,48 @@ pub fn lsp(input: @ByteArray, span: i32) -> Result<u64, Error> {
 
     // calculate first max product
     let mut current_product = product_from(input, 0, span);
-    let mut max_product = current_product;
+    // use '?' to propagate the error if it occurred
+    let mut max_product = current_product?.value;
 
     while let Result::Ok(Product { value, from }) =
         current_product {
             if from + span >= input.len() {
                 break;
             }
-            let temp_value = value / input.at(from).try_into_digit().unwrap();
+
+            // safe to unwrap, we already processed this digit before 
+            let reduced_value = value / input.at(from).try_into_digit().unwrap();
+
             match input.at(from + span).try_into_digit() {
-                Result::Ok(digit) => {
-                    if digit == 0 {
+                Result::Ok(next_digit) => {
+                    if next_digit == 0 {
                         current_product = product_from(input, from + span + 1, span);
                     } else {
                         current_product =
-                            Result::Ok(Product { value: temp_value * digit, from: from + 1 });
+                            Result::Ok(
+                                Product { value: reduced_value * next_digit, from: from + 1 }
+                            );
                     }
                     match current_product {
                         Result::Ok(prod) => {
-                            if prod.value > max_product.unwrap().value {
-                                max_product = current_product;
+                            if prod.value > max_product {
+                                max_product = prod.value;
                             };
                         },
-                        Result::Err(err) => {
-                            max_product = Result::Err(err);
-                            break;
-                        }
+                        Result::Err(_) => { break; }
                     }
                 },
                 Result::Err(err) => {
-                    max_product = Result::Err(err);
+                    current_product = Result::Err(err);
                     break;
                 }
             };
         };
 
-    match max_product {
-        Result::Ok(Product { value, from: _ }) => Result::Ok(value),
-        Result::Err(err) => Result::Err(err)
-    }
+    // propagate the error if it occurred
+    current_product?;
+
+    Result::Ok(max_product)
 }
 
 #[derive(Drop, Copy)]
