@@ -3,7 +3,6 @@ pub enum Error {
     SpanTooLong,
     InvalidDigit: u8,
     NegativeSpan,
-    IndexOutOfBounds
 }
 
 pub fn lsp(input: @ByteArray, span: i32) -> Result<u64, Error> {
