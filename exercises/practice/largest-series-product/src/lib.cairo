@@ -1,9 +1,10 @@
-#[derive(Drop, Debug, PartialEq)]
+use core::byte_array::ByteArrayTrait;
+#[derive(Drop, Copy, Debug, PartialEq)]
 pub enum Error {
     SpanTooLong,
     InvalidDigit: u8,
     NegativeSpan,
-    IndexOutOfBounds: u32
+    IndexOutOfBounds
 }
 
 pub fn lsp(input: @ByteArray, span: i32) -> Result<u64, Error> {
@@ -15,88 +16,116 @@ pub fn lsp(input: @ByteArray, span: i32) -> Result<u64, Error> {
         return Result::Err(Error::NegativeSpan);
     }
 
-    // shadowing
+    // shadowing to make span of unsigned type
     let span: u32 = span.try_into().unwrap();
 
     if span > input.len() {
         return Result::Err(Error::SpanTooLong);
     }
 
-    // validate digits
-    let mut i = 0;
-    let invalid_result: Result<(), Error> = loop {
-        if i == input.len() {
-            break Result::Ok(());
-        };
-        if let Result::Err(err) = input.try_into_u64(i) {
-            break Result::Err(err);
-        };
-        i += 1;
-    };
-    invalid_result?; // propagate the error if present
-
-    // calculate max product
-    let (mut current_product, mut from) = product_from(input, 0, span);
+    // calculate first max product
+    let mut current_product = product_from(input, 0, span);
     let mut max_product = current_product;
 
-    while from
-        + span < input
-            .len() {
-                current_product /= input.to_u64(from);
-                let digit: u64 = input.to_u64(from + span);
-                if digit == 0 {
-                    let (new_product, new_from) = product_from(input, from + span + 1, span);
-                    current_product = new_product;
-                    from = new_from;
-                } else {
-                    current_product *= digit;
-                    from += 1;
+    while let Result::Ok(Product { value, from }) =
+        current_product {
+            if from + span >= input.len() {
+                break;
+            }
+            let temp_value = value / input.at(from).try_into_digit().unwrap();
+            match input.at(from + span).try_into_digit() {
+                Result::Ok(digit) => {
+                    if digit == 0 {
+                        current_product = product_from(input, from + span + 1, span);
+                    } else {
+                        current_product =
+                            Result::Ok(Product { value: temp_value * digit, from: from + 1 });
+                    }
+                    match current_product {
+                        Result::Ok(prod) => {
+                            if prod.value > max_product.unwrap().value {
+                                max_product = current_product;
+                            };
+                        },
+                        Result::Err(err) => {
+                            max_product = Result::Err(err);
+                            break;
+                        }
+                    }
+                },
+                Result::Err(err) => {
+                    max_product = Result::Err(err);
+                    break;
                 }
-                if current_product > max_product {
-                    max_product = current_product;
-                };
             };
+        };
 
-    Result::Ok(max_product)
+    match max_product {
+        Result::Ok(Product { value, from: _ }) => Result::Ok(value),
+        Result::Err(err) => Result::Err(err)
+    }
 }
 
-fn product_from(input: @ByteArray, from: u32, span: usize) -> (u64, u32) {
+#[derive(Drop, Copy)]
+struct Product {
+    value: u64,
+    from: u32,
+}
+
+fn product_from(input: @ByteArray, from: u32, span: usize) -> Result<Product, Error> {
+    // shadow with a mutable variable
     let mut from = from;
-    let mut product: u64 = loop {
+    // assign the first non-zero digit to the product
+    let mut product_result: Result<Product, Error> = loop {
         if from == input.len() {
-            break 0;
+            // no non-zero digit was found
+            break Result::Ok(Product { value: 0, from });
         }
-        let digit = input.to_u64(from);
-        if digit != 0 {
-            break digit;
-        }
-        from += 1;
+        match input.at(from).try_into_digit() {
+            Result::Ok(digit) => {
+                if digit != 0 {
+                    break Result::Ok(Product { value: digit, from });
+                }
+                from += 1;
+            },
+            Result::Err(err) => { break Result::Err(err); }
+        };
     };
-    let mut digit_count = 1;
+
+    let Product { mut value, mut from } = product_result?;
+    let mut digits_in_product = 1;
+
     loop {
-        if digit_count == span {
-            break (product, from);
+        // found a non-zero product
+        if digits_in_product == span {
+            break Result::Ok(Product { value, from });
         }
-        if from + digit_count >= input.len() {
-            break (0, from);
+        // we couldn't find a non-zero product
+        if from + digits_in_product >= input.len() {
+            break Result::Ok(Product { value: 0, from });
         }
-        let index = from + digit_count;
-        let digit: u64 = input.to_u64(index);
-        if digit == 0 {
-            from = index + 1;
-            digit_count = 0;
-            product = 1;
-        } else {
-            product *= digit;
-            digit_count += 1;
+        match input.at(from + digits_in_product).try_into_digit() {
+            Result::Ok(digit) => {
+                if digit == 0 {
+                    // jump over the digit 0, recalculate the product
+                    from += digits_in_product + 1;
+                    digits_in_product = 0;
+                    value = 1;
+                } else {
+                    value *= digit;
+                    digits_in_product += 1;
+                }
+            },
+            Result::Err(err) => { break Result::Err(err); }
         }
     }
 }
 
+/// Helper functions
 #[generate_trait]
-impl ByteArrayToU64 of ByteArrayToU64Trait {
-    fn try_into_u64(self: @ByteArray, index: u32) -> Result<u64, Error> {
-        if let Option::Some(char) = self.at(index) {
+impl ByteArrayCharToU64 of ByteArrayCharToU64Trait {
+    fn try_into_digit(self: @Option<u8>) -> Result<u64, Error> {
+        if let Option::Some(char) = (*self) {
             // ASCII digits are characters 48 through 57
             if 48 <= char && char <= 57 {
                 Result::Ok(char.into() - 48)
@@ -104,12 +133,8 @@ impl ByteArrayToU64 of ByteArrayToU64Trait {
                 Result::Err(Error::InvalidDigit(char))
             }
         } else {
-            Result::Err(Error::IndexOutOfBounds(index))
+            Result::Err(Error::IndexOutOfBounds)
         }
-    }
-
-    fn to_u64(self: @ByteArray, index: u32) -> u64 {
-        self.at(index).unwrap().into() - 48
     }
 }
 
