@@ -1,6 +1,6 @@
 # This workflow will do a clean install of the dependencies and run tests across different versions
 
-name: CI
+name: Verify
 
 # Run this workflow every time a new commit is pushed to the repository
 on:
@@ -36,7 +36,7 @@ jobs:
         uses: ludeeus/action-shellcheck@00cae500b08a931fb5698e11e79bfbd38e612a38
 
   build:
-    name: Check build
+    name: Build and test
     runs-on: ubuntu-22.04
 
     steps:
@@ -57,7 +57,7 @@ jobs:
         run: bin/verify-exercises
 
   format:
-    name: Check Cairo formatting
+    name: Format Cairo files
     runs-on: ubuntu-22.04
 
     steps:
