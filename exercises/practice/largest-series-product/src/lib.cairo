@@ -30,7 +30,7 @@ pub fn lsp(input: @ByteArray, span: i32) -> Result<u64, Error> {
 
     // calculate first max product
     // use '?' to propagate the error if it occurred
-    let product = product_from(input, 0, span)?;
+    let product = product_from(input, 0, span, span, Product { value: 1, from: 0 })?;
 
     next_max_product(input, span, product.value, product)
 }
@@ -49,7 +49,13 @@ fn next_max_product(
     let next_digit = input.at(current_product.from + span).try_into_digit()?;
 
     let product = if next_digit == 0 {
-        product_from(input, current_product.from + span + 1, span)?
+        product_from(
+            input,
+            current_product.from + span + 1,
+            span,
+            span,
+            Product { value: 1, from: current_product.from + span + 1 }
+        )?
     } else {
         Product { value: reduced_value * next_digit, from: current_product.from + 1 }
     };
@@ -61,52 +67,27 @@ fn next_max_product(
     }
 }
 
-fn product_from(input: @ByteArray, from: u32, span: usize) -> Result<Product, Error> {
-    // shadow with a mutable variable
-    let mut from = from;
-    // assign the first non-zero digit to the product
-    let mut product_result: Result<Product, Error> = loop {
-        if from == input.len() {
-            // no non-zero digit was found
-            break Result::Ok(Product { value: 0, from });
-        }
-        match input.at(from).try_into_digit() {
-            Result::Ok(digit) => {
-                if digit != 0 {
-                    break Result::Ok(Product { value: digit, from });
-                }
-                from += 1;
-            },
-            Result::Err(err) => { break Result::Err(err); }
-        };
-    };
+fn product_from(
+    input: @ByteArray, from: u32, span: u32, remaining: u32, product: Product
+) -> Result<Product, Error> {
+    if remaining == 0 {
+        return Result::Ok(product);
+    }
+    if from + remaining > input.len() {
+        return Result::Ok(Product { value: 0, from });
+    }
 
-    let Product { mut value, mut from } = product_result?;
-    let mut digits_in_product = 1;
-
-    loop {
-        // found a non-zero product
-        if digits_in_product == span {
-            break Result::Ok(Product { value, from });
-        }
-        // we couldn't find a non-zero product
-        if from + digits_in_product >= input.len() {
-            break Result::Ok(Product { value: 0, from });
-        }
-        match input.at(from + digits_in_product).try_into_digit() {
-            Result::Ok(digit) => {
-                if digit == 0 {
-                    // jump over the digit 0, recalculate the product
-                    from += digits_in_product + 1;
-                    digits_in_product = 0;
-                    value = 1;
-                } else {
-                    value *= digit;
-                    digits_in_product += 1;
-                }
-            },
-            Result::Err(err) => { break Result::Err(err); }
-        }
+    let digit = input.at(from).try_into_digit()?;
+    if digit != 0 {
+        return product_from(
+            input,
+            from + 1,
+            span,
+            remaining - 1,
+            Product { value: product.value * digit, from: product.from }
+        );
+    } else {
+        return product_from(input, from + 1, span, span, Product { value: 1, from: from + 1 });
     }
 }
 
