@@ -131,7 +131,7 @@
         "practices": [
           "tuples",
           "traits",
-          "type-casting"
+          "type-conversion"
         ],
         "prerequisites": [],
         "difficulty": 2
@@ -221,8 +221,8 @@
     },
     {
       "uuid": "b0ea24b3-3520-42c2-9177-0550247fa2bd",
-      "slug": "type-casting",
-      "name": "Type Casting"
+      "slug": "type-conversion",
+      "name": "Type Conversion"
     },
     {
       "uuid": "6b6dafdb-7868-4089-855a-eb6735b5de5c",
