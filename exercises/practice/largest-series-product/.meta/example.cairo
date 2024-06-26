@@ -31,7 +31,7 @@ pub fn lsp(string_digits: @ByteArray, span: i32) -> Result<u64, Error> {
         };
         i += 1;
     };
-    invalid_result?;
+    invalid_result?; // propagate the error if present
 
     let (mut current_product, mut start_index) = max_product_from(string_digits, span, 0);
     let mut max_product = current_product;
