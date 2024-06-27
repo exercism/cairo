@@ -30,9 +30,33 @@ pub fn lsp(input: @ByteArray, span: i32) -> Result<u64, Error> {
 
     // calculate first max product
     // use '?' to propagate the error if it occurred
-    let product = product_from(input, 0, span, span, Product { value: 1, from: 0 })?;
+    let product = product_from(input, span, 0, span, Product { value: 1, from: 0 })?;
 
     next_max_product(input, span, product.value, product)
+}
+
+fn product_from(
+    input: @ByteArray, span: u32, from: u32, remaining: u32, product: Product
+) -> Result<Product, Error> {
+    if remaining == 0 {
+        return Result::Ok(product);
+    }
+    if from + remaining > input.len() {
+        return Result::Ok(Product { value: 0, from });
+    }
+
+    let digit = input.at(from).try_into_digit()?;
+    if digit != 0 {
+        return product_from(
+            input,
+            span,
+            from + 1,
+            remaining - 1,
+            Product { value: product.value * digit, from: product.from }
+        );
+    } else {
+        return product_from(input, span, from + 1, span, Product { value: 1, from: from + 1 });
+    }
 }
 
 fn next_max_product(
@@ -51,8 +75,8 @@ fn next_max_product(
     let product = if next_digit == 0 {
         product_from(
             input,
-            current_product.from + span + 1,
             span,
+            current_product.from + span + 1,
             span,
             Product { value: 1, from: current_product.from + span + 1 }
         )?
@@ -64,30 +88,6 @@ fn next_max_product(
         next_max_product(input, span, product.value, product)
     } else {
         next_max_product(input, span, max, product)
-    }
-}
-
-fn product_from(
-    input: @ByteArray, from: u32, span: u32, remaining: u32, product: Product
-) -> Result<Product, Error> {
-    if remaining == 0 {
-        return Result::Ok(product);
-    }
-    if from + remaining > input.len() {
-        return Result::Ok(Product { value: 0, from });
-    }
-
-    let digit = input.at(from).try_into_digit()?;
-    if digit != 0 {
-        return product_from(
-            input,
-            from + 1,
-            span,
-            remaining - 1,
-            Product { value: product.value * digit, from: product.from }
-        );
-    } else {
-        return product_from(input, from + 1, span, span, Product { value: 1, from: from + 1 });
     }
 }
 

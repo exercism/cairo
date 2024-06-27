@@ -61,6 +61,12 @@ fn reports_zero_if_all_spans_include_zero() {
 }
 
 #[test]
+fn reports_zero_if_last_span_is_zero() {
+    let string_digits: ByteArray = "999099";
+    assert_eq!(Result::Ok(729), lsp(@string_digits, 3));
+}
+
+#[test]
 fn rejects_span_longer_than_string_length() {
     let string_digits: ByteArray = "123";
     assert_eq!(Result::Err(Error::SpanTooLong), lsp(@string_digits, 4));
