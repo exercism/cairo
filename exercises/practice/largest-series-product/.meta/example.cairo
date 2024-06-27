@@ -9,7 +9,7 @@ pub enum Error {
 #[derive(Drop, Copy)]
 struct Product {
     value: u64,
-    from: u32,
+    start_index: u32,
 }
 
 pub fn lsp(input: @ByteArray, span: i32) -> Result<u64, Error> {
@@ -30,64 +30,65 @@ pub fn lsp(input: @ByteArray, span: i32) -> Result<u64, Error> {
 
     // calculate first max product
     // use '?' to propagate the error if it occurred
-    let product = product_from(input, span, 0, span, Product { value: 1, from: 0 })?;
+    let product = product_from(input, span, 0, span, Product { value: 1, start_index: 0 })?;
 
-    next_max_product(input, span, product.value, product)
+    max_product(input, span, product.value, product.start_index, product.value)
 }
 
 fn product_from(
-    input: @ByteArray, span: u32, from: u32, remaining: u32, product: Product
+    input: @ByteArray, span: u32, from: u32, remaining: u32, accumulated: Product
 ) -> Result<Product, Error> {
     if remaining == 0 {
-        return Result::Ok(product);
+        return Result::Ok(accumulated);
     }
     if from + remaining > input.len() {
-        return Result::Ok(Product { value: 0, from });
+        // we couldn't find a span of non-zero digits,
+        // so all products must be zero
+        return Result::Ok(Product { value: 0, start_index: from });
     }
 
     let digit = input.at(from).try_into_digit()?;
-    if digit != 0 {
+
+    if digit == 0 {
+        return product_from(
+            input, span, from + 1, span, Product { value: 1, start_index: from + 1 }
+        );
+    } else {
         return product_from(
             input,
             span,
             from + 1,
             remaining - 1,
-            Product { value: product.value * digit, from: product.from }
+            Product { value: accumulated.value * digit, start_index: accumulated.start_index }
         );
-    } else {
-        return product_from(input, span, from + 1, span, Product { value: 1, from: from + 1 });
     }
 }
 
-fn next_max_product(
-    input: @ByteArray, span: u32, max: u64, current_product: Product
+fn max_product(
+    input: @ByteArray, span: u32, previous: u64, from: u32, max: u64
 ) -> Result<u64, Error> {
-    if current_product.from + span >= input.len() {
+    if from + span >= input.len() {
         return Result::Ok(max);
     }
 
-    // safe to unwrap, we already processed this digit before 
-    let reduced_value = current_product.value
-        / input.at(current_product.from).try_into_digit().unwrap();
+    let next_digit = input.at(from + span).try_into_digit()?;
 
-    let next_digit = input.at(current_product.from + span).try_into_digit()?;
-
-    let product = if next_digit == 0 {
+    let next = if next_digit == 0 {
+        // every product that includes digit 0 will be 0,
+        // so calculate the next product after the digit 0
         product_from(
-            input,
-            span,
-            current_product.from + span + 1,
-            span,
-            Product { value: 1, from: current_product.from + span + 1 }
+            input, span, from + span + 1, span, Product { value: 1, start_index: from + span + 1 }
         )?
     } else {
-        Product { value: reduced_value * next_digit, from: current_product.from + 1 }
+        // safe to unwrap, we already processed this digit before 
+        let common_product = previous / input.at(from).try_into_digit().unwrap();
+        Product { value: common_product * next_digit, start_index: from + 1 }
     };
 
-    if product.value > max {
-        next_max_product(input, span, product.value, product)
+    if next.value > max {
+        max_product(input, span, next.value, next.start_index, next.value)
     } else {
-        next_max_product(input, span, max, product)
+        max_product(input, span, next.value, next.start_index, max)
     }
 }
 
