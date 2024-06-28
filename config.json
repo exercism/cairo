@@ -159,6 +159,18 @@
         ],
         "prerequisites": [],
         "difficulty": 4
+      },
+      {
+        "slug": "allergies",
+        "name": "Allergies",
+        "uuid": "ef701095-b324-49f0-913e-2fb2e1f5f27a",
+        "practices": [
+          "enums",
+          "structs",
+          "traits"
+        ],
+        "prerequisites": [],
+        "difficulty": 4
       }
     ],
     "foregone": [
