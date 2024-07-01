@@ -1,7 +1,7 @@
 {
-    "blurb": "<todo>",
+    "blurb": "Arrays are fixed-size sequences of elements of the same data type",
     "authors": [
         "misicnenad"
     ],
-    "contributors": []
+    "contributors": ["Sakshi Kawade"]
 }
