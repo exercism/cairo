@@ -171,6 +171,17 @@
         ],
         "prerequisites": [],
         "difficulty": 4
+      },
+      {
+        "slug": "clock",
+        "name": "Clock",
+        "uuid": "b44728f6-f2ad-4fa4-a20e-5144f9a81e3e",
+        "practices": [
+          "traits",
+          "printing"
+        ],
+        "prerequisites": [],
+        "difficulty": 3
       }
     ],
     "foregone": [
@@ -257,6 +268,11 @@
       "uuid": "cf49c14b-ed9a-4df6-a43a-3923e8489900",
       "slug": "error-handling",
       "name": "Error Handling"
+    },
+    {
+      "uuid": "fe81e75b-b4d2-4ee8-9aaa-271e76468d0b",
+      "slug": "printing",
+      "name": "Printing"
     }
   ],
   "key_features": [
