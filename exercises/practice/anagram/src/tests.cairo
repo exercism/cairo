@@ -145,4 +145,3 @@ fn words_other_than_themselves_can_be_anagrams() {
     let expected = Set::new(array!["Silent"]);
     assert_eq!(output, expected);
 }
-
