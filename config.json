@@ -195,6 +195,14 @@
         ],
         "prerequisites": [],
         "difficulty": 5
+      },
+      {
+        "slug": "rational-numbers",
+        "name": "Rational Numbers",
+        "uuid": "9858a357-b935-437d-b4e0-c3aac20859cf",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
       }
     ],
     "foregone": [
