@@ -1,5 +1,7 @@
 {
-  "authors": [],
+  "authors": [
+    "misicnenad"
+  ],
   "files": {
     "solution": [
       "src/lib.cairo",
