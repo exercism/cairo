@@ -1,24 +1,47 @@
 #[derive(Drop, Debug, PartialEq)]
-pub struct Roman {}
-
-#[generate_trait]
-impl RomanImpl of RomanTrait {
-    fn new(num: u32) -> Roman {
-        panic!()
-    }
+pub struct Roman {
+    value: ByteArray,
 }
 
 impl U32IntoRoman of Into<u32, Roman> {
     #[must_use]
     fn into(self: u32) -> Roman {
-        panic!()
+        // it will soon be possible to use constant array variables
+        // for now we have to define them within the function
+        let mut ROMAN_MAP: Array<(u32, ByteArray)> = array![
+            (1000, "M"),
+            (900, "CM"),
+            (500, "D"),
+            (400, "CD"),
+            (100, "C"),
+            (90, "XC"),
+            (50, "L"),
+            (40, "XL"),
+            (10, "X"),
+            (9, "IX"),
+            (5, "V"),
+            (4, "IV"),
+            (1, "I"),
+        ];
+
+        let mut value: ByteArray = "";
+        let mut current_num = self;
+        while let Option::Some((numeric, roman_string)) = ROMAN_MAP
+            .pop_front() {
+                while current_num >= numeric {
+                    value.append(@roman_string);
+                    current_num -= numeric;
+                }
+            };
+
+        Roman { value }
     }
 }
 
-impl RomanIIntoByteArray of Into<Roman, ByteArray> {
+impl RomanIntoByteArray of Into<Roman, ByteArray> {
     #[must_use]
     fn into(self: Roman) -> ByteArray {
-        panic!()
+        self.value
     }
 }
 

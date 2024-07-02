@@ -45,7 +45,7 @@ impl U32IntoRoman of Into<u32, Roman> {
     }
 }
 
-impl RomanIIntoByteArray of Into<Roman, ByteArray> {
+impl RomanIntoByteArray of Into<Roman, ByteArray> {
     #[must_use]
     fn into(self: Roman) -> ByteArray {
         self.value
