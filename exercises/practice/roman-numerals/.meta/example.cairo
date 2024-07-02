@@ -1,3 +1,5 @@
+use core::fmt::{Display, Error, Formatter};
+
 #[derive(Drop)]
 pub struct Roman {
     value: ByteArray,
@@ -38,10 +40,9 @@ impl U32IntoRoman of Into<u32, Roman> {
     }
 }
 
-impl RomanIntoByteArray of Into<Roman, ByteArray> {
-    #[must_use]
-    fn into(self: Roman) -> ByteArray {
-        self.value
+impl RomanDisplay of Display<Roman> {
+    fn fmt(self: @Roman, ref f: Formatter) -> Result<(), Error> {
+        write!(f, "{}", self.value)
     }
 }
 
