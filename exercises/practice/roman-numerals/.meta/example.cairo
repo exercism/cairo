@@ -1,11 +1,11 @@
-#[derive(Drop, Debug, PartialEq)]
+#[derive(Drop)]
 pub struct Roman {
     value: ByteArray,
 }
 
-#[generate_trait]
-impl RomanImpl of RomanTrait {
-    fn from_u32(num: u32) -> Roman {
+impl U32IntoRoman of Into<u32, Roman> {
+    #[must_use]
+    fn into(self: u32) -> Roman {
         // it will soon be possible to use constant array variables
         // for now we have to define them within the function
         let mut ROMAN_MAP: Array<(u32, ByteArray)> = array![
@@ -25,7 +25,7 @@ impl RomanImpl of RomanTrait {
         ];
 
         let mut value: ByteArray = "";
-        let mut current_num = num;
+        let mut current_num = self;
         while let Option::Some((numeric, roman_string)) = ROMAN_MAP
             .pop_front() {
                 while current_num >= numeric {
@@ -35,13 +35,6 @@ impl RomanImpl of RomanTrait {
             };
 
         Roman { value }
-    }
-}
-
-impl U32IntoRoman of Into<u32, Roman> {
-    #[must_use]
-    fn into(self: u32) -> Roman {
-        RomanImpl::from_u32(self)
     }
 }
 
