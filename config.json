@@ -190,7 +190,8 @@
         "practices": [
           "traits",
           "strings",
-          "arrays"
+          "arrays",
+          "mutability"
         ],
         "prerequisites": [],
         "difficulty": 5
