@@ -197,7 +197,9 @@
       }
     ],
     "foregone": [
-      "hangman"
+      "hangman",
+      "complex-numbers",
+      "rational-numbers"
     ]
   },
   "concepts": [
