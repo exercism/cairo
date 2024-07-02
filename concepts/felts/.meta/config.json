@@ -1,7 +1,7 @@
 {
-    "blurb": "<todo>",
+    "blurb": "In Cairo, variables and arguments default to field elements, indicated by the keyword felt252 if not specified otherwise",
     "authors": [
-        "misicnenad"
+        "rajeebkm"
     ],
     "contributors": []
 }
