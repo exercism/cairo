@@ -134,7 +134,7 @@
           "mutability"
         ],
         "prerequisites": [],
-        "difficulty": 3
+        "difficulty": 2
       },
       {
         "slug": "binary-search",
