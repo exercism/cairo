@@ -129,12 +129,12 @@
         "name": "Roman Numerals",
         "uuid": "3fb4bd2f-bc5f-4a67-b9cc-49a786245876",
         "practices": [
-          "tuples",
           "traits",
-          "type-conversion"
+          "type-conversion",
+          "mutability"
         ],
         "prerequisites": [],
-        "difficulty": 2
+        "difficulty": 3
       },
       {
         "slug": "binary-search",
@@ -190,7 +190,8 @@
         "practices": [
           "traits",
           "strings",
-          "arrays"
+          "arrays",
+          "mutability"
         ],
         "prerequisites": [],
         "difficulty": 5
@@ -286,6 +287,11 @@
       "uuid": "fe81e75b-b4d2-4ee8-9aaa-271e76468d0b",
       "slug": "printing",
       "name": "Printing"
+    },
+    {
+      "uuid": "8a4a6525-c1e4-44f5-ab6b-cf5d8ce6701e",
+      "slug": "mutability",
+      "name": "M`utability"
     }
   ],
   "key_features": [
