@@ -14,7 +14,7 @@ impl SetEq of PartialEq<Set> {
     }
 
     fn ne(lhs: @Set, rhs: @Set) -> bool {
-        !(lhs == rhs)
+        panic!()
     }
 }
 
