@@ -1,139 +1,158 @@
 # Arrays
 
-An [`Array`][Array] are fixed-size sequences of elements of the same data type. Unlike [`lists`][List], which are dynamic and can hold elements of various types, arrays are homogeneous collections that are more memory-efficient for storing large sets of data when the type is known beforehand. Arrays can be of multiple dimensions, with the simplest form being one-dimensional arrays
+In Cairo, an `array` is a data structure that allows you to store a collection of elements of the same type. It's similar to list where each element is identified by an index. Arrays in Cairo have limited modification options. You can only append items to the end of an array and remove items from the front.
+
+# Why Can't You Change Items in an Array?
+
+This limitation is because of how memory works. Once you store something in a memory slot (like putting an item in a box), you can't directly change or delete it. You can only read what's in the box or put something new into another box. This ensures that stored data remains secure and consistent, preventing accidental alterations.
 
 # Array Construction
 
-In Python, arrays are primarily constructed using the `array` module from the standard library. They can hold elements of any data type, but all elements in an array must be of the same type.
+Arrays are primarily constructed using the `ArrayTrait` module from the standard library. They are like a container where you can store multiple items of the same type in a structured way.
 
-### Using the `array` Module
+### Using the `ArrayTrait` Module
 
-The array module provides the array class for creating arrays. You specify the type code for the array elements when creating an array:
+To create an array using ArrayTrait, you first need to call `ArrayTrait::new()`. This sets up the array for you to start adding elements.
 
-```python
-import array
-
-# Create an array of integers
-int_array = array.array('i', [1, 2, 3, 4, 5])
-
-# Create an array of floating-point numbers
-float_array = array.array('f', [1.0, 2.5, 3.7, 4.2])
-
-# Create an array of characters (bytes)
-char_array = array.array('b', b'hello')
-
+```
+let mut num = ArrayTrait::new();
 ```
 
 In this example:
 
-- 'i' denotes integers,
-- 'f' denotes floats,
-- 'b' denotes characters as bytes.
+`num` is the name of our array.
 
-### Using Lists
+#### 1. Specifying Element Type
 
-In Python, the most common way to create arrays is using lists. Lists are flexible and allow you to store elements of different data types, but you can create them with elements of the same type if needed.
+When you create an array, you can tell the computer what kind of things (or data types) will go inside it. For example, if you know you want to store large numbers, you can say `u128`, which means "unsigned 128-bit integer".
 
-```python
-# Example: Creating an array (list) of fruits
-fruits = ["mango", "apple", "strawberry"]
+You can do it like this:
+
+```
+let mut arr = ArrayTrait::<u128>::new();
 
 ```
 
-### Using `numpy` Arrays
+Here, `arr` will hold numbers that are very big but can't be negative.
 
-For more advanced array operations, especially for multi-dimensional arrays and numerical computations, the numpy library is widely used in Python.
+#### 2. Explicitly Defining Type
 
-```python
-import numpy as np
-
-# Create a numpy array of integers
-np_int_array = np.array([1, 2, 3, 4, 5])
-
-# Create a numpy array of floats
-np_float_array = np.array([1.0, 2.5, 3.7, 4.2])
-
-# Create a numpy array of strings
-np_str_array = np.array(['mango', 'apple', 'strawberry'])
+If you're being very clear about what your program does, you might also say what type of things go into the array:
 
 ```
+let mut arr: Array<u128> = ArrayTrait::new();
+
+```
+
+This tells the computer to expect an array that holds big numbers (`u128`), and you're calling it `arr`.
+
+# Adding Array Values
+
+Once you have an array, you can add elements to it. In our example, we're adding three numbers: 0, 1, and 2.
+
+```
+num.append(0);
+num.append(1);
+num.append(2);
+
+```
+
+Each `append()` call puts a new number at the end of the array. So, after these operations, a will contain `[0, 1, 2]`.
+
+If you attempt to append a string (`str`) into an array that is supposed to hold integers (`int num`), it would typically cause a type error or fail to compile.
 
 # Accessing Values in an Array
 
-Elements in an array are accessed using square brackets [] with the index of the element:
+To access array elements, you can use `get()` or `at()` array methods that return different types.
 
-```python
-# Accessing elements in arrays
-print(int_array[0])  # Output: 0
-print(float_array[2])  # Output: 2.0
-print(char_array[3])  # Output: 108 (ASCII code for 'l')
+#### 1. Using get() Method:
+
+The get() method is like looking up an item in a list by its number.
+Here’s how it works:
+
+- arr.get(index) allows you to fetch an item at a specific position (index) in the array.
+- It returns an Option, which means:
+  Some(value): If the item exists at index, it gives you the value of that item.
+  None: If the index is out of bounds or doesn't exist in the array.
+- This method is ideal when you want to handle cases where the index might be invalid without causing your program to crash.
+
+```
+fn main() {
+    // Create an array to hold unsigned 128-bit integers
+    let mut age = ArrayTrait::<u128>::new();
+
+    // Add an element to the array
+    age.append(18);
+
+    // Define the index to access (change this to see different results)
+    let index_to_access = 1;
+
+    // Use match to handle the result of accessing the element at the specified index
+    match arr.get(index_to_access) {
+        Option::Some(value) => {
+            // Print the value if the element exists at the index
+            println!("Element at index {}: {}", index_to_access, *value);
+        },
+        Option::None => {
+            // Panic with a message if the index is out of bounds
+            panic!("Index {} is out of bounds!", index_to_access);
+        }
+    }
+}
 
 ```
 
-# Changing or Adding Array Values
+#### 2. Using at() Method:
 
-You can modify the value of an array element by assigning a new value to its index:
+The at() method directly gives you the value of an element at a specific position in an array-like structure. It uses an unbox() operation to extract the stored value from a container. If you try to access an index that doesn't exist (out-of-bounds), the program will crash with an error. This method is useful when you want your program to stop if it encounters an unexpected situation like accessing an invalid index.
 
-```python
-# Changing array values
-int_array[0] = 100
-print(int_array)  # Output: array('i', [100, 1, 2, 3, 4, 5])
+Here's an example:
 
-# Adding new elements to the array
-int_array.append(200)
-print(int_array)  # Output: array('i', [100, 1, 2, 3, 4, 5, 200])
+```markdown
+fn main() {
+// Assume we have an array-like structure called `ArrayTrait`
+let mut a = ArrayTrait::new();
 
+    // Add some elements to the array
+    a.append(0);
+    a.append(1);
+
+    // Access elements using `at()` method
+    let first = *a.at(0);  // Access element at index 0
+    let second = *a.at(1); // Access element at index 1
+
+    // Now `first` will be 0 and `second` will be 1
+
+}
 ```
 
 # Removing Array Elements
 
-Unlike other data structures, arrays in Python do not have built-in methods for removing elements at arbitrary positions efficiently. Typically, elements are marked as deleted or the array is resized and copied to remove elements.
+The only way to remove elements from an array in Cairo is from the front. This operation is facilitated by the pop_front() method, which removes and returns the first element of the array.
 
-# Looping Through/Iterating over an Array
+Let's walk through an example to illustrate how this works:
 
-You can iterate over the elements of an array using a `for` loop:
+```
+fn main() {
+    // Assume we have an array-like structure called `ArrayTrait`
+    let mut a = ArrayTrait::new();
 
-```python
-# Iterating over array elements
-for elem in int_array:
-    print(elem)
+    // Add some elements to the array
+    a.append(10);
+    a.append(1);
+    a.append(2);
+
+    // Remove the first element from the front of the array
+    let first_value = a.pop_front().unwrap(); // `unwrap()` is used to get the value from `Option`
+
+    // Print the removed value
+    println!("The first value is {}", first_value);
+}
 
 ```
 
-Alternatively, you can iterate over the array indices:
+The `pop_front()` method is used to remove the first element from the front of the array. In this case, 10 is removed.
 
-```python
-# Iterating over array indices
-for i in range(len(int_array)):
-    print(int_array[i])
+`pop_front()` returns an Option. This allows for handling situations where the array might be empty (though not shown explicitly here).
 
-```
-
-# Multi-dimensional Arrays
-
-While Python arrays are primarily one-dimensional, you can create arrays of arrays (nested arrays) to simulate multi-dimensional arrays. However, this approach is less common compared to using numpy arrays for multi-dimensional data.
-
-Python lists and numpy arrays can be used to simulate multi-dimensional arrays, numpy provides a more optimized and convenient way to work with them:
-
-```python
-import numpy as np
-
-# Create a 2D numpy array (matrix)
-matrix = np.array([
-                    [1, 2, 3],
-                    [4, 5, 6]
-                ])
-
-# Create a 3D numpy array
-tensor = np.array([
-                    [
-                        [1, 2],
-                        [3, 4]
-                    ],
-                    [
-                        [5, 6],
-                        [7, 8]
-                    ]
-                ])
-
-```
+`unwrap()` is used here assuming the array isn't empty, directly retrieving the value of the removed element (10). In real-world scenarios, error handling would typically be more robust.
