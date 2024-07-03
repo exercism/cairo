@@ -212,9 +212,11 @@
         "slug": "simple-linked-list",
         "name": "Simple Linked List",
         "uuid": "cc9a6bf9-9027-42c4-a71d-082ce48f7869",
-        "practices": [],
+        "practices": [
+          "smart-pointers"
+        ],
         "prerequisites": [],
-        "difficulty": 1
+        "difficulty": 5
       }
     ],
     "foregone": [
@@ -311,7 +313,12 @@
     {
       "uuid": "8a4a6525-c1e4-44f5-ab6b-cf5d8ce6701e",
       "slug": "mutability",
-      "name": "M`utability"
+      "name": "Mutability"
+    },
+    {
+      "uuid": "7e322172-04ba-43f8-aba9-8ae999372b90",
+      "slug": "smart-pointers",
+      "name": "Smart Pointers"
     }
   ],
   "key_features": [
