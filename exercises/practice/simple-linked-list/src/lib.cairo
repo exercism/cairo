@@ -12,12 +12,6 @@ struct Node<T> {
     next: List<T>,
 }
 
-impl SimpleLinkedListDefault<T, +Drop<T>, +Copy<T>> of Default<SimpleLinkedList<T>> {
-    fn default() -> SimpleLinkedList<T> {
-        SimpleLinkedListTrait::new()
-    }
-}
-
 #[generate_trait]
 impl SimpleLinkedListImpl<T, +Drop<T>, +Copy<T>> of SimpleLinkedListTrait<T> {
     fn new() -> SimpleLinkedList<T> {
