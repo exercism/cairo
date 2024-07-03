@@ -86,8 +86,9 @@ impl RationalPow of RationalPowTrait {
         if *self.numer == 0 {
             return *self;
         };
-        // fast_power works only with unsigned integers
+
         let power_abs = abs(power);
+
         // determine the new number's sign
         let sign: i128 = if *self.numer < 0 && power_abs % 2 == 1 {
             -1
@@ -106,8 +107,8 @@ impl RationalPow of RationalPowTrait {
     }
 
     fn rpow(self: @u128, power: Rational) -> u128 {
-        // Cairo does not support floating point numbers, so a negative rational number
-        // will always return the result 0 (as 1 divided by any number is 0 in Cairo)
+        // Cairo only supports integers, so a negative rational exponent
+        // will always return the result 0
         if power.numer < 0 {
             return 0;
         };
