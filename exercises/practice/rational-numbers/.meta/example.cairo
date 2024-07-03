@@ -1,7 +1,9 @@
 use alexandria_math::gcd_of_n_numbers::gcd_two_numbers;
 use alexandria_math::fast_power::fast_power;
+use alexandria_math::fast_root::fast_nr_optimize;
+use core::fmt::{Debug, Formatter, Error};
 
-#[derive(Drop)]
+#[derive(Drop, Debug, Copy)]
 struct Rational {
     numer: i128,
     denom: i128,
@@ -10,16 +12,20 @@ struct Rational {
 #[generate_trait]
 impl RationalImpl of RationalTrait {
     fn new(numer: i128, denom: i128) -> Rational {
+        assert!(denom != 0, "denominator cannot be 0");
+
+        let numer_sign: i128 = if (numer < 0 && denom > 0) || (numer > 0 && denom < 0) {
+            -1
+        } else {
+            1
+        };
+
         let numer_abs = abs(numer);
         let denom_abs = abs(denom);
         let gcd_num = gcd_two_numbers(numer_abs, denom_abs);
 
-        let mut numer_minif = to_i128(numer_abs / gcd_num);
+        let mut numer_minif = to_i128(numer_abs / gcd_num) * numer_sign;
         let denom_minif = to_i128(denom_abs / gcd_num);
-
-        if denom < 0 {
-            numer_minif *= -1;
-        }
 
         Rational { numer: numer_minif, denom: denom_minif }
     }
@@ -77,18 +83,38 @@ impl RationalAbs of RationalAbsTrait {
 #[generate_trait]
 impl RationalPow of RationalPowTrait {
     fn pow(self: @Rational, power: i128) -> Rational {
-        let numer = to_u128(*self.numer);
+        if *self.numer == 0 {
+            return *self;
+        };
+        // fast_power works only with unsigned integers
+        let power_abs = abs(power);
+        let numer = abs(*self.numer);
         let denom = to_u128(*self.denom);
+        // determine the new number's sign
+        let sign: i128 = if *self.numer < 0 && power_abs % 2 == 1 {
+            -1
+        } else {
+            1
+        };
+
         if power < 0 {
             RationalTrait::new(
-                to_i128(fast_power(denom, abs(power))), to_i128(fast_power(numer, abs(power)))
+                sign * to_i128(fast_power(denom, power_abs)), to_i128(fast_power(numer, power_abs))
             )
         } else {
             RationalTrait::new(
-                to_i128(fast_power(numer, to_u128(power))),
-                to_i128(fast_power(denom, to_u128(power)))
+                sign * to_i128(fast_power(numer, power_abs)), to_i128(fast_power(denom, power_abs))
             )
         }
+    }
+
+    fn rpow(self: @u128, power: Rational) -> u128 {
+        // Cairo does not support floating point numbers, so a negative rational number
+        // will always return the result 0 (as 1 divided by any number is 0 in Cairo)
+        if power.numer < 0 {
+            return 0;
+        };
+        fast_nr_optimize(fast_power(*self, to_u128(power.numer)), to_u128(power.denom), 30)
     }
 }
 
@@ -107,6 +133,16 @@ fn to_i128(n: u128) -> i128 {
 
 fn to_u128(n: i128) -> u128 {
     n.try_into().unwrap()
+}
+
+impl I128Debug of Debug<i128> {
+    fn fmt(self: @i128, ref f: Formatter) -> Result<(), Error> {
+        if *self < 0 {
+            f.buffer.append(@"-");
+        };
+        f.buffer.append(@format!("{}", abs(*self)));
+        Result::Ok(())
+    }
 }
 
 #[cfg(test)]

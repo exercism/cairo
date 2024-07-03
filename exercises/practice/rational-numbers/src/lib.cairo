@@ -1,4 +1,6 @@
-#[derive(Drop)]
+use core::fmt::{Debug, Formatter, Error};
+
+#[derive(Drop, Debug)]
 struct Rational {}
 
 #[generate_trait]
@@ -59,6 +61,29 @@ impl RationalAbs of RationalAbsTrait {
 impl RationalPow of RationalPowTrait {
     fn pow(self: @Rational, power: i128) -> Rational {
         panic!()
+    }
+
+    fn rpow(self: @u128, power: Rational) -> u128 {
+        panic!()
+    }
+}
+
+fn abs(n: i128) -> u128 {
+    let val = if n < 0 {
+        n * -1
+    } else {
+        n
+    };
+    val.try_into().unwrap()
+}
+
+impl I128Debug of Debug<i128> {
+    fn fmt(self: @i128, ref f: Formatter) -> Result<(), Error> {
+        if *self < 0 {
+            f.buffer.append(@"-");
+        };
+        f.buffer.append(@format!("{}", abs(*self)));
+        Result::Ok(())
     }
 }
 
