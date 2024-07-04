@@ -1,4 +1,3 @@
-use core::clone::Clone;
 use protein_translation::{parse, CodonsInfoTrait};
 
 #[test]
