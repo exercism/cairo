@@ -41,7 +41,7 @@ impl CodonsInfoImpl of CodonsInfoTrait {
                 break TranslateResult::Ok;
             }
 
-            if let Option::Some(codon) = strand.codon_from(codon_index) {
+            if let Option::Some(codon) = strand.codon_chunk(codon_index) {
                 let name = self.name_for(codon);
                 if name == "" {
                     break TranslateResult::Invalid;
@@ -68,7 +68,7 @@ const TWO_POW_16: u32 = 0x10000;
 
 #[generate_trait]
 impl ByteArrayChunk of ChunkTrait {
-    fn codon_from(self: @ByteArray, from: usize) -> Option<felt252> {
+    fn codon_chunk(self: @ByteArray, from: usize) -> Option<felt252> {
         if let Option::Some(char) = self.at(from + 2) {
             let chunk = char.into()
                 + self[from
