@@ -41,7 +41,8 @@
         "uuid": "f3b7ce44-1667-42b4-b792-401d36aee2f1",
         "concepts": [
           "tuples",
-          "traits"
+          "traits",
+          "generics"
         ],
         "prerequisites": [],
         "status": "wip"
@@ -118,6 +119,7 @@
         "uuid": "aad80498-750c-4a7d-b82a-f52f90c54e11",
         "practices": [
           "structs",
+          "generics",
           "traits",
           "operator-overload"
         ],
@@ -143,7 +145,8 @@
         "practices": [
           "arrays",
           "enums",
-          "control-flow"
+          "control-flow",
+          "generics"
         ],
         "prerequisites": [],
         "difficulty": 4
@@ -213,10 +216,19 @@
         "name": "Simple Linked List",
         "uuid": "cc9a6bf9-9027-42c4-a71d-082ce48f7869",
         "practices": [
-          "smart-pointers"
+          "smart-pointers",
+          "generics"
         ],
         "prerequisites": [],
         "difficulty": 5
+      },
+      {
+        "slug": "sublist",
+        "name": "Sublist",
+        "uuid": "e62b1bb4-fb37-4dfe-ad81-e0fa5c494ba3",
+        "practices": ["arrays", "enums", "generics"],
+        "prerequisites": [],
+        "difficulty": 3
       }
     ],
     "foregone": [
@@ -239,6 +251,11 @@
       "uuid": "fe33b75a-8064-419d-9e09-16b49e6a5c6d",
       "slug": "felts",
       "name": "Felt Type"
+    },
+    {
+      "uuid": "9be30113-b4fe-4cdd-9894-9afd593f2a90",
+      "slug": "generics",
+      "name": "Generic Types"
     },
     {
       "uuid": "de254443-42ee-4787-bc1e-3d0d2039c4f5",
