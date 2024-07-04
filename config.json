@@ -226,9 +226,24 @@
         "slug": "sublist",
         "name": "Sublist",
         "uuid": "e62b1bb4-fb37-4dfe-ad81-e0fa5c494ba3",
-        "practices": ["arrays", "enums", "generics"],
+        "practices": [
+          "arrays",
+          "enums",
+          "generics"
+        ],
         "prerequisites": [],
         "difficulty": 3
+      },
+      {
+        "slug": "protein-translation",
+        "name": "Protein Translation",
+        "uuid": "d42e7a29-64b9-478b-8b2a-44fd002391fa",
+        "practices": [
+          "arrays",
+          "dictionaries"
+        ],
+        "prerequisites": [],
+        "difficulty": 6
       }
     ],
     "foregone": [
@@ -256,6 +271,11 @@
       "uuid": "9be30113-b4fe-4cdd-9894-9afd593f2a90",
       "slug": "generics",
       "name": "Generic Types"
+    },
+    {
+      "uuid": "7e7b772a-2b3e-47d7-96ef-807a4d5b3545",
+      "slug": "dictionaries",
+      "name": "Dictionaries"
     },
     {
       "uuid": "de254443-42ee-4787-bc1e-3d0d2039c4f5",
