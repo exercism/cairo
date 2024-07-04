@@ -14,6 +14,10 @@ impl DoublyLinkedListImpl<T, +Drop<T>> of DoublyLinkedListTrait<T> {
     fn pop(ref self: DoublyLinkedList<T>) -> Option<T> {
         panic!()
     }
+
+    fn shift(ref self: DoublyLinkedList<T>) -> Option<T> {
+        panic!()
+    }
 }
 
 #[cfg(test)]
