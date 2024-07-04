@@ -41,7 +41,8 @@
         "uuid": "f3b7ce44-1667-42b4-b792-401d36aee2f1",
         "concepts": [
           "tuples",
-          "traits"
+          "traits",
+          "generics"
         ],
         "prerequisites": [],
         "status": "wip"
@@ -144,7 +145,8 @@
         "practices": [
           "arrays",
           "enums",
-          "control-flow"
+          "control-flow",
+          "generics"
         ],
         "prerequisites": [],
         "difficulty": 4
