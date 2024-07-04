@@ -266,6 +266,14 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 10
+      },
+      {
+        "slug": "linked-list",
+        "name": "Linked List",
+        "uuid": "1924c44e-bfa2-4dac-a7a9-779e4039ac56",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
       }
     ],
     "foregone": [
