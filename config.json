@@ -246,6 +246,18 @@
         ],
         "prerequisites": [],
         "difficulty": 8
+      },
+      {
+        "slug": "scrabble-score",
+        "name": "Scrabble Score",
+        "uuid": "3ef58f8c-99d4-48be-bb15-a1a5763e5052",
+        "practices": [
+          "dictionaries",
+          "strings",
+          "felts"
+        ],
+        "prerequisites": [],
+        "difficulty": 3
       }
     ],
     "foregone": [
