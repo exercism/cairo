@@ -1,8 +1,9 @@
+use core::dict::Felt252DictEntryTrait;
 use core::num::traits::zero::Zero;
 
 #[derive(Destruct)]
 struct CodonsInfo {
-    actual_codons: Felt252Dict<felt252>,
+    actual_codons: Felt252Dict<Nullable<ByteArray>>,
 }
 
 enum TranslateResult {
@@ -11,24 +12,28 @@ enum TranslateResult {
     Ok
 }
 
-fn parse(pairs: Array<(felt252, felt252)>) -> CodonsInfo {
+fn parse(pairs: Array<(felt252, ByteArray)>) -> CodonsInfo {
     let mut pairs = pairs;
-    let mut actual_codons: Felt252Dict<felt252> = Default::default();
+    let mut actual_codons: Felt252Dict<Nullable<ByteArray>> = Default::default();
     while let Option::Some((codon, name)) = pairs
         .pop_front() {
-            actual_codons.insert(codon, name);
+            actual_codons.insert(codon, NullableTrait::new(name));
         };
     CodonsInfo { actual_codons, }
 }
 
 #[generate_trait]
 impl CodonsInfoImpl of CodonsInfoTrait {
-    fn name_for(ref self: CodonsInfo, codon: felt252) -> felt252 {
-        self.actual_codons.get(codon)
+    fn name_for(ref self: CodonsInfo, codon: felt252) -> ByteArray {
+        let (entry, _name) = self.actual_codons.entry(codon);
+        let name = _name.deref_or("");
+        let res = name.clone();
+        self.actual_codons = entry.finalize(NullableTrait::new(name));
+        res
     }
 
-    fn of_rna(ref self: CodonsInfo, strand: ByteArray) -> Option<Array<felt252>> {
-        let mut result: Array<felt252> = array![];
+    fn of_rna(ref self: CodonsInfo, strand: ByteArray) -> Option<Array<ByteArray>> {
+        let mut result: Array<ByteArray> = array![];
 
         let mut codon_index = 0;
         let translate_result = loop {
@@ -38,9 +43,9 @@ impl CodonsInfoImpl of CodonsInfoTrait {
 
             if let Option::Some(codon) = strand.codon_from(codon_index) {
                 let name = self.name_for(codon);
-                if name.is_zero() {
+                if name == "" {
                     break TranslateResult::Invalid;
-                } else if name == 'stop codon' {
+                } else if name == "stop codon" {
                     break TranslateResult::Stopped;
                 }
 
