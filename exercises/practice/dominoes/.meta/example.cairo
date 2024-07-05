@@ -16,14 +16,7 @@ struct AvailabilityTable {
 #[generate_trait]
 impl AvailabilityTableImpl of AvailabilityTableTrait {
     fn new() -> AvailabilityTable {
-        let mut m: Felt252Dict<u8> = Default::default();
-        let len: usize = 36;
-        let mut i: usize = 0;
-        while i < len {
-            m.insert(i.into(), 0);
-            i += 1;
-        };
-        AvailabilityTable { m, len }
+        AvailabilityTable { m: Default::default(), len: 36 }
     }
 
     fn get(ref self: AvailabilityTable, x: u8, y: u8) -> u8 {
