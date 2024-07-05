@@ -21,7 +21,7 @@ impl DoublyLinkedListImpl<T, +Drop<T>, +Copy<T>> of DoublyLinkedListTrait<T> {
     }
 
     fn len(self: @DoublyLinkedList<T>) -> usize {
-        panic!()
+        *self.len
     }
 
     fn pop(ref self: DoublyLinkedList<T>) -> Option<T> {
