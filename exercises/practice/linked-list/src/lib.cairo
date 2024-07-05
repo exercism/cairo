@@ -7,7 +7,7 @@ impl DoublyLinkedListImpl<T, +Drop<T>> of DoublyLinkedListTrait<T> {
         panic!()
     }
 
-    fn push(ref self: DoublyLinkedList<T>, element: T) {
+    fn len(self: @DoublyLinkedList<T>) -> usize {
         panic!()
     }
 
@@ -15,7 +15,19 @@ impl DoublyLinkedListImpl<T, +Drop<T>> of DoublyLinkedListTrait<T> {
         panic!()
     }
 
+    fn push(ref self: DoublyLinkedList<T>, element: T) {
+        panic!()
+    }
+
     fn shift(ref self: DoublyLinkedList<T>) -> Option<T> {
+        panic!()
+    }
+
+    fn unshift(ref self: DoublyLinkedList<T>, element: T) {
+        panic!()
+    }
+
+    fn delete(ref self: DoublyLinkedList<T>, element: T) {
         panic!()
     }
 }
