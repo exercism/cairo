@@ -26,33 +26,19 @@ impl DoublyLinkedListImpl<T, +Drop<T>, +Copy<T>> of DoublyLinkedListTrait<T> {
     }
 
     fn push(ref self: DoublyLinkedList<T>, data: T) {
-        match self.head {
+        match self.tail {
             Option::None => {
                 let node = BoxTrait::new(NodeTrait::new(data, Option::None, Option::None));
-                self.head = Option::Some(node);
+                self.tail = Option::Some(node);
+                self.head = self.tail;
                 self.len += 1;
             },
-            Option::Some(head) => {
-                match self.tail {
-                    Option::None => {
-                        let node = BoxTrait::new(
-                            NodeTrait::new(data, Option::None, Option::Some(head))
-                        );
-                        let mut head = head.unbox();
-                        head.next = Option::Some(node);
-                        self.tail = head.next;
-                        self.len += 1;
-                    },
-                    Option::Some(tail) => {
-                        let node = BoxTrait::new(
-                            NodeTrait::new(data, Option::None, Option::Some(tail))
-                        );
-                        let mut tail = tail.unbox();
-                        tail.next = Option::Some(node);
-                        self.tail = tail.next;
-                        self.len += 1;
-                    },
-                }
+            Option::Some(tail) => {
+                let node = BoxTrait::new(NodeTrait::new(data, Option::None, Option::Some(tail)));
+                let mut tail = tail.unbox();
+                tail.next = Option::Some(node);
+                self.tail = tail.next;
+                self.len += 1;
             },
         }
     }
