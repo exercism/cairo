@@ -1,5 +1,3 @@
-use core::option::OptionTrait;
-use core::box::BoxTrait;
 #[derive(Drop, Copy)]
 struct DoublyLinkedList<T> {
     head: List<T>,
@@ -66,7 +64,24 @@ impl DoublyLinkedListImpl<T, +Drop<T>, +Copy<T>> of DoublyLinkedListTrait<T> {
     }
 
     fn shift(ref self: DoublyLinkedList<T>) -> Option<T> {
-        panic!()
+        match self.len {
+            0 => Option::None,
+            1 => {
+                let data = self.head.unwrap().unbox().data;
+                self.head = Option::None;
+                self.tail = Option::None;
+                self.len = 0;
+                Option::Some(data)
+            },
+            _ => {
+                let shifted_head = self.head.unwrap().unbox();
+                self.head = shifted_head.next;
+                let mut new_head = self.head.unwrap().unbox();
+                new_head.previous = Option::None;
+                self.len -= 1;
+                Option::Some(shifted_head.data)
+            }
+        }
     }
 
     fn unshift(ref self: DoublyLinkedList<T>, data: T) {
