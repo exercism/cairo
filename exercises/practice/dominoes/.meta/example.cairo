@@ -4,59 +4,58 @@ type Domino = (u8, u8);
 
 /// A table keeping track of available dominoes.
 ///
-/// Effectively a 6x6 matrix. Each position denotes whether a domino is available with that column
-/// dots and row dots. Positions are mirrored ((3,4) == (4,3)), except for positions with equal row
-/// and column numbers.
+/// Effectively a 6x6 matrix represented as a dynamic array. Each position denotes whether a domino
+/// is available with that column dots and row dots. Positions are mirrored ((3,4) == (4,3)), except
+/// for positions with equal row and column numbers.
 #[derive(Destruct)]
 struct AvailabilityTable {
-    m: Felt252Dict<u8>,
+    d: Felt252Dict<u8>,
     len: usize
+}
+
+fn index(x: u8, y: u8) -> u8 {
+    (x - 1) * 6 + (y - 1)
 }
 
 #[generate_trait]
 impl AvailabilityTableImpl of AvailabilityTableTrait {
     fn new() -> AvailabilityTable {
-        AvailabilityTable { m: Default::default(), len: 36 }
+        AvailabilityTable { d: Default::default(), len: 36 }
     }
 
     fn get(ref self: AvailabilityTable, x: u8, y: u8) -> u8 {
-        let index: u8 = (x - 1) * 6 + (y - 1);
-        assert!(index.into() < self.len, "Index out of bounds");
-        self.m.get(index.into())
+        let i = index(x, y);
+        assert!(i.into() < self.len, "Index out of bounds");
+        self.d.get(i.into())
     }
 
-    fn set(ref self: AvailabilityTable, x: u8, y: u8, v: u8) {
-        self.m.insert(((x - 1) * 6 + (y - 1)).into(), v);
+    fn set(ref self: AvailabilityTable, x: u8, y: u8, c: u8) {
+        self.d.insert(index(x, y).into(), c);
     }
 
     fn add(ref self: AvailabilityTable, x: u8, y: u8) {
-        if x == y {
-            let n = self.get(x, y);
-            self.set(x, y, n + 1) // Along the diagonal
-        } else {
-            let m = self.get(x, y);
-            self.set(x, y, m + 1);
-            let n = self.get(y, x);
-            self.set(y, x, n + 1);
+        let c = self.get(x, y);
+        self.set(x, y, c + 1);
+        if x != y { // Not the diagonal
+            let c = self.get(y, x);
+            self.set(y, x, c + 1);
         }
     }
 
     fn remove(ref self: AvailabilityTable, x: u8, y: u8) {
         // For this toy code hard explicit fail is best
-        assert!(self.get(x, y) > 0, "remove for 0 stones: ({:?}, {:?})", x, y);
+        assert!(self.get(x, y) > 0, "no stones to remove: ({:?}, {:?})", x, y);
 
-        if x == y {
-            let n = self.get(x, y);
-            self.set(x, y, n - 1) // Along the diagonal
-        } else {
-            let m = self.get(x, y);
-            self.set(x, y, m - 1);
-            let n = self.get(y, x);
-            self.set(y, x, n - 1);
+        let c = self.get(x, y);
+        self.set(x, y, c - 1);
+        if x != y { // Not the diagonal
+            let c = self.get(y, x);
+            self.set(y, x, c - 1);
         }
     }
 
     fn pop_first(ref self: AvailabilityTable, x: u8) -> Option<u8> {
+        // the "double" has precedence, otherwise an invalid chain might occur
         if self.get(x, x) > 0 {
             self.remove(x, x);
             return Option::Some(x);
@@ -91,22 +90,21 @@ fn chain(dominoes: @Array<Domino>) -> Option<Array<Domino>> {
         _ => {
             // First check if the total number of each amount of dots is even, if not it's not
             // possible to complete a cycle. This follows from that it's an Eulerian path.
-            let mut v: Felt252Dict<u8> = Default::default();
-            // Keep the mutable borrow in a small scope here to allow v.iter().
+            let mut d: Felt252Dict<u8> = Default::default();
             let mut i = 0;
             while i < dominoes
                 .len() {
                     let (x, y): Domino = *dominoes[i];
-                    v.insert(x.into(), v.get(x.into()) + 1);
-                    v.insert(y.into(), v.get(y.into()) + 1);
+                    d.insert(x.into(), d.get(x.into()) + 1);
+                    d.insert(y.into(), d.get(y.into()) + 1);
                     i += 1;
                 };
-            i = 0;
+            let mut i = 0;
             let even_dot_types = loop {
                 if i == 6 {
                     break true;
                 }
-                if v.get(i.into()) % 2 != 0 {
+                if d.get(i.into()) % 2 != 0 {
                     break false;
                 }
                 i += 1;
@@ -133,14 +131,14 @@ fn chain_worker(dominoes: @Array<Domino>) -> Array<Domino> {
         let (x, y): Domino = *dominoes[i];
         t.add(x, y);
     };
-    let mut v: Array<Domino> = array![];
-    v.append(first);
-    let (_, mut n): Domino = first;
-    while let Option::Some(m) = t.pop_first(n) {
-        v.append((n, m));
-        n = m;
+    let mut chain: Array<Domino> = array![];
+    chain.append(first);
+    let (_, mut x) = first;
+    while let Option::Some(y) = t.pop_first(x) {
+        chain.append((x, y));
+        x = y;
     };
-    v
+    chain
 }
 
 #[cfg(test)]
