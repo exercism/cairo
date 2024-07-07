@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "misicnenad"
+  ],
+  "files": {
+    "solution": [
+      "src/lib.cairo",
+      "Scarb.toml"
+    ],
+    "test": [
+      "src/tests.cairo"
+    ],
+    "example": [
+      ".meta/example.cairo"
+    ]
+  },
+  "blurb": "Write a function to determine if a list is a sublist of another list."
+}
