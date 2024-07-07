@@ -1,7 +1,7 @@
 {
-    "blurb": "Arrays are fixed-size sequences of elements of the same data type",
+    "blurb": "Arrays are collection of elements of the same data type",
     "authors": [
-        "misicnenad"
+        "sakshiiik"
     ],
-    "contributors": ["Sakshi Kawade"]
+    "contributors": []
 }
