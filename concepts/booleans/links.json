@@ -1,1 +1,6 @@
-[]
+[
+    {
+        "url": "https://book.cairo-lang.org/ch02-02-data-types.html#the-boolean-type",
+        "description": "Boolean type in the Cairo book"
+    }
+]
