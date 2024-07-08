@@ -1,7 +1,7 @@
 {
-    "blurb": "<todo>",
+    "blurb": "In Cairo, an Integer is a number and a scalar type, like felt252 and booleans, with felt252 serving as the foundational type for all other types in the core library.",
     "authors": [
-        "misicnenad"
+        "rajeebkm"
     ],
     "contributors": []
 }
