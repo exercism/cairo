@@ -202,13 +202,13 @@ fn deletes_only_the_first_occurrence() {
     let mut list = DoublyLinkedList::<u32>::new();
     list.push(73);
     list.push(9);
-    list.push(107);
     list.push(9);
+    list.push(107);
     list.delete(9);
     assert_eq!(list.len(), 3);
     assert_eq!(list.pop(), Option::Some(107));
-    assert_eq!(list.pop(), Option::Some(73));
     assert_eq!(list.pop(), Option::Some(9));
+    assert_eq!(list.pop(), Option::Some(73));
 }
 
 fn using_delete_does_nothing_if_the_list_is_empty() {
