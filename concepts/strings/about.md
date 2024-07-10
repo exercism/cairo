@@ -8,10 +8,10 @@ A short string is formed with single quotes where each character that makes up t
 
 As an ASCII string, for instance, `'abc'` will be:
 
-- `'a'` results to `0x61`
-- `'b'` results to `0x62`
-- `'c'` results to `0x63`
-- `'abc'` results to `0x616263`
+- `'a'` is equivalent to `0x61`
+- `'b'` is equivalent to `0x62`
+- `'c'` is equivalent to `0x63`
+- `'abc'` is equivalent to `0x616263`
 
 The `felt252` data type holds short strings type in Cairo. As `felt252` contains 251 bits, a short string is limited to 31 characters (31 \* 8 = 248 bits, which is the maximum multiple of 8 that fits in 251 bits).
 
