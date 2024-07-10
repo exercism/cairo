@@ -271,9 +271,12 @@
         "slug": "linked-list",
         "name": "Linked List",
         "uuid": "1924c44e-bfa2-4dac-a7a9-779e4039ac56",
-        "practices": [],
+        "practices": [
+          "structs",
+          "traits"
+        ],
         "prerequisites": [],
-        "difficulty": 1
+        "difficulty": 10
       }
     ],
     "foregone": [
