@@ -1,23 +1,29 @@
-#[derive(Drop, Copy)]
 struct DoublyLinkedList<T> {
-    head: List<T>,
-    tail: List<T>,
+    dict: Felt252Dict<Nullable<Node<T>>>,
+    head: Option<felt252>,
+    tail: Option<felt252>,
     len: usize,
 }
 
-type List<T> = Option<Box<Node<T>>>;
+impl DestructDoublyLinkedList<T, +Drop<T>, +Felt252DictValue<T>> of Destruct<DoublyLinkedList<T>> {
+    fn destruct(self: DoublyLinkedList<T>) nopanic {
+        self.dict.squash();
+    }
+}
 
 #[derive(Drop, Copy)]
 struct Node<T> {
     data: T,
-    next: List<T>,
-    previous: List<T>
+    next: Option<felt252>,
+    previous: Option<felt252>
 }
 
 #[generate_trait]
-impl DoublyLinkedListImpl<T, +Drop<T>, +Copy<T>> of DoublyLinkedListTrait<T> {
+impl DoublyLinkedListImpl<T, +Drop<T>, +Felt252DictValue<T>> of DoublyLinkedListTrait<T> {
     fn new() -> DoublyLinkedList<T> {
-        DoublyLinkedList { head: Option::None, tail: Option::None, len: 0 }
+        DoublyLinkedList {
+            dict: Default::default(), head: Option::None, tail: Option::None, len: 0
+        }
     }
 
     fn len(self: @DoublyLinkedList<T>) -> usize {
@@ -25,63 +31,15 @@ impl DoublyLinkedListImpl<T, +Drop<T>, +Copy<T>> of DoublyLinkedListTrait<T> {
     }
 
     fn push(ref self: DoublyLinkedList<T>, data: T) {
-        match self.tail {
-            Option::None => {
-                let node = BoxTrait::new(NodeTrait::new(data, Option::None, Option::None));
-                self.tail = Option::Some(node);
-                self.head = self.tail;
-                self.len += 1;
-            },
-            Option::Some(tail) => {
-                let node = BoxTrait::new(NodeTrait::new(data, Option::None, Option::Some(tail)));
-                let mut tail = tail.unbox();
-                tail.next = Option::Some(node);
-                self.tail = tail.next;
-                self.len += 1;
-            },
-        }
+        panic!()
     }
 
     fn pop(ref self: DoublyLinkedList<T>) -> Option<T> {
-        match self.len {
-            0 => Option::None,
-            1 => {
-                let data = self.head.unwrap().unbox().data;
-                self.head = Option::None;
-                self.tail = Option::None;
-                self.len = 0;
-                Option::Some(data)
-            },
-            _ => {
-                let popped_tail = self.tail.unwrap().unbox();
-                self.tail = popped_tail.previous;
-                let mut new_tail = self.tail.unwrap().unbox();
-                new_tail.next = Option::None;
-                self.len -= 1;
-                Option::Some(popped_tail.data)
-            }
-        }
+        panic!()
     }
 
     fn shift(ref self: DoublyLinkedList<T>) -> Option<T> {
-        match self.len {
-            0 => Option::None,
-            1 => {
-                let data = self.head.unwrap().unbox().data;
-                self.head = Option::None;
-                self.tail = Option::None;
-                self.len = 0;
-                Option::Some(data)
-            },
-            _ => {
-                let shifted_head = self.head.unwrap().unbox();
-                self.head = shifted_head.next;
-                let mut new_head = self.head.unwrap().unbox();
-                new_head.previous = Option::None;
-                self.len -= 1;
-                Option::Some(shifted_head.data)
-            }
-        }
+        panic!()
     }
 
     fn unshift(ref self: DoublyLinkedList<T>, data: T) {
@@ -95,10 +53,7 @@ impl DoublyLinkedListImpl<T, +Drop<T>, +Copy<T>> of DoublyLinkedListTrait<T> {
 
 #[generate_trait]
 impl NodeImpl<T> of NodeTrait<T> {
-    fn new(data: T, next: List<T>, previous: List<T>) -> Node<T> {
+    fn new(data: T, next: Option<felt252>, previous: Option<felt252>) -> Node<T> {
         Node { data, next, previous }
     }
 }
-
-#[cfg(test)]
-mod tests;
