@@ -1,5 +1,5 @@
 {
-  "blurb": "Cairo do not have a native data type for strings. However, there are two ways to form a string type: short strings and ByteArray.",
-  "authors": ["misicnenad", "Ephraim-nonso"],
+  "blurb": "Cairo does not have a native data type for strings. However, there are two ways to represent a string type: short strings using felts and ByteArray.",
+  "authors": ["Ephraim-nonso"],
   "contributors": []
 }

@@ -1,23 +1,21 @@
 # String Types
 
-## String Type
+Cairo does not have a native data type for strings. However, there are two ways to represent a string type: short strings using a single `felt252` and arbitrary length using `ByteArray`.
 
-Cairo do not have a native data type for strings. However, there are two ways to form a string type: short strings and ByteArray.
+## Short strings
 
-### Short strings
+A short string is formed with single quotes where each character that makes up the string is encoded on one byte following the [ASCII standard](https://www.asciitable.com/).
 
-A short string is formed with a single quote where each character that makes up the string is encoded on one byte - [see ASCII table](https://www.asciitable.com/).
+As an ASCII string, for instance, `'abc'` will be:
 
-As a ASCII string, for instance, 'abc' will be:
+- `'a'` results to `0x61`
+- `'b'` results to `0x62`
+- `'c'` results to `0x63`
+- `'abc'` results to `0x616263`
 
-- 'a' results to 0x61
-- 'b' results to 0x62
-- 'c' results to 0x63
-- 'abc' results to 0x616263
+The `felt252` data type holds short strings type in Cairo. As `felt252` contains 251 bits, a short string is limited to 31 characters (31 \* 8 = 248 bits, which is the maximum multiple of 8 that fits in 251 bits).
 
-The felt252 data type can hold short strings type in Cairo. A felt252 short string is limited to 31 characters due to the size of felt252 being 251 bits.
-
-Examples of short strings declarations:
+Examples of short string declarations:
 
 ```rust
        let my_first_char = 'D';
@@ -35,7 +33,7 @@ The ByteArray struct was introduced in Cairo 2.4.0. The ByteArray strings are wr
     let long_string: ByteArray = "this is a string which has more than 31 characters";
 ```
 
-Technically, the update also introduced the `bytes31` which holds 31 bytes and which fits into a felt. The ByteArray struct is made of an array of 31 byte, a single felt and length for the remainder.
+Technically, the update also introduced the `bytes31` type which holds 31 bytes and which fits into a felt. The `ByteArray` struct basically represents long string using an array of `bytes31` that hold the "whole words" (i.e. words that fill the whole felt) and a single felt field that holds an "incomplete word" (the number of bytes within are specified in separate length field).
 
 ```Rust
 #[derive(Drop, Clone, PartialEq, Serde, Default)]
