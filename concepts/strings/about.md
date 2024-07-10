@@ -1,6 +1,6 @@
 # String Types
 
-Cairo does not have a native data type for strings. However, there are two ways to represent a string type: short strings using a single `felt252` and arbitrary length using `ByteArray`.
+Cairo does not have a native data type for strings. However, there are two ways to represent a string type: short strings using a single `felt252` and arbitrary length strings using `ByteArray`.
 
 ## Short strings
 
