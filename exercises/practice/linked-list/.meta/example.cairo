@@ -44,14 +44,12 @@ impl DoublyLinkedListImpl<
                 self.next_index += 1;
             },
             Option::Some(tail) => {
-                let node = NullableTrait::new(
-                    NodeTrait::new(data, Option::Some(tail), Option::None)
-                );
+                let node = NullableTrait::new(NodeTrait::new(data, self.tail, Option::None));
                 self.dict.insert(self.next_index, node);
-                let prev_tail = self.dict.get(tail).deref();
-                let prev_tail = Node { next: Option::Some(self.next_index), ..prev_tail };
-                self.dict.insert(self.tail.unwrap(), NullableTrait::new(prev_tail));
-                self.tail = prev_tail.next;
+                let old_tail = self.dict.get(tail).deref();
+                let updated_old_tail = Node { next: Option::Some(self.next_index), ..old_tail };
+                self.dict.insert(tail, NullableTrait::new(updated_old_tail));
+                self.tail = updated_old_tail.next;
                 self.len += 1;
                 self.next_index += 1;
             },
@@ -123,14 +121,12 @@ impl DoublyLinkedListImpl<
                 self.next_index += 1;
             },
             Option::Some(head) => {
-                let node = NullableTrait::new(
-                    NodeTrait::new(data, Option::None, Option::Some(head))
-                );
+                let node = NullableTrait::new(NodeTrait::new(data, Option::None, self.head));
                 self.dict.insert(self.next_index, node);
-                let prev_head = self.dict.get(head).deref();
-                let prev_head = Node { previous: Option::Some(self.next_index), ..prev_head };
-                self.dict.insert(self.head.unwrap(), NullableTrait::new(prev_head));
-                self.head = prev_head.previous;
+                let old_head = self.dict.get(head).deref();
+                let updated_old_head = Node { previous: Option::Some(self.next_index), ..old_head };
+                self.dict.insert(head, NullableTrait::new(updated_old_head));
+                self.head = updated_old_head.previous;
                 self.len += 1;
                 self.next_index += 1;
             },
