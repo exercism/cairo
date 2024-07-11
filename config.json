@@ -155,6 +155,7 @@
         "practices": [
           "traits",
           "type-conversion",
+          "mutability",
           "ownership"
         ],
         "prerequisites": [],
@@ -253,7 +254,8 @@
         "practices": [
           "enums",
           "traits",
-          "ownership"
+          "ownership",
+          "mutability"
         ],
         "prerequisites": [],
         "difficulty": 7
@@ -391,6 +393,11 @@
       "uuid": "fe81e75b-b4d2-4ee8-9aaa-271e76468d0b",
       "slug": "printing",
       "name": "Printing"
+    },
+    {
+      "uuid": "8a4a6525-c1e4-44f5-ab6b-cf5d8ce6701e",
+      "slug": "mutability",
+      "name": "Mutability"
     },
     {
       "uuid": "8a4a6525-c1e4-44f5-ab6b-cf5d8ce6701e",
