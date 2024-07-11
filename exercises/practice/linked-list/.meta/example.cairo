@@ -1,7 +1,9 @@
+type Index = Option<felt252>;
+
 struct DoublyLinkedList<T> {
     dict: Felt252Dict<Nullable<Node<T>>>,
-    head: Option<felt252>,
-    tail: Option<felt252>,
+    head: Index,
+    tail: Index,
     len: usize,
     next_index: felt252,
 }
@@ -15,8 +17,8 @@ impl DestructDoublyLinkedList<T, +Drop<T>, +Felt252DictValue<T>> of Destruct<Dou
 #[derive(Drop, Copy)]
 struct Node<T> {
     data: T,
-    next: Option<felt252>,
-    previous: Option<felt252>
+    next: Index,
+    previous: Index
 }
 
 #[generate_trait]
@@ -174,7 +176,7 @@ impl DoublyLinkedListImpl<
 
 #[generate_trait]
 impl NodeImpl<T> of NodeTrait<T> {
-    fn new(data: T, previous: Option<felt252>, next: Option<felt252>) -> Node<T> {
+    fn new(data: T, previous: Index, next: Index) -> Node<T> {
         Node { data, previous, next }
     }
 }
