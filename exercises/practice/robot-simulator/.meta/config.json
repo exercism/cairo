@@ -1,0 +1,17 @@
+{
+  "authors": [],
+  "files": {
+    "solution": [
+      "src/lib.cairo",
+      "Scarb.toml"
+    ],
+    "test": [
+      "src/tests.cairo"
+    ],
+    "example": [
+      ".meta/example.cairo"
+    ]
+  },
+  "blurb": "Write a robot simulator.",
+  "source": "Inspired by an interview question at a famous company."
+}

@@ -247,6 +247,14 @@
         "difficulty": 7
       },
       {
+        "slug": "robot-simulator",
+        "name": "Robot Simulator",
+        "uuid": "63302a7c-4235-41d6-9e10-9e46bd9a95c5",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 7
+      },
+      {
         "slug": "protein-translation",
         "name": "Protein Translation",
         "uuid": "d42e7a29-64b9-478b-8b2a-44fd002391fa",
