@@ -155,7 +155,8 @@
         "practices": [
           "traits",
           "type-conversion",
-          "mutability"
+          "mutability",
+          "ownership"
         ],
         "prerequisites": [],
         "difficulty": 4
@@ -203,7 +204,7 @@
         "uuid": "9858a357-b935-437d-b4e0-c3aac20859cf",
         "practices": [
           "operator-overload",
-          "mutability",
+          "ownership",
           "integers"
         ],
         "prerequisites": [],
@@ -217,7 +218,7 @@
           "traits",
           "strings",
           "arrays",
-          "mutability"
+          "ownership"
         ],
         "prerequisites": [],
         "difficulty": 5
@@ -242,6 +243,19 @@
         "practices": [
           "smart-pointers",
           "generics"
+        ],
+        "prerequisites": [],
+        "difficulty": 7
+      },
+      {
+        "slug": "robot-simulator",
+        "name": "Robot Simulator",
+        "uuid": "63302a7c-4235-41d6-9e10-9e46bd9a95c5",
+        "practices": [
+          "enums",
+          "traits",
+          "ownership",
+          "mutability"
         ],
         "prerequisites": [],
         "difficulty": 7
@@ -384,6 +398,11 @@
       "uuid": "8a4a6525-c1e4-44f5-ab6b-cf5d8ce6701e",
       "slug": "mutability",
       "name": "Mutability"
+    },
+    {
+      "uuid": "c11a8aa5-cda4-4d02-a477-3db3d3ca5acf",
+      "slug": "ownership",
+      "name": "Ownership"
     },
     {
       "uuid": "7e322172-04ba-43f8-aba9-8ae999372b90",
