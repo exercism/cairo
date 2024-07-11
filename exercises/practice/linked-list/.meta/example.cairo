@@ -64,7 +64,7 @@ impl DoublyLinkedListImpl<
                 self.dict.insert(self.head.unwrap(), Default::default());
                 self.head = Option::None;
                 self.tail = Option::None;
-                self._decrease_len();
+                self.len -= 1;
                 Option::Some(data)
             },
             _ => {
@@ -72,7 +72,7 @@ impl DoublyLinkedListImpl<
                 let popped_tail = self.dict.get(self.tail.unwrap()).deref();
                 self.dict.insert(self.tail.unwrap(), Default::default());
                 self.tail = popped_tail.previous;
-                self._decrease_len();
+                self.len -= 1;
                 // remove new tail's next node
                 let new_tail = self.dict.get(self.tail.unwrap()).deref();
                 let new_tail = Node { next: Option::None, ..new_tail };
@@ -91,7 +91,7 @@ impl DoublyLinkedListImpl<
                 self.dict.insert(self.head.unwrap(), Default::default());
                 self.head = Option::None;
                 self.tail = Option::None;
-                self._decrease_len();
+                self.len -= 1;
                 Option::Some(data)
             },
             _ => {
@@ -99,7 +99,7 @@ impl DoublyLinkedListImpl<
                 let shifted_head = self.dict.get(self.head.unwrap()).deref();
                 self.dict.insert(self.head.unwrap(), Default::default());
                 self.head = shifted_head.next;
-                self._decrease_len();
+                self.len -= 1;
                 // remove new head's previous node
                 let new_head = self.dict.get(self.head.unwrap()).deref();
                 let new_head = Node { previous: Option::None, ..new_head };
@@ -166,16 +166,9 @@ impl DoublyLinkedListImpl<
                 }
 
                 self.dict.insert(to_remove_index, Default::default());
-                self._decrease_len();
+                self.len -= 1;
                 break;
             };
-    }
-
-    fn _decrease_len(ref self: DoublyLinkedList<T>) {
-        self.len -= 1;
-        if self.len == 0 {
-            self.next_index = 0;
-        }
     }
 }
 
