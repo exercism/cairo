@@ -69,17 +69,7 @@
           "integers"
         ],
         "prerequisites": [],
-        "difficulty": 1
-      },
-      {
-        "slug": "armstrong-numbers",
-        "name": "Armstrong Numbers",
-        "uuid": "4aaa153d-3416-4101-8143-35b068a15451",
-        "practices": [
-          "packages-crates-modules"
-        ],
-        "prerequisites": [],
-        "difficulty": 1
+        "difficulty": 2
       },
       {
         "slug": "semi-structured-logs",
@@ -90,7 +80,7 @@
           "match-basics"
         ],
         "prerequisites": [],
-        "difficulty": 1
+        "difficulty": 2
       },
       {
         "slug": "lucians-luscious-lasagna",
@@ -100,7 +90,41 @@
           "functions"
         ],
         "prerequisites": [],
-        "difficulty": 1
+        "difficulty": 2
+      },
+      {
+        "slug": "armstrong-numbers",
+        "name": "Armstrong Numbers",
+        "uuid": "4aaa153d-3416-4101-8143-35b068a15451",
+        "practices": [
+          "packages-crates-modules"
+        ],
+        "prerequisites": [],
+        "difficulty": 3
+      },
+      {
+        "slug": "sublist",
+        "name": "Sublist",
+        "uuid": "e62b1bb4-fb37-4dfe-ad81-e0fa5c494ba3",
+        "practices": [
+          "arrays",
+          "enums",
+          "generics"
+        ],
+        "prerequisites": [],
+        "difficulty": 3
+      },
+      {
+        "slug": "scrabble-score",
+        "name": "Scrabble Score",
+        "uuid": "3ef58f8c-99d4-48be-bb15-a1a5763e5052",
+        "practices": [
+          "dictionaries",
+          "strings",
+          "felts"
+        ],
+        "prerequisites": [],
+        "difficulty": 3
       },
       {
         "slug": "beer-song",
@@ -111,17 +135,15 @@
           "strings"
         ],
         "prerequisites": [],
-        "difficulty": 2
+        "difficulty": 3
       },
       {
-        "slug": "custom-set",
-        "name": "Custom Set",
-        "uuid": "aad80498-750c-4a7d-b82a-f52f90c54e11",
+        "slug": "clock",
+        "name": "Clock",
+        "uuid": "b44728f6-f2ad-4fa4-a20e-5144f9a81e3e",
         "practices": [
-          "structs",
-          "generics",
           "traits",
-          "operator-overload"
+          "printing"
         ],
         "prerequisites": [],
         "difficulty": 4
@@ -136,7 +158,7 @@
           "mutability"
         ],
         "prerequisites": [],
-        "difficulty": 2
+        "difficulty": 4
       },
       {
         "slug": "binary-search",
@@ -176,15 +198,16 @@
         "difficulty": 4
       },
       {
-        "slug": "clock",
-        "name": "Clock",
-        "uuid": "b44728f6-f2ad-4fa4-a20e-5144f9a81e3e",
+        "slug": "rational-numbers",
+        "name": "Rational Numbers",
+        "uuid": "9858a357-b935-437d-b4e0-c3aac20859cf",
         "practices": [
-          "traits",
-          "printing"
+          "operator-overload",
+          "mutability",
+          "integers"
         ],
         "prerequisites": [],
-        "difficulty": 3
+        "difficulty": 5
       },
       {
         "slug": "anagram",
@@ -200,16 +223,17 @@
         "difficulty": 5
       },
       {
-        "slug": "rational-numbers",
-        "name": "Rational Numbers",
-        "uuid": "9858a357-b935-437d-b4e0-c3aac20859cf",
+        "slug": "custom-set",
+        "name": "Custom Set",
+        "uuid": "aad80498-750c-4a7d-b82a-f52f90c54e11",
         "practices": [
-          "operator-overload",
-          "mutability",
-          "integers"
+          "structs",
+          "generics",
+          "traits",
+          "operator-overload"
         ],
         "prerequisites": [],
-        "difficulty": 3
+        "difficulty": 6
       },
       {
         "slug": "simple-linked-list",
@@ -220,19 +244,7 @@
           "generics"
         ],
         "prerequisites": [],
-        "difficulty": 5
-      },
-      {
-        "slug": "sublist",
-        "name": "Sublist",
-        "uuid": "e62b1bb4-fb37-4dfe-ad81-e0fa5c494ba3",
-        "practices": [
-          "arrays",
-          "enums",
-          "generics"
-        ],
-        "prerequisites": [],
-        "difficulty": 3
+        "difficulty": 7
       },
       {
         "slug": "protein-translation",
@@ -246,18 +258,6 @@
         ],
         "prerequisites": [],
         "difficulty": 8
-      },
-      {
-        "slug": "scrabble-score",
-        "name": "Scrabble Score",
-        "uuid": "3ef58f8c-99d4-48be-bb15-a1a5763e5052",
-        "practices": [
-          "dictionaries",
-          "strings",
-          "felts"
-        ],
-        "prerequisites": [],
-        "difficulty": 3
       },
       {
         "slug": "dominoes",
