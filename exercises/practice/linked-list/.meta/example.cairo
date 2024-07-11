@@ -102,7 +102,7 @@ impl DoublyLinkedListImpl<
                 self.dict.insert(self.head.unwrap(), Default::default());
                 self.head = shifted_head.next;
                 self._decrease_len();
-                // remove new head's next node
+                // remove new head's previous node
                 let new_head = self.dict.get(self.head.unwrap()).deref();
                 let new_head = Node { previous: Option::None, ..new_head };
                 self.dict.insert(self.head.unwrap(), NullableTrait::new(new_head));
@@ -156,17 +156,16 @@ impl DoublyLinkedListImpl<
                     let previous = self.dict.get(previous_index).deref();
                     let previous = Node { next: node.next, ..previous };
                     self.dict.insert(previous_index, NullableTrait::new(previous));
+                } else {
+                    // no previous node means head needs to be deleted
+                    self.head = node.next;
                 }
                 if let Option::Some(next_index) = node.next {
                     let next = self.dict.get(next_index).deref();
                     let next = Node { previous: node.previous, ..next };
                     self.dict.insert(next_index, NullableTrait::new(next));
-                }
-
-                if to_remove_index == self.head.unwrap() {
-                    self.head = node.next;
-                }
-                if to_remove_index == self.tail.unwrap() {
+                } else {
+                    // no next node means tail needs to be deleted
                     self.tail = node.previous;
                 }
 
