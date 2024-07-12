@@ -41,11 +41,11 @@ fn main() {
     let not_expr = !f; // !false => true
 
     // Assertions to verify the correctness
-    assert(t == true_expr, "this should be true"); // t == true
-    assert(f == false_expr, "this should be false"); // f == false
-    assert(or_expr == true, "this should be true for OR"); // true
-    assert(and_expr == false, "this should be false for AND"); // false
-    assert(not_expr == true, "this should be true for NOT"); // true
+    assert(t == true_expr, 'this should be true'); // t == true
+    assert(f == false_expr, 'this should be false'); // f == false
+    assert(or_expr == true, 'this should be true for OR'); // true
+    assert(and_expr == false, 'this should be false for AND'); // false
+    assert(not_expr == true, 'this should be true for NOT'); // true
 }
 ```
 
