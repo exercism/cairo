@@ -283,17 +283,15 @@ mod list_when {
         let mut i = 0;
         while let Option::Some(expected_elem) = expected
             .get(i) {
-                let mut contains = false;
                 let mut j = 0;
                 while let Option::Some(actual_elem) = actual
                     .get(j) {
                         if actual_elem.unbox() == expected_elem.unbox() {
-                            contains = true;
                             break;
                         }
                         j += 1;
                     };
-                if !contains {
+                if j == actual.len() {
                     panic!("Allergen missing\n  {expected_elem:?} should be in {actual:?}");
                 }
                 i += 1;

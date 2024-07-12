@@ -1,13 +1,11 @@
 use core::clone::Clone;
-use core::array::ArrayTrait;
-use core::box::BoxTrait;
 
 #[derive(Drop, Debug)]
-pub struct CustomSet<T> {
-    pub collection: Array<T>,
+struct CustomSet<T> {
+    collection: Array<T>,
 }
 
-pub impl CustomSetEq<
+impl CustomSetEq<
     T, +Copy<T>, +Drop<T>, +PartialEq<T>, +core::fmt::Display<T>
 > of PartialEq<CustomSet<T>> {
     fn eq(lhs: @CustomSet<T>, rhs: @CustomSet<T>) -> bool {
@@ -23,7 +21,7 @@ pub impl CustomSetEq<
 }
 
 #[generate_trait]
-pub impl CustomSetImpl<
+impl CustomSetImpl<
     T, +Copy<T>, +Drop<T>, +core::fmt::Display<T>, +PartialEq<T>
 > of CustomSetTrait<T> {
     fn new(inputs: @Array<T>) -> CustomSet<T> {
@@ -68,18 +66,18 @@ pub impl CustomSetImpl<
         if self.collection.len() > other.collection.len() {
             return false;
         }
-        let mut result = true;
+        let mut subset = true;
         let mut i = 0;
         while let Option::Some(val) = self
             .collection
             .get(i) {
                 if !other.contains(val.unbox()) {
-                    result = false;
+                    subset = false;
                     break;
                 }
                 i += 1;
             };
-        result
+        subset
     }
 
     fn is_disjoint(self: @CustomSet<T>, other: @CustomSet<T>) -> bool {
@@ -143,7 +141,7 @@ pub impl CustomSetImpl<
                 collection.append(*val.unbox());
                 i += 1;
             };
-        i = 0;
+        let mut i = 0;
         while let Option::Some(val) = other
             .collection
             .get(i) {

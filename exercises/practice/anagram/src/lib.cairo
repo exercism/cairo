@@ -18,7 +18,7 @@ impl SetEq of PartialEq<Set> {
     }
 }
 
-pub fn anagrams_for(word: @ByteArray, inputs: @Set) -> Set {
+fn anagrams_for(word: @ByteArray, inputs: @Set) -> Set {
     panic!()
 }
 

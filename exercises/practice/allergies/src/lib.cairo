@@ -1,8 +1,8 @@
 #[derive(Drop)]
-pub struct Allergies {}
+struct Allergies {}
 
 #[derive(Drop, Debug, PartialEq)]
-pub enum Allergen {
+enum Allergen {
     Eggs,
     Peanuts,
     Shellfish,
@@ -14,7 +14,7 @@ pub enum Allergen {
 }
 
 #[generate_trait]
-pub impl AllergiesImpl of AllergiesTrait {
+impl AllergiesImpl of AllergiesTrait {
     fn new(score: u32) -> Allergies {
         panic!("Given the '{score}' score, construct a new Allergies struct.")
     }

@@ -1,8 +1,6 @@
-pub fn find<T, +Drop<T>, +Copy<T>, +PartialOrd<T>>(
-    search_array: @Array<T>, value: T
-) -> Option<usize> {
+fn find<T, +Drop<T>, +Copy<T>, +PartialOrd<T>>(search_array: @Array<T>, value: T) -> Option<usize> {
     let mut base = 0_usize;
-    let mut slice: Span<T> = search_array.span();
+    let mut slice = search_array.span();
 
     loop {
         let head = slice.slice(0, slice.len() / 2);
