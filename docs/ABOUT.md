@@ -1,21 +1,18 @@
 # About
 
-[Cairo][cairo] is a Rust-inspired language that aims to make it easy to build
-scalable [dApps][dapps] with the power of [validity proofs][zkp].
+Cairo is a Rust-inspired language that aims to make it easy to compute trustworthy values on untrusted machines using [validity proofs][zkp].
+It is a programming language designed for a virtual CPU of the same name, which is capable of efficiently proving the execution of any program running on it.
+This means that you can perform time consuming operations on a machine you don't trust, and check the result very quickly on a cheaper machine.
 
-[cairo]: https://www.cairo-lang.org/
-[dapps]: https://en.wikipedia.org/wiki/Decentralized_application
+One major usecase is Starknet, a Layer 2 built on top of Ethereum. Instead of having all the participants of the network verify all user interactions, only one node, called the prover, executes the programs and generates proofs that the computations were done correctly. These proofs are then verified by an Ethereum smart contract, requiring significantly less computational power, which increases throughput and reduces transaction costs while preserving Ethereum security. The [Awesome Starknet][awe-sn] list collects examples of Starknet and Cairo projects, which include CLI tools, libraries, virtual machines, AI, games and more.
+
+Cairo differs significantly from traditional programming languages, particularly in its execution and performance optimizations. Programs can be executed by a prover, similar to other languages, though with some performance overhead due to virtualization of the language. When proofs are verified, efficiency is crucial as verification may occur on small machines, and Cairo has various advantages to improve verification speed. A notable one is [non-determinism][np], which is the idea that you can theoretically use a different algorithm for verifying than for computing. Additionally, Cairo's memory model is immutable, meaning values cannot be changed once written, requiring careful management of memory and data structures. 
+
+The home page for Cairo is [cairo-lang.org](https://www.cairo-lang.org/).
+List of Cairo resources at [cairo-lang.org/documentation.html](https://www.cairo-lang.org/resources/).
+Newcomers should start with "The Book" located at [book.cairo-lang.org/](https://book.cairo-lang.org/).
+
+
 [zkp]: https://en.wikipedia.org/wiki/Zero-knowledge_proof
-
-<!-- TODO: write document
-
-  This document contains a short introduction to the language.
-
-  The introduction should be relatively brief and touch upon what
-  makes the language interesting (and possibly unique). The goal
-  is to help students decide if they want to join this track.
-
-  The contents of this document are displayed on the track page,
-  provided the student has not joined the track.
-
-  See https://exercism.org/docs/building/tracks/docs for more information. -->
+[awe-sn]: https://github.com/keep-starknet-strange/awesome-starknet
+[np]: https://en.wikipedia.org/wiki/NP_(complexity)
