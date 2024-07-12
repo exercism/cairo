@@ -26,20 +26,15 @@ fn contains<T, +PartialEq<T>>(a: Span<T>, b: Span<T>) -> bool {
     }
 
     let mut i = 0;
-    let starts_with = loop {
+    loop {
         if i == b.len() {
             break true;
         }
         if a[i] != b[i] {
-            break false;
+            break contains(a.slice(1, a.len() - 1), b);
         }
         i += 1;
-    };
-    if starts_with {
-        return true;
     }
-
-    contains(a.slice(1, a.len() - 1), b)
 }
 
 #[cfg(test)]

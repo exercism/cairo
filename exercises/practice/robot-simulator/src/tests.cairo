@@ -1,4 +1,5 @@
-use core::fmt::{Debug, Formatter, Error, Display};
+use core::traits::TryInto;
+use core::fmt::{Debug, Formatter, Error};
 use robot_simulator::{Direction, RobotTrait};
 
 #[test]
@@ -143,23 +144,18 @@ fn moving_east_and_north() {
     assert_eq!(robot_end.direction(), @Direction::North);
 }
 
-impl I32Display of Display<i32> {
+impl IDebug of Debug<i32> {
     fn fmt(self: @i32, ref f: Formatter) -> Result<(), Error> {
+        if *self < 0 {
+            f.buffer.append(@"-");
+        }
         let abs_value = if *self < 0 {
             *self * -1
         } else {
             *self
         };
-        if *self < 0 {
-            f.buffer.append(@"-");
-        }
+        let abs_value: u32 = abs_value.try_into().unwrap();
         f.buffer.append(@format!("{}", abs_value));
         Result::Ok(())
-    }
-}
-
-impl IDebug of Debug<i32> {
-    fn fmt(self: @i32, ref f: Formatter) -> Result<(), Error> {
-        I32Display::fmt(self, ref f)
     }
 }

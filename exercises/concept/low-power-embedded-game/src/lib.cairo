@@ -21,16 +21,5 @@ impl PositionImpl of PositionTrait {
     }
 }
 
-#[generate_trait]
-impl AbsImpl of AbsTrait {
-    fn abs(self: @i16) -> i16 {
-        if *self < 0 {
-            *self * -1
-        } else {
-            *self
-        }
-    }
-}
-
 #[cfg(test)]
 mod tests;
