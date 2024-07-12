@@ -1,5 +1,3 @@
-use core::fmt::Formatter;
-
 fn verse(n: u32) -> ByteArray {
     match n {
         0 => "No more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.\n",
@@ -18,20 +16,20 @@ fn verses(start: u32, take_count: u32) -> ByteArray {
     assert!(0 <= take_count && take_count <= 99, "Count of bottles must be between 0 and 99");
     assert!(take_count <= start, "Cannot take down more than {start} bottles");
 
-    let mut lyrics: Formatter = Default::default();
+    let mut lyrics: ByteArray = "";
 
     let mut n = start;
     let end = start - take_count;
     while n >= end {
-        lyrics.buffer.append(@verse(n));
+        lyrics.append(@verse(n));
         if n == end {
             break;
         }
-        lyrics.buffer.append(@"\n");
+        lyrics.append(@"\n");
         n -= 1;
     };
 
-    lyrics.buffer
+    lyrics
 }
 
 fn song() -> ByteArray {
