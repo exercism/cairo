@@ -1,5 +1,5 @@
 /// various log levels
-#[derive(Drop, Clone, PartialEq, Eq, Debug)]
+#[derive(Drop)]
 enum LogLevel {
     Info,
     Warning,

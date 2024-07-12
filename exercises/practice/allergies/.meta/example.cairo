@@ -1,12 +1,12 @@
 use alexandria_math::pow;
 
 #[derive(Drop)]
-pub struct Allergies {
-    pub score: u32,
+struct Allergies {
+    score: u32,
 }
 
 #[derive(Drop, Debug, PartialEq)]
-pub enum Allergen {
+enum Allergen {
     Eggs,
     Peanuts,
     Shellfish,
@@ -18,7 +18,7 @@ pub enum Allergen {
 }
 
 #[generate_trait]
-pub impl AllergiesImpl of AllergiesTrait {
+impl AllergiesImpl of AllergiesTrait {
     fn new(score: u32) -> Allergies {
         Allergies { score }
     }
@@ -37,8 +37,8 @@ pub impl AllergiesImpl of AllergiesTrait {
     }
 
     fn allergies(self: @Allergies) -> Array<Allergen> {
-        let mut allergens = AllergiesImpl::allergens();
         let mut result: Array<Allergen> = array![];
+        let mut allergens = AllergiesImpl::allergens();
         while let Option::Some(allergen) = allergens
             .pop_front() {
                 if self.is_allergic_to(@allergen) {

@@ -1,4 +1,4 @@
-use custom_set::{CustomSet, CustomSetImpl};
+use custom_set::CustomSetImpl;
 
 // impl alias
 impl U32Set = CustomSetImpl::<u32>;

@@ -24,16 +24,14 @@ impl SetEq of PartialEq<Set> {
                 break true;
             }
             let l_item = lhs.values.at(i);
-            let mut contained = false;
             let mut j = 0;
             while j != len {
                 if IgnoreCase::eq(l_item, rhs.values.at(j)) {
-                    contained = true;
                     break;
                 }
                 j += 1;
             };
-            if !contained {
+            if j == len {
                 break false;
             }
             i += 1;
@@ -45,7 +43,7 @@ impl SetEq of PartialEq<Set> {
     }
 }
 
-pub fn anagrams_for(word: @ByteArray, inputs: @Set) -> Set {
+fn anagrams_for(word: @ByteArray, inputs: @Set) -> Set {
     let mut word_sorted = @sort(word);
     let mut anagrams = Set { values: array![] };
     let mut i = inputs.values.len();
@@ -53,11 +51,10 @@ pub fn anagrams_for(word: @ByteArray, inputs: @Set) -> Set {
     while i != 0 {
         i -= 1;
         let candidate = inputs.values[i];
-        let mut candidate_sorted = @sort(candidate);
 
         let is_anagram = word.len() == candidate.len()
             && IgnoreCase::ne(word, candidate)
-            && IgnoreCaseArray::eq(word_sorted, candidate_sorted);
+            && IgnoreCaseArray::eq(word_sorted, @sort(candidate));
 
         if is_anagram {
             anagrams.values.append(format!("{candidate}"));

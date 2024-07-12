@@ -1,7 +1,7 @@
 #[derive(Drop, Debug)]
-pub struct CustomSet<T> {}
+struct CustomSet<T> {}
 
-pub impl CustomSetEq<
+impl CustomSetEq<
     T, +Copy<T>, +Drop<T>, +PartialEq<T>, +core::fmt::Display<T>
 > of PartialEq<CustomSet<T>> {
     fn eq(lhs: @CustomSet<T>, rhs: @CustomSet<T>) -> bool {
@@ -14,7 +14,7 @@ pub impl CustomSetEq<
 }
 
 #[generate_trait]
-pub impl CustomSetImpl<
+impl CustomSetImpl<
     T, +Copy<T>, +Drop<T>, +core::fmt::Display<T>, +PartialEq<T>
 > of CustomSetTrait<T> {
     fn new(_input: @Array<T>) -> CustomSet<T> {

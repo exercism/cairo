@@ -65,23 +65,22 @@ mod evens {
 
 mod manhattan {
     use core::byte_array::ByteArrayTrait;
-    use low_power_embedded_game::{Position, PositionTrait, AbsTrait};
-    use core::fmt::{Debug, Formatter, Error, Display};
-
-    impl I16Display of Display<i16> {
-        fn fmt(self: @i16, ref f: Formatter) -> Result<(), Error> {
-            let abs_value = self.abs();
-            if *self < 0 {
-                f.buffer.append(@"-");
-            }
-            f.buffer.append(@format!("{}", abs_value));
-            Result::Ok(())
-        }
-    }
+    use low_power_embedded_game::{Position, PositionTrait};
+    use core::fmt::{Debug, Formatter, Error};
 
     impl IDebug of Debug<i16> {
         fn fmt(self: @i16, ref f: Formatter) -> Result<(), Error> {
-            I16Display::fmt(self, ref f)
+            if *self < 0 {
+                f.buffer.append(@"-");
+            }
+            let abs_value = if *self < 0 {
+                *self * -1
+            } else {
+                *self
+            };
+            let abs_value: u16 = abs_value.try_into().unwrap();
+            f.buffer.append(@format!("{}", abs_value));
+            Result::Ok(())
         }
     }
 

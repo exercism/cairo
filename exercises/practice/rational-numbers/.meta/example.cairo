@@ -1,7 +1,6 @@
 use alexandria_math::gcd_of_n_numbers::gcd_two_numbers;
 use alexandria_math::fast_power::fast_power;
 use alexandria_math::fast_root::fast_nr_optimize;
-use core::fmt::{Debug, Formatter, Error};
 
 #[derive(Drop, Debug, Copy)]
 struct Rational {
@@ -113,18 +112,6 @@ impl RationalPow of RationalPowTrait {
             return 0;
         };
         fast_nr_optimize(fast_power(*self, to_u128(power.numer)), power.denom, 30)
-    }
-}
-
-// Enables printing i128 values in tests.
-// Note that this will soon be added to the core library.
-impl I128Debug of Debug<i128> {
-    fn fmt(self: @i128, ref f: Formatter) -> Result<(), Error> {
-        if *self < 0 {
-            f.buffer.append(@"-");
-        };
-        f.buffer.append(@format!("{}", abs(*self)));
-        Result::Ok(())
     }
 }
 
