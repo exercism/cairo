@@ -6,11 +6,9 @@ We think the best way to learn is to play and to practice, either by creating yo
 
 Below are some resources that might help you jumpstart your Cairo journey:
 
-* [The Cairo Book](https://book.cairo-lang.org/) is a great resource for getting started with Cairo as well as diving deeper into specific features of Cairo.
+* [Cairo Programming Language](https://www.cairo-lang.org/) introduces the Cairo language and lists many relevant resources to learn and use Cairo. 
+* [The Cairo Book](https://book.cairo-lang.org/) is a great resource for learning Cairo as well as diving deeper into specific features of Cairo.
 * [Cairo Documentation](https://docs.cairo-lang.org/) explains the language's constructs and semantics.
 * [Cairo by Example](https://cairo-by-example.com/) shows you examples of the most common things you will be writing in Cairo.
 * [Node Guardians](https://nodeguardians.io/campaigns?f=3%3D2) "A fantasy themed learning platform for Smart Contract developers."
-* [Starknet by Example](https://starknet-by-example.voyager.online/) a collection of examples of how to use the Cairo programming language to create smart contracts on Starknet.
-* [Starklings](https://github.com/carols10cents/rustlings) "A web-based interactive tutorial to learn Cairo and Starknet."
-* [Awesome Starknet](https://github.com/keep-starknet-strange/awesome-starknet) "A curated list of awesome StarkNet resources, libraries, tools and more".
 * The [Cairo Community Forum](https://community.cairo-lang.org/) answers questions of all levels.
