@@ -160,6 +160,8 @@ fn moving_east_and_north() {
     assert_eq!(robot_end.direction(), @Direction::North);
 }
 
+// Enables printing i32 values in tests.
+// Note that this will soon be added to the core library.
 impl IDebug of Debug<i32> {
     fn fmt(self: @i32, ref f: Formatter) -> Result<(), Error> {
         if *self < 0 {

@@ -76,6 +76,8 @@ mod manhattan {
     use low_power_embedded_game::{Position, PositionTrait};
     use core::fmt::{Debug, Formatter, Error};
 
+    // Enables printing i16 values in tests.
+    // Note that this will soon be added to the core library.
     impl IDebug of Debug<i16> {
         fn fmt(self: @i16, ref f: Formatter) -> Result<(), Error> {
             if *self < 0 {
