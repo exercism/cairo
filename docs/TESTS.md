@@ -12,7 +12,12 @@ If you would like to split your solution into several files, consult The Cairo B
 
 ## Running Tests
 
-To run the tests, all you need to do is run the following command:
+To run the tests, first you need to change your working directory to the directory of the exercise you want to test:
+```bash
+cd path/to/exercise
+```
+
+And then run the following command:
 
 ```bash
 $ scarb cairo-test
@@ -25,20 +30,10 @@ You can also remove the flag from all the tests at once if you prefer.
 Feel free to write as little code as possible to get the tests to pass.
 The test failures will guide you to what should be written next.
 
-Because Rust checks all code at compile time, you may find that your tests won't compile until you write the required code.
+Because Cairo checks all code at compile time, you may find that your tests won't compile until you write the required code.
 Even `ignore`d tests are checked at compile time.
 You can [comment out][comments] tests that won't compile by starting each line with a `//`.
 Then, when you're ready to work on that test, you can un-comment it.
-Rust also has a special macro called `todo!()`, which you can use on unfinished code paths to make your program compile.
+Cairo also has a special macro called `panic!()`, which you can use on unfinished code paths to make your program compile.
 
-[comments]: https://doc.rust-lang.org/book/ch03-04-comments.html
-
-## Using libraries
-
-You should be able to solve most exercises without using any external libraries.
-Nevertheless, you can add libraries (the Rust community calls them **crates**) by running `cargo add crate-name` in the directory of an exercise.
-
-The automatic tests on the website only support a predefined set of crates, which can be found [here][local-registry] under the section `[dependencies]`.
-Feel free to open an issue or pull request if you would like support for a specific crate to be added.
-
-[local-registry]: https://github.com/exercism/rust-test-runner/blob/main/local-registry/Cargo.toml
+[comments]: https://book.cairo-lang.org/ch02-04-comments.html
