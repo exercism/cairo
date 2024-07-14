@@ -1,7 +1,7 @@
 {
-    "blurb": "<todo>",
+    "blurb": "As in most other programming languages, a Boolean type in Cairo has two possible values: true and false.",
     "authors": [
-        "misicnenad"
+        "rajeebkm"
     ],
     "contributors": []
 }

@@ -1,5 +1,3 @@
-use core::fmt::{Debug, Formatter, Error};
-
 #[derive(Drop, Debug)]
 struct Rational {}
 
@@ -66,27 +64,6 @@ impl RationalPow of RationalPowTrait {
     fn rpow(self: @u128, power: Rational) -> u128 {
         panic!()
     }
-}
-
-// Enables printing i128 values in tests.
-// Note that this will soon be added to the core library.
-impl I128Debug of Debug<i128> {
-    fn fmt(self: @i128, ref f: Formatter) -> Result<(), Error> {
-        if *self < 0 {
-            f.buffer.append(@"-");
-        };
-        f.buffer.append(@format!("{}", abs(*self)));
-        Result::Ok(())
-    }
-}
-
-fn abs(n: i128) -> u128 {
-    let val = if n < 0 {
-        n * -1
-    } else {
-        n
-    };
-    val.try_into().unwrap()
 }
 
 #[cfg(test)]

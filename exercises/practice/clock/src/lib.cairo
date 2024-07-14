@@ -1,5 +1,5 @@
 #[derive(Drop, PartialEq, Debug)]
-pub struct Clock {}
+struct Clock {}
 
 #[generate_trait]
 impl ClockImpl of ClockTrait {

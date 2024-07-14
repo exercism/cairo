@@ -1,7 +1,7 @@
 use core::fmt::{Display, Formatter, Error};
 
 #[derive(Drop, PartialEq, Debug)]
-pub struct Clock {
+struct Clock {
     minutes: u32,
 }
 
