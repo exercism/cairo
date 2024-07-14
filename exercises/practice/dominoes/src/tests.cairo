@@ -120,12 +120,14 @@ fn empty_input_empty_output() {
 }
 
 #[test]
+#[ignore]
 fn singleton_input_singleton_output() {
     let input: Array<Domino> = array![(1, 1)];
     assert_correct(@input);
 }
 
 #[test]
+#[ignore]
 fn singleton_that_cant_be_chained() {
     let input: Array<Domino> = array![(1, 2)];
     let none: Option<Array<Domino>> = Option::None;
@@ -133,18 +135,21 @@ fn singleton_that_cant_be_chained() {
 }
 
 #[test]
+#[ignore]
 fn three_elements() {
     let input: Array<Domino> = array![(1, 2), (3, 1), (2, 3)];
     assert_correct(@input);
 }
 
 #[test]
+#[ignore]
 fn can_reverse_dominoes() {
     let input: Array<Domino> = array![(1, 2), (1, 3), (2, 3)];
     assert_correct(@input);
 }
 
 #[test]
+#[ignore]
 fn cant_be_chained() {
     let input: Array<Domino> = array![(1, 2), (4, 1), (2, 3)];
     let none: Option<Array<Domino>> = Option::None;
@@ -152,6 +157,7 @@ fn cant_be_chained() {
 }
 
 #[test]
+#[ignore]
 fn disconnected_simple() {
     let input: Array<Domino> = array![(1, 1), (2, 2)];
     let none: Option<Array<Domino>> = Option::None;
@@ -159,6 +165,7 @@ fn disconnected_simple() {
 }
 
 #[test]
+#[ignore]
 fn disconnected_double_loop() {
     let input: Array<Domino> = array![(1, 2), (2, 1), (3, 4), (4, 3)];
     let none: Option<Array<Domino>> = Option::None;
@@ -166,6 +173,7 @@ fn disconnected_double_loop() {
 }
 
 #[test]
+#[ignore]
 fn disconnected_single_isolated() {
     let input: Array<Domino> = array![(1, 2), (2, 3), (3, 1), (4, 4)];
     let none: Option<Array<Domino>> = Option::None;
@@ -173,24 +181,28 @@ fn disconnected_single_isolated() {
 }
 
 #[test]
+#[ignore]
 fn need_backtrack() {
     let input: Array<Domino> = array![(1, 2), (2, 3), (3, 1), (2, 4), (2, 4)];
     assert_correct(@input);
 }
 
 #[test]
+#[ignore]
 fn separate_loops() {
     let input: Array<Domino> = array![(1, 2), (2, 3), (3, 1), (1, 1), (2, 2), (3, 3)];
     assert_correct(@input);
 }
 
 #[test]
+#[ignore]
 fn pop_same_value_first() {
     let input: Array<Domino> = array![(2, 3), (3, 1), (1, 1), (2, 2), (3, 3), (2, 1)];
     assert_correct(@input);
 }
 
 #[test]
+#[ignore]
 fn nine_elements() {
     let input: Array<Domino> = array![
         (1, 2), (5, 3), (3, 1), (1, 2), (2, 4), (1, 6), (2, 3), (3, 4), (5, 6),
@@ -199,6 +211,7 @@ fn nine_elements() {
 }
 
 #[test]
+#[ignore]
 fn separate_three_domino_loops() {
     let input: Array<Domino> = array![(1, 2), (2, 3), (3, 1), (4, 5), (5, 6), (6, 4)];
     let none: Option<Array<Domino>> = Option::None;
