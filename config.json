@@ -15,9 +15,6 @@
     "indent_size": 4,
     "highlightjs_language": "rust"
   },
-  "test_runner": {
-    "average_run_time": 2
-  },
   "files": {
     "solution": [
       "src/lib.cairo",
@@ -300,29 +297,9 @@
   },
   "concepts": [
     {
-      "uuid": "4eb800f7-f6c5-4b28-8492-229b6a51829e",
-      "slug": "strings",
-      "name": "Strings"
-    },
-    {
-      "uuid": "9f7e96c1-a3ab-4ab9-b021-563453b1e664",
-      "slug": "integers",
-      "name": "Integers"
-    },
-    {
-      "uuid": "fe33b75a-8064-419d-9e09-16b49e6a5c6d",
-      "slug": "felts",
-      "name": "Felt Type"
-    },
-    {
-      "uuid": "9be30113-b4fe-4cdd-9894-9afd593f2a90",
-      "slug": "generics",
-      "name": "Generic Types"
-    },
-    {
-      "uuid": "7e7b772a-2b3e-47d7-96ef-807a4d5b3545",
-      "slug": "dictionaries",
-      "name": "Dictionaries"
+      "uuid": "6b6dafdb-7868-4089-855a-eb6735b5de5c",
+      "slug": "arrays",
+      "name": "Arrays"
     },
     {
       "uuid": "de254443-42ee-4787-bc1e-3d0d2039c4f5",
@@ -330,9 +307,14 @@
       "name": "The Boolean Type"
     },
     {
-      "uuid": "6ba0e79b-9e70-4116-8f26-cce676a7b05e",
-      "slug": "functions",
-      "name": "Functions"
+      "uuid": "887864e6-8d80-433c-8a1e-b11a5f79ae35",
+      "slug": "control-flow",
+      "name": "Control Flow"
+    },
+    {
+      "uuid": "7e7b772a-2b3e-47d7-96ef-807a4d5b3545",
+      "slug": "dictionaries",
+      "name": "Dictionaries"
     },
     {
       "uuid": "cff7568f-423e-4d6b-b238-1ebbce31d991",
@@ -340,59 +322,34 @@
       "name": "Enums"
     },
     {
-      "uuid": "2cc6431d-fc19-47f3-b7f1-999ed16e5244",
-      "slug": "match-basics",
-      "name": "Match Basics"
-    },
-    {
-      "uuid": "52684fe6-9b8d-4974-8de4-f65d42fbf9c1",
-      "slug": "packages-crates-modules",
-      "name": "Packages, Crates and Modules"
-    },
-    {
-      "uuid": "887864e6-8d80-433c-8a1e-b11a5f79ae35",
-      "slug": "control-flow",
-      "name": "Control Flow"
-    },
-    {
-      "uuid": "4665675b-1abe-47ea-9701-32fb0220c159",
-      "slug": "tuples",
-      "name": "The Tuple Type"
-    },
-    {
-      "uuid": "fe83c9a6-cf50-47b1-9993-21ddd1e895ee",
-      "slug": "traits",
-      "name": "Traits"
-    },
-    {
-      "uuid": "4e1f6433-3125-4428-837d-47b0c10fddea",
-      "slug": "structs",
-      "name": "Structs"
-    },
-    {
-      "uuid": "0b069f59-f8b4-4979-935a-c3172538f4c9",
-      "slug": "operator-overload",
-      "name": "Operator Overload"
-    },
-    {
-      "uuid": "b0ea24b3-3520-42c2-9177-0550247fa2bd",
-      "slug": "type-conversion",
-      "name": "Type Conversion"
-    },
-    {
-      "uuid": "6b6dafdb-7868-4089-855a-eb6735b5de5c",
-      "slug": "arrays",
-      "name": "Arrays"
-    },
-    {
       "uuid": "cf49c14b-ed9a-4df6-a43a-3923e8489900",
       "slug": "error-handling",
       "name": "Error Handling"
     },
     {
-      "uuid": "fe81e75b-b4d2-4ee8-9aaa-271e76468d0b",
-      "slug": "printing",
-      "name": "Printing"
+      "uuid": "fe33b75a-8064-419d-9e09-16b49e6a5c6d",
+      "slug": "felts",
+      "name": "Felt Type"
+    },
+    {
+      "uuid": "6ba0e79b-9e70-4116-8f26-cce676a7b05e",
+      "slug": "functions",
+      "name": "Functions"
+    },
+    {
+      "uuid": "9be30113-b4fe-4cdd-9894-9afd593f2a90",
+      "slug": "generics",
+      "name": "Generic Types"
+    },
+    {
+      "uuid": "9f7e96c1-a3ab-4ab9-b021-563453b1e664",
+      "slug": "integers",
+      "name": "Integers"
+    },
+    {
+      "uuid": "2cc6431d-fc19-47f3-b7f1-999ed16e5244",
+      "slug": "match-basics",
+      "name": "Match Basics"
     },
     {
       "uuid": "8a4a6525-c1e4-44f5-ab6b-cf5d8ce6701e",
@@ -400,14 +357,54 @@
       "name": "Mutability"
     },
     {
+      "uuid": "0b069f59-f8b4-4979-935a-c3172538f4c9",
+      "slug": "operator-overload",
+      "name": "Operator Overload"
+    },
+    {
       "uuid": "c11a8aa5-cda4-4d02-a477-3db3d3ca5acf",
       "slug": "ownership",
       "name": "Ownership"
     },
     {
+      "uuid": "52684fe6-9b8d-4974-8de4-f65d42fbf9c1",
+      "slug": "packages-crates-modules",
+      "name": "Packages, Crates and Modules"
+    },
+    {
+      "uuid": "fe81e75b-b4d2-4ee8-9aaa-271e76468d0b",
+      "slug": "printing",
+      "name": "Printing"
+    },
+    {
       "uuid": "7e322172-04ba-43f8-aba9-8ae999372b90",
       "slug": "smart-pointers",
       "name": "Smart Pointers"
+    },
+    {
+      "uuid": "4eb800f7-f6c5-4b28-8492-229b6a51829e",
+      "slug": "strings",
+      "name": "Strings"
+    },
+    {
+      "uuid": "4e1f6433-3125-4428-837d-47b0c10fddea",
+      "slug": "structs",
+      "name": "Structs"
+    },
+    {
+      "uuid": "fe83c9a6-cf50-47b1-9993-21ddd1e895ee",
+      "slug": "traits",
+      "name": "Traits"
+    },
+    {
+      "uuid": "b0ea24b3-3520-42c2-9177-0550247fa2bd",
+      "slug": "type-conversion",
+      "name": "Type Conversion"
+    },
+    {
+      "uuid": "4665675b-1abe-47ea-9701-32fb0220c159",
+      "slug": "tuples",
+      "name": "The Tuple Type"
     }
   ],
   "key_features": [
@@ -444,7 +441,6 @@
   ],
   "tags": [
     "execution_mode/compiled",
-    "paradigm/functional",
     "paradigm/imperative",
     "paradigm/procedural",
     "platform/linux",
@@ -455,6 +451,7 @@
     "typing/strong",
     "used_for/artificial_intelligence",
     "used_for/backends",
+    "used_for/cross_platform_development",
     "used_for/financial_systems",
     "used_for/games",
     "used_for/web_development"
