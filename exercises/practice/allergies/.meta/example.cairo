@@ -1,3 +1,4 @@
+use core::traits::TryInto;
 #[derive(Drop)]
 struct Allergies {
     score: u32,
@@ -60,19 +61,15 @@ impl AllergiesImpl of AllergiesTrait {
     }
 }
 
-fn pow<
-    T, +SubEq<T>, +Into<u8, T>, +Into<T, u256>, +TryInto<u256, T>, +PartialEq<T>, +Copy<T>, +Drop<T>
->(
-    base: T, mut power: T
-) -> T {
-    if base == 0_u8.into() {
+fn pow(base: u32, mut power: u32) -> u32 {
+    if base == 0 {
         return base;
     }
     let base: u256 = base.into();
-    let mut result: u256 = 1;
-    while power != 0_u8.into() {
+    let mut result = 1_u256;
+    while power != 0 {
         result *= base;
-        power -= 1_u8.into();
+        power -= 1;
     };
     result.try_into().expect('too large to fit output type')
 }
