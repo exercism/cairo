@@ -1,1 +1,8 @@
-TODO: add snippet
+fn hello() -> felt252 {
+    'Hello, World!'
+}
+
+fn main() {
+    let greeting: felt252 = hello();
+    println!("{greeting}");
+}
