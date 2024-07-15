@@ -2,6 +2,3 @@
 name = "allergies"
 version = "0.1.0"
 edition = "2023_11"
-
-[dependencies]
-alexandria_math = { git = "https://github.com/keep-starknet-strange/alexandria.git" }

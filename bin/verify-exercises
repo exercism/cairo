@@ -45,7 +45,7 @@ verify_exercise() {
         cp "$lib_cairo" "$tmp_file"
         cp "$solution_file" "$lib_cairo"
 
-        scarb cairo-test
+        scarb cairo-test --include-ignored
 
         cp "$tmp_file" "$lib_cairo"
     done

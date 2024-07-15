@@ -8,6 +8,7 @@ fn pop_gets_element_from_the_list() {
 }
 
 #[test]
+#[ignore]
 fn push_pop_respectively_add_remove_at_the_end_of_the_list() {
     let mut list = DoublyLinkedList::<u32>::new();
     list.push(11);
@@ -17,6 +18,7 @@ fn push_pop_respectively_add_remove_at_the_end_of_the_list() {
 }
 
 #[test]
+#[ignore]
 fn shift_gets_an_element_from_the_list() {
     let mut list = DoublyLinkedList::<u32>::new();
     list.push(17);
@@ -24,6 +26,7 @@ fn shift_gets_an_element_from_the_list() {
 }
 
 #[test]
+#[ignore]
 fn shift_gets_first_element_from_the_list() {
     let mut list = DoublyLinkedList::<u32>::new();
     list.push(23);
@@ -33,6 +36,7 @@ fn shift_gets_first_element_from_the_list() {
 }
 
 #[test]
+#[ignore]
 fn unshift_adds_element_at_start_of_the_list() {
     let mut list = DoublyLinkedList::<u32>::new();
     list.unshift(23);
@@ -42,6 +46,7 @@ fn unshift_adds_element_at_start_of_the_list() {
 }
 
 #[test]
+#[ignore]
 fn pop_push_shift_and_unshift_can_be_used_in_any_order() {
     let mut list = DoublyLinkedList::<u32>::new();
     list.push(1);
@@ -57,12 +62,14 @@ fn pop_push_shift_and_unshift_can_be_used_in_any_order() {
 }
 
 #[test]
+#[ignore]
 fn count_an_empty_list() {
     let mut list = DoublyLinkedList::<u32>::new();
     assert_eq!(list.len(), 0);
 }
 
 #[test]
+#[ignore]
 fn count_a_list_with_items() {
     let mut list = DoublyLinkedList::<u32>::new();
     list.push(37);
@@ -71,6 +78,7 @@ fn count_a_list_with_items() {
 }
 
 #[test]
+#[ignore]
 fn count_is_correct_after_mutation() {
     let mut list = DoublyLinkedList::<u32>::new();
     list.push(31);
@@ -84,6 +92,7 @@ fn count_is_correct_after_mutation() {
 }
 
 #[test]
+#[ignore]
 fn popping_to_empty_doesnt_break_the_list() {
     let mut list = DoublyLinkedList::<u32>::new();
     list.push(41);
@@ -96,6 +105,7 @@ fn popping_to_empty_doesnt_break_the_list() {
 }
 
 #[test]
+#[ignore]
 fn shifting_to_empty_doesnt_break_the_list() {
     let mut list = DoublyLinkedList::<u32>::new();
     list.push(41);
@@ -108,6 +118,7 @@ fn shifting_to_empty_doesnt_break_the_list() {
 }
 
 #[test]
+#[ignore]
 fn deletes_the_only_element() {
     let mut list = DoublyLinkedList::<u32>::new();
     list.push(61);
@@ -116,6 +127,7 @@ fn deletes_the_only_element() {
 }
 
 #[test]
+#[ignore]
 fn deletes_the_element_with_the_specified_value_from_the_list() {
     let mut list = DoublyLinkedList::<u32>::new();
     list.push(71);
@@ -128,6 +140,7 @@ fn deletes_the_element_with_the_specified_value_from_the_list() {
 }
 
 #[test]
+#[ignore]
 fn deletes_the_element_with_the_specified_value_from_the_list_reassigns_tail() {
     let mut list = DoublyLinkedList::<u32>::new();
     list.push(71);
@@ -140,6 +153,7 @@ fn deletes_the_element_with_the_specified_value_from_the_list_reassigns_tail() {
 }
 
 #[test]
+#[ignore]
 fn deletes_the_element_with_the_specified_value_from_the_list_reassigns_head() {
     let mut list = DoublyLinkedList::<u32>::new();
     list.push(71);
@@ -152,6 +166,7 @@ fn deletes_the_element_with_the_specified_value_from_the_list_reassigns_head() {
 }
 
 #[test]
+#[ignore]
 fn deletes_the_first_of_two_elements() {
     let mut list = DoublyLinkedList::<u32>::new();
     list.push(97);
@@ -162,6 +177,7 @@ fn deletes_the_first_of_two_elements() {
 }
 
 #[test]
+#[ignore]
 fn deletes_the_second_of_two_elements() {
     let mut list = DoublyLinkedList::<u32>::new();
     list.push(97);
@@ -172,6 +188,7 @@ fn deletes_the_second_of_two_elements() {
 }
 
 #[test]
+#[ignore]
 fn delete_does_not_modify_the_list_if_the_element_is_not_found() {
     let mut list = DoublyLinkedList::<u32>::new();
     list.push(89);
@@ -198,6 +215,7 @@ fn can_return_with_pop_and_then_return_option_none_if_empty() {
 }
 
 #[test]
+#[ignore]
 fn deletes_only_the_first_occurrence() {
     let mut list = DoublyLinkedList::<u32>::new();
     list.push(73);
