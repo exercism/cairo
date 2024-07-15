@@ -1,7 +1,5 @@
-use alexandria_math::armstrong_number;
-
 fn is_armstrong_number(num: u128) -> bool {
-    armstrong_number::is_armstrong_number(num.into())
+    panic!("true if {num} is an armstrong number")
 }
 
 #[cfg(test)]

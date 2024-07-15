@@ -1,5 +1,3 @@
-use alexandria_math::pow;
-
 #[derive(Drop)]
 struct Allergies {
     score: u32,
@@ -60,6 +58,23 @@ impl AllergiesImpl of AllergiesTrait {
             Allergen::Cats,
         ]
     }
+}
+
+fn pow<
+    T, +SubEq<T>, +Into<u8, T>, +Into<T, u256>, +TryInto<u256, T>, +PartialEq<T>, +Copy<T>, +Drop<T>
+>(
+    base: T, mut power: T
+) -> T {
+    if base == 0_u8.into() {
+        return base;
+    }
+    let base: u256 = base.into();
+    let mut result: u256 = 1;
+    while power != 0_u8.into() {
+        result *= base;
+        power -= 1_u8.into();
+    };
+    result.try_into().expect('too large to fit output type')
 }
 
 #[cfg(test)]

@@ -1,30 +1,27 @@
+/// various log levels
 #[derive(Drop)]
 enum LogLevel {
     Info,
     Warning,
     Error,
-    Debug,
+    Debug
 }
 
+/// primary function for emitting logs
 fn log(level: LogLevel, message: ByteArray) -> ByteArray {
-    match level {
-        LogLevel::Info => info(message),
-        LogLevel::Warning => warn(message),
-        LogLevel::Error => error(message),
-        LogLevel::Debug => format!("[DEBUG]: {message}"),
-    }
+    panic!("return a message for the given log level")
 }
 
 fn info(message: ByteArray) -> ByteArray {
-    format!("[INFO]: {message}")
+    panic!("return a message for info log level")
 }
 
 fn warn(message: ByteArray) -> ByteArray {
-    format!("[WARNING]: {message}")
+    panic!("return a message for warn log level")
 }
 
 fn error(message: ByteArray) -> ByteArray {
-    format!("[ERROR]: {message}")
+    panic!("return a message for error log level")
 }
 
 #[cfg(test)]
