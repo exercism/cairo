@@ -1,6 +1,6 @@
 # Learning
 
-Cairo is the first Turing-complete language for creating provable programs for general computation. It is a Rust-like high-level language. Like Rust, it is intended to allow developers to easily write code that is efficient and safe. Cairo is particularly well-suited for use in a permissionless network like [Starknet](https://www.starknet.io/), where it can provide robust DoS protection and censorship resistance.
+Cairo is the first Turing-complete language for creating provable programs for general computation. It is a Rust-like high-level language. Like Rust, it is intended to allow developers to easily write code that is efficient and safe.
 
 We think the best way to learn is to play and to practice, either by creating your own coding projects, or by solving small problems like the ones here on Exercism!
 
