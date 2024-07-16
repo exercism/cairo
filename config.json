@@ -8,7 +8,7 @@
     "representer": false,
     "analyzer": false
   },
-  "blurb": "Cairo is a general purpose language for writing ZK provable programs, without the need for a deep understanding of ZK concepts. Cairo is most often used for building trustless applications on Starknet.",
+  "blurb": "Cairo is a general purpose language for writing zero-knowledge provable programs, without the need for a deep understanding of zero-knowledge concepts.",
   "version": 3,
   "online_editor": {
     "indent_style": "space",
@@ -430,7 +430,7 @@
     },
     {
       "title": "General purpose",
-      "content": "From onchain gaming to provable ML, Cairo makes building trustless applications possible.",
+      "content": "From blockchain gaming to provable ML, Cairo makes building trustless applications possible.",
       "icon": "general-purpose"
     },
     {
