@@ -40,7 +40,7 @@ It is evident from this example that each variant in the `Direction` enum has an
 
 ## Complex example of an enum combined with custom types
 
-An enum can be declared with a combination of custom data types as its variants. In the example below, `Action` is the complex enum that as a collection of `Quit`, `Direction`, `SendMessage`, `ChangeAvatar`, and `ProfileState`.
+An enum can be declared with a combination of custom data types as its variants. In the example below, `Action` is the complex enum that as a collection of `Quit`, `Direction`, `SendMessage`, `ChangeAvatar`, and `ProfileState` as variants.
 
 ```Rust
     #[derive(Drop)]
@@ -121,7 +121,7 @@ enum Option<T> {
 
 The `Option` enum is helpful because it allows you to explicitly represent the possibility of a value being absent, making your code more expressive and easier to reason about. Using `Option` can also help prevent bugs caused by using uninitialized or unexpected `null` values.
 
-The function below shows how the `Option` enum is used to return the first elements of an array with a given value, or return `None` if the element is absent.
+The function below shows how the `Option` enum is used to return the first element of an array with a given value, or return `None` if the element is absent.
 
 ```Rust
 fn find_value_iterative(mut arr: Span<felt252>, value: felt252) -> Option<usize> {
