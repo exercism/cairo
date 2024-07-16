@@ -70,7 +70,7 @@ enum Action {
 
 ## Trait Implementations for Enums
 
-In Cairo, traits can be defined and implemented on custom enums. This allows for you to define methods and attributes associated with an enum. We will first define a `Message` enum and implement a `Processing` trait for it:
+In Cairo, traits can be defined and implemented on custom enums. This allows for you to define methods and attributes associated with an enum. Below is an example of this where we define a `Message` enum and implement a `Processing` trait for it:
 
 ```Rust
 #[derive(Drop)]
@@ -95,16 +95,14 @@ impl ProcessingImpl of Processing {
 }
 ```
 
-In many situations, enums can come in handy especially when used with the `match` flow as used above in the traits implementation. Read more about the `match` flow in [The Cairo Book](https://book.cairo-lang.org/ch06-02-the-match-control-flow-construct.html).
-
-Here is how it could be used to process a `Quit` message:
+Here is how the trait could be used to process a `Quit` message:
 
 ```Rust
 let msg: Message = Message::Quit;
-msg.process();
+msg.process(); // prints "quitting"
 ```
 
-Running this code would print `quitting`.
+In many situations, enums can come in handy especially when used with the `match` flow as used above in the traits implementation. Read more about the `match` flow in [The Cairo Book](https://book.cairo-lang.org/ch06-02-the-match-control-flow-construct.html).
 
 ## The `Option` Enum and Its Advantages
 
