@@ -10,30 +10,35 @@ fn sets_with_no_elements_are_empty() {
 }
 
 #[test]
+#[ignore]
 fn sets_with_elements_are_not_empty() {
     let set = U32Set::new(@array![1]);
     assert!(!set.is_empty());
 }
 
 #[test]
+#[ignore]
 fn nothing_is_contained_in_an_empty_set() {
     let set = U32Set::new(@array![]);
     assert!(!set.contains(@1));
 }
 
 #[test]
+#[ignore]
 fn when_the_element_is_in_the_set() {
     let set = U32Set::new(@array![1, 2, 3]);
     assert!(set.contains(@1));
 }
 
 #[test]
+#[ignore]
 fn when_the_element_is_not_in_the_set() {
     let set = U32Set::new(@array![1, 2, 3]);
     assert!(!set.contains(@4));
 }
 
 #[test]
+#[ignore]
 fn empty_set_is_a_subset_of_another_empty_set() {
     let set_1 = U32Set::new(@array![]);
     let set_2 = U32Set::new(@array![]);
@@ -41,6 +46,7 @@ fn empty_set_is_a_subset_of_another_empty_set() {
 }
 
 #[test]
+#[ignore]
 fn empty_set_is_a_subset_of_non_empty_set() {
     let set_1 = U32Set::new(@array![]);
     let set_2 = U32Set::new(@array![1]);
@@ -48,6 +54,7 @@ fn empty_set_is_a_subset_of_non_empty_set() {
 }
 
 #[test]
+#[ignore]
 fn non_empty_set_is_not_a_subset_of_empty_set() {
     let set_1 = U32Set::new(@array![1]);
     let set_2 = U32Set::new(@array![]);
@@ -55,6 +62,7 @@ fn non_empty_set_is_not_a_subset_of_empty_set() {
 }
 
 #[test]
+#[ignore]
 fn set_is_a_subset_of_set_with_exact_same_elements() {
     let set_1 = U32Set::new(@array![1, 2, 3]);
     let set_2 = U32Set::new(@array![1, 2, 3]);
@@ -62,6 +70,7 @@ fn set_is_a_subset_of_set_with_exact_same_elements() {
 }
 
 #[test]
+#[ignore]
 fn set_is_a_subset_of_larger_set_with_same_elements() {
     let set_1 = U32Set::new(@array![1, 2, 3]);
     let set_2 = U32Set::new(@array![4, 1, 2, 3]);
@@ -69,6 +78,7 @@ fn set_is_a_subset_of_larger_set_with_same_elements() {
 }
 
 #[test]
+#[ignore]
 fn set_is_not_a_subset_of_set_that_does_not_contain_its_elements() {
     let set_1 = U32Set::new(@array![1, 2, 3]);
     let set_2 = U32Set::new(@array![4, 1, 3]);
@@ -76,6 +86,7 @@ fn set_is_not_a_subset_of_set_that_does_not_contain_its_elements() {
 }
 
 #[test]
+#[ignore]
 fn the_empty_set_is_disjoint_with_itself() {
     let set_1 = U32Set::new(@array![]);
     let set_2 = U32Set::new(@array![]);
@@ -83,6 +94,7 @@ fn the_empty_set_is_disjoint_with_itself() {
 }
 
 #[test]
+#[ignore]
 fn empty_set_is_disjoint_with_non_empty_set() {
     let set_1 = U32Set::new(@array![]);
     let set_2 = U32Set::new(@array![1]);
@@ -90,6 +102,7 @@ fn empty_set_is_disjoint_with_non_empty_set() {
 }
 
 #[test]
+#[ignore]
 fn non_empty_set_is_disjoint_with_empty_set() {
     let set_1 = U32Set::new(@array![1]);
     let set_2 = U32Set::new(@array![]);
@@ -97,6 +110,7 @@ fn non_empty_set_is_disjoint_with_empty_set() {
 }
 
 #[test]
+#[ignore]
 fn sets_are_not_disjoint_if_they_share_an_element() {
     let set_1 = U32Set::new(@array![1, 2]);
     let set_2 = U32Set::new(@array![2, 3]);
@@ -104,6 +118,7 @@ fn sets_are_not_disjoint_if_they_share_an_element() {
 }
 
 #[test]
+#[ignore]
 fn sets_are_disjoint_if_they_share_no_elements() {
     let set_1 = U32Set::new(@array![1, 2]);
     let set_2 = U32Set::new(@array![3, 4]);
@@ -111,6 +126,7 @@ fn sets_are_disjoint_if_they_share_no_elements() {
 }
 
 #[test]
+#[ignore]
 fn empty_sets_are_equal() {
     let set_1 = U32Set::new(@array![]);
     let set_2 = U32Set::new(@array![]);
@@ -118,6 +134,7 @@ fn empty_sets_are_equal() {
 }
 
 #[test]
+#[ignore]
 fn empty_set_is_not_equal_to_non_empty_set() {
     let set_1 = U32Set::new(@array![]);
     let set_2 = U32Set::new(@array![1, 2, 3]);
@@ -125,6 +142,7 @@ fn empty_set_is_not_equal_to_non_empty_set() {
 }
 
 #[test]
+#[ignore]
 fn non_empty_set_is_not_equal_to_empty_set() {
     let set_1 = U32Set::new(@array![1, 2, 3]);
     let set_2 = U32Set::new(@array![]);
@@ -132,6 +150,7 @@ fn non_empty_set_is_not_equal_to_empty_set() {
 }
 
 #[test]
+#[ignore]
 fn sets_with_the_same_elements_are_equal() {
     let set_1 = U32Set::new(@array![1, 2]);
     let set_2 = U32Set::new(@array![2, 1]);
@@ -139,6 +158,7 @@ fn sets_with_the_same_elements_are_equal() {
 }
 
 #[test]
+#[ignore]
 fn sets_with_different_elements_are_not_equal() {
     let set_1 = U32Set::new(@array![1, 2, 3]);
     let set_2 = U32Set::new(@array![1, 2, 4]);
@@ -146,6 +166,7 @@ fn sets_with_different_elements_are_not_equal() {
 }
 
 #[test]
+#[ignore]
 fn set_is_not_equal_to_larger_set_with_same_elements() {
     let set_1 = U32Set::new(@array![1, 2, 3]);
     let set_2 = U32Set::new(@array![1, 2, 3, 4]);
@@ -153,6 +174,7 @@ fn set_is_not_equal_to_larger_set_with_same_elements() {
 }
 
 #[test]
+#[ignore]
 fn set_is_equal_to_a_set_constructed_from_an_array_with_duplicates() {
     let set_1 = U32Set::new(@array![1]);
     let set_2 = U32Set::new(@array![1, 1]);
@@ -160,6 +182,7 @@ fn set_is_equal_to_a_set_constructed_from_an_array_with_duplicates() {
 }
 
 #[test]
+#[ignore]
 fn add_to_empty_set() {
     let mut set = U32Set::new(@array![]);
     set.add(3);
@@ -168,6 +191,7 @@ fn add_to_empty_set() {
 }
 
 #[test]
+#[ignore]
 fn add_to_non_empty_set() {
     let mut set = U32Set::new(@array![1, 2, 4]);
     set.add(3);
@@ -176,6 +200,7 @@ fn add_to_non_empty_set() {
 }
 
 #[test]
+#[ignore]
 fn adding_an_existing_element_does_not_change_the_set() {
     let mut set = U32Set::new(@array![1, 2, 3]);
     set.add(3);
@@ -184,6 +209,7 @@ fn adding_an_existing_element_does_not_change_the_set() {
 }
 
 #[test]
+#[ignore]
 fn intersection_of_two_empty_sets_is_an_empty_set() {
     let set_1 = U32Set::new(@array![]);
     let set_2 = U32Set::new(@array![]);
@@ -192,6 +218,7 @@ fn intersection_of_two_empty_sets_is_an_empty_set() {
 }
 
 #[test]
+#[ignore]
 fn intersection_of_an_empty_set_and_non_empty_set_is_an_empty_set() {
     let set_1 = U32Set::new(@array![]);
     let set_2 = U32Set::new(@array![3, 2, 5]);
@@ -200,6 +227,7 @@ fn intersection_of_an_empty_set_and_non_empty_set_is_an_empty_set() {
 }
 
 #[test]
+#[ignore]
 fn intersection_of_a_non_empty_set_and_an_empty_set_is_an_empty_set() {
     let set_1 = U32Set::new(@array![1, 2, 3, 4]);
     let set_2 = U32Set::new(@array![]);
@@ -208,6 +236,7 @@ fn intersection_of_a_non_empty_set_and_an_empty_set_is_an_empty_set() {
 }
 
 #[test]
+#[ignore]
 fn intersection_of_two_sets_with_no_shared_elements_is_an_empty_set() {
     let set_1 = U32Set::new(@array![1, 2, 3]);
     let set_2 = U32Set::new(@array![4, 5, 6]);
@@ -216,6 +245,7 @@ fn intersection_of_two_sets_with_no_shared_elements_is_an_empty_set() {
 }
 
 #[test]
+#[ignore]
 fn intersection_of_two_sets_with_shared_elements_is_a_set_of_the_shared_elements() {
     let set_1 = U32Set::new(@array![1, 2, 3, 4]);
     let set_2 = U32Set::new(@array![3, 2, 5]);
@@ -224,6 +254,7 @@ fn intersection_of_two_sets_with_shared_elements_is_a_set_of_the_shared_elements
 }
 
 #[test]
+#[ignore]
 fn difference_of_two_empty_sets_is_an_empty_set() {
     let set_1 = U32Set::new(@array![]);
     let set_2 = U32Set::new(@array![]);
@@ -232,6 +263,7 @@ fn difference_of_two_empty_sets_is_an_empty_set() {
 }
 
 #[test]
+#[ignore]
 fn difference_of_empty_set_and_non_empty_set_is_an_empty_set() {
     let set_1 = U32Set::new(@array![]);
     let set_2 = U32Set::new(@array![3, 2, 5]);
@@ -240,6 +272,7 @@ fn difference_of_empty_set_and_non_empty_set_is_an_empty_set() {
 }
 
 #[test]
+#[ignore]
 fn difference_of_a_non_empty_set_and_an_empty_set_is_the_non_empty_set() {
     let set_1 = U32Set::new(@array![1, 2, 3, 4]);
     let set_2 = U32Set::new(@array![]);
@@ -248,6 +281,7 @@ fn difference_of_a_non_empty_set_and_an_empty_set_is_the_non_empty_set() {
 }
 
 #[test]
+#[ignore]
 fn difference_of_two_non_empty_sets_is_a_set_of_elements_that_are_only_in_the_first_set() {
     let set_1 = U32Set::new(@array![3, 2, 1]);
     let set_2 = U32Set::new(@array![2, 4]);
@@ -256,6 +290,7 @@ fn difference_of_two_non_empty_sets_is_a_set_of_elements_that_are_only_in_the_fi
 }
 
 #[test]
+#[ignore]
 fn difference_removes_all_duplicates_in_the_first_set() {
     let set_1 = U32Set::new(@array![1, 1]);
     let set_2 = U32Set::new(@array![1]);
@@ -264,6 +299,7 @@ fn difference_removes_all_duplicates_in_the_first_set() {
 }
 
 #[test]
+#[ignore]
 fn union_of_empty_sets_is_an_empty_set() {
     let set_1 = U32Set::new(@array![]);
     let set_2 = U32Set::new(@array![]);
@@ -272,6 +308,7 @@ fn union_of_empty_sets_is_an_empty_set() {
 }
 
 #[test]
+#[ignore]
 fn union_of_an_empty_set_and_non_empty_set_is_the_non_empty_set() {
     let set_1 = U32Set::new(@array![]);
     let set_2 = U32Set::new(@array![2]);
@@ -280,6 +317,7 @@ fn union_of_an_empty_set_and_non_empty_set_is_the_non_empty_set() {
 }
 
 #[test]
+#[ignore]
 fn union_of_a_non_empty_set_and_empty_set_is_the_non_empty_set() {
     let set_1 = U32Set::new(@array![1, 3]);
     let set_2 = U32Set::new(@array![]);
@@ -288,6 +326,7 @@ fn union_of_a_non_empty_set_and_empty_set_is_the_non_empty_set() {
 }
 
 #[test]
+#[ignore]
 fn union_of_non_empty_sets_contains_all_unique_elements() {
     let set_1 = U32Set::new(@array![1, 3]);
     let set_2 = U32Set::new(@array![2, 3]);

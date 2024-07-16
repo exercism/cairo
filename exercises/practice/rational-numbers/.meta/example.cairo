@@ -1,3 +1,4 @@
+use core::fmt::{Debug, Formatter, Error};
 use alexandria_math::gcd_of_n_numbers::gcd_two_numbers;
 use alexandria_math::fast_power::fast_power;
 use alexandria_math::fast_root::fast_nr_optimize;
@@ -130,6 +131,24 @@ fn to_i128(n: u128) -> i128 {
 
 fn to_u128(n: i128) -> u128 {
     n.try_into().unwrap()
+}
+
+// Enables printing i128 values in tests.
+// Note that this will soon be added to the core library.
+impl I128Debug of Debug<i128> {
+    fn fmt(self: @i128, ref f: Formatter) -> Result<(), Error> {
+        if *self < 0 {
+            f.buffer.append(@"-");
+        };
+        let abs_value = if *self < 0 {
+            *self * -1
+        } else {
+            *self
+        };
+        let abs_value: u32 = abs_value.try_into().unwrap();
+        f.buffer.append(@format!("{}", abs_value));
+        Result::Ok(())
+    }
 }
 
 #[cfg(test)]
