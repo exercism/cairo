@@ -17,16 +17,16 @@ impl CustomSetEq<
 impl CustomSetImpl<
     T, +Copy<T>, +Drop<T>, +core::fmt::Display<T>, +PartialEq<T>
 > of CustomSetTrait<T> {
-    fn new(_input: @Array<T>) -> CustomSet<T> {
-        panic!()
-    }
-
-    fn contains(self: @CustomSet<T>, element: @T) -> bool {
+    fn new(input: @Array<T>) -> CustomSet<T> {
         panic!()
     }
 
     fn add(ref self: CustomSet<T>, element: T) {
         panic!();
+    }
+
+    fn contains(self: @CustomSet<T>, element: @T) -> bool {
+        panic!()
     }
 
     fn is_subset(self: @CustomSet<T>, other: @CustomSet<T>) -> bool {
