@@ -1,5 +1,8 @@
+use core::option::OptionTrait;
+use core::traits::TryInto;
+use core::dict::Felt252DictTrait;
+use core::byte_array::ByteArrayTrait;
 use dominoes::{Domino, chain};
-use alexandria_sorting::MergeSort;
 
 #[derive(Debug)]
 enum CheckResult {
@@ -86,15 +89,38 @@ impl DominoPartialOrd of PartialOrd<Domino> {
 }
 
 fn sort(arr: @Array<Domino>) -> Array<Domino> {
-    let mut normalized: Array<Domino> = array![];
-    let mut i = 0;
-    while i < arr
-        .len() {
-            let domino: Domino = *arr[i];
-            normalized.append(normalize(domino));
-            i += 1;
+    let mut sorted_arr: Array<Domino> = array![];
+    let mut sorted_len = 0;
+
+    let mut visited: Felt252Dict<bool> = Default::default();
+    while arr
+        .len() != sorted_len {
+            let min_domino_index = next_min_index(arr, ref visited);
+            sorted_arr.append(normalize(*arr[min_domino_index]));
+            visited.insert(min_domino_index.into(), true);
+            sorted_len += 1;
         };
-    MergeSort::sort(normalized.span())
+
+    sorted_arr
+}
+
+fn next_min_index(arr: @Array<Domino>, ref visited: Felt252Dict<bool>) -> usize {
+    let mut next_min_domino_index = 0;
+    while visited.get(next_min_domino_index) {
+        next_min_domino_index += 1;
+    };
+    let mut min_domino_index: usize = next_min_domino_index.try_into().unwrap();
+
+    let mut i = arr.len();
+    while i != 0 {
+        i -= 1;
+        if !visited.get(i.into()) {
+            if normalize(*arr[i]) < normalize(*arr[min_domino_index]) {
+                min_domino_index = i;
+            }
+        }
+    };
+    min_domino_index
 }
 
 fn assert_correct(input: @Array<Domino>) {

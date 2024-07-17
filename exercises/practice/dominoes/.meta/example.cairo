@@ -1,5 +1,3 @@
-use core::dict::Felt252DictTrait;
-
 type Domino = (u8, u8);
 
 /// A table keeping track of available dominoes.
