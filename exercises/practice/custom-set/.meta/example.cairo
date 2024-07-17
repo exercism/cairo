@@ -1,5 +1,3 @@
-use core::clone::Clone;
-
 #[derive(Drop, Debug)]
 struct CustomSet<T> {
     collection: Array<T>,
@@ -24,10 +22,10 @@ impl CustomSetEq<
 impl CustomSetImpl<
     T, +Copy<T>, +Drop<T>, +core::fmt::Display<T>, +PartialEq<T>
 > of CustomSetTrait<T> {
-    fn new(inputs: @Array<T>) -> CustomSet<T> {
+    fn new(input: @Array<T>) -> CustomSet<T> {
         let mut set = CustomSet::<T> { collection: array![], };
         let mut i = 0;
-        while let Option::Some(val) = inputs
+        while let Option::Some(val) = input
             .get(i) {
                 let unboxed = val.unbox();
                 set.add(unboxed.clone());
@@ -42,12 +40,12 @@ impl CustomSetImpl<
         }
     }
 
-    fn contains(self: @CustomSet<T>, other: @T) -> bool {
+    fn contains(self: @CustomSet<T>, element: @T) -> bool {
         let mut i = 0;
         while let Option::Some(value) = self
             .collection
             .get(i) {
-                if value.unbox() == other {
+                if value.unbox() == element {
                     break;
                 }
                 i += 1;

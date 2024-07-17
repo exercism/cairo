@@ -167,6 +167,14 @@ fn sets_with_different_elements_are_not_equal() {
 
 #[test]
 #[ignore]
+fn sets_with_different_elements_are_not_equal_2() {
+    let set_1 = U32Set::new(@array![1, 2, 6]);
+    let set_2 = U32Set::new(@array![1, 2, 4]);
+    assert_ne!(set_1, set_2);
+}
+
+#[test]
+#[ignore]
 fn set_is_not_equal_to_larger_set_with_same_elements() {
     let set_1 = U32Set::new(@array![1, 2, 3]);
     let set_2 = U32Set::new(@array![1, 2, 3, 4]);
