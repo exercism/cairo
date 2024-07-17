@@ -6,35 +6,35 @@ impl U32Set = CustomSetImpl::<u32>;
 #[test]
 fn sets_with_no_elements_are_empty() {
     let set = U32Set::new(@array![]);
-    assert!(set.is_empty());
+    assert!(set.is_empty(), "Sets with no elements should be empty");
 }
 
 #[test]
 #[ignore]
 fn sets_with_elements_are_not_empty() {
     let set = U32Set::new(@array![1]);
-    assert!(!set.is_empty());
+    assert!(!set.is_empty(), "Sets with elements should not be empty");
 }
 
 #[test]
 #[ignore]
 fn nothing_is_contained_in_an_empty_set() {
     let set = U32Set::new(@array![]);
-    assert!(!set.contains(@1));
+    assert!(!set.contains(@1), "Nothing should be contained in an empty set");
 }
 
 #[test]
 #[ignore]
 fn when_the_element_is_in_the_set() {
     let set = U32Set::new(@array![1, 2, 3]);
-    assert!(set.contains(@1));
+    assert!(set.contains(@1), "'contains' should return true when the element is in the set");
 }
 
 #[test]
 #[ignore]
 fn when_the_element_is_not_in_the_set() {
     let set = U32Set::new(@array![1, 2, 3]);
-    assert!(!set.contains(@4));
+    assert!(!set.contains(@4), "contains' should return false when the element is not in the set");
 }
 
 #[test]
@@ -42,7 +42,7 @@ fn when_the_element_is_not_in_the_set() {
 fn empty_set_is_a_subset_of_another_empty_set() {
     let set_1 = U32Set::new(@array![]);
     let set_2 = U32Set::new(@array![]);
-    assert!(set_1.is_subset(@set_2));
+    assert!(set_1.is_subset(@set_2), "Empty set should be a subset of another empty set");
 }
 
 #[test]
@@ -50,7 +50,7 @@ fn empty_set_is_a_subset_of_another_empty_set() {
 fn empty_set_is_a_subset_of_non_empty_set() {
     let set_1 = U32Set::new(@array![]);
     let set_2 = U32Set::new(@array![1]);
-    assert!(set_1.is_subset(@set_2));
+    assert!(set_1.is_subset(@set_2), "Empty set should be a subset of non empty set");
 }
 
 #[test]
@@ -58,7 +58,7 @@ fn empty_set_is_a_subset_of_non_empty_set() {
 fn non_empty_set_is_not_a_subset_of_empty_set() {
     let set_1 = U32Set::new(@array![1]);
     let set_2 = U32Set::new(@array![]);
-    assert!(!set_1.is_subset(@set_2));
+    assert!(!set_1.is_subset(@set_2), "Non empty set should not be a subset of empty set");
 }
 
 #[test]
@@ -66,7 +66,7 @@ fn non_empty_set_is_not_a_subset_of_empty_set() {
 fn set_is_a_subset_of_set_with_exact_same_elements() {
     let set_1 = U32Set::new(@array![1, 2, 3]);
     let set_2 = U32Set::new(@array![1, 2, 3]);
-    assert!(set_1.is_subset(@set_2));
+    assert!(set_1.is_subset(@set_2), "Set should be a subset of set with exact same elements");
 }
 
 #[test]
@@ -74,7 +74,7 @@ fn set_is_a_subset_of_set_with_exact_same_elements() {
 fn set_is_a_subset_of_larger_set_with_same_elements() {
     let set_1 = U32Set::new(@array![1, 2, 3]);
     let set_2 = U32Set::new(@array![4, 1, 2, 3]);
-    assert!(set_1.is_subset(@set_2));
+    assert!(set_1.is_subset(@set_2), "Set should be a subset of larger set with same elements");
 }
 
 #[test]
@@ -82,7 +82,10 @@ fn set_is_a_subset_of_larger_set_with_same_elements() {
 fn set_is_not_a_subset_of_set_that_does_not_contain_its_elements() {
     let set_1 = U32Set::new(@array![1, 2, 3]);
     let set_2 = U32Set::new(@array![4, 1, 3]);
-    assert!(!set_1.is_subset(@set_2));
+    assert!(
+        !set_1.is_subset(@set_2),
+        "Set should not be a subset of set that does not contain its elements"
+    );
 }
 
 #[test]
@@ -90,7 +93,7 @@ fn set_is_not_a_subset_of_set_that_does_not_contain_its_elements() {
 fn the_empty_set_is_disjoint_with_itself() {
     let set_1 = U32Set::new(@array![]);
     let set_2 = U32Set::new(@array![]);
-    assert!(set_1.is_disjoint(@set_2));
+    assert!(set_1.is_disjoint(@set_2), "The empty set should be disjoint with itself");
 }
 
 #[test]
@@ -98,7 +101,7 @@ fn the_empty_set_is_disjoint_with_itself() {
 fn empty_set_is_disjoint_with_non_empty_set() {
     let set_1 = U32Set::new(@array![]);
     let set_2 = U32Set::new(@array![1]);
-    assert!(set_1.is_disjoint(@set_2));
+    assert!(set_1.is_disjoint(@set_2), "Empty set should be disjoint with non empty set");
 }
 
 #[test]
@@ -106,7 +109,7 @@ fn empty_set_is_disjoint_with_non_empty_set() {
 fn non_empty_set_is_disjoint_with_empty_set() {
     let set_1 = U32Set::new(@array![1]);
     let set_2 = U32Set::new(@array![]);
-    assert!(set_1.is_disjoint(@set_2));
+    assert!(set_1.is_disjoint(@set_2), "Non empty set should be disjoint with empty set");
 }
 
 #[test]
@@ -114,7 +117,7 @@ fn non_empty_set_is_disjoint_with_empty_set() {
 fn sets_are_not_disjoint_if_they_share_an_element() {
     let set_1 = U32Set::new(@array![1, 2]);
     let set_2 = U32Set::new(@array![2, 3]);
-    assert!(!set_1.is_disjoint(@set_2));
+    assert!(!set_1.is_disjoint(@set_2), "Sets should not be disjoint if they share an element");
 }
 
 #[test]
@@ -122,7 +125,7 @@ fn sets_are_not_disjoint_if_they_share_an_element() {
 fn sets_are_disjoint_if_they_share_no_elements() {
     let set_1 = U32Set::new(@array![1, 2]);
     let set_2 = U32Set::new(@array![3, 4]);
-    assert!(set_1.is_disjoint(@set_2));
+    assert!(set_1.is_disjoint(@set_2), "Sets should be disjoint if they share no elements");
 }
 
 #[test]

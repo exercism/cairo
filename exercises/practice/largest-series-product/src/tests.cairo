@@ -3,7 +3,10 @@ use largest_series_product::{lsp, Error};
 #[test]
 fn return_is_a_result() {
     let string_digits: ByteArray = "29";
-    assert!(lsp(@string_digits, 2).is_ok());
+    assert!(
+        lsp(@string_digits, 2).is_ok(),
+        "Calling the function with valid arguments should return Result::Ok"
+    );
 }
 
 #[test]
