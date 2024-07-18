@@ -15,6 +15,3 @@ impl ClockImpl of ClockTrait {
         panic!("implement `to_string`")
     }
 }
-
-#[cfg(test)]
-mod tests;

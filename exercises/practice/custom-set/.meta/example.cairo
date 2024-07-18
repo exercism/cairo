@@ -158,6 +158,3 @@ impl CustomSetImpl<
     }
 }
 
-
-#[cfg(test)]
-mod tests;

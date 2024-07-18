@@ -9,7 +9,3 @@ fn verses(start: u32, take_count: u32) -> ByteArray {
 fn song() -> ByteArray {
     panic!("sing the whole song")
 }
-
-#[cfg(test)]
-mod tests;
-

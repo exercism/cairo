@@ -2,6 +2,3 @@
 fn hello() -> felt252 {
     'Goodbye, Mars!'
 }
-
-#[cfg(test)]
-mod tests;

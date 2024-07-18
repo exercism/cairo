@@ -29,6 +29,3 @@ impl AllergiesImpl of AllergiesTrait {
         )
     }
 }
-
-#[cfg(test)]
-mod tests;

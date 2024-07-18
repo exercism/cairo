@@ -9,6 +9,3 @@ enum Comparison {
 fn sublist<T, +PartialEq<T>>(a: @Array<T>, b: @Array<T>) -> Comparison {
     panic!()
 }
-
-#[cfg(test)]
-mod tests;

@@ -73,6 +73,3 @@ fn pow(base: u32, mut power: u32) -> u32 {
     };
     result.try_into().expect('too large to fit output type')
 }
-
-#[cfg(test)]
-mod tests;

@@ -10,7 +10,6 @@ fn verse(n: u32) -> ByteArray {
     }
 }
 
-
 fn verses(start: u32, take_count: u32) -> ByteArray {
     assert!(0 <= start && start <= 99, "Start verse must be between 0 and 99");
     assert!(0 <= take_count && take_count <= 99, "Count of bottles must be between 0 and 99");
@@ -35,7 +34,3 @@ fn verses(start: u32, take_count: u32) -> ByteArray {
 fn song() -> ByteArray {
     verses(99, 99)
 }
-
-#[cfg(test)]
-mod tests;
-

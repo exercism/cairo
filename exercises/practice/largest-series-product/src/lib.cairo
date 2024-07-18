@@ -8,6 +8,3 @@ enum Error {
 fn lsp(input: @ByteArray, span: i32) -> Result<u64, Error> {
     panic!("implement the 'lsp' function")
 }
-
-#[cfg(test)]
-mod tests;

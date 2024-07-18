@@ -108,6 +108,3 @@ impl ByteArrayCharToU64 of ByteArrayCharToU64Trait {
         }
     }
 }
-
-#[cfg(test)]
-mod tests;

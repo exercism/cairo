@@ -17,6 +17,3 @@ fn elapsed_time_in_minutes(number_of_layers: u32, actual_minutes_in_oven: u32) -
         "calculate elapsed time in minutes for number of layers {number_of_layers} and actual minutes in oven {actual_minutes_in_oven}"
     )
 }
-
-#[cfg(test)]
-mod tests;

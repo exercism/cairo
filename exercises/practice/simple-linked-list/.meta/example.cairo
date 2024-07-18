@@ -92,6 +92,3 @@ impl NodeImpl<T> of NodeTrait<T> {
         Node { data: element, next, }
     }
 }
-
-#[cfg(test)]
-mod tests;

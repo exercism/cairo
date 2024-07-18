@@ -46,6 +46,3 @@ impl SimpleLinkedListIntoArray<T, +Drop<T>, +Copy<T>> of Into<SimpleLinkedList<T
         panic!()
     }
 }
-
-#[cfg(test)]
-mod tests;

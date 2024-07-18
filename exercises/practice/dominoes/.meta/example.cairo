@@ -138,6 +138,3 @@ fn chain_worker(dominoes: @Array<Domino>) -> Array<Domino> {
     };
     chain
 }
-
-#[cfg(test)]
-mod tests;

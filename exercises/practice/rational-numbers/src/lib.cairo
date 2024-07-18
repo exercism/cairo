@@ -85,6 +85,3 @@ impl I128Debug of Debug<i128> {
         Result::Ok(())
     }
 }
-
-#[cfg(test)]
-mod tests;

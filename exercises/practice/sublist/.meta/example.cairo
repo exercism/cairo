@@ -36,6 +36,3 @@ fn contains<T, +PartialEq<T>>(a: Span<T>, b: Span<T>) -> bool {
         i += 1;
     }
 }
-
-#[cfg(test)]
-mod tests;

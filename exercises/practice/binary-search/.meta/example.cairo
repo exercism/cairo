@@ -19,6 +19,3 @@ fn find<T, +Drop<T>, +Copy<T>, +PartialOrd<T>>(search_array: @Array<T>, value: T
         }
     }
 }
-
-#[cfg(test)]
-mod tests;

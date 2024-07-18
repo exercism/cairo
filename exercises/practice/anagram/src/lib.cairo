@@ -21,6 +21,3 @@ impl SetEq of PartialEq<Set> {
 fn anagrams_for(word: @ByteArray, inputs: @Set) -> Set {
     panic!()
 }
-
-#[cfg(test)]
-mod tests;

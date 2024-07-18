@@ -46,6 +46,3 @@ impl ClockImpl of ClockTrait {
         formatter.buffer
     }
 }
-
-#[cfg(test)]
-mod tests;

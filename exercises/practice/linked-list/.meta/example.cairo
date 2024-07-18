@@ -180,6 +180,3 @@ impl NodeImpl<T> of NodeTrait<T> {
         Node { data, previous, next }
     }
 }
-
-#[cfg(test)]
-mod tests;

@@ -23,6 +23,3 @@ fn warn(message: ByteArray) -> ByteArray {
 fn error(message: ByteArray) -> ByteArray {
     panic!("return a message for error log level")
 }
-
-#[cfg(test)]
-mod tests;

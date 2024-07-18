@@ -304,7 +304,6 @@ fn compare_allergy_vectors(expected: @Array<Allergen>, actual: @Array<Allergen>)
         };
 }
 
-
 #[test]
 #[ignore]
 fn list_when_no_allergies() {

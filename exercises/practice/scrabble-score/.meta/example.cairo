@@ -48,6 +48,3 @@ fn lowercase(char: u8) -> u8 {
         char
     }
 }
-
-#[cfg(test)]
-mod tests;

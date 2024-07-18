@@ -56,6 +56,3 @@ impl CustomSetImpl<
         panic!()
     }
 }
-
-#[cfg(test)]
-mod tests;

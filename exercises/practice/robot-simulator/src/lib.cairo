@@ -46,6 +46,3 @@ impl RobotImpl of RobotTrait {
         panic!()
     }
 }
-
-#[cfg(test)]
-mod tests;

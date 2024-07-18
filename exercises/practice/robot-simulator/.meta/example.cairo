@@ -116,6 +116,3 @@ impl RobotImpl of RobotTrait {
         }
     }
 }
-
-#[cfg(test)]
-mod tests;

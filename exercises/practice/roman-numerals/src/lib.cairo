@@ -15,6 +15,3 @@ impl RomanDisplay of Display<Roman> {
         panic!()
     }
 }
-
-#[cfg(test)]
-mod tests;

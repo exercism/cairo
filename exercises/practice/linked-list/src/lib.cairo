@@ -31,6 +31,3 @@ impl DoublyLinkedListImpl<T, +Drop<T>> of DoublyLinkedListTrait<T> {
         panic!("implement 'delete'")
     }
 }
-
-#[cfg(test)]
-mod tests;

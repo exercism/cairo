@@ -26,6 +26,3 @@ fn warn(message: ByteArray) -> ByteArray {
 fn error(message: ByteArray) -> ByteArray {
     format!("[ERROR]: {message}")
 }
-
-#[cfg(test)]
-mod tests;

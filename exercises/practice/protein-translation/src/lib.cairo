@@ -59,6 +59,3 @@ impl CodonChunk of CodonChunkTrait {
         }
     }
 }
-
-#[cfg(test)]
-mod tests;
