@@ -8,7 +8,7 @@
       "Scarb.toml"
     ],
     "test": [
-      "tests/lucians-luscious-lasagna.cairo"
+      "tests/lucians_luscious_lasagna.cairo"
     ],
     "example": [
       ".meta/example.cairo"

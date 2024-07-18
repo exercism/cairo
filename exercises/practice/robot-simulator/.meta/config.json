@@ -8,7 +8,7 @@
       "Scarb.toml"
     ],
     "test": [
-      "tests/robot-simulator.cairo"
+      "tests/robot_simulator.cairo"
     ],
     "example": [
       ".meta/example.cairo"

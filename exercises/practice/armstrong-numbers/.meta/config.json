@@ -8,7 +8,7 @@
       "Scarb.toml"
     ],
     "test": [
-      "tests/armstrong-numbers.cairo"
+      "tests/armstrong_numbers.cairo"
     ],
     "example": [
       ".meta/example.cairo"

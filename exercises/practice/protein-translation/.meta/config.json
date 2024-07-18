@@ -8,7 +8,7 @@
       "Scarb.toml"
     ],
     "test": [
-      "tests/protein-translation.cairo"
+      "tests/protein_translation.cairo"
     ],
     "example": [
       ".meta/example.cairo"

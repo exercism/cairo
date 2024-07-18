@@ -8,7 +8,7 @@
       "Scarb.toml"
     ],
     "test": [
-      "tests/low-power-embedded-game.cairo"
+      "tests/low_power_embedded_game.cairo"
     ],
     "exemplar": [
       ".meta/exemplar.cairo"
