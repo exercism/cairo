@@ -8,7 +8,7 @@
       "Scarb.toml"
     ],
     "test": [
-      "src/tests.cairo"
+      "tests/%{kebab_slug}.cairo"
     ],
     "exemplar": [
       ".meta/exemplar.cairo"
