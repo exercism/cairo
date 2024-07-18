@@ -26,13 +26,11 @@ scarb cairo-test
 Only the first test is enabled by default.
 After you are ready to pass the next test, remove the ignore flag from the next test (`#[ignore]`).
 
-To run all tests including the ignored ones, you can run:
+To run all tests including the ignored ones, you can remove the `ignore` flag from all the tests, or you can just run:
 
 ```bash
 scarb cairo-test --include-ignored
 ```
-
-You can also remove the `ignore` flag from all the tests if you prefer
 
 Feel free to write as little code as possible to get the tests to pass.
 The test failures will guide you to what should be written next.
