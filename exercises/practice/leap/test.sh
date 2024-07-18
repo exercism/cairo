@@ -25,7 +25,7 @@ else
     tmp_file=$(mktemp -p .)
     trap 'rm $tmp_file' EXIT INT TERM
 
-    printf "$sanitized_test_output" >"$tmp_file"
+    printf '%s' "$sanitized_test_output" >"$tmp_file"
     sorted_output=$(sort "$tmp_file")
 
     jq -n --arg output "${sorted_output}" --arg status "${status}" '{version: 1, status: $status, message: $output}' >"${results_file}"
