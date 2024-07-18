@@ -20,6 +20,3 @@ impl PositionImpl of PositionTrait {
         panic!("implement `fn manhattan`")
     }
 }
-
-#[cfg(test)]
-mod tests;

@@ -2,7 +2,7 @@
 // In order to pass the tests you can add-to or change any of this code.
 
 #[derive(Drop, PartialEq, Debug)]
-enum Direction {
+pub enum Direction {
     North,
     East,
     South,
@@ -13,7 +13,7 @@ enum Direction {
 struct Robot {}
 
 #[generate_trait]
-impl RobotImpl of RobotTrait {
+pub impl RobotImpl of RobotTrait {
     fn new(x: i32, y: i32, d: Direction) -> Robot {
         panic!("Create a robot at (x, y) facing {d:?}")
     }
@@ -46,6 +46,3 @@ impl RobotImpl of RobotTrait {
         panic!()
     }
 }
-
-#[cfg(test)]
-mod tests;
