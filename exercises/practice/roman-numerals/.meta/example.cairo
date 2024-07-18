@@ -1,7 +1,7 @@
 use core::fmt::{Display, Error, Formatter};
 
 #[derive(Drop)]
-struct Roman {
+pub struct Roman {
     value: ByteArray,
 }
 

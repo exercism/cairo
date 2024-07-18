@@ -22,7 +22,7 @@ struct Node<T> {
 }
 
 #[generate_trait]
-impl DoublyLinkedListImpl<
+pub impl DoublyLinkedListImpl<
     T, +Drop<T>, +Copy<T>, +PartialEq<T>, +Felt252DictValue<T>
 > of DoublyLinkedListTrait<T> {
     fn new() -> DoublyLinkedList<T> {

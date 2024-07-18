@@ -4,7 +4,7 @@ use core::fmt::{Debug, Formatter, Error};
 struct Rational {}
 
 #[generate_trait]
-impl RationalImpl of RationalTrait {
+pub impl RationalImpl of RationalTrait {
     fn new(numer: i128, denom: i128) -> Rational {
         panic!()
     }
@@ -51,14 +51,14 @@ impl RationalDiv of Div<Rational> {
 }
 
 #[generate_trait]
-impl RationalAbs of RationalAbsTrait {
+pub impl RationalAbs of RationalAbsTrait {
     fn abs(self: @Rational) -> Rational {
         panic!()
     }
 }
 
 #[generate_trait]
-impl RationalPow of RationalPowTrait {
+pub impl RationalPow of RationalPowTrait {
     fn pow(self: @Rational, power: i128) -> Rational {
         panic!()
     }

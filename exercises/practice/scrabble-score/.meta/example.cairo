@@ -1,4 +1,4 @@
-fn score(word: ByteArray) -> u16 {
+pub fn score(word: ByteArray) -> u16 {
     let mut values = dictionary();
     let mut score = 0;
     let mut i = 0;

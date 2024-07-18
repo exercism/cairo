@@ -1,5 +1,5 @@
 #[derive(Drop, Debug, Copy, PartialEq)]
-enum Direction {
+pub enum Direction {
     North,
     East,
     South,
@@ -56,7 +56,7 @@ struct Robot {
 }
 
 #[generate_trait]
-impl RobotImpl of RobotTrait {
+pub impl RobotImpl of RobotTrait {
     fn new(x: i32, y: i32, d: Direction) -> Robot {
         RobotTrait::build(PositionTrait::new(x, y), d)
     }

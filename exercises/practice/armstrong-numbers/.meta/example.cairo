@@ -1,4 +1,4 @@
-fn is_armstrong_number(mut num: u128) -> bool {
+pub fn is_armstrong_number(mut num: u128) -> bool {
     let mut original_num = num;
     let digits = count_digits(num);
     loop {

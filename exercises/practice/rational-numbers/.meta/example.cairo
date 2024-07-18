@@ -7,7 +7,7 @@ struct Rational {
 }
 
 #[generate_trait]
-impl RationalImpl of RationalTrait {
+pub impl RationalImpl of RationalTrait {
     fn new(numer: i128, denom: i128) -> Rational {
         assert!(denom != 0, "denominator cannot be 0");
 
@@ -71,14 +71,14 @@ impl RationalDiv of Div<Rational> {
 }
 
 #[generate_trait]
-impl RationalAbs of RationalAbsTrait {
+pub impl RationalAbs of RationalAbsTrait {
     fn abs(self: @Rational) -> Rational {
         RationalTrait::new(to_i128(abs(*self.numer)), to_i128(*self.denom))
     }
 }
 
 #[generate_trait]
-impl RationalPow of RationalPowTrait {
+pub impl RationalPow of RationalPowTrait {
     fn pow(self: @Rational, power: i128) -> Rational {
         if *self.numer == 0 {
             return *self;

@@ -1,3 +1,3 @@
-fn hello() -> felt252 {
+pub fn hello() -> felt252 {
     'Hello, World!'
 }

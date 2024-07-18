@@ -1,5 +1,5 @@
 #[derive(Drop, Debug, PartialEq)]
-enum Error {
+pub enum Error {
     SpanTooLong,
     InvalidDigit: u8,
     NegativeSpan,
@@ -12,7 +12,7 @@ struct Product {
     start_index: u32,
 }
 
-fn lsp(input: @ByteArray, span: i32) -> Result<u64, Error> {
+pub fn lsp(input: @ByteArray, span: i32) -> Result<u64, Error> {
     // validate span
     if span == 0 {
         return Result::Ok(1);

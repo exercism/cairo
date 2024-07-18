@@ -1,12 +1,12 @@
 #[derive(Drop, Debug, PartialEq)]
-enum Comparison {
+pub enum Comparison {
     Equal,
     Sublist,
     Superlist,
     Unequal,
 }
 
-fn sublist<T, +PartialEq<T>>(a: @Array<T>, b: @Array<T>) -> Comparison {
+pub fn sublist<T, +PartialEq<T>>(a: @Array<T>, b: @Array<T>) -> Comparison {
     let a = a.span();
     let b = b.span();
     if a == b {

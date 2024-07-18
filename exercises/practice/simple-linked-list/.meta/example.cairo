@@ -1,5 +1,5 @@
 #[derive(Drop, Copy)]
-struct SimpleLinkedList<T> {
+pub struct SimpleLinkedList<T> {
     head: List<T>,
     len: usize,
 }
@@ -13,7 +13,7 @@ struct Node<T> {
 }
 
 #[generate_trait]
-impl SimpleLinkedListImpl<T, +Drop<T>, +Copy<T>> of SimpleLinkedListTrait<T> {
+pub impl SimpleLinkedListImpl<T, +Drop<T>, +Copy<T>> of SimpleLinkedListTrait<T> {
     fn new() -> SimpleLinkedList<T> {
         SimpleLinkedList { head: Option::None, len: 0 }
     }

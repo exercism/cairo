@@ -4,7 +4,7 @@ struct Set {
 }
 
 #[generate_trait]
-impl SetImpl of SetTrait {
+pub impl SetImpl of SetTrait {
     fn new(values: Array<ByteArray>) -> Set {
         Set { values }
     }
@@ -41,7 +41,7 @@ impl SetEq of PartialEq<Set> {
     }
 }
 
-fn anagrams_for(word: @ByteArray, inputs: @Set) -> Set {
+pub fn anagrams_for(word: @ByteArray, inputs: @Set) -> Set {
     let mut word_sorted = @sort_ignore_case(word);
     let mut anagrams = Set { values: array![] };
     let mut i = inputs.values.len();

@@ -2,7 +2,7 @@
 struct DoublyLinkedList<T> {}
 
 #[generate_trait]
-impl DoublyLinkedListImpl<T, +Drop<T>> of DoublyLinkedListTrait<T> {
+pub impl DoublyLinkedListImpl<T, +Drop<T>> of DoublyLinkedListTrait<T> {
     fn new() -> DoublyLinkedList<T> {
         panic!("implement 'new'")
     }
