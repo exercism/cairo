@@ -21,7 +21,7 @@
       "Scarb.toml"
     ],
     "test": [
-      "tests/%{kebab_slug}.cairo"
+      "tests/%{snake_slug}.cairo"
     ],
     "example": [
       ".meta/example.cairo"
