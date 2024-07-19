@@ -1,7 +1,5 @@
 {
-    "blurb": "<todo>",
-    "authors": [
-        "misicnenad"
-    ],
-    "contributors": []
+  "blurb": "Cairo offers an option to make variables mutable.",
+  "authors": ["okhai"],
+  "contributors": []
 }
