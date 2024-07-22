@@ -8,7 +8,7 @@
       "Scarb.toml"
     ],
     "test": [
-      "src/tests.cairo"
+      "tests/sublist.cairo"
     ],
     "example": [
       ".meta/example.cairo"

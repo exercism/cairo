@@ -1,8 +1,8 @@
 #[derive(Drop, Copy)]
-struct SimpleLinkedList<T> {}
+pub struct SimpleLinkedList<T> {}
 
 #[generate_trait]
-impl SimpleLinkedListImpl<T, +Drop<T>, +Copy<T>> of SimpleLinkedListTrait<T> {
+pub impl SimpleLinkedListImpl<T, +Drop<T>, +Copy<T>> of SimpleLinkedListTrait<T> {
     fn new() -> SimpleLinkedList<T> {
         panic!()
     }
@@ -46,6 +46,3 @@ impl SimpleLinkedListIntoArray<T, +Drop<T>, +Copy<T>> of Into<SimpleLinkedList<T
         panic!()
     }
 }
-
-#[cfg(test)]
-mod tests;

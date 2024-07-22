@@ -1,4 +1,6 @@
-fn find<T, +Drop<T>, +Copy<T>, +PartialOrd<T>>(search_array: @Array<T>, value: T) -> Option<usize> {
+pub fn find<T, +Drop<T>, +Copy<T>, +PartialOrd<T>>(
+    search_array: @Array<T>, value: T
+) -> Option<usize> {
     let mut base = 0_usize;
     let mut slice = search_array.span();
 
@@ -19,6 +21,3 @@ fn find<T, +Drop<T>, +Copy<T>, +PartialOrd<T>>(search_array: @Array<T>, value: T
         }
     }
 }
-
-#[cfg(test)]
-mod tests;

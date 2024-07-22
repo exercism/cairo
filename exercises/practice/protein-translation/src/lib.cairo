@@ -1,12 +1,12 @@
 #[derive(Destruct)]
 struct CodonsInfo {}
 
-fn parse(pairs: Array<(felt252, ByteArray)>) -> CodonsInfo {
+pub fn parse(pairs: Array<(felt252, ByteArray)>) -> CodonsInfo {
     panic!()
 }
 
 #[generate_trait]
-impl CodonsInfoImpl of CodonsInfoTrait {
+pub impl CodonsInfoImpl of CodonsInfoTrait {
     fn name_for(ref self: CodonsInfo, codon: felt252) -> ByteArray {
         panic!()
     }
@@ -59,6 +59,3 @@ impl CodonChunk of CodonChunkTrait {
         }
     }
 }
-
-#[cfg(test)]
-mod tests;

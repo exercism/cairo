@@ -14,7 +14,7 @@ impl CustomSetEq<
 }
 
 #[generate_trait]
-impl CustomSetImpl<
+pub impl CustomSetImpl<
     T, +Copy<T>, +Drop<T>, +core::fmt::Display<T>, +PartialEq<T>
 > of CustomSetTrait<T> {
     fn new(input: @Array<T>) -> CustomSet<T> {
@@ -56,6 +56,3 @@ impl CustomSetImpl<
         panic!()
     }
 }
-
-#[cfg(test)]
-mod tests;
