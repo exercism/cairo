@@ -1,5 +1,5 @@
 {
-    "blurb": "In Cairo, the concept of ownership is attached to variables rather than the values they hold",
+    "blurb": "In Cairo, the owner of a variable is the code that can read and/or write the variable",
     "authors": [
         "falilah"
     ],

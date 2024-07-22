@@ -153,7 +153,8 @@
           "traits",
           "type-conversion",
           "mutability",
-          "ownership"
+          "ownership",
+          "references-and-snapshots"
         ],
         "prerequisites": [],
         "difficulty": 4
@@ -202,6 +203,7 @@
         "practices": [
           "operator-overload",
           "ownership",
+          "references-and-snapshots",
           "integers"
         ],
         "prerequisites": [],
@@ -215,7 +217,8 @@
           "traits",
           "strings",
           "arrays",
-          "ownership"
+          "ownership",
+          "references-and-snapshots"
         ],
         "prerequisites": [],
         "difficulty": 5
@@ -252,6 +255,7 @@
           "enums",
           "traits",
           "ownership",
+          "references-and-snapshots",
           "mutability"
         ],
         "prerequisites": [],
@@ -375,6 +379,11 @@
       "uuid": "fe81e75b-b4d2-4ee8-9aaa-271e76468d0b",
       "slug": "printing",
       "name": "Printing"
+    },
+    {
+      "uuid": "ceba79ca-3f93-4731-b63a-aec25a44b131",
+      "slug": "references-and-snapshots",
+      "name": "References and Snapshots"
     },
     {
       "uuid": "7e322172-04ba-43f8-aba9-8ae999372b90",

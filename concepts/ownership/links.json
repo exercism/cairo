@@ -2,16 +2,9 @@
     "url": "https://book.cairo-lang.org/ch04-01-what-is-ownership.html#ownership-using-a-linear-type-system",
     "description": "ownership-using-a-linear-type-system"
   },
-  {
-      "url": "https://book.cairo-lang.org/ch04-01-what-is-ownership.html#the-copy-trait",
-      "description": "explaining how passing a value to a function creates a new variable referring to the same immutable value, without moving or copying the value in memory."
-    },
-  {
-    "url": "https://book.cairo-lang.org/ch04-02-references-and-snapshots.html#references-and-snapshots",
-    "description": "explaining references-and-snapshots with code sample"
-  },
   
   {
     "url": "https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html",
     "description": "The concept of ownership in Rust"
-  }]
+  }
+]

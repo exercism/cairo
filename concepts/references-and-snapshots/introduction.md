@@ -1,0 +1,2 @@
+# Introduction
+When you pass a variable to a function, it's ownership is usually transferred, making the original variable unusable, this can be a bit tedious when accessing a state more than once. Cairo has two features for passing a value without destroying or moving it, called `references` and `snapshots`.
