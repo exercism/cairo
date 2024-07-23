@@ -41,6 +41,3 @@ impl AbsImpl of AbsTrait {
         val.try_into().unwrap()
     }
 }
-
-#[cfg(test)]
-mod tests;
