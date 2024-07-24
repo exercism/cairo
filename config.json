@@ -237,17 +237,6 @@
         "difficulty": 6
       },
       {
-        "slug": "simple-linked-list",
-        "name": "Simple Linked List",
-        "uuid": "cc9a6bf9-9027-42c4-a71d-082ce48f7869",
-        "practices": [
-          "smart-pointers",
-          "generics"
-        ],
-        "prerequisites": [],
-        "difficulty": 7
-      },
-      {
         "slug": "robot-simulator",
         "name": "Robot Simulator",
         "uuid": "63302a7c-4235-41d6-9e10-9e46bd9a95c5",
@@ -256,6 +245,17 @@
           "traits",
           "ownership",
           "mutability"
+        ],
+        "prerequisites": [],
+        "difficulty": 6
+      },
+      {
+        "slug": "simple-linked-list",
+        "name": "Simple Linked List",
+        "uuid": "cc9a6bf9-9027-42c4-a71d-082ce48f7869",
+        "practices": [
+          "smart-pointers",
+          "generics"
         ],
         "prerequisites": [],
         "difficulty": 7
