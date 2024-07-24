@@ -16,7 +16,7 @@
     "highlightjs_language": "rust"
   },
   "test_runner": {
-    "average_run_time": 7
+    "average_run_time": 5
   },
   "files": {
     "solution": [
