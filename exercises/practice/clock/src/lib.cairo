@@ -22,6 +22,6 @@ pub impl ClockImpl of ClockTrait {
     }
 
     fn to_string(self: @Clock) -> ByteArray {
-        panic!("implement `to_string`")
+        format!("{}", self)
     }
 }

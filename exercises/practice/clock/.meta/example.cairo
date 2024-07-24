@@ -41,8 +41,6 @@ pub impl ClockImpl of ClockTrait {
     }
 
     fn to_string(self: @Clock) -> ByteArray {
-        let mut formatter: Formatter = Default::default();
-        Display::fmt(self, ref formatter).unwrap();
-        formatter.buffer
+        format!("{}", self)
     }
 }
