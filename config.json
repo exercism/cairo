@@ -73,7 +73,7 @@
       },
       {
         "slug": "semi-structured-logs",
-        "name": "semi-structured-logs",
+        "name": "Semi Structured Logs",
         "uuid": "4ca5087f-0128-4845-89a8-a2fa7791ed98",
         "practices": [
           "enums",
@@ -84,7 +84,7 @@
       },
       {
         "slug": "lucians-luscious-lasagna",
-        "name": "lucians-luscious-lasagna",
+        "name": "Lucians Luscious Lasagna",
         "uuid": "8302f8de-14d7-45dd-9a65-812bc1ed5464",
         "practices": [
           "functions"
