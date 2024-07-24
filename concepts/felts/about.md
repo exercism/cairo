@@ -1,7 +1,5 @@
 # Felt Type
 
-## Felt Type
-
 In Cairo, the default type for a variable or argument, if not explicitly specified, is a **felt**, also called a **field element**. This is one of the [scalar types](https://book.cairo-lang.org/ch02-02-data-types.html#scalar-types) represented by the keyword `felt252`. A field element is an integer within the range $0 ≤ x < P$, where $P$ is a very large prime number currently equal to $2^{251} + 17 \cdot 2^{192} + 1$.
 
 ## Arithmetic Operations
