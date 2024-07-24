@@ -1,5 +1,15 @@
+use core::fmt::{Display, Formatter, Error};
+
 #[derive(Drop, PartialEq, Debug)]
-struct Clock {}
+struct Clock {
+    minutes: u32,
+}
+
+impl ClockDisplay of Display<Clock> {
+    fn fmt(self: @Clock, ref f: Formatter) -> Result<(), Error> {
+        panic!("implement `fmt` to define how the Clock should be displayed as a string")
+    }
+}
 
 #[generate_trait]
 pub impl ClockImpl of ClockTrait {
