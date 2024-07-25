@@ -34,7 +34,7 @@ let user2 = User {
 
 ## Interacting with Instance of a Struct
 
-Use dot notation to access or modify the fields of a struct instance. Note that to modify a field, the instance must be mutable.
+Use dot notation to access or modify the fields of a `struct` instance. Note that to modify a field, the instance must be mutable.
 
 Example:
 
@@ -45,7 +45,7 @@ let mut user1 = User {
 user1.email = "anotheremail@example.com";
 ```
 
-As with any expression, we can construct a new instance of the struct as the last expression in the function body to implicitly return that new instance.
+As with any expression, we can construct a new instance of the `struct` as the last expression in the function body to implicitly return that new instance.
 
 Example:
 
@@ -74,7 +74,7 @@ fn build_user_short(email: ByteArray, username: ByteArray) -> User {
 
 ## Creating Instances from Other Instances with Struct Update Syntax
 
-Use struct update syntax to create a new instance from an existing one, changing some of the fields while keeping the rest the same.
+Use `struct` update syntax to create a new instance from an existing one, changing some of the fields while keeping the rest the same.
 
 Examples:
 
