@@ -9,7 +9,7 @@ let x = 5;
 x = 2; // Error: cannot assign twice to immutable variable
 ```
 
-In the example above, `x` is declared as an immutable variable. When the value of `x` is changed, the compiler will throw an error because the variable is immutable.
+In the example below, `x` is declared as an immutable variable. When the value of `x` is changed, the compiler will throw an error because the variable is immutable.
 
 ```rust
 let mut x = 5;
