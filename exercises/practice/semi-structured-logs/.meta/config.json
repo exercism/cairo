@@ -4,8 +4,7 @@
   ],
   "files": {
     "solution": [
-      "src/lib.cairo",
-      "Scarb.toml"
+      "src/lib.cairo"
     ],
     "test": [
       "tests/semi_structured_logs.cairo"

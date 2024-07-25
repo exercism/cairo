@@ -20,8 +20,7 @@
   },
   "files": {
     "solution": [
-      "src/lib.cairo",
-      "Scarb.toml"
+      "src/lib.cairo"
     ],
     "test": [
       "tests/%{snake_slug}.cairo"
