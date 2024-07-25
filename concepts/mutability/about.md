@@ -18,6 +18,5 @@ x = 10;
 
 In the example above, `x` is declared as a mutable variable using the `mut` keyword. This allows the value of `x` to be changed after it is declared.
 
-Upon examining the low-level Cairo Assembly code, it becomes clear that variable mutation is implemented as syntactic sugar, which translates mutation operation as a series of steps equivalent to variable shadowing. The only difference is that at the Cairo level for mutability, the variable is not redeclared so its type cannot change.
 
 Ultimately, deciding whether to use mutability or not is up to you and depends on what you think is clearest in that particular situation.
