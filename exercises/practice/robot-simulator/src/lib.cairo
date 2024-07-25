@@ -15,7 +15,7 @@ struct Robot {}
 #[generate_trait]
 pub impl RobotImpl of RobotTrait {
     fn new(x: i32, y: i32, d: Direction) -> Robot {
-        panic!("Create a robot at (x, y) facing {d:?}")
+        panic!("implement `new`: constructs a Robot at (x, y) facing {d:?}")
     }
 
     #[must_use]
@@ -35,7 +35,7 @@ pub impl RobotImpl of RobotTrait {
 
     #[must_use]
     fn instructions(self: Robot, instructions: ByteArray) -> Robot {
-        panic!("Follow the given sequence of instructions: {instructions}")
+        panic!("implement `instructions`: follows the given sequence of instructions: {instructions}")
     }
 
     fn position(self: @Robot) -> (i32, i32) {

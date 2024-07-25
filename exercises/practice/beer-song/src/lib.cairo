@@ -1,11 +1,11 @@
 pub fn verse(n: u32) -> ByteArray {
-    panic!("emit verse {n}")
+    panic!("implement `verse`: returns verse {n}")
 }
 
 pub fn verses(start: u32, take_count: u32) -> ByteArray {
-    panic!("sing {take_count} verses from {start}")
+    panic!("implement `verses`: returns {take_count} verses from {start}")
 }
 
 pub fn song() -> ByteArray {
-    panic!("sing the whole song")
+    panic!("implement `song`: should return the whole song")
 }
