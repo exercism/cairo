@@ -41,14 +41,14 @@ impl SetEq of PartialEq<Set> {
     }
 }
 
-pub fn anagrams_for(word: @ByteArray, inputs: @Set) -> Set {
+pub fn anagrams_for(word: @ByteArray, candidates: @Set) -> Set {
     let mut word_sorted = @sort_ignore_case(word);
     let mut anagrams = Set { values: array![] };
-    let mut i = inputs.values.len();
+    let mut i = candidates.values.len();
 
     while i != 0 {
         i -= 1;
-        let candidate = inputs.values[i];
+        let candidate = candidates.values[i];
 
         let is_anagram = word.len() == candidate.len()
             && IgnoreCase::ne(word, candidate)
