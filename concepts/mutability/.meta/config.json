@@ -1,5 +1,5 @@
 {
   "blurb": "Although Cairo uses an immutable memory model by default, it offers an option to make variables appear mutable.",
-  "authors": ["okhai"],
+  "authors": ["okhaimie-dev"],
   "contributors": []
 }
