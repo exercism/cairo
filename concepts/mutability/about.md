@@ -16,7 +16,7 @@ let mut x = 5;
 x = 10;
 ```
 
-In the example above, `x` is declared as a mutable variable using the `mut` keyword. This allows the value of `x` to be changed after it is declared.
+We can declare `x` as a mutable variable using the `mut` keyword. This allows the value of `x` to be changed after it is declared.
 
 
 Ultimately, deciding whether to use mutability or not is up to you and depends on what you think is clearest in that particular situation.
