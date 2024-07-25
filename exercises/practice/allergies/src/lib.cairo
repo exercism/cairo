@@ -16,16 +16,17 @@ pub enum Allergen {
 #[generate_trait]
 pub impl AllergiesImpl of AllergiesTrait {
     fn new(score: u32) -> Allergies {
-        panic!("Implement `new`: constructs a new Allergies struct")
+        // construct a new Allergies struct
+        panic!("implement `new`")
     }
 
     fn is_allergic_to(self: @Allergies, allergen: @Allergen) -> bool {
-        panic!("implement `is_allergic_to`: determines whether the person is allergic to '{allergen:?}'")
+        // determine whether the person is allergic to '{allergen}'
+        panic!("implement `is_allergic_to`")
     }
 
     fn allergies(self: @Allergies) -> Array<Allergen> {
-        panic!(
-            "implement `allergies`: returns a list of allergies based on the person's allergy score"
-        )
+        // return a list of allergies based on the person's allergy score
+        panic!("implement `allergies`")
     }
 }

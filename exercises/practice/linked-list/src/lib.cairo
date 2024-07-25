@@ -4,30 +4,37 @@ struct DoublyLinkedList<T> {}
 #[generate_trait]
 pub impl DoublyLinkedListImpl<T, +Drop<T>> of DoublyLinkedListTrait<T> {
     fn new() -> DoublyLinkedList<T> {
-        panic!("implement `new`: constructs a new DoublyLinkedList struct")
+        // constructs a new DoublyLinkedList struct
+        panic!("implement `new`")
     }
 
     fn len(self: @DoublyLinkedList<T>) -> usize {
-        panic!("implement `len`: returns the list's length")
+        // returns the list's length
+        panic!("implement `len`")
     }
 
     fn push(ref self: DoublyLinkedList<T>, station: T) {
-        panic!("implement `push`: adds a new element to the end of the list")
+        // adds a new element to the end of the list
+        panic!("implement `push`")
     }
 
     fn pop(ref self: DoublyLinkedList<T>) -> Option<T> {
-        panic!("implement `pop`: removes the last element in the list and returns it")
+        // removes the last element in the list and returns it
+        panic!("implement `pop`")
     }
 
     fn shift(ref self: DoublyLinkedList<T>) -> Option<T> {
-        panic!("implement `shift`: removes the first element in the list and returns it")
+        // removes the first element in the list and returns it
+        panic!("implement `shift`")
     }
 
     fn unshift(ref self: DoublyLinkedList<T>, station: T) {
-        panic!("implement `unshift`: adds a new element to the beginning of the list")
+        // adds a new element to the beginning of the list
+        panic!("implement `unshift`")
     }
 
     fn delete(ref self: DoublyLinkedList<T>, station: T) {
-        panic!("implement `delete`: removes the first occurrence of the specified station")
+        // removes the first occurrence of the specified station
+        panic!("implement `delete`")
     }
 }

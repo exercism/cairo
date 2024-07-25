@@ -7,17 +7,20 @@ struct Clock {
 
 impl ClockDisplay of Display<Clock> {
     fn fmt(self: @Clock, ref f: Formatter) -> Result<(), Error> {
-        panic!("implement `fmt`: defines how the Clock should be converted to a string")
+        // define how the Clock should be converted to a string
+        panic!("implement `fmt`")
     }
 }
 
 #[generate_trait]
 pub impl ClockImpl of ClockTrait {
     fn new(hour: i32, minute: i32) -> Clock {
-        panic!("implement `new`: constructs a new Clock struct")
+        // construct a new Clock struct
+        panic!("implement `new`")
     }
 
     fn add_minutes(ref self: Clock, minutes: i32) -> Clock {
+        // adds {minutes} to the current Clock and returns the result as a new Clock
         panic!("implement `add_minutes`")
     }
 

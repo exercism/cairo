@@ -1,6 +1,3 @@
-// The code below is a stub. Just enough to satisfy the compiler.
-// In order to pass the tests you can add-to or change any of this code.
-
 #[derive(Drop, PartialEq, Debug)]
 pub enum Direction {
     North,
@@ -15,7 +12,8 @@ struct Robot {}
 #[generate_trait]
 pub impl RobotImpl of RobotTrait {
     fn new(x: i32, y: i32, d: Direction) -> Robot {
-        panic!("implement `new`: constructs a Robot at (x, y) facing {d:?}")
+        // construct a Robot at (x, y) facing {d:?}
+        panic!("implement `new`")
     }
 
     #[must_use]
@@ -35,7 +33,8 @@ pub impl RobotImpl of RobotTrait {
 
     #[must_use]
     fn instructions(self: Robot, instructions: ByteArray) -> Robot {
-        panic!("implement `instructions`: follows the given sequence of instructions: {instructions}")
+        // follow the given sequence of instructions: {instructions}
+        panic!("implement `instructions`")
     }
 
     fn position(self: @Robot) -> (i32, i32) {
