@@ -7,5 +7,5 @@ pub enum Comparison {
 }
 
 pub fn sublist<T, +PartialEq<T>>(a: @Array<T>, b: @Array<T>) -> Comparison {
-    panic!()
+    panic!("implement `sublist`")
 }

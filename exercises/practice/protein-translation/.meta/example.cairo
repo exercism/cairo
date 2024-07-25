@@ -66,9 +66,7 @@ pub impl CodonsInfoImpl of CodonsInfoTrait {
 const TWO_POW_8: u32 = 0x100;
 const TWO_POW_16: u32 = 0x10000;
 
-/// This is a helper trait that you may find useful.
-/// 
-/// It extracts a codon from a given ByteArray from index `from`.
+/// Extracts a codon from a given ByteArray from index `from`.
 /// Needs to extract 3 ByteArray characters and convert them to the appropriate
 /// felt252 value. It does this by taking the characters' byte value and moving
 /// their bits to the left depending on their position in the codon.
