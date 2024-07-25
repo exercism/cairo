@@ -82,11 +82,11 @@ Without updated syntax:
 
 ```Rust
 let user2 = User {
-        active: user1.active,
-        username: user1.username,
-        email: "another@example.com",
-        sign_in_count: user1.sign_in_count,
-    };
+    active: user1.active,
+    username: user1.username,
+    email: "another@example.com",
+    sign_in_count: user1.sign_in_count,
+};
 ```
 
 With updated syntax:
