@@ -11,6 +11,9 @@
     ],
     "example": [
       ".meta/example.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
     ]
   },
   "blurb": "Determine whether a given year is a leap year.",

@@ -11,6 +11,9 @@
     ],
     "example": [
       ".meta/example.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
     ]
   },
   "blurb": "Convert modern Arabic numbers into Roman numerals.",

@@ -11,6 +11,9 @@
     ],
     "example": [
       ".meta/example.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
     ]
   },
   "blurb": "Write a function to determine if a list is a sublist of another list."
