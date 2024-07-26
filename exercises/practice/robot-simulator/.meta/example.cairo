@@ -84,15 +84,12 @@ pub impl RobotImpl of RobotTrait {
     fn instructions(self: Robot, instructions: ByteArray) -> Robot {
         let mut robot = self.clone();
         let mut i = 0;
-        loop {
-            match instructions.at(i) {
-                Option::None => { break robot; },
-                Option::Some(instruction) => {
-                    robot = robot.execute(instruction.into());
-                    i += 1;
-                }
-            }
-        }
+        while let Option::Some(instruction) = instructions
+            .at(i) {
+                robot = robot.execute(instruction.into());
+                i += 1;
+            };
+        robot
     }
 
     fn position(self: @Robot) -> (i32, i32) {
