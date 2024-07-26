@@ -12,7 +12,7 @@ enum TranslateResult {
     Ok
 }
 
-fn parse(pairs: Array<(felt252, ByteArray)>) -> CodonsInfo {
+pub fn parse(pairs: Array<(felt252, ByteArray)>) -> CodonsInfo {
     let mut pairs = pairs;
     let mut actual_codons: Felt252Dict<Nullable<ByteArray>> = Default::default();
     while let Option::Some((codon, name)) = pairs
@@ -23,7 +23,7 @@ fn parse(pairs: Array<(felt252, ByteArray)>) -> CodonsInfo {
 }
 
 #[generate_trait]
-impl CodonsInfoImpl of CodonsInfoTrait {
+pub impl CodonsInfoImpl of CodonsInfoTrait {
     fn name_for(ref self: CodonsInfo, codon: felt252) -> ByteArray {
         let (entry, _name) = self.actual_codons.entry(codon);
         let name = _name.deref_or("");
@@ -106,6 +106,3 @@ impl CodonChunk of CodonChunkTrait {
         }
     }
 }
-
-#[cfg(test)]
-mod tests;

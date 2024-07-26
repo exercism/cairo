@@ -8,7 +8,7 @@
       "Scarb.toml"
     ],
     "test": [
-      "src/tests.cairo"
+      "tests/rational_numbers.cairo"
     ],
     "example": [
       ".meta/example.cairo"
