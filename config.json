@@ -20,8 +20,7 @@
   },
   "files": {
     "solution": [
-      "src/lib.cairo",
-      "Scarb.toml"
+      "src/lib.cairo"
     ],
     "test": [
       "tests/%{snake_slug}.cairo"
@@ -31,6 +30,9 @@
     ],
     "exemplar": [
       ".meta/exemplar.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
     ]
   },
   "exercises": {
@@ -84,7 +86,7 @@
       },
       {
         "slug": "lucians-luscious-lasagna",
-        "name": "Lucians Luscious Lasagna",
+        "name": "Lucian's Luscious Lasagna",
         "uuid": "8302f8de-14d7-45dd-9a65-812bc1ed5464",
         "practices": [
           "functions"

@@ -1,3 +1,4 @@
 pub fn score(word: ByteArray) -> u16 {
-    panic!("Score {word} in Scrabble.")
+    // return the Scrable score for: '{word}'
+    panic!("implement `score`")
 }

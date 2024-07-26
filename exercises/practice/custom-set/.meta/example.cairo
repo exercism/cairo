@@ -122,6 +122,22 @@ pub impl CustomSetImpl<
     }
 
     #[must_use]
+    fn difference(self: @CustomSet<T>, other: @CustomSet<T>) -> CustomSet<T> {
+        let mut collection: Array<T> = array![];
+        let mut i = 0;
+        while let Option::Some(value) = self
+            .collection
+            .get(i) {
+                let unboxed = value.unbox();
+                if !other.contains(unboxed) {
+                    collection.append(*unboxed);
+                }
+                i += 1;
+            };
+        CustomSetImpl::<T>::new(@collection)
+    }
+
+    #[must_use]
     fn union(self: @CustomSet<T>, other: @CustomSet<T>) -> CustomSet<T> {
         let mut collection: Array<T> = array![];
         let mut i = 0;
@@ -136,22 +152,6 @@ pub impl CustomSetImpl<
             .collection
             .get(i) {
                 collection.append(*value.unbox());
-                i += 1;
-            };
-        CustomSetImpl::<T>::new(@collection)
-    }
-
-    #[must_use]
-    fn difference(self: @CustomSet<T>, other: @CustomSet<T>) -> CustomSet<T> {
-        let mut collection: Array<T> = array![];
-        let mut i = 0;
-        while let Option::Some(value) = self
-            .collection
-            .get(i) {
-                let unboxed = value.unbox();
-                if !other.contains(unboxed) {
-                    collection.append(*unboxed);
-                }
                 i += 1;
             };
         CustomSetImpl::<T>::new(@collection)
