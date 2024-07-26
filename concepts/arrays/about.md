@@ -8,7 +8,7 @@ This limitation exists because, in Cairo, memory access is immutable, meaning th
 
 ## Array Construction
 
-Arrays are primarily constructed using the `ArrayTrait`. To create an array using ArrayTrait, you need to call `ArrayTrait::new()`. This sets up the array for you to start adding elements.
+Arrays are primarily constructed using the `ArrayTrait` trait, by calling `ArrayTrait::new()`. This sets up the array for you to start adding elements.
 
 ```rust
 let mut arr = ArrayTrait::new();
@@ -27,9 +27,9 @@ let mut arr = ArrayTrait::<u128>::new();
 let mut arr: Array<u128> = ArrayTrait::new();
 ```
 
-# Adding Array Values
+## Adding Array Values
 
-Once you have an array, you can add elements to it. In our example, we're adding three numbers: 0, 1, and 2.
+Once you have an array, you can add elements to it. In our example, we're adding three numbers: `0`, `1`, and `2`.
 
 ```rust
 arr.append(0);
@@ -39,7 +39,7 @@ arr.append(2);
 
 Each `append()` call puts a new number at the end of the array. So, after these operations, `arr` will contain `[0, 1, 2]`.
 
-If you attempt to append an item of a type that's different than the one the array expects, it will typically, cause a type error and fail to compile.
+If you attempt to append an item of a type that's different than the one the array expects, it will typically cause a type error and fail to compile.
 
 ## Removing Array Elements
 
@@ -75,12 +75,12 @@ The `pop_front()` method is used to remove the first element from the front of t
 
 To access array elements, you can use `get()` or `at()` array methods that return different types. An equivalent to `arr.at(index)` is the subscripting operator `arr[index]`.
 
-### 1. Using get() Method:
+### Using get() Method
 
 The `get()` method is like looking up an item in a list by its number.
 Here’s how it works:
 
-- arr.get(index) allows you to fetch an item at a specific position (index) in the array.
+- `arr.get(index)` allows you to fetch an item at a specific position (index) in the array.
 - It returns an Option, which means:
   Some(value): If the item exists at index, it gives you the value of that item.
   None: If the index is out of bounds or doesn't exist in the array.
@@ -99,11 +99,11 @@ fn main() {
 
     // Use match to handle the result of accessing the element at the specified index
     match arr.get(index_to_access) {
-        Some(value) => {
+        Option::Some(value) => {
             // Print the value if the element exists at the index
-            println!("Element at index {}: {}", index_to_access, *value);
+            println!("Element at index {}: {}", index_to_access, value.unbox());
         },
-        None => {
+        Option::None => {
             // Panic with a message if the index is out of bounds
             panic!("Index {} is out of bounds!", index_to_access);
         }
@@ -111,7 +111,7 @@ fn main() {
 }
 ```
 
-### 2. Using at() Method:
+### Using at() Method
 
 The `at()` method directly gives you a snapshot of the element at a specific index using the `unbox()` operation to extract the stored value from the box. If you try to access an index that doesn't exist (out-of-bounds), the program will panic with an error. This method is useful when you want your program to stop if it encounters an unexpected situation like accessing an invalid index.
 
