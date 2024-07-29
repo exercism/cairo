@@ -4,7 +4,7 @@ Enums are Cairo data type used to define a set of predefined variants for the pu
 
 The code snippet below shows how enums could be defined:
 
-```Rust
+```rust
 #[derive(Drop)]
 enum Direction {
     North,
@@ -16,13 +16,13 @@ enum Direction {
 
 The `Direction` enum declared above is a simple enum with four variants: `North`, `East`, `South`, and `West`. The naming convention is to use PascalCase for enum variants. Each variant represents a distinct value of the `Direction` enum type. Each variant in this particular enum example has no associated value and can be instantiated using this syntax:
 
-```Rust
+```rust
 let direction = Direction::North;
 ```
 
 Below is the same `Direction` enum, but with variants that have associated values, that store the exact degree of the direction:
 
-```Rust
+```rust
 #[derive(Drop)]
 enum Direction {
     North: u128,
@@ -34,15 +34,15 @@ enum Direction {
 
 It is evident from this example that each variant in the `Direction` enum has an associated value of `u128`. This kind of enum can be instantiated as follows:
 
-```Rust
+```rust
 let direction = Direction::North(10);
 ```
 
-## Complex example of an enum combined with custom types
+## Complex Enum Example with Custom Types
 
 An enum can be declared with a combination of different data types as its variants. In the example below, `Action` is a complex enum that as a collection of `Quit`, `Direction`, `SendMessage`, `ChangeAvatar`, and `ProfileState` as variants.
 
-```Rust
+```rust
 #[derive(Drop)]
 struct Move {
     up: u32,
@@ -72,7 +72,7 @@ enum Action {
 
 In Cairo, traits can be defined and implemented on custom enums. This allows for you to define methods and attributes associated with an enum. Below is an example of this where we define a `Message` enum and implement a `Processing` trait for it:
 
-```Rust
+```rust
 #[derive(Drop)]
 enum Message {
     Quit,
@@ -97,7 +97,7 @@ impl ProcessingImpl of Processing {
 
 Here is how the trait could be used to process a `Quit` message:
 
-```Rust
+```rust
 let msg: Message = Message::Quit;
 msg.process(); // prints "quitting"
 ```
@@ -108,7 +108,7 @@ In many situations, enums can come in handy especially when used with the `match
 
 The `Option` enum is a standard Cairo enum that represents the concept of an optional value. It has two variants: `Some: T` and `None`. `Some` variant has an associated value of type `T`, while `None` represents the absence of an associated value.
 
-```Rust
+```rust
 enum Option<T> {
     Some: T,
     None,
@@ -119,7 +119,7 @@ The `Option` enum is helpful because it allows you to explicitly represent the p
 
 The function below shows how the `Option` enum is used to return the index of the first element of an array with a given value, or return `None` if the element is absent.
 
-```Rust
+```rust
 fn find_value(mut arr: Span<felt252>, value: felt252) -> Option<usize> {
     let mut result = Option::None;
     let mut index = 0;
