@@ -91,6 +91,3 @@ let user2 = User { email: "another@example.com", ..user1 };
 
 The `..user1` syntax copies the remaining fields from `user1` to `user2`. Note that this moves the data from `user1` to `user2`, so `user1` cannot be used afterwards if it contains non-copiable types.
 
-## Conclusion
-
-Structs are a powerful way to group related data. They improve code clarity and provide flexibility in data management. By using field init shorthand and update syntax, you can write more concise and readable code.
