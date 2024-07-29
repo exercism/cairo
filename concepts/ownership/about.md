@@ -19,7 +19,7 @@ A scope is the range within a program in which a variable is valid. Let's look a
 ```rust
 fn main() {
                       // `x` is not valid here, it has not been declared yet
-    let x: u32 = 3;    // `x` is declared, it is valid from this point forward
+    let x: u32 = 3;   // `x` is declared, it is valid from this point forward
                       // do stuff with `x`
 
 } // this scope ended here, `x` goes out of scope and is no longer valid
