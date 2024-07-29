@@ -37,7 +37,7 @@ A move occurs when a value is passed to another function, destroying the origina
 Arrays are an example of a complex type that is moved when passing it to another function. Here is a short reminder of what an array looks like:
 
 ```rust
- let mut arr: Array<u128> = array![];
+    let mut arr: Array<u128> = array![];
     arr.append(1);
     arr.append(2);
 ```
