@@ -70,7 +70,7 @@ fn build_user_short(email: ByteArray, username: ByteArray) -> User {
 
 ## Creating Instances from Other Instances with Struct Update Syntax
 
-Use struct update syntax to create a new instance from an existing one, changing some of the fields while keeping the rest the same. This is achieved using the `..` operator:
+Use struct update syntax to create a new instance from an existing one, changing some of the fields while keeping the rest the same. This is achieved using the `..` operator.
 
 Without update syntax:
 
