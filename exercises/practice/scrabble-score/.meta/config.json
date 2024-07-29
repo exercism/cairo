@@ -2,6 +2,9 @@
   "authors": [
     "misicnenad"
   ],
+  "contributors": [
+    "BNAndras"
+  ],
   "files": {
     "solution": [
       "src/lib.cairo"
