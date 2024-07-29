@@ -14,16 +14,15 @@ Values in Cairo are immutable, this immutability ensures that even if many varia
 
 ## Variable Scope
 
-A scope is the range within a program in which a variable is valid. Let's look at the following example that declares a variable `x` of unsigned integer, with comments annotating where the variable is valid:
+A scope is the range within a program in which a variable is valid. Let's look at the following example that declares a variable `x` of unsigned integer type, with comments annotating where the variable is valid:
 
 ```rust
 fn main() {
                       // `x` is not valid here, it has not been declared yet
-     let x:u32 = 3;   // `x` is declared, it is valid from this point forward
-  // do stuffs with `x`
+    let x: u32 = 3;    // `x` is declared, it is valid from this point forward
+                      // do stuff with `x`
 
 } // this scope ended here, `x` goes out of scope and is no longer valid
-
 ```
 
 Notes:
@@ -89,12 +88,24 @@ Linear types can also be utilized by being destroyed, which ensures that the ass
 ```rust
 #[derive(Drop)]
 struct A {}
+
 fn main() {
     A {}; // this value can be destroyed after going out of scope
 }
 ```
 
 At the moment, the `Drop` implementation can be derived for all types, except for dictionaries (`Felt252Dict`) and types containing dictionaries. This is because dictionaries must be "squashed" when they are destroyed. For this, we derive the `Destruct` trait:
+
+```rust
+#[derive(Destruct)]
+struct A {
+    dict: Felt252Dict<u128>
+}
+
+fn main() {
+    A { dict: Default::default() };
+}
+```
 
 ## Return Values and Scope
 
@@ -137,4 +148,3 @@ fn takes_and_gives_back(some_a: A) -> A { // some_a comes into scope
 }
 ```
 
-While this works, moving into and out of every function is a bit tedious. What if we want to let a function use a value but not move the value? It’s quite annoying that anything we pass in also needs to be passed back if we want to use it again, in addition to any data resulting from the body of the function that we might want to return as well.
