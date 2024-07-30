@@ -1,11 +1,10 @@
-use core::traits::TryInto;
 #[derive(Drop)]
 struct Allergies {
     score: u32,
 }
 
 #[derive(Drop, Debug, PartialEq)]
-enum Allergen {
+pub enum Allergen {
     Eggs,
     Peanuts,
     Shellfish,
@@ -17,7 +16,7 @@ enum Allergen {
 }
 
 #[generate_trait]
-impl AllergiesImpl of AllergiesTrait {
+pub impl AllergiesImpl of AllergiesTrait {
     fn new(score: u32) -> Allergies {
         Allergies { score }
     }
@@ -73,6 +72,3 @@ fn pow(base: u32, mut power: u32) -> u32 {
     };
     result.try_into().expect('too large to fit output type')
 }
-
-#[cfg(test)]
-mod tests;

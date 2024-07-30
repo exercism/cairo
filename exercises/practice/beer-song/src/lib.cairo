@@ -1,15 +1,14 @@
-fn verse(n: u32) -> ByteArray {
-    panic!("emit verse {n}")
+pub fn verse(n: u32) -> ByteArray {
+    // return verse {n}
+    panic!("implement `verse`")
 }
 
-fn verses(start: u32, take_count: u32) -> ByteArray {
-    panic!("sing {take_count} verses from {start}")
+pub fn verses(start: u32, take_count: u32) -> ByteArray {
+    // return {take_count} verses from {start}
+    panic!("implement `verses`")
 }
 
-fn song() -> ByteArray {
-    panic!("sing the whole song")
+pub fn song() -> ByteArray {
+    // return the whole song
+    panic!("implement `song`")
 }
-
-#[cfg(test)]
-mod tests;
-

@@ -1,6 +1,4 @@
-use core::dict::Felt252DictTrait;
-
-type Domino = (u8, u8);
+pub type Domino = (u8, u8);
 
 /// A table keeping track of available dominoes.
 ///
@@ -75,7 +73,7 @@ impl AvailabilityTableImpl of AvailabilityTableTrait {
     }
 }
 
-fn chain(dominoes: @Array<Domino>) -> Option<Array<Domino>> {
+pub fn chain(dominoes: @Array<Domino>) -> Option<Array<Domino>> {
     match dominoes.len() {
         0 => Option::Some(array![]),
         1 => {
@@ -140,6 +138,3 @@ fn chain_worker(dominoes: @Array<Domino>) -> Array<Domino> {
     };
     chain
 }
-
-#[cfg(test)]
-mod tests;

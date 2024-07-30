@@ -1,4 +1,4 @@
-use clock::{ClockTrait};
+use clock::ClockTrait;
 
 // Create a new clock with an initial time
 

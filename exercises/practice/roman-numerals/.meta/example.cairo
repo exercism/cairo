@@ -1,7 +1,7 @@
 use core::fmt::{Display, Error, Formatter};
 
 #[derive(Drop)]
-struct Roman {
+pub struct Roman {
     value: ByteArray,
 }
 
@@ -45,6 +45,3 @@ impl RomanDisplay of Display<Roman> {
         write!(f, "{}", self.value)
     }
 }
-
-#[cfg(test)]
-mod tests;

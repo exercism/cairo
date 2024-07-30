@@ -1,1 +1,6 @@
-[]
+[
+  {
+    "url": "https://book.cairo-lang.org/ch05-01-defining-and-instantiating-structs.html",
+    "description": "Defining and Instatiating Structs in the Cairo book"
+  }
+]

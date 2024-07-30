@@ -1,7 +1,4 @@
 use core::fmt::{Debug, Formatter, Error};
-use alexandria_math::gcd_of_n_numbers::gcd_two_numbers;
-use alexandria_math::fast_power::fast_power;
-use alexandria_math::fast_root::fast_nr_optimize;
 
 #[derive(Drop, Debug, Copy)]
 struct Rational {
@@ -10,7 +7,7 @@ struct Rational {
 }
 
 #[generate_trait]
-impl RationalImpl of RationalTrait {
+pub impl RationalImpl of RationalTrait {
     fn new(numer: i128, denom: i128) -> Rational {
         assert!(denom != 0, "denominator cannot be 0");
 
@@ -74,14 +71,14 @@ impl RationalDiv of Div<Rational> {
 }
 
 #[generate_trait]
-impl RationalAbs of RationalAbsTrait {
+pub impl RationalAbs of RationalAbsTrait {
     fn abs(self: @Rational) -> Rational {
         RationalTrait::new(to_i128(abs(*self.numer)), to_i128(*self.denom))
     }
 }
 
 #[generate_trait]
-impl RationalPow of RationalPowTrait {
+pub impl RationalPow of RationalPowTrait {
     fn pow(self: @Rational, power: i128) -> Rational {
         if *self.numer == 0 {
             return *self;
@@ -96,8 +93,8 @@ impl RationalPow of RationalPowTrait {
             1
         };
 
-        let numer = to_i128(fast_power(abs(*self.numer), power_abs)) * sign;
-        let denom = to_i128(fast_power(*self.denom, power_abs));
+        let numer = to_i128(pow(abs(*self.numer), power_abs)) * sign;
+        let denom = to_i128(pow(*self.denom, power_abs));
 
         if power < 0 {
             RationalTrait::new(denom, numer)
@@ -112,7 +109,7 @@ impl RationalPow of RationalPowTrait {
         if power.numer < 0 {
             return 0;
         };
-        fast_nr_optimize(fast_power(*self, to_u128(power.numer)), power.denom, 30)
+        nth_root(pow(*self, to_u128(power.numer)), power.denom)
     }
 }
 
@@ -123,6 +120,41 @@ fn abs(n: i128) -> u128 {
         n
     };
     to_u128(val)
+}
+
+fn pow(base: u128, mut power: u128) -> u128 {
+    if base == 0 {
+        return base;
+    }
+    let base: u256 = base.into();
+    let mut result = 1_u256;
+    while power != 0 {
+        result *= base;
+        power -= 1;
+    };
+    result.try_into().expect('too large to fit output type')
+}
+
+fn nth_root(m: u128, n: u128) -> u128 {
+    // Use linear search on the answer space
+    let mut root = 1;
+    while root <= m {
+        let val = pow(root, n);
+        if val >= m {
+            break;
+        }
+        root += 1;
+    };
+    root
+}
+
+fn gcd_two_numbers(mut a: u128, mut b: u128) -> u128 {
+    while b != 0 {
+        let r = a % b;
+        a = b;
+        b = r;
+    };
+    a
 }
 
 fn to_i128(n: u128) -> i128 {
@@ -150,6 +182,3 @@ impl I128Debug of Debug<i128> {
         Result::Ok(())
     }
 }
-
-#[cfg(test)]
-mod tests;
