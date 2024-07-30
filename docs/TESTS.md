@@ -13,6 +13,7 @@ If you would like to split your solution into several files, consult The Cairo B
 ## Running Tests
 
 To run the tests, first you need to change your working directory to the directory of the exercise you want to test:
+
 ```bash
 cd path/to/exercise
 ```
