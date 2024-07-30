@@ -12,7 +12,7 @@ enum TranslateResult {
     Ok
 }
 
-fn parse(pairs: Array<(felt252, ByteArray)>) -> CodonsInfo {
+pub fn parse(pairs: Array<(felt252, ByteArray)>) -> CodonsInfo {
     let mut pairs = pairs;
     let mut actual_codons: Felt252Dict<Nullable<ByteArray>> = Default::default();
     while let Option::Some((codon, name)) = pairs
@@ -23,7 +23,7 @@ fn parse(pairs: Array<(felt252, ByteArray)>) -> CodonsInfo {
 }
 
 #[generate_trait]
-impl CodonsInfoImpl of CodonsInfoTrait {
+pub impl CodonsInfoImpl of CodonsInfoTrait {
     fn name_for(ref self: CodonsInfo, codon: felt252) -> ByteArray {
         let (entry, _name) = self.actual_codons.entry(codon);
         let name = _name.deref_or("");
@@ -66,9 +66,7 @@ impl CodonsInfoImpl of CodonsInfoTrait {
 const TWO_POW_8: u32 = 0x100;
 const TWO_POW_16: u32 = 0x10000;
 
-/// This is a helper trait that you may find useful.
-/// 
-/// It extracts a codon from a given ByteArray from index `from`.
+/// Extracts a codon from a given ByteArray from index `from`.
 /// Needs to extract 3 ByteArray characters and convert them to the appropriate
 /// felt252 value. It does this by taking the characters' byte value and moving
 /// their bits to the left depending on their position in the codon.
@@ -106,6 +104,3 @@ impl CodonChunk of CodonChunkTrait {
         }
     }
 }
-
-#[cfg(test)]
-mod tests;

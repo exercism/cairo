@@ -4,67 +4,79 @@ use core::fmt::{Debug, Formatter, Error};
 struct Rational {}
 
 #[generate_trait]
-impl RationalImpl of RationalTrait {
+pub impl RationalImpl of RationalTrait {
     fn new(numer: i128, denom: i128) -> Rational {
-        panic!()
+        // construct a new Rational struct
+        panic!("implement `new`")
     }
 }
 
 impl RationalPartialEq of PartialEq<Rational> {
     fn eq(lhs: @Rational, rhs: @Rational) -> bool {
-        panic!()
+        // determine whether the two Rational numbers are equal
+        panic!("implement `eq`")
     }
 
     fn ne(lhs: @Rational, rhs: @Rational) -> bool {
-        panic!()
+        // determine whether the two Rational numbers are NOT equal
+        panic!("implement `ne`")
     }
 }
 
 impl RationalNeg of Neg<Rational> {
     fn neg(a: Rational) -> Rational {
-        panic!()
+        // return the negative value of the Rational number {a}
+        panic!("implement `neg`")
     }
 }
 
 impl RationalAdd of Add<Rational> {
     fn add(lhs: Rational, rhs: Rational) -> Rational {
-        panic!()
+        // return the sum of {lhs} and {rhs}
+        panic!("implement `add`")
     }
 }
 
 impl RationalSub of Sub<Rational> {
     fn sub(lhs: Rational, rhs: Rational) -> Rational {
-        panic!()
+        // return the difference of {lhs} and {rhs}
+        panic!("implement `sub`")
     }
 }
 
 impl RationalMul of Mul<Rational> {
     fn mul(lhs: Rational, rhs: Rational) -> Rational {
-        panic!()
+        // return the product of {lhs} and {rhs}
+        panic!("implement `mul`")
     }
 }
 
 impl RationalDiv of Div<Rational> {
     fn div(lhs: Rational, rhs: Rational) -> Rational {
-        panic!()
+        // return the quotient of {lhs} and {rhs}
+        panic!("implement `div`")
     }
 }
 
 #[generate_trait]
-impl RationalAbs of RationalAbsTrait {
+pub impl RationalAbs of RationalAbsTrait {
     fn abs(self: @Rational) -> Rational {
-        panic!()
+        // return the absolute value of the given Rational number
+        panic!("implement `abs`")
     }
 }
 
 #[generate_trait]
-impl RationalPow of RationalPowTrait {
+pub impl RationalPow of RationalPowTrait {
     fn pow(self: @Rational, power: i128) -> Rational {
-        panic!()
+        // return a Rational number that is the result of raising {self} to the power of {power}
+        panic!("implement `pow`")
     }
 
     fn rpow(self: @u128, power: Rational) -> u128 {
-        panic!()
+        // return an integer that is the result of raising the integer {self} to the power of
+        // a Rational number {power}
+        panic!("implement `rpow`")
     }
 }
 
@@ -85,6 +97,3 @@ impl I128Debug of Debug<i128> {
         Result::Ok(())
     }
 }
-
-#[cfg(test)]
-mod tests;

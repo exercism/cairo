@@ -1,7 +1,7 @@
 {
-    "blurb": "In Cairo, variables and arguments default to field elements, indicated by the keyword felt252 if not specified otherwise",
+    "blurb": "In Cairo, `felt252` is a fundamental data type in Cairo from which all other data types are derived",
     "authors": [
         "rajeebkm"
     ],
-    "contributors": []
+    "contributors": ["misicnenad"]
 }

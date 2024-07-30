@@ -1,14 +1,11 @@
 #[derive(Drop, Debug, PartialEq)]
-enum Comparison {
+pub enum Comparison {
     Equal,
     Sublist,
     Superlist,
     Unequal,
 }
 
-fn sublist<T, +PartialEq<T>>(a: @Array<T>, b: @Array<T>) -> Comparison {
-    panic!()
+pub fn sublist<T, +PartialEq<T>>(a: @Array<T>, b: @Array<T>) -> Comparison {
+    panic!("implement `sublist`")
 }
-
-#[cfg(test)]
-mod tests;

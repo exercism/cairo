@@ -1,10 +1,10 @@
 {
   "language": "Cairo",
   "slug": "cairo",
-  "active": false,
+  "active": true,
   "status": {
     "concept_exercises": false,
-    "test_runner": false,
+    "test_runner": true,
     "representer": false,
     "analyzer": false
   },
@@ -15,26 +15,31 @@
     "indent_size": 4,
     "highlightjs_language": "rust"
   },
+  "test_runner": {
+    "average_run_time": 5
+  },
   "files": {
     "solution": [
-      "src/lib.cairo",
-      "Scarb.toml"
+      "src/lib.cairo"
     ],
     "test": [
-      "src/tests.cairo"
+      "tests/%{snake_slug}.cairo"
     ],
     "example": [
       ".meta/example.cairo"
     ],
     "exemplar": [
       ".meta/exemplar.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
     ]
   },
   "exercises": {
     "concept": [
       {
         "slug": "low-power-embedded-game",
-        "name": "low-power-embedded-game",
+        "name": "Low-power Embedded Game",
         "uuid": "f3b7ce44-1667-42b4-b792-401d36aee2f1",
         "concepts": [
           "tuples",
@@ -70,7 +75,7 @@
       },
       {
         "slug": "semi-structured-logs",
-        "name": "semi-structured-logs",
+        "name": "Semi Structured Logs",
         "uuid": "4ca5087f-0128-4845-89a8-a2fa7791ed98",
         "practices": [
           "enums",
@@ -81,7 +86,7 @@
       },
       {
         "slug": "lucians-luscious-lasagna",
-        "name": "lucians-luscious-lasagna",
+        "name": "Lucian's Luscious Lasagna",
         "uuid": "8302f8de-14d7-45dd-9a65-812bc1ed5464",
         "practices": [
           "functions"
@@ -153,7 +158,8 @@
           "traits",
           "type-conversion",
           "mutability",
-          "ownership"
+          "ownership",
+          "references-and-snapshots"
         ],
         "prerequisites": [],
         "difficulty": 4
@@ -202,6 +208,7 @@
         "practices": [
           "operator-overload",
           "ownership",
+          "references-and-snapshots",
           "integers"
         ],
         "prerequisites": [],
@@ -215,10 +222,11 @@
           "traits",
           "strings",
           "arrays",
-          "ownership"
+          "ownership",
+          "references-and-snapshots"
         ],
         "prerequisites": [],
-        "difficulty": 5
+        "difficulty": 6
       },
       {
         "slug": "custom-set",
@@ -234,17 +242,6 @@
         "difficulty": 6
       },
       {
-        "slug": "simple-linked-list",
-        "name": "Simple Linked List",
-        "uuid": "cc9a6bf9-9027-42c4-a71d-082ce48f7869",
-        "practices": [
-          "smart-pointers",
-          "generics"
-        ],
-        "prerequisites": [],
-        "difficulty": 7
-      },
-      {
         "slug": "robot-simulator",
         "name": "Robot Simulator",
         "uuid": "63302a7c-4235-41d6-9e10-9e46bd9a95c5",
@@ -252,7 +249,19 @@
           "enums",
           "traits",
           "ownership",
+          "references-and-snapshots",
           "mutability"
+        ],
+        "prerequisites": [],
+        "difficulty": 6
+      },
+      {
+        "slug": "simple-linked-list",
+        "name": "Simple Linked List",
+        "uuid": "cc9a6bf9-9027-42c4-a71d-082ce48f7869",
+        "practices": [
+          "smart-pointers",
+          "generics"
         ],
         "prerequisites": [],
         "difficulty": 7
@@ -375,6 +384,11 @@
       "uuid": "fe81e75b-b4d2-4ee8-9aaa-271e76468d0b",
       "slug": "printing",
       "name": "Printing"
+    },
+    {
+      "uuid": "ceba79ca-3f93-4731-b63a-aec25a44b131",
+      "slug": "references-and-snapshots",
+      "name": "References and Snapshots"
     },
     {
       "uuid": "7e322172-04ba-43f8-aba9-8ae999372b90",

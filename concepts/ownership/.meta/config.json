@@ -1,7 +1,5 @@
 {
-    "blurb": "<todo>",
-    "authors": [
-        "misicnenad"
-    ],
-    "contributors": []
+  "blurb": "In Cairo, the owner of a variable is the code that can read and/or write the variable",
+  "authors": ["Falilah", "misicnenad"],
+  "contributors": []
 }

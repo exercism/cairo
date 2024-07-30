@@ -16,13 +16,13 @@ impl DestructDoublyLinkedList<T, +Drop<T>, +Felt252DictValue<T>> of Destruct<Dou
 
 #[derive(Drop, Copy)]
 struct Node<T> {
-    data: T,
+    station: T,
     next: Index,
     previous: Index
 }
 
 #[generate_trait]
-impl DoublyLinkedListImpl<
+pub impl DoublyLinkedListImpl<
     T, +Drop<T>, +Copy<T>, +PartialEq<T>, +Felt252DictValue<T>
 > of DoublyLinkedListTrait<T> {
     fn new() -> DoublyLinkedList<T> {
@@ -35,10 +35,10 @@ impl DoublyLinkedListImpl<
         *self.len
     }
 
-    fn push(ref self: DoublyLinkedList<T>, data: T) {
+    fn push(ref self: DoublyLinkedList<T>, station: T) {
         match self.tail {
             Option::None => {
-                let node = NullableTrait::new(NodeTrait::new(data, Option::None, Option::None));
+                let node = NullableTrait::new(NodeTrait::new(station, Option::None, Option::None));
                 self.dict.insert(self.next_index, node);
                 self.tail = Option::Some(self.next_index);
                 self.head = self.tail;
@@ -46,7 +46,7 @@ impl DoublyLinkedListImpl<
                 self.next_index += 1;
             },
             Option::Some(tail) => {
-                let node = NullableTrait::new(NodeTrait::new(data, self.tail, Option::None));
+                let node = NullableTrait::new(NodeTrait::new(station, self.tail, Option::None));
                 self.dict.insert(self.next_index, node);
                 let old_tail = self.dict.get(tail).deref();
                 let updated_old_tail = Node { next: Option::Some(self.next_index), ..old_tail };
@@ -62,12 +62,12 @@ impl DoublyLinkedListImpl<
         match self.len {
             0 => Option::None,
             1 => {
-                let data = self.dict.get(self.head.unwrap()).deref().data;
+                let station = self.dict.get(self.head.unwrap()).deref().station;
                 self.dict.insert(self.head.unwrap(), Default::default());
                 self.head = Option::None;
                 self.tail = Option::None;
                 self.len -= 1;
-                Option::Some(data)
+                Option::Some(station)
             },
             _ => {
                 // pop tail
@@ -80,7 +80,7 @@ impl DoublyLinkedListImpl<
                 let new_tail = Node { next: Option::None, ..new_tail };
                 self.dict.insert(self.tail.unwrap(), NullableTrait::new(new_tail));
 
-                Option::Some(popped_tail.data)
+                Option::Some(popped_tail.station)
             }
         }
     }
@@ -89,12 +89,12 @@ impl DoublyLinkedListImpl<
         match self.len {
             0 => Option::None,
             1 => {
-                let data = self.dict.get(self.head.unwrap()).deref().data;
+                let station = self.dict.get(self.head.unwrap()).deref().station;
                 self.dict.insert(self.head.unwrap(), Default::default());
                 self.head = Option::None;
                 self.tail = Option::None;
                 self.len -= 1;
-                Option::Some(data)
+                Option::Some(station)
             },
             _ => {
                 // pop head
@@ -107,15 +107,15 @@ impl DoublyLinkedListImpl<
                 let new_head = Node { previous: Option::None, ..new_head };
                 self.dict.insert(self.head.unwrap(), NullableTrait::new(new_head));
 
-                Option::Some(shifted_head.data)
+                Option::Some(shifted_head.station)
             }
         }
     }
 
-    fn unshift(ref self: DoublyLinkedList<T>, data: T) {
+    fn unshift(ref self: DoublyLinkedList<T>, station: T) {
         match self.head {
             Option::None => {
-                let node = NullableTrait::new(NodeTrait::new(data, Option::None, Option::None));
+                let node = NullableTrait::new(NodeTrait::new(station, Option::None, Option::None));
                 self.dict.insert(self.next_index, node);
                 self.head = Option::Some(self.next_index);
                 self.tail = self.head;
@@ -123,7 +123,7 @@ impl DoublyLinkedListImpl<
                 self.next_index += 1;
             },
             Option::Some(head) => {
-                let node = NullableTrait::new(NodeTrait::new(data, Option::None, self.head));
+                let node = NullableTrait::new(NodeTrait::new(station, Option::None, self.head));
                 self.dict.insert(self.next_index, node);
                 let old_head = self.dict.get(head).deref();
                 let updated_old_head = Node { previous: Option::Some(self.next_index), ..old_head };
@@ -135,7 +135,7 @@ impl DoublyLinkedListImpl<
         }
     }
 
-    fn delete(ref self: DoublyLinkedList<T>, data: T) {
+    fn delete(ref self: DoublyLinkedList<T>, station: T) {
         if self.head.is_none() {
             return;
         }
@@ -145,7 +145,7 @@ impl DoublyLinkedListImpl<
             to_remove {
                 let node = self.dict.get(to_remove_index).deref();
 
-                if node.data != data {
+                if node.station != station {
                     to_remove = node.next;
                     continue;
                 }
@@ -176,10 +176,7 @@ impl DoublyLinkedListImpl<
 
 #[generate_trait]
 impl NodeImpl<T> of NodeTrait<T> {
-    fn new(data: T, previous: Index, next: Index) -> Node<T> {
-        Node { data, previous, next }
+    fn new(station: T, previous: Index, next: Index) -> Node<T> {
+        Node { station, previous, next }
     }
 }
-
-#[cfg(test)]
-mod tests;

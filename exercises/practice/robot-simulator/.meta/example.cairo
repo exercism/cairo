@@ -1,5 +1,5 @@
 #[derive(Drop, Debug, Copy, PartialEq)]
-enum Direction {
+pub enum Direction {
     North,
     East,
     South,
@@ -56,7 +56,7 @@ struct Robot {
 }
 
 #[generate_trait]
-impl RobotImpl of RobotTrait {
+pub impl RobotImpl of RobotTrait {
     fn new(x: i32, y: i32, d: Direction) -> Robot {
         RobotTrait::build(PositionTrait::new(x, y), d)
     }
@@ -84,15 +84,12 @@ impl RobotImpl of RobotTrait {
     fn instructions(self: Robot, instructions: ByteArray) -> Robot {
         let mut robot = self.clone();
         let mut i = 0;
-        loop {
-            match instructions.at(i) {
-                Option::None => { break robot; },
-                Option::Some(instruction) => {
-                    robot = robot.execute(instruction.into());
-                    i += 1;
-                }
-            }
-        }
+        while let Option::Some(instruction) = instructions
+            .at(i) {
+                robot = robot.execute(instruction.into());
+                i += 1;
+            };
+        robot
     }
 
     fn position(self: @Robot) -> (i32, i32) {
@@ -116,6 +113,3 @@ impl RobotImpl of RobotTrait {
         }
     }
 }
-
-#[cfg(test)]
-mod tests;

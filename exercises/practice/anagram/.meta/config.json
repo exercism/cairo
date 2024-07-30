@@ -4,14 +4,16 @@
   ],
   "files": {
     "solution": [
-      "src/lib.cairo",
-      "Scarb.toml"
+      "src/lib.cairo"
     ],
     "test": [
-      "src/tests.cairo"
+      "tests/anagram.cairo"
     ],
     "example": [
       ".meta/example.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
     ]
   },
   "blurb": "Given a word and a list of possible anagrams, select the correct sublist.",

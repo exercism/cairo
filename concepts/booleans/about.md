@@ -7,7 +7,6 @@ The Boolean type in Cairo is specified using the keyword `bool`. This enables th
 ```rust
 fn main() {
     let t = true;
-
     let f: bool = false; // with explicit type annotation
 }
 ```
@@ -20,11 +19,13 @@ One important aspect to note is that when declaring a boolean variable in Cairo,
 The following code snippet demonstrates how to use boolean types in Cairo. It shows the declaration of boolean variables, assignment of boolean expressions, and usage of assertions to verify the correctness of the boolean logic.
 
 ## Boolean Operators in Cairo
+
 - `||` (logical OR): Returns `true` if at least one of the operands is `true`.
 - `&&` (logical AND): Returns `true` if both operands are `true`.
 - `!` (logical NOT): Returns the opposite Boolean value of the operand.
 
 ## Example Code
+
 ```rust
 fn main() {
     // Declaration of Boolean variables
