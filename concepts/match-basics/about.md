@@ -1,26 +1,6 @@
 # Match Basics
 
-The `match` expression allows for easy comparison of a value against a series of patterns and afterwards run the code based on which pattern matches. Literal values, variable names, wildcards, and many other things are what makes up a pattern.
-
-The examples below show the `match` syntax:
-
-```rust
-match enum_var {
-    variant_0(a, b, c) => {/* code */}
-    variant_1(_) => {/* code */}
-    ...
-    variant_k(a, c) => {/* code */}
-}
-
-match felt_var {
-    0 => { /* code */ }
-    _ => { /* code */ }
-}
-```
-
-The `variant_0`, `variant_1`, `...`, and `variant_k` are all variants of an enum data type. Where `enum_var` could be any instance of the enum, after matching, executes the code in the curly braces. While the second example is the usage of the match patterning with a `felt_var` felt252 with arm patterns of value `0` and wildcard, `_`.
-
-Following the format above, we can write a function that takes in an unknown color parameter and return its true color.
+The `match` expression allows for easy comparison of a value against a series of patterns and afterwards running the code based on the matched pattern. Literal values, variable names, wildcards, and many other things are what makes up a pattern.
 
 ```rust
 enum Color {
@@ -29,18 +9,46 @@ enum Color {
     Green,
 }
 
-fn return_color_type(color: Color) -> felt252 {
+fn print_color_type(color: Color) {
     match color {
-        Color:Red => println!("The color is Red"),`
-        Color:Yellow => println!("The color is Yellow"),
-        Color:Green => println!("The color is Green"),
+        Color::Red => println!("The color is Red"),
+        Color::Yellow => println!("The color is Yellow"),
+        Color::Green => println!("The color is Green"),
     }
+}
+
+// To handle multiple lines of code, the `match` arm of code should be wrapped in curly braces `{}`:
+
+fn print_color_name(color: Color) -> felt252 {
+    match color {
+        Color::Red => {
+            println!("The color is Red");
+            5
+        },
+        Color::Yellow => {
+            println!("The color is Yellow");
+            2
+        },
+        Color::Green => {
+            println!("The color is Green");
+            9
+        },
+    }
+}
+
+fn main() {
+
+let color = Color::Yellow;
+print_color_type(color);
+
+let color = Color::Green;
+let value: felt252 = print_color_name(color); // prints "The color is Green"
+
+println!("{}", value); // prints 9
 }
 ```
 
-The `return_color_type` function prints the color of whichever unknown parameter was provided. Given the unknown `color` value, it would have several patterns that involves each of the variants to match. The arm of code to execute for each pattern is a one liner `println!("The color is ${color}")` of whatever the value match. To handle mutiple lines of code, the arm of code should be wrapped into a curly braces `{}`.
-
-## Matching the `Option` enum type
+## Matching the `Option` Enum Type
 
 The built-in `Option` enum can as well be handled with the `match` patterning to help get the inner `T` value out of the `Some` variant and other cases. There are no difference in how the match patterning are formed for the `Option` enum, only that the variants make up the arms.
 
@@ -56,48 +64,38 @@ fn add_one(x: Option<u8>) -> Option<u8> {
 
 fn main() {
     let three: Option<u8> = Option::Some(3);
-    let four: Option<u8> = plus_one(three);
-    let none = plus_one(Option::None);
+    let four: Option<u8> = add_one(three);
+    let none = add_one(Option::None);
+
+    println!("{three:?}"); // prints "Option::Some(3)"
+    println!("{four:?}"); // prints "Option::Some(4)"
+    println!("{none:?}"); // prints "Option::None(())"
 }
 ```
 
-## Matches cover all possible cases
+> Note: `{:?}` is a special formatting syntax that allows to print a debug form of the parameter passed to the `println!` macro. You can find more information about it in [The Cairo Book](https://book.cairo-lang.org/appendix-03-derivable-traits.html#debug-for-printing-and-debugging).
 
-One benefit of using the `match` control flow is due to its exhaustive nature. In Cairo, especially in the case of `Option<T>`, it expects that every possible pattern must be exhaustively handled else it will revert at compile time.
+One benefit of using the `match` control flow is its exhaustive nature: the arms’ patterns must cover _all_ possibilities. Consider the version of the previous example that does not handle the `None` case:
 
 ```rust
 fn add_one(x: Option<u8>) -> Option<u8> {
     match x {
         Option::Some(val) => Option::Some(val + 1),
     }
+     // this code does not compile, as we forgot to handle the `None` case
 }
-```
-
-This kind of bug is easier for the compiler to spot because in this case, the possibility that the `x` value could be a null value was not handled. The revert error looks like this error:
-
-```sh
-$ scarb cairo-run
-   Compiling missing_match_arm v0.1.0 (home/Scarb.toml)
-error: Missing match arm: `None` not covered.
- --> home/src/lib.cairo:5:5
-    match x {
-    ^*******^
-
-error: could not compile `missing_match_arm` due to previous error
-error: `scarb metadata` exited with error
-
 ```
 
 The error shows that Cairo is aware of other uncovered possible cases that x could be. This error spells out the possibility of the `x` value being null and protect us from assuming that `x` will never be null.
 
-## Catch-all pattern with `_` wildcard
+## Catch-all Pattern with `_` Wildcard
 
-Understanding how the `_` wildcard works is essential in order to effectively handle all cases. This is most times added as the last arm of a `match` expression. This is a special pattern whose arm of code is executed only after the critical patterns.
+Using enums, we can also take special actions for a few particular values, but for all other values perform one default action by adding a new arm with `_` as the pattern for the last arm of the match expression. The `_` pattern is a special pattern that matches any value and does not bind to that value.
 
-The allow_red function receives a parameter and return true if red and false for any other color instance.
+The `is_red` function receives a parameter and return `true` if the color is `Red` and `false` for any other color:
 
 ```rust
-fn allow_red(color: Color) -> bool {
+fn is_red(color: Color) -> bool {
     match color {
         Color::Red => true,
         _ => false,
@@ -105,17 +103,46 @@ fn allow_red(color: Color) -> bool {
 }
 ```
 
-## Match patterning with the `or` (`|`) Operator
+## Pattern Matching with the `|` Operator
 
-The Cairo `match` control flow construct allows for matching a value against multiple patterns handled by the `or` operator (`|`). With the use of the `or` operator in a match patterning, it helps achieve code simplicity.
+The Cairo `match` control flow construct allows for matching a value against multiple patterns using the `|` (_or_) operator. This helps simplify the code.
 
-For example, using the `Color` enum above, we want to write a function that returns true for `Red` or `Green` colors and false for other colors.
+For example, using the `Color` enum, we want to write a function that returns `true` for `Red` or `Green` colors and `false` for other colors:
 
 ```rust
-fn allow_red_and_green(color: Color) -> bool {
+fn is_red_or_green(color: Color) -> bool {
     match color {
         Color::Red | Color::Green => true,
         _ => false,
     }
+}
+```
+
+## Pattern Matching with `felt252` and Integer Variables
+
+It is possible to match `felt252` and integer variables against a set of values. However, there are some constraints;
+
+- Only support integers that fit into a single `felt252` (i.e `u256` is not supported).
+- 0 must be the first arm.
+- Each arm must follow a sequential segment, contiguously with other arms.
+
+Let's implement a six-sided die tossing game. When this die is tossed, we get a number between 0 and 5. For a toss that yields 0, 1 or 2, you win. You roll again if you have 3. You loss for other values:
+
+```rust
+fn toss(value: u8) {
+    match value {
+        0 | 1 | 2 => println!("you won!"),
+        3 => println!("you can roll again!"),
+        _ => println!("you lost...")
+    }
+}
+
+fn main() {
+let x: u8 = 2;
+let y: u8 = 3;
+let z: u8 = 5;
+toss(x); // prints "you won!".
+toss(y); // prints "you can roll again!".
+toss(z); // prints "you lost...".
 }
 ```

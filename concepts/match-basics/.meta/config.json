@@ -1,5 +1,5 @@
 {
-  "blurb": "The `match` expression allows for easy comparison of a value against a series of patterns and afterwards run the code based on which pattern matches.",
+  "blurb": "The `match` expression enables pattern matching and running code based on the matched pattern.",
   "authors": ["Ephraim-nonso"],
-  "contributors": []
+  "contributors": ["misicnenad"]
 }
