@@ -14,7 +14,5 @@ The home page for Cairo is [cairo-lang.org](https://www.cairo-lang.org/).
 List of Cairo resources at [cairo-lang.org/documentation.html](https://www.cairo-lang.org/resources/).
 Newcomers should start with "The Book" located at [book.cairo-lang.org/](https://book.cairo-lang.org/).
 
-
 [zkp]: https://en.wikipedia.org/wiki/Zero-knowledge_proof
-[awe-sn]: https://github.com/keep-starknet-strange/awesome-starknet
 [np]: https://en.wikipedia.org/wiki/NP_(complexity)

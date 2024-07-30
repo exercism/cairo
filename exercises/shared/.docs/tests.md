@@ -3,7 +3,7 @@
 Execute the tests with:
 
 ```bash
-$ scarb cairo-test
+scarb cairo-test
 ```
 
 All but the first test have been ignored. After you get the first test to
@@ -15,13 +15,13 @@ Continue, until you pass every test.
 If you wish to run _all_ tests without editing the tests source file, use:
 
 ```bash
-$ scarb cairo-test --include-ignored
+scarb cairo-test --include-ignored
 ```
 
 To run a specific test no matter if it's ignored or not, for example `some_test`, you can use:
 
 ```bash
-$ scarb cairo-test -f some_test
+scarb cairo-test -f some_test
 ```
 
 To learn more about Cairo tests refer to the online [test documentation][cairo-tests].
