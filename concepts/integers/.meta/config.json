@@ -1,8 +1,5 @@
 {
     "blurb": "Integers are whole numbers with no decimal separator",
-    "authors": [
-        "rajeebkm",
-        "misicnenad"
-    ],
-    "contributors": []
+    "authors": ["rajeebkm"],
+    "contributors": ["misicnenad"]
 }
