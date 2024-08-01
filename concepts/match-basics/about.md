@@ -3,13 +3,14 @@
 The `match` expression allows for easy comparison of a value against a series of patterns and afterwards running the code based on the matched pattern. Literal values, variable names, wildcards, and many other things are what makes up a pattern.
 
 ```rust
+#[derive(Drop)]
 enum Color {
     Red,
     Yellow,
     Green,
 }
 
-fn print_color_type(color: Color) {
+fn specified_color(color: Color) {
     match color {
         Color::Red => println!("The color is Red"),
         Color::Yellow => println!("The color is Yellow"),
@@ -17,9 +18,16 @@ fn print_color_type(color: Color) {
     }
 }
 
-// To handle multiple lines of code, the `match` arm of code should be wrapped in curly braces `{}`:
+fn main() {
+    let color = Color::Yellow;
+    specified_color(color);
+}
+```
 
-fn print_color_name(color: Color) -> felt252 {
+To handle multiple lines of code, the `match` arm of code should be wrapped in curly braces `{}`:
+
+```rust
+fn specified_color(color: Color) -> felt252 {
     match color {
         Color::Red => {
             println!("The color is Red");
@@ -37,16 +45,48 @@ fn print_color_name(color: Color) -> felt252 {
 }
 
 fn main() {
-
-let color = Color::Yellow;
-print_color_type(color);
-
 let color = Color::Green;
-let value: felt252 = print_color_name(color); // prints "The color is Green"
+let value: felt252 = specified_color(color); // prints "The color is Green"
 
 println!("{}", value); // prints 9
 }
 ```
+
+The `match` expression also possesses the feature of binding to values that match the pattern. This makes it possible to extract the associated value of an enum variant.
+
+```rust
+#[derive(Drop, Debug)]
+enum ColorType {
+    Light,
+    Dark,
+}
+
+#[derive(Drop)]
+enum Color {
+    Red: ColorType,
+    Yellow,
+    Green,
+}
+
+fn specified_color(color: Color) {
+    match color {
+        Color::Red(state) => {
+            println!("The color is Red");
+            println!("The Color Type is {:?}", state);
+        },
+        Color::Yellow => println!("The color is Yellow"),
+        Color::Green => println!("The color is Green"),
+    }
+}
+
+fn main() {
+    let color = Color::Red(ColorType:: Dark);
+    specified_color(color);
+
+}
+```
+
+Extending the `Red` variant of the `Color` enum to have an associated enum. With the help of the `match` expression, we could extract the associated value; `state`. This is simply a variable name which could be used afterwards in the code arm.
 
 ## Matching the `Option` Enum Type
 
@@ -85,8 +125,6 @@ fn add_one(x: Option<u8>) -> Option<u8> {
      // this code does not compile, as we forgot to handle the `None` case
 }
 ```
-
-The error shows that Cairo is aware of other uncovered possible cases that x could be. This error spells out the possibility of the `x` value being null and protect us from assuming that `x` will never be null.
 
 ## Catch-all Pattern with `_` Wildcard
 
@@ -138,11 +176,36 @@ fn toss(value: u8) {
 }
 
 fn main() {
-let x: u8 = 2;
-let y: u8 = 3;
-let z: u8 = 5;
-toss(x); // prints "you won!".
-toss(y); // prints "you can roll again!".
-toss(z); // prints "you lost...".
+    let x: u8 = 2;
+    let y: u8 = 3;
+    let z: u8 = 5;
+
+    toss(x); // prints "you won!".
+    toss(y); // prints "you can roll again!".
+    toss(z); // prints "you lost...".
 }
 ```
+
+## Matching Tuples
+
+Tuples can also be matched against a set of patterns. These patterns are designed similarly as a tuple.
+
+```rust
+...
+#[derive(Drop)]
+enum DayType {
+    Week,
+    Weekend,
+    Holiday
+}
+
+fn vending_machine_accept(c: (DayType, Color)) -> bool {
+    match c {
+        (DayType::Week, _) => true, // accepts all colors during week day
+        (_, Color::Red) | (_, Color::Green) => true, // accepts only Red or Green color for all specified days
+        (_, _) => false, // returns false for other instances
+    }
+}
+```
+
+Using `(_, _)` is unnecessary as it performs the same functionality as using a single wildcard: `_ =>` syntax.
