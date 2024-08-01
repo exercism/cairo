@@ -15,6 +15,7 @@ A critical distinction between integers and field elements is how division is ha
 $\frac{x}{y} \cdot y = x$
 
 This means:
+
 - If $y$ divides $x$ as integers, Cairo will provide the expected result. For instance, $\frac{6}{2}$ will yield $3$.
 - If $y$ does not divide $x$ , the result can be surprising. For example, since $2 \cdot \left(\frac{P+1}{2}\right) = P + 1 \equiv 1 \mod P$, the value of $\frac{1}{2}$ in Cairo is $\frac{P + 1}{2}$ (not $0$ or $0.5$), as it satisfies the above equation:
 

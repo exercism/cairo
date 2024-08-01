@@ -12,7 +12,7 @@ An `integer` is a number without a fractional component. In Cairo, the type decl
 | 256-bit  | u256     |
 | 32-bit   | usize    |
 
-**Table 1: Integer Types in Cairo**
+##### Table 1: Integer Types in Cairo
 
 ## Details
 
@@ -45,6 +45,7 @@ fn main() {
     sub_u8s(1, 3);
 }
 ```
+
 All integer types mentioned previously fit into a `felt252`, except for `u256`, which needs 4 more bits to be stored. Under the hood, `u256` is essentially a struct with 2 fields:
 
 ```rust
@@ -86,7 +87,7 @@ You can write integer literals in any of the forms shown in the below table. Not
 | Octal            | 0o04321 |
 | Binary           | 0b01    |
 
-**Table 2: Integer Literals in Cairo.**
+##### Table 2: Integer Literals in Cairo.
 
 So how do you know which type of integer to use? Try to estimate the max value your int can have and choose the appropriate size. The primary situation in which you’d use `usize` is when indexing some sort of collection.
 
