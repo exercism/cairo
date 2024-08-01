@@ -1,14 +1,14 @@
 {
   "language": "Cairo",
   "slug": "cairo",
-  "active": false,
+  "active": true,
   "status": {
     "concept_exercises": false,
-    "test_runner": false,
+    "test_runner": true,
     "representer": false,
     "analyzer": false
   },
-  "blurb": "Cairo is a general purpose language for writing ZK provable programs, without the need for a deep understanding of ZK concepts. Cairo is most often used for building trustless applications on Starknet.",
+  "blurb": "Cairo is a general purpose language for writing zero-knowledge provable programs, without the need for a deep understanding of zero-knowledge concepts.",
   "version": 3,
   "online_editor": {
     "indent_style": "space",
@@ -16,32 +16,35 @@
     "highlightjs_language": "rust"
   },
   "test_runner": {
-    "average_run_time": 2
+    "average_run_time": 5
   },
   "files": {
     "solution": [
-      "src/lib.cairo",
-      "Scarb.toml"
+      "src/lib.cairo"
     ],
     "test": [
-      "src/tests.cairo"
+      "tests/%{snake_slug}.cairo"
     ],
     "example": [
       ".meta/example.cairo"
     ],
     "exemplar": [
       ".meta/exemplar.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
     ]
   },
   "exercises": {
     "concept": [
       {
         "slug": "low-power-embedded-game",
-        "name": "low-power-embedded-game",
+        "name": "Low-power Embedded Game",
         "uuid": "f3b7ce44-1667-42b4-b792-401d36aee2f1",
         "concepts": [
           "tuples",
-          "traits"
+          "traits",
+          "generics"
         ],
         "prerequisites": [],
         "status": "wip"
@@ -68,7 +71,28 @@
           "integers"
         ],
         "prerequisites": [],
-        "difficulty": 1
+        "difficulty": 2
+      },
+      {
+        "slug": "semi-structured-logs",
+        "name": "Semi Structured Logs",
+        "uuid": "4ca5087f-0128-4845-89a8-a2fa7791ed98",
+        "practices": [
+          "enums",
+          "match-basics"
+        ],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
+        "slug": "lucians-luscious-lasagna",
+        "name": "Lucian's Luscious Lasagna",
+        "uuid": "8302f8de-14d7-45dd-9a65-812bc1ed5464",
+        "practices": [
+          "functions"
+        ],
+        "prerequisites": [],
+        "difficulty": 2
       },
       {
         "slug": "armstrong-numbers",
@@ -78,28 +102,31 @@
           "packages-crates-modules"
         ],
         "prerequisites": [],
-        "difficulty": 1
+        "difficulty": 3
       },
       {
-        "slug": "semi-structured-logs",
-        "name": "semi-structured-logs",
-        "uuid": "4ca5087f-0128-4845-89a8-a2fa7791ed98",
+        "slug": "sublist",
+        "name": "Sublist",
+        "uuid": "e62b1bb4-fb37-4dfe-ad81-e0fa5c494ba3",
         "practices": [
+          "arrays",
           "enums",
-          "match-basics"
+          "generics"
         ],
         "prerequisites": [],
-        "difficulty": 1
+        "difficulty": 3
       },
       {
-        "slug": "lucians-luscious-lasagna",
-        "name": "lucians-luscious-lasagna",
-        "uuid": "8302f8de-14d7-45dd-9a65-812bc1ed5464",
+        "slug": "scrabble-score",
+        "name": "Scrabble Score",
+        "uuid": "3ef58f8c-99d4-48be-bb15-a1a5763e5052",
         "practices": [
-          "functions"
+          "dictionaries",
+          "strings",
+          "felts"
         ],
         "prerequisites": [],
-        "difficulty": 1
+        "difficulty": 3
       },
       {
         "slug": "beer-song",
@@ -110,16 +137,15 @@
           "strings"
         ],
         "prerequisites": [],
-        "difficulty": 2
+        "difficulty": 3
       },
       {
-        "slug": "custom-set",
-        "name": "Custom Set",
-        "uuid": "aad80498-750c-4a7d-b82a-f52f90c54e11",
+        "slug": "clock",
+        "name": "Clock",
+        "uuid": "b44728f6-f2ad-4fa4-a20e-5144f9a81e3e",
         "practices": [
-          "structs",
           "traits",
-          "operator-overload"
+          "printing"
         ],
         "prerequisites": [],
         "difficulty": 4
@@ -131,10 +157,12 @@
         "practices": [
           "traits",
           "type-conversion",
-          "mutability"
+          "mutability",
+          "ownership",
+          "references-and-snapshots"
         ],
         "prerequisites": [],
-        "difficulty": 2
+        "difficulty": 4
       },
       {
         "slug": "binary-search",
@@ -143,7 +171,8 @@
         "practices": [
           "arrays",
           "enums",
-          "control-flow"
+          "control-flow",
+          "generics"
         ],
         "prerequisites": [],
         "difficulty": 4
@@ -173,15 +202,17 @@
         "difficulty": 4
       },
       {
-        "slug": "clock",
-        "name": "Clock",
-        "uuid": "b44728f6-f2ad-4fa4-a20e-5144f9a81e3e",
+        "slug": "rational-numbers",
+        "name": "Rational Numbers",
+        "uuid": "9858a357-b935-437d-b4e0-c3aac20859cf",
         "practices": [
-          "traits",
-          "printing"
+          "operator-overload",
+          "ownership",
+          "references-and-snapshots",
+          "integers"
         ],
         "prerequisites": [],
-        "difficulty": 3
+        "difficulty": 5
       },
       {
         "slug": "anagram",
@@ -191,10 +222,81 @@
           "traits",
           "strings",
           "arrays",
+          "ownership",
+          "references-and-snapshots"
+        ],
+        "prerequisites": [],
+        "difficulty": 6
+      },
+      {
+        "slug": "custom-set",
+        "name": "Custom Set",
+        "uuid": "aad80498-750c-4a7d-b82a-f52f90c54e11",
+        "practices": [
+          "structs",
+          "generics",
+          "traits",
+          "operator-overload"
+        ],
+        "prerequisites": [],
+        "difficulty": 6
+      },
+      {
+        "slug": "robot-simulator",
+        "name": "Robot Simulator",
+        "uuid": "63302a7c-4235-41d6-9e10-9e46bd9a95c5",
+        "practices": [
+          "enums",
+          "traits",
+          "ownership",
+          "references-and-snapshots",
           "mutability"
         ],
         "prerequisites": [],
-        "difficulty": 5
+        "difficulty": 6
+      },
+      {
+        "slug": "simple-linked-list",
+        "name": "Simple Linked List",
+        "uuid": "cc9a6bf9-9027-42c4-a71d-082ce48f7869",
+        "practices": [
+          "smart-pointers",
+          "generics"
+        ],
+        "prerequisites": [],
+        "difficulty": 7
+      },
+      {
+        "slug": "protein-translation",
+        "name": "Protein Translation",
+        "uuid": "d42e7a29-64b9-478b-8b2a-44fd002391fa",
+        "practices": [
+          "dictionaries",
+          "strings",
+          "felts",
+          "type-conversion"
+        ],
+        "prerequisites": [],
+        "difficulty": 8
+      },
+      {
+        "slug": "dominoes",
+        "name": "Dominoes",
+        "uuid": "4bf12182-491e-4da7-a51a-3d96a2649d8a",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 10
+      },
+      {
+        "slug": "linked-list",
+        "name": "Linked List",
+        "uuid": "1924c44e-bfa2-4dac-a7a9-779e4039ac56",
+        "practices": [
+          "structs",
+          "traits"
+        ],
+        "prerequisites": [],
+        "difficulty": 10
       }
     ],
     "foregone": [
@@ -204,19 +306,9 @@
   },
   "concepts": [
     {
-      "uuid": "4eb800f7-f6c5-4b28-8492-229b6a51829e",
-      "slug": "strings",
-      "name": "Strings"
-    },
-    {
-      "uuid": "9f7e96c1-a3ab-4ab9-b021-563453b1e664",
-      "slug": "integers",
-      "name": "Integers"
-    },
-    {
-      "uuid": "fe33b75a-8064-419d-9e09-16b49e6a5c6d",
-      "slug": "felts",
-      "name": "Felt Type"
+      "uuid": "6b6dafdb-7868-4089-855a-eb6735b5de5c",
+      "slug": "arrays",
+      "name": "Arrays"
     },
     {
       "uuid": "de254443-42ee-4787-bc1e-3d0d2039c4f5",
@@ -224,9 +316,14 @@
       "name": "The Boolean Type"
     },
     {
-      "uuid": "6ba0e79b-9e70-4116-8f26-cce676a7b05e",
-      "slug": "functions",
-      "name": "Functions"
+      "uuid": "887864e6-8d80-433c-8a1e-b11a5f79ae35",
+      "slug": "control-flow",
+      "name": "Control Flow"
+    },
+    {
+      "uuid": "7e7b772a-2b3e-47d7-96ef-807a4d5b3545",
+      "slug": "dictionaries",
+      "name": "Dictionaries"
     },
     {
       "uuid": "cff7568f-423e-4d6b-b238-1ebbce31d991",
@@ -234,34 +331,39 @@
       "name": "Enums"
     },
     {
+      "uuid": "cf49c14b-ed9a-4df6-a43a-3923e8489900",
+      "slug": "error-handling",
+      "name": "Error Handling"
+    },
+    {
+      "uuid": "fe33b75a-8064-419d-9e09-16b49e6a5c6d",
+      "slug": "felts",
+      "name": "Felt Type"
+    },
+    {
+      "uuid": "6ba0e79b-9e70-4116-8f26-cce676a7b05e",
+      "slug": "functions",
+      "name": "Functions"
+    },
+    {
+      "uuid": "9be30113-b4fe-4cdd-9894-9afd593f2a90",
+      "slug": "generics",
+      "name": "Generic Types"
+    },
+    {
+      "uuid": "9f7e96c1-a3ab-4ab9-b021-563453b1e664",
+      "slug": "integers",
+      "name": "Integers"
+    },
+    {
       "uuid": "2cc6431d-fc19-47f3-b7f1-999ed16e5244",
       "slug": "match-basics",
       "name": "Match Basics"
     },
     {
-      "uuid": "52684fe6-9b8d-4974-8de4-f65d42fbf9c1",
-      "slug": "packages-crates-modules",
-      "name": "Packages, Crates and Modules"
-    },
-    {
-      "uuid": "887864e6-8d80-433c-8a1e-b11a5f79ae35",
-      "slug": "control-flow",
-      "name": "Control Flow"
-    },
-    {
-      "uuid": "4665675b-1abe-47ea-9701-32fb0220c159",
-      "slug": "tuples",
-      "name": "The Tuple Type"
-    },
-    {
-      "uuid": "fe83c9a6-cf50-47b1-9993-21ddd1e895ee",
-      "slug": "traits",
-      "name": "Traits"
-    },
-    {
-      "uuid": "4e1f6433-3125-4428-837d-47b0c10fddea",
-      "slug": "structs",
-      "name": "Structs"
+      "uuid": "8a4a6525-c1e4-44f5-ab6b-cf5d8ce6701e",
+      "slug": "mutability",
+      "name": "Mutability"
     },
     {
       "uuid": "0b069f59-f8b4-4979-935a-c3172538f4c9",
@@ -269,19 +371,14 @@
       "name": "Operator Overload"
     },
     {
-      "uuid": "b0ea24b3-3520-42c2-9177-0550247fa2bd",
-      "slug": "type-conversion",
-      "name": "Type Conversion"
+      "uuid": "c11a8aa5-cda4-4d02-a477-3db3d3ca5acf",
+      "slug": "ownership",
+      "name": "Ownership"
     },
     {
-      "uuid": "6b6dafdb-7868-4089-855a-eb6735b5de5c",
-      "slug": "arrays",
-      "name": "Arrays"
-    },
-    {
-      "uuid": "cf49c14b-ed9a-4df6-a43a-3923e8489900",
-      "slug": "error-handling",
-      "name": "Error Handling"
+      "uuid": "52684fe6-9b8d-4974-8de4-f65d42fbf9c1",
+      "slug": "packages-crates-modules",
+      "name": "Packages, Crates and Modules"
     },
     {
       "uuid": "fe81e75b-b4d2-4ee8-9aaa-271e76468d0b",
@@ -289,9 +386,39 @@
       "name": "Printing"
     },
     {
-      "uuid": "8a4a6525-c1e4-44f5-ab6b-cf5d8ce6701e",
-      "slug": "mutability",
-      "name": "M`utability"
+      "uuid": "ceba79ca-3f93-4731-b63a-aec25a44b131",
+      "slug": "references-and-snapshots",
+      "name": "References and Snapshots"
+    },
+    {
+      "uuid": "7e322172-04ba-43f8-aba9-8ae999372b90",
+      "slug": "smart-pointers",
+      "name": "Smart Pointers"
+    },
+    {
+      "uuid": "4eb800f7-f6c5-4b28-8492-229b6a51829e",
+      "slug": "strings",
+      "name": "Strings"
+    },
+    {
+      "uuid": "4e1f6433-3125-4428-837d-47b0c10fddea",
+      "slug": "structs",
+      "name": "Structs"
+    },
+    {
+      "uuid": "fe83c9a6-cf50-47b1-9993-21ddd1e895ee",
+      "slug": "traits",
+      "name": "Traits"
+    },
+    {
+      "uuid": "b0ea24b3-3520-42c2-9177-0550247fa2bd",
+      "slug": "type-conversion",
+      "name": "Type Conversion"
+    },
+    {
+      "uuid": "4665675b-1abe-47ea-9701-32fb0220c159",
+      "slug": "tuples",
+      "name": "The Tuple Type"
     }
   ],
   "key_features": [
@@ -317,7 +444,7 @@
     },
     {
       "title": "General purpose",
-      "content": "From onchain gaming to provable ML, Cairo makes building trustless applications possible.",
+      "content": "From blockchain gaming to provable ML, Cairo makes building trustless applications possible.",
       "icon": "general-purpose"
     },
     {
@@ -328,7 +455,6 @@
   ],
   "tags": [
     "execution_mode/compiled",
-    "paradigm/functional",
     "paradigm/imperative",
     "paradigm/procedural",
     "platform/linux",
@@ -339,6 +465,7 @@
     "typing/strong",
     "used_for/artificial_intelligence",
     "used_for/backends",
+    "used_for/cross_platform_development",
     "used_for/financial_systems",
     "used_for/games",
     "used_for/web_development"

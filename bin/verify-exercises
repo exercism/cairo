@@ -17,7 +17,7 @@ slug="${1:-*}"
 
 verify_exercise() {
     exercises_path="$repo/exercises/$1/$slug"
-    if ! [[ "$slug" == "*" || -d "$exercises_path" ]]; then 
+    if ! [[ "$slug" == "*" || -d "$exercises_path" ]]; then
         return
     fi
     source_file_name="$2"
@@ -45,7 +45,7 @@ verify_exercise() {
         cp "$lib_cairo" "$tmp_file"
         cp "$solution_file" "$lib_cairo"
 
-        scarb cairo-test
+        scarb cairo-test --include-ignored
 
         cp "$tmp_file" "$lib_cairo"
     done

@@ -1,7 +1,7 @@
 use core::fmt::{Display, Formatter, Error};
 
 #[derive(Drop, PartialEq, Debug)]
-pub struct Clock {
+struct Clock {
     minutes: u32,
 }
 
@@ -22,7 +22,7 @@ fn double_digit(n: u32) -> ByteArray {
 }
 
 #[generate_trait]
-impl ClockImpl of ClockTrait {
+pub impl ClockImpl of ClockTrait {
     fn new(hour: i32, minute: i32) -> Clock {
         ClockImpl::build(hour * 60 + minute)
     }
@@ -41,11 +41,6 @@ impl ClockImpl of ClockTrait {
     }
 
     fn to_string(self: @Clock) -> ByteArray {
-        let mut formatter: Formatter = Default::default();
-        Display::fmt(self, ref formatter).unwrap();
-        formatter.buffer
+        format!("{}", self)
     }
 }
-
-#[cfg(test)]
-mod tests;

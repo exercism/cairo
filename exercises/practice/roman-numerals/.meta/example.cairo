@@ -45,6 +45,3 @@ impl RomanDisplay of Display<Roman> {
         write!(f, "{}", self.value)
     }
 }
-
-#[cfg(test)]
-mod tests;

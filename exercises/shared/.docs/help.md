@@ -1,24 +1,24 @@
 # Help
 
-<!-- TODO: write document
+## Cairo Installation
 
-  This document should contain track-specific instructions on how to get help
-  when the student is stuck.
+Refer to the [exercism help page][help-page] for Cairo installation and learning
+resources.
 
-  The instructions should be short and to the point.
+## Submitting the solution
 
-  You could link to resources like Gitter channels, forums or mailing lists:
-  whatever can help a student become unstuck.
+Generally you should submit all files in which you implemented your solution (`src/lib.cairo` in most cases). If you are using any external crates, please consider submitting the `Scarb.toml` file. This will make the review process faster and clearer.
 
-  This document should **not** link to Exercism-wide (track-agnostic) help
-  resources, as those resources will automatically be included in the HELP.md
-  file.
+## Feedback, Issues, Pull Requests
 
-  The links in this document can overlap with those in docs/LEARNING.md or
-  docs/RESOURCES.md
+The GitHub [track repository][github] is the home for all of the Cairo exercises. If you have feedback about an exercise, or want to help implement new exercises, head over there and create an issue. Members of the Cairo track team are happy to help!
 
-  When a student downloads an exercise via the CLI, this file's contents are
-  included into the HELP.md file.
+If you want to know more about Exercism, take a look at the [contribution guide].
 
-  See https://exercism.org/docs/building/tracks/shared-files for more 
-  information. -->
+## Submitting Incomplete Solutions
+
+It's possible to submit an incomplete solution so you can see how others have completed the exercise.
+
+[help-page]: https://exercism.org/tracks/cairo/learning
+[github]: https://github.com/exercism/cairo
+[contribution guide]: https://exercism.org/docs/community/contributors

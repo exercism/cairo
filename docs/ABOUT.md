@@ -1,21 +1,18 @@
 # About
 
-[Cairo][cairo] is a Rust-inspired language that aims to make it easy to build
-scalable [dApps][dapps] with the power of [validity proofs][zkp].
+Cairo is a Rust-inspired language that aims to make it easy to compute trustworthy values on untrusted machines using [validity proofs][zkp].
+It is a programming language designed for a virtual CPU of the same name, which is capable of efficiently proving the execution of any program running on it.
+This means that you can perform time consuming operations on a machine you don't trust, and check the result very quickly on a cheaper machine.
 
-[cairo]: https://www.cairo-lang.org/
-[dapps]: https://en.wikipedia.org/wiki/Decentralized_application
+One major usecase of Cairo is writing smart contracts for [Starknet](https://www.starknet.io/), a Layer 2 built on top of Ethereum. Instead of having all the participants of the network verify all user interactions, only one node, called the prover, executes the programs and generates proofs that the computations were done correctly. These proofs are then verified by an Ethereum smart contract, requiring significantly less computational power, which increases throughput and reduces transaction costs while preserving Ethereum security.
+
+Another notable use case of Cairo is in AI model training. Suppose you have a large dataset and wish to train an AI model on it but lack the necessary infrastructure. You can pay a major AI model provider to train the AI on your data and return the trained model. Since the provider used Cairo to write and train their AI model, they can produce a "proof" that you can use to verify that they did actually use the complete dataset you provided, ensuring the integrity of the training process and guaranteeing that no other data or partial data was used.
+
+Cairo differs significantly from traditional programming languages, particularly in its execution and performance optimizations. Programs can be executed by a prover, similar to other languages, though with some performance overhead due to virtualization of the language. When proofs are verified, efficiency is crucial as verification may occur on small machines, and Cairo has various advantages to improve verification speed. A notable one is [non-determinism][np], which is the idea that you can theoretically use a different algorithm for verifying than for computing. Take the example of sorting an array in Cairo - the prover has to sort the array, while the verifier only needs to check that the array is sorted, which is much cheaper. Additionally, Cairo's memory model is immutable, meaning values cannot be changed once written. Cairo provides abstractions that help developers work with these constraints, but it does not fully simulate mutability. This means that developers are required to be mindful of memory management and data structures to optimize performance.
+
+The home page for Cairo is [cairo-lang.org](https://www.cairo-lang.org/).
+List of Cairo resources at [cairo-lang.org/documentation.html](https://www.cairo-lang.org/resources/).
+Newcomers should start with "The Book" located at [book.cairo-lang.org/](https://book.cairo-lang.org/).
+
 [zkp]: https://en.wikipedia.org/wiki/Zero-knowledge_proof
-
-<!-- TODO: write document
-
-  This document contains a short introduction to the language.
-
-  The introduction should be relatively brief and touch upon what
-  makes the language interesting (and possibly unique). The goal
-  is to help students decide if they want to join this track.
-
-  The contents of this document are displayed on the track page,
-  provided the student has not joined the track.
-
-  See https://exercism.org/docs/building/tracks/docs for more information. -->
+[np]: https://en.wikipedia.org/wiki/NP_(complexity)

@@ -7,7 +7,6 @@ The Boolean type in Cairo is specified using the keyword `bool`. This enables th
 ```rust
 fn main() {
     let t = true;
-
     let f: bool = false; // with explicit type annotation
 }
 ```
@@ -16,15 +15,16 @@ In this example, two Boolean variables are declared. The variable `t` is assigne
 
 One important aspect to note is that when declaring a boolean variable in Cairo, it is mandatory to use either the `true` or `false` literals as the value. This means that integer literals, such as `0` or `1`, cannot be used as substitutes for `false` or `true`. The strict enforcement of this rule ensures type safety and prevents potential logical errors in smart contract development.
 
-
-The following code snippet demonstrates how to use boolean types in Cairo. It shows the declaration of boolean variables, assignment of boolean expressions, and usage of assertions to verify the correctness of the boolean logic.
-
 ## Boolean Operators in Cairo
+
 - `||` (logical OR): Returns `true` if at least one of the operands is `true`.
 - `&&` (logical AND): Returns `true` if both operands are `true`.
 - `!` (logical NOT): Returns the opposite Boolean value of the operand.
 
 ## Example Code
+
+The following code snippet demonstrates how to use boolean types in Cairo. It shows the declaration of boolean variables, assignment of boolean expressions, and usage of assertions to verify the correctness of the boolean logic.
+
 ```rust
 fn main() {
     // Declaration of Boolean variables

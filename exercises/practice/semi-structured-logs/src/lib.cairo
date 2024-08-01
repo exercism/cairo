@@ -1,6 +1,6 @@
 /// various log levels
-#[derive(Drop, Clone, PartialEq, Eq, Debug)]
-enum LogLevel {
+#[derive(Drop)]
+pub enum LogLevel {
     Info,
     Warning,
     Error,
@@ -8,21 +8,22 @@ enum LogLevel {
 }
 
 /// primary function for emitting logs
-fn log(level: LogLevel, message: ByteArray) -> ByteArray {
-    panic!("return a message for the given log level")
+pub fn log(level: LogLevel, message: ByteArray) -> ByteArray {
+    // return a message for the given log level
+    panic!("implement `log`")
 }
 
-fn info(message: ByteArray) -> ByteArray {
-    panic!("return a message for info log level")
+pub fn info(message: ByteArray) -> ByteArray {
+    // return a message for info log level
+    panic!("implement `info`")
 }
 
-fn warn(message: ByteArray) -> ByteArray {
-    panic!("return a message for warn log level")
+pub fn warn(message: ByteArray) -> ByteArray {
+    // return a message for warn log level
+    panic!("implement `warn`")
 }
 
-fn error(message: ByteArray) -> ByteArray {
-    panic!("return a message for error log level")
+pub fn error(message: ByteArray) -> ByteArray {
+    // return a message for error log level
+    panic!("implement `error`")
 }
-
-#[cfg(test)]
-mod tests;

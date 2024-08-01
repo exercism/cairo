@@ -1,12 +1,10 @@
-use alexandria_sorting::MergeSort;
-
 #[derive(Drop, Debug)]
 struct Set {
     values: Array<ByteArray>
 }
 
 #[generate_trait]
-impl SetImpl of SetTrait {
+pub impl SetImpl of SetTrait {
     fn new(values: Array<ByteArray>) -> Set {
         Set { values }
     }
@@ -24,16 +22,14 @@ impl SetEq of PartialEq<Set> {
                 break true;
             }
             let l_item = lhs.values.at(i);
-            let mut contained = false;
             let mut j = 0;
             while j != len {
                 if IgnoreCase::eq(l_item, rhs.values.at(j)) {
-                    contained = true;
                     break;
                 }
                 j += 1;
             };
-            if !contained {
+            if j == len {
                 break false;
             }
             i += 1;
@@ -45,19 +41,18 @@ impl SetEq of PartialEq<Set> {
     }
 }
 
-pub fn anagrams_for(word: @ByteArray, inputs: @Set) -> Set {
-    let mut word_sorted = @sort(word);
+pub fn anagrams_for(word: @ByteArray, candidates: @Set) -> Set {
+    let mut word_sorted = @sort_ignore_case(word);
     let mut anagrams = Set { values: array![] };
-    let mut i = inputs.values.len();
+    let mut i = candidates.values.len();
 
     while i != 0 {
         i -= 1;
-        let candidate = inputs.values[i];
-        let mut candidate_sorted = @sort(candidate);
+        let candidate = candidates.values[i];
 
         let is_anagram = word.len() == candidate.len()
             && IgnoreCase::ne(word, candidate)
-            && IgnoreCaseArray::eq(word_sorted, candidate_sorted);
+            && IgnoreCase::eq(word_sorted, @sort_ignore_case(candidate));
 
         if is_anagram {
             anagrams.values.append(format!("{candidate}"));
@@ -90,40 +85,39 @@ impl IgnoreCase of PartialEq<ByteArray> {
     }
 }
 
-fn sort(word: @ByteArray) -> Array<u8> {
-    MergeSort::sort(to_char_array(word).span())
-}
-
-fn to_char_array(word: @ByteArray) -> Array<u8> {
-    let mut chars: Array<u8> = array![];
+fn sort_ignore_case(word: @ByteArray) -> ByteArray {
+    // count the number each of the alphabet ASCII characters appears
+    let mut ascii_chars: Felt252Dict<u8> = Default::default();
     let mut i = word.len();
     while i != 0 {
         i -= 1;
-        chars.append(lowercase(@word[i]));
+        let char: felt252 = word[i].into();
+        ascii_chars.insert(char, ascii_chars.get(char) + 1);
     };
-    chars
-}
 
-impl IgnoreCaseArray of PartialEq<Array<u8>> {
-    fn eq(lhs: @Array<u8>, rhs: @Array<u8>) -> bool {
-        if lhs.len() != rhs.len() {
-            return false;
-        }
-        let mut i = lhs.len();
-        loop {
-            if i == 0 {
-                break true;
-            }
-            i -= 1;
-            if lowercase(lhs.at(i)) != lowercase(rhs.at(i)) {
-                break false;
-            }
-        }
-    }
+    let mut sorted_word: ByteArray = "";
 
-    fn ne(lhs: @Array<u8>, rhs: @Array<u8>) -> bool {
-        !IgnoreCaseArray::eq(lhs, rhs)
-    }
+    // append each appearing alphabet ASCII character
+    let mut alphabet_char: u8 = 65; // char 'A'
+    while alphabet_char <= 90 { // char 'Z'
+        // process uppercase char
+        let mut count = ascii_chars.get(alphabet_char.into());
+        while count != 0 {
+            sorted_word.append_byte(alphabet_char);
+            count -= 1;
+        };
+        // process lowercase char
+        let lowercase_char = alphabet_char + 32;
+        let mut count = ascii_chars.get(lowercase_char.into());
+        while count != 0 {
+            sorted_word.append_byte(lowercase_char);
+            count -= 1;
+        };
+
+        alphabet_char += 1;
+    };
+
+    sorted_word
 }
 
 fn lowercase(char: @u8) -> u8 {
@@ -133,6 +127,3 @@ fn lowercase(char: @u8) -> u8 {
         *char
     }
 }
-
-#[cfg(test)]
-mod tests;

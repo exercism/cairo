@@ -1,8 +1,6 @@
-use alexandria_math::pow;
-
 #[derive(Drop)]
-pub struct Allergies {
-    pub score: u32,
+struct Allergies {
+    score: u32,
 }
 
 #[derive(Drop, Debug, PartialEq)]
@@ -37,8 +35,8 @@ pub impl AllergiesImpl of AllergiesTrait {
     }
 
     fn allergies(self: @Allergies) -> Array<Allergen> {
-        let mut allergens = AllergiesImpl::allergens();
         let mut result: Array<Allergen> = array![];
+        let mut allergens = AllergiesImpl::allergens();
         while let Option::Some(allergen) = allergens
             .pop_front() {
                 if self.is_allergic_to(@allergen) {
@@ -62,5 +60,15 @@ pub impl AllergiesImpl of AllergiesTrait {
     }
 }
 
-#[cfg(test)]
-mod tests;
+fn pow(base: u32, mut power: u32) -> u32 {
+    if base == 0 {
+        return base;
+    }
+    let base: u256 = base.into();
+    let mut result = 1_u256;
+    while power != 0 {
+        result *= base;
+        power -= 1;
+    };
+    result.try_into().expect('too large to fit output type')
+}

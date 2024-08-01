@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "url": "https://book.cairo-lang.org/ch06-01-enums.html",
+    "description": "Enum types in the Cairo book"
+  },
+  {
+    "url": "https://starknet-by-example.voyager.online/getting-started/cairo_cheatsheet/enums.html",
+    "description": "Starknet by Example section on Enums"
+  }
+]
