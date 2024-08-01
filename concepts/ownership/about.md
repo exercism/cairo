@@ -6,7 +6,7 @@ Values in Cairo are immutable, this immutability ensures that even if many varia
 
 ## Variable Ownership Rules
 
-```
+```console
 1. Each variable in Cairo has an owner.
 2. There can only be one owner at a time.
 3. When the owner goes out of scope, the variable is destroyed.
@@ -147,4 +147,3 @@ fn takes_and_gives_back(some_a: A) -> A { // some_a comes into scope
                                           // function
 }
 ```
-

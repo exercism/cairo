@@ -13,18 +13,7 @@ on:
     - cron: "0 0 * * 0"
 
 jobs:
-  # markdownlint:
-  #   name: markdown lint
-  #   runs-on: ubuntu-22.04
-
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
-
-  #     - name: Run markdown lint
-  #       run: ./bin/lint_markdown.sh
-
-  # stolen from https://raw.githubusercontent.com/exercism/github-actions/main/.github/workflows/shellcheck.yml
+  # borrowed from https://raw.githubusercontent.com/exercism/github-actions/main/.github/workflows/shellcheck.yml
   shellcheck:
     name: Run shellcheck on scripts
     runs-on: ubuntu-22.04
