@@ -1,3 +1,4 @@
+
 # The Boolean Type
 
 In Cairo, the Boolean type is essential for logical operations and conditional statements. Booleans in Cairo are one `felt252` in size, ensuring efficient use of space while maintaining the simplicity of true/false logic.
