@@ -63,6 +63,14 @@
         "difficulty": 1
       },
       {
+        "slug": "reverse-string",
+        "name": "Reverse String",
+        "uuid": "df9f3e80-acf5-41e0-9321-d4b13b26a036",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
         "slug": "leap",
         "name": "Leap",
         "uuid": "9b586e17-928c-42bf-95ed-67539daea9a8",
