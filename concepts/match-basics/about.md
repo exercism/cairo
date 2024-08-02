@@ -10,7 +10,7 @@ enum Color {
     Green,
 }
 
-fn specified_color(color: Color) {
+fn print_color_type(color: Color) {
     match color {
         Color::Red => println!("The color is Red"),
         Color::Yellow => println!("The color is Yellow"),
@@ -28,27 +28,20 @@ To handle multiple lines of code, the `match` arm of code should be wrapped in c
 
 ```rust
 fn specified_color(color: Color) -> felt252 {
+    let mut response: felt252 = '';
+
     match color {
         Color::Red => {
-            println!("The color is Red");
-            5
+            response = 'You passed in Red';
         },
         Color::Yellow => {
-            println!("The color is Yellow");
-            2
+            response = 'You passed in Yellow';
         },
         Color::Green => {
-            println!("The color is Green");
-            9
+            response = 'You passed in Green';
         },
     }
-}
-
-fn main() {
-let color = Color::Green;
-let value: felt252 = specified_color(color); // prints "The color is Green"
-
-println!("{}", value); // prints 9
+    response
 }
 ```
 
@@ -176,13 +169,9 @@ fn toss(value: u8) {
 }
 
 fn main() {
-    let x: u8 = 2;
-    let y: u8 = 3;
-    let z: u8 = 5;
-
-    toss(x); // prints "you won!".
-    toss(y); // prints "you can roll again!".
-    toss(z); // prints "you lost...".
+    toss(2); // prints "you won!".
+    toss(3); // prints "you can roll again!".
+    toss(5); // prints "you lost...".
 }
 ```
 
@@ -191,7 +180,6 @@ fn main() {
 Tuples can also be matched against a set of patterns. These patterns are designed similarly as a tuple.
 
 ```rust
-...
 #[derive(Drop)]
 enum DayType {
     Week,
@@ -199,13 +187,20 @@ enum DayType {
     Holiday
 }
 
-fn vending_machine_accept(c: (DayType, Color)) -> bool {
+enum Coin {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter,
+}
+
+fn vending_machine_accept(c: (DayType, Coin)) -> bool {
     match c {
-        (DayType::Week, _) => true, // accepts all colors during week day
-        (_, Color::Red) | (_, Color::Green) => true, // accepts only Red or Green color for all specified days
+        (DayType::Week, _) => true, // accepts all coins during week day
+        (_, Coin::Dime) | (_, Coin::Quarter) => true, // accepts only Dime or Quarter coin for all specified days
         (_, _) => false, // returns false for other instances
     }
 }
 ```
 
-Using `(_, _)` is unnecessary as it performs the same functionality as using a single wildcard: `_ =>` syntax.
+In the last match arm, it doesn't matter if we use `(_, _)` or just `_` wildcard to match any day and color combination, because they're functionally the same.

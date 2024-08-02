@@ -2,5 +2,9 @@
   {
     "url": "https://book.cairo-lang.org/ch06-02-the-match-control-flow-construct.html",
     "description": "The Match Control Flow Construct"
+  },
+  {
+    "url": "https://starknet-by-example.voyager.online/getting-started/cairo_cheatsheet/match.html",
+    "description": "Match"
   }
 ]
