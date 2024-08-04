@@ -12,7 +12,6 @@ An `integer` is a number without a fractional component. In Cairo, the type decl
 | 256-bit  | u256     |
 | 32-bit   | usize    |
 
-##### Table 1: Integer Types in Cairo
 
 ## Details
 
@@ -89,7 +88,6 @@ You can write integer literals in any of the forms shown in the below table. Not
 | Octal            | 0o04321 |
 | Binary           | 0b01    |
 
-##### Table 2: Integer Literals in Cairo.
 
 So how do you know which type of integer to use? Try to estimate the max value your int can have and choose the appropriate size. The primary situation in which you’d use `usize` is when indexing some sort of collection.
 
