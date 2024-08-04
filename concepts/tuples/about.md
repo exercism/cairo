@@ -4,7 +4,7 @@ A tuple is a versatile and efficient compound data type in Cairo, allowing you t
 
 ## Creating Tuples
 
-To create a tuple, you write a comma-separated list of values inside parentheses. Each position in the tuple has a specific type, and these types can differ from one another. Here’s an example with optional type annotations:
+To create a tuple, you write a comma-separated list of values inside parentheses. Each position in the tuple has a specific type, and these types can differ from one another.
 
 ```rust
 fn main() {
@@ -12,11 +12,9 @@ fn main() {
 }
 ```
 
-In this example, the variable `tup` binds to the entire tuple, treating it as a single compound element.
-
 ## Destructuring Tuples
 
-To access the individual values within a tuple, you can use pattern matching to destructure the tuple. This breaks the tuple into its constituent parts. For example:
+To access the individual values within a tuple, you can use pattern matching to destructure the tuple. This breaks the tuple into its constituent parts.
 
 ```rust
 fn main() {
@@ -24,17 +22,15 @@ fn main() {
 
     let (x, y, z) = tup;
 
-    if y == 6 {
-        println!("y is 6!");
-    }
+    println!("x is: ", {x}); // prints "x is: 500"
+    println!("y is: ", {y}); // prints "x is: 6"
+    println!("z is: ", {z}); // prints "z is: true"
 }
 ```
 
-This code creates a tuple and binds it to the variable `tup`. Using a `let` pattern, it destructures `tup` into three separate variables: `x`, `y`, and `z`. The program then checks if `y` is 6 and prints a corresponding message.
-
 ## Declaring and Destructuring Simultaneously
 
-You can also declare and destructure a tuple simultaneously:
+You can also declare and destructure a tuple simultaneously.
 
 ```rust
 fn main() {
@@ -48,6 +44,13 @@ The unit type is a special type in Cairo that has only one value: `()`. It is re
 
 In Cairo, every expression returns a value, and when an expression returns nothing, it implicitly returns `()`. This can be useful for functions that need to return a value but have no meaningful value to return.
 
-## Summary
+## Named Tuple Type Declaration
 
-Tuples are a fundamental compound data type in Cairo, providing an efficient way to group related data of different types. Their immutability and fixed length ensure that once created, tuples offer a reliable structure for managing complex data sets.
+```rust
+type Point = (u32, u32);
+
+fn main() {
+    let point: Point = (10, 8);
+    println!("{point:?}"); // prints "(10, 8)"
+}
+```

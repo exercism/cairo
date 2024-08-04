@@ -1,6 +1,6 @@
 # Introduction
 
-Tuples are a fundamental compound data type in Cairo, providing an efficient way to group related data of different types into a single, fixed-length structure. This allows you to manage and access related data seamlessly. Here are a couple of examples to illustrate their usage:
+Tuples are a lightweight way to group a fixed set of arbitrary types of data together. Tuples can have an arbitrary number of elements. You can access the elements by destructuring.
 
 ```rust
 fn main() {
