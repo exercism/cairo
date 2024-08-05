@@ -38,3 +38,11 @@ fn root_of_196() {
     let expected = 14;
     assert_eq!(output, expected);
 }
+
+#[test]
+#[ignore]
+fn root_of_65025() {
+    let output = sqrt(65025);
+    let expected = 255;
+    assert_eq!(output, expected);
+}
