@@ -88,7 +88,9 @@
         "slug": "darts",
         "name": "Darts",
         "uuid": "3e5fb791-59b5-4ea6-b68f-70ed851a3308",
-        "practices": [],
+        "practices": [
+          "control-flow"
+        ],
         "prerequisites": [],
         "difficulty": 2
       },

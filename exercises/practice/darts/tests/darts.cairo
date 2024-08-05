@@ -38,3 +38,11 @@ fn exactly_on_center() {
     let expected = 10;
     assert_eq!(output, expected);
 }
+
+#[test]
+#[ignore]
+fn just_within_the_outer_circle() {
+    let output = score(-7, 7);
+    let expected = 1;
+    assert_eq!(output, expected);
+}
