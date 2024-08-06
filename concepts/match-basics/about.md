@@ -41,6 +41,7 @@ fn specified_color(color: Color) -> felt252 {
             response = 'You passed in Green';
         },
     }
+
     response
 }
 ```
@@ -61,7 +62,7 @@ enum Color {
     Green,
 }
 
-fn specified_color(color: Color) {
+fn print_color_type(color: Color) {
     match color {
         Color::Red(state) => {
             println!("The color is Red");
@@ -73,9 +74,8 @@ fn specified_color(color: Color) {
 }
 
 fn main() {
-    let color = Color::Red(ColorType:: Dark);
-    specified_color(color);
-
+    let color = Color::Red(ColorType::Dark);
+    print_color_type(color);
 }
 ```
 
