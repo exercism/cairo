@@ -116,7 +116,7 @@
         "slug": "raindrops",
         "name": "Raindrops",
         "uuid": "d2cc23d5-2ed1-4115-9b9a-4b62993e750c",
-        "practices": [],
+        "practices": ["strings"],
         "prerequisites": [],
         "difficulty": 2
       },
