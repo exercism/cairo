@@ -66,9 +66,19 @@
         "slug": "reverse-string",
         "name": "Reverse String",
         "uuid": "df9f3e80-acf5-41e0-9321-d4b13b26a036",
-        "practices": ["strings"],
+        "practices": [
+          "strings"
+        ],
         "prerequisites": [],
         "difficulty": 1
+      },
+      {
+        "slug": "collatz-conjecture",
+        "name": "Collatz Conjecture",
+        "uuid": "824df917-4f28-4fde-bb08-3bf101a52058",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
       },
       {
         "slug": "leap",

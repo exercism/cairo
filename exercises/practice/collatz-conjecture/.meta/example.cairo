@@ -1,0 +1,19 @@
+pub fn steps(number: usize) -> Option<usize> {
+    if number == 0 {
+        return Option::None;
+    }
+
+    let mut working = number;
+    let mut count = 0;
+
+    while working > 1 {
+        if working % 2 == 0 {
+            working /= 2;
+        } else {
+            working = 3 * working + 1;
+        }
+        count += 1;
+    };
+
+    return Option::Some(count);
+}
