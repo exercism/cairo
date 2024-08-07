@@ -20,7 +20,7 @@ fn print_color_type(color: Color) {
 
 fn main() {
     let color = Color::Yellow;
-    specified_color(color);
+    print_color_type(color); // prints "The color is Yellow"
 }
 ```
 
@@ -83,7 +83,7 @@ Extending the `Red` variant of the `Color` enum to have an associated enum. With
 
 ## Matching the `Option` Enum Type
 
-The built-in `Option` enum can as well be handled with the `match` patterning to help get the inner `T` value out of the `Some` variant and other cases. There are no difference in how the match patterning are formed for the `Option` enum, only that the variants make up the arms.
+The built-in `Option` enum can also be handled with the `match` expression.
 
 Let's design a function that takes in an `Option<u8>` parameter. If there is a value from the provided parameter, add one to this value else the function should return the `None` value with no operation.
 
