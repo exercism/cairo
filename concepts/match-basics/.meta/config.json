@@ -1,7 +1,5 @@
 {
-    "blurb": "<todo>",
-    "authors": [
-        "misicnenad"
-    ],
-    "contributors": []
+  "blurb": "The `match` expression enables pattern matching and running code based on the matched pattern.",
+  "authors": ["Ephraim-nonso"],
+  "contributors": ["misicnenad"]
 }
