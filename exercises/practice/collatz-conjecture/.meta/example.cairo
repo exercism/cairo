@@ -6,7 +6,6 @@ pub fn steps(number: usize) -> Option<usize> {
     let mut working = number;
     let mut count = 0;
 
-
     while working > 1 {
         if working % 2 == 0 {
             working /= 2;
