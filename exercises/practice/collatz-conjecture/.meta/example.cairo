@@ -1,6 +1,12 @@
-pub fn steps(number: u64) -> u64 {
+pub fn steps(number: usize) -> Option<usize> {
+    if number == 0 {
+        return Option::None;
+    }
+
     let mut working = number;
     let mut count = 0;
+
+
     while working > 1 {
         if working % 2 == 0 {
             working /= 2;
@@ -10,5 +16,5 @@ pub fn steps(number: u64) -> u64 {
         count += 1;
     };
 
-    return count;
+    return Option::Some(count);
 }
