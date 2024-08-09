@@ -11,7 +11,7 @@ These constructs are fundamental for implementing logic and iteration in Cairo.
 
 If expressions in Cairo allow you to control the flow of execution based on conditional logic. They follow a structure where code is executed depending on whether a condition evaluates to `true` or `false`.
 
-## Basic If Expression:
+## Basic If Expression
 
 ```rust
 if condition {
