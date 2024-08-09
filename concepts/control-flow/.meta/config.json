@@ -1,7 +1,5 @@
 {
-    "blurb": "<todo>",
-    "authors": [
-        "misicnenad"
-    ],
-    "contributors": []
+  "blurb": "Control flow in Cairo uses if expressions to conditionally execute code and loops to repeat code while a condition is true.",
+  "authors": ["misicnenad", "Falilah"],
+  "contributors": []
 }
