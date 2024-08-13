@@ -19,7 +19,7 @@ impl CustomSetEq<
 }
 
 #[generate_trait]
-impl CustomSetImpl<
+pub impl CustomSetImpl<
     T, +Copy<T>, +Drop<T>, +core::fmt::Display<T>, +PartialEq<T>
 > of CustomSetTrait<T> {
     fn new(input: @Array<T>) -> CustomSet<T> {
@@ -122,6 +122,22 @@ impl CustomSetImpl<
     }
 
     #[must_use]
+    fn difference(self: @CustomSet<T>, other: @CustomSet<T>) -> CustomSet<T> {
+        let mut collection: Array<T> = array![];
+        let mut i = 0;
+        while let Option::Some(value) = self
+            .collection
+            .get(i) {
+                let unboxed = value.unbox();
+                if !other.contains(unboxed) {
+                    collection.append(*unboxed);
+                }
+                i += 1;
+            };
+        CustomSetImpl::<T>::new(@collection)
+    }
+
+    #[must_use]
     fn union(self: @CustomSet<T>, other: @CustomSet<T>) -> CustomSet<T> {
         let mut collection: Array<T> = array![];
         let mut i = 0;
@@ -140,24 +156,5 @@ impl CustomSetImpl<
             };
         CustomSetImpl::<T>::new(@collection)
     }
-
-    #[must_use]
-    fn difference(self: @CustomSet<T>, other: @CustomSet<T>) -> CustomSet<T> {
-        let mut collection: Array<T> = array![];
-        let mut i = 0;
-        while let Option::Some(value) = self
-            .collection
-            .get(i) {
-                let unboxed = value.unbox();
-                if !other.contains(unboxed) {
-                    collection.append(*unboxed);
-                }
-                i += 1;
-            };
-        CustomSetImpl::<T>::new(@collection)
-    }
 }
 
-
-#[cfg(test)]
-mod tests;

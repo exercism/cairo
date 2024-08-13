@@ -235,7 +235,6 @@ fn using_delete_does_nothing_if_the_list_is_empty() {
     assert_eq!(list.len(), 0);
 }
 
-
 fn test_using_shift_raises_an_error_if_the_list_is_empty() {
     let mut list = DoublyLinkedList::<u32>::new();
     let none: Option<u32> = Option::None;
@@ -251,4 +250,3 @@ fn can_return_with_shift_and_return_option_none_if_empty() {
     let none: Option<u32> = Option::None;
     assert_eq!(list.shift(), none);
 }
-

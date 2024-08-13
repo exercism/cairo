@@ -341,4 +341,3 @@ fn union_of_non_empty_sets_contains_all_unique_elements() {
     let expected = U32Set::new(@array![3, 2, 1]);
     assert_eq!(set_1.union(@set_2), expected);
 }
-

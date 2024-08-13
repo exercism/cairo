@@ -1,17 +1,22 @@
 {
   "authors": [
-    "misicnenad"
+    "0xNeshi"
+  ],
+  "contributors": [
+    "BNAndras"
   ],
   "files": {
     "solution": [
-      "src/lib.cairo",
-      "Scarb.toml"
+      "src/lib.cairo"
     ],
     "test": [
-      "src/tests.cairo"
+      "tests/scrabble_score.cairo"
     ],
     "example": [
       ".meta/example.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
     ]
   },
   "blurb": "Given a word, compute the Scrabble score for that word.",

@@ -1,17 +1,19 @@
 {
   "authors": [
-    "misicnenad"
+    "0xNeshi"
   ],
   "files": {
     "solution": [
-      "src/lib.cairo",
-      "Scarb.toml"
+      "src/lib.cairo"
     ],
     "test": [
-      "src/tests.cairo"
+      "tests/protein_translation.cairo"
     ],
     "example": [
       ".meta/example.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
     ]
   },
   "blurb": "Translate RNA sequences into proteins.",

@@ -1,7 +1,5 @@
 {
-    "blurb": "<todo>",
-    "authors": [
-        "misicnenad"
-    ],
-    "contributors": []
+  "blurb": "A struct is a custom data type that lets you package and name multiple related values that make up a meaningful group",
+  "authors": ["okhaimie-dev"],
+  "contributors": ["0xNeshi"]
 }

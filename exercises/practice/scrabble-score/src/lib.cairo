@@ -1,6 +1,4 @@
-fn score(word: ByteArray) -> u16 {
-    panic!("Score {word} in Scrabble.")
+pub fn score(word: ByteArray) -> u16 {
+    // return the Scrabble score for: '{word}'
+    panic!("implement `score`")
 }
-
-#[cfg(test)]
-mod tests;

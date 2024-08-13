@@ -1,12 +1,12 @@
 #[generate_trait]
-impl DivmodImpl of DivmodTrait {
+pub impl DivmodImpl of DivmodTrait {
     fn divmod(self: @u16, divisor: u16) -> (u16, u16) {
         (*self / divisor, *self % divisor)
     }
 }
 
 #[generate_trait]
-impl EvensImpl<T, +Drop<T>, +Copy<T>> of EvensTrait<T> {
+pub impl EvensImpl<T, +Drop<T>, +Copy<T>> of EvensTrait<T> {
     fn evens(self: @Array<T>) -> Array<T> {
         let mut result: Array<T> = array![];
         let mut i = 0;
@@ -20,10 +20,10 @@ impl EvensImpl<T, +Drop<T>, +Copy<T>> of EvensTrait<T> {
     }
 }
 
-type Position = (i16, i16);
+pub type Position = (i16, i16);
 
 #[generate_trait]
-impl PositionImpl of PositionTrait {
+pub impl PositionImpl of PositionTrait {
     fn manhattan(self: @Position) -> u16 {
         let (x, y) = *self;
         x.abs() + y.abs()
@@ -41,6 +41,3 @@ impl AbsImpl of AbsTrait {
         val.try_into().unwrap()
     }
 }
-
-#[cfg(test)]
-mod tests;

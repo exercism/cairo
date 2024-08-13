@@ -18,24 +18,24 @@ The `felt252` data type holds short strings type in Cairo. As `felt252` contains
 Examples of short string declarations:
 
 ```rust
-       let my_first_char = 'D';
-       let my_first_char_in_hex = 0x44;
+    let my_first_char = 'D';
+    let my_first_char_in_hex = 0x44;
 
-       let my_first_string = 'Hello world';
-       let my_first_string_in_hex = 0x48656C6C6F20776F726C64;
+    let my_first_string = 'Hello world';
+    let my_first_string_in_hex = 0x48656C6C6F20776F726C64;
 ```
 
 ### ByteArray
 
 The ByteArray struct was introduced in Cairo 2.4.0. The ByteArray strings are written in double quotes as follows:
 
-```Rust
+```rust
     let long_string: ByteArray = "this is a string which has more than 31 characters";
 ```
 
 Technically, the update also introduced the `bytes31` type which holds 31 bytes and which fits into a felt. The `ByteArray` struct basically represents long string using an array of `bytes31` that hold the "whole words" (i.e. words that fill the whole felt) and a single felt field that holds an "incomplete word" (the number of bytes within are specified in separate length field).
 
-```Rust
+```rust
 #[derive(Drop, Clone, PartialEq, Serde, Default)]
 struct ByteArray {
     data: Array<bytes31>,
