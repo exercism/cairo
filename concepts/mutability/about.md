@@ -61,9 +61,9 @@ fn main() {
     let s: ByteArray = s + " and a shadow";
     {
         let s: ByteArray = "a nested shadow";
-        println!(s);                           // emits "a nested shadow"
+        println!(s); // emits "a nested shadow"
     }
-    println!(s);                               // emits "my string and a shadow"
+    println!(s); // emits "my string and a shadow"
 }
 ```
 
