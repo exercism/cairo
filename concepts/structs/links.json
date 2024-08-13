@@ -1,10 +1,1 @@
-[
-  {
-    "url": "https://book.cairo-lang.org/ch05-01-defining-and-instantiating-structs.html",
-    "description": "Defining and Instatiating Structs in the Cairo book"
-  },
-  {
-    "url": "https://starknet-by-example.voyager.online/getting-started/cairo_cheatsheet/struct.html",
-    "description": "Starknet by Example section on Structs"
-  }
-]
+[]
