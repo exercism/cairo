@@ -1,3 +1,3 @@
-pub fn steps(number: usize) -> Option<usize> {
+pub fn steps(number: usize) -> usize {
     panic!("implement `steps`")
 }

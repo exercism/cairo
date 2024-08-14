@@ -1,7 +1,5 @@
-pub fn steps(number: usize) -> Option<usize> {
-    if number == 0 {
-        return Option::None;
-    }
+pub fn steps(number: usize) -> usize {
+    assert!(number != 0, "Only positive integers are allowed");
 
     let mut working = number;
     let mut count = 0;
@@ -15,5 +13,5 @@ pub fn steps(number: usize) -> Option<usize> {
         count += 1;
     };
 
-    return Option::Some(count);
+    return count;
 }
