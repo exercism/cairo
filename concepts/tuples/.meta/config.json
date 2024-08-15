@@ -1,7 +1,8 @@
 {
     "blurb": "In Cairo, tuples are immutable, fixed-length compound data types that allow you to group values of varying types into a single structured entity, facilitating efficient and type-safe data management.",
     "authors": [
-        "rajeebkm"
+        "rajeebkm",
+        "0xNeshi"
     ],
     "contributors": []
 }

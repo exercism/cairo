@@ -66,9 +66,19 @@
         "slug": "reverse-string",
         "name": "Reverse String",
         "uuid": "df9f3e80-acf5-41e0-9321-d4b13b26a036",
-        "practices": ["strings"],
+        "practices": [
+          "strings"
+        ],
         "prerequisites": [],
         "difficulty": 1
+      },
+      {
+        "slug": "collatz-conjecture",
+        "name": "Collatz Conjecture",
+        "uuid": "824df917-4f28-4fde-bb08-3bf101a52058",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
       },
       {
         "slug": "leap",
@@ -93,12 +103,38 @@
         "difficulty": 2
       },
       {
+        "slug": "darts",
+        "name": "Darts",
+        "uuid": "3e5fb791-59b5-4ea6-b68f-70ed851a3308",
+        "practices": [
+          "control-flow"
+        ],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
         "slug": "lucians-luscious-lasagna",
         "name": "Lucian's Luscious Lasagna",
         "uuid": "8302f8de-14d7-45dd-9a65-812bc1ed5464",
         "practices": [
           "functions"
         ],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
+        "slug": "raindrops",
+        "name": "Raindrops",
+        "uuid": "d2cc23d5-2ed1-4115-9b9a-4b62993e750c",
+        "practices": ["strings"],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
+        "slug": "square-root",
+        "name": "Square Root",
+        "uuid": "cf2abb67-f18c-445d-9c7b-0913796911cb",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 2
       },
