@@ -22,7 +22,6 @@ fn main() {
 
 Here, `nested_tup` varibale is a tuple containing two tuples, demonstrating that tuples can hold other tuples as elements.
 
-
 ## Destructuring Tuples
 
 To access the individual values within a tuple, you can use pattern matching to destructure the tuple. This breaks the tuple into its constituent parts.
