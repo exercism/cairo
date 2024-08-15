@@ -12,6 +12,17 @@ fn main() {
 }
 ```
 
+A tuple can hold multiple values of different data types, including other tuples. For example:
+
+```rust
+fn main() {
+    let nested_tup: ((i32, f64), (u8, bool)) = ((10, 3.14), (5, false));
+}
+```
+
+Here, `nested_tup` varibale is a tuple containing two tuples, demonstrating that tuples can hold other tuples as elements.
+
+
 ## Destructuring Tuples
 
 To access the individual values within a tuple, you can use pattern matching to destructure the tuple. This breaks the tuple into its constituent parts.
@@ -22,9 +33,9 @@ fn main() {
 
     let (x, y, z) = tup;
 
-    println!("x is: ", {x}); // prints "x is: 500"
-    println!("y is: ", {y}); // prints "x is: 6"
-    println!("z is: ", {z}); // prints "z is: true"
+    println!("x is: {x}"); // prints "x is: 500"
+    println!("y is: {y}"); // prints "x is: 6"
+    println!("z is: {z}"); // prints "z is: true"
 }
 ```
 
@@ -46,6 +57,8 @@ In Cairo, every expression returns a value, and when an expression returns nothi
 
 ## Named Tuple Type Declaration
 
+A named tuple allows you to create a more descriptive type alias for a tuple, improving code readability.
+
 ```rust
 type Point = (u32, u32);
 
@@ -54,3 +67,5 @@ fn main() {
     println!("{point:?}"); // prints "(10, 8)"
 }
 ```
+
+In this example, `Point` is a named tuple type representing a pair of unsigned 32-bit integers, making the code more expressive.
