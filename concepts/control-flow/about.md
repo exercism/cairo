@@ -36,7 +36,7 @@ fn main() {
 }
 ```
 
-Running this code will print `"The number is less than 10."` in the console.    
+Running this code will print `"The number is less than 10."` in the console.
 
 ### Handling Multiple Conditions with `else if`
 
