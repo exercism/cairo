@@ -1,9 +1,9 @@
 # Control Flow
 
-`If` expressions and loops control the flow of execution in Cairo by:
+`if` expressions and loops control the flow of execution in Cairo by:
 `
 
-- **`If` expressions** conditionally run code based on whether a condition evaluates to true.
+- **`if` expressions** conditionally run code based on whether a condition evaluates to `true`.
 - **Loops** (such as `loop`, `while`, and `for`) repeatedly execute code while a specified condition remains true or until a breaking condition is met.
 
 These constructs are fundamental for implementing logic and iteration in Cairo.
