@@ -138,4 +138,51 @@ fn find_value(mut arr: Span<felt252>, value: felt252) -> Option<usize> {
 }
 ```
 
+## Concise Control Flow with `if let` and `while let`
+
+The `if let` syntax combines `if` and `let` to handle specific pattern matches more concisely.
+
+Using `match` to handle an `Option`:
+
+```rust
+let config_max: Option<felt252> = Option::Some(5);
+match config_max {
+    Option::Some(max) => println!("The maximum is configured to be {}", max),
+    _ => (),
+}
+```
+
+Using `if let` for the same logic:
+
+```rust
+let number: Option<felt252>  = Option::Some(5);
+if let Option::Some(max) = number {
+    println!("The maximum is configured to be {}", max);
+}
+```
+
+You can also include an `else` with `if let`:
+
+```rust
+let coin: Coin = Coin::Quarter;
+if let Coin::Quarter = coin {
+    println!("You got a quarter!");
+} else {
+    println!("You got some other coin!");
+}
+```
+
+The `while let` syntax loops over `Option` values, executing a block for each matching pattern.
+
+```rust
+fn main() {
+    let mut arr: Array<felt252> = array![1, 2, 3, 4, 5, 6, 7, 8, 9];
+    let mut sum: felt252 = 0;
+    while let Option::Some(value) = arr.pop_front() {
+        sum += value;
+    }
+    println!("{}", sum);
+}
+```
+
 There are other native enums, one of which is the `Result` enum, which allows for graceful error handling. Read more about the `Result` enum in [The Cairo Book](https://book.cairo-lang.org/ch09-02-recoverable-errors.html#the-result-enum).

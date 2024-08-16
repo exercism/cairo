@@ -6,5 +6,9 @@
   {
     "url": "https://starknet-by-example.voyager.online/getting-started/cairo_cheatsheet/enums.html",
     "description": "Starknet by Example section on Enums"
+  },
+  {
+    "url": "https://book.cairo-lang.org/ch06-03-concise-control-flow-with-if-let-and-while-let.html",
+    "description": "A section in the Cairo programming language book that discusses control flow with `if let` and `while let`"
   }
 ]
