@@ -8,9 +8,9 @@
 
 These constructs are fundamental for implementing logic and iteration in Cairo.
 
-## `If` Expressions
+## `if` Expressions
 
-`If` expressions in Cairo allow you to control the flow of execution based on conditional logic. They follow a structure where code is executed depending on whether a boolean condition evaluates to `true` or `false`.
+`if` expressions in Cairo allow you to control the flow of execution based on conditional logic. They follow a structure where code is executed depending on whether a boolean condition evaluates to `true` or `false`.
 
 ```rust
 fn main() {
@@ -101,7 +101,7 @@ fn main() {
 
 Executing this code will print `"again!"` indefinitely in the console until either the program runs out of gas or we stop it manually.
 
-> Note: Cairo prevents us from running program with infinite loops by including a gas meter. The gas meter is a mechanism that limits the amount of computation that can be done in a program. Gas is a unit of measurement that expresses the computation cost of an instruction. When the gas meter runs out, the program will stop.
+> Note: Cairo prevents us from running a program with infinite loops by including a gas meter. The gas meter is a mechanism that limits the amount of computation that can be done in a program. Gas is a unit of measurement that expresses the computation cost of an instruction. When the gas meter runs out, the program will stop.
 
 To break out of a loop, place the `break` keyword within the loop to tell the program when to stop executing the it.
 
@@ -139,7 +139,7 @@ fn main() {
 
 Executing this program will not print the value of `i` when it is equal to `5`.
 
-#### Returning Values from loops
+#### Returning Values from `loop`
 
 You can return a value from a `loop` by using the `break` keyword followed by the value you want to return. This allows you to exit the `loop` and pass a result to the rest of your code.
 
