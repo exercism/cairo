@@ -172,7 +172,6 @@ if let Coin::Quarter = coin {
 }
 ```
 
-
 The `while let` syntax loops over `Option` values, executing a block for each matching pattern.
 
 ```rust
