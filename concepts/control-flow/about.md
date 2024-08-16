@@ -2,6 +2,7 @@
 
 `If` expressions and loops control the flow of execution in Cairo by:
 `
+
 - **`If` expressions** conditionally run code based on whether a condition evaluates to true.
 - **Loops** (such as `loop`, `while`, and `for`) repeatedly execute code while a specified condition remains true or until a breaking condition is met.
 
@@ -40,7 +41,6 @@ Running this code will print `"The number is less than 10."` in the console.
 ### Handling Multiple Conditions with `else if`
 
 You can use multiple conditions by combining `if` and `else` in an `else if` expression.
-
 
 ```rust
 fn main() {
