@@ -2,9 +2,5 @@
   {
     "url": "https://book.cairo-lang.org/ch02-05-control-flow.html",
     "description": "Control flow concept in cairo book"
-  },
-  {
-    "url": "https://book.cairo-lang.org/ch06-03-concise-control-flow-with-if-let-and-while-let.html",
-    "description": "A section in the Cairo programming language book that discusses concise control flow"
   }
 ]
