@@ -250,7 +250,7 @@
         "name": "Rational Numbers",
         "uuid": "9858a357-b935-437d-b4e0-c3aac20859cf",
         "practices": [
-          "operator-overload",
+          "operator-overloading",
           "ownership",
           "references-and-snapshots",
           "integers"
@@ -280,7 +280,7 @@
           "structs",
           "generics",
           "traits",
-          "operator-overload"
+          "operator-overloading"
         ],
         "prerequisites": [],
         "difficulty": 6
@@ -405,13 +405,18 @@
       "name": "Match Basics"
     },
     {
+      "uuid": "7cb68379-83f8-455c-80d2-1a4d8a605d68",
+      "slug": "method-syntax",
+      "name": "Method Syntax"
+    },
+    {
       "uuid": "8a4a6525-c1e4-44f5-ab6b-cf5d8ce6701e",
       "slug": "mutability",
       "name": "Mutability"
     },
     {
       "uuid": "0b069f59-f8b4-4979-935a-c3172538f4c9",
-      "slug": "operator-overload",
+      "slug": "operator-overloading",
       "name": "Operator Overload"
     },
     {

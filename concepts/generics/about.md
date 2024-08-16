@@ -1,1 +1,1 @@
-# Generic Types
+# Generic Data Types
