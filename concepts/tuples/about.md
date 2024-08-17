@@ -16,11 +16,11 @@ A tuple can hold multiple values of different data types, including other tuples
 
 ```rust
 fn main() {
-    let nested_tup: ((i32, f64), (u8, bool)) = ((10, 3.14), (5, false));
+    let nested_tup: ((i32, u64), (u8, bool)) = ((10, 3), (5, false));
 }
 ```
 
-Here, `nested_tup` varibale is a tuple containing two tuples, demonstrating that tuples can hold other tuples as elements.
+Here, `nested_tup` variable is a tuple containing two tuples, demonstrating that tuples can hold other tuples as elements.
 
 ## Destructuring Tuples
 
