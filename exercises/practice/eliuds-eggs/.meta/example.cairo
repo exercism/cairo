@@ -10,7 +10,7 @@ pub fn eggCount(number: u64) -> u64 {
         if current % 2 == 1 {
             count += 1;
         }
-        
+
         current /= 2;
     };
 
