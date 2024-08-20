@@ -81,6 +81,14 @@
         "difficulty": 2
       },
       {
+        "slug": "hamming",
+        "name": "Hamming",
+        "uuid": "906dbb3e-892b-4297-8a0e-9eafca5d6832",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
         "slug": "leap",
         "name": "Leap",
         "uuid": "9b586e17-928c-42bf-95ed-67539daea9a8",
@@ -126,7 +134,9 @@
         "slug": "raindrops",
         "name": "Raindrops",
         "uuid": "d2cc23d5-2ed1-4115-9b9a-4b62993e750c",
-        "practices": ["strings"],
+        "practices": [
+          "strings"
+        ],
         "prerequisites": [],
         "difficulty": 2
       },
