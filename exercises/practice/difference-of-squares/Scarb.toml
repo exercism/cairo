@@ -1,0 +1,4 @@
+[package]
+name = "difference_of_squares"
+version = "0.1.0"
+edition = "2023_11"
