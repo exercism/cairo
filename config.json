@@ -129,6 +129,14 @@
         "difficulty": 2
       },
       {
+        "slug": "eliuds-eggs",
+        "name": "Eliud's Eggs",
+        "uuid": "22228dc8-c5ef-4801-a1e0-d9a8cb727566",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
         "slug": "lucians-luscious-lasagna",
         "name": "Lucian's Luscious Lasagna",
         "uuid": "8302f8de-14d7-45dd-9a65-812bc1ed5464",
