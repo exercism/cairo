@@ -10,7 +10,7 @@ pub fn distance(strand1: ByteArray, strand2: ByteArray) -> u256 {
         if i >= strand1.len() {
             break;
         }
-        
+
         if strand1[i] != strand2[i] {
             count += 1;
         }
