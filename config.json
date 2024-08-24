@@ -157,6 +157,14 @@
         "difficulty": 2
       },
       {
+        "slug": "rotational-cipher",
+        "name": "Rotational Cipher",
+        "uuid": "8fdfd583-2719-4cee-9f83-568c7fcc1c6b",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
         "slug": "square-root",
         "name": "Square Root",
         "uuid": "cf2abb67-f18c-445d-9c7b-0913796911cb",
