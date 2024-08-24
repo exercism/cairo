@@ -2,13 +2,5 @@
     {
         "url": "https://book.cairo-lang.org/ch09-00-error-handling.html",
         "description": "Error handling in the Cairo book"
-    },
-    {
-        "url": "https://book.cairo-lang.org/ch09-01-unrecoverable-errors-with-panic.html#unrecoverable-errors-with-panic",
-        "description": "Unrecoverable Errors with panic in the Cairo book"
-    },
-    {
-        "url": "https://book.cairo-lang.org/ch09-02-recoverable-errors.html",
-        "description": "Recoverable Errors with Result in Cairo book"
     }
 ]
