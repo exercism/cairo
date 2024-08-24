@@ -1,12 +1,11 @@
 # Error Handling
 
-Cairo provides `Error Handling` techniques to address issues, and manage errors. It handles the enexpected behaviour to run the code smoothly while execution.
-For example *devide by zero* situation.
-> `Err("Cannot divide by zero")`
+Cairo provides `error handling` techniques to address issues, and manage errors, enabling running the code smoothly during execution.
+- > `Err("Cannot divide by zero")`
 
-There are multiple ways to hendle errors in `Cairo`
+There are multiple ways to handle errors in `Cairo`.
 - Recoverable Errors
-    - Result enum: Handles potential errors in function.
+    - `Result` enum: Handles potential errors in function.
     - Using `?`: Operator for error propagation.
 - Unrecoverable errors
     - `panic`: Used to handle unrecoverable errors. It will stop the execution and print error.
@@ -15,85 +14,79 @@ There are multiple ways to hendle errors in `Cairo`
 ## The Result Enum
 This approach handles errors gracefully, providing feedback insted of crashing or producing undefined behaviiour.
 
-**The code snippet below shows how enums could be defined:**
-```
-enum Result<T, E> {
-    Ok: T,
-    Err: E,
-}
-```
-
-> Let's Take an example of `Devide By Zero` 
-```
-fn divide(a: felt, b: felt) -> Result<felt, &'static str> {
++ Let's look at an example of `Divide By Zero` :
+```rust
+fn divide(a: felt252, b: felt252) -> Result<felt252, ByteArray> {
     if b == 0 {
         return Err("Error: Division by zero"); // Return an error if division by zero is attempted
     }
     Ok(a / b)
 }
-```
 
-```
-// Test with division by zero
-match divide(10, 0) {
-    Ok(result) => println!("Division successful: {}", result),
-    Err(e) => println!("{}", e),
+fn main() {
+    // Test with division by zero
+    match divide(10, 0) {
+        Ok(result) => println!("Division successful: {}", result),
+        Err(e) => println!("{}", e),
+    }
 }
 ```
 ## The `?` Operator
-`?` operator is used for minimilistic(concise) errors. Allow to write clean and readable code without explicit values.
+`?` operator is used for concise and implicit error handling, letting the calling function deal with any errors that might occur.
 
->Example
-```
-fn safe_divide(a: felt, b: felt) -> Result<felt, &'static str> {
++ Example
+```rust
+fn safe_divide(a: felt252, b: felt252) -> Result<felt252, ByteArray> {
     // The ? operator automatically generate the error if it occurs
     let result = divide(a, b)?;
     Ok(result)
 }
-```
 
-```
-match safe_divide(10, 0) {
-        Ok(value) => println!("Division successful: {}", value),
-        Err(e) => println!("{}", e),
-    }
-```
-
-## Error with `panic!` 
-When program encounters an error which is unrecoverable then a `panic!` occures. This will stop execution and helpful for the case where continuing execution doesn't make any sense.
-
-> Example
-```
 fn main() {
-    if true {
-        panic!("2");
+    match safe_divide(10, 0) {
+            Ok(value) => println!("Division successful: {}", value),
+            Err(e) => println!("{}", e),
     }
-    println!("This line isn't reached");
 }
 ```
-> **Output** 
-``` 
-Run panicked with [1997209042069643135709344952807065910992472029923670688473712229447419591075, 0 (''), 50 ('2'), 1, ].
+
+## Error with `panic` 
+When program encounters an error which is unrecoverable then a `panic` occurs. This will stop the execution, which is helpful in the case where continuing the execution wouldn't make any sense.
+
++ Example
+```rust
+fn main() {
+    let mut data = array![1, 2];
+
+    if true {
+        panic(data);
+    }
+    println!("This line will not be reached.");
+}
 ```
 
-After the panic, the code execution will stop.
+> `panic!` macro is panic error that allows you to use a string as error message (can include longer than 31 bytes) accepts ByteArrays as argument. 
+```rust
+panic!("the error for panic! macro is not limited to 31 characters anymore");
+```
 
 ## `nopanic` Notation
-Cairo nopanic Notation indicates that function will never panic. It makes code more user-friendly. 
+Cairo `nopanic` notation indicates that a function will never panic. It makes code more user-friendly. 
 > `nopanic` function can be called only in a function annotated as `nopanic`.
 
-> Example
-```
++ Example
+```rust
 fn function_never_panic() -> felt252 nopanic {
-    println!("No panic");
+    108
 }
 ```
 
 ## `panic_with` Attribute
 Cairo `panic_with` attribute simplifies error handling by allowing a function to automatically panic if it returns `None` or `Err`.
 
-> Example
-```
++ Example
+```ruby
+#[panic_with('value is 0', wrap_not_zero)]
 fn check_not_zero(value: u128) -> Option<u128> {
     if value == 0 {
         Option::None
@@ -107,7 +100,3 @@ fn main() {
     wrap_not_zero(0);  // -> panics with 'value is 0'
 }
 ```
-
----
-## Summary
-Error handling involves identifying and addressing errors to execute a program smoothly. `Recoverable errors` doesn't stop the execution of program whereas `Unrecoverable Errors with panic` results runtime errors. Read more about `Error Handling` in [Cairo Book](https://book.cairo-lang.org/ch09-00-error-handling.html)
