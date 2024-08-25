@@ -4,7 +4,7 @@ pub fn is_pangram(sentence: ByteArray) -> bool {
     let mut i = 0;
     while i < sentence
         .len() {
-            let mut chr = sentence[i];
+            let chr = sentence[i];
             if chr >= 'A' && chr <= 'Z' {
                 seen.insert((chr + 32).into(), true);
             } else if chr >= 'a' && chr <= 'z' {
