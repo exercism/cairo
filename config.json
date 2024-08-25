@@ -81,6 +81,14 @@
         "difficulty": 2
       },
       {
+        "slug": "hamming",
+        "name": "Hamming",
+        "uuid": "906dbb3e-892b-4297-8a0e-9eafca5d6832",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
         "slug": "leap",
         "name": "Leap",
         "uuid": "9b586e17-928c-42bf-95ed-67539daea9a8",
@@ -113,6 +121,22 @@
         "difficulty": 2
       },
       {
+        "slug": "difference-of-squares",
+        "name": "Difference of Squares",
+        "uuid": "1f800542-7254-4d20-b5fa-d69da2cf65a7",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
+        "slug": "eliuds-eggs",
+        "name": "Eliud's Eggs",
+        "uuid": "22228dc8-c5ef-4801-a1e0-d9a8cb727566",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
         "slug": "lucians-luscious-lasagna",
         "name": "Lucian's Luscious Lasagna",
         "uuid": "8302f8de-14d7-45dd-9a65-812bc1ed5464",
@@ -126,7 +150,17 @@
         "slug": "raindrops",
         "name": "Raindrops",
         "uuid": "d2cc23d5-2ed1-4115-9b9a-4b62993e750c",
-        "practices": ["strings"],
+        "practices": [
+          "strings"
+        ],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
+        "slug": "rotational-cipher",
+        "name": "Rotational Cipher",
+        "uuid": "8fdfd583-2719-4cee-9f83-568c7fcc1c6b",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 2
       },
