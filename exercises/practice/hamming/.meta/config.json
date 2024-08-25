@@ -11,6 +11,9 @@
     ],
     "example": [
       ".meta/example.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
     ]
   },
   "blurb": "Calculate the Hamming difference between two DNA strands.",
