@@ -45,8 +45,6 @@ fn main() {
 
 `?` operator is used for concise and implicit error handling, letting the calling function deal with any errors that might occur.
 
-Example
-
 ```rust
 fn parse_u8(s: felt252) -> Result<u8, felt252> {
     match s.try_into() {
@@ -74,8 +72,6 @@ fn main() {
 ## Error with `panic`
 
 When the program encounters an error that is unrecoverable, then a `panic` occurs. This will stop the execution, which is helpful in the case where continuing the execution wouldn't make any sense.
-
-Example
 
 ```rust
 fn main() {
@@ -105,7 +101,6 @@ panic!("The error for the panic! Error message is not limited to 31 characters a
 Cairo `nopanic` notation indicates that a function will never panic. It makes code more user-friendly.
 > `nopanic` function can be called only in a function annotated as `nopanic`.
 
-Example
 
 ```rust
 fn function_never_panic() -> felt252 nopanic {
@@ -116,8 +111,6 @@ fn function_never_panic() -> felt252 nopanic {
 ## `panic_with` Attribute
 
 Cairo `panic_with` attribute simplifies error handling by allowing a function to automatically panic if it returns `None` or `Err`.
-
-Example
 
 ```rust
 #[panic_with('value is 0', wrap_not_zero)]
