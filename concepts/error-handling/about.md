@@ -3,17 +3,19 @@
 Cairo provides `error handling` techniques to address issues, and manage errors, enabling running the code smoothly during execution.
 
 There are multiple ways to handle errors in `Cairo`.
+
 - Recoverable Errors
-    - `Result` enum: Handles potential errors in function.
-    - Using `?`: Operator for error propagation.
+  - `Result` enum: Handles potential errors in function.
+  - Using `?`: Operator for error propagation.
 - Unrecoverable errors
-    - `panic`: Used to handle unrecoverable errors. It will stop the execution and print error.
-    - `nopanic`: Used to avoid panic and handle error whithout stopping it.
+  - `panic`: Used to handle unrecoverable errors. It will stop the execution and print an error.
+  - `nopanic`: Used to avoid panic and handle errors without stopping them.
 
 ## The Result Enum
-This approach handles errors gracefully, providing feedback insted of crashing or producing undefined behaviour.
 
-```
+This approach handles errors gracefully, providing feedback instead of crashing or producing undefined behavior.
+
+```rust
 enum Result<T, E> {
     Ok: T,
     Err: E,
@@ -21,6 +23,7 @@ enum Result<T, E> {
 ```
 
 Let's look at an example of `Divide By Zero`:
+
 ```rust
 fn divide(a: u32, b: u32) -> Result<u32, ByteArray> {
     if b == 0 {
@@ -37,29 +40,43 @@ fn main() {
     }
 }
 ```
+
 ## The `?` Operator
+
 `?` operator is used for concise and implicit error handling, letting the calling function deal with any errors that might occur.
 
 Example
+
 ```rust
-fn safe_divide(a: u32, b: u32) -> Result<felt252, ByteArray> {
-    // The ? operator automatically generate the error if it occurs
-    let result = divide(a, b)?;
-    Result::Ok(result)
+fn parse_u8(s: felt252) -> Result<u8, felt252> {
+    match s.try_into() {
+        Option::Some(value) => Result::Ok(value),
+        Option::None => Result::Err('Invalid integer'),
+    }
+}
+
+fn do_something_with_parse_u8(input: felt252) -> Result<u8, felt252> {
+    let input_to_u8: u8 = parse_u8(input)?;
+    // DO SOMETHING
+    let res = input_to_u8 - 1;
+    Result::Ok(res)
 }
 
 fn main() {
-    match safe_divide(10, 0) {
-        Ok(value) => println!("Division successful: {}", value),
-        Err(e) => println!("{}", e),
+    let number: felt252 = 258;
+    match do_something_with_parse_u8(number) {
+        Result::Ok(value) => println!("Result: {}", value),
+        Result::Err(e) => println!("Error: {}", e),
     }
 }
 ```
 
-## Error with `panic` 
-When program encounters an error which is unrecoverable then a `panic` occurs. This will stop the execution, which is helpful in the case where continuing the execution wouldn't make any sense.
+## Error with `panic`
+
+When the program encounters an error that is unrecoverable, then a `panic` occurs. This will stop the execution, which is helpful in the case where continuing the execution wouldn't make any sense.
 
 Example
+
 ```rust
 fn main() {
     let data = array![1, 2];
@@ -70,22 +87,26 @@ fn main() {
     println!("This line will not be reached.");
 }
 ```
+
 Running this example would print this in the console:
 
 ```console
 Run panicked with [1, 2, ].
 ```
 
-There is also a special macro called `panic!`, that allows you to use a `ByteArray` as the error message.
+There is also a special macro, called `panic!` that allows you to use a `ByteArray` as the error message.
+
 ```rust
 panic!("The error for the panic! Error message is not limited to 31 characters anymore");
 ```
 
 ## `nopanic` Notation
-Cairo `nopanic` notation indicates that a function will never panic. It makes code more user-friendly. 
+
+Cairo `nopanic` notation indicates that a function will never panic. It makes code more user-friendly.
 > `nopanic` function can be called only in a function annotated as `nopanic`.
 
 Example
+
 ```rust
 fn function_never_panic() -> felt252 nopanic {
     108
@@ -93,9 +114,11 @@ fn function_never_panic() -> felt252 nopanic {
 ```
 
 ## `panic_with` Attribute
+
 Cairo `panic_with` attribute simplifies error handling by allowing a function to automatically panic if it returns `None` or `Err`.
 
 Example
+
 ```rust
 #[panic_with('value is 0', wrap_not_zero)]
 fn check_not_zero(value: u128) -> Option<u128> {
