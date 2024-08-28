@@ -5,49 +5,37 @@ set -eo pipefail
 
 repo=$(git rev-parse --show-toplevel)
 
-# traverse either concept or practice exercise
+# traverse both concept or practice exercises
 # directory and format Cairo files
-format_exercises() {
-    exercises_path="$repo/exercises/$1/*"
-    source_file_name="$2"
+exercises="$repo/exercises/*/*"
 
-    for exercise_dir in $exercises_path; do
-        cd "$exercise_dir" || exit 1
+for exercise_dir in $exercises; do
+    cd "$exercise_dir"
 
-        exercise=$(basename "$exercise_dir")
-        
-        # scarb fmt cannot currently format individual files, so we have to
-        # temporarily move the solution files into the Cairo package, where
-        # 'scarb fmt' can format it as well
-        tmp_file=$(mktemp "./src/tmp.XXXXXXXXXXX.cairo")
+    exercise=$(basename "$exercise_dir")
 
-        config_file="$exercise_dir/.meta/config.json"
-        if jq --exit-status '.custom?."allowed-to-not-compile"?' "$config_file"; then
-            echo "$exercise's stub is allowed to not compile"
-            # exit the subshell successfully to continue
-            # to the next exercise directory
-            exit 0
-        fi
+    # scarb fmt cannot currently format individual files, so we have to
+    # temporarily move the solution files into the Cairo package, where
+    # 'scarb fmt' can format it as well
+    tmp_file=$(mktemp "./src/tmp.XXXXXXXXXXX.cairo")
+    trap 'rm -f $tmp_file' EXIT INT TERM
 
-        solution_file=".meta/$source_file_name.cairo"
-        if [ -z "$solution_file" ]; then
-            echo "Could not find solution file for $exercise"
-            exit 1
-        fi
+    if [ -f ".meta/example.cairo" ]; then
+        solution_file=".meta/example.cairo"
+    elif [ -f ".meta/exemplar.cairo" ]; then
+        solution_file=".meta/exemplar.cairo"
+    else
+        echo "Could not locate example implementation for $exercise"
+        exit 1
+    fi
 
-        # move the solution file into the package       
-        cp "$solution_file" "$tmp_file"
+    # move the solution file into the package
+    cp "$solution_file" "$tmp_file"
 
-        scarb fmt
+    scarb fmt
 
-        # move the solution file back
-        cp "$tmp_file" "$solution_file"
-        
-        rm "$tmp_file"
-    done
-}
+    # move the solution file back
+    cp "$tmp_file" "$solution_file"
 
-# https://github.com/exercism/docs/blob/main/anatomy/tracks/concept-exercises.md#file-exemplar-implementation
-format_exercises "concept" "exemplar"
-# https://github.com/exercism/docs/blob/main/anatomy/tracks/practice-exercises.md#file-example-implementation
-format_exercises "practice" "example"
+    rm $tmp_file
+done
