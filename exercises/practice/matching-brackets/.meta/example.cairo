@@ -23,7 +23,7 @@ pub fn is_paired(value: ByteArray) -> bool {
                     i += 1;
                 };
 
-                let last = *stack[stack.len() - 1];
+                let last = *stack[stop];
                 stack = popped.clone();
 
                 let complement = pairs.get(last.into());
