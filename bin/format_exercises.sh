@@ -37,5 +37,5 @@ for exercise_dir in $exercises; do
     # move the solution file back
     cp "$tmp_file" "$solution_file"
 
-    rm $tmp_file
+    rm "$tmp_file"
 done

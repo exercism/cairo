@@ -34,7 +34,7 @@ else
 fi
 
 for exercise_path in $exercises; do
-    cd $repo
+    cd "$repo"
 
     exercise=$(basename "$exercise_path")
     echo "Checking $exercise exercise..."
