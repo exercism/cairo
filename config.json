@@ -296,6 +296,14 @@
         "difficulty": 4
       },
       {
+        "slug": "matching-brackets",
+        "name": "Matching Brackets",
+        "uuid": "dc5f7e90-1aee-46c5-9cd3-35b7192d1411",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
+      },
+      {
         "slug": "rational-numbers",
         "name": "Rational Numbers",
         "uuid": "9858a357-b935-437d-b4e0-c3aac20859cf",
