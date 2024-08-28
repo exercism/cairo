@@ -17,7 +17,7 @@ slug="${1:-*}"
 
 if [ "$slug" != "*" ]; then
     exercises="exercises/*/$slug"
-    if [ -z "$exercises" ]; then
+    if [ ! -f "$exercises" ]; then
         echo "No such exercises: $slug"
         exit 1
     fi
