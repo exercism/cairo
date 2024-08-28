@@ -99,8 +99,8 @@ panic!("The error for the panic! Error message is not limited to 31 characters a
 ## `nopanic` Notation
 
 Cairo `nopanic` notation indicates that a function will never panic. It makes code more user-friendly.
-> `nopanic` function can be called only in a function annotated as `nopanic`.
 
+> `nopanic` function can be called only in a function annotated as `nopanic`.
 
 ```rust
 fn function_never_panic() -> felt252 nopanic {
