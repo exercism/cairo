@@ -34,7 +34,7 @@ pub impl PositionImpl of PositionTrait {
 impl AbsImpl of AbsTrait {
     fn abs(self: @i16) -> u16 {
         let val = if *self < 0 {
-            *self * -1
+            -*self
         } else {
             *self
         };

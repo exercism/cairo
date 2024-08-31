@@ -1,3 +1,5 @@
+use core::dict::Felt252Dict;
+
 pub type Domino = (u8, u8);
 
 /// A table keeping track of available dominoes.
@@ -90,13 +92,12 @@ pub fn chain(dominoes: @Array<Domino>) -> Option<Array<Domino>> {
             // possible to complete a cycle. This follows from that it's an Eulerian path.
             let mut d: Felt252Dict<u8> = Default::default();
             let mut i = 0;
-            while i < dominoes
-                .len() {
-                    let (x, y): Domino = *dominoes[i];
-                    d.insert(x.into(), d.get(x.into()) + 1);
-                    d.insert(y.into(), d.get(y.into()) + 1);
-                    i += 1;
-                };
+            while i < dominoes.len() {
+                let (x, y): Domino = *dominoes[i];
+                d.insert(x.into(), d.get(x.into()) + 1);
+                d.insert(y.into(), d.get(y.into()) + 1);
+                i += 1;
+            };
             let mut i = 0;
             let even_dot_types = loop {
                 if i == 6 {

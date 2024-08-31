@@ -1,5 +1,3 @@
-use core::fmt::{Debug, Formatter, Error};
-
 #[derive(Drop, Debug)]
 struct Rational {}
 
@@ -15,11 +13,6 @@ impl RationalPartialEq of PartialEq<Rational> {
     fn eq(lhs: @Rational, rhs: @Rational) -> bool {
         // determine whether the two Rational numbers are equal
         panic!("implement `eq`")
-    }
-
-    fn ne(lhs: @Rational, rhs: @Rational) -> bool {
-        // determine whether the two Rational numbers are NOT equal
-        panic!("implement `ne`")
     }
 }
 
@@ -80,20 +73,3 @@ pub impl RationalPow of RationalPowTrait {
     }
 }
 
-// Enables printing i128 values in tests.
-// Note that this will soon be added to the core library.
-impl I128Debug of Debug<i128> {
-    fn fmt(self: @i128, ref f: Formatter) -> Result<(), Error> {
-        if *self < 0 {
-            f.buffer.append(@"-");
-        };
-        let abs_value = if *self < 0 {
-            *self * -1
-        } else {
-            *self
-        };
-        let abs_value: u32 = abs_value.try_into().unwrap();
-        f.buffer.append(@format!("{}", abs_value));
-        Result::Ok(())
-    }
-}

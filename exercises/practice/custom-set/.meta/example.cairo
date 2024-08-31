@@ -12,10 +12,6 @@ impl CustomSetEq<
         }
         lhs.is_subset(rhs) && rhs.is_subset(lhs)
     }
-
-    fn ne(lhs: @CustomSet<T>, rhs: @CustomSet<T>) -> bool {
-        !(lhs == rhs)
-    }
 }
 
 #[generate_trait]
@@ -24,13 +20,10 @@ pub impl CustomSetImpl<
 > of CustomSetTrait<T> {
     fn new(input: @Array<T>) -> CustomSet<T> {
         let mut set = CustomSet::<T> { collection: array![], };
-        let mut i = 0;
-        while let Option::Some(val) = input
-            .get(i) {
-                let unboxed = val.unbox();
-                set.add(unboxed.clone());
-                i += 1;
-            };
+        let input = input.span();
+        for val in input {
+            set.add(val.clone());
+        };
         set
     }
 
@@ -41,16 +34,15 @@ pub impl CustomSetImpl<
     }
 
     fn contains(self: @CustomSet<T>, element: @T) -> bool {
-        let mut i = 0;
-        while let Option::Some(value) = self
-            .collection
-            .get(i) {
-                if value.unbox() == element {
-                    break;
-                }
-                i += 1;
-            };
-        i != self.collection.len()
+        let mut found = false;
+        let collection = self.collection.span();
+        for value in collection {
+            if value == element {
+                found = true;
+                break;
+            }
+        };
+        found
     }
 
     fn is_empty(self: @CustomSet<T>) -> bool {
@@ -62,14 +54,12 @@ pub impl CustomSetImpl<
             return false;
         }
         let mut i = 0;
-        while let Option::Some(value) = self
-            .collection
-            .get(i) {
-                if !other.contains(value.unbox()) {
-                    break;
-                }
-                i += 1;
-            };
+        while let Option::Some(value) = self.collection.get(i) {
+            if !other.contains(value.unbox()) {
+                break;
+            }
+            i += 1;
+        };
         i == self.collection.len()
     }
 
@@ -83,14 +73,12 @@ pub impl CustomSetImpl<
         };
 
         let mut i = 0;
-        while let Option::Some(value) = to_iterate
-            .collection
-            .get(i) {
-                if to_compare.contains(value.unbox()) {
-                    break;
-                }
-                i += 1;
-            };
+        while let Option::Some(value) = to_iterate.collection.get(i) {
+            if to_compare.contains(value.unbox()) {
+                break;
+            }
+            i += 1;
+        };
 
         i == to_iterate.collection.len()
     }
@@ -108,53 +96,45 @@ pub impl CustomSetImpl<
         };
 
         let mut i = 0;
-        while let Option::Some(boxed) = to_iterate
-            .collection
-            .get(i) {
-                let value = boxed.unbox();
-                if to_compare.contains(value) {
-                    collection.append(*value);
-                }
-                i += 1;
-            };
+        while let Option::Some(boxed) = to_iterate.collection.get(i) {
+            let value = boxed.unbox();
+            if to_compare.contains(value) {
+                collection.append(*value);
+            }
+            i += 1;
+        };
 
-        CustomSetImpl::<T>::new(@collection)
+        Self::new(@collection)
     }
 
     #[must_use]
     fn difference(self: @CustomSet<T>, other: @CustomSet<T>) -> CustomSet<T> {
         let mut collection: Array<T> = array![];
         let mut i = 0;
-        while let Option::Some(value) = self
-            .collection
-            .get(i) {
-                let unboxed = value.unbox();
-                if !other.contains(unboxed) {
-                    collection.append(*unboxed);
-                }
-                i += 1;
-            };
-        CustomSetImpl::<T>::new(@collection)
+        while let Option::Some(value) = self.collection.get(i) {
+            let unboxed = value.unbox();
+            if !other.contains(unboxed) {
+                collection.append(*unboxed);
+            }
+            i += 1;
+        };
+        Self::new(@collection)
     }
 
     #[must_use]
     fn union(self: @CustomSet<T>, other: @CustomSet<T>) -> CustomSet<T> {
         let mut collection: Array<T> = array![];
         let mut i = 0;
-        while let Option::Some(value) = self
-            .collection
-            .get(i) {
-                collection.append(*value.unbox());
-                i += 1;
-            };
+        while let Option::Some(value) = self.collection.get(i) {
+            collection.append(*value.unbox());
+            i += 1;
+        };
         let mut i = 0;
-        while let Option::Some(value) = other
-            .collection
-            .get(i) {
-                collection.append(*value.unbox());
-                i += 1;
-            };
-        CustomSetImpl::<T>::new(@collection)
+        while let Option::Some(value) = other.collection.get(i) {
+            collection.append(*value.unbox());
+            i += 1;
+        };
+        Self::new(@collection)
     }
 }
 

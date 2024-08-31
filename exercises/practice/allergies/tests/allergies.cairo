@@ -286,22 +286,19 @@ fn compare_allergy_vectors(expected: @Array<Allergen>, actual: @Array<Allergen>)
         );
     }
 
-    let mut i = 0;
-    while let Option::Some(expected_elem) = expected
-        .get(i) {
-            let mut j = 0;
-            while let Option::Some(actual_elem) = actual
-                .get(j) {
-                    if actual_elem.unbox() == expected_elem.unbox() {
-                        break;
-                    }
-                    j += 1;
-                };
-            if j == actual.len() {
-                panic!("Allergen missing\n  {expected_elem:?} should be in {actual:?}");
+    let expected = expected.span();
+    for expected_elem in expected {
+        let mut j = 0;
+        while let Option::Some(actual_elem) = actual.get(j) {
+            if actual_elem.unbox() == expected_elem {
+                break;
             }
-            i += 1;
+            j += 1;
         };
+        if j == actual.len() {
+            panic!("Allergen missing\n  {expected_elem:?} should be in {actual:?}");
+        }
+    };
 }
 
 #[test]
