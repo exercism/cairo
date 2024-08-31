@@ -1,3 +1,5 @@
+use core::dict::Felt252Dict;
+
 #[derive(Drop, Debug)]
 struct Set {
     values: Array<ByteArray>
@@ -34,10 +36,6 @@ impl SetEq of PartialEq<Set> {
             }
             i += 1;
         }
-    }
-
-    fn ne(lhs: @Set, rhs: @Set) -> bool {
-        !(lhs == rhs)
     }
 }
 
@@ -79,10 +77,6 @@ impl IgnoreCase of PartialEq<ByteArray> {
             i += 1;
         }
     }
-
-    fn ne(lhs: @ByteArray, rhs: @ByteArray) -> bool {
-        !IgnoreCase::eq(lhs, rhs)
-    }
 }
 
 fn sort_ignore_case(word: @ByteArray) -> ByteArray {
@@ -98,8 +92,8 @@ fn sort_ignore_case(word: @ByteArray) -> ByteArray {
     let mut sorted_word: ByteArray = "";
 
     // append each appearing alphabet ASCII character
-    let mut alphabet_char: u8 = 65; // char 'A'
-    while alphabet_char <= 90 { // char 'Z'
+    let mut alphabet_char: u8 = 'A';
+    while alphabet_char <= 'Z' {
         // process uppercase char
         let mut count = ascii_chars.get(alphabet_char.into());
         while count != 0 {
@@ -107,13 +101,12 @@ fn sort_ignore_case(word: @ByteArray) -> ByteArray {
             count -= 1;
         };
         // process lowercase char
-        let lowercase_char = alphabet_char + 32;
+        let lowercase_char = lowercase(@alphabet_char);
         let mut count = ascii_chars.get(lowercase_char.into());
         while count != 0 {
             sorted_word.append_byte(lowercase_char);
             count -= 1;
         };
-
         alphabet_char += 1;
     };
 

@@ -1,12 +1,13 @@
+use core::dict::Felt252Dict;
+
 pub fn score(word: ByteArray) -> u16 {
     let mut values = dictionary();
     let mut score = 0;
     let mut i = 0;
-    while let Option::Some(char) = word
-        .at(i) {
-            score += values.get(lowercase(char).into());
-            i += 1;
-        };
+    while let Option::Some(char) = word.at(i) {
+        score += values.get(lowercase(char).into());
+        i += 1;
+    };
     score
 }
 
@@ -42,7 +43,7 @@ fn dictionary() -> Felt252Dict<u16> {
 }
 
 fn lowercase(char: u8) -> u8 {
-    if char < 97 {
+    if 'A' <= char && char <= 'Z' {
         char + 32
     } else {
         char

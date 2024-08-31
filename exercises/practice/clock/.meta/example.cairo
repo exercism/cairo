@@ -24,7 +24,7 @@ fn double_digit(n: u32) -> ByteArray {
 #[generate_trait]
 pub impl ClockImpl of ClockTrait {
     fn new(hour: i32, minute: i32) -> Clock {
-        ClockImpl::build(hour * 60 + minute)
+        Self::build(hour * 60 + minute)
     }
 
     fn build(minutes: i32) -> Clock {
@@ -37,7 +37,7 @@ pub impl ClockImpl of ClockTrait {
     }
 
     fn add_minutes(ref self: Clock, minutes: i32) -> Clock {
-        ClockImpl::build(self.minutes.try_into().unwrap() + minutes)
+        Self::build(self.minutes.try_into().unwrap() + minutes)
     }
 
     fn to_string(self: @Clock) -> ByteArray {

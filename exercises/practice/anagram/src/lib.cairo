@@ -14,11 +14,6 @@ impl SetEq of PartialEq<Set> {
         // determine whether the two Sets are equal
         panic!("implement `eq`")
     }
-
-    fn ne(lhs: @Set, rhs: @Set) -> bool {
-        // determine whether the two Sets are NOT equal
-        panic!("implement `ne`")
-    }
 }
 
 pub fn anagrams_for(word: @ByteArray, candidates: @Set) -> Set {

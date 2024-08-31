@@ -14,6 +14,7 @@ pub fn preparation_time_in_minutes(number_of_layers: u32) -> u32 {
 }
 
 pub fn elapsed_time_in_minutes(number_of_layers: u32, actual_minutes_in_oven: u32) -> u32 {
-    // calculate elapsed time in minutes for number of layers {number_of_layers} and actual minutes in oven {actual_minutes_in_oven}
+    // calculate elapsed time in minutes for number of layers {number_of_layers} and actual minutes
+    // in oven {actual_minutes_in_oven}
     panic!("implement `elapsed_time_in_minutes`")
 }

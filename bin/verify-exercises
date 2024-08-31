@@ -16,9 +16,12 @@ repo=$(git rev-parse --show-toplevel)
 slug="${1:-*}"
 
 if [ "$slug" != "*" ]; then
-    exercises="exercises/*/$slug"
-    if [ ! -f "$exercises" ]; then
-        echo "No such exercises: $slug"
+    if [ -d "$repo/exercises/concept/$slug" ]; then
+        exercises="exercises/concept/$slug"
+    elif [ -d "$repo/exercises/practice/$slug" ]; then
+        exercises="exercises/practice/$slug"
+    else
+        echo "No such exercise: $slug"
         exit 1
     fi
 elif [ "$GITHUB_EVENT_NAME" = "pull_request" ]; then
