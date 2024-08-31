@@ -1,3 +1,5 @@
+use core::dict::Felt252Dict;
+
 pub fn is_paired(value: ByteArray) -> bool {
     let mut stack: Array<u8> = Default::default();
     let mut pairs = paired_brackets();
