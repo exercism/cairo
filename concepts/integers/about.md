@@ -13,7 +13,7 @@ Cairo also provides support for signed integers, starting with the prefix `i`. T
 | 32-bit   | u32      | i32      |
 | 64-bit   | u64      | i64      |
 | 128-bit  | u128     | i128     |
-| 256-bit  | u256     | ------     |
+| 256-bit  | u256     | ------   |
 
 There is also a special integer type called `usize`, which is currently just an alias for `u32`. This type might play a more distinct role in the future, once Cairo can be compiled to MLIR (Multi-Level Intermediate Representation).
 
