@@ -9,7 +9,7 @@ pub fn clean(phrase: ByteArray) -> ByteArray {
             cleaned.append_byte(c);
         } else if c == '(' || c == ')' || c == '-' || c == ' ' || c == '.' || c == '+' {
             continue;
-        } else if (c >= 'a' && c <= 'z') && (c >= 'A' && c <= 'Z') {
+        } else if (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') {
             panic!("letters not permitted");
         } else {
             panic!("punctuations not permitted");
