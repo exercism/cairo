@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
 set -eo pipefail
 
-npx markdownlint-cli2 \
-    docs/*.md \
-    concepts/**/*.md \
-    exercises/**/*.md
+npx markdownlint-cli2 docs/*.md concepts/**/*.md
