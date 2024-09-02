@@ -28,7 +28,6 @@ pub fn clean(phrase: ByteArray) -> ByteArray {
         cleaned = sliced.clone();
     };
 
-
     assert!(cleaned.len() <= 11, "must not be greater than 11 digits");
     assert!(cleaned[0] != '0', "area code cannot start with zero");
     assert!(cleaned[0] != '1', "area code cannot start with one");
@@ -54,5 +53,5 @@ fn is_numeric(c: u8) -> bool {
 }
 
 fn is_allowed_punctuation(c: u8) -> bool {
-    return c == '(' || c == ')' || c == '-' || c == ' ' || c == '.' || c == '+'; 
+    return c == '(' || c == ')' || c == '-' || c == ' ' || c == '.' || c == '+';
 }
