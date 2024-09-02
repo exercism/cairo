@@ -4,58 +4,55 @@ pub fn clean(phrase: ByteArray) -> ByteArray {
     let mut i = 0;
     while i < phrase.len() {
         let c = phrase[i];
-        i += 1;
-        if c >= '0' && c <= '9' {
+
+        if test_valid(c) && is_numeric(c) {
             cleaned.append_byte(c);
-        } else if c == '(' || c == ')' || c == '-' || c == ' ' || c == '.' || c == '+' {
-            continue;
-        } else if (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') {
-            panic!("letters not permitted");
-        } else {
-            panic!("punctuations not permitted");
         }
+
+        i += 1;
     };
 
-    if cleaned.len() < 10 {
-        panic!("must not be fewer than 10 digits");
-    }
+    assert!(cleaned.len() >= 10, "must not be fewer than 10 digits");
 
     if cleaned.len() == 11 {
-        if cleaned[0] != '1' {
-            panic!("11 digits must start with 1");
-        }
+        assert!(cleaned[0] == '1', "11 digits must start with 1");
 
         let mut sliced = "";
         let mut i = 1;
 
         while i < cleaned.len() {
-            if i == 0 {
-                i += 1;
-                continue;
-            }
             sliced.append_byte(cleaned[i]);
             i += 1;
         };
 
         cleaned = sliced.clone();
-    } else if cleaned.len() > 11 {
-        panic!("must not be greater than 11 digits");
-    }
+    };
 
-    if cleaned[0] == '0' {
-        panic!("area code cannot start with zero");
-    }
-    if cleaned[0] == '1' {
-        panic!("area code cannot start with one");
-    }
 
-    if cleaned[3] == '0' {
-        panic!("exchange code cannot start with zero");
-    }
-
-    if cleaned[3] == '1' {
-        panic!("exchange code cannot start with one");
-    }
+    assert!(cleaned.len() <= 11, "must not be greater than 11 digits");
+    assert!(cleaned[0] != '0', "area code cannot start with zero");
+    assert!(cleaned[0] != '1', "area code cannot start with one");
+    assert!(cleaned[3] != '0', "exchange code cannot start with zero");
+    assert!(cleaned[3] != '1', "exchange code cannot start with one");
 
     return cleaned;
+}
+
+
+fn test_valid(c: u8) -> bool {
+    assert!(!is_alphabetic(c), "letters not permitted");
+    assert!(is_numeric(c) || is_allowed_punctuation(c), "punctuations not permitted");
+    return true;
+}
+
+fn is_alphabetic(c: u8) -> bool {
+    return c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z';
+}
+
+fn is_numeric(c: u8) -> bool {
+    return c >= '0' && c <= '9';
+}
+
+fn is_allowed_punctuation(c: u8) -> bool {
+    return c == '(' || c == ')' || c == '-' || c == ' ' || c == '.' || c == '+'; 
 }
