@@ -5,7 +5,8 @@ pub fn clean(phrase: ByteArray) -> ByteArray {
     while i < phrase.len() {
         let c = phrase[i];
 
-        if test_valid(c) && is_numeric(c) {
+        assert_valid(c);
+        if is_numeric(c) {
             cleaned.append_byte(c);
         }
 
@@ -38,10 +39,9 @@ pub fn clean(phrase: ByteArray) -> ByteArray {
 }
 
 
-fn test_valid(c: u8) -> bool {
+fn assert_valid(c: u8) {
     assert!(!is_alphabetic(c), "letters not permitted");
     assert!(is_numeric(c) || is_allowed_punctuation(c), "punctuations not permitted");
-    return true;
 }
 
 fn is_alphabetic(c: u8) -> bool {
