@@ -73,6 +73,14 @@
         "difficulty": 1
       },
       {
+        "slug": "acronym",
+        "name": "Acronym",
+        "uuid": "d3dd2a9f-e2e7-404c-915e-56ce434071d2",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
         "slug": "collatz-conjecture",
         "name": "Collatz Conjecture",
         "uuid": "824df917-4f28-4fde-bb08-3bf101a52058",
