@@ -277,6 +277,14 @@
         "difficulty": 4
       },
       {
+        "slug": "phone-number",
+        "name": "Phone Number",
+        "uuid": "9fe9f78f-5256-40f4-bbcf-ee901c60080e",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
         "slug": "roman-numerals",
         "name": "Roman Numerals",
         "uuid": "3fb4bd2f-bc5f-4a67-b9cc-49a786245876",
