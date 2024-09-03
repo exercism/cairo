@@ -81,6 +81,14 @@
         "difficulty": 2
       },
       {
+        "slug": "bob",
+        "name": "Bob",
+        "uuid": "c596767d-b799-4f7c-a0e3-d269fd8a82c3",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
         "slug": "hamming",
         "name": "Hamming",
         "uuid": "906dbb3e-892b-4297-8a0e-9eafca5d6832",
