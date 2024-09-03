@@ -45,7 +45,7 @@ fn is_loud(input: @ByteArray) -> bool {
 
 fn is_question(input: @ByteArray) -> bool {
     let trimmed = trim(input);
-    let last = cleaned[cleaned.len() - 1];
+    let last = trimmed[trimmed.len() - 1];
 
     return last == '?';
 }
