@@ -45,7 +45,7 @@ fn is_loud(input: @ByteArray) -> bool {
 
 fn is_question(input: @ByteArray) -> bool {
     let trimmed = trim(input);
-    let last = trimmed[trimmed.len() - 1];
+    let last = cleaned[cleaned.len() - 1];
 
     return last == '?';
 }
@@ -78,14 +78,30 @@ fn is_whitespace(c: u8) -> bool {
 }
 
 fn trim(input: @ByteArray) -> ByteArray {
+    if input.len() == 0 {
+        return "";
+    }
+
     let mut result = "";
-    let mut i = 0;
-    while i < input.len() {
-        let c = input[i];
-        if !is_whitespace(c) {
-            result.append_byte(c);
-        }
-        i += 1;
+    let mut start = 0;
+    while start < input.len() && is_whitespace(input[start]) {
+        start += 1;
     };
+
+    let mut end = input.len() - 1;
+    while end >= start {
+        if !is_whitespace(input[end]) {
+            break;
+        }
+
+        end -= 1;
+    };
+
+    let mut j = start;
+    while j <= end {
+        result.append_byte(input[j]);
+        j += 1;
+    };
+
     return result;
 }
