@@ -16,13 +16,12 @@ Introduce the student to tuples and how to work with them. Understand that trait
 
 ## Concepts
 
-- tuples
-- destructuring
 - traits
 
 ## Prerequisites
 
-- traits
+- generics
+- tuples
 
 ## Resources to refer to
 
