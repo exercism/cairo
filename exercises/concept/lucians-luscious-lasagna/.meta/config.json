@@ -16,6 +16,9 @@
       "Scarb.toml"
     ]
   },
+  "forked_from": [
+    "rust/lucians-luscious-lasagna"
+  ],
   "icon": "lasagna",
   "blurb": "Learn about the basics of Cairo by following a lasagna recipe."
 }
