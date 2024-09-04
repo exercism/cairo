@@ -47,16 +47,16 @@
         "prerequisites": [
           "traits"
         ],
-        "status": "beta"
+        "status": "wip"
       },
       {
-        
         "slug": "lucians-luscious-lasagna",
         "name": "Lucian's Luscious Lasagna",
         "uuid": "8302f8de-14d7-45dd-9a65-812bc1ed5464",
         "concepts": [
           "functions"
         ],
+        "prerequisites": [],
         "status": "beta"
       }
     ],
