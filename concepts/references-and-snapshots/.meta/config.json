@@ -1,0 +1,5 @@
+{
+  "blurb": "A snapshot is an immutable view of a value at a certain point in time, while references allow you to pass mutable values to functions and have them implicitly returned",
+  "authors": ["Falilah"],
+  "contributors": ["0xNeshi"]
+}

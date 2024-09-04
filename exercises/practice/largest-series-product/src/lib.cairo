@@ -6,8 +6,5 @@ pub enum Error {
 }
 
 pub fn lsp(input: @ByteArray, span: i32) -> Result<u64, Error> {
-    panic!("implement the 'lsp' function")
+    panic!("implement `lsp`")
 }
-
-#[cfg(test)]
-mod tests;

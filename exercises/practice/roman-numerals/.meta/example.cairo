@@ -1,14 +1,16 @@
-#[derive(Drop, Debug, PartialEq)]
+use core::fmt::{Display, Error, Formatter};
+
+#[derive(Drop)]
 pub struct Roman {
     value: ByteArray,
 }
 
-#[generate_trait]
-impl RomanImpl of RomanTrait {
-    fn from_u32(num: u32) -> Roman {
+impl U32IntoRoman of Into<u32, Roman> {
+    #[must_use]
+    fn into(self: u32) -> Roman {
         // it will soon be possible to use constant array variables
         // for now we have to define them within the function
-        let mut ROMAN_MAP: Array<(u32, ByteArray)> = array![
+        let mut roman_map: Span<(u32, ByteArray)> = array![
             (1000, "M"),
             (900, "CM"),
             (500, "D"),
@@ -22,35 +24,25 @@ impl RomanImpl of RomanTrait {
             (5, "V"),
             (4, "IV"),
             (1, "I"),
-        ];
+        ]
+            .span();
 
         let mut value: ByteArray = "";
-        let mut current_num = num;
-        while let Option::Some((numeric, roman_string)) = ROMAN_MAP
-            .pop_front() {
-                while current_num >= numeric {
-                    value.append(@roman_string);
-                    current_num -= numeric;
-                }
-            };
+        let mut current_num = self;
+        for pair in roman_map {
+            let (numeric, roman_string) = pair;
+            while current_num >= *numeric {
+                value.append(roman_string);
+                current_num -= *numeric;
+            }
+        };
 
         Roman { value }
     }
 }
 
-impl U32IntoRoman of Into<u32, Roman> {
-    #[must_use]
-    fn into(self: u32) -> Roman {
-        RomanImpl::from_u32(self)
+impl RomanDisplay of Display<Roman> {
+    fn fmt(self: @Roman, ref f: Formatter) -> Result<(), Error> {
+        write!(f, "{}", self.value)
     }
 }
-
-impl RomanIIntoByteArray of Into<Roman, ByteArray> {
-    #[must_use]
-    fn into(self: Roman) -> ByteArray {
-        self.value
-    }
-}
-
-#[cfg(test)]
-mod tests;

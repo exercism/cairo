@@ -1,7 +1,7 @@
 {
-    "blurb": "<todo>",
+    "blurb": "In Cairo, `felt252` is a fundamental data type in Cairo from which all other data types are derived",
     "authors": [
-        "misicnenad"
+        "rajeebkm"
     ],
-    "contributors": []
+    "contributors": ["0xNeshi"]
 }

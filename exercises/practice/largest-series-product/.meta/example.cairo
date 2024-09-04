@@ -80,7 +80,7 @@ fn max_product(
             input, span, from + span + 1, span, Product { value: 1, start_index: from + span + 1 }
         )?
     } else {
-        // safe to unwrap, we already processed this digit before 
+        // safe to unwrap, we already processed this digit before
         let common_product = previous / input.at(from).try_into_digit().unwrap();
         Product { value: common_product * next_digit, start_index: from + 1 }
     };
@@ -108,6 +108,3 @@ impl ByteArrayCharToU64 of ByteArrayCharToU64Trait {
         }
     }
 }
-
-#[cfg(test)]
-mod tests;

@@ -1,15 +1,19 @@
 {
-  "authors": [],
+  "authors": [
+    "0xNeshi"
+  ],
   "files": {
     "solution": [
-      "src/lib.cairo",
-      "Scarb.toml"
+      "src/lib.cairo"
     ],
     "test": [
-      "src/tests.cairo"
+      "tests/binary_search.cairo"
     ],
     "example": [
       ".meta/example.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
     ]
   },
   "blurb": "Implement a binary search algorithm.",

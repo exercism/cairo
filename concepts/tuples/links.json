@@ -1,1 +1,6 @@
-[]
+[
+    {
+        "url": "https://book.cairo-lang.org/ch02-02-data-types.html#the-tuple-type",
+        "description": "Tuple type in the Cairo book"
+    }
+]

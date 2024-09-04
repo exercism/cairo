@@ -1,7 +1,5 @@
 {
-    "blurb": "<todo>",
-    "authors": [
-        "misicnenad"
-    ],
-    "contributors": []
+  "blurb": "Enums are a Cairo data type used to define a set of predefined variants for the purpose of code readability and safety",
+  "authors": ["Ephraim-nonso"],
+  "contributors": ["0xNeshi", "Falilah"]
 }
