@@ -52,12 +52,12 @@
       {
         "slug": "lucians-luscious-lasagna",
         "name": "Lucian's Luscious Lasagna",
-        "uuid": "8302f8de-14d7-45dd-9a65-812bc1ed5464",
+        "uuid": "f120ab92-f277-434c-ae38-a3bb86cb67bf",
         "concepts": [
           "functions"
         ],
         "prerequisites": [],
-        "status": "beta"
+        "status": "wip"
       }
     ],
     "practice": [
