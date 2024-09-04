@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "BNAndras"
+  ],
+  "files": {
+    "solution": [
+      "src/lib.cairo"
+    ],
+    "test": [
+      "tests/annalyns_infiltration.cairo"
+    ],
+    "exemplar": [
+      ".meta/exemplar.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
+    ]
+  },
+  "forked_from": [
+    "go/annalyns-infiltration"
+  ],
+  "blurb": "Learn about booleans by helping Annalyn free her best friend."
+}
