@@ -42,11 +42,10 @@
         "name": "Low-power Embedded Game",
         "uuid": "f3b7ce44-1667-42b4-b792-401d36aee2f1",
         "concepts": [
-          "traits"
+          "tuples"
         ],
         "prerequisites": [
-          "generics",
-          "tuples"
+          "traits"
         ],
         "status": "beta"
       }
