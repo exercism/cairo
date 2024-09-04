@@ -42,12 +42,22 @@
         "name": "Low-power Embedded Game",
         "uuid": "f3b7ce44-1667-42b4-b792-401d36aee2f1",
         "concepts": [
-          "tuples",
-          "traits",
-          "generics"
+          "tuples"
+        ],
+        "prerequisites": [
+          "traits"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "lucians-luscious-lasagna",
+        "name": "Lucian's Luscious Lasagna",
+        "uuid": "8302f8de-14d7-45dd-9a65-812bc1ed5464",
+        "concepts": [
+          "functions"
         ],
         "prerequisites": [],
-        "status": "wip"
+        "status": "beta"
       }
     ],
     "practice": [
@@ -157,16 +167,6 @@
         "name": "Isogram",
         "uuid": "e4f31195-2143-4739-b4b6-b8413339bf0c",
         "practices": [],
-        "prerequisites": [],
-        "difficulty": 2
-      },
-      {
-        "slug": "lucians-luscious-lasagna",
-        "name": "Lucian's Luscious Lasagna",
-        "uuid": "8302f8de-14d7-45dd-9a65-812bc1ed5464",
-        "practices": [
-          "functions"
-        ],
         "prerequisites": [],
         "difficulty": 2
       },

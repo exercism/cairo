@@ -9,13 +9,16 @@
     "test": [
       "tests/lucians_luscious_lasagna.cairo"
     ],
-    "example": [
-      ".meta/example.cairo"
+    "exemplar": [
+      ".meta/exemplar.cairo"
     ],
     "invalidator": [
       "Scarb.toml"
     ]
   },
+  "forked_from": [
+    "rust/lucians-luscious-lasagna"
+  ],
   "icon": "lasagna",
   "blurb": "Learn about the basics of Cairo by following a lasagna recipe."
 }

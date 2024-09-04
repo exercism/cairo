@@ -20,3 +20,17 @@ pub impl PositionImpl of PositionTrait {
         panic!("implement `manhattan`")
     }
 }
+
+// The below trait enables calling `abs` on an i16 variable
+// to get the absolute value
+#[generate_trait]
+impl AbsImpl of AbsTrait {
+    fn abs(self: @i16) -> u16 {
+        let val = if *self < 0 {
+            -*self
+        } else {
+            *self
+        };
+        val.try_into().unwrap()
+    }
+}
