@@ -26,7 +26,7 @@ arr_implicit_type.append(1);
 arr_implicit_type.append(2);
 ```
 
-> Each `append()` call puts a new number at the end of the array. 
+> Each `append()` call puts a new number at the end of the array.
 
 ## Removing Array Elements
 
@@ -125,4 +125,3 @@ fn main() {
     println!("my_span[2]: {}", my_span[2]); // my_span[2]: 3
 }
 ```
-
