@@ -9,8 +9,8 @@
     "test": [
       "tests/lucians_luscious_lasagna.cairo"
     ],
-    "example": [
-      ".meta/example.cairo"
+    "exemplar": [
+      ".meta/exemplar.cairo"
     ],
     "invalidator": [
       "Scarb.toml"
