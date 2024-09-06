@@ -1,5 +1,7 @@
 {
-  "authors": ["<your_gh_username>"],
+  "authors": [
+    "<your_gh_username>"
+  ],
   "files": {
     "solution": [
       "src/lib.cairo"

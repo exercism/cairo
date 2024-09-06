@@ -7,7 +7,7 @@
       "src/lib.cairo"
     ],
     "test": [
-      "tests/cars_assemble.cairo"
+      "tests/role_playing_game.cairo"
     ],
     "exemplar": [
       ".meta/exemplar.cairo"
@@ -17,7 +17,7 @@
     ]
   },
   "forked_from": [
-    "go/cars-assemble"
+    "rust/role-playing-game"
   ],
-  "blurb": "Learn about numbers and type conversion by analyzing an assembly line in a car factory."
+  "blurb": "<blurb>"
 }

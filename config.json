@@ -101,8 +101,25 @@
         "slug": "cars-assemble",
         "name": "cars-assemble",
         "uuid": "57845c17-15e5-4c62-bbac-29ad633e9ebb",
-        "concepts": ["integers"],
-        "prerequisites": ["functions"],
+        "concepts": [
+          "integers"
+        ],
+        "prerequisites": [
+          "functions"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "role-playing-game",
+        "name": "role-playing-game",
+        "uuid": "1b014752-c3a4-4250-9483-89696864461b",
+        "concepts": [
+          "options"
+        ],
+        "prerequisites": [
+          "structs",
+          "traits"
+        ],
         "status": "wip"
       }
     ],
