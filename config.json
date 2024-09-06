@@ -133,6 +133,19 @@
           "functions"
         ],
         "status": "wip"
+      },
+      {
+        "slug": "health-statistics",
+        "name": "health-statistics",
+        "uuid": "1aabe8ea-9abf-4bcb-863d-889c96c27ffd",
+        "concepts": [
+          "structs",
+          "traits"
+        ],
+        "prerequisites": [
+          "references-and-snapshots"
+        ],
+        "status": "wip"
       }
     ],
     "practice": [
