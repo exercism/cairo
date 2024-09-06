@@ -564,6 +564,11 @@
       "name": "The Boolean Type"
     },
     {
+      "uuid": "ea908e5d-5deb-4e1f-bc54-bb135b644f4e",
+      "slug": "constants",
+      "name": "Constants"
+    },
+    {
       "uuid": "887864e6-8d80-433c-8a1e-b11a5f79ae35",
       "slug": "control-flow",
       "name": "Control Flow"
