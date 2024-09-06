@@ -118,7 +118,7 @@
         ],
         "prerequisites": [
           "structs",
-          "traits"
+          "method-syntax"
         ],
         "status": "wip"
       },
@@ -135,11 +135,12 @@
         "status": "wip"
       },
       {
-        "slug": "health-statistics",
-        "name": "health-statistics",
-        "uuid": "1aabe8ea-9abf-4bcb-863d-889c96c27ffd",
+        "slug": "payment-system",
+        "name": "payment-system",
+        "uuid": "223613b0-f8b7-4227-a745-9d0ca2916c78",
         "concepts": [
           "structs",
+          "method-syntax",
           "traits"
         ],
         "prerequisites": [

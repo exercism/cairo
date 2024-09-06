@@ -7,7 +7,7 @@
       "src/lib.cairo"
     ],
     "test": [
-      "tests/health_statistics.cairo"
+      "tests/payment_system.cairo"
     ],
     "exemplar": [
       ".meta/exemplar.cairo"
@@ -16,8 +16,5 @@
       "Scarb.toml"
     ]
   },
-  "forked_from": [
-    "rust/health-statistics"
-  ],
   "blurb": "<blurb>"
 }
