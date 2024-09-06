@@ -16,5 +16,8 @@
       "Scarb.toml"
     ]
   },
+  "forked_from": [
+    "rust/rpn-calculator"
+  ],
   "blurb": "Use some of `Array`'s methods to evaluate Reverse Polish notation"
 }
