@@ -1,0 +1,20 @@
+{
+  "authors": [
+    "insert_your_gh_username"
+  ],
+  "files": {
+    "solution": [
+      "src/lib.cairo"
+    ],
+    "test": [
+      "tests/rpn_calculator.cairo"
+    ],
+    "exemplar": [
+      ".meta/exemplar.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
+    ]
+  },
+  "blurb": "Use some of `Array`'s methods to evaluate Reverse Polish notation"
+}

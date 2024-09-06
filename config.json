@@ -70,6 +70,14 @@
           "functions"
         ],
         "status": "wip"
+      },
+      {
+        "slug": "rpn-calculator",
+        "name": "rpn-calculator",
+        "uuid": "536d9f09-5910-4a26-93fd-2242667b0b87",
+        "concepts": ["arrays"],
+        "prerequisites": ["enums", "options", "control-flow"],
+        "status": "wip"
       }
     ],
     "practice": [
