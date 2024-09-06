@@ -75,8 +75,22 @@
         "slug": "rpn-calculator",
         "name": "rpn-calculator",
         "uuid": "536d9f09-5910-4a26-93fd-2242667b0b87",
-        "concepts": ["arrays"],
-        "prerequisites": ["enums", "options", "control-flow"],
+        "concepts": [
+          "arrays"
+        ],
+        "prerequisites": [
+          "enums",
+          "options",
+          "control-flow"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "cryptographer",
+        "name": "cryptographer",
+        "uuid": "7d399f77-4b68-4fc8-9421-43fd24bd4dbe",
+        "concepts": ["felts"],
+        "prerequisites": ["functions"],
         "status": "wip"
       }
     ],
