@@ -28,7 +28,7 @@ Define the `can_fast_attack()` function that takes a boolean value that indicate
 This function returns `true` if a fast attack can be made based on the state of the knight.
 Otherwise, returns `false`:
 
-```cairo
+```rust
 let knight_awake = true;
 can_fast_attack(knight_awake); // false
 ```
@@ -39,7 +39,7 @@ Define the `can_spy()` function that takes three boolean values, indicating if t
 The function returns `true` if the group can be spied upon, based on the state of the three characters.
 Otherwise, returns `false`:
 
-```cairo
+```rust
 let knight_awake = false;
 let archer_awake = true;
 let prisoner_awake = false;
@@ -52,7 +52,7 @@ Define the `can_signal_prisoner()` function that takes two boolean values, indic
 The function returns `true` if the prisoner can be signaled, based on the state of the two characters.
 Otherwise, returns `false`:
 
-```cairo
+```rust
 let archer_awake = false;
 let prisoner_awake = true;
 can_signal_prisoner(archer_awake, prisoner_awake); // true
@@ -66,7 +66,7 @@ The last parameter indicates if Annalyn's pet dog is present.
 The function returns `true` if the prisoner can be freed based on the state of the three characters and the presence of Annalyn's pet dog.
 Otherwise, it returns `false`:
 
-```cairo
+```rust
 let knight_awake = false;
 let archer_awake = true;
 let prisoner_awake = false;

@@ -1,10 +1,10 @@
 # Introduction
 
-Booleans in Cairo are represented by the predeclared boolean type `bool`, which values can be either `true` or `false`.
+Booleans in Cairo are represented by the predeclared Boolean type `bool`, which values can be either `true` or `false`.
 
-```cairo
-let speeding = true;   // boolean variable 'speeding' set to 'true'
-let has_error = false; // boolean variable 'hasError' set to 'false' 
+```rust
+let speeding = true;   // Boolean variable 'speeding' set to 'true'
+let has_error = false; // Boolean variable 'has_error' set to 'false' 
 ```
 
 Cairo supports three logical operators that can evaluate expressions down to Boolean values, returning either `true` or `false`.
