@@ -450,8 +450,9 @@
       }
     ],
     "foregone": [
+      "complex-numbers",
       "hangman",
-      "complex-numbers"
+      "react"
     ]
   },
   "concepts": [
