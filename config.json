@@ -452,6 +452,7 @@
     "foregone": [
       "complex-numbers",
       "hangman",
+      "lens-person",
       "paasio",
       "react"
     ]
