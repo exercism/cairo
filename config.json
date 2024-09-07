@@ -450,8 +450,19 @@
       }
     ],
     "foregone": [
+      "bank-account",
+      "complex-numbers",
+      "gigasecond",
       "hangman",
-      "complex-numbers"
+      "lens-person",
+      "list-ops",
+      "meetup",
+      "microblog",
+      "paasio",
+      "parallel-letter-frequency",
+      "react",
+      "rest-api",
+      "strain"
     ]
   },
   "concepts": [
