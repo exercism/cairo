@@ -57,7 +57,7 @@
           "functions"
         ],
         "prerequisites": [],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "annalyns-infiltration",
@@ -69,7 +69,7 @@
         "prerequisites": [
           "functions"
         ],
-        "status": "beta"
+        "status": "wip"
       }
     ],
     "practice": [
