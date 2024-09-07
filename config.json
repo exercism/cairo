@@ -263,6 +263,14 @@
         "difficulty": 3
       },
       {
+        "slug": "two-fer",
+        "name": "Two-Fer",
+        "uuid": "1eb9034d-dcea-4be4-900e-8a311bce3b1c",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
         "slug": "beer-song",
         "name": "Beer Song",
         "uuid": "d96a8ba2-6e80-45ce-91d6-5b4cac391db6",
