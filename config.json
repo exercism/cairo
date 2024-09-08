@@ -229,6 +229,14 @@
         "difficulty": 2
       },
       {
+        "slug": "triangle",
+        "name": "Triangle",
+        "uuid": "54b9358f-0ce4-46d6-9a61-7eaf0b8d1bdc",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
         "slug": "armstrong-numbers",
         "name": "Armstrong Numbers",
         "uuid": "4aaa153d-3416-4101-8143-35b068a15451",
