@@ -172,6 +172,18 @@
           "integers"
         ],
         "status": "wip"
+      },
+      {
+        "slug": "gross-store",
+        "name": "gross-store",
+        "uuid": "e2ae76c7-379e-430d-92d6-9eaaa823acca",
+        "concepts": [
+          "dictionaries"
+        ],
+        "prerequisites": [
+          "control-flow"
+        ],
+        "status": "wip"
       }
     ],
     "practice": [
