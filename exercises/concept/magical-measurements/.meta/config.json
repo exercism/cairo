@@ -1,0 +1,20 @@
+{
+  "authors": [
+    "your_gh_username"
+  ],
+  "files": {
+    "solution": [
+      "src/lib.cairo"
+    ],
+    "test": [
+      "tests/magical_measurements.cairo"
+    ],
+    "exemplar": [
+      ".meta/exemplar.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
+    ]
+  },
+  "blurb": "<blurb>"
+}

@@ -197,6 +197,18 @@
           "traits"
         ],
         "status": "wip"
+      },
+      {
+        "slug": "magical-measurements",
+        "name": "magical-measurements",
+        "uuid": "590fc9b0-2b5d-4dab-81ca-b43f9987b1f5",
+        "concepts": [
+          "type-conversion"
+        ],
+        "prerequisites": [
+          "options"
+        ],
+        "status": "wip"
       }
     ],
     "practice": [
