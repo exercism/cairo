@@ -76,12 +76,12 @@
         "name": "rpn-calculator",
         "uuid": "536d9f09-5910-4a26-93fd-2242667b0b87",
         "concepts": [
-          "arrays"
+          "control-flow",
+          "match-basics"
         ],
         "prerequisites": [
-          "enums",
-          "options",
-          "control-flow"
+          "arrays",
+          "enums"
         ],
         "status": "wip"
       },
@@ -158,6 +158,18 @@
         "prerequisites": [
           "structs",
           "traits"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "magician-in-training",
+        "name": "magician-in-training",
+        "uuid": "b1f29e1f-adb7-4e37-8101-a1819f1179fa",
+        "concepts": [
+          "arrays"
+        ],
+        "prerequisites": [
+          "integers"
         ],
         "status": "wip"
       }

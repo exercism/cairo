@@ -1,14 +1,14 @@
     arrays
     booleans
-control-flow
+    control-flow
 dictionaries
     enums
 error-handling
     felts
     functions
-generics
+    generics
     integers
-match-basics
+    match-basics
     method-syntax
 mutability
 operator-overloading
