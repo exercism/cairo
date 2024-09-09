@@ -9,49 +9,69 @@
 # Example: verify single exercise
 # ./bin/verify-exercises two-fer
 
-repo=$(git rev-parse --show-toplevel)
+set -eo pipefail
 
-lib_cairo="./src/lib.cairo"
+repo=$(git rev-parse --show-toplevel)
 
 slug="${1:-*}"
 
-verify_exercise() {
-    exercises_path="$repo/exercises/$1/$slug"
-    if ! [[ "$slug" == "*" || -d "$exercises_path" ]]; then
-        return
+if [ "$slug" != "*" ]; then
+    if [ -d "$repo/exercises/concept/$slug" ]; then
+        exercises="exercises/concept/$slug"
+    elif [ -d "$repo/exercises/practice/$slug" ]; then
+        exercises="exercises/practice/$slug"
+    else
+        echo "No such exercise: $slug"
+        exit 1
     fi
-    source_file_name="$2"
-    tmp_file=$(mktemp)
-    trap 'rm $tmp_file' EXIT INT TERM
+elif [ "$GITHUB_EVENT_NAME" = "pull_request" ]; then
+    git fetch --depth=1 origin main
+    exercises="$(
+        git diff --diff-filter=d --name-only remotes/origin/main |
+            grep "exercises/" |
+            cut --delimiter '/' --fields -3 |
+            sort --unique || true
+    )"
+else
+    exercises="exercises/*/*"
+fi
 
-    for exercise_dir in $exercises_path; do
-        if [ -z "$exercise_dir" ]; then
-            continue
-        fi
+for exercise_path in $exercises; do
+    cd "$repo"
 
-        exercise=$(basename "$exercise_dir")
-        echo "Checking $exercise exercise..."
+    exercise=$(basename "$exercise_path")
+    echo "Checking $exercise exercise..."
 
-        cd "$exercise_dir" || exit 1
+    tmp_dir=$(mktemp -d)
+    trap 'rm -rf $tmp_dir' EXIT INT TERM
 
-        solution_file=".meta/$source_file_name.cairo"
-        if [ -z "$solution_file" ]; then
-            echo "Could not find solution file for $exercise"
+    # copy the exercise to the temporary directory
+    contents_to_copy=(
+        "src"
+        "tests"
+        "Scarb.toml"
+    )
+    for c in "${contents_to_copy[@]}"; do
+        if [ ! -e "$exercise_path/$c" ]; then
+            echo "Missing exercise file: $c"
             exit 1
         fi
-
-        # since we're testing the solution, we need to temporarily replace
-        # the exercise's solution files with its exemplar/example files
-        cp "$lib_cairo" "$tmp_file"
-        cp "$solution_file" "$lib_cairo"
-
-        scarb cairo-test --include-ignored
-
-        cp "$tmp_file" "$lib_cairo"
+        cp -r "$exercise_path/$c" "$tmp_dir"
     done
-}
 
-# https://github.com/exercism/docs/blob/main/anatomy/tracks/concept-exercises.md#file-exemplar-implementation
-verify_exercise "concept" "exemplar"
-# https://github.com/exercism/docs/blob/main/anatomy/tracks/practice-exercises.md#file-example-implementation
-verify_exercise "practice" "example"
+    # Move example files to where Cargo expects them
+    if [ -f "$exercise_path/.meta/example.cairo" ]; then
+        cp -f "$exercise_path/.meta/example.cairo" "$tmp_dir/src/lib.cairo"
+    elif [ -f "$exercise_path/.meta/exemplar.cairo" ]; then
+        cp -f "$exercise_path/.meta/exemplar.cairo" "$tmp_dir/src/lib.cairo"
+    else
+        echo "Could not locate example implementation for $exercise_path"
+        exit 1
+    fi
+
+    cd "$tmp_dir"
+
+    scarb cairo-test --include-ignored
+
+    rm -rf "$tmp_dir"
+done

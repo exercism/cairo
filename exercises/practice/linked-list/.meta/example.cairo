@@ -1,3 +1,5 @@
+use core::dict::Felt252Dict;
+
 type Index = Option<felt252>;
 
 struct DoublyLinkedList<T> {
@@ -141,36 +143,35 @@ pub impl DoublyLinkedListImpl<
         }
 
         let mut to_remove = self.head;
-        while let Option::Some(to_remove_index) =
-            to_remove {
-                let node = self.dict.get(to_remove_index).deref();
+        while let Option::Some(to_remove_index) = to_remove {
+            let node = self.dict.get(to_remove_index).deref();
 
-                if node.station != station {
-                    to_remove = node.next;
-                    continue;
-                }
+            if node.station != station {
+                to_remove = node.next;
+                continue;
+            }
 
-                if let Option::Some(previous_index) = node.previous {
-                    let previous = self.dict.get(previous_index).deref();
-                    let previous = Node { next: node.next, ..previous };
-                    self.dict.insert(previous_index, NullableTrait::new(previous));
-                } else {
-                    // no previous node means head needs to be deleted
-                    self.head = node.next;
-                }
-                if let Option::Some(next_index) = node.next {
-                    let next = self.dict.get(next_index).deref();
-                    let next = Node { previous: node.previous, ..next };
-                    self.dict.insert(next_index, NullableTrait::new(next));
-                } else {
-                    // no next node means tail needs to be deleted
-                    self.tail = node.previous;
-                }
+            if let Option::Some(previous_index) = node.previous {
+                let previous = self.dict.get(previous_index).deref();
+                let previous = Node { next: node.next, ..previous };
+                self.dict.insert(previous_index, NullableTrait::new(previous));
+            } else {
+                // no previous node means head needs to be deleted
+                self.head = node.next;
+            }
+            if let Option::Some(next_index) = node.next {
+                let next = self.dict.get(next_index).deref();
+                let next = Node { previous: node.previous, ..next };
+                self.dict.insert(next_index, NullableTrait::new(next));
+            } else {
+                // no next node means tail needs to be deleted
+                self.tail = node.previous;
+            }
 
-                self.dict.insert(to_remove_index, Default::default());
-                self.len -= 1;
-                break;
-            };
+            self.dict.insert(to_remove_index, Default::default());
+            self.len -= 1;
+            break;
+        };
     }
 }
 

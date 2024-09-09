@@ -14,7 +14,8 @@ pub impl CodonsInfoImpl of CodonsInfoTrait {
     }
 
     fn of_rna(ref self: CodonsInfo, strand: ByteArray) -> Option<Array<ByteArray>> {
-        // return the array of codon names that correspond to the given strand of RNA (represented as a string of codons)
+        // return the array of codon names that correspond to the given strand of RNA (represented
+        // as a string of codons)
         panic!("implement `of_rna`")
     }
 }

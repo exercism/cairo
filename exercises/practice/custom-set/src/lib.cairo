@@ -8,11 +8,6 @@ impl CustomSetEq<
         // determine whether the two CustomSets are equal
         panic!("implement `eq`")
     }
-
-    fn ne(lhs: @CustomSet<T>, rhs: @CustomSet<T>) -> bool {
-        // determine whether the two CustomSets are NOT equal
-        panic!("implement `ne`")
-    }
 }
 
 #[generate_trait]

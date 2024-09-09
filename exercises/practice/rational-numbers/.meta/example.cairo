@@ -1,5 +1,3 @@
-use core::fmt::{Debug, Formatter, Error};
-
 #[derive(Drop, Debug, Copy)]
 struct Rational {
     numer: i128,
@@ -31,10 +29,6 @@ pub impl RationalImpl of RationalTrait {
 impl RationalPartialEq of PartialEq<Rational> {
     fn eq(lhs: @Rational, rhs: @Rational) -> bool {
         lhs.numer == rhs.numer && lhs.denom == rhs.denom
-    }
-
-    fn ne(lhs: @Rational, rhs: @Rational) -> bool {
-        !(lhs == rhs)
     }
 }
 
@@ -165,20 +159,3 @@ fn to_u128(n: i128) -> u128 {
     n.try_into().unwrap()
 }
 
-// Enables printing i128 values in tests.
-// Note that this will soon be added to the core library.
-impl I128Debug of Debug<i128> {
-    fn fmt(self: @i128, ref f: Formatter) -> Result<(), Error> {
-        if *self < 0 {
-            f.buffer.append(@"-");
-        };
-        let abs_value = if *self < 0 {
-            *self * -1
-        } else {
-            *self
-        };
-        let abs_value: u32 = abs_value.try_into().unwrap();
-        f.buffer.append(@format!("{}", abs_value));
-        Result::Ok(())
-    }
-}

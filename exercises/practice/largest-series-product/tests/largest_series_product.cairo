@@ -119,7 +119,8 @@ fn rejects_negative_span() {
 }
 
 // Additional tests for this track
-// Taken from https://github.com/exercism/python/blob/367faf4c12c172bbd981d41f4426f1ae2f0b1f49/exercises/practice/largest-series-product/largest_series_product_test.py#L72
+// Taken from
+// https://github.com/exercism/python/blob/367faf4c12c172bbd981d41f4426f1ae2f0b1f49/exercises/practice/largest-series-product/largest_series_product_test.py#L72
 #[test]
 #[ignore]
 fn euler_big_number() {

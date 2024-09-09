@@ -1,4 +1,3 @@
-use core::fmt::{Debug, Formatter, Error};
 use robot_simulator::{Direction, RobotTrait};
 
 #[test]
@@ -160,20 +159,3 @@ fn moving_east_and_north() {
     assert_eq!(robot_end.direction(), @Direction::North);
 }
 
-// Enables printing i32 values in tests.
-// Note that this will soon be added to the core library.
-impl IDebug of Debug<i32> {
-    fn fmt(self: @i32, ref f: Formatter) -> Result<(), Error> {
-        if *self < 0 {
-            f.buffer.append(@"-");
-        }
-        let abs_value = if *self < 0 {
-            *self * -1
-        } else {
-            *self
-        };
-        let abs_value: u32 = abs_value.try_into().unwrap();
-        f.buffer.append(@format!("{}", abs_value));
-        Result::Ok(())
-    }
-}

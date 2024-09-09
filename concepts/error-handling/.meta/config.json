@@ -1,7 +1,7 @@
 {
-    "blurb": "<todo>",
+    "blurb": "Cairo provides error handling techniques to address issues, and manage errors, enabling running the code smoothly during execution.",
     "authors": [
-        "0xNeshi"
+        "xiakshay"
     ],
-    "contributors": []
+    "contributors": ["0xNeshi"]
 }
