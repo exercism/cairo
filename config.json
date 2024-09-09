@@ -147,6 +147,19 @@
           "references-and-snapshots"
         ],
         "status": "wip"
+      },
+      {
+        "slug": "airport-robot",
+        "name": "airport-robot",
+        "uuid": "f0c994d7-d183-4dfa-9048-b20be6f3bf2e",
+        "concepts": [
+          "generics"
+        ],
+        "prerequisites": [
+          "structs",
+          "traits"
+        ],
+        "status": "wip"
       }
     ],
     "practice": [

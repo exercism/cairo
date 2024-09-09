@@ -9,7 +9,7 @@ error-handling
 generics
     integers
 match-basics
-method-syntax
+    method-syntax
 mutability
 operator-overloading
     options
