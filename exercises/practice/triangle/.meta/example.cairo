@@ -23,9 +23,7 @@ fn unique_sides(sides: @[u64; 3]) -> u64 {
 }
 
 fn is_triangle(sides: @[u64; 3]) -> bool {
-    let a = sides[0];
-    let b = sides[1];
-    let c = sides[2];
+    let [a, b, c] = sides;
 
     all_sides_positive(a, b, c) && satisifies_inequality(a, b, c)
 }
