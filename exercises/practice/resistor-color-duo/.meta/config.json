@@ -11,6 +11,9 @@
     ],
     "example": [
       ".meta/example.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
     ]
   },
   "blurb": "Convert color codes, as used on resistors, to a numeric value.",
