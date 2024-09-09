@@ -42,7 +42,8 @@
         "name": "Lucian's Luscious Lasagna",
         "uuid": "f120ab92-f277-434c-ae38-a3bb86cb67bf",
         "concepts": [
-          "functions"
+          "functions",
+          "mutability"
         ],
         "prerequisites": [],
         "status": "beta"

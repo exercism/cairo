@@ -10,7 +10,7 @@ error-handling
     integers
     match-basics
     method-syntax
-mutability
+    mutability
 operator-overloading
     options
 ownership
