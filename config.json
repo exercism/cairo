@@ -38,18 +38,6 @@
   "exercises": {
     "concept": [
       {
-        "slug": "low-power-embedded-game",
-        "name": "Low-power Embedded Game",
-        "uuid": "f3b7ce44-1667-42b4-b792-401d36aee2f1",
-        "concepts": [
-          "tuples"
-        ],
-        "prerequisites": [
-          "traits"
-        ],
-        "status": "wip"
-      },
-      {
         "slug": "lucians-luscious-lasagna",
         "name": "Lucian's Luscious Lasagna",
         "uuid": "f120ab92-f277-434c-ae38-a3bb86cb67bf",
@@ -68,20 +56,6 @@
         ],
         "prerequisites": [
           "functions"
-        ],
-        "status": "wip"
-      },
-      {
-        "slug": "rpn-calculator",
-        "name": "rpn-calculator",
-        "uuid": "536d9f09-5910-4a26-93fd-2242667b0b87",
-        "concepts": [
-          "control-flow",
-          "match-basics"
-        ],
-        "prerequisites": [
-          "arrays",
-          "enums"
         ],
         "status": "wip"
       },
@@ -110,19 +84,6 @@
         "status": "wip"
       },
       {
-        "slug": "role-playing-game",
-        "name": "role-playing-game",
-        "uuid": "1b014752-c3a4-4250-9483-89696864461b",
-        "concepts": [
-          "options"
-        ],
-        "prerequisites": [
-          "structs",
-          "method-syntax"
-        ],
-        "status": "wip"
-      },
-      {
         "slug": "welcome-to-tech-palace",
         "name": "welcome-to-tech-palace",
         "uuid": "f8108950-9819-4540-8a3a-880d0778806c",
@@ -131,33 +92,6 @@
         ],
         "prerequisites": [
           "functions"
-        ],
-        "status": "wip"
-      },
-      {
-        "slug": "health-statistics",
-        "name": "health-statistics",
-        "uuid": "69389197-e1dc-43bf-865d-d9b58d59b4e7",
-        "concepts": [
-          "method-syntax",
-          "structs",
-          "traits"
-        ],
-        "prerequisites": [
-          "references-and-snapshots"
-        ],
-        "status": "wip"
-      },
-      {
-        "slug": "airport-robot",
-        "name": "airport-robot",
-        "uuid": "f0c994d7-d183-4dfa-9048-b20be6f3bf2e",
-        "concepts": [
-          "generics"
-        ],
-        "prerequisites": [
-          "structs",
-          "traits"
         ],
         "status": "wip"
       },
@@ -174,6 +108,19 @@
         "status": "wip"
       },
       {
+        "slug": "rpn-calculator",
+        "name": "rpn-calculator",
+        "uuid": "536d9f09-5910-4a26-93fd-2242667b0b87",
+        "concepts": [
+          "control-flow"
+        ],
+        "prerequisites": [
+          "arrays",
+          "enums"
+        ],
+        "status": "wip"
+      },
+      {
         "slug": "gross-store",
         "name": "gross-store",
         "uuid": "e2ae76c7-379e-430d-92d6-9eaaa823acca",
@@ -182,6 +129,71 @@
         ],
         "prerequisites": [
           "control-flow"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "election-day",
+        "name": "election-day",
+        "uuid": "29bc1a4a-f295-44db-be19-d8e63dc526dc",
+        "concepts": [
+          "structs",
+          "references-and-snapshots"
+        ],
+        "prerequisites": [
+          "dictionaries"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "health-statistics",
+        "name": "health-statistics",
+        "uuid": "69389197-e1dc-43bf-865d-d9b58d59b4e7",
+        "concepts": [
+          "method-syntax",
+          "traits"
+        ],
+        "prerequisites": [
+          "structs",
+          "references-and-snapshots"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "low-power-embedded-game",
+        "name": "Low-power Embedded Game",
+        "uuid": "f3b7ce44-1667-42b4-b792-401d36aee2f1",
+        "concepts": [
+          "tuples"
+        ],
+        "prerequisites": [
+          "traits"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "role-playing-game",
+        "name": "role-playing-game",
+        "uuid": "1b014752-c3a4-4250-9483-89696864461b",
+        "concepts": [
+          "options"
+        ],
+        "prerequisites": [
+          "structs",
+          "method-syntax"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "airport-robot",
+        "name": "airport-robot",
+        "uuid": "f0c994d7-d183-4dfa-9048-b20be6f3bf2e",
+        "concepts": [
+          "generics"
+        ],
+        "prerequisites": [
+          "structs",
+          "traits"
         ],
         "status": "wip"
       }
