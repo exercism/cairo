@@ -7,7 +7,7 @@
       "src/lib.cairo"
     ],
     "test": [
-      "tests/payment_system.cairo"
+      "tests/health_statistics.cairo"
     ],
     "exemplar": [
       ".meta/exemplar.cairo"
@@ -16,5 +16,8 @@
       "Scarb.toml"
     ]
   },
-  "blurb": "<blurb>"
+  "forked_from": [
+    "rust/health-statistics"
+  ],
+  "blurb": "Learn structs to store statistics for a health-monitoring system."
 }

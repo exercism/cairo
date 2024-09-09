@@ -135,13 +135,12 @@
         "status": "wip"
       },
       {
-        "slug": "payment-system",
-        "name": "payment-system",
-        "uuid": "223613b0-f8b7-4227-a745-9d0ca2916c78",
+        "slug": "health-statistics",
+        "name": "health-statistics",
+        "uuid": "69389197-e1dc-43bf-865d-d9b58d59b4e7",
         "concepts": [
           "structs",
-          "method-syntax",
-          "traits"
+          "method-syntax"
         ],
         "prerequisites": [
           "references-and-snapshots"
