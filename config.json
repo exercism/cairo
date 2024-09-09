@@ -139,8 +139,9 @@
         "name": "health-statistics",
         "uuid": "69389197-e1dc-43bf-865d-d9b58d59b4e7",
         "concepts": [
+          "method-syntax",
           "structs",
-          "method-syntax"
+          "traits"
         ],
         "prerequisites": [
           "references-and-snapshots"
