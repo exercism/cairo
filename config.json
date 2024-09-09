@@ -57,6 +57,18 @@
           "functions"
         ],
         "prerequisites": [],
+        "status": "beta"
+      },
+      {
+        "slug": "annalyns-infiltration",
+        "name": "Annalyn's Infiltration",
+        "uuid": "da0f8d71-36ed-4c98-9e43-60a04ea5db3a",
+        "concepts": [
+          "booleans"
+        ],
+        "prerequisites": [
+          "functions"
+        ],
         "status": "wip"
       }
     ],
