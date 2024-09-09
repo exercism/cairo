@@ -1,19 +1,17 @@
-pub fn is_equilateral(sides: Array<u64>) -> bool {
+pub fn is_equilateral(sides: [u64, 3]) -> bool {
     is_triangle(@sides) && unique_sides(@sides) == 1
 }
 
-pub fn is_isosceles(sides: Array<u64>) -> bool {
+pub fn is_isosceles(sides: [u64, 3]) -> bool {
     is_triangle(@sides) && unique_sides(@sides) < 3
 }
 
-pub fn is_scalene(sides: Array<u64>) -> bool {
+pub fn is_scalene(sides: [u64, 3]) -> bool {
     is_triangle(@sides) && unique_sides(@sides) == 3
 }
 
-fn unique_sides(sides: @Array<u64>) -> u64 {
-    let a = sides[0];
-    let b = sides[1];
-    let c = sides[2];
+fn unique_sides(sides: @[u64, 3]) -> u64 {
+    let [a, b, c] = sides;
 
     if a == b && b == c {
         1
@@ -24,7 +22,7 @@ fn unique_sides(sides: @Array<u64>) -> u64 {
     }
 }
 
-fn is_triangle(sides: @Array<u64>) -> bool {
+fn is_triangle(sides: @[u64, 3]) -> bool {
     let a = sides[0];
     let b = sides[1];
     let c = sides[2];
