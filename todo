@@ -13,7 +13,7 @@
     mutability
     operator-overloading
     options
-ownership
+    ownership
     packages-crates-modules
 printing
     references-and-snapshots

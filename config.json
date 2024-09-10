@@ -138,6 +138,7 @@
         "name": "Election Day",
         "uuid": "29bc1a4a-f295-44db-be19-d8e63dc526dc",
         "concepts": [
+          "ownership",
           "structs",
           "references-and-snapshots"
         ],
