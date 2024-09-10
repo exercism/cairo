@@ -17,7 +17,7 @@ ownership
     packages-crates-modules
 printing
     references-and-snapshots
-smart-pointers
+    smart-pointers
     strings
     structs
     traits

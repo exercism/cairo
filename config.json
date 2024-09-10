@@ -245,6 +245,18 @@
           "generics"
         ],
         "status": "wip"
+      },
+      {
+        "slug": "chrono-realms-time-tree",
+        "name": "Chrono Realms Time Tree",
+        "uuid": "a72139a1-825e-4349-a6b5-400b665fbe07",
+        "concepts": [
+          "smart-pointers"
+        ],
+        "prerequisites": [
+          "structs"
+        ],
+        "status": "wip"
       }
     ],
     "practice": [

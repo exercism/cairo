@@ -1,0 +1,21 @@
+{
+  "authors": [
+    "your_gh_username",
+    "0xNeshi"
+  ],
+  "files": {
+    "solution": [
+      "src/lib.cairo"
+    ],
+    "test": [
+      "tests/chrono_realms_time_tree.cairo"
+    ],
+    "exemplar": [
+      ".meta/exemplar.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
+    ]
+  },
+  "blurb": "<blurb>"
+}
