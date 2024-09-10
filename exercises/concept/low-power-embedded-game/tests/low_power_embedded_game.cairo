@@ -37,7 +37,6 @@ mod divmod {
 }
 
 mod evens {
-    use core::byte_array::ByteArrayTrait;
     use low_power_embedded_game::EvensTrait;
 
     #[test]
