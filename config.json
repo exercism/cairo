@@ -62,7 +62,7 @@
       },
       {
         "slug": "cryptographer",
-        "name": "cryptographer",
+        "name": "Cryptographer",
         "uuid": "7d399f77-4b68-4fc8-9421-43fd24bd4dbe",
         "concepts": [
           "felts"
@@ -74,7 +74,7 @@
       },
       {
         "slug": "cars-assemble",
-        "name": "cars-assemble",
+        "name": "Cars Assemble",
         "uuid": "57845c17-15e5-4c62-bbac-29ad633e9ebb",
         "concepts": [
           "integers"
@@ -86,7 +86,7 @@
       },
       {
         "slug": "welcome-to-tech-palace",
-        "name": "welcome-to-tech-palace",
+        "name": "Welcome To Tech Palace!",
         "uuid": "f8108950-9819-4540-8a3a-880d0778806c",
         "concepts": [
           "strings"
@@ -98,7 +98,7 @@
       },
       {
         "slug": "magician-in-training",
-        "name": "magician-in-training",
+        "name": "Magician in Training",
         "uuid": "b1f29e1f-adb7-4e37-8101-a1819f1179fa",
         "concepts": [
           "arrays"
@@ -110,7 +110,7 @@
       },
       {
         "slug": "rpn-calculator",
-        "name": "rpn-calculator",
+        "name": "RPN Calculator",
         "uuid": "536d9f09-5910-4a26-93fd-2242667b0b87",
         "concepts": [
           "control-flow"
@@ -123,7 +123,7 @@
       },
       {
         "slug": "gross-store",
-        "name": "gross-store",
+        "name": "Gross Store",
         "uuid": "e2ae76c7-379e-430d-92d6-9eaaa823acca",
         "concepts": [
           "dictionaries"
@@ -135,7 +135,7 @@
       },
       {
         "slug": "election-day",
-        "name": "election-day",
+        "name": "Election Day",
         "uuid": "29bc1a4a-f295-44db-be19-d8e63dc526dc",
         "concepts": [
           "structs",
@@ -148,7 +148,7 @@
       },
       {
         "slug": "red-vs-blue-darwin-style",
-        "name": "red-vs-blue-darwin-style",
+        "name": "Red vs. Blue: Darwin Style",
         "uuid": "30761b1c-0c9a-4c91-8d16-1adf8bc4a0dd",
         "concepts": [
           "packages-crates-modules"
@@ -160,7 +160,7 @@
       },
       {
         "slug": "health-statistics",
-        "name": "health-statistics",
+        "name": "Health Statistics",
         "uuid": "69389197-e1dc-43bf-865d-d9b58d59b4e7",
         "concepts": [
           "method-syntax",
@@ -186,7 +186,7 @@
       },
       {
         "slug": "role-playing-game",
-        "name": "role-playing-game",
+        "name": "Role Playing Game",
         "uuid": "1b014752-c3a4-4250-9483-89696864461b",
         "concepts": [
           "options"
@@ -199,7 +199,7 @@
       },
       {
         "slug": "magical-measurements",
-        "name": "magical-measurements",
+        "name": "Magical Measurements",
         "uuid": "590fc9b0-2b5d-4dab-81ca-b43f9987b1f5",
         "concepts": [
           "type-conversion"
@@ -211,7 +211,7 @@
       },
       {
         "slug": "airport-robot",
-        "name": "airport-robot",
+        "name": "Airport Robot",
         "uuid": "f0c994d7-d183-4dfa-9048-b20be6f3bf2e",
         "concepts": [
           "generics"
@@ -224,7 +224,7 @@
       },
       {
         "slug": "the-farm",
-        "name": "the-farm",
+        "name": "The Farm",
         "uuid": "e167e30c-84b1-44da-b21c-70bc46688f20",
         "concepts": [
           "error-handling"
@@ -236,7 +236,7 @@
       },
       {
         "slug": "chrono-realms",
-        "name": "chrono-realms",
+        "name": "Chrono Realms",
         "uuid": "eb15461a-ffdc-4bdd-acc1-e95bd7a1ac91",
         "concepts": [
           "operator-overloading"
