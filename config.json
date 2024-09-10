@@ -209,6 +209,18 @@
           "options"
         ],
         "status": "wip"
+      },
+      {
+        "slug": "red-vs-blue-darwin-style",
+        "name": "red-vs-blue-darwin-style",
+        "uuid": "30761b1c-0c9a-4c91-8d16-1adf8bc4a0dd",
+        "concepts": [
+          "packages-crates-modules"
+        ],
+        "prerequisites": [
+          "structs"
+        ],
+        "status": "wip"
       }
     ],
     "practice": [
