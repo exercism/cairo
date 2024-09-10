@@ -3,7 +3,7 @@
     control-flow
     dictionaries
     enums
-error-handling
+    error-handling
     felts
     functions
     generics
