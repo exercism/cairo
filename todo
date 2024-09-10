@@ -11,7 +11,7 @@
     match-basics
     method-syntax
     mutability
-operator-overloading
+    operator-overloading
     options
 ownership
     packages-crates-modules

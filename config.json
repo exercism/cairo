@@ -147,6 +147,18 @@
         "status": "wip"
       },
       {
+        "slug": "red-vs-blue-darwin-style",
+        "name": "red-vs-blue-darwin-style",
+        "uuid": "30761b1c-0c9a-4c91-8d16-1adf8bc4a0dd",
+        "concepts": [
+          "packages-crates-modules"
+        ],
+        "prerequisites": [
+          "structs"
+        ],
+        "status": "wip"
+      },
+      {
         "slug": "health-statistics",
         "name": "health-statistics",
         "uuid": "69389197-e1dc-43bf-865d-d9b58d59b4e7",
@@ -186,6 +198,18 @@
         "status": "wip"
       },
       {
+        "slug": "magical-measurements",
+        "name": "magical-measurements",
+        "uuid": "590fc9b0-2b5d-4dab-81ca-b43f9987b1f5",
+        "concepts": [
+          "type-conversion"
+        ],
+        "prerequisites": [
+          "options"
+        ],
+        "status": "wip"
+      },
+      {
         "slug": "airport-robot",
         "name": "airport-robot",
         "uuid": "f0c994d7-d183-4dfa-9048-b20be6f3bf2e",
@@ -199,30 +223,6 @@
         "status": "wip"
       },
       {
-        "slug": "magical-measurements",
-        "name": "magical-measurements",
-        "uuid": "590fc9b0-2b5d-4dab-81ca-b43f9987b1f5",
-        "concepts": [
-          "type-conversion"
-        ],
-        "prerequisites": [
-          "options"
-        ],
-        "status": "wip"
-      },
-      {
-        "slug": "red-vs-blue-darwin-style",
-        "name": "red-vs-blue-darwin-style",
-        "uuid": "30761b1c-0c9a-4c91-8d16-1adf8bc4a0dd",
-        "concepts": [
-          "packages-crates-modules"
-        ],
-        "prerequisites": [
-          "structs"
-        ],
-        "status": "wip"
-      },
-      {
         "slug": "the-farm",
         "name": "the-farm",
         "uuid": "e167e30c-84b1-44da-b21c-70bc46688f20",
@@ -231,6 +231,18 @@
         ],
         "prerequisites": [
           "structs"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "chrono-realms",
+        "name": "chrono-realms",
+        "uuid": "eb15461a-ffdc-4bdd-acc1-e95bd7a1ac91",
+        "concepts": [
+          "operator-overloading"
+        ],
+        "prerequisites": [
+          "generics"
         ],
         "status": "wip"
       }

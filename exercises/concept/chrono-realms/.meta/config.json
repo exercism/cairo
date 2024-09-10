@@ -1,0 +1,20 @@
+{
+  "authors": [
+    "your_gh_username"
+  ],
+  "files": {
+    "solution": [
+      "src/lib.cairo"
+    ],
+    "test": [
+      "tests/chrono_realms.cairo"
+    ],
+    "exemplar": [
+      ".meta/exemplar.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
+    ]
+  },
+  "blurb": "<blurb>"
+}
