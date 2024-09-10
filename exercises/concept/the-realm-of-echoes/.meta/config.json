@@ -1,0 +1,21 @@
+{
+  "authors": [
+    "0xNeshi",
+    "your_gh_username"
+  ],
+  "files": {
+    "solution": [
+      "src/lib.cairo"
+    ],
+    "test": [
+      "tests/the_realm_of_echoes.cairo"
+    ],
+    "exemplar": [
+      ".meta/exemplar.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
+    ]
+  },
+  "blurb": "<blurb>"
+}

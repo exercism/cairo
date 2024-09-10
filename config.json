@@ -186,6 +186,18 @@
         "status": "wip"
       },
       {
+        "slug": "the-realm-of-echoes",
+        "name": "the-realm-of-echoes",
+        "uuid": "c8fd3bd0-290e-4472-b967-9a201dfd3041",
+        "concepts": [
+          "printing"
+        ],
+        "prerequisites": [
+          "traits"
+        ],
+        "status": "wip"
+      },
+      {
         "slug": "role-playing-game",
         "name": "Role Playing Game",
         "uuid": "1b014752-c3a4-4250-9483-89696864461b",
@@ -206,7 +218,8 @@
           "type-conversion"
         ],
         "prerequisites": [
-          "options"
+          "options",
+          "printing"
         ],
         "status": "wip"
       },
