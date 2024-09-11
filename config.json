@@ -199,6 +199,14 @@
         "difficulty": 2
       },
       {
+        "slug": "perfect-numbers",
+        "name": "Perfect Numbers",
+        "uuid": "5b97b3f8-1d7d-44a5-a62c-267cea29f1b1",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
         "slug": "raindrops",
         "name": "Raindrops",
         "uuid": "d2cc23d5-2ed1-4115-9b9a-4b62993e750c",
