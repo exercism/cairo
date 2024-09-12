@@ -55,7 +55,7 @@ pub impl CodonsInfoImpl of CodonsInfoTrait {
         };
 
         match translate_result {
-            TranslateResult::Invalid => Option::None,
+            TranslateResult::Invalid => core::panic_with_felt252('Invalid codon'),
             _ => Option::Some(result)
         }
     }
