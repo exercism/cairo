@@ -1,90 +1,6 @@
 use protein_translation::{parse, CodonsInfoTrait};
 
 #[test]
-fn methionine() {
-    let mut info = parse(make_pairs());
-    assert_eq!(info.name_for('AUG'), "methionine");
-}
-
-#[test]
-#[ignore]
-fn cysteine_tgt() {
-    let mut info = parse(make_pairs());
-    assert_eq!(info.name_for('UGU'), "cysteine");
-}
-
-#[test]
-#[ignore]
-fn stop() {
-    let mut info = parse(make_pairs());
-    assert_eq!(info.name_for('UAA'), "stop codon");
-}
-
-#[test]
-#[ignore]
-fn valine() {
-    let mut info = parse(make_pairs());
-    assert_eq!(info.name_for('GUU'), "valine");
-}
-
-#[test]
-#[ignore]
-fn isoleucine() {
-    let mut info = parse(make_pairs());
-    assert_eq!(info.name_for('AUU'), "isoleucine");
-}
-
-#[test]
-#[ignore]
-fn arginine_cga() {
-    let mut info = parse(make_pairs());
-    assert_eq!(info.name_for('CGA'), "arginine");
-}
-
-#[test]
-#[ignore]
-fn arginine_aga() {
-    let mut info = parse(make_pairs());
-    assert_eq!(info.name_for('AGA'), "arginine");
-}
-
-#[test]
-#[ignore]
-fn arginine_agg() {
-    let mut info = parse(make_pairs());
-    assert_eq!(info.name_for('AGG'), "arginine");
-}
-
-#[test]
-#[ignore]
-fn empty_is_invalid() {
-    let mut info = parse(make_pairs());
-    assert_eq!(info.name_for(''), "");
-}
-
-#[test]
-#[ignore]
-fn x_is_not_shorthand_so_is_invalid() {
-    let mut info = parse(make_pairs());
-    assert_eq!(info.name_for('VWX'), "");
-}
-
-#[test]
-#[ignore]
-fn too_short_is_invalid() {
-    let mut info = parse(make_pairs());
-    assert_eq!(info.name_for('AU'), "");
-}
-
-#[test]
-#[ignore]
-fn too_long_is_invalid() {
-    let mut info = parse(make_pairs());
-    assert_eq!(info.name_for('ATTA'), "");
-}
-
-#[test]
-#[ignore]
 fn empty_rna_sequence_results_in_no_proteins() {
     let mut info = parse(make_pairs());
     assert_eq!(info.of_rna(""), Option::Some(array![]),);
@@ -297,32 +213,19 @@ fn incomplete_rna_sequence_can_translate_if_valid_until_a_stop_codon() {
 
 // The input data constructor. Returns a list of codon, name pairs.
 fn make_pairs() -> Array<(felt252, ByteArray)> {
-    let mut grouped: Array<(ByteArray, Array<felt252>)> = array![
-        ("isoleucine", array!['AUU', 'AUC', 'AUA']),
-        ("valine", array!['GUU', 'GUC', 'GUA', 'GUG']),
-        ("phenylalanine", array!['UUU', 'UUC']),
+    let grouped: Array<(ByteArray, Array<felt252>)> = array![
         ("methionine", array!['AUG']),
-        ("cysteine", array!['UGU', 'UGC']),
-        ("alanine", array!['GCU', 'GCC', 'GCA', 'GCG']),
-        ("glycine", array!['GGU', 'GGC', 'GGA', 'GGG']),
-        ("proline", array!['CCU', 'CCC', 'CCA', 'CCG']),
-        ("threonine", array!['ACU', 'ACC', 'ACA', 'ACG']),
+        ("phenylalanine", array!['UUU', 'UUC']),
+        ("leucine", array!['UUA', 'UUG']),
         ("serine", array!['UCU', 'UCC', 'UCA', 'UCG']),
         ("tyrosine", array!['UAU', 'UAC']),
+        ("cysteine", array!['UGU', 'UGC']),
         ("tryptophan", array!['UGG']),
-        ("glutamine", array!['CAA', 'CAG']),
-        ("asparagine", array!['AAU', 'AAC']),
-        ("histidine", array!['CAU', 'CAC']),
-        ("glutamic acid", array!['GAA', 'GAG']),
-        ("aspartic acid", array!['GAU', 'GAC']),
-        ("lysine", array!['AAA', 'AAG']),
-        ("arginine", array!['CGU', 'CGC', 'CGA', 'CGG', 'AGA', 'AGG']),
-        ("leucine", array!['UUA', 'UUG']),
         ("stop codon", array!['UAA', 'UAG', 'UGA']),
     ];
     let mut pairs = ArrayTrait::<(felt252, ByteArray)>::new();
-    while let Option::Some((name, mut codons)) = grouped.pop_front() {
-        while let Option::Some(codon) = codons.pop_front() {
+    for (name, codons) in grouped {
+        for codon in codons {
             pairs.append((codon, name.clone()));
         };
     };
