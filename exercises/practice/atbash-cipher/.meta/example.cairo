@@ -1,5 +1,5 @@
 const DISTANCE_BETWEEN_CASES: u8 = 'a' - 'A';
-const MAX_ENCODED_CHAR: u8 = 'a' + 'z';    
+const MAX_ENCODED_CHAR: u8 = 'a' + 'z';
 
 pub fn encode(phrase: ByteArray) -> ByteArray {
     let mut result = "";
