@@ -71,7 +71,7 @@ for exercise_path in $exercises; do
 
     cd "$tmp_dir"
 
-    timeout 20 scarb cairo-test --include-ignored || echo "$exercise timed out" && exit 1
+    timeout 20 scarb cairo-test --include-ignored || (echo "$exercise timed out" && exit 1)
 
     rm -rf "$tmp_dir"
 done
