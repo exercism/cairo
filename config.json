@@ -103,6 +103,14 @@
         "difficulty": 2
       },
       {
+        "slug": "atbash-cipher",
+        "name": "Atbash Cipher",
+        "uuid": "968cab5e-d672-4975-96f1-2d600f9e9ec8",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
         "slug": "collatz-conjecture",
         "name": "Collatz Conjecture",
         "uuid": "824df917-4f28-4fde-bb08-3bf101a52058",
