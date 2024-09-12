@@ -278,3 +278,13 @@ fn choice() {
     let expected = 23;
     assert_eq!(output, expected);
 }
+
+#[test]
+#[ignore]
+fn yacht_as_choice() {
+    let dice = [2, 2, 2, 2, 2];
+    let category = Category::Choice;
+    let output = score(dice, category);
+    let expected = 10;
+    assert_eq!(output, expected);
+}
