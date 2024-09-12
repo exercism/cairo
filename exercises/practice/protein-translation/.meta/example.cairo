@@ -30,7 +30,7 @@ pub impl CodonsInfoImpl of CodonsInfoTrait {
         res
     }
 
-    fn of_rna(ref self: CodonsInfo, strand: ByteArray) -> Option<Array<ByteArray>> {
+    fn of_rna(ref self: CodonsInfo, strand: ByteArray) -> Array<ByteArray> {
         let mut result: Array<ByteArray> = array![];
 
         let mut codon_index = 0;
@@ -56,7 +56,7 @@ pub impl CodonsInfoImpl of CodonsInfoTrait {
 
         match translate_result {
             TranslateResult::Invalid => core::panic_with_felt252('Invalid codon'),
-            _ => Option::Some(result)
+            _ => result
         }
     }
 }
