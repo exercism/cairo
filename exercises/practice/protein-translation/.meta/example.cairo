@@ -1,104 +1,75 @@
 use core::dict::{Felt252Dict, Felt252DictEntryTrait};
 
-#[derive(Destruct)]
-struct CodonsInfo {
-    actual_codons: Felt252Dict<Nullable<ByteArray>>,
-}
+pub fn proteins(strand: ByteArray) -> Array<ByteArray> {
+    let mut result: Array<ByteArray> = array![];
+    let mut codons_map = codons_map();
 
-enum TranslateResult {
-    Invalid,
-    Stopped,
-    Ok
-}
-
-pub fn parse(pairs: Array<(felt252, ByteArray)>) -> CodonsInfo {
-    let mut actual_codons: Felt252Dict<Nullable<ByteArray>> = Default::default();
-    for (codon, name) in pairs
-        .span() {
-            actual_codons.insert(codon.clone(), NullableTrait::new(name.clone()));
-        };
-    CodonsInfo { actual_codons, }
-}
-
-#[generate_trait]
-pub impl CodonsInfoImpl of CodonsInfoTrait {
-    fn name_for(ref self: CodonsInfo, codon: felt252) -> ByteArray {
-        let (entry, _name) = self.actual_codons.entry(codon);
-        let name = _name.deref_or("");
-        let res = name.clone();
-        self.actual_codons = entry.finalize(NullableTrait::new(name));
-        res
-    }
-
-    fn of_rna(ref self: CodonsInfo, strand: ByteArray) -> Array<ByteArray> {
-        let mut result: Array<ByteArray> = array![];
-
-        let mut codon_index = 0;
-        let translate_result = loop {
-            if codon_index == strand.len() {
-                break TranslateResult::Ok;
-            }
-
-            if let Option::Some(codon) = strand.codon_chunk(codon_index) {
-                let name = self.name_for(codon);
-                if name == "" {
-                    break TranslateResult::Invalid;
-                } else if name == "stop codon" {
-                    break TranslateResult::Stopped;
-                }
-
-                result.append(name);
-                codon_index += 3;
-            } else {
-                break TranslateResult::Invalid;
-            }
-        };
-
-        match translate_result {
-            TranslateResult::Invalid => core::panic_with_felt252('Invalid codon'),
-            _ => result
+    let mut stopped = false;
+    let mut codon_index = 0;
+    while let Option::Some(codon) = codon_chunk(@strand, codon_index) {
+        let name = name_for_codon(ref codons_map, codon);
+        if name == "" {
+            break;
+        } else if name == "STOP" {
+            stopped = true;
+            break;
+        } else {
+            result.append(name);
+            codon_index += 3;
         }
-    }
+    };
+
+    assert(codon_index >= strand.len() || stopped, 'Invalid codon');
+
+    result
+}
+
+fn codons_map() -> Felt252Dict<Nullable<ByteArray>> {
+    let mut codons_map: Felt252Dict<Nullable<ByteArray>> = Default::default();
+    codons_map.insert('AUG', NullableTrait::new("Methionine"));
+    codons_map.insert('UUU', NullableTrait::new("Phenylalanine"));
+    codons_map.insert('UUC', NullableTrait::new("Phenylalanine"));
+    codons_map.insert('UUA', NullableTrait::new("Leucine"));
+    codons_map.insert('UUG', NullableTrait::new("Leucine"));
+    codons_map.insert('UCU', NullableTrait::new("Serine"));
+    codons_map.insert('UCC', NullableTrait::new("Serine"));
+    codons_map.insert('UCA', NullableTrait::new("Serine"));
+    codons_map.insert('UCG', NullableTrait::new("Serine"));
+    codons_map.insert('UAU', NullableTrait::new("Tyrosine"));
+    codons_map.insert('UAC', NullableTrait::new("Tyrosine"));
+    codons_map.insert('UGU', NullableTrait::new("Cysteine"));
+    codons_map.insert('UGC', NullableTrait::new("Cysteine"));
+    codons_map.insert('UGG', NullableTrait::new("Tryptophan"));
+    codons_map.insert('UAA', NullableTrait::new("STOP"));
+    codons_map.insert('UAG', NullableTrait::new("STOP"));
+    codons_map.insert('UGA', NullableTrait::new("STOP"));
+    codons_map
 }
 
 const TWO_POW_8: u32 = 0x100;
 const TWO_POW_16: u32 = 0x10000;
 
-/// Extracts a codon from a given ByteArray from index `from`.
-/// Needs to extract 3 ByteArray characters and convert them to the appropriate
-/// felt252 value. It does this by taking the characters' byte value and moving
-/// their bits to the left depending on their position in the codon.
-///
-/// Example:
-/// 1. Method call: "AUG".codon_chunk(0)
-/// 2. Chars and their byte (hex) values:
-///    - "A" = 0x41
-///    - "U" = 0x55
-///    - "G" = 0x47
-/// 3. "A" is the leftmost character, so we "move" it 2 bytes to the left by
-///    multiplying it by 2^16 (hex value: 0x10000)
-/// 4. "U" is the middle character, so we "move" it 1 byte to the left by
-///    multiplying it by 2^8 (hex value: 0x100)
-/// 5. "G" is the rightmost character, so we leave it in place
-/// 6. Codon = "A" * 2^16 + "U" * 2^8 + "G"
-///          = 0x41 * 0x10000 + 0x55 * 0x100 * 0x47
-///          = 0x415547
-/// 7. (41)(55)(47) are hex values for (A)(U)(G)
-///
-/// Returns:
-/// - Option::Some(codon) -> if the extraction was successful
-/// - Option::None -> if the ByteArray was too short from the given index
-#[generate_trait]
-impl CodonChunk of CodonChunkTrait {
-    fn codon_chunk(self: @ByteArray, from: usize) -> Option<felt252> {
-        if let Option::Some(char) = self.at(from + 2) {
-            let codon = char.into()
-                + self[from
-                + 1].into() * TWO_POW_8
-                + self[from].into() * TWO_POW_16;
-            Option::Some(codon.into())
-        } else {
-            Option::None
-        }
+fn byte_to_felt252(codon: ByteArray) -> felt252 {
+    (codon[0].into() * TWO_POW_16 + codon[1].into() * TWO_POW_8 + codon[2].into()).into()
+}
+
+fn name_for_codon(ref self: Felt252Dict<Nullable<ByteArray>>, codon: ByteArray) -> ByteArray {
+    let codon = byte_to_felt252(codon);
+    let (entry, _name) = self.entry(codon);
+    let name = _name.deref_or("");
+    let res = name.clone();
+    self = entry.finalize(NullableTrait::new(name));
+    res
+}
+
+fn codon_chunk(self: @ByteArray, from: u32) -> Option<ByteArray> {
+    if let Option::Some(char) = self.at(from + 2) {
+        let mut codon = "";
+        codon.append_byte(self[from]);
+        codon.append_byte(self[from + 1]);
+        codon.append_byte(char);
+        Option::Some(codon)
+    } else {
+        Option::None
     }
 }
