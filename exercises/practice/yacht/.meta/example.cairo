@@ -94,24 +94,17 @@ fn has_count(counter: Counter, number: u8) -> bool {
 
 fn count_dice(dice: Span<u8>) -> Counter {
     let mut counter: Counter = Default::default();
-    let mut i: u32 = 0;
-    while i < 5 {
-        match dice.get(i) {
-            Option::Some(v) => {
-                match *v.unbox() {
-                    0 => {},
-                    1 => counter.ones += 1,
-                    2 => counter.twos += 1,
-                    3 => counter.threes += 1,
-                    4 => counter.fours += 1,
-                    5 => counter.fives += 1,
-                    6 => counter.sixes += 1,
-                    _ => {}
-                }
-            },
-            Option::None => {}
+    for num in dice {
+        match *num {
+            0 => {},
+            1 => counter.ones += 1,
+            2 => counter.twos += 1,
+            3 => counter.threes += 1,
+            4 => counter.fours += 1,
+            5 => counter.fives += 1,
+            6 => counter.sixes += 1,
+            _ => {}
         }
-        i += 1;
     };
 
     counter
@@ -119,14 +112,8 @@ fn count_dice(dice: Span<u8>) -> Counter {
 
 fn sum(dice: Span<u8>) -> u8 {
     let mut sum = 0;
-    let mut i: u32 = 0;
-    while i < dice.len() {
-        match dice.get(i) {
-            Option::Some(v) => sum += *v.unbox(),
-            Option::None => { panic!("went out of bounds somehow") }
-        }
-        i += 1;
+    for num in dice {
+        sum += *num;
     };
-
     sum
 }
