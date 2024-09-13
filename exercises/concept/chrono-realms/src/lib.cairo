@@ -22,16 +22,7 @@ impl TimeShardSub of Sub<TimeShard> {
 
 // Implement PartialEq is already derived, so no need for manual implementation
 impl TimeShardPartialOrd of PartialOrd<TimeShard> {
-    fn le(lhs: TimeShard, rhs: TimeShard) -> bool {
-        panic!("implement 'PartialOrd::<TimeShard>::le'")
-    }
-    fn ge(lhs: TimeShard, rhs: TimeShard) -> bool {
-        panic!("implement 'PartialOrd::<TimeShard>::ge'")
-    }
     fn lt(lhs: TimeShard, rhs: TimeShard) -> bool {
         panic!("implement 'PartialOrd::<TimeShard>::lt'")
-    }
-    fn gt(lhs: TimeShard, rhs: TimeShard) -> bool {
-        panic!("implement 'PartialOrd::<TimeShard>::gt'")
     }
 }

@@ -22,16 +22,7 @@ impl TimeShardSub of Sub<TimeShard> {
 
 // Implement PartialEq is already derived, so no need for manual implementation
 impl TimeShardPartialOrd of PartialOrd<TimeShard> {
-    fn le(lhs: TimeShard, rhs: TimeShard) -> bool {
-        lhs.value <= rhs.value
-    }
-    fn ge(lhs: TimeShard, rhs: TimeShard) -> bool {
-        lhs.value >= rhs.value
-    }
     fn lt(lhs: TimeShard, rhs: TimeShard) -> bool {
-        !Self::ge(lhs, rhs)
-    }
-    fn gt(lhs: TimeShard, rhs: TimeShard) -> bool {
-        !Self::le(lhs, rhs)
+        lhs.value < rhs.value
     }
 }
