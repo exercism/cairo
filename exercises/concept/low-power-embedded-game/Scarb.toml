@@ -4,4 +4,4 @@ version = "0.1.0"
 edition = "2024_07"
 
 [dev-dependencies]
-cairo_test = "2.7.1"
+cairo_test = "2.8.2"
