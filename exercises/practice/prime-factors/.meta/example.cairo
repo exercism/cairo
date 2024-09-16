@@ -1,8 +1,9 @@
-pub fn factors(n: u64) ->  Array<u64> {
+pub fn factors(n: u64) -> Array<u64> {
     let mut all_prime = ArrayTrait::new();
 
     let mut num: u64 = n;
     loop {
+
         for i in 2..(num + 1) {        
             if num % i == 0 {
                 num /= i;
@@ -12,10 +13,9 @@ pub fn factors(n: u64) ->  Array<u64> {
             }
         };
         if num == 1 {
-        break;
+            break;
         }
     };
 
-    
     all_prime    
 }
