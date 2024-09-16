@@ -1,0 +1,21 @@
+{
+  "authors": [
+    "BNAndras"
+  ],
+  "files": {
+    "solution": [
+      "src/lib.cairo"
+    ],
+    "test": [
+      "tests/matching_brackets.cairo"
+    ],
+    "example": [
+      ".meta/example.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
+    ]
+  },
+  "blurb": "Make sure the brackets and braces all match.",
+  "source": "Ginna Baker"
+}

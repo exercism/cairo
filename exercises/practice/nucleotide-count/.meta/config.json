@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "BNAndras"
+  ],
+  "files": {
+    "solution": [
+      "src/lib.cairo"
+    ],
+    "test": [
+      "tests/nucleotide_count.cairo"
+    ],
+    "example": [
+      ".meta/example.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
+    ]
+  },
+  "blurb": "Given a DNA string, compute how many times each nucleotide occurs in the string.",
+  "source": "The Calculating DNA Nucleotides_problem at Rosalind",
+  "source_url": "https://rosalind.info/problems/dna/"
+}

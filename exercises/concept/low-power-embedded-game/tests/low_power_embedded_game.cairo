@@ -72,27 +72,7 @@ mod evens {
 }
 
 mod manhattan {
-    use core::byte_array::ByteArrayTrait;
     use low_power_embedded_game::{Position, PositionTrait};
-    use core::fmt::{Debug, Formatter, Error};
-
-    // Enables printing i16 values in tests.
-    // Note that this will soon be added to the core library.
-    impl IDebug of Debug<i16> {
-        fn fmt(self: @i16, ref f: Formatter) -> Result<(), Error> {
-            if *self < 0 {
-                f.buffer.append(@"-");
-            }
-            let abs_value = if *self < 0 {
-                *self * -1
-            } else {
-                *self
-            };
-            let abs_value: u16 = abs_value.try_into().unwrap();
-            f.buffer.append(@format!("{}", abs_value));
-            Result::Ok(())
-        }
-    }
 
     #[test]
     #[ignore]

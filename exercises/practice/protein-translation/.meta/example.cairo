@@ -1,5 +1,4 @@
-use core::dict::Felt252DictEntryTrait;
-use core::num::traits::zero::Zero;
+use core::dict::{Felt252Dict, Felt252DictEntryTrait};
 
 #[derive(Destruct)]
 struct CodonsInfo {
@@ -13,11 +12,10 @@ enum TranslateResult {
 }
 
 pub fn parse(pairs: Array<(felt252, ByteArray)>) -> CodonsInfo {
-    let mut pairs = pairs;
     let mut actual_codons: Felt252Dict<Nullable<ByteArray>> = Default::default();
-    while let Option::Some((codon, name)) = pairs
-        .pop_front() {
-            actual_codons.insert(codon, NullableTrait::new(name));
+    for (codon, name) in pairs
+        .span() {
+            actual_codons.insert(codon.clone(), NullableTrait::new(name.clone()));
         };
     CodonsInfo { actual_codons, }
 }
@@ -70,13 +68,13 @@ const TWO_POW_16: u32 = 0x10000;
 /// Needs to extract 3 ByteArray characters and convert them to the appropriate
 /// felt252 value. It does this by taking the characters' byte value and moving
 /// their bits to the left depending on their position in the codon.
-/// 
+///
 /// Example:
 /// 1. Method call: "AUG".codon_chunk(0)
 /// 2. Chars and their byte (hex) values:
 ///    - "A" = 0x41
 ///    - "U" = 0x55
-///    - "G" = 0x47 
+///    - "G" = 0x47
 /// 3. "A" is the leftmost character, so we "move" it 2 bytes to the left by
 ///    multiplying it by 2^16 (hex value: 0x10000)
 /// 4. "U" is the middle character, so we "move" it 1 byte to the left by
@@ -86,7 +84,7 @@ const TWO_POW_16: u32 = 0x10000;
 ///          = 0x41 * 0x10000 + 0x55 * 0x100 * 0x47
 ///          = 0x415547
 /// 7. (41)(55)(47) are hex values for (A)(U)(G)
-/// 
+///
 /// Returns:
 /// - Option::Some(codon) -> if the extraction was successful
 /// - Option::None -> if the ByteArray was too short from the given index

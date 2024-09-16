@@ -42,11 +42,33 @@
         "name": "Low-power Embedded Game",
         "uuid": "f3b7ce44-1667-42b4-b792-401d36aee2f1",
         "concepts": [
-          "tuples",
-          "traits",
-          "generics"
+          "tuples"
+        ],
+        "prerequisites": [
+          "traits"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "lucians-luscious-lasagna",
+        "name": "Lucian's Luscious Lasagna",
+        "uuid": "f120ab92-f277-434c-ae38-a3bb86cb67bf",
+        "concepts": [
+          "functions"
         ],
         "prerequisites": [],
+        "status": "beta"
+      },
+      {
+        "slug": "annalyns-infiltration",
+        "name": "Annalyn's Infiltration",
+        "uuid": "da0f8d71-36ed-4c98-9e43-60a04ea5db3a",
+        "concepts": [
+          "booleans"
+        ],
+        "prerequisites": [
+          "functions"
+        ],
         "status": "wip"
       }
     ],
@@ -73,9 +95,33 @@
         "difficulty": 1
       },
       {
+        "slug": "acronym",
+        "name": "Acronym",
+        "uuid": "d3dd2a9f-e2e7-404c-915e-56ce434071d2",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
+        "slug": "atbash-cipher",
+        "name": "Atbash Cipher",
+        "uuid": "968cab5e-d672-4975-96f1-2d600f9e9ec8",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
         "slug": "collatz-conjecture",
         "name": "Collatz Conjecture",
         "uuid": "824df917-4f28-4fde-bb08-3bf101a52058",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
+        "slug": "bob",
+        "name": "Bob",
+        "uuid": "c596767d-b799-4f7c-a0e3-d269fd8a82c3",
         "practices": [],
         "prerequisites": [],
         "difficulty": 2
@@ -137,12 +183,42 @@
         "difficulty": 2
       },
       {
-        "slug": "lucians-luscious-lasagna",
-        "name": "Lucian's Luscious Lasagna",
-        "uuid": "8302f8de-14d7-45dd-9a65-812bc1ed5464",
-        "practices": [
-          "functions"
-        ],
+        "slug": "isogram",
+        "name": "Isogram",
+        "uuid": "e4f31195-2143-4739-b4b6-b8413339bf0c",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
+        "slug": "nucleotide-count",
+        "name": "Nucleotide Count",
+        "uuid": "8380e348-348c-4197-9cd4-34fd9c70c71b",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
+        "slug": "pangram",
+        "name": "Pangram",
+        "uuid": "84d80715-bfec-4680-8679-efdaca2279f3",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
+        "slug": "pascals-triangle",
+        "name": "Pascal's Triangle",
+        "uuid": "5dfe0392-84d0-4f01-9386-e66368f3ad66",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
+        "slug": "perfect-numbers",
+        "name": "Perfect Numbers",
+        "uuid": "5b97b3f8-1d7d-44a5-a62c-267cea29f1b1",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 2
       },
@@ -157,6 +233,14 @@
         "difficulty": 2
       },
       {
+        "slug": "rna-transcription",
+        "name": "RNA Transcription",
+        "uuid": "8a6316ef-442e-46fa-8fb6-9debd14c973d",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
         "slug": "rotational-cipher",
         "name": "Rotational Cipher",
         "uuid": "8fdfd583-2719-4cee-9f83-568c7fcc1c6b",
@@ -165,9 +249,25 @@
         "difficulty": 2
       },
       {
+        "slug": "secret-handshake",
+        "name": "Secret Handshake",
+        "uuid": "033c70bb-25cc-47ba-b4b7-92f0d012a5c8",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
         "slug": "square-root",
         "name": "Square Root",
         "uuid": "cf2abb67-f18c-445d-9c7b-0913796911cb",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
+        "slug": "triangle",
+        "name": "Triangle",
+        "uuid": "54b9358f-0ce4-46d6-9a61-7eaf0b8d1bdc",
         "practices": [],
         "prerequisites": [],
         "difficulty": 2
@@ -207,6 +307,22 @@
         "difficulty": 3
       },
       {
+        "slug": "two-fer",
+        "name": "Two-Fer",
+        "uuid": "1eb9034d-dcea-4be4-900e-8a311bce3b1c",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
+        "slug": "yacht",
+        "name": "Yacht",
+        "uuid": "570458e3-2ad3-4efe-b010-110442807e33",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
         "slug": "beer-song",
         "name": "Beer Song",
         "uuid": "d96a8ba2-6e80-45ce-91d6-5b4cac391db6",
@@ -225,6 +341,14 @@
           "traits",
           "printing"
         ],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
+        "slug": "phone-number",
+        "name": "Phone Number",
+        "uuid": "9fe9f78f-5256-40f4-bbcf-ee901c60080e",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 4
       },
@@ -278,6 +402,14 @@
         ],
         "prerequisites": [],
         "difficulty": 4
+      },
+      {
+        "slug": "matching-brackets",
+        "name": "Matching Brackets",
+        "uuid": "dc5f7e90-1aee-46c5-9cd3-35b7192d1411",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
       },
       {
         "slug": "rational-numbers",
@@ -375,11 +507,30 @@
         ],
         "prerequisites": [],
         "difficulty": 10
+      },
+      {
+        "slug": "resistor-color-duo",
+        "name": "Resistor Color Duo",
+        "uuid": "5fd540f6-75d1-4b8f-ae56-08c246277e5d",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
       }
     ],
     "foregone": [
+      "bank-account",
+      "complex-numbers",
+      "gigasecond",
       "hangman",
-      "complex-numbers"
+      "lens-person",
+      "list-ops",
+      "meetup",
+      "microblog",
+      "paasio",
+      "parallel-letter-frequency",
+      "react",
+      "rest-api",
+      "strain"
     ]
   },
   "concepts": [

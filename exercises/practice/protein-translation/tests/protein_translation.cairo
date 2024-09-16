@@ -321,12 +321,10 @@ fn make_pairs() -> Array<(felt252, ByteArray)> {
         ("stop codon", array!['UAA', 'UAG', 'UGA']),
     ];
     let mut pairs = ArrayTrait::<(felt252, ByteArray)>::new();
-    while let Option::Some((name, mut codons)) = grouped
-        .pop_front() {
-            while let Option::Some(codon) = codons
-                .pop_front() {
-                    pairs.append((codon, name.clone()));
-                };
+    while let Option::Some((name, mut codons)) = grouped.pop_front() {
+        while let Option::Some(codon) = codons.pop_front() {
+            pairs.append((codon, name.clone()));
         };
+    };
     pairs
 }

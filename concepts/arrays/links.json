@@ -1,1 +1,10 @@
-[]
+[
+    {
+        "url": "https://book.cairo-lang.org/ch03-01-arrays.html",
+        "description": "Arrays"
+    },
+    {
+        "url": "https://book.cairo-lang.org/ch02-02-data-types.html#the-fixed-size-array-type",
+        "description": "The Fixed Size Array Type"
+    }
+]

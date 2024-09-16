@@ -1,3 +1,4 @@
+use core::dict::Felt252Dict;
 use dominoes::{Domino, chain};
 
 #[derive(Debug)]
@@ -89,13 +90,12 @@ fn sort(arr: @Array<Domino>) -> Array<Domino> {
     let mut sorted_len = 0;
 
     let mut visited: Felt252Dict<bool> = Default::default();
-    while arr
-        .len() != sorted_len {
-            let min_domino_index = next_min_index(arr, ref visited);
-            sorted_arr.append(normalize(*arr[min_domino_index]));
-            visited.insert(min_domino_index.into(), true);
-            sorted_len += 1;
-        };
+    while arr.len() != sorted_len {
+        let min_domino_index = next_min_index(arr, ref visited);
+        sorted_arr.append(normalize(*arr[min_domino_index]));
+        visited.insert(min_domino_index.into(), true);
+        sorted_len += 1;
+    };
 
     sorted_arr
 }
