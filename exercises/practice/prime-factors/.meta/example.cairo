@@ -5,10 +5,10 @@ pub fn factors(n: u64) -> Array<u64> {
     loop {
         for i in 2..(num + 1) {
             if num % i == 0 {
-            num /= i;
-            all_prime.append(i);
+                num /= i;
+                all_prime.append(i);
 
-            break;
+                break;
             }
         };
         if num == 1 {
