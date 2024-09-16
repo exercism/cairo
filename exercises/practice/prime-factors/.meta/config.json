@@ -1,5 +1,7 @@
 {
-  "authors": [],
+  "authors": [
+    "Falilah"
+  ],
   "files": {
     "solution": [
       "src/lib.cairo"
@@ -9,6 +11,9 @@
     ],
     "example": [
       ".meta/example.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
     ]
   },
   "blurb": "Compute the prime factors of a given natural number.",
