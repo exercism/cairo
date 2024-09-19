@@ -1,8 +1,7 @@
 pub fn nth(n: u32) -> u32 {
-    if n == 0{
+    if n == 0 {
         panic!("there is no zeroth prime")
-    }
-    else if n == 1 {
+    } else if n == 1 {
         2
     } else {
         let mut count = 1;
