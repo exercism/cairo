@@ -10,12 +10,12 @@ Defining a trait helps identify the function signature that would make up the se
 
 ```rust
 #[derive(Drop)]
-    pub struct NewsArticle {
-        pub headline: ByteArray,
-        pub location: ByteArray,
-        pub author: ByteArray,
-        pub content: ByteArray,
-    }
+pub struct NewsArticle {
+    pub headline: ByteArray,
+    pub location: ByteArray,
+    pub author: ByteArray,
+    pub content: ByteArray,
+}
 
 // A trait for NewsArticle struct type
 pub trait Summary {
@@ -90,7 +90,7 @@ fn main() {
         content: "Crypto is full of short-term maximizing projects. \n @Starknet and @StarkWareLtd are about long-term vision maximization.",
         reply: false,
         retweet: false
-    }; // Tweet instantiation
+    };
 
     println!("New article available! {}", news.summarize());
     println!("New tweet! {}", tweet.summarize());
@@ -134,7 +134,7 @@ mod aggregator {
     }
 }
 
-use aggregator::{Summary, NewsArticle};
+use aggregator::{Summary, NewsArticle, Tweet};
 
 fn main() {
     let news = NewsArticle {
@@ -152,7 +152,7 @@ fn main() {
         content: "Cairo is fun and engaging.",
         reply: true,
         retweet: true,
-    }
+    };
     println!("New tweet from {}", tweet.summarize()); // prints "New tweet from Alice: Cairo is fun and engaging."
 }
 ```
