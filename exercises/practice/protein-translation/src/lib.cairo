@@ -7,7 +7,7 @@ pub enum Proteins {
     Tyrosine,
     Cysteine,
     Tryptophan,
-    STOP
+    Stop
 }
 
 pub fn proteins(strand: ByteArray) -> Array<Proteins> {

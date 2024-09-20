@@ -10,7 +10,7 @@ pub enum Proteins {
     Tyrosine,
     Cysteine,
     Tryptophan,
-    STOP
+    Stop
 }
 
 pub fn proteins(strand: ByteArray) -> Array<Proteins> {
@@ -25,7 +25,7 @@ pub fn proteins(strand: ByteArray) -> Array<Proteins> {
             FromNullableResult::NotNull(protein) => {
                 let protein = protein.unbox();
                 match protein {
-                    Proteins::STOP => {
+                    Proteins::Stop => {
                         stopped = true;
                         break;
                     },
@@ -59,9 +59,9 @@ fn codons_map() -> Felt252Dict<Nullable<Proteins>> {
     codons_map.insert('UGU', NullableTrait::new(Proteins::Cysteine));
     codons_map.insert('UGC', NullableTrait::new(Proteins::Cysteine));
     codons_map.insert('UGG', NullableTrait::new(Proteins::Tryptophan));
-    codons_map.insert('UAA', NullableTrait::new(Proteins::STOP));
-    codons_map.insert('UAG', NullableTrait::new(Proteins::STOP));
-    codons_map.insert('UGA', NullableTrait::new(Proteins::STOP));
+    codons_map.insert('UAA', NullableTrait::new(Proteins::Stop));
+    codons_map.insert('UAG', NullableTrait::new(Proteins::Stop));
+    codons_map.insert('UGA', NullableTrait::new(Proteins::Stop));
     codons_map
 }
 
