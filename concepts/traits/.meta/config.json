@@ -1,7 +1,5 @@
 {
-    "blurb": "<todo>",
-    "authors": [
-        "0xNeshi"
-    ],
-    "contributors": []
+  "blurb": "A trait specifies a set of methods that a type can implement. Traits are useful for defining methods that should be shared between types.",
+  "authors": ["Ephraim-nonso"],
+  "contributors": ["0xNeshi"]
 }
