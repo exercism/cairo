@@ -164,12 +164,24 @@
         "name": "Health Statistics",
         "uuid": "69389197-e1dc-43bf-865d-d9b58d59b4e7",
         "concepts": [
-          "method-syntax",
-          "traits"
+          "method-syntax"
         ],
         "prerequisites": [
           "structs",
           "references-and-snapshots"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "airport-robot",
+        "name": "Airport Robot",
+        "uuid": "f0c994d7-d183-4dfa-9048-b20be6f3bf2e",
+        "concepts": [
+          "generics",
+          "traits"
+        ],
+        "prerequisites": [
+          "method-syntax"
         ],
         "status": "wip"
       },
@@ -220,19 +232,6 @@
         "prerequisites": [
           "options",
           "printing"
-        ],
-        "status": "wip"
-      },
-      {
-        "slug": "airport-robot",
-        "name": "Airport Robot",
-        "uuid": "f0c994d7-d183-4dfa-9048-b20be6f3bf2e",
-        "concepts": [
-          "generics"
-        ],
-        "prerequisites": [
-          "structs",
-          "traits"
         ],
         "status": "wip"
       },
