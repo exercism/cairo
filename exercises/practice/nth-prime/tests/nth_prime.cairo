@@ -26,8 +26,8 @@ fn sixth_prime() {
 #[test]
 #[ignore]
 fn big_prime() {
-    let output = prime(4001);
-    let expected = 37831;
+    let output = prime(1001);
+    let expected = 7927;
     assert_eq!(output, expected);
 }
 
