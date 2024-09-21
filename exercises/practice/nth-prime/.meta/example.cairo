@@ -1,4 +1,4 @@
-pub fn nth(n: u32) -> u32 {
+pub fn prime(n: u32) -> u32 {
     if n == 0 {
         panic!("there is no zeroth prime")
     } else if n == 1 {

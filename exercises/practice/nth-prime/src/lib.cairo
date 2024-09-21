@@ -1,3 +1,3 @@
-pub fn nth(n: u32) -> u32 {
-    panic!("What is the 0-indexed {n}th prime number?")
+pub fn prime(n: u32) -> u32 {
+    panic!("implement `prime`")
 }

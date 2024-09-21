@@ -26,12 +26,13 @@ fn sixth_prime() {
 #[test]
 #[ignore]
 fn big_prime() {
-    let output = nth(500);
-    let expected = 3571;
+    let output = nth(10001);
+    let expected = 104743;
     assert_eq!(output, expected);
 }
 
 #[test]
+#[ignore]
 #[should_panic(expected: ("there is no zeroth prime",))]
 fn there_is_no_zeroth_prime() {
     nth(0);

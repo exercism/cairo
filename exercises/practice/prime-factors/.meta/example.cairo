@@ -1,20 +1,15 @@
 pub fn factors(n: u64) -> Array<u64> {
-    let mut all_prime = ArrayTrait::new();
+    let mut val = n;
+    let mut out: Array<u64> = ArrayTrait::new(); 
 
-    let mut num: u64 = n;
-    loop {
-        for i in 2..(num + 1) {
-            if num % i == 0 {
-                num /= i;
-                all_prime.append(i);
-
-                break;
-            }
+    let mut possible = 2;
+    while val > 1 {
+        while val % possible == 0 {
+            out.append(possible);
+            val /= possible;
         };
-        if num == 1 {
-            break;
-        }
+        possible += 1;
     };
 
-    all_prime
+    out
 }
