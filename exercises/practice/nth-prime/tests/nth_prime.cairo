@@ -1,8 +1,8 @@
-use nth_prime::nth;
+use nth_prime::prime;
 
 #[test]
 fn first_prime() {
-    let output = nth(1);
+    let output = prime(1);
     let expected = 2;
     assert_eq!(output, expected);
 }
@@ -10,7 +10,7 @@ fn first_prime() {
 #[test]
 #[ignore]
 fn second_prime() {
-    let output = nth(2);
+    let output = prime(2);
     let expected = 3;
     assert_eq!(output, expected);
 }
@@ -18,7 +18,7 @@ fn second_prime() {
 #[test]
 #[ignore]
 fn sixth_prime() {
-    let output = nth(6);
+    let output = prime(6);
     let expected = 13;
     assert_eq!(output, expected);
 }
@@ -26,7 +26,7 @@ fn sixth_prime() {
 #[test]
 #[ignore]
 fn big_prime() {
-    let output = nth(4001);
+    let output = prime(4001);
     let expected = 37831;
     assert_eq!(output, expected);
 }
@@ -35,5 +35,5 @@ fn big_prime() {
 #[ignore]
 #[should_panic(expected: ("there is no zeroth prime",))]
 fn there_is_no_zeroth_prime() {
-    nth(0);
+    prime(0);
 }
