@@ -20,6 +20,7 @@ description = "sixth prime"
 
 [fce1e979-0edb-412d-93aa-2c744e8f50ff]
 description = "big prime"
+comment = "decreased the input value to fit into Cairo's runtime limitation"
 
 [bd0a9eae-6df7-485b-a144-80e13c7d55b2]
 description = "there is no zeroth prime"
