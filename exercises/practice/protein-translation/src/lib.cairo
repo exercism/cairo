@@ -1,5 +1,5 @@
 #[derive(Drop, Debug, PartialEq)]
-pub enum Proteins {
+pub enum AminoAcid {
     Methionine,
     Phenylalanine,
     Leucine,
@@ -7,9 +7,8 @@ pub enum Proteins {
     Tyrosine,
     Cysteine,
     Tryptophan,
-    Stop
 }
 
-pub fn proteins(strand: ByteArray) -> Array<Proteins> {
+pub fn proteins(strand: ByteArray) -> Array<AminoAcid> {
     panic!("implement 'proteins'")
 }

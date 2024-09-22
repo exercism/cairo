@@ -1,4 +1,4 @@
-use protein_translation::{proteins, Proteins};
+use protein_translation::{proteins, AminoAcid};
 
 #[test]
 fn empty_rna_sequence_results_in_no_proteins() {
@@ -8,85 +8,85 @@ fn empty_rna_sequence_results_in_no_proteins() {
 #[test]
 #[ignore]
 fn methionine_rna_sequence() {
-    assert_eq!(proteins("AUG"), array![Proteins::Methionine]);
+    assert_eq!(proteins("AUG"), array![AminoAcid::Methionine]);
 }
 
 #[test]
 #[ignore]
 fn phenylalanine_rna_sequence_1() {
-    assert_eq!(proteins("UUU"), array![Proteins::Phenylalanine]);
+    assert_eq!(proteins("UUU"), array![AminoAcid::Phenylalanine]);
 }
 
 #[test]
 #[ignore]
 fn phenylalanine_rna_sequence_2() {
-    assert_eq!(proteins("UUC"), array![Proteins::Phenylalanine]);
+    assert_eq!(proteins("UUC"), array![AminoAcid::Phenylalanine]);
 }
 
 #[test]
 #[ignore]
 fn leucine_rna_sequence_1() {
-    assert_eq!(proteins("UUA"), array![Proteins::Leucine]);
+    assert_eq!(proteins("UUA"), array![AminoAcid::Leucine]);
 }
 
 #[test]
 #[ignore]
 fn leucine_rna_sequence_2() {
-    assert_eq!(proteins("UUG"), array![Proteins::Leucine]);
+    assert_eq!(proteins("UUG"), array![AminoAcid::Leucine]);
 }
 
 #[test]
 #[ignore]
 fn serine_rna_sequence_1() {
-    assert_eq!(proteins("UCU"), array![Proteins::Serine]);
+    assert_eq!(proteins("UCU"), array![AminoAcid::Serine]);
 }
 
 #[test]
 #[ignore]
 fn serine_rna_sequence_2() {
-    assert_eq!(proteins("UCC"), array![Proteins::Serine]);
+    assert_eq!(proteins("UCC"), array![AminoAcid::Serine]);
 }
 
 #[test]
 #[ignore]
 fn serine_rna_sequence_3() {
-    assert_eq!(proteins("UCA"), array![Proteins::Serine]);
+    assert_eq!(proteins("UCA"), array![AminoAcid::Serine]);
 }
 
 #[test]
 #[ignore]
 fn serine_rna_sequence_4() {
-    assert_eq!(proteins("UCG"), array![Proteins::Serine]);
+    assert_eq!(proteins("UCG"), array![AminoAcid::Serine]);
 }
 
 #[test]
 #[ignore]
 fn tyrosine_rna_sequence_1() {
-    assert_eq!(proteins("UAU"), array![Proteins::Tyrosine]);
+    assert_eq!(proteins("UAU"), array![AminoAcid::Tyrosine]);
 }
 
 #[test]
 #[ignore]
 fn tyrosine_rna_sequence_2() {
-    assert_eq!(proteins("UAC"), array![Proteins::Tyrosine]);
+    assert_eq!(proteins("UAC"), array![AminoAcid::Tyrosine]);
 }
 
 #[test]
 #[ignore]
 fn cysteine_rna_sequence_1() {
-    assert_eq!(proteins("UGU"), array![Proteins::Cysteine]);
+    assert_eq!(proteins("UGU"), array![AminoAcid::Cysteine]);
 }
 
 #[test]
 #[ignore]
 fn cysteine_rna_sequence_2() {
-    assert_eq!(proteins("UGC"), array![Proteins::Cysteine]);
+    assert_eq!(proteins("UGC"), array![AminoAcid::Cysteine]);
 }
 
 #[test]
 #[ignore]
 fn tryptophan_rna_sequence() {
-    assert_eq!(proteins("UGG"), array![Proteins::Tryptophan]);
+    assert_eq!(proteins("UGG"), array![AminoAcid::Tryptophan]);
 }
 
 #[test]
@@ -110,13 +110,13 @@ fn stop_codon_rna_sequence_3() {
 #[test]
 #[ignore]
 fn sequence_of_two_protein_codons_translates_into_proteins() {
-    assert_eq!(proteins("UUUUUU"), array![Proteins::Phenylalanine, Proteins::Phenylalanine]);
+    assert_eq!(proteins("UUUUUU"), array![AminoAcid::Phenylalanine, AminoAcid::Phenylalanine]);
 }
 
 #[test]
 #[ignore]
 fn sequence_of_two_different_protein_codons_translates_into_proteins() {
-    assert_eq!(proteins("UUAUUG"), array![Proteins::Leucine, Proteins::Leucine]);
+    assert_eq!(proteins("UUAUUG"), array![AminoAcid::Leucine, AminoAcid::Leucine]);
 }
 
 #[test]
@@ -124,7 +124,7 @@ fn sequence_of_two_different_protein_codons_translates_into_proteins() {
 fn translate_rna_strand_into_correct_protein_list() {
     assert_eq!(
         proteins("AUGUUUUGG"),
-        array![Proteins::Methionine, Proteins::Phenylalanine, Proteins::Tryptophan]
+        array![AminoAcid::Methionine, AminoAcid::Phenylalanine, AminoAcid::Tryptophan]
     );
 }
 
@@ -137,19 +137,19 @@ fn translation_stops_if_stop_codon_at_beginning_of_sequence() {
 #[test]
 #[ignore]
 fn translation_stops_if_stop_codon_at_end_of_two_codon_sequence() {
-    assert_eq!(proteins("UGGUAG"), array![Proteins::Tryptophan]);
+    assert_eq!(proteins("UGGUAG"), array![AminoAcid::Tryptophan]);
 }
 
 #[test]
 #[ignore]
 fn translation_stops_if_stop_codon_at_end_of_three_codon_sequence() {
-    assert_eq!(proteins("AUGUUUUAA"), array![Proteins::Methionine, Proteins::Phenylalanine]);
+    assert_eq!(proteins("AUGUUUUAA"), array![AminoAcid::Methionine, AminoAcid::Phenylalanine]);
 }
 
 #[test]
 #[ignore]
 fn translation_stops_if_stop_codon_in_middle_of_three_codon_sequence() {
-    assert_eq!(proteins("UGGUAGUGG"), array![Proteins::Tryptophan]);
+    assert_eq!(proteins("UGGUAGUGG"), array![AminoAcid::Tryptophan]);
 }
 
 #[test]
@@ -157,14 +157,14 @@ fn translation_stops_if_stop_codon_in_middle_of_three_codon_sequence() {
 fn translation_stops_if_stop_codon_in_middle_of_six_codon_sequence() {
     assert_eq!(
         proteins("UGGUGUUAUUAAUGGUUU"),
-        array![Proteins::Tryptophan, Proteins::Cysteine, Proteins::Tyrosine]
+        array![AminoAcid::Tryptophan, AminoAcid::Cysteine, AminoAcid::Tyrosine]
     );
 }
 
 #[test]
 #[ignore]
 fn sequence_of_two_non_stop_codons_does_not_translate_to_a_stop_codon() {
-    assert_eq!(proteins("AUGAUG"), array![Proteins::Methionine, Proteins::Methionine]);
+    assert_eq!(proteins("AUGAUG"), array![AminoAcid::Methionine, AminoAcid::Methionine]);
 }
 
 #[test]
@@ -184,5 +184,7 @@ fn incomplete_rna_sequence_cant_translate() {
 #[test]
 #[ignore]
 fn incomplete_rna_sequence_can_translate_if_valid_until_a_stop_codon() {
-    assert_eq!(proteins("UUCUUCUAAUGGU"), array![Proteins::Phenylalanine, Proteins::Phenylalanine]);
+    assert_eq!(
+        proteins("UUCUUCUAAUGGU"), array![AminoAcid::Phenylalanine, AminoAcid::Phenylalanine]
+    );
 }

@@ -2,7 +2,7 @@ use core::dict::Felt252Dict;
 use core::nullable::{match_nullable, FromNullableResult};
 
 #[derive(Drop, Debug, PartialEq, Copy)]
-pub enum Proteins {
+pub enum AminoAcid {
     Methionine,
     Phenylalanine,
     Leucine,
@@ -10,11 +10,16 @@ pub enum Proteins {
     Tyrosine,
     Cysteine,
     Tryptophan,
+}
+
+#[derive(Drop, Copy)]
+enum Codon {
+    AminoAcid: AminoAcid,
     Stop
 }
 
-pub fn proteins(strand: ByteArray) -> Array<Proteins> {
-    let mut result: Array<Proteins> = array![];
+pub fn proteins(strand: ByteArray) -> Array<AminoAcid> {
+    let mut result: Array<AminoAcid> = array![];
     let mut codons_map = codons_map();
 
     let mut stopped = false;
@@ -22,15 +27,15 @@ pub fn proteins(strand: ByteArray) -> Array<Proteins> {
     while let Option::Some(codon) = codon_chunk(@strand, codon_index) {
         match match_nullable(codons_map.get(byte_to_felt252(codon))) {
             FromNullableResult::Null => { break; },
-            FromNullableResult::NotNull(protein) => {
-                let protein = protein.unbox();
-                match protein {
-                    Proteins::Stop => {
+            FromNullableResult::NotNull(codon) => {
+                let codon = codon.unbox();
+                match codon {
+                    Codon::Stop => {
                         stopped = true;
                         break;
                     },
-                    _ => {
-                        result.append(protein);
+                    Codon::AminoAcid(amino_acid) => {
+                        result.append(amino_acid);
                         codon_index += 3;
                     }
                 }
@@ -43,25 +48,25 @@ pub fn proteins(strand: ByteArray) -> Array<Proteins> {
     result
 }
 
-fn codons_map() -> Felt252Dict<Nullable<Proteins>> {
-    let mut codons_map: Felt252Dict<Nullable<Proteins>> = Default::default();
-    codons_map.insert('AUG', NullableTrait::new(Proteins::Methionine));
-    codons_map.insert('UUU', NullableTrait::new(Proteins::Phenylalanine));
-    codons_map.insert('UUC', NullableTrait::new(Proteins::Phenylalanine));
-    codons_map.insert('UUA', NullableTrait::new(Proteins::Leucine));
-    codons_map.insert('UUG', NullableTrait::new(Proteins::Leucine));
-    codons_map.insert('UCU', NullableTrait::new(Proteins::Serine));
-    codons_map.insert('UCC', NullableTrait::new(Proteins::Serine));
-    codons_map.insert('UCA', NullableTrait::new(Proteins::Serine));
-    codons_map.insert('UCG', NullableTrait::new(Proteins::Serine));
-    codons_map.insert('UAU', NullableTrait::new(Proteins::Tyrosine));
-    codons_map.insert('UAC', NullableTrait::new(Proteins::Tyrosine));
-    codons_map.insert('UGU', NullableTrait::new(Proteins::Cysteine));
-    codons_map.insert('UGC', NullableTrait::new(Proteins::Cysteine));
-    codons_map.insert('UGG', NullableTrait::new(Proteins::Tryptophan));
-    codons_map.insert('UAA', NullableTrait::new(Proteins::Stop));
-    codons_map.insert('UAG', NullableTrait::new(Proteins::Stop));
-    codons_map.insert('UGA', NullableTrait::new(Proteins::Stop));
+fn codons_map() -> Felt252Dict<Nullable<Codon>> {
+    let mut codons_map: Felt252Dict<Nullable<Codon>> = Default::default();
+    codons_map.insert('AUG', NullableTrait::new(Codon::AminoAcid(AminoAcid::Methionine)));
+    codons_map.insert('UUU', NullableTrait::new(Codon::AminoAcid(AminoAcid::Phenylalanine)));
+    codons_map.insert('UUC', NullableTrait::new(Codon::AminoAcid(AminoAcid::Phenylalanine)));
+    codons_map.insert('UUA', NullableTrait::new(Codon::AminoAcid(AminoAcid::Leucine)));
+    codons_map.insert('UUG', NullableTrait::new(Codon::AminoAcid(AminoAcid::Leucine)));
+    codons_map.insert('UCU', NullableTrait::new(Codon::AminoAcid(AminoAcid::Serine)));
+    codons_map.insert('UCC', NullableTrait::new(Codon::AminoAcid(AminoAcid::Serine)));
+    codons_map.insert('UCA', NullableTrait::new(Codon::AminoAcid(AminoAcid::Serine)));
+    codons_map.insert('UCG', NullableTrait::new(Codon::AminoAcid(AminoAcid::Serine)));
+    codons_map.insert('UAU', NullableTrait::new(Codon::AminoAcid(AminoAcid::Tyrosine)));
+    codons_map.insert('UAC', NullableTrait::new(Codon::AminoAcid(AminoAcid::Tyrosine)));
+    codons_map.insert('UGU', NullableTrait::new(Codon::AminoAcid(AminoAcid::Cysteine)));
+    codons_map.insert('UGC', NullableTrait::new(Codon::AminoAcid(AminoAcid::Cysteine)));
+    codons_map.insert('UGG', NullableTrait::new(Codon::AminoAcid(AminoAcid::Tryptophan)));
+    codons_map.insert('UAA', NullableTrait::new(Codon::Stop));
+    codons_map.insert('UAG', NullableTrait::new(Codon::Stop));
+    codons_map.insert('UGA', NullableTrait::new(Codon::Stop));
     codons_map
 }
 
