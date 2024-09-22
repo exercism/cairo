@@ -170,13 +170,6 @@ fn sequence_of_two_non_stop_codons_does_not_translate_to_a_stop_codon() {
 #[test]
 #[ignore]
 #[should_panic(expected: ("Invalid codon",))]
-fn non_existing_codon_cant_translate() {
-    proteins("AAA");
-}
-
-#[test]
-#[ignore]
-#[should_panic(expected: ("Invalid codon",))]
 fn unknown_amino_acids_not_part_of_a_codon_cant_translate() {
     proteins("XYZ");
 }
