@@ -183,6 +183,6 @@ fn incomplete_rna_sequence_cant_translate() {
 
 #[test]
 #[ignore]
-fn incomplete_rna_sequence_cantranslate_if_valid_until_a_stop_codon() {
+fn incomplete_rna_sequence_can_translate_if_valid_until_a_stop_codon() {
     assert_eq!(proteins("UUCUUCUAAUGGU"), array![Proteins::Phenylalanine, Proteins::Phenylalanine]);
 }
