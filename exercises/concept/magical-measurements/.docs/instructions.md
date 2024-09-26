@@ -1,8 +1,6 @@
 # Instructions
 
-Astrid, an adventurous alchemist, is trying to standardize the magical units of measurement she collects from different realms. 
-Some realms use signed measurements (which can be negative), while others use unsigned ones (which are always positive). 
-On top of that, Astrid has two custom types for certain rare ingredients, and she needs a way to easily convert between these types.
+Astrid, an adventurous alchemist, is trying to standardize the magical units of measurement she collects from different realms. Some realms use signed measurements (which can be negative), while others use unsigned ones (which are always positive). On top of that, Astrid has two custom types for certain rare ingredients, and she needs a way to easily convert between these types.
 
 Your mission is to help Astrid convert between signed and unsigned integers, and create custom type conversions for her special ingredient types using Cairo’s `Into` and `TryInto` traits.
 
@@ -29,8 +27,7 @@ println!("Converted to signed: {}", signed_value); // prints "Converted to signe
 
 ## 2. Custom Ingredient Types Conversion
 
-Astrid works with two rare ingredients, **Essence** and **Elixir**, which are represented by custom types.
-She wants to be able to convert **Essence** to **Elixir**, but not the other way around.
+Astrid works with two rare ingredients, **Essence** and **Elixir**, which are represented by custom types. She wants to be able to convert **Essence** to **Elixir**, but not the other way around.
 
 Help Astrid by creating two custom types, `Essence` and `Elixir`, and implementing the `Into` trait to convert from `Essence` to `Elixir`.
 
