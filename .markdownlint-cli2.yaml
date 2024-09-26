@@ -2,11 +2,12 @@ globs:
   - "concepts/**/*.md"
   - "exercises/concept/**/*.md"
 
-MD001: true
-MD002: true
-MD003: 
-  style: atx
-MD004: 
-  style: dash
-MD013: false
-MD033: false
+config:
+  MD001: true
+  MD002: true
+  MD003: 
+    style: "atx"
+  MD004: 
+    style: dash
+  MD013: false
+  MD033: false
