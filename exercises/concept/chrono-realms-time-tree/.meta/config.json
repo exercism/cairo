@@ -1,7 +1,9 @@
 {
   "authors": [
-    "<your_gh_username>",
     "0xNeshi"
+  ],
+  "contributors": [
+    "<your_gh_username>"
   ],
   "files": {
     "solution": [
