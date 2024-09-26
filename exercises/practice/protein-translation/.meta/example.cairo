@@ -1,104 +1,90 @@
-use core::dict::{Felt252Dict, Felt252DictEntryTrait};
+use core::dict::Felt252Dict;
+use core::nullable::{match_nullable, FromNullableResult};
 
-#[derive(Destruct)]
-struct CodonsInfo {
-    actual_codons: Felt252Dict<Nullable<ByteArray>>,
+#[derive(Drop, Debug, PartialEq, Copy)]
+pub enum AminoAcid {
+    Methionine,
+    Phenylalanine,
+    Leucine,
+    Serine,
+    Tyrosine,
+    Cysteine,
+    Tryptophan,
 }
 
-enum TranslateResult {
-    Invalid,
-    Stopped,
-    Ok
+#[derive(Drop, Copy)]
+enum Codon {
+    AminoAcid: AminoAcid,
+    Stop
 }
 
-pub fn parse(pairs: Array<(felt252, ByteArray)>) -> CodonsInfo {
-    let mut actual_codons: Felt252Dict<Nullable<ByteArray>> = Default::default();
-    for (codon, name) in pairs
-        .span() {
-            actual_codons.insert(codon.clone(), NullableTrait::new(name.clone()));
-        };
-    CodonsInfo { actual_codons, }
-}
+pub fn proteins(strand: ByteArray) -> Array<AminoAcid> {
+    let mut result: Array<AminoAcid> = array![];
+    let mut codons_map = codons_map();
 
-#[generate_trait]
-pub impl CodonsInfoImpl of CodonsInfoTrait {
-    fn name_for(ref self: CodonsInfo, codon: felt252) -> ByteArray {
-        let (entry, _name) = self.actual_codons.entry(codon);
-        let name = _name.deref_or("");
-        let res = name.clone();
-        self.actual_codons = entry.finalize(NullableTrait::new(name));
-        res
-    }
-
-    fn of_rna(ref self: CodonsInfo, strand: ByteArray) -> Option<Array<ByteArray>> {
-        let mut result: Array<ByteArray> = array![];
-
-        let mut codon_index = 0;
-        let translate_result = loop {
-            if codon_index == strand.len() {
-                break TranslateResult::Ok;
-            }
-
-            if let Option::Some(codon) = strand.codon_chunk(codon_index) {
-                let name = self.name_for(codon);
-                if name == "" {
-                    break TranslateResult::Invalid;
-                } else if name == "stop codon" {
-                    break TranslateResult::Stopped;
+    let mut stopped = false;
+    let mut codon_index = 0;
+    while let Option::Some(codon) = codon_chunk(@strand, codon_index) {
+        match match_nullable(codons_map.get(byte_to_felt252(codon))) {
+            FromNullableResult::Null => { break; },
+            FromNullableResult::NotNull(codon) => {
+                let codon = codon.unbox();
+                match codon {
+                    Codon::Stop => {
+                        stopped = true;
+                        break;
+                    },
+                    Codon::AminoAcid(amino_acid) => {
+                        result.append(amino_acid);
+                        codon_index += 3;
+                    }
                 }
-
-                result.append(name);
-                codon_index += 3;
-            } else {
-                break TranslateResult::Invalid;
             }
-        };
-
-        match translate_result {
-            TranslateResult::Invalid => Option::None,
-            _ => Option::Some(result)
         }
+    };
+
+    assert!(codon_index >= strand.len() || stopped, "Invalid codon");
+
+    result
+}
+
+fn codons_map() -> Felt252Dict<Nullable<Codon>> {
+    let mut codons_map: Felt252Dict<Nullable<Codon>> = Default::default();
+    codons_map.insert('AUG', NullableTrait::new(Codon::AminoAcid(AminoAcid::Methionine)));
+    codons_map.insert('UUU', NullableTrait::new(Codon::AminoAcid(AminoAcid::Phenylalanine)));
+    codons_map.insert('UUC', NullableTrait::new(Codon::AminoAcid(AminoAcid::Phenylalanine)));
+    codons_map.insert('UUA', NullableTrait::new(Codon::AminoAcid(AminoAcid::Leucine)));
+    codons_map.insert('UUG', NullableTrait::new(Codon::AminoAcid(AminoAcid::Leucine)));
+    codons_map.insert('UCU', NullableTrait::new(Codon::AminoAcid(AminoAcid::Serine)));
+    codons_map.insert('UCC', NullableTrait::new(Codon::AminoAcid(AminoAcid::Serine)));
+    codons_map.insert('UCA', NullableTrait::new(Codon::AminoAcid(AminoAcid::Serine)));
+    codons_map.insert('UCG', NullableTrait::new(Codon::AminoAcid(AminoAcid::Serine)));
+    codons_map.insert('UAU', NullableTrait::new(Codon::AminoAcid(AminoAcid::Tyrosine)));
+    codons_map.insert('UAC', NullableTrait::new(Codon::AminoAcid(AminoAcid::Tyrosine)));
+    codons_map.insert('UGU', NullableTrait::new(Codon::AminoAcid(AminoAcid::Cysteine)));
+    codons_map.insert('UGC', NullableTrait::new(Codon::AminoAcid(AminoAcid::Cysteine)));
+    codons_map.insert('UGG', NullableTrait::new(Codon::AminoAcid(AminoAcid::Tryptophan)));
+    codons_map.insert('UAA', NullableTrait::new(Codon::Stop));
+    codons_map.insert('UAG', NullableTrait::new(Codon::Stop));
+    codons_map.insert('UGA', NullableTrait::new(Codon::Stop));
+    codons_map
+}
+
+fn codon_chunk(self: @ByteArray, from: u32) -> Option<ByteArray> {
+    if let Option::Some(char) = self.at(from + 2) {
+        let mut codon = "";
+        codon.append_byte(self[from]);
+        codon.append_byte(self[from + 1]);
+        codon.append_byte(char);
+        Option::Some(codon)
+    } else {
+        Option::None
     }
 }
 
 const TWO_POW_8: u32 = 0x100;
 const TWO_POW_16: u32 = 0x10000;
 
-/// Extracts a codon from a given ByteArray from index `from`.
-/// Needs to extract 3 ByteArray characters and convert them to the appropriate
-/// felt252 value. It does this by taking the characters' byte value and moving
-/// their bits to the left depending on their position in the codon.
-///
-/// Example:
-/// 1. Method call: "AUG".codon_chunk(0)
-/// 2. Chars and their byte (hex) values:
-///    - "A" = 0x41
-///    - "U" = 0x55
-///    - "G" = 0x47
-/// 3. "A" is the leftmost character, so we "move" it 2 bytes to the left by
-///    multiplying it by 2^16 (hex value: 0x10000)
-/// 4. "U" is the middle character, so we "move" it 1 byte to the left by
-///    multiplying it by 2^8 (hex value: 0x100)
-/// 5. "G" is the rightmost character, so we leave it in place
-/// 6. Codon = "A" * 2^16 + "U" * 2^8 + "G"
-///          = 0x41 * 0x10000 + 0x55 * 0x100 * 0x47
-///          = 0x415547
-/// 7. (41)(55)(47) are hex values for (A)(U)(G)
-///
-/// Returns:
-/// - Option::Some(codon) -> if the extraction was successful
-/// - Option::None -> if the ByteArray was too short from the given index
-#[generate_trait]
-impl CodonChunk of CodonChunkTrait {
-    fn codon_chunk(self: @ByteArray, from: usize) -> Option<felt252> {
-        if let Option::Some(char) = self.at(from + 2) {
-            let codon = char.into()
-                + self[from
-                + 1].into() * TWO_POW_8
-                + self[from].into() * TWO_POW_16;
-            Option::Some(codon.into())
-        } else {
-            Option::None
-        }
-    }
+fn byte_to_felt252(codon: ByteArray) -> felt252 {
+    (codon[0].into() * TWO_POW_16 + codon[1].into() * TWO_POW_8 + codon[2].into()).into()
 }
