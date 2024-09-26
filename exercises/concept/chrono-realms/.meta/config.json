@@ -2,9 +2,7 @@
   "authors": [
     "0xNeshi"
   ],
-  "contributors": [
-    "<your_gh_username>"
-  ],
+  "contributors": [],
   "files": {
     "solution": [
       "src/lib.cairo"
