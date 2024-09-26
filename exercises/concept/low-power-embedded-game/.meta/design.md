@@ -24,4 +24,3 @@ Introduce the student to tuples and how to work with them.
 - [Cairo Book - The Tuple Type](https://book.cairo-lang.org/ch02-02-data-types.html#the-tuple-type)
 
 ### Hints
-

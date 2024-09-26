@@ -13,21 +13,21 @@ In this exercise, you will:
 3. Implement a function to create a **ChronoChain** from an array of `u32` values.
 4. Implement a function to traverse the **ChronoChain** and sum up the values stored in the list.
 
-## 1. Define the Recursive `ChronoChain` Enum:
+## 1. Define the Recursive `ChronoChain` Enum
 
 Create a recursive enum `ChronoChain` with two variants:
     - `End`: Represents the end of the list.
     - `Link`: Contains a `u32` value and a boxed reference to the next node in the chain.
 
-## 2. Create a Function to Build a ChronoChain:
+## 2. Create a Function to Build a ChronoChain
 
 Write a function `build_chrono_chain` that takes an array of `u32` values and returns a **ChronoChain**, linking the values sequentially using smart pointers.
 
-## 3. Implement the Sum Function:
+## 3. Implement the Sum Function
 
 Write a function `sum_chain` to recursively traverse the **ChronoChain** and sum the values of all nodes.
 
-## Example Usage:
+## Example Usage
 
 ```rust
 fn main() {

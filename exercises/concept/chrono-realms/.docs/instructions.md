@@ -3,13 +3,13 @@
 Welcome to the world of *ChronoRealms*, a magical land where powerful Timekeepers control the flow of time. In this realm, Timekeepers manage "TimeShards," special units that can be added, subtracted, compared, and even checked for equality. Your task is to help the Timekeepers by implementing custom operators for manipulating these TimeShards.
 
 The Timekeepers need you to create a custom struct `TimeShard` that supports the following operations:
+
 1. **Adding and Subtracting TimeShards**: Timekeepers need to be able to add and subtract TimeShards to control the timeline.
 2. **Comparing TimeShards**: Sometimes, TimeShards need to be compared to see which one is larger, or if they are equal.
 3. **Checking Equality**: Timekeepers need to check if two TimeShards are identical in value.
 
-### Instructions
-
 Your mission is to implement the following traits for the `TimeShard` struct:
+
 1. **Addition (`Add`)**: Enable adding two `TimeShard` instances together.
 2. **Subtraction (`Sub`)**: Enable subtracting one `TimeShard` from another.
 3. **Equality (`PartialEq`)**: Allow Timekeepers to check if two `TimeShard` instances are the same.

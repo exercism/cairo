@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
 set -eo pipefail
 
-npx markdownlint-cli2 docs/*.md concepts/**/*.md exercises/concept/**/*.md
+args=()
+
+[[ $1 ]] && args+=("$@")
+
+npx markdownlint-cli2 --config .markdownlint-cli2.yaml "$args[@]"
