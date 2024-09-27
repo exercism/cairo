@@ -2,7 +2,6 @@
   "authors": [
     "0xNeshi"
   ],
-  "contributors": [],
   "files": {
     "solution": [
       "src/lib.cairo"
