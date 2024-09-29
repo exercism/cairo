@@ -1,4 +1,4 @@
-fn sum_of_multiple(limit: u32, factors: Array<u32>) -> u32 {
+pub fn sum_of_multiple(limit: u32, factors: Array<u32>) -> u32 {
     let mut multiples: Array<u32> = ArrayTrait::new();
 
     let mut i = 0;
