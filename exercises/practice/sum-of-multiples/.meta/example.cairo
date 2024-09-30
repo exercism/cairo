@@ -1,7 +1,6 @@
 pub fn sum(limit: u32, factors: Array<u32>) -> u32 {
-    let mut multiples: Array<u32> = ArrayTrait::new();
+    let mut multiples: Array<u32> = array![];
 
-    let mut i = 0;
     for f in factors {
         if f > 0 {
             let mut multiplier = 1;
@@ -16,8 +15,6 @@ pub fn sum(limit: u32, factors: Array<u32>) -> u32 {
                 x = f * multiplier;
             }
         }
-
-        i += 1;
     };
 
     let mut total_sum = 0;
