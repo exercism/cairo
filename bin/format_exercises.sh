@@ -14,6 +14,11 @@ for exercise_dir in $exercises; do
 
     exercise=$(basename "$exercise_dir")
 
+    if [ ! -s "$exercise_dir/Scarb.toml" ]; then
+        echo "Exercise $exercise is just a stub, skipping"
+        continue
+    fi
+
     # scarb fmt cannot currently format individual files, so we have to
     # temporarily move the solution files into the Cairo package, where
     # 'scarb fmt' can format it as well

@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 set -eo pipefail
 
-npx markdownlint-cli2 docs/*.md concepts/**/*.md
+npx markdownlint-cli2 --config .markdownlint-cli2.yaml "$@"
