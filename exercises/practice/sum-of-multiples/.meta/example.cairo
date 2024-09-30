@@ -1,15 +1,14 @@
-pub fn sum_of_multiples(limit: u32, factors: Array<u32>) -> u32 {
+pub fn sum(limit: u32, factors: Array<u32>) -> u32 {
     let mut multiples: Array<u32> = ArrayTrait::new();
 
     let mut i = 0;
-    while i < factors.len() {
-        let f = *factors[i];
+    for f in factors {
 
         if f > 0 {
             let mut multiplier = 1;
             let mut x = f;
 
-            while @x < @limit {
+            while x < limit {
                 if !contains(@multiples, x) {
                     multiples.append(x);
                 };
@@ -23,10 +22,8 @@ pub fn sum_of_multiples(limit: u32, factors: Array<u32>) -> u32 {
     };
 
     let mut total_sum = 0;
-    let mut j = 0;
-    while j < multiples.len() {
-        total_sum += *multiples[j];
-        j += 1;
+    for m in multiples {
+        total_sum += m;
     };
 
     total_sum
