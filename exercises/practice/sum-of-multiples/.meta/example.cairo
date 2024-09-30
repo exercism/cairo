@@ -3,7 +3,6 @@ pub fn sum(limit: u32, factors: Array<u32>) -> u32 {
 
     let mut i = 0;
     for f in factors {
-
         if f > 0 {
             let mut multiplier = 1;
             let mut x = f;
