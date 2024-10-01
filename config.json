@@ -755,6 +755,14 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 1
+      },
+      {
+        "slug": "space-age",
+        "name": "Space Age",
+        "uuid": "2305b855-30e5-4a24-a1d2-abfc50db3394",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
       }
     ],
     "foregone": [
@@ -770,7 +778,6 @@
       "parallel-letter-frequency",
       "react",
       "rest-api",
-      "space-age",
       "strain"
     ]
   },
