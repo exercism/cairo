@@ -38,23 +38,12 @@
   "exercises": {
     "concept": [
       {
-        "slug": "low-power-embedded-game",
-        "name": "Low-power Embedded Game",
-        "uuid": "f3b7ce44-1667-42b4-b792-401d36aee2f1",
-        "concepts": [
-          "tuples"
-        ],
-        "prerequisites": [
-          "traits"
-        ],
-        "status": "wip"
-      },
-      {
         "slug": "lucians-luscious-lasagna",
         "name": "Lucian's Luscious Lasagna",
         "uuid": "f120ab92-f277-434c-ae38-a3bb86cb67bf",
         "concepts": [
-          "functions"
+          "functions",
+          "mutability"
         ],
         "prerequisites": [],
         "status": "beta"
@@ -68,6 +57,217 @@
         ],
         "prerequisites": [
           "functions"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "cryptographer",
+        "name": "Cryptographer",
+        "uuid": "7d399f77-4b68-4fc8-9421-43fd24bd4dbe",
+        "concepts": [
+          "felts"
+        ],
+        "prerequisites": [
+          "functions"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "cars-assemble",
+        "name": "Cars Assemble",
+        "uuid": "57845c17-15e5-4c62-bbac-29ad633e9ebb",
+        "concepts": [
+          "integers"
+        ],
+        "prerequisites": [
+          "functions"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "welcome-to-tech-palace",
+        "name": "Welcome To Tech Palace!",
+        "uuid": "f8108950-9819-4540-8a3a-880d0778806c",
+        "concepts": [
+          "strings"
+        ],
+        "prerequisites": [
+          "functions"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "magician-in-training",
+        "name": "Magician in Training",
+        "uuid": "b1f29e1f-adb7-4e37-8101-a1819f1179fa",
+        "concepts": [
+          "arrays"
+        ],
+        "prerequisites": [
+          "integers"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "rpn-calculator",
+        "name": "RPN Calculator",
+        "uuid": "536d9f09-5910-4a26-93fd-2242667b0b87",
+        "concepts": [
+          "control-flow"
+        ],
+        "prerequisites": [
+          "arrays",
+          "enums"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "gross-store",
+        "name": "Gross Store",
+        "uuid": "e2ae76c7-379e-430d-92d6-9eaaa823acca",
+        "concepts": [
+          "dictionaries"
+        ],
+        "prerequisites": [
+          "control-flow"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "election-day",
+        "name": "Election Day",
+        "uuid": "29bc1a4a-f295-44db-be19-d8e63dc526dc",
+        "concepts": [
+          "ownership",
+          "structs",
+          "references-and-snapshots"
+        ],
+        "prerequisites": [
+          "dictionaries"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "red-vs-blue-darwin-style",
+        "name": "Red vs. Blue: Darwin Style",
+        "uuid": "30761b1c-0c9a-4c91-8d16-1adf8bc4a0dd",
+        "concepts": [
+          "packages-crates-modules"
+        ],
+        "prerequisites": [
+          "structs"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "health-statistics",
+        "name": "Health Statistics",
+        "uuid": "69389197-e1dc-43bf-865d-d9b58d59b4e7",
+        "concepts": [
+          "method-syntax"
+        ],
+        "prerequisites": [
+          "structs",
+          "references-and-snapshots"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "airport-robot",
+        "name": "Airport Robot",
+        "uuid": "f0c994d7-d183-4dfa-9048-b20be6f3bf2e",
+        "concepts": [
+          "generics",
+          "traits"
+        ],
+        "prerequisites": [
+          "method-syntax"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "low-power-embedded-game",
+        "name": "Low-power Embedded Game",
+        "uuid": "f3b7ce44-1667-42b4-b792-401d36aee2f1",
+        "concepts": [
+          "tuples"
+        ],
+        "prerequisites": [
+          "traits"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "the-realm-of-echoes",
+        "name": "the-realm-of-echoes",
+        "uuid": "c8fd3bd0-290e-4472-b967-9a201dfd3041",
+        "concepts": [
+          "printing"
+        ],
+        "prerequisites": [
+          "traits"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "role-playing-game",
+        "name": "Role Playing Game",
+        "uuid": "1b014752-c3a4-4250-9483-89696864461b",
+        "concepts": [
+          "options"
+        ],
+        "prerequisites": [
+          "structs",
+          "method-syntax"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "magical-measurements",
+        "name": "Magical Measurements",
+        "uuid": "590fc9b0-2b5d-4dab-81ca-b43f9987b1f5",
+        "concepts": [
+          "type-conversion"
+        ],
+        "prerequisites": [
+          "options",
+          "printing"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "the-farm",
+        "name": "The Farm",
+        "uuid": "e167e30c-84b1-44da-b21c-70bc46688f20",
+        "concepts": [
+          "error-handling"
+        ],
+        "prerequisites": [
+          "structs"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "chrono-realms",
+        "name": "Chrono Realms",
+        "uuid": "eb15461a-ffdc-4bdd-acc1-e95bd7a1ac91",
+        "concepts": [
+          "operator-overloading"
+        ],
+        "prerequisites": [
+          "generics"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "chrono-realms-time-tree",
+        "name": "Chrono Realms Time Tree",
+        "uuid": "a72139a1-825e-4349-a6b5-400b665fbe07",
+        "concepts": [
+          "smart-pointers"
+        ],
+        "prerequisites": [
+          "structs"
         ],
         "status": "wip"
       }
@@ -555,6 +755,14 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 3
+      }.
+      {
+        "slug": "sum-of-multiples",
+        "name": "Sum of Multiples",
+        "uuid": "60b963b1-5c4a-4eb5-8f8e-a5e1ba9faa2f",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
       }
     ],
     "foregone": [
@@ -643,6 +851,11 @@
       "uuid": "0b069f59-f8b4-4979-935a-c3172538f4c9",
       "slug": "operator-overloading",
       "name": "Operator Overload"
+    },
+    {
+      "uuid": "0bd2a321-f169-49a9-83d6-7d91193db915",
+      "slug": "options",
+      "name": "Options"
     },
     {
       "uuid": "c11a8aa5-cda4-4d02-a477-3db3d3ca5acf",

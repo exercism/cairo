@@ -35,7 +35,7 @@ print_greeting_name(123, 456)
 Function bodies are made up of a series of statements optionally ending in an expression.
 
 - Statements are instructions that perform some action and do not return a value.
-- Expressions evaluate to a resultant value. 
+- Expressions evaluate to a resultant value.
 
 Creating a variable and assigning a value to it with the `let` keyword is a statement.
 
