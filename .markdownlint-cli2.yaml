@@ -11,3 +11,6 @@ config:
     style: dash
   MD013: false
   MD033: false
+
+customRules: 
+  - "single-sentence-per-line-rule.js"
