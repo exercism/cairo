@@ -1,12 +1,13 @@
 use space_age::{Planet, Earth, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune};
 
 fn assert_in_delta(expected: u256, actual: u256) {
+    // absolute value of the difference
     let diff: u256 = if expected > actual {
         expected - actual
     } else {
         actual - expected
     };
-    let delta: u256 = 10000;
+    let delta: u256 = 10000; // 0.01 seconds
     if diff > delta {
         panic!(
             "Your result of {actual} should be within {delta} of the expected result {expected}"
