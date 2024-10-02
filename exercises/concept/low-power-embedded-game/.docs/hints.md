@@ -14,9 +14,11 @@
 - Just chain together the suggested methods and everything will work out
 - A number `n` is even if `n % 2 == 0`
 - A closure is a function with abbreviated syntax: the argument name(s) go
-  within a pair of `|` symbols, and the expression follows. Unlike normal
+  within a pair of `|` symbols, and the expression follows.
+  Unlike normal
   functions, it is not always necessary to explicitly state the type of each
-  argument, just the name. For example, here is how you can construct an iterator
+  argument, just the name.
+  For example, here is how you can construct an iterator
   of odd squares: `(0..).map(|n| 2 * n + 1).map(|n| n * n)`.
 
 ## 3. Implement a `manhattan` method on a `Position` tuple struct

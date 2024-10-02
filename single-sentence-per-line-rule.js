@@ -2,6 +2,9 @@
 
 "use strict";
 
+// BUG: for some reason this rule does not detect sentences starting with *, _ or `
+// so these have to be manually placed on new lines
+
 const indentFor = (string, indentation) => {
   const regex = new RegExp(
     "^(?<indents>(" + indentation + ")*)(?<adds>- |> |>|\\* |\\d+\\. )?",
@@ -52,7 +55,7 @@ module.exports = {
     ];
     const lineEndings = params.config.line_endings || [".", "?", "!"];
     const sentenceStartRegex =
-      params.config.sentence_start || "^\\s+(\\w|[*_'\"])";
+      params.config.sentence_start || "^\\s+(\\w|[*_'\"`])";
     const indentation = params.config.indentation || "  ";
 
     const sentenceStart = new RegExp(sentenceStartRegex);

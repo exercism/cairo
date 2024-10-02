@@ -10,7 +10,8 @@ These constructs are fundamental for implementing logic and iteration in Cairo.
 
 ## `if` Expressions
 
-`if` expressions in Cairo allow you to control the flow of execution based on conditional logic. They follow a structure where code is executed depending on whether a boolean condition evaluates to `true` or `false`.
+`if` expressions in Cairo allow you to control the flow of execution based on conditional logic.
+They follow a structure where code is executed depending on whether a boolean condition evaluates to `true` or `false`.
 
 ```rust
 fn main() {
@@ -22,7 +23,9 @@ fn main() {
 }
 ```
 
-This example demonstrates a simple `if` block in Cairo. The message `"It's hot outside!"` is printed only if the condition `temperature > 25` evaluates to `true`. If the condition is `false`, no code is executed, and the program continues.
+This example demonstrates a simple `if` block in Cairo.
+The message `"It's hot outside!"` is printed only if the condition `temperature > 25` evaluates to `true`.
+If the condition is `false`, no code is executed, and the program continues.
 
 ```rust
 fn main() {
@@ -81,10 +84,13 @@ fn main() {
 
 ## Loops
 
-Loops are a fundamental construct that allow the repetition of code blocks, enabling efficient and controlled execution of tasks. Loops can iterate over a sequence or execute code repeatedly based on a condition. Cairo provides three primary loop flavors:
+Loops are a fundamental construct that allow the repetition of code blocks, enabling efficient and controlled execution of tasks.
+Loops can iterate over a sequence or execute code repeatedly based on a condition.
+Cairo provides three primary loop flavors:
 
 - **loop**: A basic loop that runs indefinitely unless explicitly stopped using a `break` statement.
-- **while**: Continues to execute as long as a specified condition remains `true`. It stops when the condition becomes `false`.
+- **while**: Continues to execute as long as a specified condition remains `true`.
+  It stops when the condition becomes `false`.
 - **for**: Iterates over elements in a collection, such as arrays, executing code for each element.
 
 ### Repeating Code with `loop`
@@ -101,7 +107,10 @@ fn main() {
 
 Executing this code will print `"again!"` indefinitely in the console until either the program runs out of gas or we stop it manually.
 
-> Note: Cairo prevents us from running a program with infinite loops by including a gas meter. The gas meter is a mechanism that limits the amount of computation that can be done in a program. Gas is a unit of measurement that expresses the computation cost of an instruction. When the gas meter runs out, the program will stop.
+> Note: Cairo prevents us from running a program with infinite loops by including a gas meter.
+> The gas meter is a mechanism that limits the amount of computation that can be done in a program.
+> Gas is a unit of measurement that expresses the computation cost of an instruction.
+> When the gas meter runs out, the program will stop.
 
 To break out of a loop, place the `break` keyword within the loop to tell the program when to stop executing the it.
 
@@ -141,7 +150,8 @@ Executing this program will not print the value of `i` when it is equal to `5`.
 
 #### Returning Values from `loop`
 
-You can return a value from a `loop` by using the `break` keyword followed by the value you want to return. This allows you to exit the `loop` and pass a result to the rest of your code.
+You can return a value from a `loop` by using the `break` keyword followed by the value you want to return.
+This allows you to exit the `loop` and pass a result to the rest of your code.
 
 ```rust
 fn main() {
