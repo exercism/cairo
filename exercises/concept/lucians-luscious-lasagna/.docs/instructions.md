@@ -9,8 +9,7 @@ You have four tasks, all related to the time spent cooking the lasagna.
 
 Define the `expected_minutes_in_oven` binding to check how many minutes the
 lasagna should be in the oven.
-According to the cooking book, the expected
-oven time in minutes is 40:
+According to the cooking book, the expected oven time in minutes is 40:
 
 ```rust
 expected_minutes_in_oven()

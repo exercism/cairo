@@ -98,8 +98,7 @@ If you want to check if an array is empty or not, you can use the `is_empty()` m
 ## `Span`
 
 `Span` is a struct that represents a snapshot of an `Array`.
-It is designed to provide safe and controlled access to the elements of an array without modifying the original array.
-`Span` is particularly useful for ensuring data integrity and avoiding borrowing issues when passing arrays between functions or when performing read-only operations.
+It is designed to provide safe and controlled access to the elements of an array without modifying the original array. `Span` is particularly useful for ensuring data integrity and avoiding borrowing issues when passing arrays between functions or when performing read-only operations.
 
 > All methods provided by `Array` can also be used with `Span`, except for the `append()` method.
 
@@ -130,7 +129,7 @@ fn main() {
     // Accessing elements of a fixed-size array by deconstruction
     let [a, b, c, _, _] = arr;
     println!("c: {}", c); // c: 3
-
+    
     // Accessing elements of a fixed-size array by index
     let my_span = arr.span();
     println!("my_span[2]: {}", my_span[2]); // my_span[2]: 3

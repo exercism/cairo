@@ -4,7 +4,7 @@ Booleans in Cairo are represented by the predeclared Boolean type `bool`, which 
 
 ```rust
 let speeding = true;   // Boolean variable 'speeding' set to 'true'
-let has_error = false; // Boolean variable 'has_error' set to 'false'
+let has_error = false; // Boolean variable 'has_error' set to 'false' 
 ```
 
 Cairo supports three logical operators that can evaluate expressions down to Boolean values, returning either `true` or `false`.
