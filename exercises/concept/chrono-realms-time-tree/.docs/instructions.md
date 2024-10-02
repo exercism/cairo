@@ -18,9 +18,7 @@ In this exercise, you will:
 
 ## 1. Define the Recursive `ChronoChain` Enum
 
-Create a recursive enum `ChronoChain` with two variants:
-    - `End`: Represents the end of the list.
-    - `Link`: Contains a `u32` value and a boxed reference to the next node in the chain.
+Create a recursive enum `ChronoChain` with two variants: - `End`: Represents the end of the list. - `Link`: Contains a `u32` value and a boxed reference to the next node in the chain.
 
 ## 2. Create a Function to Build a ChronoChain
 

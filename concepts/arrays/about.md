@@ -130,7 +130,7 @@ fn main() {
     // Accessing elements of a fixed-size array by deconstruction
     let [a, b, c, _, _] = arr;
     println!("c: {}", c); // c: 3
-    
+
     // Accessing elements of a fixed-size array by index
     let my_span = arr.span();
     println!("my_span[2]: {}", my_span[2]); // my_span[2]: 3

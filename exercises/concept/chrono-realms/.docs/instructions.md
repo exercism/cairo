@@ -1,6 +1,6 @@
 # Instructions
 
-Welcome to the world of *ChronoRealms*, a magical land where powerful Timekeepers control the flow of time.
+Welcome to the world of _ChronoRealms_, a magical land where powerful Timekeepers control the flow of time.
 In this realm, Timekeepers manage "TimeShards," special units that can be added, subtracted, compared, and even checked for equality.
 Your task is to help the Timekeepers by implementing custom operators for manipulating these TimeShards.
 
