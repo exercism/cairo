@@ -3,7 +3,6 @@
 "use strict";
 
 const indentFor = (string, indentation) => {
-  // eslint-disable-next-line max-len
   const regex = new RegExp(
     "^(?<indents>(" + indentation + ")*)(?<adds>- |> |>|\\* |\\d+\\. )?",
   );
@@ -54,7 +53,6 @@ module.exports = {
     const lineEndings = params.config.line_endings || [".", "?", "!"];
     const sentenceStartRegex =
       params.config.sentence_start || "^\\s+(\\w|[*_'\"])";
-    const contextSize = Number(params.config.context_length || 14);
     const indentation = params.config.indentation || "  ";
 
     const sentenceStart = new RegExp(sentenceStartRegex);
