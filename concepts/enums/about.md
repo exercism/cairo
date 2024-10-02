@@ -116,7 +116,8 @@ Read more about the `match` flow in [The Cairo Book](https://book.cairo-lang.org
 ## The `Option` Enum and Its Advantages
 
 The `Option` enum is a standard Cairo enum that represents the concept of an optional value.
-It has two variants: `Some: T` and `None`. `Some` variant has an associated value of type `T`, while `None` represents the absence of an associated value.
+It has two variants: `Some: T` and `None`.
+`Some` variant has an associated value of type `T`, while `None` represents the absence of an associated value.
 
 ```rust
 enum Option<T> {

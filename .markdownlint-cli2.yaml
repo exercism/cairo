@@ -7,6 +7,8 @@ config:
     style: dash
   MD013: false
   MD033: false
+  MD034: 
+    severity: error
 
 customRules: 
   - "single-sentence-per-line-rule.js"
