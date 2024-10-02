@@ -1,9 +1,7 @@
-# .prettierrc.yaml
 tabWidth: 2               # Use 2 spaces for indentation
 useTabs: false            # Use spaces instead of tabs
 singleQuote: true         # Use single quotes where possible
 printWidth: 120           # Set line length to 80 characters (adjust as needed)
 proseWrap: always         # Ensure text in Markdown wraps to the print width
-trailingComma: none       # No trailing commas in lists and objects
 semi: false               # Omit semicolons where possible (for code snippets)
 quoteProps: as-needed     # Only add quotes to object properties when required
