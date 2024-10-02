@@ -113,6 +113,14 @@ To format Cairo files, open a bash terminal and run:
 ./bin/format_exercises.sh
 ```
 
+### Format all
+
+To run all formatting scripts at once, open a bash terminal and run:
+
+```shell
+./bin/format_all.sh
+```
+
 <br>
 
 
