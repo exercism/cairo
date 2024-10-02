@@ -1,7 +1,7 @@
 # Felt Type
 
 In Cairo, the default type for a variable or argument, if not explicitly specified, is a **felt**, also called a **field element**.
-This is one of the [scalar types](https://book.cairo-lang.org/ch02-02-data-types.html#scalar-types) represented by the keyword `felt252`.
+This is one of the [scalar types][scalars] represented by the keyword `felt252`.
 A field element is an integer within the range $0 ≤ x < P$, where $P$ is a very large prime number currently equal to $2^{251} + 17 \cdot 2^{192} + 1$.
 
 ## Arithmetic Operations
@@ -26,3 +26,5 @@ This means:
   For example, since $2 \cdot \left(\frac{P+1}{2}\right) = P + 1 \equiv 1 \mod P$, the value of $\frac{1}{2}$ in Cairo is $\frac{P + 1}{2}$ (not $0$ or $0.5$), as it satisfies the above equation.
 
 Understanding these nuances in field element operations is crucial when working with Cairo, especially when dealing with division and ensuring your calculations remain within the valid range defined by the prime number $P$.
+
+[scalars]: https://book.cairo-lang.org/ch02-02-data-types.html#scalar-types

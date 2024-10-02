@@ -112,7 +112,7 @@ fn main() {
 ```
 
 > Note: `{:?}` is a special formatting syntax that allows to print a debug form of the parameter passed to the `println!` macro.
-> You can find more information about it in [The Cairo Book](https://book.cairo-lang.org/appendix-03-derivable-traits.html#debug-for-printing-and-debugging).
+> You can find more information about it in [The Cairo Book][debugging].
 
 One benefit of using the `match` control flow is its exhaustive nature: the arms’ patterns must cover _all_ possibilities.
 Consider the version of the previous example that does not handle the `None` case:
@@ -219,3 +219,5 @@ fn vending_machine_accept(c: (DayType, Coin)) -> bool {
 ```
 
 In the last match arm, it doesn't matter if we use `(_, _)` or just `_` wildcard to match any day and color combination, because they're functionally the same.
+
+[debugging]: https://book.cairo-lang.org/appendix-03-derivable-traits.html#debug-for-printing-and-debugging

@@ -9,6 +9,11 @@ config:
   MD033: false
   MD034: 
     severity: error
+  MD054:
+    autolink: false
+    inline: false
+    shortcut: false
+    collapsed: false
 
 customRules: 
   - "single-sentence-per-line-rule.js"

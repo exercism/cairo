@@ -111,7 +111,7 @@ msg.process(); // prints "quitting"
 ```
 
 In many situations, enums can come in handy especially when used with the `match` flow as used above in the traits implementation.
-Read more about the `match` flow in [The Cairo Book](https://book.cairo-lang.org/ch06-02-the-match-control-flow-construct.html).
+Read more about the `match` flow in [The Cairo Book][match].
 
 ## The `Option` Enum and Its Advantages
 
@@ -198,4 +198,7 @@ fn main() {
 ```
 
 There are other native enums, one of which is the `Result` enum, which allows for graceful error handling.
-Read more about the `Result` enum in [The Cairo Book](https://book.cairo-lang.org/ch09-02-recoverable-errors.html#the-result-enum).
+Read more about the `Result` enum in [The Cairo Book][results].
+
+[match]: https://book.cairo-lang.org/ch06-02-the-match-control-flow-construct.html
+[results]: https://book.cairo-lang.org/ch09-02-recoverable-errors.html#the-result-enum

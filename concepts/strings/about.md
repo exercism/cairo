@@ -5,7 +5,7 @@ However, there are two ways to represent a string type: short strings using a si
 
 ## Short strings
 
-A short string is formed with single quotes where each character that makes up the string is encoded on one byte following the [ASCII standard](https://www.asciitable.com/).
+A short string is formed with single quotes where each character that makes up the string is encoded on one byte following the [ASCII standard][ascii-table].
 
 As an ASCII string, for instance, `'abc'` will be:
 
@@ -47,3 +47,5 @@ struct ByteArray {
     pending_word_len: usize,
 }
 ```
+
+[ascii-table]: https://www.asciitable.com/

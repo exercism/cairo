@@ -7,7 +7,7 @@
 - The `new()` method receives the arguments we want to instantiate a `User` instance with.
   It should return an instance of `User` with the specified name, age, and weight.
 
-- See [here](https://book.cairo-lang.org/ch05-01-defining-and-instantiating-structs.html) for additional examples on defining and instantiating structs.
+- See [here][structs] for additional examples on defining and instantiating structs.
 
 ## 2. Implement the getter methods
 
@@ -24,10 +24,13 @@ fn foo() -> i32 {
 }
 ```
 
-- See [here](https://book.cairo-lang.org/ch05-03-method-syntax.html) for some more examples of defining methods on structs.
+- See [here][methods] for some more examples of defining methods on structs.
 
 ## 3. Implement the setter methods
 
 - The `set_age()` and `set_weight()` methods are setters, responsible for updating the corresponding field on a struct instance with the input argument.
 
 - As the signatures of these methods specify, the setter methods shouldn't return anything.
+
+[structs]: https://book.cairo-lang.org/ch05-01-defining-and-instantiating-structs.html
+[methods]: https://book.cairo-lang.org/ch05-03-method-syntax.html

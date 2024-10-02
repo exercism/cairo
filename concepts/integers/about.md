@@ -67,4 +67,6 @@ fn main() {
 
 Each expression in these statements uses a mathematical operator and evaluates to a single value, which is then bound to a variable.
 
-List of all operators that Cairo provides can be found [here](https://book.cairo-lang.org/appendix-02-operators-and-symbols.html#operators)
+List of all operators that Cairo provides can be found [here][operators].
+
+[operators]: https://book.cairo-lang.org/appendix-02-operators-and-symbols.html#operators
