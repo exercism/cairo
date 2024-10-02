@@ -755,6 +755,14 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 1
+      },
+      {
+        "slug": "series",
+        "name": "Series",
+        "uuid": "b7a0428f-af52-49a5-a768-65197b9dfaa9",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
       }
     ],
     "foregone": [
