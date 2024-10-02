@@ -99,10 +99,16 @@ Basic linting finished successfully:
 
 ### Markdown linting
 
-To format markdown files, open a bash terminal and run:
+To check for markdown files' formatting issues, open a bash terminal and run:
 
 ```shell
 ./bin/lint_markdown.sh
+```
+
+You can even pass the `--fix` flag to automatically fix those issues that can be fixed automatically:
+
+```shell
+./bin/lint_markdown.sh --fix
 ```
 
 ### Exercise formatting
