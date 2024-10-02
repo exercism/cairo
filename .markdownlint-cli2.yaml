@@ -1,7 +1,3 @@
-globs:
-  - "concepts/**/*.md"
-  - "exercises/concept/**/*.md"
-
 config:
   MD001: true
   MD002: true
