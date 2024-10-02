@@ -1,0 +1,40 @@
+name: Lint Markdown
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  markdownlint:
+    name: markdown lint
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@d632683dd7b4114ad314bca15554477dd762a938
+
+      - name: Run markdown lint
+        run: ./bin/lint_markdown.sh
+        
+  configletlint:
+    name: configlet lint + fmt
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@d632683dd7b4114ad314bca15554477dd762a938
+
+      - name: Fetch configlet
+        run: ./bin/fetch-configlet
+        
+      - name: Run configlet lint
+        run: ./bin/configlet lint
+        
+      - name: Run configlet fmt
+        run: ./bin/configlet fmt
