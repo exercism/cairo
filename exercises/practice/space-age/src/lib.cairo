@@ -15,15 +15,11 @@ pub struct Uranus {}
 #[derive(Drop)]
 pub struct Neptune {}
 
-trait Planet<T> {
+pub trait Planet<T> {
     const PERIOD: u256;
     fn age(self: @T, seconds: u256) -> u256 {
         panic!("implement `Planet<T>::age`")
     }
-}
-
-pub fn age<T, +Drop<T>, +Planet<T>>(planet: T, seconds: u256) -> u256 {
-    panic!("implement `age`")
 }
 
 impl MercuryPlanet of Planet<Mercury> {

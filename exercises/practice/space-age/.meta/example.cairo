@@ -17,7 +17,7 @@ pub struct Neptune {}
 
 const MICROSECONDS_IN_A_SECOND: u64 = 1_000_000;
 
-trait Planet<T> {
+pub trait Planet<T> {
     const PERIOD: u256;
     fn age(
         self: @T, seconds: u256
@@ -27,10 +27,6 @@ trait Planet<T> {
         // include the first 2 decimals of the division result
         microseconds * 100 / Self::PERIOD
     }
-}
-
-pub fn age<T, +Drop<T>, +Planet<T>>(planet: T, seconds: u256) -> u256 {
-    planet.age(seconds)
 }
 
 impl MercuryPlanet of Planet<Mercury> {
