@@ -749,6 +749,14 @@
         "difficulty": 2
       },
       {
+        "slug": "high-scores",
+        "name": "High Scores",
+        "uuid": "993e43d8-e31b-4dd5-a73d-f5e99b499207",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 3
+      },
+      {
         "slug": "sum-of-multiples",
         "name": "Sum of Multiples",
         "uuid": "60b963b1-5c4a-4eb5-8f8e-a5e1ba9faa2f",
@@ -763,6 +771,14 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 3
+      },
+      {
+        "slug": "series",
+        "name": "Series",
+        "uuid": "b7a0428f-af52-49a5-a768-65197b9dfaa9",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
       }
     ],
     "foregone": [
