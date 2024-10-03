@@ -1,3 +1,3 @@
-pub fn annotate(pieces: Array<Array<ByteArray>>) -> Array<Array<ByteArray>> {
+pub fn annotate(pieces: Array<ByteArray>) -> Array<ByteArray> {
     panic!("implement `annotate`")
 }
