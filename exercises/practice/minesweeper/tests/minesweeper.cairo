@@ -4,7 +4,7 @@ use minesweeper::annotate;
 fn no_rows() {
     let input = array![];
     let expected = array![];
-    let actual = annotate(input);
+    let actual = annotate(input.span());
     assert_eq!(actual, expected);
 }
 
@@ -13,7 +13,7 @@ fn no_rows() {
 fn no_columns() {
     let input = array![""];
     let expected = array![""];
-    let actual = annotate(input);
+    let actual = annotate(input.span());
     assert_eq!(actual, expected);
 }
 
@@ -30,7 +30,7 @@ fn no_mines() {
         "   ",
         "   ",
     ]);
-    let actual = annotate(input);
+    let actual = annotate(input.span());
     assert_eq!(actual, expected);
 }
 
@@ -47,7 +47,7 @@ fn minefield_with_only_mines() {
         "***",
         "***",
     ]);
-    let actual = annotate(input);
+    let actual = annotate(input.span());
     assert_eq!(actual, expected);
 }
 
@@ -64,7 +64,7 @@ fn mine_surrounded_by_spaces() {
         "1*1",
         "111",
     ]);
-    let actual = annotate(input);
+    let actual = annotate(input.span());
     assert_eq!(actual, expected);
 }
 
@@ -81,7 +81,7 @@ fn space_surrounded_by_mines() {
         "*8*",
         "***",
     ]);
-    let actual = annotate(input);
+    let actual = annotate(input.span());
     assert_eq!(actual, expected);
 }
 
@@ -90,7 +90,7 @@ fn space_surrounded_by_mines() {
 fn horizontal_line() {
     let input = array![" * * "];
     let expected = array!["1*2*1"];
-    let actual = annotate(input);
+    let actual = annotate(input.span());
     assert_eq!(actual, expected);
 }
 
@@ -99,7 +99,7 @@ fn horizontal_line() {
 fn horizontal_line_mines_at_edges() {
     let input = array!["*   *"];
     let expected = array!["*1 1*"];
-    let actual = annotate(input);
+    let actual = annotate(input.span());
     assert_eq!(actual, expected);
 }
 
@@ -120,7 +120,7 @@ fn vertical_line() {
         "*",
         "1",
     ]);
-    let actual = annotate(input);
+    let actual = annotate(input.span());
     assert_eq!(actual, expected);
 }
 
@@ -141,7 +141,7 @@ fn vertical_line_mines_at_edges() {
         "1",
         "*",
     ]);
-    let actual = annotate(input);
+    let actual = annotate(input.span());
     assert_eq!(actual, expected);
 }
 
@@ -162,7 +162,7 @@ fn cross() {
         "25*52",
         " 2*2 ",
     ]);
-    let actual = annotate(input);
+    let actual = annotate(input.span());
     assert_eq!(actual, expected);
 }
 
@@ -185,6 +185,6 @@ fn large_minefield() {
         "1*22*2",
         "111111",
     ]);
-    let actual = annotate(input);
+    let actual = annotate(input.span());
     assert_eq!(actual, expected);
 }
