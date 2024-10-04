@@ -765,6 +765,14 @@
         "difficulty": 1
       },
       {
+        "slug": "space-age",
+        "name": "Space Age",
+        "uuid": "2305b855-30e5-4a24-a1d2-abfc50db3394",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 3
+      },
+      {
         "slug": "series",
         "name": "Series",
         "uuid": "b7a0428f-af52-49a5-a768-65197b9dfaa9",
