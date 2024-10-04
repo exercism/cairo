@@ -29,14 +29,22 @@ fn get_student_index(student: ByteArray) -> Option<usize> {
 }
 
 /// Get string slice
-fn slice(diagram: @ByteArray, from: usize, length: usize) -> ByteArray {
-    let mut result = "";
+fn lines(diagram: @ByteArray) -> [ByteArray; 2] {
+    let mut line1 = "";
+    let mut line2 = "";
 
-    for i in from..(from + length) {
-        result.append_byte(diagram[i]);
+    let mut i = 0;
+    // everything before the newline char is line 1
+    while diagram[i] != '\n' {
+        line1.append_byte(diagram[i]);
+        i += 1;
+    };
+    // `i` is at the newline char index, so everything after it is line 2
+    for i in (i + 1)..diagram.len() {
+        line2.append_byte(diagram[i]);
     };
 
-    result
+    [line1, line2]
 }
 
 /// Mapping plant characters to plant names
@@ -56,21 +64,16 @@ fn plant_from_char(c: u8) -> ByteArray {
 
 /// Function to retrieve the plants for a given student based on the diagram
 pub fn plants(diagram: ByteArray, student: ByteArray) -> Array<ByteArray> {
-    let index = get_student_index(student).expect('Unexpected student name');
+    let index = get_student_index(student).unwrap();
 
-    let start = index * 2;
-
-    // Split the diagram into rows
-    let row1 = slice(@diagram, 0, diagram.len() / 2);
-    let row2 = slice(@diagram, diagram.len() / 2, diagram.len() / 2);
+    let [line1, line2] = lines(@diagram);
 
     // Retrieve the plants for the student based on the index
-    let plant1 = plant_from_char(row1[start]);
-    let plant2 = plant_from_char(row1[start + 1]);
-    let plant3 = plant_from_char(row2[start]);
-    let plant4 = plant_from_char(row2[start + 1]);
+    let start = index * 2;
+    let plant1 = plant_from_char(line1[start]);
+    let plant2 = plant_from_char(line1[start + 1]);
+    let plant3 = plant_from_char(line2[start]);
+    let plant4 = plant_from_char(line2[start + 1]);
 
-    // Return an array with the student's plants
-    let mut result = array![plant1, plant2, plant3, plant4,];
-    result
+    array![plant1, plant2, plant3, plant4,]
 }
