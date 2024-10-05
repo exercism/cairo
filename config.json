@@ -795,6 +795,14 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 8
+      },
+      {
+        "slug": "luhn",
+        "name": "Luhn",
+        "uuid": "8b85fe9d-0964-453f-85d7-92acd2c81723",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
       }
     ],
     "foregone": [
