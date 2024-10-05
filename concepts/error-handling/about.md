@@ -9,7 +9,9 @@ There are two types of errors in Cairo:
 
 ## Unrecoverable Errors with `panic`
 
-In Cairo, unexpected issues may arise during program execution, resulting in runtime errors called "panics". This will stop the program execution, which is helpful in the case where continuing wouldn't make any sense. A panic can occur either inadvertently, through actions causing the code to panic (e.g., accessing an array beyond its bounds), or deliberately, by invoking the `panic` function.
+In Cairo, unexpected issues may arise during program execution, resulting in runtime errors called "panics".
+This will stop the program execution, which is helpful in the case where continuing wouldn't make any sense.
+A panic can occur either inadvertently, through actions causing the code to panic (e.g., accessing an array beyond its bounds), or deliberately, by invoking the `panic` function.
 
 ```rust
 fn main() {
@@ -98,7 +100,8 @@ fn main() {
 
 ### The `?` Operator
 
-The `?` operator is used for concise and implicit error handling, letting the calling function deal with any errors that might occur. When you use the `?` operator on a `Result` or `Option` type, it will do the following:
+The `?` operator is used for concise and implicit error handling, letting the calling function deal with any errors that might occur.
+When you use the `?` operator on a `Result` or `Option` type, it will do the following:
 
 - If the value is `Result::Ok(x)` or `Option::Some(x)`, it will return the inner value `x` directly.
 - If the value is `Result::Err(e)` or `Option::None`, it will propagate the error or `None` by immediately returning from the function.

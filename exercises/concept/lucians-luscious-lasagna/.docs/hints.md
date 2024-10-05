@@ -3,7 +3,8 @@
 ## General
 
 - An [integer value][integers] can be defined as one or more consecutive digits.
-- If you see a `panic` error when running the tests, this is because you have not implemented one of the functions (it should say which one) or you have left the boilerplate in place. You need to remove the `panic!(...)` line from the supplied code and replace it with a real implementation.
+- If you see a `panic` error when running the tests, this is because you have not implemented one of the functions (it should say which one) or you have left the boilerplate in place.
+  You need to remove the `panic!(...)` line from the supplied code and replace it with a real implementation.
 
 ## 1. Define the expected oven time in minutes
 
