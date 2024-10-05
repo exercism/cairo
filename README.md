@@ -99,13 +99,13 @@ Basic linting finished successfully:
 
 ### Markdown linting
 
-To check that any markdown files you may have edited are formatted correctly, open a bash terminal and run:
+To check for markdown files' formatting issues, open a bash terminal and run:
 
 ```shell
 ./bin/lint_markdown.sh
 ```
 
-To automatically fix any formatting issues where possible, pass the `--fix` flag like so:
+You can even pass the `--fix` flag to automatically fix those issues that can be fixed automatically:
 
 ```shell
 ./bin/lint_markdown.sh --fix
@@ -117,6 +117,14 @@ To format Cairo files, open a bash terminal and run:
 
 ```shell
 ./bin/format_exercises.sh
+```
+
+### Format all
+
+To run all formatting scripts at once, open a bash terminal and run:
+
+```shell
+./bin/format_all.sh
 ```
 
 <br>

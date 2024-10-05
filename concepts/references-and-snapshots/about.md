@@ -1,6 +1,7 @@
 # References and Snapshots
 
-When you pass a variable to a function, it's ownership is usually transferred, making the original variable unusable, this can be a bit tedious when accessing a state more than once. Cairo has two features for passing a value without destroying or moving it, called `references` and `snapshots`.
+When you pass a variable to a function, it's ownership is usually transferred, making the original variable unusable, this can be a bit tedious when accessing a state more than once.
+Cairo has two features for passing a value without destroying or moving it, called `references` and `snapshots`.
 
 ## Snapshots
 
@@ -28,7 +29,8 @@ fn main() {
 
 ## Desnap Operator
 
-To convert a snapshot back into a regular variable, you can use the desnap operator `*`, which serves as the opposite of the `@` operator. Only those types that implement the `Copy` trait can be desnapped.
+To convert a snapshot back into a regular variable, you can use the desnap operator `*`, which serves as the opposite of the `@` operator.
+Only those types that implement the `Copy` trait can be desnapped.
 
 ```rust
 #[derive(Drop)]
@@ -52,7 +54,8 @@ fn calculate_area(rec: @Rectangle) -> u64 {
 
 ## Mutable References
 
-Mutable references allow you to pass mutable values to a function and have them implicitly returned, maintaining ownership in the calling context. This can be achieved using the `ref` modifier, provided the variable is declared as mutable with the `mut` keyword.
+Mutable references allow you to pass mutable values to a function and have them implicitly returned, maintaining ownership in the calling context.
+This can be achieved using the `ref` modifier, provided the variable is declared as mutable with the `mut` keyword.
 
 ```rust
 fn foo(ref arr: Array<u128>) { // using `ref` marks the argument as a mutable reference

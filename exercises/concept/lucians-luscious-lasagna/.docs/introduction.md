@@ -1,10 +1,12 @@
 # Introduction
 
-A function in Cairo allows you to group code into a reusable unit, making your programs more modular and easier to understand. Functions in Cairo consist of the `fn` keyword, followed by the function name, a list of parameters in parentheses, and a code block that defines what the function does.
+A function in Cairo allows you to group code into a reusable unit, making your programs more modular and easier to understand.
+Functions in Cairo consist of the `fn` keyword, followed by the function name, a list of parameters in parentheses, and a code block that defines what the function does.
 
 ## Function Parameters
 
-In Cairo, all function parameters must be explicitly typed. Unlike some languages, Cairo does not infer types, and there are no default parameter values, so all parameters are required.
+In Cairo, all function parameters must be explicitly typed.
+Unlike some languages, Cairo does not infer types, and there are no default parameter values, so all parameters are required.
 
 ```rust
 // Function with no parameters
@@ -49,7 +51,10 @@ Calling a function is an expression since it always evaluates to a value: the fu
 
 ## Return Values
 
-Cairo functions can return values to the code that calls them. Return values are listed after the parameters, separated by an arrow `->`. In Cairo, the return value of the function is synonymous with the value of the final expression in the block of the body of a function. You can return early from a function by using the `return` keyword and specifying a value.
+Cairo functions can return values to the code that calls them.
+Return values are listed after the parameters, separated by an arrow `->`.
+In Cairo, the return value of the function is synonymous with the value of the final expression in the block of the body of a function.
+You can return early from a function by using the `return` keyword and specifying a value.
 
 ```rust
 // Function returning the last (and only) expression

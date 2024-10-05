@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 set -eo pipefail
 
-npx markdownlint-cli2 --config .markdownlint-cli2.yaml "$@"
+npx markdownlint-cli2 "$@"
