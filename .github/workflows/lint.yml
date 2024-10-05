@@ -22,19 +22,8 @@ jobs:
       - name: Run markdown lint
         run: ./bin/lint_markdown.sh
         
-  configletlint:
+  configlet:
     name: configlet lint + fmt
-    runs-on: ubuntu-22.04
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@d632683dd7b4114ad314bca15554477dd762a938
-
-      - name: Fetch configlet
-        run: ./bin/fetch-configlet
-        
-      - name: Run configlet lint
-        run: ./bin/configlet lint
-        
-      - name: Run configlet fmt
-        run: ./bin/configlet fmt
+    uses: exercism/github-actions/.github/workflows/configlet.yml@main
+    with:
+      fmt: true
