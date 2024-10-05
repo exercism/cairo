@@ -6,11 +6,11 @@
 - [The Cairo Book: Default Trait Implementations][default-implementation]
 - [The Cairo Book: Associated Constants][associated-constants]
 
-## 1. Set each planet's `const PERIOD` to its appropriate value 
+## 1. Set each planet's `const PERIOD` to its appropriate value
 
 - Remember, there are not floating point numbers in Cairo!
 
-## 2. Write the default implementation for function `Planet::age` 
+## 2. Write the default implementation for function `Planet::age`
 
 - All planets use the same age calculation algorithm, only their `const PERIOD` differs.
 - The `age` method default implementation will automatically apply to all planets.
