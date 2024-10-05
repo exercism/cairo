@@ -1,0 +1,20 @@
+{
+  "authors": [
+    "0xNeshi"
+  ],
+  "files": {
+    "solution": [
+      "src/lib.cairo"
+    ],
+    "test": [
+      "tests/alphametics.cairo"
+    ],
+    "example": [
+      ".meta/example.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
+    ]
+  },
+  "blurb": "Given an alphametics puzzle, find the correct solution."
+}
