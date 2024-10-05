@@ -1,7 +1,7 @@
 globs:
   - "concepts/**/*.md"
   - "exercises/concept/**/*.md"
-  - "exercises/practice/*/.docs/{hints.md,instructions.append.md}"
+  - "exercises/practice/*/.docs/{hints.md,*.append.md}"
 
 config:
   MD001: true
