@@ -36,6 +36,7 @@ fn parse_words(puzzle: ByteArray) -> (WordsAsNumbers, Vec) {
 
 pub fn solve(puzzle: ByteArray) -> Option<Array<(u8, u8)>> {
     let (mut words_as_numbers, mut _letters) = parse_words(puzzle);
+
     verify(ref words_as_numbers).ok()?;
 
     Option::None
@@ -45,23 +46,18 @@ fn verify(ref words_as_numbers: WordsAsNumbers) -> Result<(), felt252> {
     let result_index = words_as_numbers.len - 1;
     let result = words_as_numbers.get(result_index.into());
 
-    let mut verif_result: Result<(), felt252> = Result::Ok(());
-    let mut nums_too_short = true;
+    let mut verif_result: Result<(), felt252> = Result::Err('sum smaller than result');
     for i in 0
         ..result_index {
-            let word_as_num = words_as_numbers.get(i.into());
-            if result / word_as_num == 0 {
+            let div_res = result / words_as_numbers.get(i.into());
+            if div_res == 0 {
                 verif_result = Result::Err('result smaller than sum');
                 break;
             }
-            if nums_too_short && result / word_as_num < 100 {
-                nums_too_short = false;
+            if div_res < 100 {
+                verif_result = Result::Ok(());
             }
         };
-
-    if nums_too_short {
-        verif_result = Result::Err('sum smaller than result');
-    }
 
     verif_result
 }
