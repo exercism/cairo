@@ -35,9 +35,35 @@ fn parse_words(puzzle: ByteArray) -> (WordsAsNumbers, Vec) {
 }
 
 pub fn solve(puzzle: ByteArray) -> Option<Array<(u8, u8)>> {
-    let (mut _words_as_numbers, mut _letters) = parse_words(puzzle);
+    let (mut words_as_numbers, mut _letters) = parse_words(puzzle);
+    verify(ref words_as_numbers).ok()?;
 
     Option::None
+}
+
+fn verify(ref words_as_numbers: WordsAsNumbers) -> Result<(), felt252> {
+    let result_index = words_as_numbers.len - 1;
+    let result = words_as_numbers.get(result_index.into());
+
+    let mut verif_result: Result<(), felt252> = Result::Ok(());
+    let mut nums_too_short = true;
+    for i in 0
+        ..result_index {
+            let word_as_num = words_as_numbers.get(i.into());
+            if result / word_as_num == 0 {
+                verif_result = Result::Err('result smaller than sum');
+                break;
+            }
+            if nums_too_short && result / word_as_num < 100 {
+                nums_too_short = false;
+            }
+        };
+
+    if nums_too_short {
+        verif_result = Result::Err('sum smaller than result');
+    }
+
+    verif_result
 }
 
 #[derive(Destruct, Default)]
@@ -224,7 +250,9 @@ mod tests {
 
     mod parse_words {
         use super::super::WordsAsNumbersTrait;
-        use super::super::{parse_words, WordsAsNumbers, Vec, Letter, LetterPos, VecTrait, Digit};
+        use super::super::{
+            parse_words, verify, WordsAsNumbers, Vec, Letter, LetterPos, VecTrait, Digit
+        };
 
         #[test]
         fn puzzle_with_three_letters() {
@@ -284,7 +312,9 @@ mod tests {
                 ..expected_vec
                     .len {
                         assert_eq!(expected_vec.get_array_entry(i), actual_vec.get_array_entry(i));
-                    }
+                    };
+
+            assert!(verify(ref actual_wan).is_ok());
         }
 
         #[test]
@@ -351,7 +381,9 @@ mod tests {
                 ..expected_vec
                     .len {
                         assert_eq!(expected_vec.get_array_entry(i), actual_vec.get_array_entry(i));
-                    }
+                    };
+
+            assert!(verify(ref actual_wan).is_err());
         }
 
         #[test]
@@ -451,7 +483,9 @@ mod tests {
                 ..expected_vec
                     .len {
                         assert_eq!(expected_vec.get_array_entry(i), actual_vec.get_array_entry(i));
-                    }
+                    };
+
+            assert!(verify(ref actual_wan).is_ok());
         }
     }
 }
