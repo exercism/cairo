@@ -6,34 +6,38 @@ pub enum Plant {
     Violets
 }
 
+#[derive(Drop)]
+pub enum Student {
+    Alice,
+    Bob,
+    Charlie,
+    David,
+    Eve,
+    Fred,
+    Ginny,
+    Harriet,
+    Ileana,
+    Joseph,
+    Kincaid,
+    Larry,
+}
+
 /// Function to determine the index of a student in the list
-fn get_student_index(student: ByteArray) -> Option<usize> {
-    let student_names: Array<ByteArray> = array![
-        "Alice",
-        "Bob",
-        "Charlie",
-        "David",
-        "Eve",
-        "Fred",
-        "Ginny",
-        "Harriet",
-        "Ileana",
-        "Joseph",
-        "Kincaid",
-        "Larry",
-    ];
-
-    let mut index: Option<usize> = Option::None;
-    for i in 0
-        ..student_names
-            .len() {
-                if @student == student_names[i] {
-                    index = Option::Some(i);
-                    break;
-                }
-            };
-
-    index
+fn get_student_index(student: Student) -> usize {
+    match student {
+        Student::Alice => 0,
+        Student::Bob => 1,
+        Student::Charlie => 2,
+        Student::David => 3,
+        Student::Eve => 4,
+        Student::Fred => 5,
+        Student::Ginny => 6,
+        Student::Harriet => 7,
+        Student::Ileana => 8,
+        Student::Joseph => 9,
+        Student::Kincaid => 10,
+        Student::Larry => 11,
+    }
 }
 
 /// Get string slice
@@ -71,8 +75,8 @@ fn plant_from_char(c: u8) -> Plant {
 }
 
 /// Function to retrieve the plants for a given student based on the diagram
-pub fn plants(diagram: ByteArray, student: ByteArray) -> Array<Plant> {
-    let index = get_student_index(student).unwrap();
+pub fn plants(diagram: ByteArray, student: Student) -> Array<Plant> {
+    let index = get_student_index(student);
 
     let [line1, line2] = lines(@diagram);
 
