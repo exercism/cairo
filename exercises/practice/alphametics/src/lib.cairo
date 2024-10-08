@@ -157,26 +157,13 @@ impl ReplaceDigitImpl<
     +core::fmt::Display<T>,
 > of ReplaceDigitTrait<T> {
     fn replace_digit_at(ref self: T, at: u8, new_digit: u8) -> Result<T, ByteArray> {
-        if self == Default::default() && at > 0 {
-            return Result::Err(
-                format!("invalid for number: {self}, at: {at}, new_digit: {new_digit}")
-            );
-        }
-
-        if self == Default::default() {
-            self = new_digit.into();
-            return Result::Ok(self);
-        }
-
         let mut ten_pow = 1_u128;
         for _ in 0..at {
             ten_pow *= 10;
         };
 
         if self.into() < ten_pow {
-            return Result::Err(
-                format!("invalid for number: {self}, at: {at}, new_digit: {new_digit}")
-            );
+            return Result::Ok((ten_pow * new_digit.into() + self.into()).try_into().unwrap());
         }
 
         let rest = self.into() % ten_pow;
@@ -210,6 +197,11 @@ mod tests {
                 TestData { number: 10000, at: 3, new_digit: 6, expected: 16000, },
                 TestData { number: 1000, at: 3, new_digit: 4, expected: 4000, },
                 TestData { number: 123456789, at: 7, new_digit: 9, expected: 193456789, },
+                TestData { number: 0, at: 1, new_digit: 4, expected: 40 },
+                TestData { number: 3, at: 1, new_digit: 3, expected: 33, },
+                TestData { number: 123, at: 3, new_digit: 4, expected: 4123, },
+                TestData { number: 10000, at: 10, new_digit: 6, expected: 60000010000, },
+                TestData { number: 123456789, at: 9, new_digit: 9, expected: 9123456789, },
             ];
             for data in test_cases
                 .into_iter() {
@@ -217,23 +209,6 @@ mod tests {
                     let result = number.replace_digit_at(data.at, data.new_digit);
                     assert!(result.is_ok(), "failed for {data:?}");
                     assert_eq!(result.unwrap(), data.expected, "failed for {data:?}");
-                };
-        }
-
-        #[test]
-        fn failing_tests() {
-            let test_cases = array![
-                TestData { number: 0, at: 1, new_digit: 4, expected: 0 },
-                TestData { number: 3, at: 1, new_digit: 3, expected: 0, },
-                TestData { number: 123, at: 3, new_digit: 4, expected: 0, },
-                TestData { number: 10000, at: 10, new_digit: 6, expected: 0, },
-                TestData { number: 123456789, at: 9, new_digit: 9, expected: 0, },
-            ];
-            for data in test_cases
-                .into_iter() {
-                    let mut number = data.number;
-                    let result = number.replace_digit_at(data.at, data.new_digit);
-                    assert!(result.is_err(), "unexpectedly succeeded for: {data:?}");
                 };
         }
     }
