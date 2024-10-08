@@ -1,3 +1,11 @@
+#[derive(Drop, Debug, PartialEq)]
+pub enum Plant {
+    Radishes,
+    Clover,
+    Grass,
+    Violets
+}
+
 /// Function to determine the index of a student in the list
 fn get_student_index(student: ByteArray) -> Option<usize> {
     let student_names: Array<ByteArray> = array![
@@ -48,22 +56,22 @@ fn lines(diagram: @ByteArray) -> [ByteArray; 2] {
 }
 
 /// Mapping plant characters to plant names
-fn plant_from_char(c: u8) -> ByteArray {
+fn plant_from_char(c: u8) -> Plant {
     if c == 'R' {
-        "radishes"
+        Plant::Radishes
     } else if c == 'C' {
-        "clover"
+        Plant::Clover
     } else if c == 'G' {
-        "grass"
+        Plant::Grass
     } else if c == 'V' {
-        "violets"
+        Plant::Violets
     } else {
         panic!("No such plant")
     }
 }
 
 /// Function to retrieve the plants for a given student based on the diagram
-pub fn plants(diagram: ByteArray, student: ByteArray) -> Array<ByteArray> {
+pub fn plants(diagram: ByteArray, student: ByteArray) -> Array<Plant> {
     let index = get_student_index(student).unwrap();
 
     let [line1, line2] = lines(@diagram);

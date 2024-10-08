@@ -1,11 +1,11 @@
-use kindergarten_garden::plants;
+use kindergarten_garden::{plants, Plant};
 
 #[test]
 fn garden_with_single_student() {
     let diagram = "RC
 GG";
     let student = "Alice";
-    let expected = array!["radishes", "clover", "grass", "grass"];
+    let expected = array![Plant::Radishes, Plant::Clover, Plant::Grass, Plant::Grass];
     assert_eq!(plants(diagram, student), expected);
 }
 
@@ -15,7 +15,7 @@ fn different_garden_with_single_student() {
     let diagram = "VC
 RC";
     let student = "Alice";
-    let expected = array!["violets", "clover", "radishes", "clover"];
+    let expected = array![Plant::Violets, Plant::Clover, Plant::Radishes, Plant::Clover];
     assert_eq!(plants(diagram, student), expected);
 }
 
@@ -25,7 +25,7 @@ fn garden_with_two_students() {
     let diagram = "VVCG
 VVRC";
     let student = "Bob";
-    let expected = array!["clover", "grass", "radishes", "clover"];
+    let expected = array![Plant::Clover, Plant::Grass, Plant::Radishes, Plant::Clover];
     assert_eq!(plants(diagram, student), expected);
 }
 
@@ -35,7 +35,7 @@ fn second_students_garden() {
     let diagram = "VVCCGG
 VVCCGG";
     let student = "Bob";
-    let expected = array!["clover", "clover", "clover", "clover"];
+    let expected = array![Plant::Clover, Plant::Clover, Plant::Clover, Plant::Clover];
     assert_eq!(plants(diagram, student), expected);
 }
 
@@ -45,7 +45,7 @@ fn third_students_garden() {
     let diagram = "VVCCGG
 VVCCGG";
     let student = "Charlie";
-    let expected = array!["grass", "grass", "grass", "grass"];
+    let expected = array![Plant::Grass, Plant::Grass, Plant::Grass, Plant::Grass];
     assert_eq!(plants(diagram, student), expected);
 }
 
@@ -55,7 +55,7 @@ fn for_alice_first_students_garden() {
     let diagram = "VRCGVVRVCGGCCGVRGCVCGCGV
 VRCCCGCRRGVCGCRVVCVGCGCV";
     let student = "Alice";
-    let expected = array!["violets", "radishes", "violets", "radishes"];
+    let expected = array![Plant::Violets, Plant::Radishes, Plant::Violets, Plant::Radishes];
     assert_eq!(plants(diagram, student), expected);
 }
 
@@ -65,7 +65,7 @@ fn for_bob_second_students_garden() {
     let diagram = "VRCGVVRVCGGCCGVRGCVCGCGV
 VRCCCGCRRGVCGCRVVCVGCGCV";
     let student = "Bob";
-    let expected = array!["clover", "grass", "clover", "clover"];
+    let expected = array![Plant::Clover, Plant::Grass, Plant::Clover, Plant::Clover];
     assert_eq!(plants(diagram, student), expected);
 }
 
@@ -75,7 +75,7 @@ fn for_charlie() {
     let diagram = "VRCGVVRVCGGCCGVRGCVCGCGV
 VRCCCGCRRGVCGCRVVCVGCGCV";
     let student = "Charlie";
-    let expected = array!["violets", "violets", "clover", "grass"];
+    let expected = array![Plant::Violets, Plant::Violets, Plant::Clover, Plant::Grass];
     assert_eq!(plants(diagram, student), expected);
 }
 
@@ -85,7 +85,7 @@ fn for_david() {
     let diagram = "VRCGVVRVCGGCCGVRGCVCGCGV
 VRCCCGCRRGVCGCRVVCVGCGCV";
     let student = "David";
-    let expected = array!["radishes", "violets", "clover", "radishes"];
+    let expected = array![Plant::Radishes, Plant::Violets, Plant::Clover, Plant::Radishes];
     assert_eq!(plants(diagram, student), expected);
 }
 
@@ -95,7 +95,7 @@ fn for_eve() {
     let diagram = "VRCGVVRVCGGCCGVRGCVCGCGV
 VRCCCGCRRGVCGCRVVCVGCGCV";
     let student = "Eve";
-    let expected = array!["clover", "grass", "radishes", "grass"];
+    let expected = array![Plant::Clover, Plant::Grass, Plant::Radishes, Plant::Grass];
     assert_eq!(plants(diagram, student), expected);
 }
 
@@ -105,7 +105,7 @@ fn for_fred() {
     let diagram = "VRCGVVRVCGGCCGVRGCVCGCGV
 VRCCCGCRRGVCGCRVVCVGCGCV";
     let student = "Fred";
-    let expected = array!["grass", "clover", "violets", "clover"];
+    let expected = array![Plant::Grass, Plant::Clover, Plant::Violets, Plant::Clover];
     assert_eq!(plants(diagram, student), expected);
 }
 
@@ -115,7 +115,7 @@ fn for_ginny() {
     let diagram = "VRCGVVRVCGGCCGVRGCVCGCGV
 VRCCCGCRRGVCGCRVVCVGCGCV";
     let student = "Ginny";
-    let expected = array!["clover", "grass", "grass", "clover"];
+    let expected = array![Plant::Clover, Plant::Grass, Plant::Grass, Plant::Clover];
     assert_eq!(plants(diagram, student), expected);
 }
 
@@ -125,7 +125,7 @@ fn for_harriet() {
     let diagram = "VRCGVVRVCGGCCGVRGCVCGCGV
 VRCCCGCRRGVCGCRVVCVGCGCV";
     let student = "Harriet";
-    let expected = array!["violets", "radishes", "radishes", "violets"];
+    let expected = array![Plant::Violets, Plant::Radishes, Plant::Radishes, Plant::Violets];
     assert_eq!(plants(diagram, student), expected);
 }
 
@@ -135,7 +135,7 @@ fn for_ileana() {
     let diagram = "VRCGVVRVCGGCCGVRGCVCGCGV
 VRCCCGCRRGVCGCRVVCVGCGCV";
     let student = "Ileana";
-    let expected = array!["grass", "clover", "violets", "clover"];
+    let expected = array![Plant::Grass, Plant::Clover, Plant::Violets, Plant::Clover];
     assert_eq!(plants(diagram, student), expected);
 }
 
@@ -145,7 +145,7 @@ fn for_joseph() {
     let diagram = "VRCGVVRVCGGCCGVRGCVCGCGV
 VRCCCGCRRGVCGCRVVCVGCGCV";
     let student = "Joseph";
-    let expected = array!["violets", "clover", "violets", "grass"];
+    let expected = array![Plant::Violets, Plant::Clover, Plant::Violets, Plant::Grass];
     assert_eq!(plants(diagram, student), expected);
 }
 
@@ -155,7 +155,7 @@ fn for_kincaid_second_to_last_students_garden() {
     let diagram = "VRCGVVRVCGGCCGVRGCVCGCGV
 VRCCCGCRRGVCGCRVVCVGCGCV";
     let student = "Kincaid";
-    let expected = array!["grass", "clover", "clover", "grass"];
+    let expected = array![Plant::Grass, Plant::Clover, Plant::Clover, Plant::Grass];
     assert_eq!(plants(diagram, student), expected);
 }
 
@@ -165,6 +165,6 @@ fn for_larry_last_students_garden() {
     let diagram = "VRCGVVRVCGGCCGVRGCVCGCGV
 VRCCCGCRRGVCGCRVVCVGCGCV";
     let student = "Larry";
-    let expected = array!["grass", "violets", "clover", "violets"];
+    let expected = array![Plant::Grass, Plant::Violets, Plant::Clover, Plant::Violets];
     assert_eq!(plants(diagram, student), expected);
 }
