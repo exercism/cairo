@@ -50,7 +50,7 @@ type Position = (i16, i16);
 ```
 
 You need to implement a method `manhattan` on `Position` which returns the
-[manhattan distance](https://en.wikipedia.org/wiki/Taxicab_geometry) of that position from the origin (`let p: Position = (0, 0)`).
+[manhattan distance][taxicab-geometry] of that position from the origin (`let p: Position = (0, 0)`).
 
 ```rust
 trait PositionTrait {
@@ -64,3 +64,5 @@ Example:
 let p: Position = (3, 4);
 assert_eq!(p.manhattan(), 7);
 ```
+
+[taxicab-geometry]: https://en.wikipedia.org/wiki/Taxicab_geometry

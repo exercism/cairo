@@ -1,6 +1,7 @@
 globs:
   - "concepts/**/*.md"
   - "exercises/concept/**/*.md"
+  - "exercises/practice/*/.docs/{hints.md,*.append.md}"
 
 config:
   MD001: true
@@ -11,3 +12,13 @@ config:
     style: dash
   MD013: false
   MD033: false
+  MD034: 
+    severity: error
+  MD054:
+    autolink: false
+    inline: false
+    shortcut: false
+    collapsed: false
+
+customRules: 
+  - "single-sentence-per-line-rule.js"

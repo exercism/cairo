@@ -1,6 +1,7 @@
 # Enums
 
-Enums are Cairo data type used to define a set of predefined variants for the purpose of code readability and safety. In Cairo, `enum` variants can be declared to hold different data types (integers, structs, tuples, other enums, etc.).
+Enums are Cairo data type used to define a set of predefined variants for the purpose of code readability and safety.
+In Cairo, `enum` variants can be declared to hold different data types (integers, structs, tuples, other enums, etc.).
 
 The code snippet below shows how enums could be defined:
 
@@ -14,7 +15,10 @@ enum Direction {
 }
 ```
 
-The `Direction` enum declared above is a simple enum with four variants: `North`, `East`, `South`, and `West`. The naming convention is to use PascalCase for enum variants. Each variant represents a distinct value of the `Direction` enum type. Each variant in this particular enum example has no associated value and can be instantiated using this syntax:
+The `Direction` enum declared above is a simple enum with four variants: `North`, `East`, `South`, and `West`.
+The naming convention is to use PascalCase for enum variants.
+Each variant represents a distinct value of the `Direction` enum type.
+Each variant in this particular enum example has no associated value and can be instantiated using this syntax:
 
 ```rust
 let direction = Direction::North;
@@ -32,7 +36,8 @@ enum Direction {
 }
 ```
 
-It is evident from this example that each variant in the `Direction` enum has an associated value of `u128`. This kind of enum can be instantiated as follows:
+It is evident from this example that each variant in the `Direction` enum has an associated value of `u128`.
+This kind of enum can be instantiated as follows:
 
 ```rust
 let direction = Direction::North(10);
@@ -40,7 +45,8 @@ let direction = Direction::North(10);
 
 ## Complex Enum Example with Custom Types
 
-An enum can be declared with a combination of different data types as its variants. In the example below, `Action` is a complex enum that as a collection of `Quit`, `Direction`, `SendMessage`, `ChangeAvatar`, and `ProfileState` as variants.
+An enum can be declared with a combination of different data types as its variants.
+In the example below, `Action` is a complex enum that as a collection of `Quit`, `Direction`, `SendMessage`, `ChangeAvatar`, and `ProfileState` as variants.
 
 ```rust
 #[derive(Drop)]
@@ -70,7 +76,9 @@ enum Action {
 
 ## Trait Implementations for Enums
 
-In Cairo, traits can be defined and implemented on custom enums. This allows for you to define methods and attributes associated with an enum. Below is an example of this where we define a `Message` enum and implement a `Processing` trait for it:
+In Cairo, traits can be defined and implemented on custom enums.
+This allows for you to define methods and attributes associated with an enum.
+Below is an example of this where we define a `Message` enum and implement a `Processing` trait for it:
 
 ```rust
 #[derive(Drop)]
@@ -102,11 +110,14 @@ let msg: Message = Message::Quit;
 msg.process(); // prints "quitting"
 ```
 
-In many situations, enums can come in handy especially when used with the `match` flow as used above in the traits implementation. Read more about the `match` flow in [The Cairo Book](https://book.cairo-lang.org/ch06-02-the-match-control-flow-construct.html).
+In many situations, enums can come in handy especially when used with the `match` flow as used above in the traits implementation.
+Read more about the `match` flow in [The Cairo Book][match].
 
 ## The `Option` Enum and Its Advantages
 
-The `Option` enum is a standard Cairo enum that represents the concept of an optional value. It has two variants: `Some: T` and `None`. `Some` variant has an associated value of type `T`, while `None` represents the absence of an associated value.
+The `Option` enum is a standard Cairo enum that represents the concept of an optional value.
+It has two variants: `Some: T` and `None`.
+`Some` variant has an associated value of type `T`, while `None` represents the absence of an associated value.
 
 ```rust
 enum Option<T> {
@@ -115,7 +126,8 @@ enum Option<T> {
 }
 ```
 
-The `Option` enum is helpful because it allows you to explicitly represent the possibility of a value being absent, making your code more expressive and easier to reason about. Using `Option` can also help prevent bugs caused by using uninitialized or unexpected `null` values.
+The `Option` enum is helpful because it allows you to explicitly represent the possibility of a value being absent, making your code more expressive and easier to reason about.
+Using `Option` can also help prevent bugs caused by using uninitialized or unexpected `null` values.
 
 The function below shows how the `Option` enum is used to return the index of the first element of an array with a given value, or return `None` if the element is absent.
 
@@ -185,4 +197,8 @@ fn main() {
 }
 ```
 
-There are other native enums, one of which is the `Result` enum, which allows for graceful error handling. Read more about the `Result` enum in [The Cairo Book](https://book.cairo-lang.org/ch09-02-recoverable-errors.html#the-result-enum).
+There are other native enums, one of which is the `Result` enum, which allows for graceful error handling.
+Read more about the `Result` enum in [The Cairo Book][results].
+
+[match]: https://book.cairo-lang.org/ch06-02-the-match-control-flow-construct.html
+[results]: https://book.cairo-lang.org/ch09-02-recoverable-errors.html#the-result-enum

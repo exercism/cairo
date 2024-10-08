@@ -1,6 +1,9 @@
 # Arrays
 
-In Cairo, an array is a data structure that allows you to store a collection of elements of the same type. Arrays in Cairo have limited modification options. You can only append items to the end of an array and remove items from the front. Arrays are, in fact, queues whose values can't be modified.
+In Cairo, an array is a data structure that allows you to store a collection of elements of the same type.
+Arrays in Cairo have limited modification options.
+You can only append items to the end of an array and remove items from the front.
+Arrays are, in fact, queues whose values can't be modified.
 
 ## Array Construction
 
@@ -30,7 +33,8 @@ arr_implicit_type.append(2);
 
 ## Removing Array Elements
 
-The only way to remove elements from an array in Cairo is from the front. This operation is facilitated by the `pop_front()` method, which returns an `Option` that can be unwrapped, containing the removed element, or `Option::None` if the array is empty.
+The only way to remove elements from an array in Cairo is from the front.
+This operation is facilitated by the `pop_front()` method, which returns an `Option` that can be unwrapped, containing the removed element, or `Option::None` if the array is empty.
 
 ```rust
 fn main() {
@@ -42,7 +46,8 @@ fn main() {
 
 ## Accessing Values in an Array
 
-To access array elements, you can use `get()` or `at()` array methods that return different types. An equivalent to `arr.at(index)` is the subscripting operator `arr[index]`.
+To access array elements, you can use `get()` or `at()` array methods that return different types.
+An equivalent to `arr.at(index)` is the subscripting operator `arr[index]`.
 
 ### Using get() Method
 
@@ -69,7 +74,9 @@ fn main() {
 
 ### Using at() Method
 
-The `at()` method directly gives you a snapshot of the element at a specific index using the `unbox()` operation to extract the stored value from the box. A shorthand for this method is using the subscripting operator `arr[index]`. If you try to access an index that doesn't exist (out-of-bounds), the program will panic with an error.
+The `at()` method directly gives you a snapshot of the element at a specific index using the `unbox()` operation to extract the stored value from the box.
+A shorthand for this method is using the subscripting operator `arr[index]`.
+If you try to access an index that doesn't exist (out-of-bounds), the program will panic with an error.
 
 ```rust
 fn main() {
@@ -83,13 +90,16 @@ fn main() {
 
 ## Size-related Methods
 
-To determine the number of elements in an array, use the `len()` method. The return value is of type `usize`.
+To determine the number of elements in an array, use the `len()` method.
+The return value is of type `usize`.
 
 If you want to check if an array is empty or not, you can use the `is_empty()` method, which returns `true` if the array is empty and `false` otherwise.
 
 ## `Span`
 
-`Span` is a struct that represents a snapshot of an `Array`. It is designed to provide safe and controlled access to the elements of an array without modifying the original array. `Span` is particularly useful for ensuring data integrity and avoiding borrowing issues when passing arrays between functions or when performing read-only operations.
+`Span` is a struct that represents a snapshot of an `Array`.
+It is designed to provide safe and controlled access to the elements of an array without modifying the original array.
+`Span` is particularly useful for ensuring data integrity and avoiding borrowing issues when passing arrays between functions or when performing read-only operations.
 
 > All methods provided by `Array` can also be used with `Span`, except for the `append()` method.
 
@@ -102,7 +112,8 @@ let my_span: Span<u32> = my_array.span();
 
 ## The Fixed Size `Array` Type
 
-We write the values in a fixed-size array as a comma-separated list inside square brackets. The array’s type is written using square brackets with the type of each element, a semicolon, and then the number of elements in the array.
+We write the values in a fixed-size array as a comma-separated list inside square brackets.
+The array’s type is written using square brackets with the type of each element, a semicolon, and then the number of elements in the array.
 
 ```rust
 let arr: [u64; 5] = [1, 2, 3, 4, 5];

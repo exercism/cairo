@@ -21,3 +21,9 @@ jobs:
 
       - name: Run markdown lint
         run: ./bin/lint_markdown.sh
+        
+  configlet:
+    name: configlet lint + fmt
+    uses: exercism/github-actions/.github/workflows/configlet.yml@main
+    with:
+      fmt: true

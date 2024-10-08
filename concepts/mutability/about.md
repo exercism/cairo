@@ -1,15 +1,21 @@
 # Mutability
 
-Cairo, with its blockchain-oriented design, implements an immutable memory model by default. This means that once a value is written into memory, it cannot be overwritten, only read. However, Cairo provides a mechanism to create mutable variables using the `mut` keyword. When a variable is declared as mutable, and the value is changed, the new value is written to a new memory cell, and the variable is updated to point to the new cell. This mechanism allows for flexibility while maintaining the benefits of immutability.
+Cairo, with its blockchain-oriented design, implements an immutable memory model by default.
+This means that once a value is written into memory, it cannot be overwritten, only read.
+However, Cairo provides a mechanism to create mutable variables using the `mut` keyword.
+When a variable is declared as mutable, and the value is changed, the new value is written to a new memory cell, and the variable is updated to point to the new cell.
+This mechanism allows for flexibility while maintaining the benefits of immutability.
 
-In the example below, `x` is declared as an immutable variable. If the value of `x` is changed, the compiler will throw an error.
+In the example below, `x` is declared as an immutable variable.
+If the value of `x` is changed, the compiler will throw an error.
 
 ```rust
 let x = 5;
 x = 2; // Error: cannot assign twice to immutable variable
 ```
 
-We can declare `x` as a mutable variable using the `mut` keyword. This allows the value of `x` to be changed after it is declared.
+We can declare `x` as a mutable variable using the `mut` keyword.
+This allows the value of `x` to be changed after it is declared.
 
 ```rust
 let mut x = 5;
@@ -53,7 +59,9 @@ const ONE_HOUR_IN_SECONDS: u32 = consteval_int!(60 * 60);
 
 ## Shadowing
 
-It's possible, and often idiomatic, to reuse a variable name as a particular value is transformed, by re-declaring it with multiple `let` invocations. This is known as _shadowing_. In effect, the second variable overshadows the first, taking any uses of the variable name to itself until either it itself is shadowed or the scope ends.
+It's possible, and often idiomatic, to reuse a variable name as a particular value is transformed, by re-declaring it with multiple `let` invocations.
+This is known as _shadowing_.
+In effect, the second variable overshadows the first, taking any uses of the variable name to itself until either it itself is shadowed or the scope ends.
 
 ```rust
 fn main() {
