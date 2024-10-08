@@ -48,31 +48,74 @@ fn parse_words(puzzle: ByteArray) -> Result<(WordsAsNumbers, Vec), felt252> {
         return Result::Err('sum smaller than result');
     }
 
-    // word_as_number is 1 digit longer, so we truncate
+    // word_as_number has a trailing zero which we truncate
     words_as_numbers.append(word_as_number / 10);
 
     Result::Ok((words_as_numbers, letters))
 }
 
-pub fn solve(puzzle: ByteArray) -> Option<Array<(u8, u8)>> {
-    let (mut _words_as_numbers, mut _letters) = parse_words(puzzle).ok()?;
+fn check_solution(
+    ref words_as_numbers: WordsAsNumbers, ref letters: Vec
+) -> Option<Array<(u8, u8)>> {
+    let result_index = words_as_numbers.len - 1;
+    let mut sum = 0_u128;
+    for i in 0..result_index {
+        sum += words_as_numbers.get(i.into());
+    };
+    if sum == words_as_numbers.get(result_index.into()) {
+        let mut result = array![];
+        for i in 0
+            ..letters
+                .chars
+                .len() {
+                    result.append((*letters.chars[i], letters.get(i.try_into().unwrap()).digit));
+                };
 
-    Option::None
+        return Option::Some(result);
+    }
+
+    if is_last_permutation(ref letters) {
+        return Option::None;
+    }
+
+    check_solution(ref words_as_numbers, ref letters)
+}
+
+fn is_last_permutation(ref letters: Vec) -> bool {
+    let mut last = true;
+    let mut expected_digit = 9;
+    for i in 0
+        ..letters
+            .chars
+            .len() {
+                if letters.get(i.try_into().unwrap()).digit == expected_digit {
+                    expected_digit -= 1;
+                } else {
+                    last = false;
+                    break;
+                }
+            };
+    last
+}
+
+pub fn solve(puzzle: ByteArray) -> Option<Array<(u8, u8)>> {
+    let (mut words_as_numbers, mut letters) = parse_words(puzzle).ok()?;
+    check_solution(ref words_as_numbers, ref letters)
 }
 
 #[derive(Destruct, Default)]
 struct Vec {
     dict: Felt252Dict<Nullable<Letter>>,
-    len: u8
+    chars: Array<u8>,
 }
 
-#[derive(Drop, Debug, PartialEq)]
+#[derive(Drop, Copy, Debug, PartialEq)]
 struct Letter {
-    positions: Array<LetterPos>,
+    positions: Span<LetterPos>,
     digit: u8
 }
 
-#[derive(Drop, Debug, PartialEq)]
+#[derive(Drop, Clone, Debug, PartialEq)]
 struct LetterPos {
     word_index: usize,
     digit_index: u8
@@ -80,12 +123,10 @@ struct LetterPos {
 
 #[generate_trait]
 impl VecImpl of VecTrait {
-    fn get_array_entry(ref self: Vec, letter_key: u8) -> Span<LetterPos> {
-        let (entry, letter) = self.dict.entry(letter_key.into());
-        let mut letter = letter.deref_or(Letter { digit: 0, positions: array![] });
-        let span = letter.positions.span();
-        self.dict = entry.finalize(NullableTrait::new(letter));
-        span
+    fn get(ref self: Vec, letter_key: u8) -> Letter {
+        let letter = self.dict.get(letter_key.into());
+        let mut letter = letter.deref_or(Letter { digit: 0, positions: array![].span() });
+        letter
     }
 
     fn append(ref self: Vec, letter_key: u8, value: LetterPos) -> u8 {
@@ -93,12 +134,17 @@ impl VecImpl of VecTrait {
         let mut letter = match match_nullable(letter) {
             FromNullableResult::NotNull(value) => value.unbox(),
             FromNullableResult::Null => {
-                self.len += 1;
-                Letter { digit: self.len - 1, positions: array![] }
+                self.chars.append(letter_key);
+                Letter {
+                    digit: self.chars.len().try_into().unwrap() - 1, positions: array![].span()
+                }
             }
         };
+        let mut new_positions = array![];
+        new_positions.append_span(letter.positions);
+        new_positions.append(value);
+        letter.positions = new_positions.span();
         let digit = letter.digit;
-        letter.positions.append(value);
         self.dict = entry.finalize(NullableTrait::new(letter));
         digit
     }
@@ -226,7 +272,7 @@ mod tests {
             expected_wan.append(22);
 
             let mut expected_vec: Vec = Default::default();
-            expected_vec.len = 3;
+            expected_vec.chars = array!['I', 'B', 'L'];
             expected_vec
                 .set(
                     'I',
@@ -236,6 +282,7 @@ mod tests {
                             LetterPos { word_index: 0, digit_index: 0 },
                             LetterPos { word_index: 2, digit_index: 2 }
                         ]
+                            .span()
                     }
                 );
             expected_vec
@@ -247,6 +294,7 @@ mod tests {
                             LetterPos { word_index: 1, digit_index: 0 },
                             LetterPos { word_index: 1, digit_index: 1 }
                         ]
+                            .span()
                     }
                 );
             expected_vec
@@ -258,6 +306,7 @@ mod tests {
                             LetterPos { word_index: 2, digit_index: 0 },
                             LetterPos { word_index: 2, digit_index: 1 }
                         ]
+                            .span()
                     }
                 );
 
@@ -270,11 +319,15 @@ mod tests {
                         assert_eq!(expected_wan.get(i.into()), actual_wan.get(i.into()));
                     };
 
-            assert_eq!(actual_vec.len, expected_vec.len);
             for i in 0
                 ..expected_vec
-                    .len {
-                        assert_eq!(expected_vec.get_array_entry(i), actual_vec.get_array_entry(i));
+                    .chars
+                    .len() {
+                        assert_eq!(
+                            expected_vec.get(i.try_into().unwrap()),
+                            actual_vec.get(i.try_into().unwrap())
+                        );
+                        assert_eq!(expected_vec.chars[i], actual_vec.chars[i]);
                     };
         }
 
@@ -294,7 +347,7 @@ mod tests {
             expected_wan.append(45603);
 
             let mut expected_vec: Vec = Default::default();
-            expected_vec.len = 7;
+            expected_vec.chars = array!['H', 'E', 'S', 'T', 'L', 'I', 'G'];
             expected_vec
                 .set(
                     'H',
@@ -305,6 +358,7 @@ mod tests {
                             LetterPos { word_index: 2, digit_index: 1 },
                             LetterPos { word_index: 3, digit_index: 1 },
                         ]
+                            .span()
                     }
                 );
             expected_vec
@@ -318,6 +372,7 @@ mod tests {
                             LetterPos { word_index: 1, digit_index: 2 },
                             LetterPos { word_index: 2, digit_index: 0 },
                         ]
+                            .span()
                     }
                 );
             expected_vec
@@ -329,6 +384,7 @@ mod tests {
                             LetterPos { word_index: 1, digit_index: 0 },
                             LetterPos { word_index: 1, digit_index: 3 }
                         ]
+                            .span()
                     }
                 );
             expected_vec
@@ -340,27 +396,31 @@ mod tests {
                             LetterPos { word_index: 2, digit_index: 2 },
                             LetterPos { word_index: 3, digit_index: 0 }
                         ]
+                            .span()
                     }
                 );
             expected_vec
                 .set(
                     'L',
                     Letter {
-                        digit: 4, positions: array![LetterPos { word_index: 3, digit_index: 4 },]
+                        digit: 4,
+                        positions: array![LetterPos { word_index: 3, digit_index: 4 },].span()
                     }
                 );
             expected_vec
                 .set(
                     'I',
                     Letter {
-                        digit: 5, positions: array![LetterPos { word_index: 3, digit_index: 3 },]
+                        digit: 5,
+                        positions: array![LetterPos { word_index: 3, digit_index: 3 },].span()
                     }
                 );
             expected_vec
                 .set(
                     'G',
                     Letter {
-                        digit: 6, positions: array![LetterPos { word_index: 3, digit_index: 2 },]
+                        digit: 6,
+                        positions: array![LetterPos { word_index: 3, digit_index: 2 },].span()
                     }
                 );
 
@@ -372,12 +432,15 @@ mod tests {
                     .len {
                         assert_eq!(expected_wan.get(i.into()), actual_wan.get(i.into()));
                     };
-
-            assert_eq!(actual_vec.len, expected_vec.len);
             for i in 0
                 ..expected_vec
-                    .len {
-                        assert_eq!(expected_vec.get_array_entry(i), actual_vec.get_array_entry(i));
+                    .chars
+                    .len() {
+                        assert_eq!(
+                            expected_vec.get(i.try_into().unwrap()),
+                            actual_vec.get(i.try_into().unwrap())
+                        );
+                        assert_eq!(expected_vec.chars[i], actual_vec.chars[i]);
                     };
         }
     }
