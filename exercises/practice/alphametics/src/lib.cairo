@@ -1,10 +1,14 @@
+use core::nullable::{match_nullable, FromNullableResult};
 use core::dict::{Felt252Dict, Felt252DictEntryTrait};
 
-fn parse_words(puzzle: ByteArray) -> (WordsAsNumbers, Vec) {
+fn parse_words(puzzle: ByteArray) -> Result<(WordsAsNumbers, Vec), felt252> {
     let mut words_as_numbers: WordsAsNumbers = Default::default();
     let mut letters: Vec = Default::default();
 
-    let mut word_as_number = 1_u128;
+    let mut max_word_len = 0_u8;
+    let mut current_word_len = 0_u8;
+
+    let mut word_as_number = 0_u128;
     let mut word_index = 0_usize;
     let mut digit_index = 0_u8;
     let mut i = 0_usize;
@@ -12,54 +16,48 @@ fn parse_words(puzzle: ByteArray) -> (WordsAsNumbers, Vec) {
         let ch = puzzle[i];
         if ch == '=' {
             word_index += 1;
+            // jump over '= ' to get to next char
             i += 3;
         } else if ch == '+' {
             word_index += 1;
+            // jump over the next space char
             i += 2;
         } else if ch == ' ' {
-            // word_as_number is always 1 digit longer, so we should truncate
+            // word_as_number is 1 digit longer, so we truncate
             words_as_numbers.append(word_as_number / 10);
-            word_as_number = 1;
+            word_as_number = 0;
             digit_index = 0;
+            if current_word_len > max_word_len {
+                max_word_len = current_word_len;
+            }
+            current_word_len = 0;
             i += 1;
         } else {
-            letters.append(ch, LetterPos { word_index, digit_index });
-            word_as_number *= 10;
+            let digit = letters.append(ch, LetterPos { word_index, digit_index });
+            word_as_number = (word_as_number + digit.into()) * 10;
             digit_index += 1;
+            current_word_len += 1;
             i += 1;
         }
     };
+
+    let result_len = current_word_len;
+    if result_len < max_word_len {
+        return Result::Err('result smaller than sum');
+    } else if result_len - 1 > max_word_len {
+        return Result::Err('sum smaller than result');
+    }
+
+    // word_as_number is 1 digit longer, so we truncate
     words_as_numbers.append(word_as_number / 10);
 
-    (words_as_numbers, letters)
+    Result::Ok((words_as_numbers, letters))
 }
 
 pub fn solve(puzzle: ByteArray) -> Option<Array<(u8, u8)>> {
-    let (mut words_as_numbers, mut _letters) = parse_words(puzzle);
-
-    verify(ref words_as_numbers).ok()?;
+    let (mut _words_as_numbers, mut _letters) = parse_words(puzzle).ok()?;
 
     Option::None
-}
-
-fn verify(ref words_as_numbers: WordsAsNumbers) -> Result<(), felt252> {
-    let result_index = words_as_numbers.len - 1;
-    let result = words_as_numbers.get(result_index.into());
-
-    let mut verif_result: Result<(), felt252> = Result::Err('sum smaller than result');
-    for i in 0
-        ..result_index {
-            let div_res = result / words_as_numbers.get(i.into());
-            if div_res == 0 {
-                verif_result = Result::Err('result smaller than sum');
-                break;
-            }
-            if div_res < 100 {
-                verif_result = Result::Ok(());
-            }
-        };
-
-    verif_result
 }
 
 #[derive(Destruct, Default)]
@@ -69,14 +67,9 @@ struct Vec {
 }
 
 #[derive(Drop, Debug, PartialEq)]
-enum Digit {
-    Uninitialized,
-    Value: u8
-}
-#[derive(Drop, Debug, PartialEq)]
 struct Letter {
     positions: Array<LetterPos>,
-    digit: Digit
+    digit: u8
 }
 
 #[derive(Drop, Debug, PartialEq)]
@@ -89,24 +82,25 @@ struct LetterPos {
 impl VecImpl of VecTrait {
     fn get_array_entry(ref self: Vec, letter_key: u8) -> Span<LetterPos> {
         let (entry, letter) = self.dict.entry(letter_key.into());
-        let mut letter = letter
-            .deref_or(Letter { digit: Digit::Uninitialized, positions: array![] });
+        let mut letter = letter.deref_or(Letter { digit: 0, positions: array![] });
         let span = letter.positions.span();
         self.dict = entry.finalize(NullableTrait::new(letter));
         span
     }
 
-    fn append(ref self: Vec, letter_key: u8, value: LetterPos) {
+    fn append(ref self: Vec, letter_key: u8, value: LetterPos) -> u8 {
         let (entry, letter) = self.dict.entry(letter_key.into());
-        let mut letter = letter
-            .deref_or(Letter { digit: Digit::Uninitialized, positions: array![] });
-        // if just initialized
-        if letter.digit == Digit::Uninitialized {
-            self.len += 1;
-            letter.digit = Digit::Value(self.len);
-        }
+        let mut letter = match match_nullable(letter) {
+            FromNullableResult::NotNull(value) => value.unbox(),
+            FromNullableResult::Null => {
+                self.len += 1;
+                Letter { digit: self.len - 1, positions: array![] }
+            }
+        };
+        let digit = letter.digit;
         letter.positions.append(value);
         self.dict = entry.finalize(NullableTrait::new(letter));
+        digit
     }
 
     #[cfg(test)]
@@ -128,8 +122,8 @@ impl WordsAsNumbersImpl of WordsAsNumbersTrait {
         self.dict.get(key)
     }
 
-    fn append(ref self: WordsAsNumbers, value: u128) {
-        self.dict.insert(self.len.into(), value);
+    fn append(ref self: WordsAsNumbers, number: u128) {
+        self.dict.insert(self.len.into(), number);
         self.len += 1;
     }
 
@@ -142,7 +136,7 @@ impl WordsAsNumbersImpl of WordsAsNumbersTrait {
             format!("unexpected word index: {index} and length is {}", self.len)
         );
 
-        let mut number = self.dict.get(index.into());
+        let mut number = self.get(index.into());
         number.replace_digit_at(at_digit, new_digit)?;
         self.dict.insert(index.into(), number);
 
@@ -246,17 +240,15 @@ mod tests {
 
     mod parse_words {
         use super::super::WordsAsNumbersTrait;
-        use super::super::{
-            parse_words, verify, WordsAsNumbers, Vec, Letter, LetterPos, VecTrait, Digit
-        };
+        use super::super::{parse_words, WordsAsNumbers, Vec, Letter, LetterPos, VecTrait};
 
         #[test]
         fn puzzle_with_three_letters() {
             let puzzle = "I + BB == ILL";
             let mut expected_wan: WordsAsNumbers = Default::default();
-            expected_wan.append(1);
-            expected_wan.append(10);
-            expected_wan.append(100);
+            expected_wan.append(0);
+            expected_wan.append(11);
+            expected_wan.append(22);
 
             let mut expected_vec: Vec = Default::default();
             expected_vec.len = 3;
@@ -264,7 +256,7 @@ mod tests {
                 .set(
                     'I',
                     Letter {
-                        digit: Digit::Value(1),
+                        digit: 0,
                         positions: array![
                             LetterPos { word_index: 0, digit_index: 0 },
                             LetterPos { word_index: 2, digit_index: 2 }
@@ -275,7 +267,7 @@ mod tests {
                 .set(
                     'B',
                     Letter {
-                        digit: Digit::Value(2),
+                        digit: 1,
                         positions: array![
                             LetterPos { word_index: 1, digit_index: 0 },
                             LetterPos { word_index: 1, digit_index: 1 }
@@ -286,7 +278,7 @@ mod tests {
                 .set(
                     'L',
                     Letter {
-                        digit: Digit::Value(3),
+                        digit: 2,
                         positions: array![
                             LetterPos { word_index: 2, digit_index: 0 },
                             LetterPos { word_index: 2, digit_index: 1 }
@@ -294,7 +286,7 @@ mod tests {
                     }
                 );
 
-            let (mut actual_wan, mut actual_vec) = parse_words(puzzle);
+            let (mut actual_wan, mut actual_vec) = parse_words(puzzle).unwrap();
 
             assert_eq!(actual_wan.len, expected_wan.len);
             for i in 0
@@ -309,87 +301,22 @@ mod tests {
                     .len {
                         assert_eq!(expected_vec.get_array_entry(i), actual_vec.get_array_entry(i));
                     };
-
-            assert!(verify(ref actual_wan).is_ok());
         }
 
         #[test]
         fn leading_zero_solution_is_invalid() {
             let puzzle = "ACA + DD == BD";
-            let mut expected_wan: WordsAsNumbers = Default::default();
-            expected_wan.append(100);
-            expected_wan.append(10);
-            expected_wan.append(10);
-
-            let mut expected_vec: Vec = Default::default();
-            expected_vec.len = 4;
-            expected_vec
-                .set(
-                    'A',
-                    Letter {
-                        digit: Digit::Value(1),
-                        positions: array![
-                            LetterPos { word_index: 0, digit_index: 0 },
-                            LetterPos { word_index: 0, digit_index: 2 },
-                        ]
-                    }
-                );
-            expected_vec
-                .set(
-                    'C',
-                    Letter {
-                        digit: Digit::Value(2),
-                        positions: array![LetterPos { word_index: 0, digit_index: 1 },]
-                    }
-                );
-            expected_vec
-                .set(
-                    'D',
-                    Letter {
-                        digit: Digit::Value(3),
-                        positions: array![
-                            LetterPos { word_index: 1, digit_index: 0 },
-                            LetterPos { word_index: 1, digit_index: 1 },
-                            LetterPos { word_index: 2, digit_index: 0 },
-                        ]
-                    }
-                );
-            expected_vec
-                .set(
-                    'B',
-                    Letter {
-                        digit: Digit::Value(4),
-                        positions: array![LetterPos { word_index: 2, digit_index: 1 },]
-                    }
-                );
-
-            let (mut actual_wan, mut actual_vec) = parse_words(puzzle);
-
-            assert_eq!(actual_wan.len, expected_wan.len);
-            for i in 0
-                ..expected_wan
-                    .len {
-                        assert_eq!(expected_wan.get(i.into()), actual_wan.get(i.into()));
-                    };
-
-            assert_eq!(actual_vec.len, expected_vec.len);
-            for i in 0
-                ..expected_vec
-                    .len {
-                        assert_eq!(expected_vec.get_array_entry(i), actual_vec.get_array_entry(i));
-                    };
-
-            assert!(verify(ref actual_wan).is_err());
+            assert!(parse_words(puzzle).ok().is_none());
         }
 
         #[test]
         fn puzzle_with_seven_letters() {
             let puzzle = "HE + SEES + THE == LIGHT";
             let mut expected_wan: WordsAsNumbers = Default::default();
-            expected_wan.append(10);
-            expected_wan.append(1000);
-            expected_wan.append(100);
-            expected_wan.append(10000);
+            expected_wan.append(1);
+            expected_wan.append(2112);
+            expected_wan.append(301);
+            expected_wan.append(45603);
 
             let mut expected_vec: Vec = Default::default();
             expected_vec.len = 7;
@@ -397,7 +324,7 @@ mod tests {
                 .set(
                     'H',
                     Letter {
-                        digit: Digit::Value(1),
+                        digit: 0,
                         positions: array![
                             LetterPos { word_index: 0, digit_index: 1 },
                             LetterPos { word_index: 2, digit_index: 1 },
@@ -409,7 +336,7 @@ mod tests {
                 .set(
                     'E',
                     Letter {
-                        digit: Digit::Value(2),
+                        digit: 1,
                         positions: array![
                             LetterPos { word_index: 0, digit_index: 0 },
                             LetterPos { word_index: 1, digit_index: 1 },
@@ -422,7 +349,7 @@ mod tests {
                 .set(
                     'S',
                     Letter {
-                        digit: Digit::Value(3),
+                        digit: 2,
                         positions: array![
                             LetterPos { word_index: 1, digit_index: 0 },
                             LetterPos { word_index: 1, digit_index: 3 }
@@ -433,7 +360,7 @@ mod tests {
                 .set(
                     'T',
                     Letter {
-                        digit: Digit::Value(4),
+                        digit: 3,
                         positions: array![
                             LetterPos { word_index: 2, digit_index: 2 },
                             LetterPos { word_index: 3, digit_index: 0 }
@@ -444,28 +371,25 @@ mod tests {
                 .set(
                     'L',
                     Letter {
-                        digit: Digit::Value(5),
-                        positions: array![LetterPos { word_index: 3, digit_index: 4 },]
+                        digit: 4, positions: array![LetterPos { word_index: 3, digit_index: 4 },]
                     }
                 );
             expected_vec
                 .set(
                     'I',
                     Letter {
-                        digit: Digit::Value(6),
-                        positions: array![LetterPos { word_index: 3, digit_index: 3 },]
+                        digit: 5, positions: array![LetterPos { word_index: 3, digit_index: 3 },]
                     }
                 );
             expected_vec
                 .set(
                     'G',
                     Letter {
-                        digit: Digit::Value(7),
-                        positions: array![LetterPos { word_index: 3, digit_index: 2 },]
+                        digit: 6, positions: array![LetterPos { word_index: 3, digit_index: 2 },]
                     }
                 );
 
-            let (mut actual_wan, mut actual_vec) = parse_words(puzzle);
+            let (mut actual_wan, mut actual_vec) = parse_words(puzzle).unwrap();
 
             assert_eq!(actual_wan.len, expected_wan.len);
             for i in 0
@@ -480,8 +404,6 @@ mod tests {
                     .len {
                         assert_eq!(expected_vec.get_array_entry(i), actual_vec.get_array_entry(i));
                     };
-
-            assert!(verify(ref actual_wan).is_ok());
         }
     }
 }
