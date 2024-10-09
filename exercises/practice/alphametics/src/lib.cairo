@@ -5,12 +5,10 @@ fn parse_words(puzzle: ByteArray) -> Result<(WordsAsNumbers, Vec), felt252> {
     let mut words_as_numbers: WordsAsNumbers = Default::default();
     let mut letters: Vec = Default::default();
 
-    let mut max_word_len = 0_u8;
-    let mut current_word_len = 0_u8;
+    let mut max_word_len = 0_usize;
 
-    let mut word_as_number = 0_u128;
+    let mut chars: Array<u8> = array![];
     let mut word_index = 0_usize;
-    let mut digit_index = 0_u8;
     let mut i = 0_usize;
     while i < puzzle.len() {
         let ch = puzzle[i];
@@ -23,30 +21,42 @@ fn parse_words(puzzle: ByteArray) -> Result<(WordsAsNumbers, Vec), felt252> {
             // jump over the next space char
             i += 2;
         } else if ch == ' ' {
-            // word_as_number is 1 digit longer, so we truncate
+            let mut word_as_number = 0_u128;
+            let current_word_len = chars.len();
+            for j in 0
+                ..current_word_len {
+                    let letter_key = *chars[j];
+                    let digit_index: u8 = (current_word_len - 1 - j).try_into().unwrap();
+                    let digit = letters.append(letter_key, LetterPos { word_index, digit_index });
+                    word_as_number = (word_as_number + digit.into()) * 10;
+                };
+            // word_as_number is has a trailing zero, so we truncate it
             words_as_numbers.append(word_as_number / 10);
-            word_as_number = 0;
-            digit_index = 0;
             if current_word_len > max_word_len {
                 max_word_len = current_word_len;
             }
-            current_word_len = 0;
+            chars = array![];
             i += 1;
         } else {
-            let digit = letters.append(ch, LetterPos { word_index, digit_index });
-            word_as_number = (word_as_number + digit.into()) * 10;
-            digit_index += 1;
-            current_word_len += 1;
+            chars.append(ch);
             i += 1;
         }
     };
 
-    let result_len = current_word_len;
+    let result_len = chars.len();
     if result_len < max_word_len {
         return Result::Err('result smaller than sum');
     }
 
-    // word_as_number has a trailing zero which we truncate
+    let mut word_as_number = 0_u128;
+    for j in 0
+        ..result_len {
+            let letter_key = *chars[j];
+            let digit_index: u8 = (result_len - 1 - j).try_into().unwrap();
+            let digit = letters.append(letter_key, LetterPos { word_index, digit_index });
+            word_as_number = (word_as_number + digit.into()) * 10;
+        };
+    // word_as_number is has a trailing zero, so we truncate it
     words_as_numbers.append(word_as_number / 10);
 
     Result::Ok((words_as_numbers, letters))
@@ -79,8 +89,7 @@ fn check_solution(
         return Option::None;
     }
 
-    // check_solution(ref words_as_numbers, ref letters)
-    Option::None
+    check_solution(ref words_as_numbers, ref letters)
 }
 
 fn update_permutation(ref words_as_numbers: WordsAsNumbers, ref letters: Vec) -> bool {
@@ -361,7 +370,7 @@ mod tests {
                         digit: 0,
                         positions: array![
                             LetterPos { word_index: 0, digit_index: 0 },
-                            LetterPos { word_index: 2, digit_index: 2 }
+                            LetterPos { word_index: 2, digit_index: 0 }
                         ]
                             .span()
                     }
@@ -386,8 +395,8 @@ mod tests {
                         char: 'L',
                         digit: 2,
                         positions: array![
-                            LetterPos { word_index: 2, digit_index: 0 },
-                            LetterPos { word_index: 2, digit_index: 1 }
+                            LetterPos { word_index: 2, digit_index: 1 },
+                            LetterPos { word_index: 2, digit_index: 2 }
                         ]
                             .span()
                     }
@@ -438,9 +447,9 @@ mod tests {
                         char: 'H',
                         digit: 0,
                         positions: array![
-                            LetterPos { word_index: 0, digit_index: 1 },
+                            LetterPos { word_index: 0, digit_index: 0 },
                             LetterPos { word_index: 2, digit_index: 1 },
-                            LetterPos { word_index: 3, digit_index: 1 },
+                            LetterPos { word_index: 3, digit_index: 3 },
                         ]
                             .span()
                     }
@@ -452,10 +461,10 @@ mod tests {
                         char: 'E',
                         digit: 1,
                         positions: array![
-                            LetterPos { word_index: 0, digit_index: 0 },
+                            LetterPos { word_index: 0, digit_index: 1 },
                             LetterPos { word_index: 1, digit_index: 1 },
                             LetterPos { word_index: 1, digit_index: 2 },
-                            LetterPos { word_index: 2, digit_index: 0 },
+                            LetterPos { word_index: 2, digit_index: 2 },
                         ]
                             .span()
                     }
@@ -480,8 +489,8 @@ mod tests {
                         char: 'T',
                         digit: 3,
                         positions: array![
-                            LetterPos { word_index: 2, digit_index: 2 },
-                            LetterPos { word_index: 3, digit_index: 0 }
+                            LetterPos { word_index: 2, digit_index: 0 },
+                            LetterPos { word_index: 3, digit_index: 4 }
                         ]
                             .span()
                     }
@@ -492,7 +501,7 @@ mod tests {
                     Letter {
                         char: 'L',
                         digit: 4,
-                        positions: array![LetterPos { word_index: 3, digit_index: 4 },].span()
+                        positions: array![LetterPos { word_index: 3, digit_index: 0 },].span()
                     }
                 );
             expected_vec
@@ -501,7 +510,7 @@ mod tests {
                     Letter {
                         char: 'I',
                         digit: 5,
-                        positions: array![LetterPos { word_index: 3, digit_index: 3 },].span()
+                        positions: array![LetterPos { word_index: 3, digit_index: 1 },].span()
                     }
                 );
             expected_vec
@@ -550,7 +559,7 @@ mod tests {
                         digit: 0,
                         positions: array![
                             LetterPos { word_index: 0, digit_index: 0 },
-                            LetterPos { word_index: 2, digit_index: 2 }
+                            LetterPos { word_index: 2, digit_index: 0 }
                         ]
                             .span()
                     }
@@ -575,8 +584,8 @@ mod tests {
                         char: 'L',
                         digit: 3,
                         positions: array![
-                            LetterPos { word_index: 2, digit_index: 0 },
-                            LetterPos { word_index: 2, digit_index: 1 }
+                            LetterPos { word_index: 2, digit_index: 1 },
+                            LetterPos { word_index: 2, digit_index: 2 }
                         ]
                             .span()
                     }
@@ -592,7 +601,7 @@ mod tests {
                         digit: 0,
                         positions: array![
                             LetterPos { word_index: 0, digit_index: 0 },
-                            LetterPos { word_index: 2, digit_index: 2 }
+                            LetterPos { word_index: 2, digit_index: 0 }
                         ]
                             .span()
                     }
@@ -617,8 +626,8 @@ mod tests {
                         char: 'L',
                         digit: 2,
                         positions: array![
-                            LetterPos { word_index: 2, digit_index: 0 },
-                            LetterPos { word_index: 2, digit_index: 1 }
+                            LetterPos { word_index: 2, digit_index: 1 },
+                            LetterPos { word_index: 2, digit_index: 2 }
                         ]
                             .span()
                     }
@@ -632,8 +641,8 @@ mod tests {
                     char: 'L',
                     digit: 3,
                     positions: array![
-                        LetterPos { word_index: 2, digit_index: 0 },
-                        LetterPos { word_index: 2, digit_index: 1 }
+                        LetterPos { word_index: 2, digit_index: 1 },
+                        LetterPos { word_index: 2, digit_index: 2 }
                     ]
                         .span()
                 }
@@ -662,7 +671,7 @@ mod tests {
                         digit: 1,
                         positions: array![
                             LetterPos { word_index: 0, digit_index: 0 },
-                            LetterPos { word_index: 2, digit_index: 2 }
+                            LetterPos { word_index: 2, digit_index: 0 }
                         ]
                             .span()
                     }
@@ -687,8 +696,8 @@ mod tests {
                         char: 'L',
                         digit: 2,
                         positions: array![
-                            LetterPos { word_index: 2, digit_index: 0 },
-                            LetterPos { word_index: 2, digit_index: 1 }
+                            LetterPos { word_index: 2, digit_index: 1 },
+                            LetterPos { word_index: 2, digit_index: 2 }
                         ]
                             .span()
                     }
@@ -704,7 +713,7 @@ mod tests {
                         digit: 0,
                         positions: array![
                             LetterPos { word_index: 0, digit_index: 0 },
-                            LetterPos { word_index: 2, digit_index: 2 }
+                            LetterPos { word_index: 2, digit_index: 0 }
                         ]
                             .span()
                     }
@@ -729,8 +738,8 @@ mod tests {
                         char: 'L',
                         digit: 8,
                         positions: array![
-                            LetterPos { word_index: 2, digit_index: 0 },
-                            LetterPos { word_index: 2, digit_index: 1 }
+                            LetterPos { word_index: 2, digit_index: 1 },
+                            LetterPos { word_index: 2, digit_index: 2 }
                         ]
                             .span()
                     }
@@ -745,7 +754,7 @@ mod tests {
                     digit: 1,
                     positions: array![
                         LetterPos { word_index: 0, digit_index: 0 },
-                        LetterPos { word_index: 2, digit_index: 2 }
+                        LetterPos { word_index: 2, digit_index: 0 }
                     ]
                         .span()
                 }
@@ -768,8 +777,8 @@ mod tests {
                     char: 'L',
                     digit: 2,
                     positions: array![
-                        LetterPos { word_index: 2, digit_index: 0 },
-                        LetterPos { word_index: 2, digit_index: 1 }
+                        LetterPos { word_index: 2, digit_index: 1 },
+                        LetterPos { word_index: 2, digit_index: 2 }
                     ]
                         .span()
                 }
