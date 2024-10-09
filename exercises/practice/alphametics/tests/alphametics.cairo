@@ -1,7 +1,6 @@
 use alphametics::solve;
 
 #[test]
-#[ignore]
 fn puzzle_with_three_letters() {
     let answer = solve("I + BB == ILL");
     let expected = array![('I', 1), ('B', 9), ('L', 0)];
@@ -23,7 +22,7 @@ fn leading_zero_solution_is_invalid() {
 }
 
 #[test]
-// #[ignore]
+#[ignore]
 fn puzzle_with_two_digits_final_carry() {
     let answer = solve("A + A + A + A + A + A + A + A + A + A + A + B == BCC");
     let expected = array![('A', 9), ('B', 1), ('C', 0)];

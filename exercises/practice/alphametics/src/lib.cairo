@@ -65,12 +65,9 @@ fn parse_words(puzzle: ByteArray) -> Result<(WordsAsNumbers, Vec), felt252> {
 fn check_solution(
     ref words_as_numbers: WordsAsNumbers, ref letters: Vec
 ) -> Option<Array<(u8, u8)>> {
-    // println!("check!!!");
     let result_index = words_as_numbers.len - 1;
-    // println!("result: {}", words_as_numbers.get(result_index.into()));
     let mut sum = 0_u128;
     for i in 0..result_index {
-        // println!("sum {i}: {sum}");
         sum += words_as_numbers.get(i.into());
     };
     if sum == words_as_numbers.get(result_index.into()) {
@@ -79,7 +76,8 @@ fn check_solution(
             ..letters
                 .chars
                 .len() {
-                    result.append((*letters.chars[i], letters.get(i.try_into().unwrap()).digit));
+                    let ch = *letters.chars[i];
+                    result.append((ch, letters.get(ch).digit));
                 };
 
         return Option::Some(result);
@@ -98,7 +96,6 @@ fn update_permutation(ref words_as_numbers: WordsAsNumbers, ref letters: Vec) ->
         return false;
     }
     for letter in letters {
-        println!("{:?}", letter);
         for pos in letter
             .positions {
                 words_as_numbers
@@ -106,17 +103,11 @@ fn update_permutation(ref words_as_numbers: WordsAsNumbers, ref letters: Vec) ->
                     .unwrap();
             };
     };
-    for i in 0..words_as_numbers.len {
-        println!("word {i}: {}", words_as_numbers.get(i.into()));
-    };
     true
 }
 
 pub fn solve(puzzle: ByteArray) -> Option<Array<(u8, u8)>> {
     let (mut words_as_numbers, mut letters) = parse_words(puzzle).ok()?;
-    for i in 0..words_as_numbers.len {
-        println!("word {i}: {}", words_as_numbers.get(i.into()));
-    };
     check_solution(ref words_as_numbers, ref letters)
 }
 
@@ -169,7 +160,6 @@ impl VecImpl of VecTrait {
         self.dict = entry.finalize(NullableTrait::new(letter));
         digit
     }
-
 
     // Helper function to check if a value is already present in the array up to a given index.
     fn contains(ref self: Vec, digit: u8, up_to: usize) -> bool {
@@ -298,12 +288,12 @@ impl ReplaceDigitImpl<
         };
 
         if self.into() < ten_pow {
-            return Result::Ok((ten_pow * new_digit.into() + self.into()).try_into().unwrap());
+            self = (ten_pow * new_digit.into() + self.into()).try_into().unwrap();
+        } else {
+            let rest = self.into() % ten_pow;
+            let prefix = self.into() / ten_pow / 10_u8.into();
+            self = ((prefix * 10 + new_digit.into()) * ten_pow + rest).try_into().unwrap();
         }
-
-        let rest = self.into() % ten_pow;
-        let prefix = self.into() / ten_pow / 10_u8.into();
-        self = ((prefix * 10 + new_digit.into()) * ten_pow + rest).try_into().unwrap();
 
         Result::Ok(self)
     }
