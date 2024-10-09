@@ -44,8 +44,6 @@ fn parse_words(puzzle: ByteArray) -> Result<(WordsAsNumbers, Vec), felt252> {
     let result_len = current_word_len;
     if result_len < max_word_len {
         return Result::Err('result smaller than sum');
-    } else if result_len - 1 > max_word_len {
-        return Result::Err('sum smaller than result');
     }
 
     // word_as_number has a trailing zero which we truncate
@@ -57,9 +55,12 @@ fn parse_words(puzzle: ByteArray) -> Result<(WordsAsNumbers, Vec), felt252> {
 fn check_solution(
     ref words_as_numbers: WordsAsNumbers, ref letters: Vec
 ) -> Option<Array<(u8, u8)>> {
+    // println!("check!!!");
     let result_index = words_as_numbers.len - 1;
+    // println!("result: {}", words_as_numbers.get(result_index.into()));
     let mut sum = 0_u128;
     for i in 0..result_index {
+        // println!("sum {i}: {sum}");
         sum += words_as_numbers.get(i.into());
     };
     if sum == words_as_numbers.get(result_index.into()) {
@@ -74,32 +75,39 @@ fn check_solution(
         return Option::Some(result);
     }
 
-    if is_last_permutation(ref letters) {
+    if !update_permutation(ref words_as_numbers, ref letters) {
         return Option::None;
     }
 
-    check_solution(ref words_as_numbers, ref letters)
+    // check_solution(ref words_as_numbers, ref letters)
+    Option::None
 }
 
-fn is_last_permutation(ref letters: Vec) -> bool {
-    let mut last = true;
-    let mut expected_digit = 9;
-    for i in 0
-        ..letters
-            .chars
-            .len() {
-                if letters.get(i.try_into().unwrap()).digit == expected_digit {
-                    expected_digit -= 1;
-                } else {
-                    last = false;
-                    break;
-                }
+fn update_permutation(ref words_as_numbers: WordsAsNumbers, ref letters: Vec) -> bool {
+    let mut letters = letters.next_permutation();
+    if letters.is_empty() {
+        return false;
+    }
+    for letter in letters {
+        println!("{:?}", letter);
+        for pos in letter
+            .positions {
+                words_as_numbers
+                    .replace_digit_at(*pos.word_index, *pos.digit_index, letter.digit)
+                    .unwrap();
             };
-    last
+    };
+    for i in 0..words_as_numbers.len {
+        println!("word {i}: {}", words_as_numbers.get(i.into()));
+    };
+    true
 }
 
 pub fn solve(puzzle: ByteArray) -> Option<Array<(u8, u8)>> {
     let (mut words_as_numbers, mut letters) = parse_words(puzzle).ok()?;
+    for i in 0..words_as_numbers.len {
+        println!("word {i}: {}", words_as_numbers.get(i.into()));
+    };
     check_solution(ref words_as_numbers, ref letters)
 }
 
@@ -111,6 +119,7 @@ struct Vec {
 
 #[derive(Drop, Copy, Debug, PartialEq)]
 struct Letter {
+    char: u8,
     positions: Span<LetterPos>,
     digit: u8
 }
@@ -125,7 +134,8 @@ struct LetterPos {
 impl VecImpl of VecTrait {
     fn get(ref self: Vec, letter_key: u8) -> Letter {
         let letter = self.dict.get(letter_key.into());
-        let mut letter = letter.deref_or(Letter { digit: 0, positions: array![].span() });
+        let mut letter = letter
+            .deref_or(Letter { char: letter_key, digit: 0, positions: array![].span() });
         letter
     }
 
@@ -136,7 +146,9 @@ impl VecImpl of VecTrait {
             FromNullableResult::Null => {
                 self.chars.append(letter_key);
                 Letter {
-                    digit: self.chars.len().try_into().unwrap() - 1, positions: array![].span()
+                    char: letter_key,
+                    digit: self.chars.len().try_into().unwrap() - 1,
+                    positions: array![].span()
                 }
             }
         };
@@ -149,12 +161,80 @@ impl VecImpl of VecTrait {
         digit
     }
 
-    #[cfg(test)]
+
+    // Helper function to check if a value is already present in the array up to a given index.
+    fn contains(ref self: Vec, digit: u8, up_to: usize) -> bool {
+        let mut result = false;
+        for i in 0
+            ..up_to {
+                let char = *self.chars[i];
+                if self.get(char.into()).digit == digit {
+                    result = true;
+                    break;
+                }
+            };
+        result
+    }
+
+    // Function to generate the next lexicographical non-repeating permutation
+    fn next_permutation(ref self: Vec) -> Array<Letter> {
+        let mut updated_letters = array![];
+
+        let n = self.chars.len();
+
+        // Step 1: Start from the rightmost element and try to increment it.
+        let mut i = n;
+        while i != 0 {
+            i -= 1;
+            let char = *self.chars[i];
+
+            // Try to increment the current element
+            let mut letter = self.get(char.into());
+            letter.digit += 1;
+
+            // Step 2: Ensure the new value is not already present in the array
+            while letter.digit <= 9 && self.contains(letter.digit, i) {
+                letter.digit += 1;
+            };
+
+            // If the incremented value exceeds `9`, try the next position to the left
+            if letter.digit > 9 {
+                continue;
+            }
+
+            // Step 3: Set the incremented value at position `i`
+            self.set(char, letter);
+            updated_letters.append(letter);
+
+            // Step 4: Reset all elements to the right of position `i` to the smallest non-repeating
+            // values
+            let mut next_digit = 0;
+            for j in (i + 1)
+                ..n {
+                    while self.contains(next_digit, j) {
+                        next_digit += 1;
+                    };
+                    // TODO: assert next_digit <= 9
+                    let char = *self.chars[j];
+                    let mut letter = self.get(char.into());
+                    letter.digit = next_digit;
+                    self.set(char.into(), letter);
+                    updated_letters.append(letter);
+                    next_digit += 1;
+                };
+
+            break;
+        };
+
+        updated_letters
+    }
+
     fn set(ref self: Vec, ch: u8, letter: Letter) {
         let (entry, _) = self.dict.entry(ch.into());
         self.dict = entry.finalize(NullableTrait::new(letter));
     }
 }
+
 
 #[derive(Destruct, Default)]
 struct WordsAsNumbers {
@@ -277,6 +357,7 @@ mod tests {
                 .set(
                     'I',
                     Letter {
+                        char: 'I',
                         digit: 0,
                         positions: array![
                             LetterPos { word_index: 0, digit_index: 0 },
@@ -289,6 +370,7 @@ mod tests {
                 .set(
                     'B',
                     Letter {
+                        char: 'B',
                         digit: 1,
                         positions: array![
                             LetterPos { word_index: 1, digit_index: 0 },
@@ -301,6 +383,7 @@ mod tests {
                 .set(
                     'L',
                     Letter {
+                        char: 'L',
                         digit: 2,
                         positions: array![
                             LetterPos { word_index: 2, digit_index: 0 },
@@ -352,6 +435,7 @@ mod tests {
                 .set(
                     'H',
                     Letter {
+                        char: 'H',
                         digit: 0,
                         positions: array![
                             LetterPos { word_index: 0, digit_index: 1 },
@@ -365,6 +449,7 @@ mod tests {
                 .set(
                     'E',
                     Letter {
+                        char: 'E',
                         digit: 1,
                         positions: array![
                             LetterPos { word_index: 0, digit_index: 0 },
@@ -379,6 +464,7 @@ mod tests {
                 .set(
                     'S',
                     Letter {
+                        char: 'S',
                         digit: 2,
                         positions: array![
                             LetterPos { word_index: 1, digit_index: 0 },
@@ -391,6 +477,7 @@ mod tests {
                 .set(
                     'T',
                     Letter {
+                        char: 'T',
                         digit: 3,
                         positions: array![
                             LetterPos { word_index: 2, digit_index: 2 },
@@ -403,6 +490,7 @@ mod tests {
                 .set(
                     'L',
                     Letter {
+                        char: 'L',
                         digit: 4,
                         positions: array![LetterPos { word_index: 3, digit_index: 4 },].span()
                     }
@@ -411,6 +499,7 @@ mod tests {
                 .set(
                     'I',
                     Letter {
+                        char: 'I',
                         digit: 5,
                         positions: array![LetterPos { word_index: 3, digit_index: 3 },].span()
                     }
@@ -419,6 +508,7 @@ mod tests {
                 .set(
                     'G',
                     Letter {
+                        char: 'G',
                         digit: 6,
                         positions: array![LetterPos { word_index: 3, digit_index: 2 },].span()
                     }
@@ -441,6 +531,258 @@ mod tests {
                             actual_vec.get(i.try_into().unwrap())
                         );
                         assert_eq!(expected_vec.chars[i], actual_vec.chars[i]);
+                    };
+        }
+    }
+
+    mod next_permutation {
+        use super::super::{Vec, Letter, LetterPos, VecTrait};
+
+        #[test]
+        fn just_last_digit_changed() {
+            let mut expected_vec: Vec = Default::default();
+            expected_vec.chars = array!['I', 'B', 'L'];
+            expected_vec
+                .set(
+                    'I',
+                    Letter {
+                        char: 'I',
+                        digit: 0,
+                        positions: array![
+                            LetterPos { word_index: 0, digit_index: 0 },
+                            LetterPos { word_index: 2, digit_index: 2 }
+                        ]
+                            .span()
+                    }
+                );
+            expected_vec
+                .set(
+                    'B',
+                    Letter {
+                        char: 'B',
+                        digit: 1,
+                        positions: array![
+                            LetterPos { word_index: 1, digit_index: 0 },
+                            LetterPos { word_index: 1, digit_index: 1 }
+                        ]
+                            .span()
+                    }
+                );
+            expected_vec
+                .set(
+                    'L',
+                    Letter {
+                        char: 'L',
+                        digit: 3,
+                        positions: array![
+                            LetterPos { word_index: 2, digit_index: 0 },
+                            LetterPos { word_index: 2, digit_index: 1 }
+                        ]
+                            .span()
+                    }
+                );
+
+            let mut actual_vec: Vec = Default::default();
+            actual_vec.chars = array!['I', 'B', 'L'];
+            actual_vec
+                .set(
+                    'I',
+                    Letter {
+                        char: 'I',
+                        digit: 0,
+                        positions: array![
+                            LetterPos { word_index: 0, digit_index: 0 },
+                            LetterPos { word_index: 2, digit_index: 2 }
+                        ]
+                            .span()
+                    }
+                );
+            actual_vec
+                .set(
+                    'B',
+                    Letter {
+                        char: 'B',
+                        digit: 1,
+                        positions: array![
+                            LetterPos { word_index: 1, digit_index: 0 },
+                            LetterPos { word_index: 1, digit_index: 1 }
+                        ]
+                            .span()
+                    }
+                );
+            actual_vec
+                .set(
+                    'L',
+                    Letter {
+                        char: 'L',
+                        digit: 2,
+                        positions: array![
+                            LetterPos { word_index: 2, digit_index: 0 },
+                            LetterPos { word_index: 2, digit_index: 1 }
+                        ]
+                            .span()
+                    }
+                );
+
+            let letters = actual_vec.next_permutation();
+            assert_eq!(letters.len(), 1);
+            assert_eq!(
+                letters[0],
+                @Letter {
+                    char: 'L',
+                    digit: 3,
+                    positions: array![
+                        LetterPos { word_index: 2, digit_index: 0 },
+                        LetterPos { word_index: 2, digit_index: 1 }
+                    ]
+                        .span()
+                }
+            );
+
+            for i in 0
+                ..expected_vec
+                    .chars
+                    .len() {
+                        assert_eq!(
+                            expected_vec.get(i.try_into().unwrap()),
+                            actual_vec.get(i.try_into().unwrap())
+                        );
+                    };
+        }
+
+        #[test]
+        fn all_digits_changed() {
+            let mut expected_vec: Vec = Default::default();
+            expected_vec.chars = array!['I', 'B', 'L'];
+            expected_vec
+                .set(
+                    'I',
+                    Letter {
+                        char: 'I',
+                        digit: 1,
+                        positions: array![
+                            LetterPos { word_index: 0, digit_index: 0 },
+                            LetterPos { word_index: 2, digit_index: 2 }
+                        ]
+                            .span()
+                    }
+                );
+            expected_vec
+                .set(
+                    'B',
+                    Letter {
+                        char: 'B',
+                        digit: 0,
+                        positions: array![
+                            LetterPos { word_index: 1, digit_index: 0 },
+                            LetterPos { word_index: 1, digit_index: 1 }
+                        ]
+                            .span()
+                    }
+                );
+            expected_vec
+                .set(
+                    'L',
+                    Letter {
+                        char: 'L',
+                        digit: 2,
+                        positions: array![
+                            LetterPos { word_index: 2, digit_index: 0 },
+                            LetterPos { word_index: 2, digit_index: 1 }
+                        ]
+                            .span()
+                    }
+                );
+
+            let mut actual_vec: Vec = Default::default();
+            actual_vec.chars = array!['I', 'B', 'L'];
+            actual_vec
+                .set(
+                    'I',
+                    Letter {
+                        char: 'I',
+                        digit: 0,
+                        positions: array![
+                            LetterPos { word_index: 0, digit_index: 0 },
+                            LetterPos { word_index: 2, digit_index: 2 }
+                        ]
+                            .span()
+                    }
+                );
+            actual_vec
+                .set(
+                    'B',
+                    Letter {
+                        char: 'B',
+                        digit: 9,
+                        positions: array![
+                            LetterPos { word_index: 1, digit_index: 0 },
+                            LetterPos { word_index: 1, digit_index: 1 }
+                        ]
+                            .span()
+                    }
+                );
+            actual_vec
+                .set(
+                    'L',
+                    Letter {
+                        char: 'L',
+                        digit: 8,
+                        positions: array![
+                            LetterPos { word_index: 2, digit_index: 0 },
+                            LetterPos { word_index: 2, digit_index: 1 }
+                        ]
+                            .span()
+                    }
+                );
+
+            let letters = actual_vec.next_permutation();
+            assert_eq!(letters.len(), 3);
+            assert_eq!(
+                letters[0],
+                @Letter {
+                    char: 'I',
+                    digit: 1,
+                    positions: array![
+                        LetterPos { word_index: 0, digit_index: 0 },
+                        LetterPos { word_index: 2, digit_index: 2 }
+                    ]
+                        .span()
+                }
+            );
+            assert_eq!(
+                letters[1],
+                @Letter {
+                    char: 'B',
+                    digit: 0,
+                    positions: array![
+                        LetterPos { word_index: 1, digit_index: 0 },
+                        LetterPos { word_index: 1, digit_index: 1 }
+                    ]
+                        .span()
+                }
+            );
+            assert_eq!(
+                letters[2],
+                @Letter {
+                    char: 'L',
+                    digit: 2,
+                    positions: array![
+                        LetterPos { word_index: 2, digit_index: 0 },
+                        LetterPos { word_index: 2, digit_index: 1 }
+                    ]
+                        .span()
+                }
+            );
+
+            for i in 0
+                ..expected_vec
+                    .chars
+                    .len() {
+                        assert_eq!(
+                            expected_vec.get(i.try_into().unwrap()),
+                            actual_vec.get(i.try_into().unwrap())
+                        );
                     };
         }
     }

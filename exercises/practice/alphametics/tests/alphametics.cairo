@@ -23,7 +23,7 @@ fn leading_zero_solution_is_invalid() {
 }
 
 #[test]
-#[ignore]
+// #[ignore]
 fn puzzle_with_two_digits_final_carry() {
     let answer = solve("A + A + A + A + A + A + A + A + A + A + A + B == BCC");
     let expected = array![('A', 9), ('B', 1), ('C', 0)];
