@@ -1,5 +1,5 @@
 #[derive(Drop, Debug, PartialEq)]
-enum Error {
+pub enum Error {
     InvalidInputBase,
     InvalidOutputBase,
     InvalidDigit: u32,

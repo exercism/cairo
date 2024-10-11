@@ -93,7 +93,7 @@ fn hexadecimal_to_trinary() {
 
 #[test]
 #[ignore]
-fn 15_bit_integer() {
+fn test_15_bit_integer() {
     let input_base = 97;
     let input_digits = array![3, 46, 60];
     let output_base = 73;
