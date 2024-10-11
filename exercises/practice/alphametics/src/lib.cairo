@@ -108,6 +108,11 @@ fn update_permutation(ref words_as_numbers: WordsAsNumbers, ref letters: Vec) ->
 
 pub fn solve(puzzle: ByteArray) -> Option<Array<(u8, u8)>> {
     let (mut words_as_numbers, mut letters) = parse_words(puzzle).ok()?;
+
+    if !update_permutation(ref words_as_numbers, ref letters) {
+        return Option::None;
+    }
+
     check_solution(ref words_as_numbers, ref letters)
 }
 
@@ -147,7 +152,7 @@ impl VecImpl of VecTrait {
                 self.chars.append(letter_key);
                 Letter {
                     char: letter_key,
-                    digit: self.chars.len().try_into().unwrap() - 1,
+                    digit: (11 - self.chars.len().try_into().unwrap()) % 10,
                     positions: array![].span()
                 }
             }
@@ -347,8 +352,8 @@ mod tests {
             let puzzle = "I + BB == ILL";
             let mut expected_wan: WordsAsNumbers = Default::default();
             expected_wan.append(0);
-            expected_wan.append(11);
-            expected_wan.append(22);
+            expected_wan.append(99);
+            expected_wan.append(88);
 
             let mut expected_vec: Vec = Default::default();
             expected_vec.chars = array!['I', 'B', 'L'];
@@ -370,7 +375,7 @@ mod tests {
                     'B',
                     Letter {
                         char: 'B',
-                        digit: 1,
+                        digit: 9,
                         positions: array![
                             LetterPos { word_index: 1, digit_index: 0 },
                             LetterPos { word_index: 1, digit_index: 1 }
@@ -383,7 +388,7 @@ mod tests {
                     'L',
                     Letter {
                         char: 'L',
-                        digit: 2,
+                        digit: 8,
                         positions: array![
                             LetterPos { word_index: 2, digit_index: 1 },
                             LetterPos { word_index: 2, digit_index: 2 }
@@ -423,10 +428,10 @@ mod tests {
         fn puzzle_with_seven_letters() {
             let puzzle = "HE + SEES + THE == LIGHT";
             let mut expected_wan: WordsAsNumbers = Default::default();
-            expected_wan.append(1);
-            expected_wan.append(2112);
-            expected_wan.append(301);
-            expected_wan.append(45603);
+            expected_wan.append(9);
+            expected_wan.append(8778);
+            expected_wan.append(609);
+            expected_wan.append(54306);
 
             let mut expected_vec: Vec = Default::default();
             expected_vec.chars = array!['H', 'E', 'S', 'T', 'L', 'I', 'G'];
