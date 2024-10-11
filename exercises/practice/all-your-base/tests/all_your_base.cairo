@@ -16,7 +16,7 @@ fn single_bit_one_to_decimal() {
 #[ignore]
 fn binary_to_single_decimal() {
     let input_base = 2;
-    let input_digits: Array<u32> =  array![1, 0, 1];
+    let input_digits: Array<u32> = array![1, 0, 1];
     let output_base = 10;
 
     let expected_output: Array<u32> = array![5];

@@ -1,6 +1,6 @@
 
 #[derive(Drop, Debug, PartialEq)]
-enum Error {
+pub enum Error {
     InvalidInputBase,
     InvalidOutputBase,
     InvalidDigit: u32,
@@ -33,7 +33,8 @@ enum Error {
 ///
 /// Notes:
 ///  * The empty array ( "[]" ) is equal to the number 0.
-///  * Never output leading 0 digits, unless the input number is 0, in which the output must be `[0]`.
+///  * Never output leading 0 digits, unless the input number is 0, in which the output must be
+/// `[0]`.
 ///    However, your function must be able to process input with leading 0 digits.
 ///
 pub fn convert(number: Array<u32>, from_base: u32, to_base: u32) -> Result<Array<u32>, Error> {
@@ -48,16 +49,16 @@ pub fn convert(number: Array<u32>, from_base: u32, to_base: u32) -> Result<Array
     }
 
     let mut response: u32 = 0;
-    let mut i:u32 = 0;
+    let mut i: u32 = 0;
     while i < number.len() {
         if *number.at(i)  >= from_base {
-                response = i;
-               break;
+            response = i;
+            break;
         }
         i += 1;
     };
-    
-    if response > 0 || i == 0{
+
+    if response > 0 || i == 0 {
         let x = *number.at(i);
         return Result::Err(Error::InvalidDigit(x));
     }
@@ -96,14 +97,14 @@ fn convert_from_base_10(mut number: u32, to_base: u32) -> Array<u32> {
         number /= to_base;
         result.append(remainder);
     };
-    
+
     reverse_array(result)
 }
 
 fn reverse_array(arr: Array<u32>) -> Array<u32> {
     let mut reversed: Array<u32> = ArrayTrait::new();
-    
-    let mut i = arr.len();    
+
+    let mut i = arr.len();
     while i > 0 {
         i -= 1;
         reversed.append(*arr[i]);
@@ -122,6 +123,6 @@ fn pow(base: u32, mut power: u32) -> u32 {
         result *= base;
         power -= 1;
     };
-    
+
     result.try_into().expect('too large to fit output type')
 }

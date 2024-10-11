@@ -33,7 +33,8 @@ pub enum Error {
 ///
 /// Notes:
 ///  * The empty array ( "[]" ) is equal to the number 0.
-///  * Never output leading 0 digits, unless the input number is 0, in which the output must be `[0]`.
+///  * Never output leading 0 digits, unless the input number is 0, in which the output must be
+///  `[0]`.
 ///    However, your function must be able to process input with leading 0 digits.
 ///
 pub fn convert(number: Array<u32>, from_base: u32, to_base: u32) -> Result<Array<u32>, Error> {
