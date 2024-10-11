@@ -1,4 +1,3 @@
-
 #[derive(Drop, Debug, PartialEq)]
 pub enum Error {
     InvalidInputBase,
@@ -51,7 +50,7 @@ pub fn convert(number: Array<u32>, from_base: u32, to_base: u32) -> Result<Array
     let mut response: u32 = 0;
     let mut i: u32 = 0;
     while i < number.len() {
-        if *number.at(i)  >= from_base {
+        if *number.at(i) >= from_base {
             response = i;
             break;
         }
