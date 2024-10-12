@@ -62,7 +62,7 @@ fn parse_words(puzzle: ByteArray) -> Result<(WordsAsNumbers, Vec), felt252> {
     Result::Ok((words_as_numbers, letters))
 }
 
-fn check_solution(
+fn find_solution(
     ref words_as_numbers: WordsAsNumbers, ref letters: Vec
 ) -> Option<Array<(u8, u8)>> {
     let result_index = words_as_numbers.len - 1;
@@ -87,7 +87,7 @@ fn check_solution(
         return Option::None;
     }
 
-    check_solution(ref words_as_numbers, ref letters)
+    find_solution(ref words_as_numbers, ref letters)
 }
 
 fn update_permutation(ref words_as_numbers: WordsAsNumbers, ref letters: Vec) -> bool {
@@ -106,14 +106,18 @@ fn update_permutation(ref words_as_numbers: WordsAsNumbers, ref letters: Vec) ->
     true
 }
 
+fn init_permutation(ref words_as_numbers: WordsAsNumbers, ref letters: Vec) -> bool {
+    panic!("implement `init_permutation`")
+}
+
 pub fn solve(puzzle: ByteArray) -> Option<Array<(u8, u8)>> {
     let (mut words_as_numbers, mut letters) = parse_words(puzzle).ok()?;
 
-    if !update_permutation(ref words_as_numbers, ref letters) {
+    if !init_permutation(ref words_as_numbers, ref letters) {
         return Option::None;
     }
 
-    check_solution(ref words_as_numbers, ref letters)
+    find_solution(ref words_as_numbers, ref letters)
 }
 
 #[derive(Destruct, Default)]
