@@ -21,17 +21,29 @@ fn parse_words(puzzle: ByteArray) -> Result<(WordsAsNumbers, Vec), felt252> {
             // jump over the next space char
             i += 2;
         } else if ch == ' ' {
-            let mut word_as_number = 0_u128;
             let current_word_len = chars.len();
-            for j in 0
+            let letter_key = *chars[0];
+            let digit_index: u8 = (current_word_len - 1).try_into().unwrap();
+            letters
+                .append(
+                    letter_key,
+                    LetterPos { word_index, digit_index },
+                    min: Option::Some(1),
+                    max: Option::None
+                );
+            for j in 1
                 ..current_word_len {
                     let letter_key = *chars[j];
                     let digit_index: u8 = (current_word_len - 1 - j).try_into().unwrap();
-                    let digit = letters.append(letter_key, LetterPos { word_index, digit_index });
-                    word_as_number = (word_as_number + digit.into()) * 10;
+                    letters
+                        .append(
+                            letter_key,
+                            LetterPos { word_index, digit_index },
+                            min: Option::None,
+                            max: Option::None
+                        );
                 };
-            // word_as_number is has a trailing zero, so we truncate it
-            words_as_numbers.append(word_as_number / 10);
+            words_as_numbers.append(0);
             if current_word_len > max_word_len {
                 max_word_len = current_word_len;
             }
@@ -48,16 +60,28 @@ fn parse_words(puzzle: ByteArray) -> Result<(WordsAsNumbers, Vec), felt252> {
         return Result::Err('result smaller than sum');
     }
 
-    let mut word_as_number = 0_u128;
-    for j in 0
+    let letter_key = *chars[0];
+    let digit_index: u8 = (result_len - 1).try_into().unwrap();
+    letters
+        .append(
+            letter_key,
+            LetterPos { word_index, digit_index },
+            min: Option::Some(1),
+            max: Option::None
+        );
+    for j in 1
         ..result_len {
             let letter_key = *chars[j];
             let digit_index: u8 = (result_len - 1 - j).try_into().unwrap();
-            let digit = letters.append(letter_key, LetterPos { word_index, digit_index });
-            word_as_number = (word_as_number + digit.into()) * 10;
+            letters
+                .append(
+                    letter_key,
+                    LetterPos { word_index, digit_index },
+                    min: Option::None,
+                    max: Option::None
+                );
         };
-    // word_as_number is has a trailing zero, so we truncate it
-    words_as_numbers.append(word_as_number / 10);
+    words_as_numbers.append(0);
 
     Result::Ok((words_as_numbers, letters))
 }
@@ -130,7 +154,9 @@ struct Vec {
 struct Letter {
     char: u8,
     positions: Span<LetterPos>,
-    digit: u8
+    digit: u8,
+    min: u8,
+    max: u8,
 }
 
 #[derive(Drop, Clone, Debug, PartialEq)]
@@ -144,26 +170,36 @@ impl VecImpl of VecTrait {
     fn get(ref self: Vec, letter_key: u8) -> Letter {
         let letter = self.dict.get(letter_key.into());
         let mut letter = letter
-            .deref_or(Letter { char: letter_key, digit: 0, positions: array![].span() });
+            .deref_or(
+                Letter { char: letter_key, digit: 0, positions: array![].span(), min: 0, max: 9 }
+            );
         letter
     }
 
-    fn append(ref self: Vec, letter_key: u8, value: LetterPos) -> u8 {
+    fn append(ref self: Vec, letter_key: u8, value: LetterPos, min: Option<u8>, max: Option<u8>) {
         let (entry, letter) = self.dict.entry(letter_key.into());
         let mut letter = match match_nullable(letter) {
             FromNullableResult::NotNull(value) => value.unbox(),
             FromNullableResult::Null => {
                 self.chars.append(letter_key);
-                Letter { char: letter_key, digit: 0, positions: array![].span() }
+                Letter { char: letter_key, digit: 0, positions: array![].span(), min: 0, max: 9 }
             }
         };
         let mut new_positions = array![];
         new_positions.append_span(letter.positions);
         new_positions.append(value);
         letter.positions = new_positions.span();
-        let digit = letter.digit;
+        if let Option::Some(min) = min {
+            if (letter.min < min) {
+                letter.min = min;
+            }
+        }
+        if let Option::Some(max) = max {
+            if letter.max > max {
+                letter.max = max;
+            }
+        }
         self.dict = entry.finalize(NullableTrait::new(letter));
-        digit
     }
 
     // Helper function to check if a value is already present in the array up to a given index.

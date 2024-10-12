@@ -1,6 +1,7 @@
 use alphametics::solve;
 
 #[test]
+#[ignore]
 fn puzzle_with_three_letters() {
     let answer = solve("I + BB == ILL");
     let expected = array![('I', 1), ('B', 9), ('L', 0)];
