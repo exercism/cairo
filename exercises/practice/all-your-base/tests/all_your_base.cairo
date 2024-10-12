@@ -1,4 +1,4 @@
-use all_your_base::{convert, Error};
+use all_your_base::{rebase, Error};
 
 #[test]
 fn single_bit_one_to_decimal() {
@@ -7,7 +7,7 @@ fn single_bit_one_to_decimal() {
     let output_base = 10;
 
     let expected_output = Result::Ok(array![1]);
-    let result = convert(input_digits, input_base, output_base);
+    let result = rebase(input_digits, input_base, output_base);
 
     assert_eq!(result, expected_output);
 }
@@ -20,7 +20,7 @@ fn binary_to_single_decimal() {
     let output_base = 10;
 
     let expected_output = Result::Ok(array![5]);
-    let result = convert(input_digits, input_base, output_base);
+    let result = rebase(input_digits, input_base, output_base);
 
     assert_eq!(result, expected_output);
 }
@@ -33,7 +33,7 @@ fn single_decimal_to_binary() {
     let output_base = 2;
 
     let expected_output = Result::Ok(array![1, 0, 1]);
-    let result = convert(input_digits, input_base, output_base);
+    let result = rebase(input_digits, input_base, output_base);
 
     assert_eq!(result, expected_output);
 }
@@ -47,7 +47,7 @@ fn binary_to_multiple_decimal() {
     let output_base = 10;
 
     let expected_output = Result::Ok(array![4, 2]);
-    let result = convert(input_digits, input_base, output_base);
+    let result = rebase(input_digits, input_base, output_base);
 
     assert_eq!(result, expected_output);
 }
@@ -60,7 +60,7 @@ fn decimal_to_binary() {
     let output_base = 2;
 
     let expected_output = Result::Ok(array![1, 0, 1, 0, 1, 0]);
-    let result = convert(input_digits, input_base, output_base);
+    let result = rebase(input_digits, input_base, output_base);
 
     assert_eq!(result, expected_output);
 }
@@ -73,7 +73,7 @@ fn trinary_to_hexadecimal() {
     let output_base = 16;
 
     let expected_output = Result::Ok(array![2, 10]);
-    let result = convert(input_digits, input_base, output_base);
+    let result = rebase(input_digits, input_base, output_base);
 
     assert_eq!(result, expected_output);
 }
@@ -86,7 +86,7 @@ fn hexadecimal_to_trinary() {
     let output_base = 3;
 
     let expected_output = Result::Ok(array![1, 1, 2, 0]);
-    let result = convert(input_digits, input_base, output_base);
+    let result = rebase(input_digits, input_base, output_base);
 
     assert_eq!(result, expected_output);
 }
@@ -99,7 +99,7 @@ fn test_15_bit_integer() {
     let output_base = 73;
 
     let expected_output = Result::Ok(array![6, 10, 45]);
-    let result = convert(input_digits, input_base, output_base);
+    let result = rebase(input_digits, input_base, output_base);
 
     assert_eq!(result, expected_output);
 }
@@ -113,7 +113,7 @@ fn empty_list() {
     let output_base = 10;
 
     let expected_output = Result::Ok(array![0]);
-    let result = convert(input_digits, input_base, output_base);
+    let result = rebase(input_digits, input_base, output_base);
 
     assert_eq!(result, expected_output);
 }
@@ -126,7 +126,7 @@ fn single_zero() {
     let output_base = 2;
 
     let expected_output = Result::Ok(array![0]);
-    let result = convert(input_digits, input_base, output_base);
+    let result = rebase(input_digits, input_base, output_base);
 
     assert_eq!(result, expected_output);
 }
@@ -139,7 +139,7 @@ fn multiple_zeros() {
     let output_base = 2;
 
     let expected_output = Result::Ok(array![0]);
-    let result = convert(input_digits, input_base, output_base);
+    let result = rebase(input_digits, input_base, output_base);
 
     assert_eq!(result, expected_output);
 }
@@ -152,7 +152,7 @@ fn leading_zeros() {
     let output_base = 10;
 
     let expected_output = Result::Ok(array![4, 2]);
-    let result = convert(input_digits, input_base, output_base);
+    let result = rebase(input_digits, input_base, output_base);
 
     assert_eq!(result, expected_output);
 }
@@ -165,7 +165,7 @@ fn input_base_is_one() {
     let output_base = 10;
 
     let expected_output = Result::Err(Error::InvalidInputBase);
-    let result = convert(input_digits, input_base, output_base);
+    let result = rebase(input_digits, input_base, output_base);
 
     assert_eq!(result, expected_output);
 }
@@ -178,7 +178,7 @@ fn input_base_is_zero() {
     let output_base = 10;
 
     let expected_output = Result::Err(Error::InvalidInputBase);
-    let result = convert(input_digits, input_base, output_base);
+    let result = rebase(input_digits, input_base, output_base);
 
     assert_eq!(result, expected_output);
 }
@@ -191,7 +191,7 @@ fn invalid_positive_digit() {
     let output_base = 10;
 
     let expected_output = Result::Err(Error::InvalidDigit(2));
-    let result = convert(input_digits, input_base, output_base);
+    let result = rebase(input_digits, input_base, output_base);
 
     assert_eq!(result, expected_output);
 }
@@ -205,7 +205,7 @@ fn output_base_is_one() {
     let output_base = 1;
 
     let expected_output = Result::Err(Error::InvalidOutputBase);
-    let result = convert(input_digits, input_base, output_base);
+    let result = rebase(input_digits, input_base, output_base);
 
     assert_eq!(result, expected_output);
 }
@@ -218,7 +218,7 @@ fn output_base_is_zero() {
     let output_base = 0;
 
     let expected_output = Result::Err(Error::InvalidOutputBase);
-    let result = convert(input_digits, input_base, output_base);
+    let result = rebase(input_digits, input_base, output_base);
 
     assert_eq!(result, expected_output);
 }

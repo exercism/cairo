@@ -5,6 +5,6 @@ pub enum Error {
     InvalidDigit: u32,
 }
 
-pub fn convert(number: Array<u32>, from_base: u32, to_base: u32) -> Result<Array<u32>, Error> {
+pub fn rebase(digits: Array<u32>, from_base: u32, to_base: u32) -> Result<Array<u32>, Error> {
     panic!("implement `convert`")
 }
