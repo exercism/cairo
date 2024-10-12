@@ -154,11 +154,7 @@ impl VecImpl of VecTrait {
             FromNullableResult::NotNull(value) => value.unbox(),
             FromNullableResult::Null => {
                 self.chars.append(letter_key);
-                Letter {
-                    char: letter_key,
-                    digit: (11 - self.chars.len().try_into().unwrap()) % 10,
-                    positions: array![].span()
-                }
+                Letter { char: letter_key, digit: 0, positions: array![].span() }
             }
         };
         let mut new_positions = array![];
@@ -356,8 +352,8 @@ mod tests {
             let puzzle = "I + BB == ILL";
             let mut expected_wan: WordsAsNumbers = Default::default();
             expected_wan.append(0);
-            expected_wan.append(99);
-            expected_wan.append(88);
+            expected_wan.append(0);
+            expected_wan.append(0);
 
             let mut expected_vec: Vec = Default::default();
             expected_vec.chars = array!['I', 'B', 'L'];
@@ -379,7 +375,7 @@ mod tests {
                     'B',
                     Letter {
                         char: 'B',
-                        digit: 9,
+                        digit: 0,
                         positions: array![
                             LetterPos { word_index: 1, digit_index: 0 },
                             LetterPos { word_index: 1, digit_index: 1 }
@@ -392,7 +388,7 @@ mod tests {
                     'L',
                     Letter {
                         char: 'L',
-                        digit: 8,
+                        digit: 0,
                         positions: array![
                             LetterPos { word_index: 2, digit_index: 1 },
                             LetterPos { word_index: 2, digit_index: 2 }
@@ -432,10 +428,10 @@ mod tests {
         fn puzzle_with_seven_letters() {
             let puzzle = "HE + SEES + THE == LIGHT";
             let mut expected_wan: WordsAsNumbers = Default::default();
-            expected_wan.append(9);
-            expected_wan.append(8778);
-            expected_wan.append(609);
-            expected_wan.append(54306);
+            expected_wan.append(0);
+            expected_wan.append(0);
+            expected_wan.append(0);
+            expected_wan.append(0);
 
             let mut expected_vec: Vec = Default::default();
             expected_vec.chars = array!['H', 'E', 'S', 'T', 'L', 'I', 'G'];
@@ -458,7 +454,7 @@ mod tests {
                     'E',
                     Letter {
                         char: 'E',
-                        digit: 1,
+                        digit: 0,
                         positions: array![
                             LetterPos { word_index: 0, digit_index: 1 },
                             LetterPos { word_index: 1, digit_index: 1 },
@@ -473,7 +469,7 @@ mod tests {
                     'S',
                     Letter {
                         char: 'S',
-                        digit: 2,
+                        digit: 0,
                         positions: array![
                             LetterPos { word_index: 1, digit_index: 0 },
                             LetterPos { word_index: 1, digit_index: 3 }
@@ -486,7 +482,7 @@ mod tests {
                     'T',
                     Letter {
                         char: 'T',
-                        digit: 3,
+                        digit: 0,
                         positions: array![
                             LetterPos { word_index: 2, digit_index: 0 },
                             LetterPos { word_index: 3, digit_index: 4 }
@@ -499,7 +495,7 @@ mod tests {
                     'L',
                     Letter {
                         char: 'L',
-                        digit: 4,
+                        digit: 0,
                         positions: array![LetterPos { word_index: 3, digit_index: 0 },].span()
                     }
                 );
@@ -508,7 +504,7 @@ mod tests {
                     'I',
                     Letter {
                         char: 'I',
-                        digit: 5,
+                        digit: 0,
                         positions: array![LetterPos { word_index: 3, digit_index: 1 },].span()
                     }
                 );
@@ -517,7 +513,7 @@ mod tests {
                     'G',
                     Letter {
                         char: 'G',
-                        digit: 6,
+                        digit: 0,
                         positions: array![LetterPos { word_index: 3, digit_index: 2 },].span()
                     }
                 );
@@ -568,7 +564,7 @@ mod tests {
                     'B',
                     Letter {
                         char: 'B',
-                        digit: 1,
+                        digit: 0,
                         positions: array![
                             LetterPos { word_index: 1, digit_index: 0 },
                             LetterPos { word_index: 1, digit_index: 1 }
@@ -581,7 +577,7 @@ mod tests {
                     'L',
                     Letter {
                         char: 'L',
-                        digit: 3,
+                        digit: 0,
                         positions: array![
                             LetterPos { word_index: 2, digit_index: 1 },
                             LetterPos { word_index: 2, digit_index: 2 }
@@ -610,7 +606,7 @@ mod tests {
                     'B',
                     Letter {
                         char: 'B',
-                        digit: 1,
+                        digit: 0,
                         positions: array![
                             LetterPos { word_index: 1, digit_index: 0 },
                             LetterPos { word_index: 1, digit_index: 1 }
@@ -623,7 +619,7 @@ mod tests {
                     'L',
                     Letter {
                         char: 'L',
-                        digit: 2,
+                        digit: 0,
                         positions: array![
                             LetterPos { word_index: 2, digit_index: 1 },
                             LetterPos { word_index: 2, digit_index: 2 }
@@ -638,7 +634,7 @@ mod tests {
                 letters[0],
                 @Letter {
                     char: 'L',
-                    digit: 3,
+                    digit: 0,
                     positions: array![
                         LetterPos { word_index: 2, digit_index: 1 },
                         LetterPos { word_index: 2, digit_index: 2 }
@@ -667,7 +663,7 @@ mod tests {
                     'I',
                     Letter {
                         char: 'I',
-                        digit: 1,
+                        digit: 0,
                         positions: array![
                             LetterPos { word_index: 0, digit_index: 0 },
                             LetterPos { word_index: 2, digit_index: 0 }
@@ -693,7 +689,7 @@ mod tests {
                     'L',
                     Letter {
                         char: 'L',
-                        digit: 2,
+                        digit: 0,
                         positions: array![
                             LetterPos { word_index: 2, digit_index: 1 },
                             LetterPos { word_index: 2, digit_index: 2 }
@@ -722,7 +718,7 @@ mod tests {
                     'B',
                     Letter {
                         char: 'B',
-                        digit: 9,
+                        digit: 0,
                         positions: array![
                             LetterPos { word_index: 1, digit_index: 0 },
                             LetterPos { word_index: 1, digit_index: 1 }
@@ -735,7 +731,7 @@ mod tests {
                     'L',
                     Letter {
                         char: 'L',
-                        digit: 8,
+                        digit: 0,
                         positions: array![
                             LetterPos { word_index: 2, digit_index: 1 },
                             LetterPos { word_index: 2, digit_index: 2 }
@@ -750,7 +746,7 @@ mod tests {
                 letters[0],
                 @Letter {
                     char: 'I',
-                    digit: 1,
+                    digit: 0,
                     positions: array![
                         LetterPos { word_index: 0, digit_index: 0 },
                         LetterPos { word_index: 2, digit_index: 0 }
@@ -774,7 +770,7 @@ mod tests {
                 letters[2],
                 @Letter {
                     char: 'L',
-                    digit: 2,
+                    digit: 0,
                     positions: array![
                         LetterPos { word_index: 2, digit_index: 1 },
                         LetterPos { word_index: 2, digit_index: 2 }
