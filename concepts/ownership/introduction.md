@@ -1,6 +1,7 @@
 # Introduction
 
-In Cairo, the concept of ownership applies to _variables_ and defines the rules governing who can use those variables. Each declared variable can only be used once, meaning that once a variable is used, it will either be destroyed or moved, depending on the type of usage.
+In Cairo, the concept of ownership applies to _variables_ and defines the rules governing who can use those variables.
+Each declared variable can only be used once, meaning that once a variable is used, it will either be destroyed or moved, depending on the type of usage.
 
 _Destruction_ can happen in several ways:
 

@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "<your_gh_username>"
+  ],
+  "files": {
+    "solution": [
+      "src/lib.cairo"
+    ],
+    "test": [
+      "tests/welcome_to_tech_palace.cairo"
+    ],
+    "exemplar": [
+      ".meta/exemplar.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
+    ]
+  },
+  "forked_from": [
+    "go/welcome-to-tech-palace"
+  ],
+  "blurb": "<blurb>"
+}

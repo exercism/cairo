@@ -97,6 +97,36 @@ Basic linting finished successfully:
 - Required shared exercise docs are present
 ```
 
+### Markdown linting
+
+To check for markdown files' formatting issues, open a bash terminal and run:
+
+```shell
+./bin/lint_markdown.sh
+```
+
+You can even pass the `--fix` flag to automatically fix those issues that can be fixed automatically:
+
+```shell
+./bin/lint_markdown.sh --fix
+```
+
+### Exercise formatting
+
+To format Cairo files, open a bash terminal and run:
+
+```shell
+./bin/format_exercises.sh
+```
+
+### Format all
+
+To run all formatting scripts at once, open a bash terminal and run:
+
+```shell
+./bin/format_all.sh
+```
+
 <br>
 
 

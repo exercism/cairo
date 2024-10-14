@@ -21,6 +21,6 @@ Introduce the student to tuples and how to work with them.
 
 ## Resources to refer to
 
-### Hints
+- [Cairo Book - The Tuple Type][tuples]
 
-- <https://book.cairo-lang.org/ch02-02-data-types.html?highlight=tuples#the-tuple-type>
+[tuples]: https://book.cairo-lang.org/ch02-02-data-types.html#the-tuple-type

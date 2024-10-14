@@ -40,6 +40,12 @@ for exercise_path in $exercises; do
     cd "$repo"
 
     exercise=$(basename "$exercise_path")
+
+    if [ ! -s "$exercise_path/Scarb.toml" ]; then
+        echo "Exercise $exercise is just a stub, skipping"
+        continue
+    fi
+
     echo "Checking $exercise exercise..."
 
     tmp_dir=$(mktemp -d)
