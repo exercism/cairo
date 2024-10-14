@@ -5,11 +5,11 @@ pub enum Error {
     InvalidDigit: u32,
 }
 
-pub fn rebase(digits: Array<u32>, inputBase: u32, outputBase: u32) -> Result<Array<u32>, Error> {
-    if inputBase < 2 {
+pub fn rebase(digits: Array<u32>, input_base: u32, output_base: u32) -> Result<Array<u32>, Error> {
+    if input_base < 2 {
         return Result::Err(Error::InvalidInputBase);
     }
-    if outputBase < 2 {
+    if output_base < 2 {
         return Result::Err(Error::InvalidOutputBase);
     }
     if digits.is_empty() {
@@ -19,7 +19,7 @@ pub fn rebase(digits: Array<u32>, inputBase: u32, outputBase: u32) -> Result<Arr
     let mut response: u32 = 0;
     let mut i: u32 = 0;
     while i < digits.len() {
-        if *digits.at(i) >= inputBase {
+        if *digits.at(i) >= input_base {
             response = i;
             break;
         }
@@ -31,21 +31,21 @@ pub fn rebase(digits: Array<u32>, inputBase: u32, outputBase: u32) -> Result<Arr
         return Result::Err(Error::InvalidDigit(x));
     }
 
-    let base_10_digits = convert_outputBase_10(digits, inputBase);
+    let base_10_digits = convert_to_base_10(digits, input_base);
 
-    let result = convert_inputBase_10(base_10_digits, outputBase);
+    let result = convert_from_base_10(base_10_digits, output_base);
 
     Result::Ok(result)
 }
 
-fn convert_outputBase_10(digits: Array<u32>, inputBase: u32) -> u32 {
+fn convert_to_base_10(digits: Array<u32>, input_base: u32) -> u32 {
     let mut sum = 0;
     let mut i = 0;
     let len = digits.len();
     while i < len {
         let digit = digits[i];
         let exp = len - 1 - i;
-        let pow = pow(inputBase, exp);
+        let pow = pow(input_base, exp);
         sum += *digit * pow;
         i += 1;
     };
@@ -53,7 +53,7 @@ fn convert_outputBase_10(digits: Array<u32>, inputBase: u32) -> u32 {
     sum
 }
 
-fn convert_inputBase_10(mut digits: u32, outputBase: u32) -> Array<u32> {
+fn convert_from_base_10(mut digits: u32, output_base: u32) -> Array<u32> {
     let mut result: Array<u32> = ArrayTrait::new();
     if digits == 0 {
         result.append(0);
@@ -61,8 +61,8 @@ fn convert_inputBase_10(mut digits: u32, outputBase: u32) -> Array<u32> {
     }
 
     while digits > 0 {
-        let remainder = digits % outputBase;
-        digits /= outputBase;
+        let remainder = digits % output_base;
+        digits /= output_base;
         result.append(remainder);
     };
 
