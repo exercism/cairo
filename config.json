@@ -547,6 +547,14 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 2
+      },
+      {
+        "slug": "wordy",
+        "name": "Wordy",
+        "uuid": "78d31713-0d88-4821-a586-4b36c46eaa44",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
       }
     ],
     "foregone": [
