@@ -205,7 +205,9 @@ impl VecImpl of VecTrait {
             letter.digit += 1;
 
             // Step 2: Ensure the new value is not already present in the array
-            while letter.digit <= 9 && self.contains(letter.digit, i) {
+            while letter.digit >= letter.min
+                && letter.digit <= 9
+                && self.contains(letter.digit, i) {
                 letter.digit += 1;
             };
 
@@ -220,19 +222,18 @@ impl VecImpl of VecTrait {
 
             // Step 4: Reset all elements to the right of position `i` to the smallest non-repeating
             // values
-            let mut next_digit = 0;
             for j in (i + 1)
                 ..n {
+                    let char = *self.chars[j];
+                    let mut letter = self.get(char.into());
+                    let mut next_digit = letter.min;
                     while self.contains(next_digit, j) {
                         next_digit += 1;
                     };
-                    // TODO: assert next_digit <= 9
-                    let char = *self.chars[j];
-                    let mut letter = self.get(char.into());
+                    assert!(next_digit <= 9, "next_digit shouldn't be greater than 9");
                     letter.digit = next_digit;
                     self.set(char.into(), letter);
                     updated_letters.append(letter);
-                    next_digit += 1;
                 };
 
             break;
@@ -597,7 +598,7 @@ mod tests {
                     'L',
                     Letter {
                         char: 'L',
-                        digit: 0,
+                        digit: 3,
                         min: 0,
                         positions: array![
                             LetterPos { word_index: 2, digit_index: 1 },
@@ -642,7 +643,7 @@ mod tests {
                     'L',
                     Letter {
                         char: 'L',
-                        digit: 3,
+                        digit: 0,
                         min: 0,
                         positions: array![
                             LetterPos { word_index: 2, digit_index: 1 },
