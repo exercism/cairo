@@ -558,6 +558,352 @@ mod tests {
         }
     }
 
+    mod init_permutation {
+        use super::super::{
+            WordsAsNumbers, WordsAsNumbersTrait, Vec, Letter, LetterPos, VecTrait, init_permutation
+        };
+
+        #[test]
+        fn puzzle_with_three_letters() {
+            // let puzzle = "I + BB == ILL";
+            let mut expected_wan: WordsAsNumbers = Default::default();
+            expected_wan.append(1);
+            expected_wan.append(22);
+            expected_wan.append(100);
+
+            let mut actual_wan: WordsAsNumbers = Default::default();
+            actual_wan.append(0);
+            actual_wan.append(0);
+            actual_wan.append(0);
+
+            let mut expected_vec: Vec = Default::default();
+            expected_vec.chars = array!['I', 'B', 'L'];
+            expected_vec
+                .set(
+                    'I',
+                    Letter {
+                        char: 'I',
+                        digit: 1,
+                        min: 1,
+                        positions: array![
+                            LetterPos { word_index: 0, digit_index: 0 },
+                            LetterPos { word_index: 2, digit_index: 0 }
+                        ]
+                            .span()
+                    }
+                );
+            expected_vec
+                .set(
+                    'B',
+                    Letter {
+                        char: 'B',
+                        digit: 2,
+                        min: 1,
+                        positions: array![
+                            LetterPos { word_index: 1, digit_index: 0 },
+                            LetterPos { word_index: 1, digit_index: 1 }
+                        ]
+                            .span()
+                    }
+                );
+            expected_vec
+                .set(
+                    'L',
+                    Letter {
+                        char: 'L',
+                        digit: 0,
+                        min: 0,
+                        positions: array![
+                            LetterPos { word_index: 2, digit_index: 1 },
+                            LetterPos { word_index: 2, digit_index: 2 }
+                        ]
+                            .span()
+                    }
+                );
+
+            let mut actual_vec: Vec = Default::default();
+            actual_vec.chars = array!['I', 'B', 'L'];
+            actual_vec
+                .set(
+                    'I',
+                    Letter {
+                        char: 'I',
+                        digit: 0,
+                        min: 1,
+                        positions: array![
+                            LetterPos { word_index: 0, digit_index: 0 },
+                            LetterPos { word_index: 2, digit_index: 0 }
+                        ]
+                            .span()
+                    }
+                );
+            actual_vec
+                .set(
+                    'B',
+                    Letter {
+                        char: 'B',
+                        digit: 0,
+                        min: 1,
+                        positions: array![
+                            LetterPos { word_index: 1, digit_index: 0 },
+                            LetterPos { word_index: 1, digit_index: 1 }
+                        ]
+                            .span()
+                    }
+                );
+            actual_vec
+                .set(
+                    'L',
+                    Letter {
+                        char: 'L',
+                        digit: 0,
+                        min: 0,
+                        positions: array![
+                            LetterPos { word_index: 2, digit_index: 1 },
+                            LetterPos { word_index: 2, digit_index: 2 }
+                        ]
+                            .span()
+                    }
+                );
+
+            assert!(init_permutation(ref actual_wan, ref actual_vec));
+
+            for i in 0
+                ..expected_wan
+                    .len {
+                        assert_eq!(expected_wan.get(i.into()), actual_wan.get(i.into()));
+                    };
+
+            for i in 0
+                ..expected_vec
+                    .chars
+                    .len() {
+                        assert_eq!(
+                            expected_vec.get(i.try_into().unwrap()),
+                            actual_vec.get(i.try_into().unwrap())
+                        );
+                    };
+        }
+
+        #[test]
+        fn puzzle_with_seven_letters() {
+            // let puzzle = "HE + SEES + THE == LIGHT";
+            let mut expected_wan: WordsAsNumbers = Default::default();
+            expected_wan.append(10);
+            expected_wan.append(2002);
+            expected_wan.append(310);
+            expected_wan.append(45613);
+
+            let mut actual_wan: WordsAsNumbers = Default::default();
+            actual_wan.append(0);
+            actual_wan.append(0);
+            actual_wan.append(0);
+            actual_wan.append(0);
+
+            let mut expected_vec: Vec = Default::default();
+            expected_vec.chars = array!['H', 'E', 'S', 'T', 'L', 'I', 'G'];
+            expected_vec
+                .set(
+                    'H',
+                    Letter {
+                        char: 'H',
+                        digit: 1,
+                        min: 1,
+                        positions: array![
+                            LetterPos { word_index: 0, digit_index: 0 },
+                            LetterPos { word_index: 2, digit_index: 1 },
+                            LetterPos { word_index: 3, digit_index: 3 },
+                        ]
+                            .span()
+                    }
+                );
+            expected_vec
+                .set(
+                    'E',
+                    Letter {
+                        char: 'E',
+                        digit: 0,
+                        min: 0,
+                        positions: array![
+                            LetterPos { word_index: 0, digit_index: 1 },
+                            LetterPos { word_index: 1, digit_index: 1 },
+                            LetterPos { word_index: 1, digit_index: 2 },
+                            LetterPos { word_index: 2, digit_index: 2 },
+                        ]
+                            .span()
+                    }
+                );
+            expected_vec
+                .set(
+                    'S',
+                    Letter {
+                        char: 'S',
+                        digit: 2,
+                        min: 1,
+                        positions: array![
+                            LetterPos { word_index: 1, digit_index: 0 },
+                            LetterPos { word_index: 1, digit_index: 3 }
+                        ]
+                            .span()
+                    }
+                );
+            expected_vec
+                .set(
+                    'T',
+                    Letter {
+                        char: 'T',
+                        digit: 3,
+                        min: 1,
+                        positions: array![
+                            LetterPos { word_index: 2, digit_index: 0 },
+                            LetterPos { word_index: 3, digit_index: 4 }
+                        ]
+                            .span()
+                    }
+                );
+            expected_vec
+                .set(
+                    'L',
+                    Letter {
+                        char: 'L',
+                        digit: 4,
+                        min: 1,
+                        positions: array![LetterPos { word_index: 3, digit_index: 0 },].span()
+                    }
+                );
+            expected_vec
+                .set(
+                    'I',
+                    Letter {
+                        char: 'I',
+                        digit: 5,
+                        min: 0,
+                        positions: array![LetterPos { word_index: 3, digit_index: 1 },].span()
+                    }
+                );
+            expected_vec
+                .set(
+                    'G',
+                    Letter {
+                        char: 'G',
+                        digit: 6,
+                        min: 0,
+                        positions: array![LetterPos { word_index: 3, digit_index: 2 },].span()
+                    }
+                );
+
+            let mut actual_vec: Vec = Default::default();
+            actual_vec.chars = array!['H', 'E', 'S', 'T', 'L', 'I', 'G'];
+            actual_vec
+                .set(
+                    'H',
+                    Letter {
+                        char: 'H',
+                        digit: 0,
+                        min: 1,
+                        positions: array![
+                            LetterPos { word_index: 0, digit_index: 0 },
+                            LetterPos { word_index: 2, digit_index: 1 },
+                            LetterPos { word_index: 3, digit_index: 3 },
+                        ]
+                            .span()
+                    }
+                );
+            actual_vec
+                .set(
+                    'E',
+                    Letter {
+                        char: 'E',
+                        digit: 0,
+                        min: 0,
+                        positions: array![
+                            LetterPos { word_index: 0, digit_index: 1 },
+                            LetterPos { word_index: 1, digit_index: 1 },
+                            LetterPos { word_index: 1, digit_index: 2 },
+                            LetterPos { word_index: 2, digit_index: 2 },
+                        ]
+                            .span()
+                    }
+                );
+            actual_vec
+                .set(
+                    'S',
+                    Letter {
+                        char: 'S',
+                        digit: 0,
+                        min: 1,
+                        positions: array![
+                            LetterPos { word_index: 1, digit_index: 0 },
+                            LetterPos { word_index: 1, digit_index: 3 }
+                        ]
+                            .span()
+                    }
+                );
+            actual_vec
+                .set(
+                    'T',
+                    Letter {
+                        char: 'T',
+                        digit: 0,
+                        min: 1,
+                        positions: array![
+                            LetterPos { word_index: 2, digit_index: 0 },
+                            LetterPos { word_index: 3, digit_index: 4 }
+                        ]
+                            .span()
+                    }
+                );
+            actual_vec
+                .set(
+                    'L',
+                    Letter {
+                        char: 'L',
+                        digit: 0,
+                        min: 1,
+                        positions: array![LetterPos { word_index: 3, digit_index: 0 },].span()
+                    }
+                );
+            actual_vec
+                .set(
+                    'I',
+                    Letter {
+                        char: 'I',
+                        digit: 0,
+                        min: 0,
+                        positions: array![LetterPos { word_index: 3, digit_index: 1 },].span()
+                    }
+                );
+            actual_vec
+                .set(
+                    'G',
+                    Letter {
+                        char: 'G',
+                        digit: 0,
+                        min: 0,
+                        positions: array![LetterPos { word_index: 3, digit_index: 2 },].span()
+                    }
+                );
+
+            assert!(init_permutation(ref actual_wan, ref actual_vec));
+
+            for i in 0
+                ..expected_wan
+                    .len {
+                        assert_eq!(expected_wan.get(i.into()), actual_wan.get(i.into()));
+                    };
+
+            for i in 0
+                ..expected_vec
+                    .chars
+                    .len() {
+                        assert_eq!(
+                            expected_vec.get(i.try_into().unwrap()),
+                            actual_vec.get(i.try_into().unwrap())
+                        );
+                    };
+        }
+    }
+
     mod next_permutation {
         use super::super::{Vec, Letter, LetterPos, VecTrait};
 
