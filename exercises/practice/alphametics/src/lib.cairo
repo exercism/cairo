@@ -25,22 +25,14 @@ fn parse_words(puzzle: ByteArray) -> Result<(WordsAsNumbers, Vec), felt252> {
             let letter_key = *chars[0];
             let digit_index: u8 = (current_word_len - 1).try_into().unwrap();
             letters
-                .append(
-                    letter_key,
-                    LetterPos { word_index, digit_index },
-                    min: Option::Some(1),
-                    max: Option::None
-                );
+                .append(letter_key, LetterPos { word_index, digit_index }, min: Option::Some(1),);
             for j in 1
                 ..current_word_len {
                     let letter_key = *chars[j];
                     let digit_index: u8 = (current_word_len - 1 - j).try_into().unwrap();
                     letters
                         .append(
-                            letter_key,
-                            LetterPos { word_index, digit_index },
-                            min: Option::None,
-                            max: Option::None
+                            letter_key, LetterPos { word_index, digit_index }, min: Option::None,
                         );
                 };
             words_as_numbers.append(0);
@@ -62,24 +54,12 @@ fn parse_words(puzzle: ByteArray) -> Result<(WordsAsNumbers, Vec), felt252> {
 
     let letter_key = *chars[0];
     let digit_index: u8 = (result_len - 1).try_into().unwrap();
-    letters
-        .append(
-            letter_key,
-            LetterPos { word_index, digit_index },
-            min: Option::Some(1),
-            max: Option::None
-        );
+    letters.append(letter_key, LetterPos { word_index, digit_index }, min: Option::Some(1),);
     for j in 1
         ..result_len {
             let letter_key = *chars[j];
             let digit_index: u8 = (result_len - 1 - j).try_into().unwrap();
-            letters
-                .append(
-                    letter_key,
-                    LetterPos { word_index, digit_index },
-                    min: Option::None,
-                    max: Option::None
-                );
+            letters.append(letter_key, LetterPos { word_index, digit_index }, min: Option::None,);
         };
     words_as_numbers.append(0);
 
@@ -156,7 +136,6 @@ struct Letter {
     positions: Span<LetterPos>,
     digit: u8,
     min: u8,
-    max: u8,
 }
 
 #[derive(Drop, Clone, Debug, PartialEq)]
@@ -170,19 +149,17 @@ impl VecImpl of VecTrait {
     fn get(ref self: Vec, letter_key: u8) -> Letter {
         let letter = self.dict.get(letter_key.into());
         let mut letter = letter
-            .deref_or(
-                Letter { char: letter_key, digit: 0, positions: array![].span(), min: 0, max: 9 }
-            );
+            .deref_or(Letter { char: letter_key, digit: 0, positions: array![].span(), min: 0 });
         letter
     }
 
-    fn append(ref self: Vec, letter_key: u8, value: LetterPos, min: Option<u8>, max: Option<u8>) {
+    fn append(ref self: Vec, letter_key: u8, value: LetterPos, min: Option<u8>) {
         let (entry, letter) = self.dict.entry(letter_key.into());
         let mut letter = match match_nullable(letter) {
             FromNullableResult::NotNull(value) => value.unbox(),
             FromNullableResult::Null => {
                 self.chars.append(letter_key);
-                Letter { char: letter_key, digit: 0, positions: array![].span(), min: 0, max: 9 }
+                Letter { char: letter_key, digit: 0, positions: array![].span(), min: 0 }
             }
         };
         let mut new_positions = array![];
@@ -192,11 +169,6 @@ impl VecImpl of VecTrait {
         if let Option::Some(min) = min {
             if (letter.min < min) {
                 letter.min = min;
-            }
-        }
-        if let Option::Some(max) = max {
-            if letter.max > max {
-                letter.max = max;
             }
         }
         self.dict = entry.finalize(NullableTrait::new(letter));
@@ -399,6 +371,7 @@ mod tests {
                     Letter {
                         char: 'I',
                         digit: 0,
+                        min: 1,
                         positions: array![
                             LetterPos { word_index: 0, digit_index: 0 },
                             LetterPos { word_index: 2, digit_index: 0 }
@@ -412,6 +385,7 @@ mod tests {
                     Letter {
                         char: 'B',
                         digit: 0,
+                        min: 1,
                         positions: array![
                             LetterPos { word_index: 1, digit_index: 0 },
                             LetterPos { word_index: 1, digit_index: 1 }
@@ -425,6 +399,7 @@ mod tests {
                     Letter {
                         char: 'L',
                         digit: 0,
+                        min: 0,
                         positions: array![
                             LetterPos { word_index: 2, digit_index: 1 },
                             LetterPos { word_index: 2, digit_index: 2 }
@@ -477,6 +452,7 @@ mod tests {
                     Letter {
                         char: 'H',
                         digit: 0,
+                        min: 1,
                         positions: array![
                             LetterPos { word_index: 0, digit_index: 0 },
                             LetterPos { word_index: 2, digit_index: 1 },
@@ -491,6 +467,7 @@ mod tests {
                     Letter {
                         char: 'E',
                         digit: 0,
+                        min: 0,
                         positions: array![
                             LetterPos { word_index: 0, digit_index: 1 },
                             LetterPos { word_index: 1, digit_index: 1 },
@@ -506,6 +483,7 @@ mod tests {
                     Letter {
                         char: 'S',
                         digit: 0,
+                        min: 1,
                         positions: array![
                             LetterPos { word_index: 1, digit_index: 0 },
                             LetterPos { word_index: 1, digit_index: 3 }
@@ -519,6 +497,7 @@ mod tests {
                     Letter {
                         char: 'T',
                         digit: 0,
+                        min: 1,
                         positions: array![
                             LetterPos { word_index: 2, digit_index: 0 },
                             LetterPos { word_index: 3, digit_index: 4 }
@@ -532,6 +511,7 @@ mod tests {
                     Letter {
                         char: 'L',
                         digit: 0,
+                        min: 1,
                         positions: array![LetterPos { word_index: 3, digit_index: 0 },].span()
                     }
                 );
@@ -541,6 +521,7 @@ mod tests {
                     Letter {
                         char: 'I',
                         digit: 0,
+                        min: 0,
                         positions: array![LetterPos { word_index: 3, digit_index: 1 },].span()
                     }
                 );
@@ -550,6 +531,7 @@ mod tests {
                     Letter {
                         char: 'G',
                         digit: 0,
+                        min: 0,
                         positions: array![LetterPos { word_index: 3, digit_index: 2 },].span()
                     }
                 );
@@ -587,7 +569,8 @@ mod tests {
                     'I',
                     Letter {
                         char: 'I',
-                        digit: 0,
+                        digit: 1,
+                        min: 1,
                         positions: array![
                             LetterPos { word_index: 0, digit_index: 0 },
                             LetterPos { word_index: 2, digit_index: 0 }
@@ -600,7 +583,8 @@ mod tests {
                     'B',
                     Letter {
                         char: 'B',
-                        digit: 0,
+                        digit: 2,
+                        min: 1,
                         positions: array![
                             LetterPos { word_index: 1, digit_index: 0 },
                             LetterPos { word_index: 1, digit_index: 1 }
@@ -614,6 +598,7 @@ mod tests {
                     Letter {
                         char: 'L',
                         digit: 0,
+                        min: 0,
                         positions: array![
                             LetterPos { word_index: 2, digit_index: 1 },
                             LetterPos { word_index: 2, digit_index: 2 }
@@ -629,7 +614,8 @@ mod tests {
                     'I',
                     Letter {
                         char: 'I',
-                        digit: 0,
+                        digit: 1,
+                        min: 1,
                         positions: array![
                             LetterPos { word_index: 0, digit_index: 0 },
                             LetterPos { word_index: 2, digit_index: 0 }
@@ -642,7 +628,8 @@ mod tests {
                     'B',
                     Letter {
                         char: 'B',
-                        digit: 0,
+                        digit: 2,
+                        min: 1,
                         positions: array![
                             LetterPos { word_index: 1, digit_index: 0 },
                             LetterPos { word_index: 1, digit_index: 1 }
@@ -655,7 +642,8 @@ mod tests {
                     'L',
                     Letter {
                         char: 'L',
-                        digit: 0,
+                        digit: 3,
+                        min: 0,
                         positions: array![
                             LetterPos { word_index: 2, digit_index: 1 },
                             LetterPos { word_index: 2, digit_index: 2 }
@@ -670,7 +658,8 @@ mod tests {
                 letters[0],
                 @Letter {
                     char: 'L',
-                    digit: 0,
+                    digit: 3,
+                    min: 0,
                     positions: array![
                         LetterPos { word_index: 2, digit_index: 1 },
                         LetterPos { word_index: 2, digit_index: 2 }
@@ -699,7 +688,8 @@ mod tests {
                     'I',
                     Letter {
                         char: 'I',
-                        digit: 0,
+                        digit: 2,
+                        min: 1,
                         positions: array![
                             LetterPos { word_index: 0, digit_index: 0 },
                             LetterPos { word_index: 2, digit_index: 0 }
@@ -712,7 +702,8 @@ mod tests {
                     'B',
                     Letter {
                         char: 'B',
-                        digit: 0,
+                        digit: 1,
+                        min: 1,
                         positions: array![
                             LetterPos { word_index: 1, digit_index: 0 },
                             LetterPos { word_index: 1, digit_index: 1 }
@@ -726,6 +717,7 @@ mod tests {
                     Letter {
                         char: 'L',
                         digit: 0,
+                        min: 0,
                         positions: array![
                             LetterPos { word_index: 2, digit_index: 1 },
                             LetterPos { word_index: 2, digit_index: 2 }
@@ -741,7 +733,8 @@ mod tests {
                     'I',
                     Letter {
                         char: 'I',
-                        digit: 0,
+                        digit: 1,
+                        min: 1,
                         positions: array![
                             LetterPos { word_index: 0, digit_index: 0 },
                             LetterPos { word_index: 2, digit_index: 0 }
@@ -754,7 +747,8 @@ mod tests {
                     'B',
                     Letter {
                         char: 'B',
-                        digit: 0,
+                        digit: 9,
+                        min: 1,
                         positions: array![
                             LetterPos { word_index: 1, digit_index: 0 },
                             LetterPos { word_index: 1, digit_index: 1 }
@@ -767,7 +761,8 @@ mod tests {
                     'L',
                     Letter {
                         char: 'L',
-                        digit: 0,
+                        digit: 8,
+                        min: 0,
                         positions: array![
                             LetterPos { word_index: 2, digit_index: 1 },
                             LetterPos { word_index: 2, digit_index: 2 }
@@ -782,7 +777,8 @@ mod tests {
                 letters[0],
                 @Letter {
                     char: 'I',
-                    digit: 0,
+                    digit: 2,
+                    min: 1,
                     positions: array![
                         LetterPos { word_index: 0, digit_index: 0 },
                         LetterPos { word_index: 2, digit_index: 0 }
@@ -794,7 +790,8 @@ mod tests {
                 letters[1],
                 @Letter {
                     char: 'B',
-                    digit: 0,
+                    digit: 1,
+                    min: 1,
                     positions: array![
                         LetterPos { word_index: 1, digit_index: 0 },
                         LetterPos { word_index: 1, digit_index: 1 }
@@ -807,6 +804,7 @@ mod tests {
                 @Letter {
                     char: 'L',
                     digit: 0,
+                    min: 0,
                     positions: array![
                         LetterPos { word_index: 2, digit_index: 1 },
                         LetterPos { word_index: 2, digit_index: 2 }
