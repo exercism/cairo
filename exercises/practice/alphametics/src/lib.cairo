@@ -1,6 +1,10 @@
 use core::nullable::{match_nullable, FromNullableResult};
 use core::dict::{Felt252Dict, Felt252DictEntryTrait};
 
+fn is_whitespace(chr: u8) -> bool {
+    chr == ' ' || chr == '\t' || chr == '\n' || chr == '\r'
+}
+
 fn parse_words(puzzle: ByteArray) -> Result<(WordsAsNumbers, Vec), felt252> {
     let mut words_as_numbers: WordsAsNumbers = Default::default();
     let mut letters: Vec = Default::default();
@@ -12,15 +16,7 @@ fn parse_words(puzzle: ByteArray) -> Result<(WordsAsNumbers, Vec), felt252> {
     let mut i = 0_usize;
     while i < puzzle.len() {
         let ch = puzzle[i];
-        if ch == '=' {
-            word_index += 1;
-            // jump over '= ' to get to next char
-            i += 3;
-        } else if ch == '+' {
-            word_index += 1;
-            // jump over the next space char
-            i += 2;
-        } else if ch == ' ' {
+        if ch == '=' || ch == '+' {
             let current_word_len = chars.len();
             let letter_key = *chars[0];
             let digit_index: u8 = (current_word_len - 1).try_into().unwrap();
@@ -40,6 +36,10 @@ fn parse_words(puzzle: ByteArray) -> Result<(WordsAsNumbers, Vec), felt252> {
                 max_word_len = current_word_len;
             }
             chars = array![];
+            word_index += 1;
+            // jump over the next space char
+            i += 2;
+        } else if is_whitespace(ch) {
             i += 1;
         } else {
             chars.append(ch);
