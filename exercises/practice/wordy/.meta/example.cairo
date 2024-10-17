@@ -21,7 +21,7 @@ pub fn answer(question: ByteArray) -> i32 {
         Option::Some(s) => {
             match parse_int(s.unbox()) {
                 Option::Some(s) => s,
-                Option::None =>  panic!("syntax error"),
+                Option::None => panic!("syntax error"),
             }
         },
         Option::None => panic!("syntax error"),
@@ -130,9 +130,7 @@ fn parse_int(num: @ByteArray) -> Option<i32> {
         Option::Some(val) => { if (is_signed) {
             result = Option::Some(val * -1)
         } },
-        Option::None => {
-            result = Option::None
-        },
+        Option::None => { result = Option::None },
     }
     result
 }
