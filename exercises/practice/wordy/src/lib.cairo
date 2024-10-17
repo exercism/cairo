@@ -1,3 +1,3 @@
-pub fn answer(word: ByteArray) -> (i32, bool) {
+pub fn answer(question: ByteArray) -> (i32, bool) {
     panic!("implement `answer`")
 }

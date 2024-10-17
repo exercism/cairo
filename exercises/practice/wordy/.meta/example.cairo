@@ -7,24 +7,24 @@ enum Operator {
     Invalid,
 }
 
-pub fn answer(word: ByteArray) -> (i32, bool) {
-    let words: Array<ByteArray> = split_string_into_words(word);
+pub fn answer(question: ByteArray) -> i32 {
+    let words: Array<ByteArray> = split_question_into_words(question);
     if words.len() < 3 {
-        return (0, false);
+        panic!("syntax error");
     }
 
     if words[0] != @"What" || words[1] != @"is" {
-        return (0, false);
+        panic!("unknown operation");
     }
 
     let mut result: i32 = match words.get(2) {
         Option::Some(s) => {
-            match convert_ByteArray_to_int(s.unbox()) {
+            match parse_int(s.unbox()) {
                 Option::Some(s) => s,
-                Option::None => { return (0, false); }
+                Option::None =>  panic!("syntax error"),
             }
         },
-        Option::None => { return (0, false); },
+        Option::None => panic!("syntax error"),
     };
 
     let mut i = 3;
@@ -34,26 +34,21 @@ pub fn answer(word: ByteArray) -> (i32, bool) {
 
         if op == Operator::Multiply || op == Operator::Divide {
             if i >= words.len() || words[i] != @"by" {
-                result = 0;
-                break;
+                panic!("unknown operation");
             }
             i += 1;
+        } else if op == Operator::Invalid && parse_int(words.at(i - 1)) == Option::None {
+            panic!("unknown operation");
         }
 
         let num: i32 = match words.get(i) {
             Option::Some(s) => {
-                match convert_ByteArray_to_int(s.unbox()) {
+                match parse_int(s.unbox()) {
                     Option::Some(s) => s,
-                    Option::None => {
-                        result = 0;
-                        break;
-                    }
+                    Option::None => panic!("syntax error"),
                 }
             },
-            Option::None => {
-                result = 0;
-                break;
-            },
+            Option::None => panic!("syntax error"),
         };
 
         result = match op {
@@ -62,75 +57,67 @@ pub fn answer(word: ByteArray) -> (i32, bool) {
             Operator::Multiply => result * num,
             Operator::Divide => {
                 if num == 0 {
-                    result = 0;
-                    break;
+                    panic!("unknown operation");
                 }
                 result / num
             },
-            Operator::Invalid => {
-                result = 0;
-                break;
-            },
+            Operator::Invalid => panic!("unknown operation"),
         };
 
         i += 1;
     };
 
-    if (result == 0) {
-        (result, false)
-    } else {
-        (result, true)
-    }
+    result
 }
 
 
-fn split_string_into_words(long_string: ByteArray) -> Array<ByteArray> {
+fn split_question_into_words(question: ByteArray) -> Array<ByteArray> {
     let mut words: Array<ByteArray> = ArrayTrait::new();
     let mut current_word = "";
 
     let mut i = 0;
-    while i < long_string.len() {
-        let byte = long_string[i];
-        if byte == 32 {
+    while i < question.len() {
+        let char = question[i];
+        if char == ' ' {
             if current_word.len() > 0 {
                 words.append(current_word);
                 current_word = "";
             }
-        } else if (byte == 63) {
+        } else if ((char == '?')) {
+            if current_word.len() > 0 {
+                words.append(current_word);
+                current_word = "";
+            }
             break;
         } else {
-            current_word.append_byte(byte);
+            current_word.append_byte(char);
         }
         i += 1;
     };
-
-    if current_word.len() > 0 {
-        words.append(current_word);
-    }
 
     words
 }
 
 
-fn convert_ByteArray_to_int(num: @ByteArray) -> Option<i32> {
+fn parse_int(num: @ByteArray) -> Option<i32> {
     let mut result: Option<i32> = Option::Some(0);
     let mut size = num.len();
     let mut i = 0;
-    let mut base = 0;
 
-    let mut isSigned = false;
-    if num.at(i).unwrap() == 45 {
-        isSigned = true;
-        size -= 1;
+    let mut is_signed = false;
+    if num.at(i).unwrap() == '-' {
+        is_signed = true;
+        i += 1;
     }
-    let num: ByteArray = num.rev();
 
     while i < size {
-        let mut args = "";
-        args.append_byte(num.at(i).unwrap());
-        let re = get_number(args);
+        let re = char_to_digit(num[i]);
         match re {
-            Option::Some(v) => { base += v * pow(i); },
+            Option::Some(v) => {
+                if let Option::Some(max) = result {
+                    result = Option::Some(max * 10 + v.into());
+                }
+            },
             Option::None => {
                 result = Option::None;
                 break;
@@ -139,65 +126,40 @@ fn convert_ByteArray_to_int(num: @ByteArray) -> Option<i32> {
         i += 1;
     };
 
-    if result != Option::None {
-        if (isSigned) {
-            base *= -1;
-        }
-        return Option::Some(base);
-    } else {
-        return result;
+    match result {
+        Option::Some(val) => { if (is_signed) {
+            result = Option::Some(val * -1)
+        } },
+        Option::None => {
+            result = Option::None
+        },
     }
-}
-
-
-fn pow(mut power: u32) -> i32 {
-    let base: i32 = 10;
-    let mut result = 1_i32;
-    while power != 0 {
-        result *= base;
-        power -= 1;
-    };
-
-    result.try_into().expect('too large to fit output type')
+    result
 }
 
 fn parse_operator(word: @ByteArray) -> Operator {
     if (word == @"plus") {
-        return Operator::Plus;
+        Operator::Plus
     } else if (word == @"minus") {
-        return Operator::Minus;
+        Operator::Minus
     } else if (word == @"multiplied") {
-        return Operator::Multiply;
+        Operator::Multiply
     } else if (word == @"divided") {
-        return Operator::Divide;
+        Operator::Divide
     } else {
-        return Operator::Invalid;
+        Operator::Invalid
     }
 }
 
 
-fn get_number(c: ByteArray) -> Option<i32> {
-    if c == "1" {
-        Option::Some(1)
-    } else if c == "2" {
-        Option::Some(2)
-    } else if c == "3" {
-        Option::Some(3)
-    } else if c == "4" {
-        Option::Some(4)
-    } else if c == "5" {
-        Option::Some(5)
-    } else if c == "6" {
-        Option::Some(6)
-    } else if c == "7" {
-        Option::Some(7)
-    } else if c == "8" {
-        Option::Some(8)
-    } else if c == "9" {
-        Option::Some(9)
-    } else if c == "0" {
-        Option::Some(0)
+// Utility function to convert a char representing a digit into its numerical value (u32 equivalent)
+fn char_to_digit(c: u8) -> Option<u8> {
+    let zero_ascii = '0';
+    let nine_ascii = '9';
+
+    if c >= zero_ascii && c <= nine_ascii {
+        Option::Some(c - zero_ascii)
     } else {
-        Option::None
+        Option::None // Return None for invalid characters
     }
 }

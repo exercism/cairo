@@ -4,7 +4,7 @@ use wordy::answer;
 fn just_a_number() {
     let input = "What is 5?";
     let output = answer(input);
-    let expected = (5, true);
+    let expected = 5;
 
     assert_eq!(output, expected);
 }
@@ -14,7 +14,7 @@ fn just_a_number() {
 fn addition() {
     let input = "What is 1 plus 1?";
     let output = answer(input);
-    let expected = (2, true);
+    let expected = 2;
 
     assert_eq!(output, expected);
 }
@@ -24,7 +24,7 @@ fn addition() {
 fn more_addition() {
     let input = "What is 53 plus 2?";
     let output = answer(input);
-    let expected = (55, true);
+    let expected = 55;
 
     assert_eq!(output, expected);
 }
@@ -35,7 +35,7 @@ fn addition_with_negative_numbers() {
     let input = "What is -1 plus -10?";
     let output = answer(input);
 
-    let expected = (-11, true);
+    let expected = -11;
 
     assert_eq!(output, expected);
 }
@@ -46,7 +46,7 @@ fn large_addition() {
     let input = "What is 123 plus 45678?";
     let output = answer(input);
 
-    let expected = (45801, true);
+    let expected = 45801;
 
     assert_eq!(output, expected);
 }
@@ -57,7 +57,7 @@ fn subtraction() {
     let input = "What is 4 minus -12?";
     let output = answer(input);
 
-    let expected = (16, true);
+    let expected = 16;
 
     assert_eq!(output, expected);
 }
@@ -67,7 +67,7 @@ fn subtraction() {
 fn multiplication() {
     let input = "What is -3 multiplied by 25?";
     let output = answer(input);
-    let expected = (-75, true);
+    let expected = -75;
 
     assert_eq!(output, expected);
 }
@@ -78,7 +78,7 @@ fn division() {
     let input = "What is 33 divided by -3?";
     let output = answer(input);
 
-    let expected = (-11, true);
+    let expected = -11;
     assert_eq!(output, expected);
 }
 
@@ -88,7 +88,7 @@ fn multiple_additions() {
     let input = "What is 1 plus 1 plus 1?";
     let output = answer(input);
 
-    let expected = (3, true);
+    let expected = 3;
     assert_eq!(output, expected);
 }
 
@@ -98,7 +98,7 @@ fn addition_and_subtraction() {
     let input = "What is 1 plus 5 minus -2?";
     let output = answer(input);
 
-    let expected = (8, true);
+    let expected = 8;
     assert_eq!(output, expected);
 }
 
@@ -108,7 +108,7 @@ fn multiple_subtraction() {
     let input = "What is 20 minus 4 minus 13?";
     let output = answer(input);
 
-    let expected = (3, true);
+    let expected = 3;
     assert_eq!(output, expected);
 }
 
@@ -118,7 +118,7 @@ fn subtraction_then_addition() {
     let input = "What is 17 minus 6 plus 3?";
     let output = answer(input);
 
-    let expected = (14, true);
+    let expected = 14;
     assert_eq!(output, expected);
 }
 
@@ -127,7 +127,7 @@ fn subtraction_then_addition() {
 fn multiple_multiplication() {
     let input = "What is 2 multiplied by -2 multiplied by 3?";
     let output = answer(input);
-    let expected = (-12, true);
+    let expected = -12;
     assert_eq!(output, expected);
 }
 
@@ -137,7 +137,7 @@ fn addition_and_multiplication() {
     let input = "What is -3 plus 7 multiplied by -2?";
     let output = answer(input);
 
-    let expected = (-8, true);
+    let expected = -8;
     assert_eq!(output, expected);
 }
 
@@ -147,79 +147,73 @@ fn multiple_division() {
     let input = "What is -12 divided by 2 divided by -3?";
     let output = answer(input);
 
-    let expected = (2, true);
+    let expected = 2;
     assert_eq!(output, expected);
 }
 
 #[test]
 #[ignore]
+#[should_panic(expected: "unknown operation")]
 fn unknown_operation() {
     let input = "What is 52 cubed?";
     let output = answer(input);
 
-    let expected = (0, false);
+    let expected = 0;
     assert_eq!(output, expected);
 }
 
 #[test]
 #[ignore]
+#[should_panic(expected: "unknown operation")]
 fn non_math_question() {
     let input = "Who is the President of the United States?";
-    let output = answer(input);
-    let expected = (0, false);
-    assert_eq!(output, expected);
+    answer(input);
 }
 
 #[test]
 #[ignore]
+#[should_panic(expected: "syntax error")]
 fn reject_problem_missing_an_operand() {
     let input = "What is 1 plus?";
-    let output = answer(input);
-    let expected = (0, false);
-    assert_eq!(output, expected);
+    answer(input);
 }
 
 #[test]
 #[ignore]
+#[should_panic(expected: "syntax error")]
 fn reject_problem_with_no_operands_or_operators() {
     let input = "What is?";
-    let output = answer(input);
-    let expected = (0, false);
-    assert_eq!(output, expected);
+    answer(input);
 }
 
 #[test]
 #[ignore]
+#[should_panic(expected: "syntax error")]
 fn reject_two_operations_in_a_row() {
     let input = "What is 1 plus plus 2?";
-    let output = answer(input);
-    let expected = (0, false);
-    assert_eq!(output, expected);
+    answer(input);
 }
 
 #[test]
 #[ignore]
+#[should_panic(expected: "syntax error")]
 fn reject_two_numbers_in_a_row() {
     let input = "What is 1 plus 2 1?";
-    let output = answer(input);
-    let expected = (0, false);
-    assert_eq!(output, expected);
+    answer(input);
 }
 
 #[test]
 #[ignore]
+#[should_panic(expected: "syntax error")]
 fn reject_postfix_notation() {
     let input = "What is 1 2 plus?";
-    let output = answer(input);
-    let expected = (0, false);
-    assert_eq!(output, expected);
+    answer(input);
 }
 
 #[test]
 #[ignore]
+#[should_panic(expected: "syntax error")]
 fn reject_prefix_notation() {
     let input = "What is plus 1 2?";
-    let output = answer(input);
-    let expected = (0, false);
-    assert_eq!(output, expected);
+    answer(input);
 }
