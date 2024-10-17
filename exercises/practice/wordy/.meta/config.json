@@ -1,5 +1,7 @@
 {
-  "authors": ["Ephraim-nonso"],
+  "authors": [
+    "Ephraim-nonso"
+  ],
   "files": {
     "solution": [
       "src/lib.cairo"
