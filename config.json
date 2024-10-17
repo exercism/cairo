@@ -28,14 +28,6 @@
   "exercises": {
     "concept": [
       {
-        "slug": "low-power-embedded-game",
-        "name": "Low-power Embedded Game",
-        "uuid": "f3b7ce44-1667-42b4-b792-401d36aee2f1",
-        "concepts": ["tuples"],
-        "prerequisites": ["traits"],
-        "status": "wip"
-      },
-      {
         "slug": "lucians-luscious-lasagna",
         "name": "Lucian's Luscious Lasagna",
         "uuid": "f120ab92-f277-434c-ae38-a3bb86cb67bf",
