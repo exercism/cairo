@@ -2,7 +2,7 @@
 
 ## General
 
-- There are three logical operators '!` (logical NOT), '||` (logical OR), and `&&` (logical AND) when working with Boolean values.
+- There are three logical operators '!`(logical NOT), '||` (logical OR), and `&&` (logical AND) when working with Boolean values.
 - Multiple operators can be combined in a single expression.
 
 ## 1. Check if a fast attack can be made

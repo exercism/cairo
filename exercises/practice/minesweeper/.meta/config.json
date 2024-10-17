@@ -1,0 +1,20 @@
+{
+  "authors": [
+    "0xNeshi"
+  ],
+  "files": {
+    "solution": [
+      "src/lib.cairo"
+    ],
+    "test": [
+      "tests/minesweeper.cairo"
+    ],
+    "example": [
+      ".meta/example.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
+    ]
+  },
+  "blurb": "Add the numbers to a minesweeper board."
+}

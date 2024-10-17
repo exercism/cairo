@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "<your_gh_username>"
+  ],
+  "files": {
+    "solution": [
+      "src/lib.cairo"
+    ],
+    "test": [
+      "tests/health_statistics.cairo"
+    ],
+    "exemplar": [
+      ".meta/exemplar.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
+    ]
+  },
+  "forked_from": [
+    "rust/health-statistics"
+  ],
+  "blurb": "Learn structs to store statistics for a health-monitoring system."
+}

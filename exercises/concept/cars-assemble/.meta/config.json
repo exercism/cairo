@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "<your_gh_username>"
+  ],
+  "files": {
+    "solution": [
+      "src/lib.cairo"
+    ],
+    "test": [
+      "tests/cars_assemble.cairo"
+    ],
+    "exemplar": [
+      ".meta/exemplar.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
+    ]
+  },
+  "forked_from": [
+    "go/cars-assemble"
+  ],
+  "blurb": "Learn about numbers and type conversion by analyzing an assembly line in a car factory."
+}

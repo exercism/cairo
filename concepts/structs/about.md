@@ -1,6 +1,7 @@
 # Structs
 
-Structs are custom data types that let you name and package together multiple related values. They are similar to tuples, but more flexible and let you name each piece of data, making your code clearer.
+Structs are custom data types that let you name and package together multiple related values.
+They are similar to tuples, but more flexible and let you name each piece of data, making your code clearer.
 Structs in Cairo have these properties:
 
 - Every struct type has a particular name.
@@ -22,7 +23,8 @@ struct User {
 }
 ```
 
-To create an instance of a `struct`, specify the `struct` name and use curly braces with key-value pairs for the fields. Note that you can list the fields in any order when creating an instance:
+To create an instance of a `struct`, specify the `struct` name and use curly braces with key-value pairs for the fields.
+Note that you can list the fields in any order when creating an instance:
 
 ```rust
 let user1 = User {
@@ -36,7 +38,8 @@ let user2 = User {
 
 ## Interacting with an Instance of a Struct
 
-Use dot notation to access or modify the fields of a `struct` instance. Note that to modify a field, the instance must be mutable:
+Use dot notation to access or modify the fields of a `struct` instance.
+Note that to modify a field, the instance must be mutable:
 
 ```rust
 let mut user1 = User {
@@ -60,7 +63,8 @@ fn build_user(email: ByteArray, username: ByteArray) -> User {
 
 ## Field Init Shorthand
 
-In the last example it made sense to name the `email` and `username` function parameters with the same names as the fields in the `struct`, but having to repeat them when assigning them to struct fields is a bit tedious. Luckily, there is a convenient shorthand for initializing struct fields from variables with the same names:
+In the last example it made sense to name the `email` and `username` function parameters with the same names as the fields in the `struct`, but having to repeat them when assigning them to struct fields is a bit tedious.
+Luckily, there is a convenient shorthand for initializing struct fields from variables with the same names:
 
 ```rust
 fn build_user_short(email: ByteArray, username: ByteArray) -> User {
@@ -70,7 +74,8 @@ fn build_user_short(email: ByteArray, username: ByteArray) -> User {
 
 ## Creating Instances from Other Instances with Struct Update Syntax
 
-Use struct update syntax to create a new instance from an existing one, changing some of the fields while keeping the rest the same. This is achieved using the `..` operator.
+Use struct update syntax to create a new instance from an existing one, changing some of the fields while keeping the rest the same.
+This is achieved using the `..` operator.
 
 Without update syntax:
 
@@ -89,4 +94,5 @@ With update syntax:
 let user2 = User { email: "another@example.com", ..user1 };
 ```
 
-The `..user1` syntax copies the remaining fields from `user1` to `user2`. Note that this moves the data from `user1` to `user2`, so `user1` cannot be used afterwards if it contains non-copiable types.
+The `..user1` syntax copies the remaining fields from `user1` to `user2`.
+Note that this moves the data from `user1` to `user2`, so `user1` cannot be used afterwards if it contains non-copiable types.

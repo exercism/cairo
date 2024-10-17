@@ -1,5 +1,7 @@
 {
-  "authors": ["Falilah"],
+  "authors": [
+    "Falilah"
+  ],
   "files": {
     "solution": [
       "src/lib.cairo"
@@ -9,7 +11,7 @@
     ],
     "example": [
       ".meta/example.cairo"
-     ],
+    ],
     "invalidator": [
       "Scarb.toml"
     ]

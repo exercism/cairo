@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "<your_gh_username>"
+  ],
+  "files": {
+    "solution": [
+      "src/lib.cairo"
+    ],
+    "test": [
+      "tests/the_farm.cairo"
+    ],
+    "exemplar": [
+      ".meta/exemplar.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
+    ]
+  },
+  "forked_from": [
+    "go/the-farm"
+  ],
+  "blurb": "<blurb>"
+}
