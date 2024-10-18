@@ -100,8 +100,8 @@ fn parse_int(num: @ByteArray) -> Option<i32> {
         let re = char_to_digit(num[i]);
         match re {
             Option::Some(v) => {
-                if let Option::Some(max) = result {
-                    result = Option::Some(max * 10 + v.into());
+                if let Option::Some(num) = result {
+                    result = Option::Some(num * 10 + v.into());
                 }
             },
             Option::None => {
