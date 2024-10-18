@@ -9,22 +9,12 @@ enum Operator {
 
 pub fn answer(question: ByteArray) -> i32 {
     let words: Array<ByteArray> = split_question_into_words(question);
-    if words.len() < 3 {
-        panic!("syntax error");
-    }
+    assert!(words.len() >= 3, "syntax error");
+    assert!(words[0] == @"What" && words[1] == @"is", "unknown operation");
 
-    if words[0] != @"What" || words[1] != @"is" {
-        panic!("unknown operation");
-    }
-
-    let mut result: i32 = match words.get(2) {
-        Option::Some(s) => {
-            match parse_int(s.unbox()) {
-                Option::Some(s) => s,
-                Option::None => panic!("syntax error"),
-            }
-        },
-        Option::None => panic!("syntax error"),
+    let mut result = match parse_int(words[2]) {
+        Option::Some(s) => s,
+        Option::None => panic!("syntax error")
     };
 
     let mut i = 3;
@@ -33,12 +23,10 @@ pub fn answer(question: ByteArray) -> i32 {
         i += 1;
 
         if op == Operator::Multiply || op == Operator::Divide {
-            if i >= words.len() || words[i] != @"by" {
-                panic!("unknown operation");
-            }
+            assert!(i < words.len() && words[i] == @"by", "unknown operation");
             i += 1;
-        } else if op == Operator::Invalid && parse_int(words.at(i - 1)) == Option::None {
-            panic!("unknown operation");
+        } else if op == Operator::Invalid {
+            assert!(parse_int(words.at(i - 1)) != Option::None, "unknown operation");
         }
 
         let num: i32 = match words.get(i) {
@@ -56,9 +44,7 @@ pub fn answer(question: ByteArray) -> i32 {
             Operator::Minus => result - num,
             Operator::Multiply => result * num,
             Operator::Divide => {
-                if num == 0 {
-                    panic!("unknown operation");
-                }
+                assert!(num != 0, "unknown operation");
                 result / num
             },
             Operator::Invalid => panic!("unknown operation"),
@@ -83,7 +69,7 @@ fn split_question_into_words(question: ByteArray) -> Array<ByteArray> {
                 words.append(current_word);
                 current_word = "";
             }
-        } else if ((char == '?')) {
+        } else if char == '?' {
             if current_word.len() > 0 {
                 words.append(current_word);
                 current_word = "";
@@ -126,11 +112,10 @@ fn parse_int(num: @ByteArray) -> Option<i32> {
         i += 1;
     };
 
-    match result {
-        Option::Some(val) => { if (is_signed) {
+    if let Option::Some(val) = result {
+        if (is_signed) {
             result = Option::Some(val * -1)
-        } },
-        Option::None => { result = Option::None },
+        }
     }
     result
 }
