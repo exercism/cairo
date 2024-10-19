@@ -153,6 +153,7 @@ pub fn solve(puzzle: ByteArray) -> Option<Array<(u8, u8)>> {
 #[derive(Destruct, Default)]
 struct Vec {
     dict: Felt252Dict<Nullable<Letter>>,
+    // min_digit: u8,
     chars: Array<u8>,
 }
 
@@ -162,6 +163,7 @@ struct Letter {
     positions: Span<LetterPos>,
     digit: u8,
     min: u8,
+    // max: u8,
 }
 
 #[derive(Drop, Clone, Debug, PartialEq)]
