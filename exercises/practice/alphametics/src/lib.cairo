@@ -220,6 +220,8 @@ impl VecImpl of VecTrait {
 
         let n = self.chars.len();
 
+        let mut valid_perm = true;
+
         // Step 1: Start from the rightmost element and try to increment it.
         let mut i = n;
         while i != 0 {
@@ -256,16 +258,23 @@ impl VecImpl of VecTrait {
                     while self.contains(next_digit, j) {
                         next_digit += 1;
                     };
-                    assert!(next_digit <= 9, "next_digit shouldn't be greater than 9");
                     letter.digit = next_digit;
                     self.set(char.into(), letter);
                     updated_letters.append(letter);
+                    if next_digit > 9 {
+                        valid_perm = false;
+                        break;
+                    }
                 };
 
             break;
         };
 
-        updated_letters
+        if valid_perm {
+            updated_letters
+        } else {
+            self.next_permutation()
+        }
     }
 
     fn set(ref self: Vec, ch: u8, letter: Letter) {
