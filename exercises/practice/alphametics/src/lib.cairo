@@ -220,7 +220,7 @@ impl VecImpl of VecTrait {
 
         let n = self.chars.len();
 
-        let mut valid_perm = true;
+        let mut valid_perm = false;
 
         // Step 1: Start from the rightmost element and try to increment it.
         let mut i = n;
@@ -233,42 +233,42 @@ impl VecImpl of VecTrait {
             letter.digit += 1;
 
             // Step 2: Ensure the new value is not already present in the array
-            while letter.digit >= letter.min
-                && letter.digit <= 9
-                && self.contains(letter.digit, i) {
+            while letter.digit <= 9 && self.contains(letter.digit, i) {
                 letter.digit += 1;
             };
 
-            // If the incremented value exceeds `9`, try the next position to the left
-            if letter.digit > 9 {
-                continue;
+            if letter.digit <= 9 {
+                // Step 3: Set the incremented value at position `i`
+                self.set(char, letter);
+                updated_letters.append(letter);
+                valid_perm = true;
+                break;
             }
-
-            // Step 3: Set the incremented value at position `i`
-            self.set(char, letter);
-            updated_letters.append(letter);
-
-            // Step 4: Reset all elements to the right of position `i` to the smallest non-repeating
-            // values
-            for j in (i + 1)
-                ..n {
-                    let char = *self.chars[j];
-                    let mut letter = self.get(char.into());
-                    let mut next_digit = letter.min;
-                    while self.contains(next_digit, j) {
-                        next_digit += 1;
-                    };
-                    letter.digit = next_digit;
-                    self.set(char.into(), letter);
-                    updated_letters.append(letter);
-                    if next_digit > 9 {
-                        valid_perm = false;
-                        break;
-                    }
-                };
-
-            break;
+            // If the incremented value exceeds `9`, try the next position to the left
         };
+
+        if !valid_perm {
+            return updated_letters;
+        }
+
+        // Step 4: Reset all elements to the right of position `i` to the smallest non-repeating
+        // values
+        for j in (i + 1)
+            ..n {
+                let char = *self.chars[j];
+                let mut letter = self.get(char.into());
+                letter.digit = letter.min;
+                while self.contains(letter.digit, j) {
+                    letter.digit += 1;
+                };
+                self.set(char.into(), letter);
+                if letter.digit > 9 {
+                    valid_perm = false;
+                    break;
+                } else {
+                    updated_letters.append(letter);
+                }
+            };
 
         if valid_perm {
             updated_letters
