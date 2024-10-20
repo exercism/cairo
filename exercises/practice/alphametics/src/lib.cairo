@@ -18,7 +18,6 @@ fn parse_words(puzzle: ByteArray) -> Result<(WordsAsNumbers, Vec), felt252> {
     let mut max_word_len = 0_usize;
 
     let mut chars: Array<u8> = array![];
-    let mut word_index = 0_usize;
     let mut i = 0_usize;
     while i < puzzle.len() {
         let ch = puzzle[i];
@@ -27,14 +26,20 @@ fn parse_words(puzzle: ByteArray) -> Result<(WordsAsNumbers, Vec), felt252> {
             let letter_key = *chars[0];
             let digit_index: u8 = (current_word_len - 1).try_into().unwrap();
             letters
-                .append(letter_key, LetterPos { word_index, digit_index }, min: Option::Some(1),);
+                .append(
+                    letter_key,
+                    LetterPos { word_index: words_as_numbers.len, digit_index },
+                    min: Option::Some(1),
+                );
             for j in 1
                 ..current_word_len {
                     let letter_key = *chars[j];
                     let digit_index: u8 = (current_word_len - 1 - j).try_into().unwrap();
                     letters
                         .append(
-                            letter_key, LetterPos { word_index, digit_index }, min: Option::None,
+                            letter_key,
+                            LetterPos { word_index: words_as_numbers.len, digit_index },
+                            min: Option::None,
                         );
                 };
             words_as_numbers.append(0);
@@ -42,7 +47,6 @@ fn parse_words(puzzle: ByteArray) -> Result<(WordsAsNumbers, Vec), felt252> {
                 max_word_len = current_word_len;
             }
             chars = array![];
-            word_index += 1;
             // jump over the next space char
             i += 2;
         } else if is_whitespace(ch) {
@@ -60,12 +64,22 @@ fn parse_words(puzzle: ByteArray) -> Result<(WordsAsNumbers, Vec), felt252> {
 
     let letter_key = *chars[0];
     let digit_index: u8 = (result_len - 1).try_into().unwrap();
-    letters.append(letter_key, LetterPos { word_index, digit_index }, min: Option::Some(1),);
+    letters
+        .append(
+            letter_key,
+            LetterPos { word_index: words_as_numbers.len, digit_index },
+            min: Option::Some(1),
+        );
     for j in 1
         ..result_len {
             let letter_key = *chars[j];
             let digit_index: u8 = (result_len - 1 - j).try_into().unwrap();
-            letters.append(letter_key, LetterPos { word_index, digit_index }, min: Option::None,);
+            letters
+                .append(
+                    letter_key,
+                    LetterPos { word_index: words_as_numbers.len, digit_index },
+                    min: Option::None,
+                );
         };
     words_as_numbers.append(0);
 
