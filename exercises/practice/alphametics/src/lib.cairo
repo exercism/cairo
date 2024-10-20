@@ -7,6 +7,8 @@ const NON_DIGIT: u8 = 10;
 pub fn solve(puzzle: ByteArray) -> Option<Array<(u8, u8)>> {
     let (mut words_as_numbers, mut letters) = parse_words(puzzle).ok()?;
 
+    analyze(ref words_as_numbers, ref letters);
+
     if !init_permutation(ref words_as_numbers, ref letters) {
         return Option::None;
     }
@@ -72,6 +74,36 @@ fn parse_word(chars: Array<u8>, ref words_as_numbers: WordsAsNumbers, ref letter
         };
     words_as_numbers.append(WordNumber { word: chars.span(), number: 0 });
     current_word_len
+}
+
+fn num_len(num: u128) -> usize {
+    format!("{num}").len()
+}
+
+fn analyze(ref wan: WordsAsNumbers, ref letters: Vec) {
+    let result = wan.get((wan.len - 1).into());
+    let result_len = num_len(result.number);
+
+    let mut lens: Felt252Dict<Nullable<Array<usize>>> = Default::default();
+
+    for i in 0
+        ..wan
+            .len {
+                let word_number = wan.get(i.into());
+                let len = num_len(word_number.number);
+                let (entry, old_indices) = lens.entry(len.into());
+                let mut new_indices = match match_nullable(old_indices) {
+                    FromNullableResult::NotNull(val) => val.unbox(),
+                    FromNullableResult::Null => Default::default()
+                };
+                new_indices.append(i);
+                lens = entry.finalize(NullableTrait::new(new_indices))
+            };
+
+    let (entry, n_res_eq_lens) = lens.entry(result_len.into());
+    let res_eq_lens = n_res_eq_lens.deref_or(Default::default());
+    for i in 0..res_eq_lens.len() {};
+    entry.finalize(NullableTrait::new(res_eq_lens));
 }
 
 fn init_permutation(ref words_as_numbers: WordsAsNumbers, ref letters: Vec) -> bool {
