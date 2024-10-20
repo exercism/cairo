@@ -1,10 +1,6 @@
 use core::nullable::{match_nullable, FromNullableResult};
 use core::dict::{Felt252Dict, Felt252DictEntryTrait};
 
-fn is_whitespace(chr: u8) -> bool {
-    chr == ' ' || chr == '\t' || chr == '\n' || chr == '\r'
-}
-
 fn parse_words(puzzle: ByteArray) -> Result<(WordsAsNumbers, Vec), felt252> {
     let mut words_as_numbers: WordsAsNumbers = Default::default();
     let mut letters: Vec = Default::default();
@@ -102,9 +98,7 @@ fn update_permutation(ref words_as_numbers: WordsAsNumbers, ref letters: Vec) ->
     for letter in letters {
         for pos in letter
             .positions {
-                words_as_numbers
-                    .replace_digit_at(*pos.word_index, *pos.digit_index, letter.digit)
-                    .unwrap();
+                words_as_numbers.replace_digit_at(*pos.word_index, *pos.digit_index, letter.digit);
             };
     };
     true
@@ -130,11 +124,8 @@ fn init_permutation(ref words_as_numbers: WordsAsNumbers, ref letters: Vec) -> b
                 letters.set(char.into(), letter);
                 for pos in letter
                     .positions {
-                        if let Result::Err(_) = words_as_numbers
-                            .replace_digit_at(*pos.word_index, *pos.digit_index, letter.digit) {
-                            result = false;
-                            break;
-                        }
+                        words_as_numbers
+                            .replace_digit_at(*pos.word_index, *pos.digit_index, letter.digit);
                     };
             };
     result
@@ -303,9 +294,7 @@ impl WordsAsNumbersImpl of WordsAsNumbersTrait {
         self.len += 1;
     }
 
-    fn replace_digit_at(
-        ref self: WordsAsNumbers, index: usize, at_digit: u8, new_digit: u8
-    ) -> Result<(), ByteArray> {
+    fn replace_digit_at(ref self: WordsAsNumbers, index: usize, at_digit: u8, new_digit: u8) {
         assert!(
             self.len > index,
             "{}",
@@ -313,10 +302,8 @@ impl WordsAsNumbersImpl of WordsAsNumbersTrait {
         );
 
         let mut number = self.get(index.into());
-        number.replace_digit_at(at_digit, new_digit)?;
+        number.replace_digit_at(at_digit, new_digit);
         self.dict.insert(index.into(), number);
-
-        Result::Ok(())
     }
 }
 
@@ -332,7 +319,7 @@ impl ReplaceDigitImpl<
     +Default<T>,
     +core::fmt::Display<T>,
 > of ReplaceDigitTrait<T> {
-    fn replace_digit_at(ref self: T, at: u8, new_digit: u8) -> Result<T, ByteArray> {
+    fn replace_digit_at(ref self: T, at: u8, new_digit: u8) {
         let mut ten_pow = 1_u128;
         for _ in 0..at {
             ten_pow *= 10;
@@ -345,9 +332,11 @@ impl ReplaceDigitImpl<
             let prefix = self.into() / ten_pow / 10_u8.into();
             self = ((prefix * 10 + new_digit.into()) * ten_pow + rest).try_into().unwrap();
         }
-
-        Result::Ok(self)
     }
+}
+
+fn is_whitespace(chr: u8) -> bool {
+    chr == ' ' || chr == '\t' || chr == '\n' || chr == '\r'
 }
 
 #[cfg(test)]
@@ -382,9 +371,8 @@ mod tests {
             for data in test_cases
                 .into_iter() {
                     let mut number = data.number;
-                    let result = number.replace_digit_at(data.at, data.new_digit);
-                    assert!(result.is_ok(), "failed for {data:?}");
-                    assert_eq!(result.unwrap(), data.expected, "failed for {data:?}");
+                    number.replace_digit_at(data.at, data.new_digit);
+                    assert_eq!(number, data.expected, "failed for {data:?}");
                 };
         }
     }
