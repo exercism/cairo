@@ -22,27 +22,7 @@ fn parse_words(puzzle: ByteArray) -> Result<(WordsAsNumbers, Vec), felt252> {
     while i < puzzle.len() {
         let ch = puzzle[i];
         if ch == '=' || ch == '+' {
-            let current_word_len = chars.len();
-            let letter_key = *chars[0];
-            let digit_index: u8 = (current_word_len - 1).try_into().unwrap();
-            letters
-                .append(
-                    letter_key,
-                    LetterPos { word_index: words_as_numbers.len, digit_index },
-                    min: Option::Some(1),
-                );
-            for j in 1
-                ..current_word_len {
-                    let letter_key = *chars[j];
-                    let digit_index: u8 = (current_word_len - 1 - j).try_into().unwrap();
-                    letters
-                        .append(
-                            letter_key,
-                            LetterPos { word_index: words_as_numbers.len, digit_index },
-                            min: Option::None,
-                        );
-                };
-            words_as_numbers.append(0);
+            let current_word_len = parse_word(chars, ref words_as_numbers, ref letters);
             if current_word_len > max_word_len {
                 max_word_len = current_word_len;
             }
@@ -57,13 +37,19 @@ fn parse_words(puzzle: ByteArray) -> Result<(WordsAsNumbers, Vec), felt252> {
         }
     };
 
-    let result_len = chars.len();
+    let result_len = parse_word(chars, ref words_as_numbers, ref letters);
     if result_len < max_word_len {
         return Result::Err('result smaller than sum');
     }
 
+    Result::Ok((words_as_numbers, letters))
+}
+
+#[inline(always)]
+fn parse_word(chars: Array<u8>, ref words_as_numbers: WordsAsNumbers, ref letters: Vec) -> usize {
+    let current_word_len = chars.len();
     let letter_key = *chars[0];
-    let digit_index: u8 = (result_len - 1).try_into().unwrap();
+    let digit_index: u8 = (current_word_len - 1).try_into().unwrap();
     letters
         .append(
             letter_key,
@@ -71,9 +57,9 @@ fn parse_words(puzzle: ByteArray) -> Result<(WordsAsNumbers, Vec), felt252> {
             min: Option::Some(1),
         );
     for j in 1
-        ..result_len {
+        ..current_word_len {
             let letter_key = *chars[j];
-            let digit_index: u8 = (result_len - 1 - j).try_into().unwrap();
+            let digit_index: u8 = (current_word_len - 1 - j).try_into().unwrap();
             letters
                 .append(
                     letter_key,
@@ -82,8 +68,7 @@ fn parse_words(puzzle: ByteArray) -> Result<(WordsAsNumbers, Vec), felt252> {
                 );
         };
     words_as_numbers.append(0);
-
-    Result::Ok((words_as_numbers, letters))
+    current_word_len
 }
 
 fn init_permutation(ref words_as_numbers: WordsAsNumbers, ref letters: Vec) -> bool {
