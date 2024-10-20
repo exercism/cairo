@@ -112,15 +112,14 @@ fn init_permutation(ref words_as_numbers: WordsAsNumbers, ref letters: Vec) -> b
             .len() {
                 let char = *letters.chars[i];
                 let mut letter = letters.get(char.into());
-                let mut next_digit = letter.min;
-                while letters.contains(next_digit, i) {
-                    next_digit += 1;
+                letter.digit = letter.min;
+                while letters.contains(letter.digit, i) {
+                    letter.digit += 1;
                 };
-                if next_digit > 9 {
+                if letter.digit > 9 {
                     result = false;
                     break;
                 }
-                letter.digit = next_digit;
                 letters.set(char.into(), letter);
                 for pos in letter
                     .positions {
@@ -195,16 +194,16 @@ impl VecImpl of VecTrait {
 
     // Helper function to check if a value is already present in the array up to a given index.
     fn contains(ref self: Vec, digit: u8, up_to: usize) -> bool {
-        let mut result = false;
-        for i in 0
-            ..up_to {
-                let char = *self.chars[i];
-                if self.get(char.into()).digit == digit {
-                    result = true;
-                    break;
+        let mut chars = self.chars.span().slice(0, up_to);
+        loop {
+            if let Option::Some(char) = chars.pop_front() {
+                if self.get(*char.into()).digit == digit {
+                    break true;
                 }
-            };
-        result
+            } else {
+                break false;
+            }
+        }
     }
 
     // Function to generate the next lexicographical non-repeating permutation
