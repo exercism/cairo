@@ -1,9 +1,6 @@
 use core::nullable::{match_nullable, FromNullableResult};
 use core::dict::{Felt252Dict, Felt252DictEntryTrait};
 
-const OUT_OF_BOUNDS_INDEX: u8 = 10;
-const NON_DIGIT: u8 = 10;
-
 fn parse_words(puzzle: ByteArray) -> Result<(WordsAsNumbers, Vec), felt252> {
     let mut words_as_numbers: WordsAsNumbers = Default::default();
     let mut letters: Vec = Default::default();
@@ -107,12 +104,6 @@ fn update_permutation(ref words_as_numbers: WordsAsNumbers, ref letters: Vec) ->
     true
 }
 
-fn str(ch: u8) -> ByteArray {
-    let mut s = "";
-    s.append_byte(ch);
-    s
-}
-
 fn init_permutation(ref words_as_numbers: WordsAsNumbers, ref letters: Vec) -> bool {
     let mut result = true;
     for i in 0
@@ -130,7 +121,7 @@ fn init_permutation(ref words_as_numbers: WordsAsNumbers, ref letters: Vec) -> b
                     break;
                 }
                 letter.digit = next_digit;
-                letters.set(char.into(), i.try_into().unwrap(), letter);
+                letters.set(char.into(), letter);
                 for pos in letter
                     .positions {
                         words_as_numbers
@@ -150,21 +141,11 @@ pub fn solve(puzzle: ByteArray) -> Option<Array<(u8, u8)>> {
     find_solution(ref words_as_numbers, ref letters)
 }
 
-#[derive(Destruct)]
+#[derive(Destruct, Default)]
 struct Vec {
     dict: Felt252Dict<Nullable<Letter>>,
-    digit_indexes: Felt252Dict<u8>,
+    // min_digit: u8,
     chars: Array<u8>,
-}
-
-impl VecDefault of core::traits::Default<Vec> {
-    fn default() -> Vec {
-        let mut digit_indexes: Felt252Dict<u8> = Default::default();
-        for i in 0..10_u8 {
-            digit_indexes.insert(i.into(), OUT_OF_BOUNDS_INDEX);
-        };
-        Vec { dict: Default::default(), digit_indexes, chars: Default::default() }
-    }
 }
 
 #[derive(Drop, Copy, Debug, PartialEq)]
@@ -197,7 +178,7 @@ impl VecImpl of VecTrait {
             FromNullableResult::NotNull(value) => value.unbox(),
             FromNullableResult::Null => {
                 self.chars.append(letter_key);
-                Letter { char: letter_key, digit: NON_DIGIT, positions: array![].span(), min: 0 }
+                Letter { char: letter_key, digit: 0, positions: array![].span(), min: 0 }
             }
         };
         let mut new_positions = array![];
@@ -214,8 +195,16 @@ impl VecImpl of VecTrait {
 
     // Helper function to check if a value is already present in the array up to a given index.
     fn contains(ref self: Vec, digit: u8, up_to: usize) -> bool {
-        let index = self.digit_indexes.get(digit.into());
-        index.into() < up_to
+        let mut result = false;
+        for i in 0
+            ..up_to {
+                let char = *self.chars[i];
+                if self.get(char.into()).digit == digit {
+                    result = true;
+                    break;
+                }
+            };
+        result
     }
 
     // Function to generate the next lexicographical non-repeating permutation
@@ -243,7 +232,7 @@ impl VecImpl of VecTrait {
 
             if letter.digit <= 9 {
                 // Step 3: Set the incremented value at position `i`
-                self.set(char, i.try_into().unwrap(), letter);
+                self.set(char, letter);
                 updated_letters.append(letter);
                 valid_perm = true;
                 break;
@@ -265,7 +254,7 @@ impl VecImpl of VecTrait {
                 while self.contains(letter.digit, j) {
                     letter.digit += 1;
                 };
-                self.set(char.into(), j.try_into().unwrap(), letter);
+                self.set(char.into(), letter);
                 if letter.digit > 9 {
                     valid_perm = false;
                     break;
@@ -281,20 +270,9 @@ impl VecImpl of VecTrait {
         }
     }
 
-    fn set(ref self: Vec, ch: u8, char_index: u8, letter: Letter) {
-        let (entry, old_letter) = self.dict.entry(ch.into());
+    fn set(ref self: Vec, ch: u8, letter: Letter) {
+        let (entry, _) = self.dict.entry(ch.into());
         self.dict = entry.finalize(NullableTrait::new(letter));
-        self.digit_indexes.insert(letter.digit.into(), char_index);
-
-        match match_nullable(old_letter) {
-            FromNullableResult::NotNull(value) => {
-                let old_digit = value.unbox().digit;
-                if !self.contains(old_digit, char_index.into()) {
-                    self.digit_indexes.insert(old_digit.into(), OUT_OF_BOUNDS_INDEX);
-                }
-            },
-            _ => {}
-        };
     }
 }
 
@@ -416,7 +394,6 @@ mod tests {
             expected_vec
                 .set(
                     'I',
-                    0,
                     Letter {
                         char: 'I',
                         digit: 0,
@@ -431,7 +408,6 @@ mod tests {
             expected_vec
                 .set(
                     'B',
-                    1,
                     Letter {
                         char: 'B',
                         digit: 0,
@@ -446,7 +422,6 @@ mod tests {
             expected_vec
                 .set(
                     'L',
-                    2,
                     Letter {
                         char: 'L',
                         digit: 0,
@@ -500,7 +475,6 @@ mod tests {
             expected_vec
                 .set(
                     'H',
-                    0,
                     Letter {
                         char: 'H',
                         digit: 0,
@@ -516,7 +490,6 @@ mod tests {
             expected_vec
                 .set(
                     'E',
-                    1,
                     Letter {
                         char: 'E',
                         digit: 0,
@@ -533,7 +506,6 @@ mod tests {
             expected_vec
                 .set(
                     'S',
-                    2,
                     Letter {
                         char: 'S',
                         digit: 0,
@@ -548,7 +520,6 @@ mod tests {
             expected_vec
                 .set(
                     'T',
-                    3,
                     Letter {
                         char: 'T',
                         digit: 0,
@@ -563,7 +534,6 @@ mod tests {
             expected_vec
                 .set(
                     'L',
-                    4,
                     Letter {
                         char: 'L',
                         digit: 0,
@@ -574,7 +544,6 @@ mod tests {
             expected_vec
                 .set(
                     'I',
-                    5,
                     Letter {
                         char: 'I',
                         digit: 0,
@@ -585,7 +554,6 @@ mod tests {
             expected_vec
                 .set(
                     'G',
-                    6,
                     Letter {
                         char: 'G',
                         digit: 0,
@@ -638,7 +606,6 @@ mod tests {
             expected_vec
                 .set(
                     'I',
-                    0,
                     Letter {
                         char: 'I',
                         digit: 1,
@@ -653,7 +620,6 @@ mod tests {
             expected_vec
                 .set(
                     'B',
-                    1,
                     Letter {
                         char: 'B',
                         digit: 2,
@@ -668,7 +634,6 @@ mod tests {
             expected_vec
                 .set(
                     'L',
-                    2,
                     Letter {
                         char: 'L',
                         digit: 0,
@@ -686,7 +651,6 @@ mod tests {
             actual_vec
                 .set(
                     'I',
-                    0,
                     Letter {
                         char: 'I',
                         digit: 0,
@@ -701,7 +665,6 @@ mod tests {
             actual_vec
                 .set(
                     'B',
-                    1,
                     Letter {
                         char: 'B',
                         digit: 0,
@@ -716,7 +679,6 @@ mod tests {
             actual_vec
                 .set(
                     'L',
-                    2,
                     Letter {
                         char: 'L',
                         digit: 0,
@@ -768,7 +730,6 @@ mod tests {
             expected_vec
                 .set(
                     'H',
-                    0,
                     Letter {
                         char: 'H',
                         digit: 1,
@@ -784,7 +745,6 @@ mod tests {
             expected_vec
                 .set(
                     'E',
-                    1,
                     Letter {
                         char: 'E',
                         digit: 0,
@@ -801,7 +761,6 @@ mod tests {
             expected_vec
                 .set(
                     'S',
-                    2,
                     Letter {
                         char: 'S',
                         digit: 2,
@@ -816,7 +775,6 @@ mod tests {
             expected_vec
                 .set(
                     'T',
-                    3,
                     Letter {
                         char: 'T',
                         digit: 3,
@@ -831,7 +789,6 @@ mod tests {
             expected_vec
                 .set(
                     'L',
-                    4,
                     Letter {
                         char: 'L',
                         digit: 4,
@@ -842,7 +799,6 @@ mod tests {
             expected_vec
                 .set(
                     'I',
-                    5,
                     Letter {
                         char: 'I',
                         digit: 5,
@@ -853,7 +809,6 @@ mod tests {
             expected_vec
                 .set(
                     'G',
-                    6,
                     Letter {
                         char: 'G',
                         digit: 6,
@@ -867,7 +822,6 @@ mod tests {
             actual_vec
                 .set(
                     'H',
-                    0,
                     Letter {
                         char: 'H',
                         digit: 0,
@@ -883,7 +837,6 @@ mod tests {
             actual_vec
                 .set(
                     'E',
-                    1,
                     Letter {
                         char: 'E',
                         digit: 0,
@@ -900,7 +853,6 @@ mod tests {
             actual_vec
                 .set(
                     'S',
-                    2,
                     Letter {
                         char: 'S',
                         digit: 0,
@@ -915,7 +867,6 @@ mod tests {
             actual_vec
                 .set(
                     'T',
-                    3,
                     Letter {
                         char: 'T',
                         digit: 0,
@@ -930,7 +881,6 @@ mod tests {
             actual_vec
                 .set(
                     'L',
-                    4,
                     Letter {
                         char: 'L',
                         digit: 0,
@@ -941,7 +891,6 @@ mod tests {
             actual_vec
                 .set(
                     'I',
-                    5,
                     Letter {
                         char: 'I',
                         digit: 0,
@@ -952,7 +901,6 @@ mod tests {
             actual_vec
                 .set(
                     'G',
-                    6,
                     Letter {
                         char: 'G',
                         digit: 0,
@@ -991,7 +939,6 @@ mod tests {
             expected_vec
                 .set(
                     'I',
-                    0,
                     Letter {
                         char: 'I',
                         digit: 1,
@@ -1006,7 +953,6 @@ mod tests {
             expected_vec
                 .set(
                     'B',
-                    1,
                     Letter {
                         char: 'B',
                         digit: 2,
@@ -1021,7 +967,6 @@ mod tests {
             expected_vec
                 .set(
                     'L',
-                    2,
                     Letter {
                         char: 'L',
                         digit: 3,
@@ -1039,7 +984,6 @@ mod tests {
             actual_vec
                 .set(
                     'I',
-                    0,
                     Letter {
                         char: 'I',
                         digit: 1,
@@ -1054,7 +998,6 @@ mod tests {
             actual_vec
                 .set(
                     'B',
-                    1,
                     Letter {
                         char: 'B',
                         digit: 2,
@@ -1069,7 +1012,6 @@ mod tests {
             actual_vec
                 .set(
                     'L',
-                    2,
                     Letter {
                         char: 'L',
                         digit: 0,
@@ -1116,7 +1058,6 @@ mod tests {
             expected_vec
                 .set(
                     'I',
-                    0,
                     Letter {
                         char: 'I',
                         digit: 2,
@@ -1131,7 +1072,6 @@ mod tests {
             expected_vec
                 .set(
                     'B',
-                    1,
                     Letter {
                         char: 'B',
                         digit: 1,
@@ -1146,7 +1086,6 @@ mod tests {
             expected_vec
                 .set(
                     'L',
-                    2,
                     Letter {
                         char: 'L',
                         digit: 0,
@@ -1164,7 +1103,6 @@ mod tests {
             actual_vec
                 .set(
                     'I',
-                    0,
                     Letter {
                         char: 'I',
                         digit: 1,
@@ -1179,7 +1117,6 @@ mod tests {
             actual_vec
                 .set(
                     'B',
-                    1,
                     Letter {
                         char: 'B',
                         digit: 9,
@@ -1194,7 +1131,6 @@ mod tests {
             actual_vec
                 .set(
                     'L',
-                    2,
                     Letter {
                         char: 'L',
                         digit: 8,
