@@ -1,6 +1,9 @@
 use core::nullable::{match_nullable, FromNullableResult};
 use core::dict::{Felt252Dict, Felt252DictEntryTrait};
 
+const OUT_OF_RANGE_INDEX: usize = 10;
+const NON_DIGIT: u8 = 10;
+
 pub fn solve(puzzle: ByteArray) -> Option<Array<(u8, u8)>> {
     let (mut words_as_numbers, mut letters) = parse_words(puzzle).ok()?;
 
@@ -67,7 +70,7 @@ fn parse_word(chars: Array<u8>, ref words_as_numbers: WordsAsNumbers, ref letter
                     min: Option::None,
                 );
         };
-    words_as_numbers.append(0);
+    words_as_numbers.append(WordNumber { word: chars.span(), number: 0 });
     current_word_len
 }
 
@@ -103,9 +106,9 @@ fn find_solution(
     let result_index = words_as_numbers.len - 1;
     let mut sum = 0_u128;
     for i in 0..result_index {
-        sum += words_as_numbers.get(i.into());
+        sum += words_as_numbers.get(i.into()).number;
     };
-    if sum == words_as_numbers.get(result_index.into()) {
+    if sum == words_as_numbers.get(result_index.into()).number {
         let mut result = array![];
         for i in 0
             ..letters
@@ -275,21 +278,29 @@ impl VecImpl of VecTrait {
     }
 }
 
+#[derive(Drop, Debug, PartialEq, Copy)]
+struct WordNumber {
+    word: Span<u8>,
+    number: u128
+}
 
 #[derive(Destruct, Default)]
 struct WordsAsNumbers {
-    dict: Felt252Dict<u128>,
+    dict: Felt252Dict<Nullable<WordNumber>>,
     len: usize
 }
 
 #[generate_trait]
 impl WordsAsNumbersImpl of WordsAsNumbersTrait {
-    fn get(ref self: WordsAsNumbers, key: felt252) -> u128 {
-        self.dict.get(key)
+    fn get(ref self: WordsAsNumbers, key: usize) -> WordNumber {
+        let (entry, wn) = self.dict.entry(key.into());
+        let wn = wn.deref_or(WordNumber { word: array![].span(), number: 0 });
+        self.dict = entry.finalize(NullableTrait::new(wn));
+        wn
     }
 
-    fn append(ref self: WordsAsNumbers, number: u128) {
-        self.dict.insert(self.len.into(), number);
+    fn append(ref self: WordsAsNumbers, number: WordNumber) {
+        self.dict.insert(self.len.into(), NullableTrait::new(number));
         self.len += 1;
     }
 
@@ -300,9 +311,9 @@ impl WordsAsNumbersImpl of WordsAsNumbersTrait {
             format!("unexpected word index: {index} and length is {}", self.len)
         );
 
-        let mut number = self.get(index.into());
-        number.replace_digit_at(at_digit, new_digit);
-        self.dict.insert(index.into(), number);
+        let mut wn = self.get(index.into());
+        wn.number.replace_digit_at(at_digit, new_digit);
+        self.dict.insert(index.into(), NullableTrait::new(wn));
     }
 }
 
@@ -378,15 +389,17 @@ mod tests {
 
     mod parse_words {
         use super::super::WordsAsNumbersTrait;
-        use super::super::{parse_words, WordsAsNumbers, Vec, Letter, LetterPos, VecTrait};
+        use super::super::{
+            parse_words, WordsAsNumbers, WordNumber, Vec, Letter, LetterPos, VecTrait
+        };
 
         #[test]
         fn puzzle_with_three_letters() {
             let puzzle = "I + BB == ILL";
             let mut expected_wan: WordsAsNumbers = Default::default();
-            expected_wan.append(0);
-            expected_wan.append(0);
-            expected_wan.append(0);
+            expected_wan.append(WordNumber { word: array!['I'].span(), number: 0 });
+            expected_wan.append(WordNumber { word: array!['B', 'B'].span(), number: 0 });
+            expected_wan.append(WordNumber { word: array!['I', 'L', 'L'].span(), number: 0 });
 
             let mut expected_vec: Vec = Default::default();
             expected_vec.chars = array!['I', 'B', 'L'];
@@ -467,10 +480,11 @@ mod tests {
         fn puzzle_with_seven_letters() {
             let puzzle = "HE + SEES + THE == LIGHT";
             let mut expected_wan: WordsAsNumbers = Default::default();
-            expected_wan.append(0);
-            expected_wan.append(0);
-            expected_wan.append(0);
-            expected_wan.append(0);
+            expected_wan.append(WordNumber { word: array!['H', 'E'].span(), number: 0 });
+            expected_wan.append(WordNumber { word: array!['S', 'E', 'E', 'S'].span(), number: 0 });
+            expected_wan.append(WordNumber { word: array!['T', 'H', 'E'].span(), number: 0 });
+            expected_wan
+                .append(WordNumber { word: array!['L', 'I', 'G', 'H', 'T'].span(), number: 0 });
 
             let mut expected_vec: Vec = Default::default();
             expected_vec.chars = array!['H', 'E', 'S', 'T', 'L', 'I', 'G'];
@@ -594,21 +608,22 @@ mod tests {
 
     mod init_permutation {
         use super::super::{
-            WordsAsNumbers, WordsAsNumbersTrait, Vec, Letter, LetterPos, VecTrait, init_permutation
+            WordsAsNumbers, WordNumber, WordsAsNumbersTrait, Vec, Letter, LetterPos, VecTrait,
+            init_permutation
         };
 
         #[test]
         fn puzzle_with_three_letters() {
             // let puzzle = "I + BB == ILL";
             let mut expected_wan: WordsAsNumbers = Default::default();
-            expected_wan.append(1);
-            expected_wan.append(22);
-            expected_wan.append(100);
+            expected_wan.append(WordNumber { word: array!['I'].span(), number: 1 });
+            expected_wan.append(WordNumber { word: array!['B', 'B'].span(), number: 22 });
+            expected_wan.append(WordNumber { word: array!['I', 'L', 'L'].span(), number: 100 });
 
             let mut actual_wan: WordsAsNumbers = Default::default();
-            actual_wan.append(0);
-            actual_wan.append(0);
-            actual_wan.append(0);
+            actual_wan.append(WordNumber { word: array!['I'].span(), number: 0 });
+            actual_wan.append(WordNumber { word: array!['B', 'B'].span(), number: 0 });
+            actual_wan.append(WordNumber { word: array!['I', 'L', 'L'].span(), number: 0 });
 
             let mut expected_vec: Vec = Default::default();
             expected_vec.chars = array!['I', 'B', 'L'];
@@ -729,16 +744,19 @@ mod tests {
         fn puzzle_with_seven_letters() {
             // let puzzle = "HE + SEES + THE == LIGHT";
             let mut expected_wan: WordsAsNumbers = Default::default();
-            expected_wan.append(10);
-            expected_wan.append(2002);
-            expected_wan.append(310);
-            expected_wan.append(45613);
+            expected_wan.append(WordNumber { word: array!['H', 'E'].span(), number: 10 });
+            expected_wan
+                .append(WordNumber { word: array!['S', 'E', 'E', 'S'].span(), number: 2002 });
+            expected_wan.append(WordNumber { word: array!['T', 'H', 'E'].span(), number: 310 });
+            expected_wan
+                .append(WordNumber { word: array!['L', 'I', 'G', 'H', 'T'].span(), number: 45613 });
 
             let mut actual_wan: WordsAsNumbers = Default::default();
-            actual_wan.append(0);
-            actual_wan.append(0);
-            actual_wan.append(0);
-            actual_wan.append(0);
+            actual_wan.append(WordNumber { word: array!['H', 'E'].span(), number: 0 });
+            actual_wan.append(WordNumber { word: array!['S', 'E', 'E', 'S'].span(), number: 0 });
+            actual_wan.append(WordNumber { word: array!['T', 'H', 'E'].span(), number: 0 });
+            actual_wan
+                .append(WordNumber { word: array!['L', 'I', 'G', 'H', 'T'].span(), number: 0 });
 
             let mut expected_vec: Vec = Default::default();
             expected_vec.chars = array!['H', 'E', 'S', 'T', 'L', 'I', 'G'];
