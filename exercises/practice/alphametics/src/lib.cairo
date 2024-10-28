@@ -76,29 +76,26 @@ fn parse_word(chars: Array<u8>, ref words_as_numbers: WordsAsNumbers, ref letter
     current_word_len
 }
 
-fn num_len(num: u128) -> usize {
-    format!("{num}").len()
-}
-
 fn analyze(ref wan: WordsAsNumbers, ref letters: Vec) {
     let wan_len = wan.len;
     let result = wan.get((wan_len - 1).into());
-    let result_len = num_len(result.number);
+    let result_len = result.word.len();
 
     let mut lens: Felt252Dict<Nullable<Array<usize>>> = Default::default();
 
     for i in 0
-        ..wan_len {
-            let word_number = wan.get(i.into());
-            let len = num_len(word_number.number);
-            let (entry, old_indices) = lens.entry(len.into());
-            let mut new_indices = match match_nullable(old_indices) {
-                FromNullableResult::NotNull(val) => val.unbox(),
-                FromNullableResult::Null => Default::default()
+        ..wan_len
+            - 1 {
+                let word_number = wan.get(i.into());
+                let len = word_number.word.len();
+                let (entry, old_indices) = lens.entry(len.into());
+                let mut new_indices = match match_nullable(old_indices) {
+                    FromNullableResult::NotNull(val) => val.unbox(),
+                    FromNullableResult::Null => Default::default()
+                };
+                new_indices.append(i);
+                lens = entry.finalize(NullableTrait::new(new_indices))
             };
-            new_indices.append(i);
-            lens = entry.finalize(NullableTrait::new(new_indices))
-        };
 
     let (entry, n_res_eq_lens) = lens.entry(result_len.into());
     let res_eq_lens = n_res_eq_lens.deref_or(Default::default());
@@ -115,10 +112,19 @@ fn analyze(ref wan: WordsAsNumbers, ref letters: Vec) {
         let mut first_res_letter = letters.get(first_res_ch);
         first_res_letter.max = max_res_digit;
         letters.set(first_res_ch, first_res_letter);
+    } else {
+        assert!(res_eq_lens.len() <= 9, "result smaller than actual sum");
+        let new_max: u8 = (9 - res_eq_lens.len() + 1).try_into().unwrap();
+        for i in 0
+            ..res_eq_lens
+                .len() {
+                    let word_number = wan.get(*res_eq_lens[i]);
+                    let ch = *word_number.word[0];
+                    let mut letter = letters.get(ch);
+                    letter.max = new_max;
+                    letters.set(ch, letter);
+                };
     }
-    // for i in 0..res_eq_lens.len() {
-
-    // };
 }
 
 fn get_res_to_longest_word_len_diff(
