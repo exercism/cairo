@@ -81,29 +81,63 @@ fn num_len(num: u128) -> usize {
 }
 
 fn analyze(ref wan: WordsAsNumbers, ref letters: Vec) {
-    let result = wan.get((wan.len - 1).into());
+    let wan_len = wan.len;
+    let result = wan.get((wan_len - 1).into());
     let result_len = num_len(result.number);
 
     let mut lens: Felt252Dict<Nullable<Array<usize>>> = Default::default();
 
     for i in 0
-        ..wan
-            .len {
-                let word_number = wan.get(i.into());
-                let len = num_len(word_number.number);
-                let (entry, old_indices) = lens.entry(len.into());
-                let mut new_indices = match match_nullable(old_indices) {
-                    FromNullableResult::NotNull(val) => val.unbox(),
-                    FromNullableResult::Null => Default::default()
-                };
-                new_indices.append(i);
-                lens = entry.finalize(NullableTrait::new(new_indices))
+        ..wan_len {
+            let word_number = wan.get(i.into());
+            let len = num_len(word_number.number);
+            let (entry, old_indices) = lens.entry(len.into());
+            let mut new_indices = match match_nullable(old_indices) {
+                FromNullableResult::NotNull(val) => val.unbox(),
+                FromNullableResult::Null => Default::default()
             };
+            new_indices.append(i);
+            lens = entry.finalize(NullableTrait::new(new_indices))
+        };
 
     let (entry, n_res_eq_lens) = lens.entry(result_len.into());
     let res_eq_lens = n_res_eq_lens.deref_or(Default::default());
-    for i in 0..res_eq_lens.len() {};
-    entry.finalize(NullableTrait::new(res_eq_lens));
+    if res_eq_lens.len() == 0 {
+        lens = entry.finalize(NullableTrait::new(res_eq_lens));
+        // let diff = get_res_to_longest_word_len_diff(ref lens, result_len);
+
+        let max_res_digit: u8 = if wan_len > 11 {
+            9
+        } else {
+            (wan_len - 2).try_into().unwrap()
+        };
+        let first_res_ch = *result.word[0];
+        let mut first_res_letter = letters.get(first_res_ch);
+        first_res_letter.max = max_res_digit;
+        letters.set(first_res_ch, first_res_letter);
+    }
+    // for i in 0..res_eq_lens.len() {
+
+    // };
+}
+
+fn get_res_to_longest_word_len_diff(
+    ref lens: Felt252Dict<Nullable<Array<usize>>>, result_len: usize
+) -> u8 {
+    let mut len_diff = 1_u8;
+
+    loop {
+        let (entry, n_res_len_minus_one_lens) = lens.entry((result_len - len_diff.into()).into());
+        let res_len_minus_one_lens = n_res_len_minus_one_lens.deref_or(Default::default());
+        let count = res_len_minus_one_lens.len();
+        lens = entry.finalize(NullableTrait::new(res_len_minus_one_lens));
+        if count != 0 {
+            break;
+        }
+        len_diff -= 1;
+    };
+
+    len_diff
 }
 
 fn init_permutation(ref words_as_numbers: WordsAsNumbers, ref letters: Vec) -> bool {
