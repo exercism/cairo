@@ -1,7 +1,6 @@
 use binary_search_tree::{Bts, BtsTrait, Node};
 
 fn assert_bts_equal(ref lhs: Bts, ref rhs: Bts) {
-    assert!(lhs.root == rhs.root);
     assert!(lhs.next_index == rhs.next_index);
 
     let mut elements_equal = true;
@@ -27,7 +26,6 @@ fn nullable_node(elem: u32, left: Option<felt252>, right: Option<felt252>) -> Nu
 #[test]
 fn data_is_retained() {
     let mut expected: Bts = Default::default();
-    expected.root = Option::Some(0);
     expected.elements.insert(0, nullable_node(4, Option::None, Option::None));
     expected.next_index = 1;
 
@@ -39,7 +37,6 @@ fn data_is_retained() {
 #[ignore]
 fn smaller_number_at_left_node() {
     let mut expected: Bts = Default::default();
-    expected.root = Option::Some(0);
     expected.elements.insert(0, nullable_node(4, Option::Some(1), Option::None));
     expected.elements.insert(1, nullable_node(2, Option::None, Option::None));
     expected.next_index = 2;
@@ -52,7 +49,6 @@ fn smaller_number_at_left_node() {
 #[ignore]
 fn same_number_at_left_node() {
     let mut expected: Bts = Default::default();
-    expected.root = Option::Some(0);
     expected.elements.insert(0, nullable_node(4, Option::Some(1), Option::None));
     expected.elements.insert(1, nullable_node(4, Option::None, Option::None));
     expected.next_index = 2;
@@ -65,7 +61,6 @@ fn same_number_at_left_node() {
 #[ignore]
 fn greater_number_at_right_node() {
     let mut expected: Bts = Default::default();
-    expected.root = Option::Some(0);
     expected.elements.insert(0, nullable_node(4, Option::None, Option::Some(1)));
     expected.elements.insert(1, nullable_node(5, Option::None, Option::None));
     expected.next_index = 2;
@@ -78,7 +73,6 @@ fn greater_number_at_right_node() {
 #[ignore]
 fn can_create_complex_tree() {
     let mut expected: Bts = Default::default();
-    expected.root = Option::Some(0);
     expected.elements.insert(0, nullable_node(4, Option::Some(1), Option::Some(2)));
     expected.elements.insert(1, nullable_node(2, Option::Some(3), Option::Some(4)));
     expected.elements.insert(2, nullable_node(6, Option::Some(5), Option::Some(6)));

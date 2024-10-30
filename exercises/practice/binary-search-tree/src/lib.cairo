@@ -18,7 +18,6 @@ impl NodeImpl of NodeTrait {
 
 #[derive(Default)]
 pub struct Bts {
-    pub root: SubtreeIndex,
     pub elements: Felt252Dict<Nullable<Node>>,
     pub next_index: felt252,
 }
@@ -40,34 +39,33 @@ pub impl BtsImpl of BtsTrait {
     }
 
     fn add(ref self: Bts, elem: u32) {
-        match self.root {
-            Option::None => self.root = Option::Some(self.next_index),
-            Option::Some(root) => self._insert(root, elem)
-        };
         self.elements.insert(self.next_index, NullableTrait::new(NodeTrait::new(elem)));
+        if self.next_index != 0 {
+            self._link(0, elem)
+        };
         self.next_index += 1;
     }
 
     fn flatten(ref self: Bts) -> Span<u32> {
-        self._flatten_subtree(self.root)
+        self._flatten_subtree(Option::Some(0))
     }
 }
 
 #[generate_trait]
 impl BtsPrivateImpl of BtsPrivateTrait {
-    fn _insert(ref self: Bts, subtree_index: felt252, elem: u32) {
+    fn _link(ref self: Bts, subtree_index: felt252, elem: u32) {
         let mut node = self.elements.get(subtree_index).deref();
 
         if elem <= node.elem {
             if let Option::Some(left) = node.left {
-                self._insert(left, elem)
+                self._link(left, elem)
             } else {
                 node.left = Option::Some(self.next_index);
                 self.elements.insert(subtree_index, NullableTrait::new(node));
             }
         } else {
             if let Option::Some(right) = node.right {
-                self._insert(right, elem)
+                self._link(right, elem)
             } else {
                 node.right = Option::Some(self.next_index);
                 self.elements.insert(subtree_index, NullableTrait::new(node));
