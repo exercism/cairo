@@ -1,85 +1,73 @@
-use core::dict::Felt252Dict;
+type BinarySearchTree = Option<Box<Node>>;
 
-pub type SubtreeIndex = Option<felt252>;
-
-#[derive(Drop, Copy, PartialEq, Debug, Default)]
-pub struct Node {
-    pub elem: u32,
-    pub left: SubtreeIndex,
-    pub right: SubtreeIndex,
+#[derive(Drop, Copy)]
+struct Node {
+    value: u32,
+    left: BinarySearchTree,
+    right: BinarySearchTree,
 }
 
 #[generate_trait]
-impl NodeImpl of NodeTrait {
-    fn new(elem: u32) -> Node {
-        Node { elem, left: Option::None, right: Option::None }
-    }
-}
-
-#[derive(Default)]
-pub struct Bts {
-    pub elements: Felt252Dict<Nullable<Node>>,
-    pub count: felt252,
-}
-
-impl BtsDestruct of Destruct<Bts> {
-    fn destruct(self: Bts) nopanic {
-        self.elements.squash();
-    }
-}
-
-#[generate_trait]
-pub impl BtsImpl of BtsTrait {
-    fn new(tree_data: Span<u32>) -> Bts {
-        let mut bts: Bts = Default::default();
-        for elem in tree_data {
-            bts.add(*elem);
+pub impl BinarySearchTreeImpl of BinarySearchTreeTrait {
+    fn new(tree_data: Span<u32>) -> BinarySearchTree {
+        let mut bts: BinarySearchTree = Default::default();
+        for value in tree_data {
+            bts = bts.add(*value);
         };
         bts
     }
 
-    fn add(ref self: Bts, elem: u32) {
-        self.elements.insert(self.count, NullableTrait::new(NodeTrait::new(elem)));
-        if self.count != 0 {
-            self._link(0, elem)
-        };
-        self.count += 1;
-    }
-
-    fn sorted_data(ref self: Bts) -> Span<u32> {
-        self._flatten_subtree(Option::Some(0))
-    }
-}
-
-#[generate_trait]
-impl BtsPrivateImpl of BtsPrivateTrait {
-    fn _link(ref self: Bts, subtree_index: felt252, elem: u32) {
-        let mut node = self.elements.get(subtree_index).deref();
-
-        if elem <= node.elem {
-            if let Option::Some(left) = node.left {
-                self._link(left, elem)
-            } else {
-                node.left = Option::Some(self.count);
-                self.elements.insert(subtree_index, NullableTrait::new(node));
-            }
-        } else {
-            if let Option::Some(right) = node.right {
-                self._link(right, elem)
-            } else {
-                node.right = Option::Some(self.count);
-                self.elements.insert(subtree_index, NullableTrait::new(node));
+    fn add(self: BinarySearchTree, value: u32) -> BinarySearchTree {
+        match self {
+            Option::None => Option::Some(
+                BoxTrait::new(Node { value, left: Option::None, right: Option::None })
+            ),
+            Option::Some(node) => {
+                if value <= node.value {
+                    Option::Some(
+                        BoxTrait::new(
+                            Node {
+                                value: node.value, left: node.left.add(value), right: node.right
+                            }
+                        )
+                    )
+                } else {
+                    Option::Some(
+                        BoxTrait::new(
+                            Node {
+                                value: node.value, left: node.left, right: node.right.add(value)
+                            }
+                        )
+                    )
+                }
             }
         }
     }
 
-    fn _flatten_subtree(ref self: Bts, subtree_index: SubtreeIndex) -> Span<u32> {
+    fn value(self: @BinarySearchTree) -> Option<u32> {
+        Option::Some((*self)?.value)
+    }
+
+    fn left(self: @BinarySearchTree) -> @BinarySearchTree {
+        @match self {
+            Option::None => Option::None,
+            Option::Some(bst) => bst.left
+        }
+    }
+
+    fn right(self: @BinarySearchTree) -> @BinarySearchTree {
+        @match self {
+            Option::None => Option::None,
+            Option::Some(bst) => bst.right
+        }
+    }
+
+    fn sorted_data(self: @BinarySearchTree) -> Span<u32> {
         let mut res = array![];
-        if let Option::Some(subtree_index) = subtree_index {
-            let node = self.elements.get(subtree_index).deref();
-            res.append_span(self._flatten_subtree(node.left));
-            res.append(node.elem);
-            res.append_span(self._flatten_subtree(node.right));
+        if let Option::Some(node) = self {
+            res.append_span(node.left.sorted_data());
+            res.append(node.value);
+            res.append_span(node.right.sorted_data());
         }
         res.span()
     }

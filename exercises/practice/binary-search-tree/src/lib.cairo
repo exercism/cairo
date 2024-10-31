@@ -1,33 +1,31 @@
-use core::dict::Felt252Dict;
+type BinarySearchTree = Option<Box<Node>>;
 
-pub type SubtreeIndex = Option<felt252>;
-
-#[derive(Drop, Copy, PartialEq, Debug, Default)]
-pub struct Node {
-    pub elem: u32,
-    pub left: SubtreeIndex,
-    pub right: SubtreeIndex,
-}
-
-#[derive(Default)]
-pub struct Bts {
-    pub elements: Felt252Dict<Nullable<Node>>,
-    pub count: felt252,
-}
-
-impl BtsDestruct of Destruct<Bts> {
-    fn destruct(self: Bts) nopanic {
-        self.elements.squash();
-    }
+#[derive(Drop, Copy)]
+struct Node {
+    value: u32,
+    left: BinarySearchTree,
+    right: BinarySearchTree,
 }
 
 #[generate_trait]
-pub impl BtsImpl of BtsTrait {
-    fn new(tree_data: Span<u32>) -> Bts {
-        panic!("implement `BtsTrait::new`")
+pub impl BinarySearchTreeImpl of BinarySearchTreeTrait {
+    fn new(tree_data: Span<u32>) -> BinarySearchTree {
+        panic!("implement `BinarySearchTreeTrait::new`")
     }
 
-    fn sorted_data(ref self: Bts) -> Span<u32> {
-        panic!("implement `BtsTrait::sorted_data`")
+    fn value(self: @BinarySearchTree) -> Option<u32> {
+        panic!("implement `BinarySearchTreeTrait::value`")
+    }
+
+    fn left(self: @BinarySearchTree) -> @BinarySearchTree {
+        panic!("implement `BinarySearchTreeTrait::left`")
+    }
+
+    fn right(self: @BinarySearchTree) -> @BinarySearchTree {
+        panic!("implement `BinarySearchTreeTrait::right`")
+    }
+
+    fn sorted_data(self: @BinarySearchTree) -> Span<u32> {
+        panic!("implement `BinarySearchTreeTrait::sorted_data`")
     }
 }

@@ -51,7 +51,3 @@ The key point is that we had to re-create each node along the path (`1` to `2`) 
 The original tree still exists (for example, for all references to its original root `1`), while this new tree represents the modified state.
 
 In large trees, this approach can become expensive, as every new modification requires recreating a path of nodes from the root to the updated node, even if only a small part of the tree is actually changed.
-
-Another option is to take advantage of Cairo's dictionaries, which can be used to "simulate" a modifiable data structure.
-Because Cairo encourages execution efficiency, as it's generally used in environments that demand it (e.g. to write Starknet smart contracts), we will be
-using this dictionary approach to solve the binary search tree problem.
