@@ -1,0 +1,10 @@
+[
+    {
+        "url": "https://book.cairo-lang.org/ch06-01-enums.html#the-option-enum-and-its-advantages",
+        "description": "The Option enum in The Cairo book"
+    },
+    {
+      "url": "https://book.cairo-lang.org/ch06-03-concise-control-flow-with-if-let-and-while-let.html",
+      "description": "A section in the Cairo programming language book that discusses control flow with `if let` and `while let`"
+    }
+]
