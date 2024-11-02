@@ -1,0 +1,15 @@
+{
+  "authors": [],
+  "files": {
+    "solution": [
+      "src/lib.cairo"
+    ],
+    "test": [
+      "tests/zipper.cairo"
+    ],
+    "example": [
+      ".meta/example.cairo"
+    ]
+  },
+  "blurb": "Creating a zipper for a binary tree."
+}
