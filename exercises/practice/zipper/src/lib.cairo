@@ -17,12 +17,6 @@ pub impl BinaryTreePartialEq of PartialEq<Option<Box<Node>>> {
     }
 }
 
-impl NodeIntoBinaryTree of Into<Node, BinaryTree> {
-    fn into(self: Node) -> BinaryTree {
-        Option::Some(BoxTrait::new(self))
-    }
-}
-
 #[generate_trait]
 impl NodeImpl of NodeTrait {
     fn with_value(self: Node, right: BinaryTree) -> Node {
@@ -38,6 +32,12 @@ impl NodeImpl of NodeTrait {
     }
 }
 
+impl NodeIntoBinaryTree of Into<Node, BinaryTree> {
+    fn into(self: Node) -> BinaryTree {
+        Option::Some(BoxTrait::new(self))
+    }
+}
+
 #[generate_trait]
 pub impl BinaryTreeImpl of BinaryTreeTrait {
     fn empty() -> BinaryTree {
@@ -49,7 +49,7 @@ pub impl BinaryTreeImpl of BinaryTreeTrait {
     }
 
     fn leaf(value: u32) -> BinaryTree {
-        Option::Some(BoxTrait::new(Node { value, left: Self::empty(), right: Self::empty() }))
+        Self::new(value, Self::empty(), Self::empty())
     }
 
     fn set_value(self: BinaryTree, value: u32) -> BinaryTree {
@@ -96,25 +96,16 @@ struct Zipper {
 
 #[generate_trait]
 pub impl ZipperImpl of ZipperTrait {
-    fn from_tree(tree: BinaryTree) -> Zipper {
-        Self::init(tree, array![].span())
-    }
-
-    fn init(tree: BinaryTree, ancestors: Span<Ancestor>) -> Zipper {
+    fn new(tree: BinaryTree, ancestors: Span<Ancestor>) -> Zipper {
         Zipper { tree, ancestors }
     }
 
-    fn rebuild_tree(tree: BinaryTree, ancestors: Span<Ancestor>) -> BinaryTree {
-        let mut ancestors = ancestors;
-        if let Option::Some(last) = ancestors.pop_back() {
-            Self::rebuild_tree(Self::from_ancestor(tree, *last), ancestors)
-        } else {
-            tree
-        }
+    fn from_tree(tree: BinaryTree) -> Zipper {
+        Self::new(tree, array![].span())
     }
 
     fn to_tree(self: Zipper) -> BinaryTree {
-        Self::rebuild_tree(self.tree, self.ancestors)
+        rebuild_tree(self.tree, self.ancestors)
     }
 
     fn value(self: @Zipper) -> Option<u32> {
@@ -123,7 +114,7 @@ pub impl ZipperImpl of ZipperTrait {
 
     fn left(self: Zipper) -> Option<Zipper> {
         Option::Some(
-            Self::init(
+            Self::new(
                 Option::Some((*self.tree.left())?),
                 self
                     .ancestors
@@ -134,7 +125,7 @@ pub impl ZipperImpl of ZipperTrait {
 
     fn right(self: Zipper) -> Option<Zipper> {
         Option::Some(
-            Self::init(
+            Self::new(
                 Option::Some((*self.tree.right())?),
                 self
                     .ancestors
@@ -146,34 +137,43 @@ pub impl ZipperImpl of ZipperTrait {
     fn up(self: Zipper) -> Option<Zipper> {
         let mut ancestors = self.ancestors;
         let ancestor = *ancestors.pop_back()?;
-        Option::Some(Self::init(Self::from_ancestor(self.tree, ancestor), ancestors))
-    }
-
-    fn from_ancestor(tree: BinaryTree, ancestor: Ancestor) -> BinaryTree {
-        match ancestor.path {
-            Path::Left => ancestor.node.with_left(tree).into(),
-            Path::Right => ancestor.node.with_right(tree).into(),
-        }
+        Option::Some(Self::new(from_ancestor(self.tree, ancestor), ancestors))
     }
 
     fn set_value(self: Zipper, value: u32) -> Zipper {
-        Self::init(
+        Self::new(
             BinaryTreeTrait::new(value, *self.tree.left(), *self.tree.right()), self.ancestors
         )
     }
 
     fn set_left(self: Zipper, left: BinaryTree) -> Zipper {
-        Self::init(
+        Self::new(
             BinaryTreeTrait::new(self.tree.value().unwrap(), left, *self.tree.right()),
             self.ancestors
         )
     }
 
     fn set_right(self: Zipper, right: BinaryTree) -> Zipper {
-        Self::init(
+        Self::new(
             BinaryTreeTrait::new(self.tree.value().unwrap(), *self.tree.left(), right),
             self.ancestors
         )
+    }
+}
+
+fn from_ancestor(tree: BinaryTree, ancestor: Ancestor) -> BinaryTree {
+    match ancestor.path {
+        Path::Left => ancestor.node.with_left(tree).into(),
+        Path::Right => ancestor.node.with_right(tree).into(),
+    }
+}
+
+fn rebuild_tree(tree: BinaryTree, ancestors: Span<Ancestor>) -> BinaryTree {
+    let mut ancestors = ancestors;
+    if let Option::Some(last) = ancestors.pop_back() {
+        rebuild_tree(from_ancestor(tree, *last), ancestors)
+    } else {
+        tree
     }
 }
 
