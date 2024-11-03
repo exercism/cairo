@@ -1,4 +1,4 @@
-use zipper::{ZipperTrait as Zipper, BinaryTreeTrait as BinaryTree, BinaryTreePartialEq};
+use zipper::{ZipperTrait as Zipper, BinaryTreeTrait as BinaryTree, OptionalBinaryTreeNodePartialEq};
 
 #[test]
 fn data_is_retained() {
