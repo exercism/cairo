@@ -40,8 +40,16 @@ impl NodeImpl of NodeTrait {
 
 #[generate_trait]
 pub impl BinaryTreeImpl of BinaryTreeTrait {
+    fn empty() -> BinaryTree {
+        Option::None
+    }
+
     fn new(value: u32, left: BinaryTree, right: BinaryTree) -> BinaryTree {
         Option::Some(BoxTrait::new(Node { value, left, right }))
+    }
+
+    fn leaf(value: u32) -> BinaryTree {
+        Option::Some(BoxTrait::new(Node { value, left: Self::empty(), right: Self::empty() }))
     }
 
     fn set_value(self: BinaryTree, value: u32) -> BinaryTree {
@@ -68,19 +76,19 @@ pub impl BinaryTreeImpl of BinaryTreeTrait {
     }
 }
 
-#[derive(Drop, Copy)]
+#[derive(Drop, Copy, Debug, PartialEq)]
 enum Path {
     Left,
     Right
 }
 
-#[derive(Drop, Copy)]
+#[derive(Drop, Copy, Debug, PartialEq)]
 struct Ancestor {
     path: Path,
     node: Node
 }
 
-#[derive(Drop, Copy)]
+#[derive(Drop, Copy, Debug, PartialEq)]
 struct Zipper {
     tree: BinaryTree,
     ancestors: Span<Ancestor>
