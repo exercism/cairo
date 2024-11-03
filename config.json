@@ -827,6 +827,14 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 4
+      },
+      {
+        "slug": "word-search",
+        "name": "Word Search",
+        "uuid": "bc1b7de1-4003-4fed-86b3-b09338ff77e4",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
       }
     ],
     "foregone": [
