@@ -6,7 +6,7 @@ fn data_is_retained() {
         1, BinaryTree::new(2, BinaryTree::empty(), BinaryTree::leaf(3)), BinaryTree::leaf(4)
     );
     let expected = initial_tree.clone();
-    let zipper = Zipper::from_tree(initial_tree);
+    let zipper = Zipper::from_tree(initial_tree).unwrap();
     assert_eq!(expected, zipper.to_tree());
 }
 
@@ -15,8 +15,8 @@ fn left_right_and_value() {
     let initial_tree = BinaryTree::new(
         1, BinaryTree::new(2, BinaryTree::empty(), BinaryTree::leaf(3)), BinaryTree::leaf(4)
     );
-    let zipper = Zipper::from_tree(initial_tree);
-    assert_eq!(Option::Some(3), zipper.left().unwrap().right().unwrap().value());
+    let zipper = Zipper::from_tree(initial_tree).unwrap();
+    assert_eq!(@3, zipper.left().unwrap().right().unwrap().value());
 }
 
 #[test]
@@ -24,7 +24,7 @@ fn dead_end() {
     let initial_tree = BinaryTree::new(
         1, BinaryTree::new(2, BinaryTree::empty(), BinaryTree::leaf(3)), BinaryTree::leaf(4)
     );
-    let zipper = Zipper::from_tree(initial_tree);
+    let zipper = Zipper::from_tree(initial_tree).unwrap();
     assert!(zipper.left().unwrap().left().is_none());
 }
 
@@ -34,7 +34,7 @@ fn tree_from_deep_focus() {
         1, BinaryTree::new(2, BinaryTree::empty(), BinaryTree::leaf(3)), BinaryTree::leaf(4)
     );
     let expected = initial_tree.clone();
-    let zipper = Zipper::from_tree(initial_tree);
+    let zipper = Zipper::from_tree(initial_tree).unwrap();
     assert_eq!(expected, zipper.left().unwrap().right().unwrap().to_tree());
 }
 
@@ -43,7 +43,7 @@ fn traversing_up_from_top() {
     let initial_tree = BinaryTree::new(
         1, BinaryTree::new(2, BinaryTree::empty(), BinaryTree::leaf(3)), BinaryTree::leaf(4)
     );
-    let zipper = Zipper::from_tree(initial_tree);
+    let zipper = Zipper::from_tree(initial_tree).unwrap();
     assert!(zipper.up().is_none());
 }
 
@@ -52,9 +52,9 @@ fn left_right_and_up() {
     let initial_tree = BinaryTree::new(
         1, BinaryTree::new(2, BinaryTree::empty(), BinaryTree::leaf(3)), BinaryTree::leaf(4)
     );
-    let zipper = Zipper::from_tree(initial_tree);
+    let zipper = Zipper::from_tree(initial_tree).unwrap();
     assert_eq!(
-        Option::Some(3),
+        @3,
         zipper
             .left()
             .unwrap()
@@ -77,10 +77,8 @@ fn test_ability_to_descend_multiple_levels_and_return() {
     let initial_tree = BinaryTree::new(
         1, BinaryTree::new(2, BinaryTree::empty(), BinaryTree::leaf(3)), BinaryTree::leaf(4)
     );
-    let zipper = Zipper::from_tree(initial_tree);
-    assert_eq!(
-        Option::Some(1), zipper.left().unwrap().right().unwrap().up().unwrap().up().unwrap().value()
-    );
+    let zipper = Zipper::from_tree(initial_tree).unwrap();
+    assert_eq!(@1, zipper.left().unwrap().right().unwrap().up().unwrap().up().unwrap().value());
 }
 
 #[test]
@@ -91,7 +89,7 @@ fn set_value() {
     let expected = BinaryTree::new(
         1, BinaryTree::new(5, BinaryTree::empty(), BinaryTree::leaf(3)), BinaryTree::leaf(4)
     );
-    let zipper = Zipper::from_tree(initial_tree);
+    let zipper = Zipper::from_tree(initial_tree).unwrap();
     assert_eq!(expected, zipper.left().unwrap().set_value(5).to_tree());
 }
 
@@ -104,7 +102,7 @@ fn set_value_after_traversing_up() {
         1, BinaryTree::new(5, BinaryTree::empty(), BinaryTree::leaf(3)), BinaryTree::leaf(4)
     );
 
-    let zipper = Zipper::from_tree(initial_tree);
+    let zipper = Zipper::from_tree(initial_tree).unwrap();
 
     assert_eq!(
         expected, zipper.left().unwrap().right().unwrap().up().unwrap().set_value(5).to_tree()
@@ -120,7 +118,7 @@ fn set_left_with_leaf() {
         1, BinaryTree::new(2, BinaryTree::leaf(5), BinaryTree::leaf(3)), BinaryTree::leaf(4)
     );
 
-    let zipper = Zipper::from_tree(initial_tree);
+    let zipper = Zipper::from_tree(initial_tree).unwrap();
 
     assert_eq!(expected, zipper.left().unwrap().set_left(BinaryTree::leaf(5)).to_tree());
 }
@@ -132,7 +130,7 @@ fn set_right_with_leaf() {
     );
     let expected = BinaryTree::new(1, BinaryTree::leaf(2), BinaryTree::leaf(4));
 
-    let zipper = Zipper::from_tree(initial_tree);
+    let zipper = Zipper::from_tree(initial_tree).unwrap();
 
     assert_eq!(expected, zipper.left().unwrap().set_right(BinaryTree::empty()).to_tree());
 }
@@ -148,7 +146,7 @@ fn set_right_with_subtree() {
         BinaryTree::new(6, BinaryTree::leaf(7), BinaryTree::leaf(8))
     );
 
-    let zipper = Zipper::from_tree(initial_tree);
+    let zipper = Zipper::from_tree(initial_tree).unwrap();
 
     assert_eq!(
         expected,
@@ -165,7 +163,7 @@ fn set_value_on_deep_focus() {
         1, BinaryTree::new(2, BinaryTree::empty(), BinaryTree::leaf(5)), BinaryTree::leaf(4)
     );
 
-    let zipper = Zipper::from_tree(initial_tree);
+    let zipper = Zipper::from_tree(initial_tree).unwrap();
 
     assert_eq!(expected, zipper.left().unwrap().right().unwrap().set_value(5).to_tree());
 }
@@ -175,8 +173,8 @@ fn different_paths_to_same_zipper() {
     let initial_tree = BinaryTree::new(
         1, BinaryTree::new(2, BinaryTree::empty(), BinaryTree::leaf(3)), BinaryTree::leaf(4)
     );
-    let expected = Zipper::from_tree(initial_tree).right();
-    let actual = Zipper::from_tree(initial_tree).left().unwrap().up().unwrap().right();
+    let expected = Zipper::from_tree(initial_tree).unwrap().right();
+    let actual = Zipper::from_tree(initial_tree).unwrap().left().unwrap().up().unwrap().right();
 
     assert_eq!(expected, actual);
 }

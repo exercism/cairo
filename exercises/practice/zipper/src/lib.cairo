@@ -1,14 +1,14 @@
-pub type BinaryTree = Option<Box<Node>>;
+pub type BinaryTree = Option<Box<BinaryTreeNode>>;
 
 #[derive(Drop, Debug, PartialEq, Copy)]
-pub struct Node {
+pub struct BinaryTreeNode {
     value: u32,
     left: BinaryTree,
     right: BinaryTree,
 }
 
-pub impl BinaryTreePartialEq of PartialEq<Option<Box<Node>>> {
-    fn eq(lhs: @Option<Box<Node>>, rhs: @Option<Box<Node>>) -> bool {
+pub impl BinaryTreePartialEq of PartialEq<Option<Box<BinaryTreeNode>>> {
+    fn eq(lhs: @Option<Box<BinaryTreeNode>>, rhs: @Option<Box<BinaryTreeNode>>) -> bool {
         match (lhs, rhs) {
             (Option::Some(lhs), Option::Some(rhs)) => (*lhs).unbox() == (*rhs).unbox(),
             (Option::None, Option::None) => true,
@@ -19,21 +19,21 @@ pub impl BinaryTreePartialEq of PartialEq<Option<Box<Node>>> {
 
 #[generate_trait]
 impl NodeImpl of NodeTrait {
-    fn with_value(self: Node, right: BinaryTree) -> Node {
-        Node { right, ..self }
+    fn set_value(self: BinaryTreeNode, value: u32) -> BinaryTreeNode {
+        BinaryTreeNode { value, ..self }
     }
 
-    fn with_left(self: Node, left: BinaryTree) -> Node {
-        Node { left, ..self }
+    fn set_left(self: BinaryTreeNode, left: BinaryTree) -> BinaryTreeNode {
+        BinaryTreeNode { left, ..self }
     }
 
-    fn with_right(self: Node, right: BinaryTree) -> Node {
-        Node { right, ..self }
+    fn set_right(self: BinaryTreeNode, right: BinaryTree) -> BinaryTreeNode {
+        BinaryTreeNode { right, ..self }
     }
 }
 
-impl NodeIntoBinaryTree of Into<Node, BinaryTree> {
-    fn into(self: Node) -> BinaryTree {
+impl NodeIntoBinaryTree of Into<BinaryTreeNode, BinaryTree> {
+    fn into(self: BinaryTreeNode) -> BinaryTree {
         Option::Some(BoxTrait::new(self))
     }
 }
@@ -45,7 +45,7 @@ pub impl BinaryTreeImpl of BinaryTreeTrait {
     }
 
     fn new(value: u32, left: BinaryTree, right: BinaryTree) -> BinaryTree {
-        Option::Some(BoxTrait::new(Node { value, left, right }))
+        Option::Some(BoxTrait::new(BinaryTreeNode { value, left, right }))
     }
 
     fn leaf(value: u32) -> BinaryTree {
@@ -56,7 +56,6 @@ pub impl BinaryTreeImpl of BinaryTreeTrait {
         Self::new(value, *self.left(), *self.right())
     }
 
-    // TODO: return snapshot of value
     fn value(self: @BinaryTree) -> Option<u32> {
         Option::Some((*self)?.value)
     }
@@ -85,86 +84,68 @@ enum Path {
 #[derive(Drop, Copy, Debug, PartialEq)]
 struct Ancestor {
     path: Path,
-    node: Node
+    node: BinaryTreeNode
 }
 
 #[derive(Drop, Copy, Debug, PartialEq)]
 struct Zipper {
-    tree: BinaryTree,
+    node: BinaryTreeNode,
     ancestors: Span<Ancestor>
 }
 
 #[generate_trait]
 pub impl ZipperImpl of ZipperTrait {
-    fn new(tree: BinaryTree, ancestors: Span<Ancestor>) -> Zipper {
-        Zipper { tree, ancestors }
+    fn new(tree: BinaryTree, ancestors: Span<Ancestor>) -> Option<Zipper> {
+        Option::Some(Zipper { node: tree?.unbox(), ancestors })
     }
 
-    fn from_tree(tree: BinaryTree) -> Zipper {
+    fn from_tree(tree: BinaryTree) -> Option<Zipper> {
         Self::new(tree, array![].span())
     }
 
     fn to_tree(self: Zipper) -> BinaryTree {
-        rebuild_tree(self.tree, self.ancestors)
+        rebuild_tree(self.node.into(), self.ancestors)
     }
 
-    fn value(self: @Zipper) -> Option<u32> {
-        self.tree.value()
+    fn value(self: @Zipper) -> @u32 {
+        self.node.value
     }
 
     fn left(self: Zipper) -> Option<Zipper> {
-        Option::Some(
-            Self::new(
-                Option::Some((*self.tree.left())?),
-                self
-                    .ancestors
-                    .append(Ancestor { path: Path::Left, node: self.tree.unwrap().unbox() })
-            )
+        Self::new(
+            self.node.left, self.ancestors.append(Ancestor { path: Path::Left, node: self.node })
         )
     }
 
     fn right(self: Zipper) -> Option<Zipper> {
-        Option::Some(
-            Self::new(
-                Option::Some((*self.tree.right())?),
-                self
-                    .ancestors
-                    .append(Ancestor { path: Path::Right, node: self.tree.unwrap().unbox() })
-            )
+        Self::new(
+            self.node.right, self.ancestors.append(Ancestor { path: Path::Right, node: self.node })
         )
     }
 
     fn up(self: Zipper) -> Option<Zipper> {
         let mut ancestors = self.ancestors;
         let ancestor = *ancestors.pop_back()?;
-        Option::Some(Self::new(from_ancestor(self.tree, ancestor), ancestors))
+        Self::new(from_ancestor(self.node.into(), ancestor), ancestors)
     }
 
     fn set_value(self: Zipper, value: u32) -> Zipper {
-        Self::new(
-            BinaryTreeTrait::new(value, *self.tree.left(), *self.tree.right()), self.ancestors
-        )
+        Self::new(self.node.set_value(value).into(), self.ancestors).unwrap()
     }
 
     fn set_left(self: Zipper, left: BinaryTree) -> Zipper {
-        Self::new(
-            BinaryTreeTrait::new(self.tree.value().unwrap(), left, *self.tree.right()),
-            self.ancestors
-        )
+        Self::new(self.node.set_left(left).into(), self.ancestors).unwrap()
     }
 
     fn set_right(self: Zipper, right: BinaryTree) -> Zipper {
-        Self::new(
-            BinaryTreeTrait::new(self.tree.value().unwrap(), *self.tree.left(), right),
-            self.ancestors
-        )
+        Self::new(self.node.set_right(right).into(), self.ancestors).unwrap()
     }
 }
 
 fn from_ancestor(tree: BinaryTree, ancestor: Ancestor) -> BinaryTree {
     match ancestor.path {
-        Path::Left => ancestor.node.with_left(tree).into(),
-        Path::Right => ancestor.node.with_right(tree).into(),
+        Path::Left => ancestor.node.set_left(tree).into(),
+        Path::Right => ancestor.node.set_right(tree).into(),
     }
 }
 
