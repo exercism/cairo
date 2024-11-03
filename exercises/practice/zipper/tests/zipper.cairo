@@ -112,3 +112,21 @@ fn set_value() {
     let zipper = Zipper::from_tree(initial_tree);
     assert_eq!(expected, zipper.left().unwrap().set_value(5).to_tree());
 }
+
+#[test]
+fn set_value_after_traversing_up() {
+    let initial_tree = BinaryTree::new(
+        1,
+        BinaryTree::new(2, Option::None, BinaryTree::new(3, Option::None, Option::None)),
+        BinaryTree::new(4, Option::None, Option::None)
+    );
+    let expected = BinaryTree::new(
+        1,
+        BinaryTree::new(5, Option::None, BinaryTree::new(3, Option::None, Option::None)),
+        BinaryTree::new(4, Option::None, Option::None)
+    );
+    let zipper = Zipper::from_tree(initial_tree);
+    assert_eq!(
+        expected, zipper.left().unwrap().right().unwrap().up().unwrap().set_value(5).to_tree()
+    );
+}
