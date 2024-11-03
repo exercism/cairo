@@ -1,5 +1,7 @@
 {
-  "authors": [],
+  "authors": [
+    "0xNeshi"
+  ],
   "files": {
     "solution": [
       "src/lib.cairo"
@@ -9,6 +11,9 @@
     ],
     "example": [
       ".meta/example.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
     ]
   },
   "blurb": "Creating a zipper for a binary tree."
