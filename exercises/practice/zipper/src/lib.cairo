@@ -25,6 +25,10 @@ impl NodeIntoBinaryTree of Into<Node, BinaryTree> {
 
 #[generate_trait]
 impl NodeImpl of NodeTrait {
+    fn with_value(self: Node, right: BinaryTree) -> Node {
+        Node { right, ..self }
+    }
+
     fn with_left(self: Node, left: BinaryTree) -> Node {
         Node { left, ..self }
     }
@@ -38,6 +42,10 @@ impl NodeImpl of NodeTrait {
 pub impl BinaryTreeImpl of BinaryTreeTrait {
     fn new(value: u32, left: BinaryTree, right: BinaryTree) -> BinaryTree {
         Option::Some(BoxTrait::new(Node { value, left, right }))
+    }
+
+    fn set_value(self: BinaryTree, value: u32) -> BinaryTree {
+        Self::new(value, *self.left(), *self.right())
     }
 
     fn value(self: @BinaryTree) -> Option<u32> {
@@ -87,12 +95,17 @@ pub impl ZipperImpl of ZipperTrait {
         Zipper { tree, ancestors }
     }
 
-    fn to_tree(self: Zipper) -> BinaryTree {
-        if self.ancestors.is_empty() {
-            self.tree
+    fn rebuild_tree(tree: BinaryTree, ancestors: Span<Ancestor>) -> BinaryTree {
+        let mut ancestors = ancestors;
+        if let Option::Some(last) = ancestors.pop_back() {
+            Self::rebuild_tree(Self::from_ancestor(tree, *last), ancestors)
         } else {
-            (*self.ancestors[0]).node.into()
+            tree
         }
+    }
+
+    fn to_tree(self: Zipper) -> BinaryTree {
+        Self::rebuild_tree(self.tree, self.ancestors)
     }
 
     fn value(self: @Zipper) -> Option<u32> {
@@ -127,16 +140,22 @@ pub impl ZipperImpl of ZipperTrait {
         } else {
             let mut ancestors = self.ancestors;
             Option::Some(
-                Self::init(Self::from_trail(self.tree, *ancestors.pop_back().unwrap()), ancestors)
+                Self::init(
+                    Self::from_ancestor(self.tree, *ancestors.pop_back().unwrap()), ancestors
+                )
             )
         }
     }
 
-    fn from_trail(tree: BinaryTree, ancestor: Ancestor) -> BinaryTree {
+    fn from_ancestor(tree: BinaryTree, ancestor: Ancestor) -> BinaryTree {
         match ancestor.path {
             Path::Left => ancestor.node.with_left(tree).into(),
             Path::Right => ancestor.node.with_right(tree).into(),
         }
+    }
+
+    fn set_value(self: Zipper, value: u32) -> Zipper {
+        Self::init(self.tree.set_value(value), self.ancestors)
     }
 }
 
