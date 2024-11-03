@@ -135,16 +135,9 @@ pub impl ZipperImpl of ZipperTrait {
     }
 
     fn up(self: Zipper) -> Option<Zipper> {
-        if self.ancestors.is_empty() {
-            Option::None
-        } else {
-            let mut ancestors = self.ancestors;
-            Option::Some(
-                Self::init(
-                    Self::from_ancestor(self.tree, *ancestors.pop_back().unwrap()), ancestors
-                )
-            )
-        }
+        let mut ancestors = self.ancestors;
+        let ancestor = *ancestors.pop_back()?;
+        Option::Some(Self::init(Self::from_ancestor(self.tree, ancestor), ancestors))
     }
 
     fn from_ancestor(tree: BinaryTree, ancestor: Ancestor) -> BinaryTree {
