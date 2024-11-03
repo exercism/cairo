@@ -48,6 +48,7 @@ pub impl BinaryTreeImpl of BinaryTreeTrait {
         Self::new(value, *self.left(), *self.right())
     }
 
+    // TODO: return snapshot of value
     fn value(self: @BinaryTree) -> Option<u32> {
         Option::Some((*self)?.value)
     }
@@ -148,7 +149,23 @@ pub impl ZipperImpl of ZipperTrait {
     }
 
     fn set_value(self: Zipper, value: u32) -> Zipper {
-        Self::init(self.tree.set_value(value), self.ancestors)
+        Self::init(
+            BinaryTreeTrait::new(value, *self.tree.left(), *self.tree.right()), self.ancestors
+        )
+    }
+
+    fn set_left(self: Zipper, left: BinaryTree) -> Zipper {
+        Self::init(
+            BinaryTreeTrait::new(self.tree.value().unwrap(), left, *self.tree.right()),
+            self.ancestors
+        )
+    }
+
+    fn set_right(self: Zipper, right: BinaryTree) -> Zipper {
+        Self::init(
+            BinaryTreeTrait::new(self.tree.value().unwrap(), *self.tree.left(), right),
+            self.ancestors
+        )
     }
 }
 
