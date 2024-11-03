@@ -1,0 +1,7 @@
+{
+    "blurb": "Option<T>: a T which may or may not be there",
+    "authors": [
+      "0xNeshi"
+    ],
+    "contributors": []
+}
