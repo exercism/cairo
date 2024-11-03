@@ -1,10 +1,10 @@
 #[derive(Debug, PartialEq, Drop)]
 pub struct SearchResult {
-    word: ByteArray,
-    start_col: usize,
-    start_row: usize,
-    end_col: usize,
-    end_row: usize,
+    pub word: ByteArray,
+    pub start_col: usize,
+    pub start_row: usize,
+    pub end_col: usize,
+    pub end_row: usize,
 }
 
 
