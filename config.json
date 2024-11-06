@@ -829,7 +829,6 @@
         "difficulty": 4
       },
       {
-
         "slug": "zipper",
         "name": "Zipper",
         "uuid": "61120275-6457-43ce-b40b-7e86a18b7f5b",
@@ -840,7 +839,7 @@
       {
         "slug": "word-search",
         "name": "Word Search",
-        "uuid": "bc1b7de1-4003-4fed-86b3-b09338ff77e4",
+        "uuid": "adbe715a-e54f-4e6d-9bb7-edef9e26b2cc",
         "practices": [],
         "prerequisites": [],
         "difficulty": 4
