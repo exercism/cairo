@@ -1,5 +1,16 @@
-pub struct SearchResult {}
+#[derive(Drop, Debug, PartialEq)]
+struct Position {
+    col: usize,
+    row: usize,
+}
 
-pub fn search(grid: Array<ByteArray>, wordsToSearchFor: Array<ByteArray>) -> Array<SearchResult> {
+#[derive(Debug, PartialEq, Drop)]
+pub struct SearchResult {
+    pub word: ByteArray,
+    pub start: Position,
+    pub end: Position,
+}
+
+pub fn search(grid: Span<ByteArray>, words_to_search_for: Span<ByteArray>) -> Span<SearchResult> {
     panic!("implement `search`")
 }
