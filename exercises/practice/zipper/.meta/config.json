@@ -1,0 +1,20 @@
+{
+  "authors": [
+    "0xNeshi"
+  ],
+  "files": {
+    "solution": [
+      "src/lib.cairo"
+    ],
+    "test": [
+      "tests/zipper.cairo"
+    ],
+    "example": [
+      ".meta/example.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
+    ]
+  },
+  "blurb": "Creating a zipper for a binary tree."
+}
