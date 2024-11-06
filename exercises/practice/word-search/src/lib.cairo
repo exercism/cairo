@@ -1,7 +1,7 @@
 #[derive(Drop, Debug, PartialEq)]
 struct Position {
-    col: usize,
-    row: usize,
+    pub col: usize,
+    pub row: usize,
 }
 
 #[derive(Debug, PartialEq, Drop)]
