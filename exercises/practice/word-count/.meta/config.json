@@ -13,7 +13,7 @@
       ".meta/example.cairo"
     ],
     "invalidator": [
-      "Scarb.tom;"
+      "Scarb.toml"
     ]
   },
   "blurb": "Given a phrase, count the occurrences of each word in that phrase.",
