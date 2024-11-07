@@ -214,7 +214,7 @@
         "name": "Role Playing Game",
         "uuid": "1b014752-c3a4-4250-9483-89696864461b",
         "concepts": [
-          "options"
+          "option"
         ],
         "prerequisites": [
           "structs",
@@ -230,7 +230,7 @@
           "type-conversion"
         ],
         "prerequisites": [
-          "options",
+          "option",
           "printing"
         ],
         "status": "wip"
@@ -827,6 +827,22 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 1
+      },
+      {
+        "slug": "knapsack",
+        "name": "Knapsack",
+        "uuid": "ba9a3b81-aa52-4311-8e98-79d589b5091a",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
+        "slug": "zipper",
+        "name": "Zipper",
+        "uuid": "61120275-6457-43ce-b40b-7e86a18b7f5b",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 8
       }
     ],
     "foregone": [
@@ -918,8 +934,8 @@
     },
     {
       "uuid": "0bd2a321-f169-49a9-83d6-7d91193db915",
-      "slug": "options",
-      "name": "Options"
+      "slug": "option",
+      "name": "Option"
     },
     {
       "uuid": "c11a8aa5-cda4-4d02-a477-3db3d3ca5acf",
