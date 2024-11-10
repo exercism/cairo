@@ -7,7 +7,7 @@
       "src/lib.cairo"
     ],
     "test": [
-      "tests/the_farm.cairo"
+      "tests/calculator_conundrum.cairo"
     ],
     "exemplar": [
       ".meta/exemplar.cairo"
@@ -17,7 +17,7 @@
     ]
   },
   "forked_from": [
-    "go/the-farm"
+    "csharp/calculator-conundrum"
   ],
   "blurb": "<blurb>"
 }
