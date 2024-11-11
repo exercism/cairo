@@ -7,11 +7,8 @@ pub impl SimpleCalculatorImpl of SimpleCalculatorTrait {
         } else if operation == "*" {
             Result::Ok(format!("{} * {} = {}", a, b, a * b))
         } else if operation == "/" {
-            if b == 0 {
-                Result::Err("Division by zero is not allowed")
-            } else {
-                Result::Ok(format!("{} / {} = {}", a, b, a / b))
-            }
+            assert!(b != 0, "Division by zero is not allowed");
+            Result::Ok(format!("{} / {} = {}", a, b, a / b))
         } else if operation == "" {
             Result::Err("Operation cannot be an empty string")
         } else {
