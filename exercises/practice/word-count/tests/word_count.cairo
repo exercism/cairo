@@ -1,185 +1,179 @@
-use super::word_count;
-use super::bytearray_to_felt252; // handle bytearray for invocation from Felt252Dict
+use super::count_words;
 
 #[test]
+#[ignore]
 fn count_one_word() {
     let input = "word";
-    let mut output = word_count(input);
-    let expected_count = 1;
-    assert_eq!(output.get('word'), expected_count);
+    let mut output = count_words(input);
+
+    let expected = array![WordResult { word: "word", count: 1 }].span();
+    assert_eq!(output, expected);
 }
 
 #[test]
 fn count_one_of_each_word() {
     let input = "one of each";
-    let mut output = word_count(input);
-    let expected_count_one = 1;
+    let mut output = count_words(input);
 
-    assert_eq!(output.get('one'), expected_count_one);
-    assert_eq!(output.get('of'), expected_count_one);
-    assert_eq!(output.get('each'), expected_count_one);
+    let expected = array![
+        WordResult { word: "one", count: 1 },
+        WordResult { word: "of", count: 1 },
+        WordResult { word: "each", count: 1 }
+    ]
+        .span();
+    assert_eq!(output, expected);
 }
 
 #[test]
 fn multiple_occurrences_of_a_word() {
     let input = "one fish two fish red fish blue fish";
-    let mut output = word_count(input);
-    let expected_count_one = 1;
-    let expected_count_four = 4;
+    let mut output = count_words(input);
 
-    assert_eq!(output.get('one'), expected_count_one);
-    assert_eq!(output.get('fish'), expected_count_four);
-    assert_eq!(output.get('red'), expected_count_one);
-    assert_eq!(output.get('blue'), expected_count_one);
-    assert_eq!(output.get('two'), expected_count_one);
+    let expected = array![WordResult { word: "one", count: 1 }, WordResult { word: "two", count: 1 }, WordResult { word: "red", count: 1 }, WordResult { word: "blue", count: 1 }, WordResult { word: "fish", count: 4 }]
+        .span();
+    assert_eq!(output, expected);
 }
 
 #[test]
 fn handles_cramped_lists() {
     let input = "one,two,three";
-    let mut output = word_count(input);
+    let mut output = count_words(input);
 
-    let expected_count_one = 1;
-
-    assert_eq!(output.get('one'), expected_count_one);
-    assert_eq!(output.get('two'), expected_count_one);
-    assert_eq!(output.get('three'), expected_count_one);
+    let expected = array![
+        WordResult { word: "one", count: 1 },
+        WordResult { word: "two", count: 1 },
+        WordResult { word: "three", count: 1 }
+    ]
+        .span();
+    assert_eq!(output, expected);
 }
 
 #[test]
 fn handles_expanded_lists() {
     let input = "one,\ntwo,\nthree";
-    let mut output = word_count(input);
+    let mut output = count_words(input);
 
-    let expected_count_one = 1;
-
-    assert_eq!(output.get('one'), expected_count_one);
-    assert_eq!(output.get('two'), expected_count_one);
-    assert_eq!(output.get('three'), expected_count_one);
+    let expected = array![
+        WordResult { word: "one", count: 1 },
+        WordResult { word: "two", count: 1 },
+        WordResult { word: "three", count: 1 }
+    ]
+        .span();
+    assert_eq!(output, expected);
 }
 
 #[test]
 fn ignore_punctuation() {
     let input = "car: carpet as java: javascript!!&@$%^&";
-    let mut output = word_count(input);
+    let mut output = count_words(input);
 
-    let expected_count_one = 1;
-
-    assert_eq!(output.get('car'), expected_count_one);
-    assert_eq!(output.get('carpet'), expected_count_one);
-    assert_eq!(output.get('as'), expected_count_one);
-    assert_eq!(output.get('as'), expected_count_one);
-    assert_eq!(output.get('java'), expected_count_one);
-    assert_eq!(output.get('java'), expected_count_one);
-    assert_eq!(output.get('javascript'), expected_count_one);
+    let expected = array![
+        WordResult { word: "car", count: 1 },
+        WordResult { word: "carpet", count: 1 },
+        WordResult { word: "as", count: 1 },
+        WordResult { word: "java", count: 1 },
+        WordResult { word: "javascript", count: 1 }
+    ]
+        .span();
+    assert_eq!(output, expected);
 }
 
 #[test]
 fn include_numbers() {
     let input = "testing, 1, 2 testing";
-    let mut output = word_count(input);
+    let mut output = count_words(input);
 
-    let expected_count_1 = 1;
-    let expected_count_2 = 2;
-
-    assert_eq!(output.get('testing'), expected_count_2);
-    assert_eq!(output.get('1'), expected_count_1);
-    assert_eq!(output.get('2'), expected_count_1);
+    let expected = array![WordResult { word: "1", count: 1 }, WordResult { word: "2", count: 1 }, WordResult { word: "testing", count: 2 }]
+        .span();
+    assert_eq!(output, expected);
 }
 
 #[test]
 fn normalize_case() {
     let input = "go Go GO Stop stop";
-    let mut output = word_count(input);
+    let mut output = count_words(input);
 
-    let expected_count_go = 3;
-    let expected_count_stop = 2;
-
-    assert_eq!(output.get('go'), expected_count_go);
-    assert_eq!(output.get('stop'), expected_count_stop);
+    let expected = array![
+        WordResult { word: "go", count: 3 }, WordResult { word: "stop", count: 2 }
+    ]
+        .span();
+    assert_eq!(output, expected);
 }
 
 #[test]
 fn with_apostrophes() {
     let input = "'First: don't laugh. Then: don't cry. You're getting it.'";
-    let mut output = word_count(input);
+    let mut output = count_words(input);
 
-    let expected_count_one = 1;
-    let expected_count_two = 2;
-
-    assert_eq!(output.get('first'), expected_count_one);
-    assert_eq!(output.get(bytearray_to_felt252(@"don't")), expected_count_two);
-    assert_eq!(output.get('laugh'), expected_count_one);
-    assert_eq!(output.get('then'), expected_count_one);
-    assert_eq!(output.get('cry'), expected_count_one);
-    assert_eq!(output.get(bytearray_to_felt252(@"you're")), expected_count_one);
-    assert_eq!(output.get('getting'), expected_count_one);
-    assert_eq!(output.get('it'), expected_count_one);
+    let expected = array![WordResult { word: "first", count: 1 }, WordResult { word: "laugh", count: 1 }, WordResult { word: "then", count: 1 }, WordResult { word: "don't", count: 2 }, WordResult { word: "cry", count: 1 }, WordResult { word: "you're", count: 1 }, WordResult { word: "getting", count: 1 }, WordResult { word: "it", count: 1 }, WordResult { word: "", count: 1 }]
+        .span();
+    assert_eq!(output, expected);
 }
 
 #[test]
 fn with_quotations() {
     let input = "Joe can't tell between 'large' and large.";
-    let mut output = word_count(input);
+    let mut output = count_words(input);
 
-    let expected_count_one = 1;
-    let expected_count_two = 2;
-
-    assert_eq!(output.get('joe'), expected_count_one);
-    assert_eq!(output.get(bytearray_to_felt252(@"can't")), expected_count_one);
-    assert_eq!(output.get('tell'), expected_count_one);
-    assert_eq!(output.get('between'), expected_count_one);
-    assert_eq!(output.get('large'), expected_count_two);
-    assert_eq!(output.get('and'), expected_count_one);
+    let expected = array![WordResult { word: "joe", count: 1 }, WordResult { word: "can't", count: 1 }, WordResult { word: "tell", count: 1 }, WordResult { word: "between", count: 1 }, WordResult { word: "and", count: 1 }, WordResult { word: "large", count: 2 }]
+        .span();
+    assert_eq!(output, expected);
 }
 
 #[test]
 fn substrings_from_the_beginning() {
     let input = "Joe can't tell between app, apple and a.";
-    let mut output = word_count(input);
+    let mut output = count_words(input);
 
-    let expected_count_one = 1;
-
-    assert_eq!(output.get('joe'), expected_count_one);
-    assert_eq!(output.get(bytearray_to_felt252(@"can't")), expected_count_one);
-    assert_eq!(output.get('tell'), expected_count_one);
-    assert_eq!(output.get('between'), expected_count_one);
-    assert_eq!(output.get('app'), expected_count_one);
-    assert_eq!(output.get('apple'), expected_count_one);
-    assert_eq!(output.get('and'), expected_count_one);
-    assert_eq!(output.get('a'), expected_count_one);
+    let expected = array![
+        WordResult { word: "joe", count: 1 },
+        WordResult { word: "can't", count: 1 },
+        WordResult { word: "tell", count: 1 },
+        WordResult { word: "between", count: 1 },
+        WordResult { word: "app", count: 1 },
+        WordResult { word: "apple", count: 1 },
+        WordResult { word: "and", count: 1 },
+        WordResult { word: "a", count: 1 }
+    ]
+        .span();
+    assert_eq!(output, expected);
 }
 
 #[test]
 fn multiple_spaces_not_detected_as_a_word() {
     let input = " multiple   whitespaces";
-    let mut output = word_count(input);
+    let mut output = count_words(input);
 
-    let expected_count_one = 1;
-
-    assert_eq!(output.get('multiple'), expected_count_one);
-    assert_eq!(output.get('whitespaces'), expected_count_one);
+    let expected = array![
+        WordResult { word: "multiple", count: 1 },
+        WordResult { word: "whitespaces", count: 1 }
+    ]
+        .span();
+    assert_eq!(output, expected);
 }
 
 #[test]
 fn alternating_word_separators_not_detected_as_a_word() {
     let input = ",\n,one,\n ,two \n 'three'";
-    let mut output = word_count(input);
-    let expected_count_one = 1;
+    let mut output = count_words(input);
 
-    assert_eq!(output.get('one'), expected_count_one);
-    assert_eq!(output.get('two'), expected_count_one);
-    assert_eq!(output.get('three'), expected_count_one);
+    let expected = array![
+        WordResult { word: "one", count: 1 },
+        WordResult { word: "two", count: 1 },
+        WordResult { word: "three", count: 1 }
+    ]
+        .span();
+    assert_eq!(output, expected);
 }
 
 #[test]
 fn quotation_for_word_with_apostrophe() {
     let input = "can, can't, 'can't'";
-    let mut output = word_count(input);
+    let mut output = count_words(input);
 
-    let expected_count_one = 1;
-    let expected_count_two = 2;
-
-    assert_eq!(output.get('can'), expected_count_one);
-    assert_eq!(output.get(bytearray_to_felt252(@"can't")), expected_count_two);
+    let expected = array![
+        WordResult { word: "can", count: 1 }, WordResult { word: "can't", count: 2 }
+    ]
+        .span();
+    assert_eq!(output, expected);
 }

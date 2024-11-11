@@ -1,25 +1,63 @@
-use core::dict::Felt252Dict;
+#[derive(Debug, PartialEq, Clone, Drop)]
+pub struct WordResult {
+    pub word: ByteArray,
+    pub count: u64,
+}
 
-
-// word_count returns the dictionary of frequency of words based on the input phrase.
-pub fn word_count(phrase: ByteArray) -> Felt252Dict<u64> {
-    let mut result: Felt252Dict<u64> = Default::default();
-    let words = split_phrase_into_words(phrase);
-
-    let mut arr_to_felt: Array<felt252> = ArrayTrait::new();
+fn count_words(phrase: ByteArray) -> Span<WordResult> {
+    let mut results: Array<WordResult> = ArrayTrait::new();
+    let words = split_phrase_into_words(phrase); // Split the phrase into words
 
     let mut i = 0;
     while i < words.len() {
-        arr_to_felt.append(bytearray_to_felt252(words[i]));
+        let mut found = false; // Flag to check if word is found in results
 
-        let frequency = result.get(*arr_to_felt[i]);
-        result.insert(*arr_to_felt[i], frequency + 1);
+        // Check if the word already exists in the results
+        let mut j = 0;
+        while j < results.len() {
+            if results[j].word == words[i] { // Compare words
+                // We can't mutate results[j] directly, so we need to create a new WordResult
+                let updated_result = WordResult {
+                    word: results[j].word.clone(),
+                    count: *results[j].count + 1, // Increment the count
+                };
+
+                // Remove the old result and append the updated one
+                results = remove_index_from_array(results, j);
+                results.append(updated_result);
+                found = true; // Word found, no need to add it
+                break; // Exit the inner loop
+            }
+            j += 1;
+        };
+
+        // If the word wasn't found, add it to the results
+        if !found {
+            let word_and_count = WordResult { word: words[i].clone(), count: 1 };
+            results.append(word_and_count);
+        }
 
         i += 1;
     };
 
-    result
+    results.span() // Return the results as a span
 }
+
+fn remove_index_from_array(arr: Array<WordResult>, index: u32) -> Array<WordResult> {
+    let mut new_arr: Array<WordResult> = ArrayTrait::new();
+
+    // Iterate through the original array, skipping the element at `index`
+    let mut i = 0;
+    while i < arr.len() {
+        if i != index {
+            new_arr.append(arr[i].clone());
+        }
+        i += 1;
+    };
+
+    new_arr
+}
+
 
 // split phrase into words
 fn split_phrase_into_words(phrase: ByteArray) -> Array<ByteArray> {
@@ -104,15 +142,15 @@ fn bytearray_to_felt252(words: @ByteArray) -> felt252 {
     result
 }
 
-fn is_alphanumeric_or_apostrophe(char: u8) -> bool {
+fn is_alphanumeric_or_apostrophe(ch: u8) -> bool {
     // Check if character is alphanumeric or an apostrophe
-    ('0' <= char && char <= '9') || ('a' <= char && char <= 'z') || ('A' <= char && char <= 'Z') || char == '\''
+    ('0' <= ch && ch <= '9') || ('a' <= ch && ch <= 'z') || ('A' <= ch && ch <= 'Z') || ch == '\''
 }
 
-fn to_lowercase(char: u8) -> u8 {
+fn to_lowercase(ch: u8) -> u8 {
     // Convert ASCII uppercase letters to lowercase
-    if 'A' <= char && char <= 'Z' {
-        char + 32 // Convert to lowercase by ASCII offset
+    if 'A' <= ch && ch <= 'Z' {
+        ch + 32 // Convert to lowercase by ASCII offset
     } else {
         ch
     }
