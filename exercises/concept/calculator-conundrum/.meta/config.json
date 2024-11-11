@@ -1,6 +1,6 @@
 {
   "authors": [
-    "<your_gh_username>"
+    "0xNeshi"
   ],
   "files": {
     "solution": [
@@ -19,5 +19,5 @@
   "forked_from": [
     "csharp/calculator-conundrum"
   ],
-  "blurb": "<blurb>"
+  "blurb": "Learn about error handling by working on a simple calculator."
 }

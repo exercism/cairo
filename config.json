@@ -243,7 +243,8 @@
           "error-handling"
         ],
         "prerequisites": [
-          "structs"
+          "traits",
+          "option"
         ],
         "status": "wip"
       },
