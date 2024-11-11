@@ -1,4 +1,5 @@
 use super::count_words;
+use super::WordResult;
 
 #[test]
 fn count_one_word() {
