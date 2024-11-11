@@ -237,8 +237,8 @@
       },
       {
         "slug": "calculator-conundrum",
-        "name": "The Farm",
-        "uuid": "e167e30c-84b1-44da-b21c-70bc46688f20",
+        "name": "Calculator Conundrum",
+        "uuid": "989df4b1-6d89-468d-96e0-47013e3cf99b",
         "concepts": [
           "error-handling"
         ],
