@@ -821,6 +821,14 @@
         "difficulty": 4
       },
       {
+        "slug": "binary-search-tree",
+        "name": "Binary Search Tree",
+        "uuid": "97941277-12ff-474b-8a41-e89c065e0620",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 6
+      },
+      {
         "slug": "knapsack",
         "name": "Knapsack",
         "uuid": "ba9a3b81-aa52-4311-8e98-79d589b5091a",
