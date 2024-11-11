@@ -826,7 +826,7 @@
         "uuid": "5fded933-439a-4faa-bfb6-18ec7b7c8469",
         "practices": [],
         "prerequisites": [],
-        "difficulty": 1
+        "difficulty": 4
       },
       {
         "slug": "knapsack",
