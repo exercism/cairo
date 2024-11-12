@@ -13,11 +13,11 @@
 
 ## 3. Handle no operation provided
 
-- You need to [panic][panic-macro] here to handle division by zero.
+- You need to [panic][panic-excl-macro] here with a `ByteArray` message to handle empty strings for operations.
 
 ## 4. Handle errors when dividing by zero
 
-- You need to panic here with a `ByteArray` message to handle division by zero.
+- You need to panic here to handle division by zero.
 
 [unrecoverable]: https://book.cairo-lang.org/ch09-01-unrecoverable-errors-with-panic.html#unrecoverable-errors-with-panic
 [panic-excl-macro]: https://book.cairo-lang.org/ch09-01-unrecoverable-errors-with-panic.html#panic-macro
