@@ -55,23 +55,3 @@ fn divide(a: u32, b: u32) -> Result<u32, ByteArray> {
 ```
 
 In this example, if `b` is zero, an error is returned; otherwise, the result of the division is returned.
-
-## Error Handling with the `?` Operator
-
-Cairo also provides the `?` operator, which simplifies error handling by automatically returning an error from the function if one occurs, or by passing the successful value onward. The `?` operator can be used with both `Result` and `Option` types to propagate errors or `None` values, making the code more concise.
-
-```rust
-fn parse_u8(s: felt252) -> Result<u8, felt252> {
-    match s.try_into() {
-        Option::Some(value) => Result::Ok(value),
-        Option::None => Result::Err("Invalid integer"),
-    }
-}
-
-fn main() {
-    let result = parse_u8(258)?;
-}
-```
-
-This introduction to error handling will be essential as you implement basic calculator functionality with error management in Cairo, utilizing both `panic` for critical issues and `Result` for gracefully handling less severe errors.
-````
