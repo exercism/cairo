@@ -38,7 +38,9 @@ panic!("The error for the panic! Error message is not limited to 31 characters a
 
 ### The `assert!` Macro
 
-The `assert!` macro is a useful tool for enforcing specific conditions in your code. If the condition in `assert!` evaluates to `false`, the program will panic with a `ByteArray` error message. This is often used to verify assumptions during development and ensure values meet certain criteria.
+The `assert!` macro is a useful tool for enforcing specific conditions in your code.
+If the condition in `assert!` evaluates to `false`, the program will panic with a `ByteArray` error message.
+This is often used to verify assumptions during development and ensure values meet certain criteria.
 
 For example:
 

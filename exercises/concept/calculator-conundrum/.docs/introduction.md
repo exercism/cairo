@@ -1,13 +1,17 @@
 # Introduction
 
-In programming, it's essential to handle errors gracefully to ensure that unexpected situations do not cause a program to crash or behave unpredictably. Cairo provides two main mechanisms for error handling:
+In programming, it's essential to handle errors gracefully to ensure that unexpected situations do not cause a program to crash or behave unpredictably.
+Cairo provides two main mechanisms for error handling:
 
 1. **Unrecoverable errors** with `panic`, which immediately stop the program.
 2. **Recoverable errors** with `Result`, which allow the program to handle and respond to errors.
 
 ## Unrecoverable Errors with `panic`
 
-Sometimes, a program encounters an error so severe that it cannot proceed. Cairo uses the `panic` function to immediately stop execution in such cases. This is helpful when an error, like attempting to access an out-of-bounds index, makes it impossible for the program to continue in a sensible way. The `panic` function accepts a `ByteArray` message that describes the reason for the error.
+Sometimes, a program encounters an error so severe that it cannot proceed.
+Cairo uses the `panic` function to immediately stop execution in such cases.
+This is helpful when an error, like attempting to access an out-of-bounds index, makes it impossible for the program to continue in a sensible way.
+The `panic` function accepts a `ByteArray` message that describes the reason for the error.
 
 For example, in Cairo:
 
@@ -22,7 +26,9 @@ This example demonstrates a forced panic, which immediately stops the program wi
 
 ### The `assert!` Macro
 
-The `assert!` macro is a useful tool for enforcing specific conditions in your code. If the condition in `assert!` evaluates to `false`, the program will panic with a `ByteArray` error message. This is often used to verify assumptions during development and ensure values meet certain criteria.
+The `assert!` macro is a useful tool for enforcing specific conditions in your code.
+If the condition in `assert!` evaluates to `false`, the program will panic with a `ByteArray` error message.
+This is often used to verify assumptions during development and ensure values meet certain criteria.
 
 For example:
 
@@ -37,7 +43,9 @@ If `x` is not greater than zero, the program will panic with the message `"x mus
 
 ## Recoverable Errors with `Result`
 
-Not all errors need to stop the program. Some can be handled gracefully so the program can continue. Cairo's `Result` enum represents these recoverable errors, and it has two variants:
+Not all errors need to stop the program.
+Some can be handled gracefully so the program can continue.
+Cairo's `Result` enum represents these recoverable errors, and it has two variants:
 
 - `Result::Ok` indicates success.
 - `Result::Err` represents an error.

@@ -3,8 +3,8 @@
 ## General
 
 - [Unrecoverable Errors][unrecoverable]: invoke a panic with error message.
-- [panic! Macro][panic-excl-macro]: invoke a panic with `ByteArray` error message.
-- [assert! Macro][assert]: invoke a panic if a condition evaluates to `false`
+- [`panic!` Macro][panic-excl-macro]: invoke a panic with `ByteArray` error message.
+- [`assert!` Macro][assert]: invoke a panic if a condition evaluates to `false`.
 - [Result Enum][result]: how to use the `Result` enum.
 
 ## 2. Handle illegal operations

@@ -1,6 +1,8 @@
 # Instructions
 
-In this exercise, you will be building error handling for a simple integer calculator. The calculator should support addition, multiplication, and division operations, returning the result as a formatted string. You will also implement error handling to address illegal operations and division by zero.
+In this exercise, you will be building error handling for a simple integer calculator.
+The calculator should support addition, multiplication, and division operations, returning the result as a formatted string.
+You will also implement error handling to address illegal operations and division by zero.
 
 The goal is to have a working calculator that returns a string in the following format: `16 + 51 = 67`, when provided with arguments `16`, `51`, and `+`.
 
@@ -14,7 +16,8 @@ SimpleCalculator::calculate(512, 4, "/"); // => returns "512 / 4 = 128"
 
 ## 1. Implement the calculator operations
 
-The main function for this task will be `SimpleCalculator::calculate`, which takes three arguments: two integers and a `ByteArray` representing the operation. Implement the following operations:
+The main function for this task will be `SimpleCalculator::calculate`, which takes three arguments: two integers and a `ByteArray` representing the operation.
+Implement the following operations:
 
 - **Addition** with the `+` symbol
 - **Multiplication** with the `*` symbol
@@ -35,7 +38,8 @@ SimpleCalculator::calculate(8, 2, ""); // => panics with "Operation cannot be an
 
 ## 3. Handle errors when dividing by zero
 
-When attempting to divide by `0`, the calculator should panic with an error message indicating that division by zero is not allowed. The returned result should be a `felt252` value of `'Division by zero is not allowed'`.
+When attempting to divide by `0`, the calculator should panic with an error message indicating that division by zero is not allowed.
+The returned result should be a `felt252` value of `'Division by zero is not allowed'`.
 
 ```rust
 SimpleCalculator::calculate(512, 0, "/"); // => panics with 'Division by zero is not allowed'
