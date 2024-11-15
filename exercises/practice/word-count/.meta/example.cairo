@@ -4,7 +4,7 @@ pub struct WordResult {
     pub count: u64,
 }
 
-pub fn count_words(phrase: ByteArray) -> Span<WordResult> {
+fn count_words(phrase: ByteArray) -> Span<WordResult> {
     let mut results: Array<WordResult> = ArrayTrait::new();
     let words = split_phrase_into_words(phrase);
 
@@ -59,61 +59,45 @@ fn split_phrase_into_words(phrase: ByteArray) -> Array<ByteArray> {
     let mut i = 0;
     while i < phrase.len() {
         let lower_case = to_lowercase(phrase[i]);
+
         if is_alphanumeric_or_apostrophe(lower_case) {
-            current_word.append_byte(lower_case);
-        } else if current_word.len() > 0 {
-            current_word = split_apostrophe_from_word(current_word);
-            words.append(current_word);
-            current_word = "";
+            if !is_apostrophe(lower_case)
+                || (i > 0 && i < phrase.len()
+                    - 1 && is_alphanumeric(phrase[i - 1]) && is_alphanumeric(phrase[i + 1])) {
+                current_word.append_byte(lower_case);
+            }
+        } else {
+            if current_word.len() > 0 {
+                words.append(current_word.clone());
+                current_word = "";
+            }
         }
 
         i += 1;
     };
 
     if current_word.len() > 0 {
-        current_word = split_apostrophe_from_word(current_word);
         words.append(current_word);
-    };
+    }
 
     words
-}
-
-fn split_apostrophe_from_word(mut current_word: ByteArray) -> ByteArray {
-    let mut i = 0;
-    let mut new_word = "";
-    while i < current_word.len() {
-        if current_word[0] == '\'' && current_word[current_word.len() - 1] == '\'' {
-            if i > 0 && current_word[i] == '\'' && i < current_word.len() - 1 {
-                new_word.append_byte(current_word.at(i).unwrap_or(0));
-            } else if current_word[i] != '\'' {
-                new_word.append_byte(current_word.at(i).unwrap_or(0));
-            }
-        } else if current_word[0] == '\'' {
-            if i != current_word.len() - 1 {
-                new_word.append_byte(current_word.at(i + 1).unwrap_or(0));
-            }
-        } else if current_word[current_word.len() - 1] == '\'' {
-            if current_word[i] != '\'' {
-                new_word.append_byte(current_word.at(i).unwrap_or(0));
-            }
-        } else {
-            new_word.append_byte(current_word.at(i).unwrap_or(0));
-        }
-
-        i += 1;
-    };
-
-    new_word
 }
 
 fn is_alphanumeric_or_apostrophe(ch: u8) -> bool {
     ('0' <= ch && ch <= '9') || ('a' <= ch && ch <= 'z') || ('A' <= ch && ch <= 'Z') || ch == '\''
 }
 
+fn is_alphanumeric(ch: u8) -> bool {
+    ('0' <= ch && ch <= '9') || ('a' <= ch && ch <= 'z') || ('A' <= ch && ch <= 'Z')
+}
+
+fn is_apostrophe(ch: u8) -> bool {
+    ch == '\''
+}
+
 fn to_lowercase(ch: u8) -> u8 {
-    // Convert ASCII uppercase letters to lowercase
     if 'A' <= ch && ch <= 'Z' {
-        ch + 32 // Convert to lowercase by ASCII offset
+        ch + 32
     } else {
         ch
     }
