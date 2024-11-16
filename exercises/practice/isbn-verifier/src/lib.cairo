@@ -1,3 +1,3 @@
-pub fn is_valid_isbn(isbn: ByteArray) -> bool {
+pub fn is_valid(isbn: ByteArray) -> bool {
     panic!("implement `is_valid_isbn`")
 }

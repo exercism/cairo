@@ -1,4 +1,4 @@
-pub fn is_valid_isbn(isbn: ByteArray) -> bool {
+pub fn is_valid(isbn: ByteArray) -> bool {
     // Step 1: Remove dashes and ensure only valid characters are left.
     let filtered_isbn = filter(isbn);
     let size = filtered_isbn.len();
@@ -11,19 +11,19 @@ pub fn is_valid_isbn(isbn: ByteArray) -> bool {
     // Step 3: Calculate the sum based on the formula.
     let mut i = 0;
     let mut sum: u32 = 0;
-    let mut result = true;
+    let mut valid = true;
 
     while i < size {
         match char_to_digit(filtered_isbn[i]) {
             Option::Some(digit) => {
                 if digit == 10 && i < 9 {
-                    result = false;
+                    valid = false;
                     break;
                 }
                 sum += digit.into() * (10 - i);
             },
             Option::None => {
-                result = false;
+                valid = false;
                 break;
             },
         }
@@ -31,11 +31,7 @@ pub fn is_valid_isbn(isbn: ByteArray) -> bool {
     };
 
     // Step 4: Return true if valid (sum % 11 == 0).
-    if result == true {
-        sum % 11 == 0
-    } else {
-        result
-    }
+    valid && sum % 11 == 0
 }
 
 fn filter(isbn: ByteArray) -> ByteArray {
