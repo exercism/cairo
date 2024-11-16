@@ -4,7 +4,7 @@ pub struct WordResult {
     pub count: u64,
 }
 
-fn count_words(phrase: ByteArray) -> Span<WordResult> {
+pub fn count_words(phrase: ByteArray) -> Span<WordResult> {
     let mut results: Array<WordResult> = ArrayTrait::new();
     let words = split_phrase_into_words(phrase);
 
