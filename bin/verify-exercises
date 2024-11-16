@@ -65,18 +65,21 @@ for exercise_path in $exercises; do
         cp -r "$exercise_path/$c" "$tmp_dir"
     done
 
+    cd "$tmp_dir"
+
+    scarb build
+
     # Move example files to where Cargo expects them
-    if [ -f "$exercise_path/.meta/example.cairo" ]; then
-        cp -f "$exercise_path/.meta/example.cairo" "$tmp_dir/src/lib.cairo"
-    elif [ -f "$exercise_path/.meta/exemplar.cairo" ]; then
-        cp -f "$exercise_path/.meta/exemplar.cairo" "$tmp_dir/src/lib.cairo"
+    if [ -f "$repo/$exercise_path/.meta/example.cairo" ]; then
+        cp -f "$repo/$exercise_path/.meta/example.cairo" "$tmp_dir/src/lib.cairo"
+    elif [ -f "$repo/$exercise_path/.meta/exemplar.cairo" ]; then
+        cp -f "$repo/$exercise_path/.meta/exemplar.cairo" "$tmp_dir/src/lib.cairo"
     else
         echo "Could not locate example implementation for $exercise_path"
         exit 1
     fi
 
-    cd "$tmp_dir"
-
+    # Exercism sets a timeout limit for tests
     timeout 20 scarb cairo-test --include-ignored || (echo "$exercise timed out" && exit 1)
 
     rm -rf "$tmp_dir"

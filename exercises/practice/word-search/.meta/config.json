@@ -1,0 +1,20 @@
+{
+  "authors": [
+    "Falilah"
+  ],
+  "files": {
+    "solution": [
+      "src/lib.cairo"
+    ],
+    "test": [
+      "tests/word_search.cairo"
+    ],
+    "example": [
+      ".meta/example.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
+    ]
+  },
+  "blurb": "Create a program to solve a word search puzzle."
+}
