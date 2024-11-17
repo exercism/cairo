@@ -220,11 +220,18 @@ fn quotation_for_word_with_apostrophe() {
 // helper function.
 fn assert_unordered(span1: Span<WordResult>, span2: Span<WordResult>) {
     for item in span1 {
+        let mut found = false;
         for other_item in span2 {
-            if item.word == other_item.word {
-                assert_eq!(item.word, other_item.word);
-                assert_eq!(item.count, other_item.count);
+            if item == other_item {
+                found = true;
+                break;
             }
-        }
+        };
+        assert!(
+            found,
+            "assertion failed: `(left == right)`\n left: `{:?}`,\n right `{:?}`",
+            span1,
+            span2
+        );
     }
 }
