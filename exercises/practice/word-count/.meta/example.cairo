@@ -84,7 +84,11 @@ fn split_phrase_into_words(phrase: ByteArray) -> Array<ByteArray> {
 }
 
 fn is_alphanumeric_or_apostrophe(ch: u8) -> bool {
-    ('0' <= ch && ch <= '9') || ('a' <= ch && ch <= 'z') || ('A' <= ch && ch <= 'Z') || ch == '\''
+    is_alphanumeric(ch) || is_apostrophe(ch)
+}
+
+fn is_alphanumeric(ch: u8) -> bool {
+    ('0' <= ch && ch <= '9') || ('a' <= ch && ch <= 'z') || ('A' <= ch && ch <= 'Z')
 }
 
 fn is_apostrophe(ch: u8) -> bool {
