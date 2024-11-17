@@ -829,6 +829,14 @@
         "difficulty": 4
       },
       {
+        "slug": "binary-search-tree",
+        "name": "Binary Search Tree",
+        "uuid": "97941277-12ff-474b-8a41-e89c065e0620",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 6
+      },
+      {
         "slug": "knapsack",
         "name": "Knapsack",
         "uuid": "ba9a3b81-aa52-4311-8e98-79d589b5091a",
@@ -843,12 +851,21 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 8
+      },
+      {
+        "slug": "word-search",
+        "name": "Word Search",
+        "uuid": "adbe715a-e54f-4e6d-9bb7-edef9e26b2cc",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 6
       }
     ],
     "foregone": [
       "bank-account",
       "complex-numbers",
       "gigasecond",
+      "grep",
       "hangman",
       "lens-person",
       "list-ops",
