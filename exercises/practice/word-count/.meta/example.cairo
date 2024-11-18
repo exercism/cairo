@@ -63,9 +63,7 @@ fn split_phrase_into_words(phrase: ByteArray) -> Array<ByteArray> {
         if is_alphanumeric_or_apostrophe(lower_case) {
             if !is_apostrophe(lower_case)
                 || (i > 0 && i < phrase.len()
-                    - 1
-                        && is_alphanumeric_or_apostrophe(phrase[i - 1])
-                        && is_alphanumeric_or_apostrophe(phrase[i + 1])) {
+                    - 1 && is_alphanumeric(phrase[i - 1]) && is_alphanumeric(phrase[i + 1])) {
                 current_word.append_byte(lower_case);
             }
         } else if current_word.len() > 0 {
