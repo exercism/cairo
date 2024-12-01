@@ -3,5 +3,5 @@ pub fn encode(integers: Array<u32>) -> Array<u32> {
 }
 
 pub fn decode(integers: Array<u32>) -> Array<u32> {
-    panic!("implemenent `decode`");
+    panic!("implemenent `decode`")
 }
