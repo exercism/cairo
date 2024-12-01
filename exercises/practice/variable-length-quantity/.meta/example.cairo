@@ -1,3 +1,7 @@
+const EIGHT_BIT_MASK: u32 = 0x80;
+const SEVEN_BIT_MASK: u32 = 0x7f;
+const TWO_POW_7: u32 = 128;
+
 pub fn encode(integers: Array<u32>) -> Array<u32> {
     let mut result = ArrayTrait::<u32>::new();
 
@@ -10,23 +14,20 @@ pub fn encode(integers: Array<u32>) -> Array<u32> {
         }
         while value > 0 {
             // take the lower 7 bits
-            let mut tmp = value & 0x7f;
+            let mut tmp = value & SEVEN_BIT_MASK;
             // remove them from the original value
-            value = value / 128;
+            value = value / TWO_POW_7;
 
             // set continuation bit
             if !temp_result.is_empty() {
-                tmp = tmp | 0x80;
+                tmp = tmp | EIGHT_BIT_MASK;
             }
 
             temp_result.append(tmp);
         };
 
         temp_result = reverse_array(temp_result);
-
-        for temp in temp_result {
-            result.append(temp);
-        };
+        result.append_span(temp_result.span());
     };
     result
 }
@@ -37,19 +38,15 @@ pub fn decode(integers: Array<u32>) -> Array<u32> {
     let mut tmp = 0;
     let mut i = 0;
     for integer in integers {
-        tmp = (tmp * 0x80) | (integer & 0x7f);
+        tmp = (tmp * EIGHT_BIT_MASK) | (integer & SEVEN_BIT_MASK);
 
-        if 0x80 & integer == 0 {
+        if EIGHT_BIT_MASK & integer == 0 {
             // continuation bit not set, number if complete
             res.append(tmp);
             tmp = 0;
         } else {
             // check for incomplete bytes
-            if i + 1 == size {
-                // the next index would be past the end,
-                // i.e. there are no more bytes.
-                panic!("incomplete sequence");
-            }
+            assert!(i + 1 != size, "incomplete sequence");
         }
         i += 1;
     };
