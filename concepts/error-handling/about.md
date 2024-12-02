@@ -51,7 +51,8 @@ fn main() {
 }
 ```
 
-If `x` is not greater than zero, the program will panic with the message `"x must be greater than zero"`. `assert!` is helpful for checking invariants and preconditions without manually writing error-handling code.
+If `x` is not greater than zero, the program will panic with the message `"x must be greater than zero"`.
+`assert!` is helpful for checking invariants and preconditions without manually writing error-handling code.
 
 ### `nopanic` Notation
 

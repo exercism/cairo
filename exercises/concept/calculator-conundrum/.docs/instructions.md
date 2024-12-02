@@ -4,7 +4,7 @@ In this exercise, you will be building error handling for a simple integer calcu
 The calculator should support addition, multiplication, and division operations, returning the result as a formatted string.
 You will also implement error handling to address illegal operations and division by zero.
 
-The goal is to have a working calculator that returns a string in the following format: `16 + 51 = 67`, when provided with arguments `16`, `51`, and `+`.
+The goal is to have a working calculator that returns a string in the following format:
 
 ```rust
 SimpleCalculator::calculate(16, 51, "+"); // => returns "16 + 51 = 67"
