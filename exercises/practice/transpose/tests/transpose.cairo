@@ -1,11 +1,11 @@
-use transpose::transpose;
+use transpose::transpose as transpose_matrix;
 
 #[test]
 fn empty_string() {
     let mut input: Array<ByteArray> = array![];
     let expected = array![];
 
-    let output = transpose(input);
+    let output = transpose_matrix(input);
     assert_eq!(output, expected);
 }
 
@@ -15,7 +15,7 @@ fn two_characters_in_a_row() {
     let mut input: Array<ByteArray> = array!["A1"];
     let expected = array!["A", "1"];
 
-    let output = transpose(input);
+    let output = transpose_matrix(input);
     assert_eq!(output, expected);
 }
 
@@ -25,7 +25,7 @@ fn two_characters_in_a_column() {
     let mut input: Array<ByteArray> = array!["A", "1"];
     let expected = array!["A1"];
 
-    let output = transpose(input);
+    let output = transpose_matrix(input);
     assert_eq!(output, expected);
 }
 
@@ -35,7 +35,7 @@ fn simple() {
     let mut input: Array<ByteArray> = array!["ABC", "123"];
     let expected = array!["A1", "B2", "C3"];
 
-    let output = transpose(input);
+    let output = transpose_matrix(input);
     assert_eq!(output, expected);
 }
 
@@ -45,7 +45,7 @@ fn single_line() {
     let mut input: Array<ByteArray> = array!["Single line."];
     let expected = array!["S", "i", "n", "g", "l", "e", " ", "l", "i", "n", "e", "."];
 
-    let output = transpose(input);
+    let output = transpose_matrix(input);
     assert_eq!(output, expected);
 }
 
@@ -72,7 +72,7 @@ fn first_line_longer_than_second_line() {
         ". "
     ];
 
-    let output = transpose(input);
+    let output = transpose_matrix(input);
     assert_eq!(output, expected);
 }
 
@@ -99,7 +99,7 @@ fn second_line_longer_than_first_line() {
         " ."
     ];
 
-    let output = transpose(input);
+    let output = transpose_matrix(input);
     assert_eq!(output, expected);
 }
 
@@ -129,7 +129,7 @@ fn mixed_line_length() {
         ".   "
     ];
 
-    let output = transpose(input);
+    let output = transpose_matrix(input);
     assert_eq!(output, expected);
 }
 
@@ -139,7 +139,7 @@ fn square() {
     let mut input: Array<ByteArray> = array!["HEART", "EMBER", "ABUSE", "RESIN", "TREND"];
     let expected = array!["HEART", "EMBER", "ABUSE", "RESIN", "TREND"];
 
-    let output = transpose(input);
+    let output = transpose_matrix(input);
     assert_eq!(output, expected);
 }
 
@@ -149,7 +149,7 @@ fn rectangle() {
     let mut input: Array<ByteArray> = array!["FRACTURE", "OUTLINED", "BLOOMING", "SEPTETTE"];
     let expected = array!["FOBS", "RULE", "ATOP", "CLOT", "TIME", "UNIT", "RENT", "EDGE"];
 
-    let output = transpose(input);
+    let output = transpose_matrix(input);
     assert_eq!(output, expected);
 }
 
@@ -159,7 +159,7 @@ fn triangle() {
     let mut input: Array<ByteArray> = array!["T", "EE", "AAA", "SSSS", "EEEEE", "RRRRRR"];
     let expected = array!["TEASER", " EASER", "  ASER", "   SER", "    ER", "     R"];
 
-    let output = transpose(input);
+    let output = transpose_matrix(input);
     assert_eq!(output, expected);
 }
 
@@ -169,6 +169,6 @@ fn jagged_triangle() {
     let mut input: Array<ByteArray> = array!["11", "2", "3333", "444", "555555", "66666"];
     let expected = array!["123456", "1 3456", "  3456", "  3 56", "    56", "    5 "];
 
-    let output = transpose(input);
+    let output = transpose_matrix(input);
     assert_eq!(output, expected);
 }
