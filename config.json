@@ -19,11 +19,21 @@
     "average_run_time": 5
   },
   "files": {
-    "solution": ["src/lib.cairo"],
-    "test": ["tests/%{snake_slug}.cairo"],
-    "example": [".meta/example.cairo"],
-    "exemplar": [".meta/exemplar.cairo"],
-    "invalidator": ["Scarb.toml"]
+    "solution": [
+      "src/lib.cairo"
+    ],
+    "test": [
+      "tests/%{snake_slug}.cairo"
+    ],
+    "example": [
+      ".meta/example.cairo"
+    ],
+    "exemplar": [
+      ".meta/exemplar.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
+    ]
   },
   "exercises": {
     "concept": [
@@ -31,7 +41,10 @@
         "slug": "lucians-luscious-lasagna",
         "name": "Lucian's Luscious Lasagna",
         "uuid": "f120ab92-f277-434c-ae38-a3bb86cb67bf",
-        "concepts": ["functions", "mutability"],
+        "concepts": [
+          "functions",
+          "mutability"
+        ],
         "prerequisites": [],
         "status": "beta"
       },
@@ -39,144 +52,223 @@
         "slug": "annalyns-infiltration",
         "name": "Annalyn's Infiltration",
         "uuid": "da0f8d71-36ed-4c98-9e43-60a04ea5db3a",
-        "concepts": ["booleans"],
-        "prerequisites": ["functions"],
+        "concepts": [
+          "booleans"
+        ],
+        "prerequisites": [
+          "functions"
+        ],
         "status": "wip"
       },
       {
         "slug": "cryptographer",
         "name": "Cryptographer",
         "uuid": "7d399f77-4b68-4fc8-9421-43fd24bd4dbe",
-        "concepts": ["felts"],
-        "prerequisites": ["functions"],
+        "concepts": [
+          "felts"
+        ],
+        "prerequisites": [
+          "functions"
+        ],
         "status": "wip"
       },
       {
         "slug": "cars-assemble",
         "name": "Cars Assemble",
         "uuid": "57845c17-15e5-4c62-bbac-29ad633e9ebb",
-        "concepts": ["integers"],
-        "prerequisites": ["functions"],
+        "concepts": [
+          "integers"
+        ],
+        "prerequisites": [
+          "functions"
+        ],
         "status": "wip"
       },
       {
         "slug": "welcome-to-tech-palace",
         "name": "Welcome To Tech Palace!",
         "uuid": "f8108950-9819-4540-8a3a-880d0778806c",
-        "concepts": ["strings"],
-        "prerequisites": ["functions"],
+        "concepts": [
+          "strings"
+        ],
+        "prerequisites": [
+          "functions"
+        ],
         "status": "wip"
       },
       {
         "slug": "magician-in-training",
         "name": "Magician in Training",
         "uuid": "b1f29e1f-adb7-4e37-8101-a1819f1179fa",
-        "concepts": ["arrays"],
-        "prerequisites": ["integers"],
+        "concepts": [
+          "arrays"
+        ],
+        "prerequisites": [
+          "integers"
+        ],
         "status": "wip"
       },
       {
         "slug": "rpn-calculator",
         "name": "RPN Calculator",
         "uuid": "536d9f09-5910-4a26-93fd-2242667b0b87",
-        "concepts": ["control-flow"],
-        "prerequisites": ["arrays", "enums"],
+        "concepts": [
+          "control-flow"
+        ],
+        "prerequisites": [
+          "arrays",
+          "enums"
+        ],
         "status": "wip"
       },
       {
         "slug": "gross-store",
         "name": "Gross Store",
         "uuid": "e2ae76c7-379e-430d-92d6-9eaaa823acca",
-        "concepts": ["dictionaries"],
-        "prerequisites": ["control-flow"],
+        "concepts": [
+          "dictionaries"
+        ],
+        "prerequisites": [
+          "control-flow"
+        ],
         "status": "wip"
       },
       {
         "slug": "election-day",
         "name": "Election Day",
         "uuid": "29bc1a4a-f295-44db-be19-d8e63dc526dc",
-        "concepts": ["ownership", "structs", "references-and-snapshots"],
-        "prerequisites": ["dictionaries"],
+        "concepts": [
+          "ownership",
+          "structs",
+          "references-and-snapshots"
+        ],
+        "prerequisites": [
+          "dictionaries"
+        ],
         "status": "wip"
       },
       {
         "slug": "red-vs-blue-darwin-style",
         "name": "Red vs. Blue: Darwin Style",
         "uuid": "30761b1c-0c9a-4c91-8d16-1adf8bc4a0dd",
-        "concepts": ["packages-crates-modules"],
-        "prerequisites": ["structs"],
+        "concepts": [
+          "packages-crates-modules"
+        ],
+        "prerequisites": [
+          "structs"
+        ],
         "status": "wip"
       },
       {
         "slug": "health-statistics",
         "name": "Health Statistics",
         "uuid": "69389197-e1dc-43bf-865d-d9b58d59b4e7",
-        "concepts": ["method-syntax"],
-        "prerequisites": ["structs", "references-and-snapshots"],
+        "concepts": [
+          "method-syntax"
+        ],
+        "prerequisites": [
+          "structs",
+          "references-and-snapshots"
+        ],
         "status": "wip"
       },
       {
         "slug": "airport-robot",
         "name": "Airport Robot",
         "uuid": "f0c994d7-d183-4dfa-9048-b20be6f3bf2e",
-        "concepts": ["generics", "traits"],
-        "prerequisites": ["method-syntax"],
+        "concepts": [
+          "generics",
+          "traits"
+        ],
+        "prerequisites": [
+          "method-syntax"
+        ],
         "status": "wip"
       },
       {
         "slug": "low-power-embedded-game",
         "name": "Low-power Embedded Game",
         "uuid": "f3b7ce44-1667-42b4-b792-401d36aee2f1",
-        "concepts": ["tuples"],
-        "prerequisites": ["traits"],
+        "concepts": [
+          "tuples"
+        ],
+        "prerequisites": [
+          "traits"
+        ],
         "status": "wip"
       },
       {
         "slug": "the-realm-of-echoes",
         "name": "the-realm-of-echoes",
         "uuid": "c8fd3bd0-290e-4472-b967-9a201dfd3041",
-        "concepts": ["printing"],
-        "prerequisites": ["traits"],
+        "concepts": [
+          "printing"
+        ],
+        "prerequisites": [
+          "traits"
+        ],
         "status": "wip"
       },
       {
         "slug": "role-playing-game",
         "name": "Role Playing Game",
         "uuid": "1b014752-c3a4-4250-9483-89696864461b",
-        "concepts": ["option"],
-        "prerequisites": ["structs", "method-syntax"],
+        "concepts": [
+          "option"
+        ],
+        "prerequisites": [
+          "structs",
+          "method-syntax"
+        ],
         "status": "wip"
       },
       {
         "slug": "magical-measurements",
         "name": "Magical Measurements",
         "uuid": "590fc9b0-2b5d-4dab-81ca-b43f9987b1f5",
-        "concepts": ["type-conversion"],
-        "prerequisites": ["option", "printing"],
+        "concepts": [
+          "type-conversion"
+        ],
+        "prerequisites": [
+          "option",
+          "printing"
+        ],
         "status": "wip"
       },
       {
         "slug": "the-farm",
         "name": "The Farm",
         "uuid": "e167e30c-84b1-44da-b21c-70bc46688f20",
-        "concepts": ["error-handling"],
-        "prerequisites": ["structs"],
+        "concepts": [
+          "error-handling"
+        ],
+        "prerequisites": [
+          "structs"
+        ],
         "status": "wip"
       },
       {
         "slug": "chrono-realms",
         "name": "Chrono Realms",
         "uuid": "eb15461a-ffdc-4bdd-acc1-e95bd7a1ac91",
-        "concepts": ["operator-overloading"],
-        "prerequisites": ["generics"],
+        "concepts": [
+          "operator-overloading"
+        ],
+        "prerequisites": [
+          "generics"
+        ],
         "status": "wip"
       },
       {
         "slug": "chrono-realms-time-tree",
         "name": "Chrono Realms Time Tree",
         "uuid": "a72139a1-825e-4349-a6b5-400b665fbe07",
-        "concepts": ["smart-pointers"],
-        "prerequisites": ["structs"],
+        "concepts": [
+          "smart-pointers"
+        ],
+        "prerequisites": [
+          "structs"
+        ],
         "status": "wip"
       }
     ],
@@ -185,7 +277,10 @@
         "slug": "hello-world",
         "name": "Hello World",
         "uuid": "1a0e23d9-e8f9-493a-af46-2be040173b64",
-        "practices": ["strings", "felts"],
+        "practices": [
+          "strings",
+          "felts"
+        ],
         "prerequisites": [],
         "difficulty": 1
       },
@@ -193,7 +288,9 @@
         "slug": "reverse-string",
         "name": "Reverse String",
         "uuid": "df9f3e80-acf5-41e0-9321-d4b13b26a036",
-        "practices": ["strings"],
+        "practices": [
+          "strings"
+        ],
         "prerequisites": [],
         "difficulty": 1
       },
@@ -241,7 +338,10 @@
         "slug": "leap",
         "name": "Leap",
         "uuid": "9b586e17-928c-42bf-95ed-67539daea9a8",
-        "practices": ["booleans", "integers"],
+        "practices": [
+          "booleans",
+          "integers"
+        ],
         "prerequisites": [],
         "difficulty": 2
       },
@@ -249,7 +349,10 @@
         "slug": "semi-structured-logs",
         "name": "Semi Structured Logs",
         "uuid": "4ca5087f-0128-4845-89a8-a2fa7791ed98",
-        "practices": ["enums", "match-basics"],
+        "practices": [
+          "enums",
+          "match-basics"
+        ],
         "prerequisites": [],
         "difficulty": 2
       },
@@ -257,7 +360,9 @@
         "slug": "darts",
         "name": "Darts",
         "uuid": "3e5fb791-59b5-4ea6-b68f-70ed851a3308",
-        "practices": ["control-flow"],
+        "practices": [
+          "control-flow"
+        ],
         "prerequisites": [],
         "difficulty": 2
       },
@@ -321,7 +426,9 @@
         "slug": "raindrops",
         "name": "Raindrops",
         "uuid": "d2cc23d5-2ed1-4115-9b9a-4b62993e750c",
-        "practices": ["strings"],
+        "practices": [
+          "strings"
+        ],
         "prerequisites": [],
         "difficulty": 2
       },
@@ -369,7 +476,9 @@
         "slug": "armstrong-numbers",
         "name": "Armstrong Numbers",
         "uuid": "4aaa153d-3416-4101-8143-35b068a15451",
-        "practices": ["packages-crates-modules"],
+        "practices": [
+          "packages-crates-modules"
+        ],
         "prerequisites": [],
         "difficulty": 3
       },
@@ -377,7 +486,11 @@
         "slug": "sublist",
         "name": "Sublist",
         "uuid": "e62b1bb4-fb37-4dfe-ad81-e0fa5c494ba3",
-        "practices": ["arrays", "enums", "generics"],
+        "practices": [
+          "arrays",
+          "enums",
+          "generics"
+        ],
         "prerequisites": [],
         "difficulty": 3
       },
@@ -385,7 +498,11 @@
         "slug": "scrabble-score",
         "name": "Scrabble Score",
         "uuid": "3ef58f8c-99d4-48be-bb15-a1a5763e5052",
-        "practices": ["dictionaries", "strings", "felts"],
+        "practices": [
+          "dictionaries",
+          "strings",
+          "felts"
+        ],
         "prerequisites": [],
         "difficulty": 3
       },
@@ -409,7 +526,10 @@
         "slug": "beer-song",
         "name": "Beer Song",
         "uuid": "d96a8ba2-6e80-45ce-91d6-5b4cac391db6",
-        "practices": ["control-flow", "strings"],
+        "practices": [
+          "control-flow",
+          "strings"
+        ],
         "prerequisites": [],
         "difficulty": 3
       },
@@ -417,7 +537,10 @@
         "slug": "clock",
         "name": "Clock",
         "uuid": "b44728f6-f2ad-4fa4-a20e-5144f9a81e3e",
-        "practices": ["traits", "printing"],
+        "practices": [
+          "traits",
+          "printing"
+        ],
         "prerequisites": [],
         "difficulty": 4
       },
@@ -447,7 +570,12 @@
         "slug": "binary-search",
         "name": "Binary Search",
         "uuid": "46be407d-13b8-4a7f-9a9a-4cef93485ba7",
-        "practices": ["arrays", "enums", "control-flow", "generics"],
+        "practices": [
+          "arrays",
+          "enums",
+          "control-flow",
+          "generics"
+        ],
         "prerequisites": [],
         "difficulty": 4
       },
@@ -455,7 +583,11 @@
         "slug": "largest-series-product",
         "name": "Largest Series Product",
         "uuid": "d0cae4fa-22a8-4604-9f0f-f90751245ce3",
-        "practices": ["enums", "error-handling", "control-flow"],
+        "practices": [
+          "enums",
+          "error-handling",
+          "control-flow"
+        ],
         "prerequisites": [],
         "difficulty": 4
       },
@@ -463,7 +595,11 @@
         "slug": "allergies",
         "name": "Allergies",
         "uuid": "ef701095-b324-49f0-913e-2fb2e1f5f27a",
-        "practices": ["enums", "structs", "traits"],
+        "practices": [
+          "enums",
+          "structs",
+          "traits"
+        ],
         "prerequisites": [],
         "difficulty": 4
       },
@@ -506,7 +642,12 @@
         "slug": "custom-set",
         "name": "Custom Set",
         "uuid": "aad80498-750c-4a7d-b82a-f52f90c54e11",
-        "practices": ["structs", "generics", "traits", "operator-overloading"],
+        "practices": [
+          "structs",
+          "generics",
+          "traits",
+          "operator-overloading"
+        ],
         "prerequisites": [],
         "difficulty": 6
       },
@@ -528,7 +669,10 @@
         "slug": "simple-linked-list",
         "name": "Simple Linked List",
         "uuid": "cc9a6bf9-9027-42c4-a71d-082ce48f7869",
-        "practices": ["smart-pointers", "generics"],
+        "practices": [
+          "smart-pointers",
+          "generics"
+        ],
         "prerequisites": [],
         "difficulty": 7
       },
@@ -536,7 +680,12 @@
         "slug": "protein-translation",
         "name": "Protein Translation",
         "uuid": "d42e7a29-64b9-478b-8b2a-44fd002391fa",
-        "practices": ["dictionaries", "strings", "felts", "type-conversion"],
+        "practices": [
+          "dictionaries",
+          "strings",
+          "felts",
+          "type-conversion"
+        ],
         "prerequisites": [],
         "difficulty": 8
       },
@@ -552,7 +701,10 @@
         "slug": "linked-list",
         "name": "Linked List",
         "uuid": "1924c44e-bfa2-4dac-a7a9-779e4039ac56",
-        "practices": ["structs", "traits"],
+        "practices": [
+          "structs",
+          "traits"
+        ],
         "prerequisites": [],
         "difficulty": 10
       },
