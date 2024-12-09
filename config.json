@@ -723,6 +723,7 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 1
+<<<<<<< HEAD
       },
       {
         "slug": "isbn-verifier",
@@ -731,6 +732,8 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 4
+=======
+>>>>>>> 9947334 (transpose exercise)
       }
     ],
     "foregone": [
