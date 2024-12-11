@@ -2,5 +2,9 @@
     {
         "url": "https://book.cairo-lang.org/ch09-00-error-handling.html",
         "description": "Error handling in the Cairo book"
+    },
+    {
+        "url": "https://book.cairo-lang.org/ch11-05-macros.html?highlight=assert#assert-and-assert_xx-macros",
+        "description": "assert! macro"
     }
 ]

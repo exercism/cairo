@@ -142,8 +142,8 @@ fn alternate_silence() {
 #[test]
 #[ignore]
 fn multiple_line_question() {
-    let input = "\nDoes this cryogenic chamber make me look fat?\nNo.";
-    assert_eq!("Whatever.", response(@input));
+    let input = "\nDoes this cryogenic chamber make\n me look fat?";
+    assert_eq!("Sure.", response(@input));
 }
 
 #[test]

@@ -37,7 +37,7 @@ for exercise_dir in $exercises; do
     # move the solution file into the package
     cp "$solution_file" "$tmp_file"
 
-    scarb fmt
+    scarb fmt "$@"
 
     # move the solution file back
     cp "$tmp_file" "$solution_file"

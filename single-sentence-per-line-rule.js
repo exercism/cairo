@@ -52,6 +52,8 @@ module.exports = {
       "e.g",
       "etc",
       "ex",
+      "`assert",
+      "`panic",
     ];
     const lineEndings = params.config.line_endings || [".", "?", "!"];
     const sentenceStartRegex =

@@ -59,7 +59,7 @@ jobs:
           scarb-version: "2.8.2"
 
       - name: Format
-        run: ./bin/format_exercises.sh
+        run: ./bin/format_exercises.sh --check
 
       - name: Diff
         run: |
