@@ -51,7 +51,7 @@ pub fn format_entries(
 
 // format date based on the locale handled in 1 function
 fn format_date(date: @ByteArray, locale: @Locale) -> ByteArray {
-    let (year,  month,  day) = split_date(date);
+    let (year, month, day) = split_date(date);
     match locale {
         Locale::en_US => {
             day += "/";
