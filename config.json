@@ -876,6 +876,14 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 5
+      },
+      {
+        "slug": "ledger",
+        "name": "Ledger",
+        "uuid": "cccabb0a-b5b5-4f18-aead-18f62af4a89f",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
       }
     ],
     "foregone": [
