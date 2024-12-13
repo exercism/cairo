@@ -9,6 +9,8 @@ repo=$(git rev-parse --show-toplevel)
 # directory and format Cairo files
 exercises="$repo/exercises/*/*"
 
+FMT_ARGS="$@"
+
 for exercise_dir in $exercises; do
     cd "$exercise_dir"
 
@@ -18,6 +20,16 @@ for exercise_dir in $exercises; do
         echo "Exercise $exercise is just a stub, skipping"
         continue
     fi
+
+    if [ -f "./src/lib.cairo" ]; then
+        scaffold_solution="./src/lib.cairo"
+    else
+        echo "Could not locate scaffold implementation for $exercise"
+        exit 1
+    fi
+
+    # check scaffold solution formatting
+    scarb fmt $FMT_ARGS
 
     # scarb fmt cannot currently format individual files, so we have to
     # temporarily move the solution files into the Cairo package, where
@@ -34,13 +46,17 @@ for exercise_dir in $exercises; do
         exit 1
     fi
 
-    # move the solution file into the package
-    cp "$solution_file" "$tmp_file"
+    # backup scaffold solution
+    cp "$scaffold_solution" "$tmp_file"
 
-    scarb fmt "$@"
+    # copy the example solution file into the package
+    cp "$solution_file" "$scaffold_solution"
 
-    # move the solution file back
-    cp "$tmp_file" "$solution_file"
+    # check example solution formatting
+    scarb fmt $FMT_ARGS
+
+    # copy the scaffold solution back
+    cp "$tmp_file" "$scaffold_solution"
 
     rm "$tmp_file"
 done
