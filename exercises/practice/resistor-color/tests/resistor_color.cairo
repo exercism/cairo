@@ -25,6 +25,7 @@ fn orange() {
 }
 
 #[test]
+#[ignore]
 fn test_colors() {
     let output = colors();
     let expected = array![
