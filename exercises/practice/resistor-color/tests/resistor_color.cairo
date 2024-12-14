@@ -20,7 +20,7 @@ fn white() {
 #[ignore]
 fn orange() {
     let output = color_code(Color::Orange);
-    let expected = 47;
+    let expected = 3;
     assert_eq!(output, expected);
 }
 
