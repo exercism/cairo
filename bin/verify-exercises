@@ -67,7 +67,7 @@ for exercise_path in $exercises; do
 
     cd "$tmp_dir"
 
-    scarb build
+    scarb build --test
 
     # Move example files to where Cargo expects them
     if [ -f "$repo/$exercise_path/.meta/example.cairo" ]; then
