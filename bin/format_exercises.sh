@@ -9,7 +9,8 @@ repo=$(git rev-parse --show-toplevel)
 # directory and format Cairo files
 exercises="$repo/exercises/*/*"
 
-FMT_ARGS="$@"
+# Capture all arguments passed to the script to pass them to scarb fmt
+SCARB_FMT_ARGS=("$@")
 
 for exercise_dir in $exercises; do
     cd "$exercise_dir"
@@ -29,7 +30,7 @@ for exercise_dir in $exercises; do
     fi
 
     # check scaffold solution formatting
-    scarb fmt $FMT_ARGS
+    scarb fmt "${SCARB_FMT_ARGS[@]}"
 
     # scarb fmt cannot currently format individual files, so we have to
     # temporarily move the solution files into the Cairo package, where
@@ -53,7 +54,7 @@ for exercise_dir in $exercises; do
     cp "$solution_file" "$scaffold_solution"
 
     # check example solution formatting
-    scarb fmt $FMT_ARGS
+    scarb fmt "${SCARB_FMT_ARGS[@]}"
 
     # copy the scaffold solution back
     cp "$tmp_file" "$scaffold_solution"
