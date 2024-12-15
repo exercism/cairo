@@ -39,7 +39,7 @@ pub impl AllergiesImpl of AllergiesTrait {
             }
             index += 1;
         };
-        found && (*self.score & 2.pow(index)) != 0
+        found && (*self.score & 2_u32.pow(index)) != 0
     }
 
     fn allergies(self: @Allergies) -> Array<Allergen> {
