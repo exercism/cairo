@@ -4,6 +4,7 @@ use core::to_byte_array::{AppendFormattedToByteArray};
 pub enum Currency {
     USD,
     EUR,
+    JPY,
 }
 
 #[derive(Debug, PartialEq, Drop)]

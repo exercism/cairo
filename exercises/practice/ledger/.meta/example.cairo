@@ -1,5 +1,5 @@
 // Refactored code
-use core::to_byte_array::{AppendFormattedToByteArray};
+use core::to_byte_array::AppendFormattedToByteArray;
 
 #[derive(Debug, PartialEq, Drop)]
 pub enum Currency {
@@ -16,7 +16,7 @@ pub enum Locale {
 pub fn format_entries(
     currency: Currency, locale: Locale, transactions: Array<(ByteArray, ByteArray, ByteArray)>
 ) -> Array<ByteArray> {
-    let mut ledger: Array<ByteArray> = ArrayTrait::new();
+    let mut ledger: Array<ByteArray> = array![]
 
     // Step 1: Define the header based on the locale
     let header = match @locale {
@@ -29,7 +29,6 @@ pub fn format_entries(
     for (
         date, transaction, change
     ) in transactions {
-        // Format the date based on the locale
         let formatted_date = format_date(@date, @locale);
 
         // Format the change based on the currency and locale

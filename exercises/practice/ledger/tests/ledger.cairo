@@ -153,7 +153,7 @@ fn dutch_negative_number_with_3_digits_before_decimal_point() {
 
 #[test]
 #[ignore]
-fn American_negative_number_with_3_digits_before_decimal_point() {
+fn american_negative_number_with_3_digits_before_decimal_point() {
     let currency = Currency::USD;
     let locale = Locale::en_US;
     let entries = array![("2015-03-12", "Buy present", "-12345")];
