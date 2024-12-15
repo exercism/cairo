@@ -22,15 +22,10 @@ for exercise_dir in $exercises; do
         continue
     fi
 
-    if [ -f "./src/lib.cairo" ]; then
-        scaffold_solution="./src/lib.cairo"
-    else
+    if [ ! -s "./src/lib.cairo" ]; then
         echo "Could not locate scaffold implementation for $exercise"
         exit 1
     fi
-
-    # check scaffold solution formatting
-    scarb fmt "${SCARB_FMT_ARGS[@]}"
 
     # scarb fmt cannot currently format individual files, so we have to
     # temporarily move the solution files into the Cairo package, where
@@ -47,17 +42,14 @@ for exercise_dir in $exercises; do
         exit 1
     fi
 
-    # backup scaffold solution
-    cp "$scaffold_solution" "$tmp_file"
-
     # copy the example solution file into the package
-    cp "$solution_file" "$scaffold_solution"
+    cp "$solution_file" "$tmp_file"
 
     # check example solution formatting
     scarb fmt "${SCARB_FMT_ARGS[@]}"
 
-    # copy the scaffold solution back
-    cp "$tmp_file" "$scaffold_solution"
+    # copy the example solution back in case it was formatted
+    cp "$tmp_file" "$solution_file"
 
     rm "$tmp_file"
 done
