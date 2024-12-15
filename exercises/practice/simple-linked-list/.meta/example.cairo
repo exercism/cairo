@@ -40,14 +40,14 @@ pub impl SimpleLinkedListImpl<T, +Drop<T>, +Copy<T>> of SimpleLinkedListTrait<T>
                 let node = node.unbox();
                 self.head = node.next;
                 Option::Some(node.data)
-            }
+            },
         }
     }
 
     fn peek(self: @SimpleLinkedList<T>) -> Option<@T> {
         match *self.head {
             Option::None => Option::None,
-            Option::Some(node) => Option::Some(@node.unbox().data)
+            Option::Some(node) => Option::Some(@node.unbox().data),
         }
     }
 
@@ -89,6 +89,6 @@ impl SimpleLinkedListIntoArray<T, +Drop<T>, +Copy<T>> of Into<SimpleLinkedList<T
 #[generate_trait]
 impl NodeImpl<T> of NodeTrait<T> {
     fn new(element: T, next: List<T>) -> Node<T> {
-        Node { data: element, next, }
+        Node { data: element, next }
     }
 }

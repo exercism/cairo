@@ -35,7 +35,7 @@ pub fn valid(candidate: ByteArray) -> bool {
             Option::None => {
                 valid = false;
                 break;
-            }
+            },
         };
 
         // Process digit according to Luhn's algorithm

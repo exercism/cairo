@@ -38,6 +38,6 @@ pub fn colors() -> Array<Color> {
         Color::Blue,
         Color::Violet,
         Color::Grey,
-        Color::White
+        Color::White,
     ]
 }

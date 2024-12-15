@@ -20,16 +20,16 @@ impl DestructDoublyLinkedList<T, +Drop<T>, +Felt252DictValue<T>> of Destruct<Dou
 struct Node<T> {
     station: T,
     next: Index,
-    previous: Index
+    previous: Index,
 }
 
 #[generate_trait]
 pub impl DoublyLinkedListImpl<
-    T, +Drop<T>, +Copy<T>, +PartialEq<T>, +Felt252DictValue<T>
+    T, +Drop<T>, +Copy<T>, +PartialEq<T>, +Felt252DictValue<T>,
 > of DoublyLinkedListTrait<T> {
     fn new() -> DoublyLinkedList<T> {
         DoublyLinkedList {
-            dict: Default::default(), head: Option::None, tail: Option::None, len: 0, next_index: 0
+            dict: Default::default(), head: Option::None, tail: Option::None, len: 0, next_index: 0,
         }
     }
 
@@ -83,7 +83,7 @@ pub impl DoublyLinkedListImpl<
                 self.dict.insert(self.tail.unwrap(), NullableTrait::new(new_tail));
 
                 Option::Some(popped_tail.station)
-            }
+            },
         }
     }
 
@@ -110,7 +110,7 @@ pub impl DoublyLinkedListImpl<
                 self.dict.insert(self.head.unwrap(), NullableTrait::new(new_head));
 
                 Option::Some(shifted_head.station)
-            }
+            },
         }
     }
 

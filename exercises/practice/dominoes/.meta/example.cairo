@@ -10,7 +10,7 @@ pub type Domino = (u8, u8);
 #[derive(Destruct)]
 struct AvailabilityTable {
     d: Felt252Dict<u8>,
-    len: usize
+    len: usize,
 }
 
 fn index(x: u8, y: u8) -> u8 {
@@ -117,7 +117,7 @@ pub fn chain(dominoes: @Array<Domino>) -> Option<Array<Domino>> {
             } else {
                 Option::None
             }
-        }
+        },
     }
 }
 

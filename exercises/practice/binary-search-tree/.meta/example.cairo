@@ -20,27 +20,27 @@ pub impl BinarySearchTreeImpl of BinarySearchTreeTrait {
     fn add(self: BinarySearchTree, value: u32) -> BinarySearchTree {
         match self {
             Option::None => Option::Some(
-                BoxTrait::new(Node { value, left: Option::None, right: Option::None })
+                BoxTrait::new(Node { value, left: Option::None, right: Option::None }),
             ),
             Option::Some(node) => {
                 if value <= node.value {
                     Option::Some(
                         BoxTrait::new(
                             Node {
-                                value: node.value, left: node.left.add(value), right: node.right
-                            }
-                        )
+                                value: node.value, left: node.left.add(value), right: node.right,
+                            },
+                        ),
                     )
                 } else {
                     Option::Some(
                         BoxTrait::new(
                             Node {
-                                value: node.value, left: node.left, right: node.right.add(value)
-                            }
-                        )
+                                value: node.value, left: node.left, right: node.right.add(value),
+                            },
+                        ),
                     )
                 }
-            }
+            },
         }
     }
 
@@ -51,14 +51,14 @@ pub impl BinarySearchTreeImpl of BinarySearchTreeTrait {
     fn left(self: @BinarySearchTree) -> @BinarySearchTree {
         @match self {
             Option::None => Option::None,
-            Option::Some(bst) => bst.left
+            Option::Some(bst) => bst.left,
         }
     }
 
     fn right(self: @BinarySearchTree) -> @BinarySearchTree {
         @match self {
             Option::None => Option::None,
-            Option::Some(bst) => bst.right
+            Option::Some(bst) => bst.right,
         }
     }
 
