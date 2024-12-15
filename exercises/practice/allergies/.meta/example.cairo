@@ -1,3 +1,5 @@
+use core::num::traits::Pow;
+
 #[derive(Drop)]
 struct Allergies {
     score: u32,
@@ -15,17 +17,9 @@ pub enum Allergen {
     Cats,
 }
 
-const ALLERGENS: [
-    Allergen
-    ; 8] = [
-    Allergen::Eggs,
-    Allergen::Peanuts,
-    Allergen::Shellfish,
-    Allergen::Strawberries,
-    Allergen::Tomatoes,
-    Allergen::Chocolate,
-    Allergen::Pollen,
-    Allergen::Cats,
+const ALLERGENS: [Allergen; 8] = [
+    Allergen::Eggs, Allergen::Peanuts, Allergen::Shellfish, Allergen::Strawberries,
+    Allergen::Tomatoes, Allergen::Chocolate, Allergen::Pollen, Allergen::Cats,
 ];
 
 #[generate_trait]
@@ -45,7 +39,7 @@ pub impl AllergiesImpl of AllergiesTrait {
             }
             index += 1;
         };
-        found && (*self.score & pow(2, index)) != 0
+        found && (*self.score & 2.pow(index)) != 0
     }
 
     fn allergies(self: @Allergies) -> Array<Allergen> {
@@ -58,17 +52,4 @@ pub impl AllergiesImpl of AllergiesTrait {
         };
         result
     }
-}
-
-fn pow(base: u32, mut power: u32) -> u32 {
-    if base == 0 {
-        return base;
-    }
-    let base: u256 = base.into();
-    let mut result = 1_u256;
-    while power != 0 {
-        result *= base;
-        power -= 1;
-    };
-    result.try_into().expect('too large to fit output type')
 }
