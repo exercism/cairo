@@ -11,7 +11,7 @@ pub enum Category {
     LittleStraight,
     BigStraight,
     Choice,
-    Yacht
+    Yacht,
 }
 
 #[derive(Copy, Default, Drop, PartialEq)]
@@ -103,7 +103,7 @@ fn count_dice(dice: Span<u8>) -> Counter {
             4 => counter.fours += 1,
             5 => counter.fives += 1,
             6 => counter.sixes += 1,
-            _ => {}
+            _ => {},
         }
     };
 

@@ -2,7 +2,7 @@
 struct CustomSet<T> {}
 
 impl CustomSetEq<
-    T, +Copy<T>, +Drop<T>, +PartialEq<T>, +core::fmt::Display<T>
+    T, +Copy<T>, +Drop<T>, +PartialEq<T>, +core::fmt::Display<T>,
 > of PartialEq<CustomSet<T>> {
     fn eq(lhs: @CustomSet<T>, rhs: @CustomSet<T>) -> bool {
         // determine whether the two CustomSets are equal
@@ -12,7 +12,7 @@ impl CustomSetEq<
 
 #[generate_trait]
 pub impl CustomSetImpl<
-    T, +Copy<T>, +Drop<T>, +core::fmt::Display<T>, +PartialEq<T>
+    T, +Copy<T>, +Drop<T>, +core::fmt::Display<T>, +PartialEq<T>,
 > of CustomSetTrait<T> {
     fn new(input: @Array<T>) -> CustomSet<T> {
         // construct a new CustomSet struct

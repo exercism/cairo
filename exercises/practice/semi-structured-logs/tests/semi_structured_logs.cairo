@@ -38,5 +38,5 @@ fn log_emits_error() {
 #[test]
 #[ignore]
 fn add_a_variant() {
-    assert_eq!(log(LogLevel::Debug, "reached line 123"), "[DEBUG]: reached line 123",);
+    assert_eq!(log(LogLevel::Debug, "reached line 123"), "[DEBUG]: reached line 123");
 }

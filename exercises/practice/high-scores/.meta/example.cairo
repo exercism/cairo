@@ -1,6 +1,6 @@
 use core::dict::Felt252Dict;
 
-#[derive(Drop,)]
+#[derive(Drop)]
 pub struct HighScores {
     scores: Array<u32>,
 }
@@ -18,7 +18,7 @@ pub impl HighScoresImpl of HighScoresTrait {
     fn latest(self: @HighScores) -> Option<u32> {
         match self.scores.get(self.scores.len() - 1) {
             Option::Some(boxed) => Option::Some(*boxed.unbox()),
-            _ => Option::None
+            _ => Option::None,
         }
     }
 
@@ -56,17 +56,15 @@ fn insertion_sort(span: Span<u32>) -> Array<u32> {
     sorted.insert(0, *span[0]);
 
     // insert all elements in their sorted position
-    for i in 1
-        ..span
-            .len() {
-                let elem = *span[i];
-                let mut j: felt252 = i.into();
-                while j != 0 && elem > sorted.get(j - 1) {
-                    sorted.insert(j, sorted.get(j - 1));
-                    j -= 1;
-                };
-                sorted.insert(j.into(), elem);
-            };
+    for i in 1..span.len() {
+        let elem = *span[i];
+        let mut j: felt252 = i.into();
+        while j != 0 && elem > sorted.get(j - 1) {
+            sorted.insert(j, sorted.get(j - 1));
+            j -= 1;
+        };
+        sorted.insert(j.into(), elem);
+    };
 
     // collect all elements into an array
     let mut sorted_arr: Array<u32> = array![];

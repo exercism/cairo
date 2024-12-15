@@ -32,27 +32,23 @@ impl MatrixImpl of MatrixTrait {
 pub fn maximum_value(maximum_weight: u32, items: Span<Item>) -> u32 {
     let mut max_values = MatrixTrait::new(num_of_cols: maximum_weight + 1);
 
-    for row in 1
-        ..items.len()
-            + 1 {
-                let item_index = row - 1;
-                let item_weight = *items[item_index].weight;
-                let item_value = *items[item_index].value;
+    for row in 1..items.len() + 1 {
+        let item_index = row - 1;
+        let item_weight = *items[item_index].weight;
+        let item_value = *items[item_index].value;
 
-                for w in 0
-                    ..maximum_weight
-                        + 1 {
-                            if item_weight <= w {
-                                let max_val = core::cmp::max(
-                                    max_values.at(item_index, w),
-                                    max_values.at(item_index, w - item_weight) + item_value,
-                                );
-                                max_values.set(row, w, max_val);
-                            } else {
-                                max_values.set(row, w, max_values.at(item_index, w));
-                            }
-                        }
-            };
+        for w in 0..maximum_weight + 1 {
+            if item_weight <= w {
+                let max_val = core::cmp::max(
+                    max_values.at(item_index, w),
+                    max_values.at(item_index, w - item_weight) + item_value,
+                );
+                max_values.set(row, w, max_val);
+            } else {
+                max_values.set(row, w, max_values.at(item_index, w));
+            }
+        }
+    };
 
     max_values.at(items.len(), maximum_weight)
 }

@@ -33,5 +33,5 @@ pub fn rows(count: u32) -> Array<Array<u32>> {
         i += 1;
     };
 
-    return rows;
+    rows
 }

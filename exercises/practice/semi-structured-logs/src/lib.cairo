@@ -4,7 +4,7 @@ pub enum LogLevel {
     Info,
     Warning,
     Error,
-    Debug
+    Debug,
 }
 
 /// primary function for emitting logs

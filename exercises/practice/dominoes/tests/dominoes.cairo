@@ -6,11 +6,11 @@ enum CheckResult {
     GotInvalid, // chain returned None
     Correct,
     ChainingFailure: Array<
-        Domino
+        Domino,
     >, // failure to match the dots at the right side of one domino with
     // the one on the left side of the next
     LengthMismatch: Array<Domino>,
-    DominoMismatch: Array<Domino>, // different dominoes are used in input and output
+    DominoMismatch: Array<Domino> // different dominoes are used in input and output
 }
 
 fn normalize(d: Domino) -> Domino {
@@ -55,7 +55,7 @@ fn check(input: @Array<Domino>) -> CheckResult {
                 n = second;
                 i += 1;
             }
-        }
+        },
     }
 }
 
@@ -131,7 +131,7 @@ fn assert_correct(input: @Array<Domino>) {
         },
         CheckResult::DominoMismatch(output) => {
             panic!("Domino mismatch for input {input:?}, output {output:?}")
-        }
+        },
     }
 }
 

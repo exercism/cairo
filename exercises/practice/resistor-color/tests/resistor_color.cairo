@@ -38,7 +38,7 @@ fn test_colors() {
         Color::Blue,
         Color::Violet,
         Color::Grey,
-        Color::White
+        Color::White,
     ];
     assert_eq!(output, expected);
 }

@@ -33,7 +33,7 @@ pub impl ClockImpl of ClockTrait {
             mins += 1440;
         };
         let mins: u32 = mins.try_into().unwrap();
-        Clock { minutes: mins % 1440, }
+        Clock { minutes: mins % 1440 }
     }
 
     fn add_minutes(ref self: Clock, minutes: i32) -> Clock {

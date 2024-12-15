@@ -19,13 +19,13 @@ pub fn is_isogram(phrase: ByteArray) -> bool {
         i += 1;
     };
 
-    return success;
+    success
 }
 
 pub fn lowercase(chr: u8) -> u8 {
     if chr >= 'A' && chr <= 'Z' {
-        return chr + 32;
+        chr + 32
     } else {
-        return chr;
+        chr
     }
 }

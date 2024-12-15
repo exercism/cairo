@@ -14,7 +14,7 @@ pub impl EvensImpl<T, +Drop<T>, +Copy<T>> of EvensTrait<T> {
             if i % 2 == 0 {
                 result.append(*self.at(i));
             }
-            i += 1;
+            i += 2;
         };
         result
     }

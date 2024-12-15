@@ -2,7 +2,7 @@ use core::dict::Felt252Dict;
 
 #[derive(Drop, Debug)]
 struct Set {
-    values: Array<ByteArray>
+    values: Array<ByteArray>,
 }
 
 #[generate_trait]

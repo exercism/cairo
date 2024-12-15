@@ -3,7 +3,7 @@ pub enum Error {
     SpanTooLong,
     InvalidDigit: u8,
     NegativeSpan,
-    IndexOutOfBounds
+    IndexOutOfBounds,
 }
 
 #[derive(Drop, Copy)]
@@ -36,7 +36,7 @@ pub fn lsp(input: @ByteArray, span: i32) -> Result<u64, Error> {
 }
 
 fn product_from(
-    input: @ByteArray, span: u32, from: u32, remaining: u32, accumulated: Product
+    input: @ByteArray, span: u32, from: u32, remaining: u32, accumulated: Product,
 ) -> Result<Product, Error> {
     if remaining == 0 {
         return Result::Ok(accumulated);
@@ -50,22 +50,20 @@ fn product_from(
     let digit = input.at(from).try_into_digit()?;
 
     if digit == 0 {
-        return product_from(
-            input, span, from + 1, span, Product { value: 1, start_index: from + 1 }
-        );
+        product_from(input, span, from + 1, span, Product { value: 1, start_index: from + 1 })
     } else {
-        return product_from(
+        product_from(
             input,
             span,
             from + 1,
             remaining - 1,
-            Product { value: accumulated.value * digit, start_index: accumulated.start_index }
-        );
+            Product { value: accumulated.value * digit, start_index: accumulated.start_index },
+        )
     }
 }
 
 fn max_product(
-    input: @ByteArray, span: u32, previous: u64, from: u32, max: u64
+    input: @ByteArray, span: u32, previous: u64, from: u32, max: u64,
 ) -> Result<u64, Error> {
     if from + span >= input.len() {
         return Result::Ok(max);
@@ -77,7 +75,7 @@ fn max_product(
         // every product that includes digit 0 will be 0,
         // so calculate the next product after the digit 0
         product_from(
-            input, span, from + span + 1, span, Product { value: 1, start_index: from + span + 1 }
+            input, span, from + span + 1, span, Product { value: 1, start_index: from + span + 1 },
         )?
     } else {
         // safe to unwrap, we already processed this digit before

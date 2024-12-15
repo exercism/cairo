@@ -1,6 +1,6 @@
 use lucians_luscious_lasagna::{
     elapsed_time_in_minutes, expected_minutes_in_oven, preparation_time_in_minutes,
-    remaining_minutes_in_oven
+    remaining_minutes_in_oven,
 };
 
 #[test]
