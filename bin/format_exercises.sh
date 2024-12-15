@@ -45,7 +45,6 @@ for exercise_dir in $exercises; do
     # copy the example solution file into the package
     cp "$solution_file" "$tmp_file"
 
-    # check example solution formatting
     scarb fmt "${SCARB_FMT_ARGS[@]}"
 
     # copy the example solution back in case it was formatted
