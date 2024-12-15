@@ -67,9 +67,10 @@ for exercise_path in $exercises; do
 
     cd "$tmp_dir"
 
-    scarb build
+    # test that the scaffold + tests combination compiles
+    scarb build --test
 
-    # Move example files to where Cargo expects them
+    # Copy solution files to where Cargo expects them
     if [ -f "$repo/$exercise_path/.meta/example.cairo" ]; then
         cp -f "$repo/$exercise_path/.meta/example.cairo" "$tmp_dir/src/lib.cairo"
     elif [ -f "$repo/$exercise_path/.meta/exemplar.cairo" ]; then
