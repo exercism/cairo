@@ -35,7 +35,7 @@ pub fn clean(phrase: ByteArray) -> ByteArray {
     assert!(cleaned[3] != '0', "exchange code cannot start with zero");
     assert!(cleaned[3] != '1', "exchange code cannot start with one");
 
-    return cleaned;
+    cleaned
 }
 
 
@@ -45,13 +45,13 @@ fn assert_valid(c: u8) {
 }
 
 fn is_alphabetic(c: u8) -> bool {
-    return c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z';
+    c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z'
 }
 
 fn is_numeric(c: u8) -> bool {
-    return c >= '0' && c <= '9';
+    c >= '0' && c <= '9'
 }
 
 fn is_allowed_punctuation(c: u8) -> bool {
-    return c == '(' || c == ')' || c == '-' || c == ' ' || c == '.' || c == '+';
+    c == '(' || c == ')' || c == '-' || c == ' ' || c == '.' || c == '+'
 }

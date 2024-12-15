@@ -18,7 +18,7 @@ fn count_one_of_each_word() {
     let expected = array![
         WordResult { word: "of", count: 1 },
         WordResult { word: "each", count: 1 },
-        WordResult { word: "one", count: 1 }
+        WordResult { word: "one", count: 1 },
     ]
         .span();
     assert_unordered_eq(output, expected);
@@ -35,7 +35,7 @@ fn multiple_occurrences_of_a_word() {
         WordResult { word: "two", count: 1 },
         WordResult { word: "red", count: 1 },
         WordResult { word: "blue", count: 1 },
-        WordResult { word: "fish", count: 4 }
+        WordResult { word: "fish", count: 4 },
     ]
         .span();
     assert_unordered_eq(output, expected);
@@ -50,7 +50,7 @@ fn handles_cramped_lists() {
     let expected = array![
         WordResult { word: "one", count: 1 },
         WordResult { word: "two", count: 1 },
-        WordResult { word: "three", count: 1 }
+        WordResult { word: "three", count: 1 },
     ]
         .span();
     assert_unordered_eq(output, expected);
@@ -65,7 +65,7 @@ fn handles_expanded_lists() {
     let expected = array![
         WordResult { word: "one", count: 1 },
         WordResult { word: "two", count: 1 },
-        WordResult { word: "three", count: 1 }
+        WordResult { word: "three", count: 1 },
     ]
         .span();
     assert_unordered_eq(output, expected);
@@ -82,7 +82,7 @@ fn ignore_punctuation() {
         WordResult { word: "carpet", count: 1 },
         WordResult { word: "as", count: 1 },
         WordResult { word: "java", count: 1 },
-        WordResult { word: "javascript", count: 1 }
+        WordResult { word: "javascript", count: 1 },
     ]
         .span();
     assert_unordered_eq(output, expected);
@@ -111,7 +111,7 @@ fn normalize_case() {
     let mut output = count_words(input);
 
     let expected = array![
-        WordResult { word: "go", count: 3 }, WordResult { word: "stop", count: 2 }
+        WordResult { word: "go", count: 3 }, WordResult { word: "stop", count: 2 },
     ]
         .span();
     assert_unordered_eq(output, expected);
@@ -149,7 +149,7 @@ fn with_quotations() {
         WordResult { word: "tell", count: 1 },
         WordResult { word: "between", count: 1 },
         WordResult { word: "and", count: 1 },
-        WordResult { word: "large", count: 2 }
+        WordResult { word: "large", count: 2 },
     ]
         .span();
     assert_unordered_eq(output, expected);
@@ -169,7 +169,7 @@ fn substrings_from_the_beginning() {
         WordResult { word: "app", count: 1 },
         WordResult { word: "apple", count: 1 },
         WordResult { word: "and", count: 1 },
-        WordResult { word: "a", count: 1 }
+        WordResult { word: "a", count: 1 },
     ]
         .span();
     assert_unordered_eq(output, expected);
@@ -182,7 +182,7 @@ fn multiple_spaces_not_detected_as_a_word() {
     let mut output = count_words(input);
 
     let expected = array![
-        WordResult { word: "multiple", count: 1 }, WordResult { word: "whitespaces", count: 1 }
+        WordResult { word: "multiple", count: 1 }, WordResult { word: "whitespaces", count: 1 },
     ]
         .span();
     assert_unordered_eq(output, expected);
@@ -197,7 +197,7 @@ fn alternating_word_separators_not_detected_as_a_word() {
     let expected = array![
         WordResult { word: "one", count: 1 },
         WordResult { word: "two", count: 1 },
-        WordResult { word: "three", count: 1 }
+        WordResult { word: "three", count: 1 },
     ]
         .span();
     assert_unordered_eq(output, expected);
@@ -210,7 +210,7 @@ fn quotation_for_word_with_apostrophe() {
     let mut output = count_words(input);
 
     let expected = array![
-        WordResult { word: "can", count: 1 }, WordResult { word: "can't", count: 2 }
+        WordResult { word: "can", count: 1 }, WordResult { word: "can't", count: 2 },
     ]
         .span();
     assert_unordered_eq(output, expected);
@@ -232,7 +232,7 @@ fn assert_unordered_eq(span1: Span<WordResult>, span2: Span<WordResult>) {
             found,
             "assertion failed: `(left == right)`\n left: `{:?}`,\n right `{:?}`",
             span1,
-            span2
+            span2,
         );
     };
     // and `span2` should be subset of `span1`
@@ -248,7 +248,7 @@ fn assert_unordered_eq(span1: Span<WordResult>, span2: Span<WordResult>) {
             found,
             "assertion failed: `(left == right)`\n left: `{:?}`,\n right `{:?}`",
             span1,
-            span2
+            span2,
         );
     }
 }

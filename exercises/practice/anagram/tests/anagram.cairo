@@ -44,7 +44,7 @@ fn detects_anagram() {
 fn detects_three_anagrams() {
     let word: ByteArray = "allergy";
     let inputs = Set::new(
-        array!["gallery", "ballerina", "regally", "clergy", "largely", "leading",]
+        array!["gallery", "ballerina", "regally", "clergy", "largely", "leading"],
     );
     let output = anagrams_for(@word, @inputs);
     let expected = Set::new(array!["gallery", "regally", "largely"]);

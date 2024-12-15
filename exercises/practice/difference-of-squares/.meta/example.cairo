@@ -11,7 +11,7 @@ pub fn squareOfSum(number: u64) -> u64 {
         current += 1;
     };
 
-    return sum * sum;
+    sum * sum
 }
 
 pub fn sumOfSquares(number: u64) -> u64 {
@@ -27,9 +27,9 @@ pub fn sumOfSquares(number: u64) -> u64 {
         current += 1;
     };
 
-    return sum;
+    sum
 }
 
 pub fn differenceOfSquares(number: u64) -> u64 {
-    return squareOfSum(number) - sumOfSquares(number);
+    squareOfSum(number) - sumOfSquares(number)
 }

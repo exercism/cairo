@@ -3,7 +3,7 @@ pub enum Plant {
     Radishes,
     Clover,
     Grass,
-    Violets
+    Violets,
 }
 
 #[derive(Drop)]

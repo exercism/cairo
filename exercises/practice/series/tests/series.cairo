@@ -55,7 +55,7 @@ fn slices_of_a_long_series() {
     let input = "918493904243";
     let length = 5;
     let output = slices(input, length);
-    let expected = array!["91849", "18493", "84939", "49390", "93904", "39042", "90424", "04243",];
+    let expected = array!["91849", "18493", "84939", "49390", "93904", "39042", "90424", "04243"];
     assert_eq!(output, expected);
 }
 

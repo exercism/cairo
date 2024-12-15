@@ -20,11 +20,11 @@ pub fn commands(number: u8) -> Array<ByteArray> {
         results = reversed;
     }
 
-    return results;
+    results
 }
 
 fn actions() -> Array<ByteArray> {
-    return array!["wink", "double blink", "close your eyes", "jump"];
+    array!["wink", "double blink", "close your eyes", "jump"]
 }
 
 fn pow(base: u32, mut power: u32) -> u32 {

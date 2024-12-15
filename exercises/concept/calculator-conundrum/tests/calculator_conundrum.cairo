@@ -9,7 +9,7 @@ fn addition_with_small_operands() {
 #[ignore]
 fn addition_with_large_operands() {
     assert_eq!(
-        SimpleCalculator::calculate(378_961, 399_635, "+").unwrap(), "378961 + 399635 = 778596"
+        SimpleCalculator::calculate(378_961, 399_635, "+").unwrap(), "378961 + 399635 = 778596",
     );
 }
 
@@ -23,7 +23,7 @@ fn multiplication_with_small_operands() {
 #[ignore]
 fn multiplication_with_large_operands() {
     assert_eq!(
-        SimpleCalculator::calculate(72_441, 2_048, "*").unwrap(), "72441 * 2048 = 148359168"
+        SimpleCalculator::calculate(72_441, 2_048, "*").unwrap(), "72441 * 2048 = 148359168",
     );
 }
 
@@ -37,7 +37,7 @@ fn division_with_small_operands() {
 #[ignore]
 fn division_with_large_operands() {
     assert_eq!(
-        SimpleCalculator::calculate(1_338_800, 83_675, "/").unwrap(), "1338800 / 83675 = 16"
+        SimpleCalculator::calculate(1_338_800, 83_675, "/").unwrap(), "1338800 / 83675 = 16",
     );
 }
 

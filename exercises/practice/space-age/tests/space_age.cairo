@@ -10,7 +10,7 @@ fn assert_in_delta(expected: u256, actual: u256) {
     let delta: u256 = 10000; // 0.01 seconds
     if diff > delta {
         panic!(
-            "Your result of {actual} should be within {delta} of the expected result {expected}"
+            "Your result of {actual} should be within {delta} of the expected result {expected}",
         );
     };
 }

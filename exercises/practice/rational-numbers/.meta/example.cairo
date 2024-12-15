@@ -101,9 +101,10 @@ pub impl RationalPow of RationalPowTrait {
         // Cairo only supports integers, so a negative rational exponent
         // will always return the result 0
         if power.numer < 0 {
-            return 0;
-        };
-        nth_root(pow(*self, to_u128(power.numer)), power.denom)
+            0
+        } else {
+            nth_root(pow(*self, to_u128(power.numer)), power.denom)
+        }
     }
 }
 

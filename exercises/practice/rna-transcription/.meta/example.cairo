@@ -16,5 +16,5 @@ pub fn to_rna(dna: ByteArray) -> ByteArray {
         i += 1;
     };
 
-    return rna;
+    rna
 }

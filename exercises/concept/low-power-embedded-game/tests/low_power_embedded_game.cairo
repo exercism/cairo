@@ -43,7 +43,7 @@ mod evens {
     #[ignore]
     fn strs() {
         let arr: Array<felt252> = array![
-            'You', 'really', 'must', 'never', 'be', 'above', 'joking.'
+            'You', 'really', 'must', 'never', 'be', 'above', 'joking.',
         ];
         assert_eq!(arr.evens(), array!['You', 'must', 'be', 'joking.']);
     }

@@ -1,4 +1,4 @@
-#[derive(Drop,)]
+#[derive(Drop)]
 pub struct HighScores {}
 
 #[generate_trait]

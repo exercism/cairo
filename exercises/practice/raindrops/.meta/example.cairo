@@ -17,5 +17,5 @@ pub fn convert(x: u64) -> ByteArray {
         result = format!("{x}");
     }
 
-    return result;
+    result
 }

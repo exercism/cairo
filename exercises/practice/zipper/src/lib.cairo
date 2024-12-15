@@ -12,7 +12,7 @@ pub impl OptionalBinaryTreeNodePartialEq of PartialEq<Option<Box<BinaryTreeNode>
         match (lhs, rhs) {
             (Option::Some(lhs), Option::Some(rhs)) => (*lhs).unbox() == (*rhs).unbox(),
             (Option::None, Option::None) => true,
-            _ => false
+            _ => false,
         }
     }
 }
@@ -63,14 +63,14 @@ pub impl BinaryTreeImpl of BinaryTreeTrait {
     fn left(self: @BinaryTree) -> @BinaryTree {
         @match self {
             Option::None => Option::None,
-            Option::Some(bst) => bst.left
+            Option::Some(bst) => bst.left,
         }
     }
 
     fn right(self: @BinaryTree) -> @BinaryTree {
         @match self {
             Option::None => Option::None,
-            Option::Some(bst) => bst.right
+            Option::Some(bst) => bst.right,
         }
     }
 }
