@@ -16,7 +16,7 @@ pub enum Locale {
 pub fn format_entries(
     currency: Currency, locale: Locale, transactions: Array<(ByteArray, ByteArray, ByteArray)>
 ) -> Array<ByteArray> {
-    let mut ledger: Array<ByteArray> = array![]
+    let mut ledger: Array<ByteArray> = array![];
 
     // Step 1: Define the header based on the locale
     let header = match @locale {
