@@ -97,10 +97,10 @@ fn full_dataset() {
     assert_dicts_eq(expected, etl::transform(legacy_data));
 }
 
-fn input_from(v: Array<(u32, Array<u8>)>) -> Felt252Dict<Nullable<Array<u8>>> {
-    let mut dict: Felt252Dict<Nullable<Array<u8>>> = Default::default();
+fn input_from(v: Array<(u32, Array<u8>)>) -> Felt252Dict<Nullable<Span<u8>>> {
+    let mut dict: Felt252Dict<Nullable<Span<u8>>> = Default::default();
     for (num, chars) in v {
-        dict.insert(num.into(), NullableTrait::new(chars));
+        dict.insert(num.into(), NullableTrait::new(chars.span()));
     };
     dict
 }
