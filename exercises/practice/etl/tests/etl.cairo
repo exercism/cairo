@@ -13,9 +13,18 @@ fn transform_one_value() {
 #[test]
 #[ignore]
 fn transform_more_values() {
-    let input = input_from(array![(1, array!['A', 'E', 'I', 'O', 'U'])]);
-
-    let expected = expected_from(array![('a', 1), ('e', 1), ('i', 1), ('o', 1), ('u', 1)]);
+    #[cairofmt::skip]
+    let input = input_from(array![
+        (1, array!['A', 'E', 'I', 'O', 'U']),
+    ]);
+    #[cairofmt::skip]
+    let expected = expected_from(array![
+        ('a', 1),
+        ('e', 1),
+        ('i', 1),
+        ('o', 1),
+        ('u', 1),
+    ]);
 
     assert_dicts_eq(expected, etl::transform(input));
 }
@@ -23,9 +32,18 @@ fn transform_more_values() {
 #[test]
 #[ignore]
 fn more_keys() {
-    let input = input_from(array![(1, array!['A', 'E']), (2, array!['D', 'G'])]);
-
-    let expected = expected_from(array![('a', 1), ('e', 1), ('d', 2), ('g', 2)]);
+    #[cairofmt::skip]
+    let input = input_from(array![
+        (1, array!['A', 'E']),
+        (2, array!['D', 'G']),
+    ]);
+    #[cairofmt::skip]
+    let expected = expected_from(array![
+        ('a', 1),
+        ('e', 1),
+        ('d', 2),
+        ('g', 2),
+    ]);
 
     assert_dicts_eq(expected, etl::transform(input));
 }
