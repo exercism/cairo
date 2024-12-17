@@ -99,8 +99,8 @@ fn full_dataset() {
 
 fn input_from(v: Array<(u32, Array<u8>)>) -> Felt252Dict<Nullable<Span<u8>>> {
     let mut dict: Felt252Dict<Nullable<Span<u8>>> = Default::default();
-    for (num, chars) in v {
-        dict.insert(num.into(), NullableTrait::new(chars.span()));
+    for (num, letters) in v {
+        dict.insert(num.into(), NullableTrait::new(letters.span()));
     };
     dict
 }
@@ -126,7 +126,7 @@ fn assert_dicts_eq(expected: Felt252Dict<u32>, actual: Felt252Dict<u32>) {
     };
     if unequal {
         let mut f: Formatter = Default::default();
-        writeln!(f, "expected:").expect('write expected');
+        writeln!(f, "\nexpected:").expect('write expected');
         f = write_dict(f, expected);
         writeln!(f, "actual:").expect('write expected');
         f = write_dict(f, actual);
@@ -136,9 +136,19 @@ fn assert_dicts_eq(expected: Felt252Dict<u32>, actual: Felt252Dict<u32>) {
 
 fn write_dict(mut f: Formatter, dict: Felt252Dict<u32>) -> Formatter {
     let mut dict = dict;
-    writeln!(f, "{{").expect('should write {');
+    write!(f, "{{").expect('should write {');
+    let mut empty = true;
     for char in 'a'..('z' + 1_u8) {
-        writeln!(f, "    \"{}\": {},", char, dict.get(char.into())).expect('should write char');
+        let points = dict.get(char.into());
+        if points != 0 {
+            if empty {
+                empty = false;
+                writeln!(f, "").expect('should write empty char');
+            }
+            let mut letter = "";
+            letter.append_byte(char);
+            writeln!(f, "    \"{}\": {},", letter, points).expect('should write letter');
+        }
     };
     writeln!(f, "}}").expect('should write }');
     f
