@@ -3,18 +3,18 @@ use core::dict::Felt252Dict;
 
 #[test]
 fn transform_one_value() {
-    let input = input_from(array![(1, array!['A'])]);
+    let legacy_data = input_from(array![(1, array!['A'])]);
 
     let expected = expected_from(array![('a', 1)]);
 
-    assert_dicts_eq(expected, etl::transform(input));
+    assert_dicts_eq(expected, etl::transform(legacy_data));
 }
 
 #[test]
 #[ignore]
 fn transform_more_values() {
     #[cairofmt::skip]
-    let input = input_from(array![
+    let legacy_data = input_from(array![
         (1, array!['A', 'E', 'I', 'O', 'U']),
     ]);
     #[cairofmt::skip]
@@ -26,14 +26,14 @@ fn transform_more_values() {
         ('u', 1),
     ]);
 
-    assert_dicts_eq(expected, etl::transform(input));
+    assert_dicts_eq(expected, etl::transform(legacy_data));
 }
 
 #[test]
 #[ignore]
 fn more_keys() {
     #[cairofmt::skip]
-    let input = input_from(array![
+    let legacy_data = input_from(array![
         (1, array!['A', 'E']),
         (2, array!['D', 'G']),
     ]);
@@ -45,13 +45,13 @@ fn more_keys() {
         ('g', 2),
     ]);
 
-    assert_dicts_eq(expected, etl::transform(input));
+    assert_dicts_eq(expected, etl::transform(legacy_data));
 }
 
 #[test]
 #[ignore]
 fn full_dataset() {
-    let input = input_from(
+    let legacy_data = input_from(
         array![
             (1, array!['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T']),
             (2, array!['D', 'G']),
@@ -94,7 +94,7 @@ fn full_dataset() {
         ],
     );
 
-    assert_dicts_eq(expected, etl::transform(input));
+    assert_dicts_eq(expected, etl::transform(legacy_data));
 }
 
 fn input_from(v: Array<(u32, Array<u8>)>) -> Felt252Dict<Nullable<Array<u8>>> {
