@@ -25,21 +25,21 @@ Create a recursive enum `ChronoChain` with two variants:
 
 ## 2. Create a Function to Build a ChronoChain
 
-Write a function `build_chrono_chain` that takes an array of `u32` values and returns a `ChronoChain`, linking the values sequentially using smart pointers.
+Write a function `ChronoChain::build` that takes an array of `u32` values and returns a `ChronoChain`, linking the values sequentially using smart pointers.
 
 ## 3. Implement the Sum Function
 
-Write a function `sum_chain` to recursively traverse the `ChronoChain` and sum the values of all nodes.
+Write a function `ChronoChain::sum` to recursively traverse the `ChronoChain` and sum the values of all nodes.
 
 ## Example Usage
 
 ```rust
 fn main() {
     // Create a ChronoChain from an array of values
-    let chrono_chain = build_chrono_chain([10, 20, 30]);
+    let chrono_chain = ChronoChain::build(array![10, 20, 30]);
 
     // Sum the values in the ChronoChain
-    let total_sum = sum_chain(&chrono_chain);
+    let total_sum = chrono_chain.sum();
 
     println!("Total Time Power: {}", total_sum);
 }

@@ -5,12 +5,15 @@ pub enum ChronoChain {
     Link: (u32, Box<ChronoChain>),
 }
 
-// Function to build a ChronoChain from an array of u32 values
-pub fn build_chrono_chain(arr: Array<u32>) -> Box<ChronoChain> {
-    panic!("implement 'build_chrono_chain'")
-}
+#[generate_trait]
+pub impl ChronoChainImpl of ChronoChainTrait {
+    // Function to build a ChronoChain from an array of u32 values
+    fn build(arr: Array<u32>) -> ChronoChain {
+        panic!("implement `ChronoChain::build`")
+    }
 
-// Function to sum the values in the ChronoChain
-pub fn sum_chain(chain: @ChronoChain) -> u32 {
-    panic!("implement 'sum_chain'")
+    // Function to sum the values in the ChronoChain
+    fn sum(self: ChronoChain) -> u64 {
+        panic!("implement `ChronoChain::sum`")
+    }
 }

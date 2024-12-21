@@ -23,6 +23,7 @@ Introduce the student to working with recursive types and smart pointers in Cair
 
 ## Prerequisites
 
+- Traits
 - Basic understanding of enums and data types in Cairo.
 - Familiarity with smart pointers in Cairo.
 
