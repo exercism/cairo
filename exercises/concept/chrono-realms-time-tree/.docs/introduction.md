@@ -10,7 +10,8 @@ A smart pointer behaves like a regular pointer but tracks ownership and ensures 
 
 Cairo provides several smart pointer types, such as `Box<T>` and `Nullable<T>`:
 
-- **`Box<T>`**: Stores data in a special memory segment, ideal for large or dynamically-sized data. It allows transferring ownership without copying the data.
+- **`Box<T>`**: Stores data in a special memory segment, ideal for large or dynamically-sized data.
+                It allows transferring ownership without copying the data.
 - **`Nullable<T>`**: Points to either a valid value of type `T` or `null`, useful for handling optional values.
 
 ## Memory Safety
