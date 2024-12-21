@@ -2,7 +2,7 @@
 
 ## General
 
-- [The Cairo Book: Smart Pointers]
+- [The Cairo Book: Smart Pointers][smart-pointers]
 
 ## 1. Build the ChronoChain from an array of `u32` values
 
@@ -15,4 +15,4 @@
 - When you reach `End`, the sum is 0, and when you reach `Link`, you add the value and recursively sum the rest of the chain.
 - This approach is similar to a recursive function that traverses the structure until it reaches the base case (`End`).
 
-[The Cairo Book: Smart Pointers]: https://book.cairo-lang.org/ch11-02-smart-pointers.html
+[smart-pointers]: https://book.cairo-lang.org/ch11-02-smart-pointers.html
