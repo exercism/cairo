@@ -268,7 +268,8 @@
           "smart-pointers"
         ],
         "prerequisites": [
-          "structs"
+          "traits",
+          "enums"
         ],
         "status": "wip"
       }
