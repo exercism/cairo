@@ -16,6 +16,7 @@ fn test_empty_array() {
 
 // Test for building a ChronoChain from a single element
 #[test]
+#[ignore]
 fn test_single_element_array() {
     let chrono_chain = ChronoChainTrait::build(array![42]);
 
@@ -36,6 +37,7 @@ fn test_single_element_array() {
 
 // Test for building a ChronoChain from multiple elements
 #[test]
+#[ignore]
 fn test_multiple_elements_array() {
     let chrono_chain = ChronoChainTrait::build(array![1, 2, 3]);
 
@@ -73,6 +75,7 @@ fn test_multiple_elements_array() {
 
 // Test for building a ChronoChain with duplicate values
 #[test]
+#[ignore]
 fn test_duplicate_values_array() {
     let chrono_chain = ChronoChainTrait::build(array![5, 5, 5]);
 
@@ -110,6 +113,7 @@ fn test_duplicate_values_array() {
 
 // Test for building a ChronoChain from large values
 #[test]
+#[ignore]
 fn test_large_values_array() {
     let chrono_chain = ChronoChainTrait::build(array![U32_MAX, U32_MAX]);
 
@@ -139,6 +143,7 @@ fn test_large_values_array() {
 
 // Test for building a ChronoChain from a large array of values
 #[test]
+#[ignore]
 fn test_large_array() {
     let mut chrono_chain = ChronoChainTrait::build(array_in_range((1..1000)));
 
@@ -159,6 +164,7 @@ fn test_large_array() {
 
 // Test for summing the values in a ChronoChain
 #[test]
+#[ignore]
 fn test_sum_chain() {
     let chrono_chain = ChronoChainTrait::build(array![1, 2, 3]);
 
@@ -169,6 +175,7 @@ fn test_sum_chain() {
 
 // Test for an empty ChronoChain (only End)
 #[test]
+#[ignore]
 fn test_empty_chain() {
     let chrono_chain = ChronoChainTrait::build(array![]);
 
@@ -179,6 +186,7 @@ fn test_empty_chain() {
 
 // Test for a chain with only one value
 #[test]
+#[ignore]
 fn test_single_link_chain() {
     let chrono_chain = ChronoChainTrait::build(array![5]);
 
@@ -189,6 +197,7 @@ fn test_single_link_chain() {
 
 // Test for a chain with two values
 #[test]
+#[ignore]
 fn test_two_link_chain() {
     let chrono_chain = ChronoChainTrait::build(array![3, 7]);
 
@@ -199,6 +208,7 @@ fn test_two_link_chain() {
 
 // Test for the chain having a large number of elements
 #[test]
+#[ignore]
 fn test_large_chain() {
     let chrono_chain = ChronoChainTrait::build(array![1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 
@@ -209,6 +219,7 @@ fn test_large_chain() {
 
 // Test for chain with large values
 #[test]
+#[ignore]
 fn test_large_values_in_chain() {
     let chrono_chain = ChronoChainTrait::build(array![U32_MAX, U32_MAX]);
 
@@ -220,6 +231,7 @@ fn test_large_values_in_chain() {
 
 // Test for chain with all elements being zero
 #[test]
+#[ignore]
 fn test_zero_values_in_chain() {
     let chrono_chain = ChronoChainTrait::build(array![0, 0, 0, 0, 0]);
 
@@ -230,6 +242,7 @@ fn test_zero_values_in_chain() {
 
 // Test for chain with a very large number of elements
 #[test]
+#[ignore]
 fn test_very_large_chain() {
     let chrono_chain = ChronoChainTrait::build(array_in_range((1..1000)));
 
