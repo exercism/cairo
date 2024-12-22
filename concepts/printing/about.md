@@ -24,6 +24,7 @@ println!("Values: x = {}, y = {}", x, y);
 ```
 
 In the above example:
+
 - `{}` placeholders are replaced by the values of `x` and `y`.
 - `println!` ensures the output ends with a new line.
 
@@ -47,6 +48,7 @@ println!("{}", result); // Output: tic-tac-toe
 ```
 
 In this example:
+
 - `format!` combines `s1`, `s2`, and `s3` into a single string, separating them with dashes (`-`).
 - The resulting string can be reused or printed later.
 
@@ -81,6 +83,7 @@ println!("{}", p); // Output: Point(3, 4)
 ```
 
 In this example:
+
 - The `fmt` function defines how the `Point` struct is converted to a printable string.
 - The `write!` macro appends the formatted string to the `Formatter`.
 
@@ -102,6 +105,7 @@ println!("{:?}", p); // Output: Point { x: 3, y: 4 }
 ```
 
 In this example:
+
 - `#[derive(Debug)]` automatically generates the implementation for the `Debug` trait.
 - The `{:?}` placeholder tells `println!` to use the `Debug` trait for formatting.
 
