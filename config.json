@@ -261,9 +261,9 @@
         "status": "wip"
       },
       {
-        "slug": "chrono-realms-time-tree",
-        "name": "Chrono Realms Time Tree",
-        "uuid": "a72139a1-825e-4349-a6b5-400b665fbe07",
+        "slug": "chrono-realms-chrono-chain",
+        "name": "Chrono Realms Chrono Chain",
+        "uuid": "e04f808a-25dc-4448-bc45-d3da0db9819a",
         "concepts": [
           "smart-pointers"
         ],

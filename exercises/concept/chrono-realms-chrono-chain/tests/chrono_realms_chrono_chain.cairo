@@ -1,4 +1,4 @@
-use chrono_realms_time_tree::{ChronoChainTrait, ChronoChain};
+use chrono_realms_chrono_chain::{ChronoChainTrait, ChronoChain};
 
 const U32_MAX: u32 = 0xFFFFFFFF;
 

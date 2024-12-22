@@ -7,7 +7,7 @@
       "src/lib.cairo"
     ],
     "test": [
-      "tests/chrono_realms_time_tree.cairo"
+      "tests/chrono_realms_chrono_chain.cairo"
     ],
     "exemplar": [
       ".meta/exemplar.cairo"
