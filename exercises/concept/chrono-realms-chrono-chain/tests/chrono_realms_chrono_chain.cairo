@@ -3,7 +3,7 @@ use chrono_realms_chrono_chain::{ChronoChainTrait, ChronoChain};
 const U32_MAX: u32 = 0xFFFFFFFF;
 
 #[test]
-fn test_empty_array() {
+fn build_empty_array() {
     let chrono_chain = ChronoChainTrait::build(array![]);
 
     match chrono_chain {
@@ -14,7 +14,7 @@ fn test_empty_array() {
 
 #[test]
 #[ignore]
-fn test_single_element_array() {
+fn build_single_element_array() {
     let chrono_chain = ChronoChainTrait::build(array![42]);
 
     match chrono_chain {
@@ -33,7 +33,7 @@ fn test_single_element_array() {
 
 #[test]
 #[ignore]
-fn test_multiple_elements_array() {
+fn build_multiple_elements_array() {
     let chrono_chain = ChronoChainTrait::build(array![1, 2, 3]);
 
     match chrono_chain {
@@ -68,7 +68,7 @@ fn test_multiple_elements_array() {
 
 #[test]
 #[ignore]
-fn test_duplicate_values_array() {
+fn build_duplicate_values_array() {
     let chrono_chain = ChronoChainTrait::build(array![5, 5, 5]);
 
     match chrono_chain {
@@ -104,7 +104,7 @@ fn test_duplicate_values_array() {
 
 #[test]
 #[ignore]
-fn test_large_values_array() {
+fn build_large_values_array() {
     let chrono_chain = ChronoChainTrait::build(array![U32_MAX, U32_MAX]);
 
     match chrono_chain {
@@ -131,7 +131,7 @@ fn test_large_values_array() {
 
 #[test]
 #[ignore]
-fn test_large_array() {
+fn build_large_array() {
     let mut chrono_chain = ChronoChainTrait::build(array_in_range((1..1000)));
 
     let mut count = 1;
@@ -149,7 +149,7 @@ fn test_large_array() {
 
 #[test]
 #[ignore]
-fn test_sum_chain() {
+fn sum_chain() {
     let chrono_chain = ChronoChainTrait::build(array![1, 2, 3]);
 
     let sum = chrono_chain.sum();
@@ -158,7 +158,7 @@ fn test_sum_chain() {
 
 #[test]
 #[ignore]
-fn test_empty_chain() {
+fn sum_empty_chain() {
     let chrono_chain = ChronoChainTrait::build(array![]);
 
     let sum = chrono_chain.sum();
@@ -167,7 +167,7 @@ fn test_empty_chain() {
 
 #[test]
 #[ignore]
-fn test_single_link_chain() {
+fn sum_single_link_chain() {
     let chrono_chain = ChronoChainTrait::build(array![5]);
 
     let sum = chrono_chain.sum();
@@ -176,7 +176,7 @@ fn test_single_link_chain() {
 
 #[test]
 #[ignore]
-fn test_two_link_chain() {
+fn sum_two_link_chain() {
     let chrono_chain = ChronoChainTrait::build(array![3, 7]);
 
     let sum = chrono_chain.sum();
@@ -185,7 +185,7 @@ fn test_two_link_chain() {
 
 #[test]
 #[ignore]
-fn test_large_chain() {
+fn sum_large_chain() {
     let chrono_chain = ChronoChainTrait::build(array![1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 
     let sum = chrono_chain.sum();
@@ -194,7 +194,7 @@ fn test_large_chain() {
 
 #[test]
 #[ignore]
-fn test_large_values_in_chain() {
+fn sum_large_values_in_chain() {
     let chrono_chain = ChronoChainTrait::build(array![U32_MAX, U32_MAX]);
 
     let expected_sum: u64 = U32_MAX.into() * 2;
@@ -204,7 +204,7 @@ fn test_large_values_in_chain() {
 
 #[test]
 #[ignore]
-fn test_zero_values_in_chain() {
+fn sum_zero_values_in_chain() {
     let chrono_chain = ChronoChainTrait::build(array![0, 0, 0, 0, 0]);
 
     let sum = chrono_chain.sum();
@@ -213,7 +213,7 @@ fn test_zero_values_in_chain() {
 
 #[test]
 #[ignore]
-fn test_very_large_chain() {
+fn sum_very_large_chain() {
     let chrono_chain = ChronoChainTrait::build(array_in_range((1..1000)));
 
     let expected_sum = 999 * (999 + 1) / 2;
