@@ -1,6 +1,8 @@
 # Printing
 
-Printing in Cairo allows you to display messages and values to the console, making it easier to debug programs or communicate information during execution. The printing system is both versatile and straightforward, providing tools to format and output data of various types.
+Printing in Cairo allows you to display messages and values to the console, making it easier to debug programs or communicate information during execution.
+
+The printing system is both versatile and straightforward, providing tools to format and output data of various types.
 
 ## Printing Basics
 
@@ -27,7 +29,11 @@ In the above example:
 
 ## Formatting Strings
 
-Sometimes, you might need to create a formatted string without immediately printing it. The `format!` macro allows you to do this. It works similarly to `println!` but returns a `ByteArray` instead of sending output to the console.
+Sometimes, you might need to create a formatted string without immediately printing it.
+
+The `format!` macro allows you to do this.
+
+It works similarly to `println!` but returns a `ByteArray` instead of sending output to the console.
 
 ```rust
 let s1: ByteArray = "tic";
@@ -46,11 +52,15 @@ In this example:
 
 ## Printing Custom Data Types
 
-By default, Cairo can only print basic types like integers and strings. If you try to print a custom type, such as a struct, you'll encounter an error unless the type implements the `Display` or `Debug` traits.
+By default, Cairo can only print basic types like integers and strings.
+
+If you try to print a custom type, such as a struct, you'll encounter an error unless the type implements the `Display` or `Debug` traits.
 
 ### Using `Display` for Custom Formatting
 
-The `Display` trait lets you define how a custom type should be printed. Here's an example:
+The `Display` trait lets you define how a custom type should be printed.
+
+Here's an example:
 
 ```rust
 use core::fmt::{Display, Formatter, Error};
@@ -76,7 +86,9 @@ In this example:
 
 ### Debugging with `Debug`
 
-For debugging purposes, Cairo provides the `Debug` trait. You can derive it automatically for most types, making it quick and easy to print internal details of your structs.
+For debugging purposes, Cairo provides the `Debug` trait.
+
+You can derive it automatically for most types, making it quick and easy to print internal details of your structs.
 
 ```rust
 #[derive(Debug)]
