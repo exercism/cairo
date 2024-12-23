@@ -97,7 +97,7 @@ fn main() {
 }
 ```
 
-This outputs: `The value of x is: 5`. 
+This outputs: `The value of x is: 5`.
 
 For more complex cases:
 
@@ -112,6 +112,6 @@ fn main() {
 }
 ```
 
-This prints: `The value of x is: 6`. 
+This prints: `The value of x is: 6`.
 
 Be mindful not to add a semicolon at the end of the final expression, as it would turn the expression into a statement, causing the function to return `()` (unit type) instead of the expected value.
