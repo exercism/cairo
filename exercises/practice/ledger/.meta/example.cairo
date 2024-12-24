@@ -2,8 +2,8 @@
 
 // 1) format_entries function now uses format_row to create each ledger entry, reducing redundancy.
 
-// 2) format_row function to format each row, combining date, description, and amount formatting into a
-// single string.
+// 2) format_row function to format each row, combining date, description, and amount formatting
+// into a single string.
 
 // 3) format_date Refactor split date formatting into a standalone function that uses split_date for
 // modular handling.
@@ -30,7 +30,6 @@
 
 //     Overall, the refactored code is modular, better adheres to single-responsibility principles, and
 //     improves readability while ensuring maintainability.
- 
 use core::to_byte_array::AppendFormattedToByteArray;
 
 #[derive(Debug, PartialEq, Drop)]
