@@ -47,9 +47,9 @@ pub enum Locale {
 
 #[derive(Debug, PartialEq, Drop)]
 pub struct Entry {
-    date: ByteArray,
-    description: ByteArray,
-    amount_in_cents: i32,
+    pub date: ByteArray,
+    pub description: ByteArray,
+    pub amount_in_cents: i32,
 }
 
 
