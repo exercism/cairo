@@ -27,8 +27,8 @@
 
 // 10) Imported AppendFormattedToByteArray to handle the conversion of byteArray to integer.
 
-//     Overall, the refactored code is modular, better adheres to single-responsibility principles, and
-//     improves readability while ensuring maintainability.
+//     Overall, the refactored code is modular, better adheres to single-responsibility principles,
+//     and improves readability while ensuring maintainability.
 use core::to_byte_array::AppendFormattedToByteArray;
 
 #[derive(Debug, PartialEq, Drop)]
