@@ -1,4 +1,4 @@
-use ledger::{format_entries, Currency, Locale, Entry, date, description, amount_in_cents};
+use ledger::{format_entries, Currency, Locale, Entry};
 
 #[test]
 fn empty_ledger() {
