@@ -1,7 +1,5 @@
 {
-    "blurb": "<todo>",
-    "authors": [
-        "<your_gh_username>"
-    ],
+    "blurb": "Functions in Cairo let you organize and reuse code by defining reusable blocks with a name, parameters, and an optional return value.",
+    "authors": ["0xNeshi"],
     "contributors": []
 }
