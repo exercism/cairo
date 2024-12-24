@@ -2,26 +2,34 @@
 
 // 1) format_entries function now uses format_row to create each ledger entry, reducing redundancy.
 
-// 2) format_row function to format each row, combining date, description, and amount formatting into a single string.
+// 2) format_row function to format each row, combining date, description, and amount formatting into a
+// single string.
 
-// 3) format_date Refactor split date formatting into a standalone function that uses split_date for modular handling.
+// 3) format_date Refactor split date formatting into a standalone function that uses split_date for
+// modular handling.
 
-// 4) split_date Function introduced to extract year, month, and day components, improving clarity and code reuse.
+// 4) split_date Function introduced to extract year, month, and day components, improving clarity
+// and code reuse.
 
-// 5) format_amount Improvements refactored logic for formatting amounts to make negative handling, spacing, and locale-specific formatting cleaner.
+// 5) format_amount Improvements refactored logic for formatting amounts to make negative handling,
+// spacing, and locale-specific formatting cleaner.
 
-// 6) format_number refinement Handles separators and decimal points for numbers more systematically.
+// 6) format_number refinement Handles separators and decimal points for numbers more
+// systematically.
 
-// 7) Enhanced add_sep Split logic into separate steps for readability, making prefix, middle, and final result assembly explicit.
+// 7) Enhanced add_sep Split logic into separate steps for readability, making prefix, middle, and
+// final result assembly explicit.
 
 // 8)format_description logic for truncation and padding, aligning with coding standards.
 
-// 9) Added AMOUNT_COLUMN_WIDTH, MAX_DESCRIPTION_LENGTH and FORMATTED_DESCRIPTION_LENGTH constants for readability and maintainability.
+// 9) Added AMOUNT_COLUMN_WIDTH, MAX_DESCRIPTION_LENGTH and FORMATTED_DESCRIPTION_LENGTH constants
+// for readability and maintainability.
 
-// 10) Imported AppendFormattedToByteArray to handle the conversion of byteArray to integer.s
+// 10) Imported AppendFormattedToByteArray to handle the conversion of byteArray to integer.
 
 
-//     Overall, the refactored code is modular, better adheres to single-responsibility principles, and improves readability while ensuring maintainability.
+//     Overall, the refactored code is modular, better adheres to single-responsibility principles, and
+//     improves readability while ensuring maintainability.
  
 use core::to_byte_array::AppendFormattedToByteArray;
 
@@ -45,10 +53,8 @@ pub struct Entry {
 }
 
 
-
-
 pub fn format_entries(
-    currency: Currency, locale: Locale, entries: Array<Entry>
+    currency: Currency, locale: Locale, entries: Array<Entry>,
 ) -> Array<ByteArray> {
     let mut ledger: Array<ByteArray> = array![];
 
@@ -167,7 +173,6 @@ fn format_number(value: u32, negative: bool, currency: @Currency, locale: @Local
             result.append_byte('-');
         }
     }
-
 
     let whole = value / 100;
 
