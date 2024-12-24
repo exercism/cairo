@@ -1,4 +1,4 @@
-/* Changes in the Refactored Code:
+/* Changes in the Refactored Code
 
 1) format_entries function now uses format_row to create each ledger entry, reducing redundancy.
 
@@ -14,7 +14,7 @@
 
 7) Enhanced add_sep Split logic into separate steps for readability, making prefix, middle, and final result assembly explicit.
 
-8) Revised format_description logic adjusted to use constants for truncation and padding, aligning with coding standards.
+8)format_description logic for truncation and padding, aligning with coding standards.
 
 9) Added AMOUNT_COLUMN_WIDTH, MAX_DESCRIPTION_LENGTH and FORMATTED_DESCRIPTION_LENGTH constants for readability and maintainability.
 
