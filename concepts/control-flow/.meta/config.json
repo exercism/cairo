@@ -1,5 +1,5 @@
 {
-  "blurb": "Control flow in Cairo uses `if` expressions to conditionally execute code, and loops to run code repeatedly.",
+  "blurb": "Control flow in Cairo uses `if` expressions to conditionally execute code and loops to run code repeatedly.",
   "authors": ["Falilah"],
   "contributors": ["0xNeshi"]
 }

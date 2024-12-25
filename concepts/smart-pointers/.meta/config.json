@@ -1,7 +1,7 @@
 {
-    "blurb": "Smart pointers in Cairo are special data structures that manage memory safely by ensuring that memory is accessed in a controlled way.",
+    "blurb": "<todo>",
     "authors": [
-        "0xNeshi"
+        "<your_gh_username>"
     ],
     "contributors": []
 }
