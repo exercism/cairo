@@ -1,5 +1,4 @@
 # Smart Pointers
-# Smart Pointers
 
 Smart pointers in Cairo are a powerful tool that provide safe and efficient management of memory.
 
