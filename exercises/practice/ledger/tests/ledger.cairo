@@ -151,7 +151,6 @@ fn dutch_locale_and_euros() {
     assert_eq!(result, expected);
 }
 
-
 #[test]
 #[ignore]
 fn dutch_negative_number_with_3_digits_before_decimal_point() {

@@ -50,7 +50,6 @@ pub struct Entry {
     pub amount_in_cents: i32,
 }
 
-
 pub fn format_entries(
     currency: Currency, locale: Locale, entries: Array<Entry>,
 ) -> Array<ByteArray> {
