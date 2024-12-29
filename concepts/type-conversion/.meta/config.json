@@ -1,7 +1,5 @@
 {
-    "blurb": "<todo>",
-    "authors": [
-        "<your_gh_username>"
-    ],
+    "blurb": "Type conversion in Cairo allows you to transform values between different types using the `Into` and `TryInto` traits.",
+    "authors": ["0xNeshi"],
     "contributors": []
 }

@@ -1,1 +1,10 @@
-[]
+[
+    {
+      "url": "https://book.cairo-lang.org/ch02-02-data-types.html#type-conversion",
+      "description": "Type Conversion in The Cairo Book"
+    },
+    {
+      "url": "https://book.cairo-lang.org/ch05-02-an-example-program-using-structs.html#conversions-of-custom-types",
+      "description": "Conversions of Custom Types in The Cairo Book"
+    }
+]
