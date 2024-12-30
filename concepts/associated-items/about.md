@@ -43,7 +43,7 @@ Here, `Result` is an associated type determined by each implementation.
 A function using this trait doesn't need to specify extra generics:
 
 ```rust
-fn combine<T: Pack<T>>(a: T, b: T) -> T::Result {
+fn combine<T, impl PackImpl: Pack<T>>(a: T, b: T) -> PackImpl::Result {
     a.pack(b)
 }
 ```
