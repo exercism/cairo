@@ -1,0 +1,5 @@
+{
+    "blurb": "Associated implementations in Cairo allow you to enforce relationships between types and their trait implementations, ensuring type safety and consistency.",
+    "authors": ["0xNeshi"],
+    "contributors": []
+}
