@@ -205,7 +205,9 @@
           "printing"
         ],
         "prerequisites": [
-          "traits"
+          "strings",
+          "traits",
+          "structs"
         ],
         "status": "wip"
       },
@@ -261,14 +263,15 @@
         "status": "wip"
       },
       {
-        "slug": "chrono-realms-time-tree",
-        "name": "Chrono Realms Time Tree",
-        "uuid": "a72139a1-825e-4349-a6b5-400b665fbe07",
+        "slug": "chrono-realms-chrono-chain",
+        "name": "Chrono Realms Chrono Chain",
+        "uuid": "e04f808a-25dc-4448-bc45-d3da0db9819a",
         "concepts": [
           "smart-pointers"
         ],
         "prerequisites": [
-          "structs"
+          "traits",
+          "enums"
         ],
         "status": "wip"
       }
@@ -959,6 +962,11 @@
       "uuid": "6ba0e79b-9e70-4116-8f26-cce676a7b05e",
       "slug": "functions",
       "name": "Functions"
+    },
+    {
+      "uuid": "56b0dcb7-c9c3-4323-b297-873002b713d3",
+      "slug": "associated-items",
+      "name": "Associated Items"
     },
     {
       "uuid": "9be30113-b4fe-4cdd-9894-9afd593f2a90",

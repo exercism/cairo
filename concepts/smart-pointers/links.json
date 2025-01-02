@@ -1,1 +1,10 @@
-[]
+[
+    {
+      "url": "https://book.cairo-lang.org/ch11-02-smart-pointers.html",
+      "description": "Smart Pointers in The Cairo Book"
+    },
+    {
+      "url": "https://book.cairo-lang.org/ch03-02-dictionaries.html#dictionaries-of-types-not-supported-natively",
+      "description": "Nullable<T> Use Case with Dictionaries"
+    }
+]
