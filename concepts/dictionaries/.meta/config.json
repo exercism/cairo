@@ -1,7 +1,5 @@
 {
-    "blurb": "<todo>",
-    "authors": [
-        "<your_gh_username>"
-    ],
+    "blurb": "Dictionaries in Cairo provide a way to store and retrieve key-value pairs, similar to hash maps or dictionaries in other languages.",
+    "authors": ["0xNeshi"],
     "contributors": []
 }
