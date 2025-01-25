@@ -6,5 +6,9 @@
     {
         "url": "https://book.cairo-lang.org/ch02-02-data-types.html#the-fixed-size-array-type",
         "description": "The Fixed Size Array Type"
+    },
+    {
+        "url": "https://book.cairo-lang.org/ch03-02-dictionaries.html#using-arrays-inside-dictionaries",
+        "description": "Using Arrays inside Dictionaries"
     }
 ]
