@@ -33,7 +33,7 @@ Due to Cairo's immutable memory model, dictionary operations have $O(n)$ complex
 
 Each operation creates a new entry recording the change.
 
-## Working with Complex Types 
+## Working with Complex Types
 
 For types that don't implement `Felt252DictValue` (like arrays or structs), you can wrap them in `Nullable<T>`:
 
