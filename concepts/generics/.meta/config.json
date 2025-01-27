@@ -1,7 +1,5 @@
 {
-    "blurb": "<todo>",
-    "authors": [
-        "<your_gh_username>"
-    ],
+    "blurb": "Generics in Cairo allow us to write flexible and reusable code that works with multiple data types, reducing duplication and improving maintainability.",
+    "authors": ["0xNeshi"],
     "contributors": []
 }
