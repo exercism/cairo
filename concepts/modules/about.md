@@ -25,13 +25,17 @@ Use `pub` to make them accessible outside their module.
 To refer to an item in another module, you can use:
 
 - **Absolute paths** (starting from `crate::`):
+
   ```rust
   crate::front_of_house::hosting::add_to_waitlist();
   ```
+
 - **Relative paths** (starting from the current module):
+
   ```rust
   front_of_house::hosting::add_to_waitlist();
   ```
+
   This works if `front_of_house` is in the same module.
 
 ## Bringing Modules into Scope with `use`
@@ -53,16 +57,21 @@ pub fn eat_at_restaurant() {
 ### Idiomatic Use of `use`
 
 - Bring **modules** into scope, not functions:
+
   ```rust
   use crate::front_of_house::hosting; // ✅
   hosting::add_to_waitlist();
   ```
+
   Instead of:
+
   ```rust
   use crate::front_of_house::hosting::add_to_waitlist; // ❌
   add_to_waitlist();
   ```
+
 - For **traits, structs, and enums**, use the full path:
+
   ```rust
   use core::num::traits::BitSize;
   ```
