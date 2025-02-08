@@ -152,7 +152,7 @@
         "name": "Red vs. Blue: Darwin Style",
         "uuid": "30761b1c-0c9a-4c91-8d16-1adf8bc4a0dd",
         "concepts": [
-          "packages-crates-modules"
+          "modules"
         ],
         "prerequisites": [
           "structs"
@@ -481,7 +481,7 @@
         "name": "Armstrong Numbers",
         "uuid": "4aaa153d-3416-4101-8143-35b068a15451",
         "practices": [
-          "packages-crates-modules"
+          "modules"
         ],
         "prerequisites": [],
         "difficulty": 3
@@ -1002,8 +1002,8 @@
     },
     {
       "uuid": "52684fe6-9b8d-4974-8de4-f65d42fbf9c1",
-      "slug": "packages-crates-modules",
-      "name": "Packages, Crates and Modules"
+      "slug": "modules",
+      "name": "Modules"
     },
     {
       "uuid": "fe81e75b-b4d2-4ee8-9aaa-271e76468d0b",
