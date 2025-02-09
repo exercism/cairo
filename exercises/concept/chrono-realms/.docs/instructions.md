@@ -1,7 +1,9 @@
 # Instructions
 
 Welcome to the world of *ChronoRealms*, a magical land where powerful Timekeepers control the flow of time.
+
 In this realm, Timekeepers manage "TimeShards," special units that can be added, subtracted, compared, and even checked for equality.
+
 Your task is to help the Timekeepers by implementing custom operators for manipulating these TimeShards.
 
 The Timekeepers need you to create a custom struct `TimeShard` that supports the following operations:
@@ -18,6 +20,7 @@ Your mission is to implement the following traits for the `TimeShard` struct:
 4. **Comparison (`PartialOrd`)**: Allow comparison of two `TimeShard` instances to see which is greater or smaller.
 
 A `TimeShard` will be represented by a struct that holds an integer value (`i32`).
+
 Implement the necessary traits to make the Timekeepers' job easier.
 
 ```rust
