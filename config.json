@@ -86,11 +86,12 @@
         "status": "wip"
       },
       {
-        "slug": "welcome-to-tech-palace",
-        "name": "Welcome To Tech Palace!",
-        "uuid": "f8108950-9819-4540-8a3a-880d0778806c",
+        "slug": "rpn-calculator",
+        "name": "RPN Calculator",
+        "uuid": "536d9f09-5910-4a26-93fd-2242667b0b87",
         "concepts": [
-          "strings"
+          "control-flow",
+          "enums"
         ],
         "prerequisites": [
           "arrays"
@@ -98,15 +99,14 @@
         "status": "wip"
       },
       {
-        "slug": "rpn-calculator",
-        "name": "RPN Calculator",
-        "uuid": "536d9f09-5910-4a26-93fd-2242667b0b87",
+        "slug": "welcome-to-tech-palace",
+        "name": "Welcome To Tech Palace!",
+        "uuid": "f8108950-9819-4540-8a3a-880d0778806c",
         "concepts": [
-          "control-flow"
+          "strings"
         ],
         "prerequisites": [
-          "arrays",
-          "enums"
+          "control-flow"
         ],
         "status": "wip"
       },
