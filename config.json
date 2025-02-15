@@ -43,7 +43,8 @@
         "uuid": "f120ab92-f277-434c-ae38-a3bb86cb67bf",
         "concepts": [
           "functions",
-          "mutability"
+          "mutability",
+          "integers"
         ],
         "prerequisites": [],
         "status": "beta"
@@ -66,18 +67,6 @@
         "uuid": "7d399f77-4b68-4fc8-9421-43fd24bd4dbe",
         "concepts": [
           "felts"
-        ],
-        "prerequisites": [
-          "functions"
-        ],
-        "status": "wip"
-      },
-      {
-        "slug": "cars-assemble",
-        "name": "Cars Assemble",
-        "uuid": "57845c17-15e5-4c62-bbac-29ad633e9ebb",
-        "concepts": [
-          "integers"
         ],
         "prerequisites": [
           "functions"
