@@ -4,15 +4,11 @@
     "description": "String types in the Cairo book"
   },
   {
-    "url": "https://starknet-by-example.voyager.online/getting-started/basics/bytearrays-strings.html",
-    "description": "Starknet by Example section on Strings and ByteArrays"
+    "url": "https://docs.swmansion.com/scarb/corelib/core-byte_array-ByteArrayTrait.html",
+    "description": "Operations defined on ByteArray"
   },
   {
     "url": "https://docs.starknet.io/architecture-and-concepts/smart-contracts/serialization-of-cairo-types/#serialization_of_byte_arrays",
     "description": "Starknet docs explaining how ByteArray is implemented and how it's serialized"
-  },
-  {
-    "url": "https://community.starknet.io/t/cairo-v2-4-0-is-out/109275",
-    "description": "Cairo v2.4.0 is out"
   }
 ]
