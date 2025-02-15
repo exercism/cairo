@@ -4,13 +4,22 @@ Cairo doesn't have a native type for strings but provides two ways to handle the
 
 A short string is an ASCII string where each character is encoded on one byte.
 
-The type Cairo uses for short strings is actually `felt252`, making their maximum length only 31 characters. 
+The type Cairo uses for short strings by default is `felt252`, making their maximum length only 31 characters. 
 
 ```rust
-// below are different ways to write the same short string
-let name: felt252 = 'Jane'; // short string format
+// below are different ways to write the same value
+let name: felt252 = 'Jane';     // short string format
 let name: felt252 = 0x4a616e65; // byte format
 let name: felt252 = 1247899237; // decimal format
+```
+
+Technically, any integer type smaller than `felt252` can be represented using the short string format.
+
+```rust
+// all of the below are equal u8 values, they are just written using different formats!
+let lowercase_a_in_ascii: u8 = 'a';  // short string format
+let lowercase_a_in_ascii: u8 = 0x61; // byte format
+let lowercase_a_in_ascii: u8 = 97;   // decimal format
 ```
 
 For strings longer than 31 characters Cairo provides `ByteArray`, which has an unlimited length.
