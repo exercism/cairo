@@ -23,4 +23,4 @@ The Concepts this exercise unlocks are:
 
 ## Prerequisites
 
-- `arrays`
+- `control-flow`
