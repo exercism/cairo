@@ -4,7 +4,7 @@ Cairo doesn't have a native type for strings but provides two ways to handle the
 
 A short string is an ASCII string where each character is encoded on one byte.
 
-The type Cairo uses for short strings by default is `felt252`, making their maximum length only 31 characters. 
+The type Cairo uses for short strings by default is `felt252`, making their maximum length only 31 characters.
 
 ```rust
 // below are different ways to write the same value
