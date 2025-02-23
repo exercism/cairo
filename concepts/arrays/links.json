@@ -10,5 +10,13 @@
     {
         "url": "https://book.cairo-lang.org/ch03-02-dictionaries.html#using-arrays-inside-dictionaries",
         "description": "Using Arrays inside Dictionaries"
+    },
+    {
+        "url": "https://docs.swmansion.com/scarb/corelib/core-array-ArrayTrait.html",
+        "description": "Array trait docs"
+    },
+    {
+        "url": "https://docs.swmansion.com/scarb/corelib/core-array-SpanTrait.html",
+        "description": "Span trait docs"
     }
 ]
