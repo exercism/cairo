@@ -15,7 +15,7 @@ Implement the function `insert_top` that returns a copy of the stack with the ne
 ```rust
 let queue = array![5, 9, 7, 1];
 insert_top(queue, 8)
-// -> array![5, 9, 7, 1, 8]
+// -> [5, 9, 7, 1, 8]
 ```
 
 ## 2. Remove the top card from the stack
@@ -27,7 +27,7 @@ If the given stack is empty, the original stack should be returned, unchanged.
 ```rust
 let queue = array![3, 2, 6, 4, 8];
 remove_top_card(queue)
-// -> array![3, 2, 6, 4]
+// -> [3, 2, 6, 4]
 ```
 
 ## 3. Insert a card at the bottom of the stack
@@ -37,7 +37,7 @@ Implement the function `insert_bottom` that returns a copy of the stack with the
 ```rust
 let queue = array![5, 9, 7, 1];
 insert_bottom(queue, 8)
-// -> array![8, 5, 9, 7, 1]
+// -> [8, 5, 9, 7, 1]
 ```
 
 ## 4. Remove a card from the bottom of the stack
@@ -49,7 +49,7 @@ If the given stack is empty, the original stack should be returned, unchanged.
 ```rust
 let queue = array![8, 5, 9, 7, 1];
 remove_bottom_card(queue)
-// -> array![5, 9, 7, 1]
+// -> [5, 9, 7, 1]
 ```
 
 ## 5. Check size of the stack
