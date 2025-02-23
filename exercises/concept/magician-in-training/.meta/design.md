@@ -12,6 +12,7 @@
 
 - Handling popped (removed) values.
 - Fixed-size array type.
+- Traits.
 
 ## Concepts
 

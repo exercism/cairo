@@ -35,7 +35,7 @@ one_to_four.pop_front();
 
 Cairo also introduces a `Span` type that acts like a "snapshot" of the `Array`.
 
-Every `Array` can be converted into a `Span` with the `ArrayTrait::span` function:
+Every `Array` can be converted into a `Span` with the `ToSpanTrait::span` function:
 
 ```rust
 let one_to_four = array![1, 2, 3, 4];

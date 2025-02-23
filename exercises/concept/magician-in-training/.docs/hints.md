@@ -14,11 +14,11 @@
 
 ## 4. Remove a card from the bottom of the stack
 
-- The [`ArrayTrait.pop_front` function][pop-front] can be used to remove from the front of an array.
+- The [`ArrayTrait::pop_front` function][pop-front] can be used to remove from the front of an array.
 
 ## 5. Check size of the stack
 
-- The [`ArrayTrait.len` function][len] can be used to get the length of an array.
+- The [`ArrayTrait::len` function][len] can be used to get the length of an array.
 
 [append]: https://docs.swmansion.com/scarb/corelib/core-array-ArrayTrait.html#append
 [pop-back]: https://docs.swmansion.com/scarb/corelib/core-array-SpanTrait.html#pop_back

@@ -2,8 +2,8 @@ use magician_in_training::*;
 
 #[test]
 fn insert_top_test() {
-    let queue = array![5, 9, 7, 1];
-    let actual = insert_top(queue, 8);
+    let stack = array![5, 9, 7, 1];
+    let actual = insert_top(stack, 8);
     let expected = array![5, 9, 7, 1, 8];
     assert_eq!(expected, actual);
 }
@@ -11,8 +11,8 @@ fn insert_top_test() {
 #[test]
 #[ignore]
 fn remove_top_card_with_empty_stack_test() {
-    let queue = array![];
-    let actual = remove_top_card(queue);
+    let stack = array![];
+    let actual = remove_top_card(stack);
     let expected = array![];
     assert_eq!(expected, actual);
 }
@@ -20,8 +20,8 @@ fn remove_top_card_with_empty_stack_test() {
 #[test]
 #[ignore]
 fn remove_top_card_test() {
-    let queue = array![5, 9, 7, 1];
-    let actual = remove_top_card(queue);
+    let stack = array![5, 9, 7, 1];
+    let actual = remove_top_card(stack);
     let expected = array![5, 9, 7];
     assert_eq!(expected, actual);
 }
@@ -29,8 +29,8 @@ fn remove_top_card_test() {
 #[test]
 #[ignore]
 fn insert_bottom_test() {
-    let queue = array![5, 9, 7, 1];
-    let actual = insert_bottom(queue, 8);
+    let stack = array![5, 9, 7, 1];
+    let actual = insert_bottom(stack, 8);
     let expected = array![8, 5, 9, 7, 1];
     assert_eq!(expected, actual);
 }
@@ -38,8 +38,8 @@ fn insert_bottom_test() {
 #[test]
 #[ignore]
 fn remove_bottom_card_with_empty_stack_test() {
-    let queue = array![];
-    let actual = remove_bottom_card(queue);
+    let stack = array![];
+    let actual = remove_bottom_card(stack);
     let expected = array![];
     assert_eq!(expected, actual);
 }
@@ -47,8 +47,8 @@ fn remove_bottom_card_with_empty_stack_test() {
 #[test]
 #[ignore]
 fn remove_bottom_card_test() {
-    let queue = array![5, 9, 7, 1];
-    let actual = remove_bottom_card(queue);
+    let stack = array![5, 9, 7, 1];
+    let actual = remove_bottom_card(stack);
     let expected = array![9, 7, 1];
     assert_eq!(expected, actual);
 }
@@ -56,13 +56,13 @@ fn remove_bottom_card_test() {
 #[test]
 #[ignore]
 fn check_size_of_stack_not_matching_test() {
-    let queue = array![5, 9, 7, 1];
-    assert!(!check_size_of_stack(queue, 5));
+    let stack = array![5, 9, 7, 1];
+    assert!(!check_size_of_stack(stack, 5));
 }
 
 #[test]
 #[ignore]
 fn check_size_of_stack_matching_test() {
-    let queue = array![5, 9, 7, 1];
-    assert!(check_size_of_stack(queue, 4));
+    let stack = array![5, 9, 7, 1];
+    assert!(check_size_of_stack(stack, 4));
 }
