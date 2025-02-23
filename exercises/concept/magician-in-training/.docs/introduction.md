@@ -2,7 +2,9 @@
 
 ## Arrays
 
-The Cairo core library implements an `Array` type. It is similar to the usual array types found in other programming languages, but with a few key differences:
+The Cairo core library implements an `Array` type.
+
+It is similar to the usual array types found in other programming languages, but with a few key differences:
 
 - Elements can be efficiently added only to the back of the `Array` type, and they can only be efficiently removed from the front.
 - It is impossible to manually set an item using the array index.
@@ -42,7 +44,7 @@ let one_to_four_span = one_to_four.span();
 ```
 
 Converting an array into a `Span` is very efficient, as `Span` is just a data structure that allows Cairo to "view" a section of the array, it doesn't modify it in any way.
- 
+
 By converting an array into a `Span`, Cairo allows more operations to be performed than would be permitted on `Array` directly, like removing an item from the front of the span.
 
 ```rust

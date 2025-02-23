@@ -10,7 +10,7 @@
 
 ## 3. Insert a card at the bottom of the stack
 
-- There's no way to append an item to the front of the array, but one way around this is to create a new one-item array and append the old one as a span with [`ArrayTrait::append_span`][append-span]. 
+- There's no way to append an item to the front of the array, but one way around this is to create a new one-item array and append the old one as a span with [`ArrayTrait::append_span`][append-span].
 
 ## 4. Remove a card from the bottom of the stack
 
