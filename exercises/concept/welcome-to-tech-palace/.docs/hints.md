@@ -2,9 +2,9 @@
 
 ## General
 
-- The [ByteArray][bytearray] type contains a few useful inbuilt methods, you'll generally have to implement your own utility functions for manipulating ByteArrays.
+- The [ByteArray][bytearray] type contains a few useful inbuilt methods, so you'll generally have to implement your own utility functions for manipulating ByteArrays.
 - `ByteArray` actually represents an array of bytes and not "chars" as in many other languages.
-- Working with both short and longs strings at the same time can be challenging, so some helper functions are already implemented which you can use for this exercise.
+- Working with both short and long strings at the same time can be challenging, so some helper functions are already implemented which you can use for this exercise.
 
 ## 1. Create the welcome message
 
