@@ -4,4 +4,4 @@ To understand why working with arrays in Cairo is not as straightforward as in o
 
 The language abstracts away this feature somewhat, allowing developers to declare and use their variables as if they were mutable.
 
-Although this makes writing code a bit more challenging, especially code that makes use of the `Array` type (including `ByteArray`, which is underneath an "array of bytes"), it enables writing _provable_ programs which can be confidently executed even on untrusted machines, making the trade-off more than worth it.
+Although this makes writing code a bit more challenging, especially code that makes use of the `Array` type (including `ByteArray`, which underneath is an "array of bytes"), it enables writing _provable_ programs which can be confidently executed even on untrusted machines, making the trade-off more than worth it.

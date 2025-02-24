@@ -6,7 +6,7 @@
 
 ## 2. Remove the top card from the stack
 
-- You can always convert an array into a span, and then use [`SpanTrait::pop_back` function][pop-back] can be used to remove from the back of an array.
+- You can always convert an array into a span, and then use the [`SpanTrait::pop_back` function][pop-back] to remove from the back of an array.
 
 ## 3. Insert a card at the bottom of the stack
 
