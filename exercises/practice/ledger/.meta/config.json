@@ -1,0 +1,20 @@
+{
+  "authors": [
+    "Falilah"
+  ],
+  "files": {
+    "solution": [
+      "src/lib.cairo"
+    ],
+    "test": [
+      "tests/ledger.cairo"
+    ],
+    "example": [
+      ".meta/example.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
+    ]
+  },
+  "blurb": "Refactor a ledger printer."
+}
