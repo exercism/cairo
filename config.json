@@ -74,18 +74,6 @@
         "status": "wip"
       },
       {
-        "slug": "welcome-to-tech-palace",
-        "name": "Welcome To Tech Palace!",
-        "uuid": "f8108950-9819-4540-8a3a-880d0778806c",
-        "concepts": [
-          "strings"
-        ],
-        "prerequisites": [
-          "functions"
-        ],
-        "status": "wip"
-      },
-      {
         "slug": "magician-in-training",
         "name": "Magician in Training",
         "uuid": "b1f29e1f-adb7-4e37-8101-a1819f1179fa",
@@ -102,11 +90,23 @@
         "name": "RPN Calculator",
         "uuid": "536d9f09-5910-4a26-93fd-2242667b0b87",
         "concepts": [
-          "control-flow"
+          "control-flow",
+          "enums"
         ],
         "prerequisites": [
-          "arrays",
-          "enums"
+          "arrays"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "welcome-to-tech-palace",
+        "name": "Welcome To Tech Palace!",
+        "uuid": "f8108950-9819-4540-8a3a-880d0778806c",
+        "concepts": [
+          "strings"
+        ],
+        "prerequisites": [
+          "control-flow"
         ],
         "status": "wip"
       },

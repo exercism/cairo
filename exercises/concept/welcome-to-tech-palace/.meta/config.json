@@ -1,6 +1,6 @@
 {
   "authors": [
-    "<your_gh_username>"
+    "0xNeshi"
   ],
   "files": {
     "solution": [
@@ -19,5 +19,5 @@
   "forked_from": [
     "go/welcome-to-tech-palace"
   ],
-  "blurb": "<blurb>"
+  "blurb": "Learn how to represent strings by generating text for a store's new display."
 }

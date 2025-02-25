@@ -4,6 +4,10 @@
         "description": "Felt type in the Cairo book"
     },
     {
+        "url": "https://docs.starknet.io/architecture-and-concepts/smart-contracts/serialization-of-cairo-types/#data_types_of_252_bits_or_less",
+        "description": "Explanation for how certain data types get serialized into felt252"
+    },
+    {
         "url": "https://starknet-by-example.voyager.online/getting-started/cairo_cheatsheet/felt.html",
         "description": "Starknet by Example section on felts"
     }
