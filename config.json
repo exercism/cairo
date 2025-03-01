@@ -57,7 +57,9 @@
           "booleans"
         ],
         "prerequisites": [
-          "functions"
+          "functions",
+          "mutability",
+          "integers"
         ],
         "status": "wip"
       },
@@ -69,7 +71,7 @@
           "felts"
         ],
         "prerequisites": [
-          "functions"
+          "booleans"
         ],
         "status": "wip"
       },
@@ -81,7 +83,7 @@
           "arrays"
         ],
         "prerequisites": [
-          "integers"
+          "felts"
         ],
         "status": "wip"
       },
@@ -156,8 +158,7 @@
           "method-syntax"
         ],
         "prerequisites": [
-          "structs",
-          "references-and-snapshots"
+          "structs"
         ],
         "status": "wip"
       },
@@ -194,9 +195,7 @@
           "printing"
         ],
         "prerequisites": [
-          "strings",
-          "traits",
-          "structs"
+          "traits"
         ],
         "status": "wip"
       },
@@ -208,7 +207,6 @@
           "option"
         ],
         "prerequisites": [
-          "structs",
           "method-syntax"
         ],
         "status": "wip"
@@ -259,8 +257,7 @@
           "smart-pointers"
         ],
         "prerequisites": [
-          "traits",
-          "enums"
+          "traits"
         ],
         "status": "wip"
       }
