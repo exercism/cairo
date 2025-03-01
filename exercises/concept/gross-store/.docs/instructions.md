@@ -62,9 +62,10 @@ println!(ok);
 To implement this, you'll need to:
 
 - Return `false` if the given item is **not** in the bill.
+An item is considered to not be in the bill if its quantity is 0.
 - Return `false` if the given `unit` is not in the `units` map.
 - Return `false` if the new quantity would be less than 0.
-- If the new quantity is 0, completely remove the item from the `bill` then return `true`.
+- If the new quantity is 0, the item is considered removed from the `bill`, so you can return `true`.
 - Otherwise, reduce the quantity of the item and return `true`.
 
 ```rust
@@ -78,11 +79,6 @@ println!(ok);
 > Note that the returned value is type `bool`.
 
 ## 5. Return the quantity of a specific item that is in the customer bill
-
-To implement this, you'll need to:
-
-- Return `0` if the `item` is not in the bill.
-- Otherwise, return the quantity of the item in the `bill`.
 
 ```rust
 let mut bill: Felt252Dict<u32> = Default::default();
