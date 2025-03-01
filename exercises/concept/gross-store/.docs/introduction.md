@@ -2,7 +2,7 @@
 
 Cairo provides dictionaries as part of its core libraries represented by the `Felt252Dict<T>` type.
 
-The dictionary key type in Cairo is restricted to `felt252`, which differs from other languages where it is possible to define the type of the key type. 
+The dictionary key type in Cairo is restricted to `felt252`, which differs from other languages where it is possible to define the type of the key type.
 
 To create a dictionary, you can use the `default` method of the `Default` trait, like:
 

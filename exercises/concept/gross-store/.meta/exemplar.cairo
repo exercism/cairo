@@ -12,8 +12,7 @@ pub fn units() -> Felt252Dict<u32> {
 }
 
 pub fn new_bill() -> Felt252Dict<u32> {
-    let bill: Felt252Dict<u32> = Default::default();
-    bill
+    Default::default()
 }
 
 pub fn add_item(
