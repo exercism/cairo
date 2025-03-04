@@ -42,6 +42,8 @@ for exercise_dir in $exercises; do
         exit 1
     fi
 
+    echo "Formatting $exercise..."
+
     # copy the example solution file into the package
     cp "$solution_file" "$tmp_file"
 
