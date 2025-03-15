@@ -1,14 +1,15 @@
 use core::to_byte_array::AppendFormattedToByteArray;
+use core::dict::Felt252Dict;
 
 #[derive(Drop, Copy)]
 pub struct VoteCounter {
-    value: u32,
+    pub value: u32,
 }
 
 #[derive(Drop)]
 pub struct ElectionResult {
-    name: ByteArray,
-    counter: @VoteCounter,
+    pub name: ByteArray,
+    pub counter: @VoteCounter,
 }
 
 pub fn new_vote_counter(value: u32) -> VoteCounter {
@@ -34,6 +35,11 @@ pub fn display_result(election_result: @ElectionResult) -> ByteArray {
     msg += u32_to_bytearray(**election_result.counter.value);
     msg += ")";
     msg
+}
+
+pub fn decrement_votes_of_candidate(ref final_results: Felt252Dict<u32>, candidate: felt252) {
+    let votes = final_results.get(candidate);
+    final_results.insert(candidate, votes - 1);
 }
 
 fn u32_to_bytearray(v: u32) -> ByteArray {

@@ -109,3 +109,24 @@ let result = ElectionResult {
 let msg = display_result(@result);
 // => "John (32)"
 ```
+
+## 6. Vote recounting
+
+To make sure the final results were accurate, the votes were recounted.
+
+In the recount, it was found that the number votes for some of the candidates was off by one.
+
+Create a function `decrement_votes_of_candidate` that receives the final results and the name of a candidate for which you should decrement its vote count.
+
+The final results are given in the form of a `Felt252Dict<u32>`, where the keys are the names of the candidates and the values are its total votes.
+
+```rust
+let mut final_results: Felt252Dict<u32> = Default::default();
+final_results.insert('Mary', 10);
+final_results.insert('John', 51);
+
+decrement_votes_of_candidate(ref final_results, 'Mary');
+
+let decremented_votes = final_results.get('Mary');
+// => 9
+```
