@@ -3,7 +3,7 @@ use election_day::*;
 #[test]
 fn test_new_vote_counter() {
     let vote_counter = new_vote_counter(2);
-    assert!(vote_counter.value == 2, "vote_counter.value should be 2");
+    assert!(vote_counter.value == 2, "vote counter should be 2");
 }
 
 #[test]
@@ -11,7 +11,7 @@ fn test_new_vote_counter() {
 fn test_vote_count() {
     let vote_counter = new_vote_counter(2);
     let count = vote_count(@vote_counter);
-    assert!(count == 2, "vote_count should return 2");
+    assert!(count == 2, "vote count should return 2");
 }
 
 #[test]
