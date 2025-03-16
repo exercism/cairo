@@ -12,8 +12,8 @@ pub struct ElectionResult {
     pub counter: @VoteCounter,
 }
 
-pub fn new_vote_counter(value: u32) -> VoteCounter {
-    VoteCounter { value }
+pub fn new_vote_counter(value: u32) -> @VoteCounter {
+    @VoteCounter { value }
 }
 
 pub fn vote_count(counter: @VoteCounter) -> u32 {

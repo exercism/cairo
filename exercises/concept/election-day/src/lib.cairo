@@ -12,7 +12,7 @@ pub struct ElectionResult {
     pub counter: @VoteCounter,
 }
 
-pub fn new_vote_counter(value: u32) -> VoteCounter {
+pub fn new_vote_counter(value: u32) -> @VoteCounter {
     panic!("implement `new_vote_counter`")
 }
 
