@@ -48,10 +48,8 @@ Create a function `increment_vote_count` that will take a counter (`@VoteCounter
 
 ```rust
 let votes: u32 = 3;
-let vote_counter: @VoteCounter = new_vote_counter(initial_votes);
-let mut vote_counter = *vote_counter;
-
-increment_vote_count(ref vote_counter, 2);
+let vote_counter: VoteCounter = new_vote_counter(initial_votes);
+let vote_counter: VoteCounter = increment_vote_count(vote_counter, 2);
 
 let count = vote_count(vote_counter);
 // => 5

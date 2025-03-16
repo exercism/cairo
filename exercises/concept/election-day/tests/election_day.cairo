@@ -17,16 +17,16 @@ fn test_vote_count() {
 #[test]
 #[ignore]
 fn test_increment_vote_count() {
-    let mut vote_counter = new_vote_counter(0);
-    increment_vote_count(ref vote_counter, 1);
+    let vote_counter = new_vote_counter(0);
+    let vote_counter = increment_vote_count(vote_counter, 1);
     assert!(vote_counter.value == 1, "counter should be 1 after increment");
 
-    let mut vote_counter = new_vote_counter(2);
-    increment_vote_count(ref vote_counter, 2);
+    let vote_counter = new_vote_counter(2);
+    let vote_counter = increment_vote_count(vote_counter, 2);
     assert!(vote_counter.value == 4, "counter should be 4 after increment");
 
-    let mut vote_counter = new_vote_counter(5);
-    increment_vote_count(ref vote_counter, 7);
+    let vote_counter = new_vote_counter(5);
+    let vote_counter = increment_vote_count(vote_counter, 7);
     assert!(vote_counter.value == 12, "counter should be 12 after increment");
 }
 

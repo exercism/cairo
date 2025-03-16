@@ -20,8 +20,10 @@ pub fn vote_count(counter: @VoteCounter) -> u32 {
     *counter.value
 }
 
-pub fn increment_vote_count(ref vote_counter: VoteCounter, by: u32) {
+pub fn increment_vote_count(vote_counter: VoteCounter, by: u32) -> VoteCounter {
+    let mut vote_counter = vote_counter;
     vote_counter.value += by;
+    vote_counter
 }
 
 pub fn new_election_result(name: ByteArray, votes: u32) -> ElectionResult {
