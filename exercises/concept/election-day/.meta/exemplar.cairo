@@ -20,8 +20,8 @@ pub fn vote_count(vote_counter: @VoteCounter) -> u32 {
     *vote_counter.value
 }
 
-pub fn increment_vote_count(vote_counter: VoteCounter, by: u32) -> VoteCounter {
-    VoteCounter { value: vote_count(@vote_counter) + by }
+pub fn increment_vote_count(vote_counter: @VoteCounter, by: u32) -> VoteCounter {
+    VoteCounter { value: vote_count(vote_counter) + by }
 }
 
 pub fn new_election_result(name: ByteArray, votes: u32) -> ElectionResult {

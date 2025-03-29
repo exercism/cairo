@@ -18,8 +18,8 @@
 
 ## 3. Increment the votes of a counter
 
-- To get the current value of the `VoteCounter` snapshot, you need to desnap it using the `*` operator, or call the function you made in the previous task.
-- Instead of modifying the `VoteCounter` instance, you need to return a new instance of `VoteCounter` with votes incremented.
+- Instead of modifying the `@VoteCounter` snapshot, you need to return a new instance of `VoteCounter` with votes incremented.
+- You can desnap the underlying vote counter value using the `*` operator, or call the function you created in the previous task.
 
 ## 4. Create the election results
 

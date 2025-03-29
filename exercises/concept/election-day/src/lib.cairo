@@ -20,7 +20,7 @@ pub fn vote_count(vote_counter: @VoteCounter) -> u32 {
     panic!("implement `vote_count`")
 }
 
-pub fn increment_vote_count(vote_counter: VoteCounter, by: u32) -> VoteCounter {
+pub fn increment_vote_count(vote_counter: @VoteCounter, by: u32) -> VoteCounter {
     panic!("implement `increment_vote_count`")
 }
 
