@@ -36,7 +36,7 @@ fn test_new_election_result() {
     let result = new_election_result("Peter", 2);
 
     assert!(result.name == "Peter", "name should be Peter");
-    assert!(*result.counter.value == 2, "votes should be 2");
+    assert!(*result.vote_counter.value == 2, "votes should be 2");
 }
 
 #[test]

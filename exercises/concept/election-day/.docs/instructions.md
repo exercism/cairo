@@ -42,7 +42,9 @@ let count = vote_count(vote_counter);
 
 ## 3. Increment the votes of a counter
 
-It's finally the time to count the votes! Now you need a way to increment the votes in a counter.
+It's finally the time to count the votes!
+
+Now you need a way to increment the votes in a counter.
 
 Create a function `increment_vote_count` that will take a counter (`@VoteCounter`) as an argument and a number of votes, and will increment the counter by that number of votes.
 

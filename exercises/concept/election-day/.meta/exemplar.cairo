@@ -9,32 +9,30 @@ pub struct VoteCounter {
 #[derive(Drop)]
 pub struct ElectionResult {
     pub name: ByteArray,
-    pub counter: @VoteCounter,
+    pub vote_counter: @VoteCounter,
 }
 
 pub fn new_vote_counter(value: u32) -> @VoteCounter {
     @VoteCounter { value }
 }
 
-pub fn vote_count(counter: @VoteCounter) -> u32 {
-    *counter.value
+pub fn vote_count(vote_counter: @VoteCounter) -> u32 {
+    *vote_counter.value
 }
 
 pub fn increment_vote_count(vote_counter: VoteCounter, by: u32) -> VoteCounter {
-    let mut vote_counter = vote_counter;
-    vote_counter.value += by;
-    vote_counter
+    VoteCounter { value: vote_count(@vote_counter) + by }
 }
 
 pub fn new_election_result(name: ByteArray, votes: u32) -> ElectionResult {
-    ElectionResult { name, counter: @new_vote_counter(votes) }
+    ElectionResult { name, vote_counter: new_vote_counter(votes) }
 }
 
 pub fn display_result(election_result: @ElectionResult) -> ByteArray {
     let mut msg = "";
     msg += election_result.name.clone();
     msg += " (";
-    msg += u32_to_bytearray(**election_result.counter.value);
+    msg += u32_to_bytearray(**election_result.vote_counter.value);
     msg += ")";
     msg
 }

@@ -9,14 +9,14 @@ pub struct VoteCounter {
 #[derive(Drop)]
 pub struct ElectionResult {
     pub name: ByteArray,
-    pub counter: @VoteCounter,
+    pub vote_counter: @VoteCounter,
 }
 
 pub fn new_vote_counter(value: u32) -> @VoteCounter {
     panic!("implement `new_vote_counter`")
 }
 
-pub fn vote_count(counter: @VoteCounter) -> u32 {
+pub fn vote_count(vote_counter: @VoteCounter) -> u32 {
     panic!("implement `vote_count`")
 }
 
