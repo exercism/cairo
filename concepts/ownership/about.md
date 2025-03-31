@@ -55,9 +55,9 @@ fn foo(mut arr: Array<u128>) {
 }
 
 fn main() {
-    let mut arr: Array<u128> = array![];
+    let arr: Array<u128> = array![1];
     foo(arr);
-    foo(arr);
+    foo(arr); // -> compiler error: Variable was previously moved.
 }
 ```
 

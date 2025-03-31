@@ -1,6 +1,6 @@
 {
   "authors": [
-    "<your_gh_username>"
+    "0xNeshi"
   ],
   "files": {
     "solution": [
@@ -19,5 +19,5 @@
   "forked_from": [
     "go/election-day"
   ],
-  "blurb": "<blurb>"
+  "blurb": "Learn about ownership and structs by creating a simple voting system."
 }
