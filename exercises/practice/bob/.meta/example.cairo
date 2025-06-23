@@ -1,21 +1,15 @@
 pub fn response(input: @ByteArray) -> ByteArray {
     if is_silent(input) {
-        return "Fine. Be that way!";
+        "Fine. Be that way!"
+    } else if is_loud_question(input) {
+        "Calm down, I know what I'm doing!"
+    } else if is_loud_statement(input) {
+        "Whoa, chill out!"
+    } else if is_question(input) {
+        "Sure."
+    } else {
+        "Whatever."
     }
-
-    if is_loud_question(input) {
-        return "Calm down, I know what I'm doing!";
-    }
-
-    if is_loud_statement(input) {
-        return "Whoa, chill out!";
-    }
-
-    if is_question(input) {
-        return "Sure.";
-    }
-
-    "Whatever."
 }
 
 
@@ -68,9 +62,10 @@ fn is_uppercase(c: u8) -> bool {
 
 fn to_uppercase(c: u8) -> u8 {
     if is_lowercase(c) {
-        return c - 32;
+        c - 32
+    } else {
+        c
     }
-    return c;
 }
 
 fn is_whitespace(c: u8) -> bool {

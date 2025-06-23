@@ -1,7 +1,5 @@
 {
-    "blurb": "<todo>",
-    "authors": [
-        "<your_gh_username>"
-    ],
+    "blurb": "Operator overloading in Cairo enables you to redefine standard operators like `+` and `-` for custom types by implementing specific traits.",
+    "authors": ["0xNeshi"],
     "contributors": []
 }

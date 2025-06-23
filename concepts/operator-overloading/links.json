@@ -1,1 +1,10 @@
-[]
+[
+    {
+      "url": "https://book.cairo-lang.org/ch12-03-operator-overloading.html",
+      "description": "Operator Overloading in The Cairo Book"
+    },
+    {
+      "url": "https://book.cairo-lang.org/appendix-02-operators-and-symbols.html",
+      "description": "Operators and Symbols in The Cairo Book"
+    }
+]

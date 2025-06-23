@@ -6,14 +6,13 @@ pub fn slices(series: ByteArray, slice_length: usize) -> Array<ByteArray> {
     let max_start = series.len() - slice_length + 1;
 
     let mut all_slices = array![];
-    for i in 0
-        ..max_start {
-            let mut slice = "";
-            for j in i..(i + slice_length) {
-                slice.append_byte(series[j]);
-            };
-            all_slices.append(slice);
+    for i in 0..max_start {
+        let mut slice = "";
+        for j in i..(i + slice_length) {
+            slice.append_byte(series[j]);
         };
+        all_slices.append(slice);
+    };
 
     all_slices
 }

@@ -1,7 +1,7 @@
 {
-    "blurb": "<todo>",
+    "blurb": "Printing in Cairo allows you to display messages, debug information, or formatted values during program execution.",
     "authors": [
-        "<your_gh_username>"
+        "0xNeshi"
     ],
     "contributors": []
 }

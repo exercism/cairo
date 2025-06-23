@@ -14,11 +14,10 @@ impl BoardImpl of BoardTrait {
         let num_rows = *self.num_rows;
 
         // Process each row
-        for y in 0
-            ..num_rows {
-                let annotated_row = self.annotated_row(y);
-                annotated_board.append(annotated_row);
-            };
+        for y in 0..num_rows {
+            let annotated_row = self.annotated_row(y);
+            annotated_board.append(annotated_row);
+        };
 
         annotated_board
     }
@@ -29,18 +28,17 @@ impl BoardImpl of BoardTrait {
         let num_cols = *self.num_cols;
 
         // Process each cell in the row
-        for x in 0
-            ..num_cols {
-                let c = self.pieces[y].at(x).expect('indexes should be correct');
+        for x in 0..num_cols {
+            let c = self.pieces[y].at(x).expect('indexes should be correct');
 
-                // If it's an empty square (' '), count neighboring mines
-                if c == ' ' {
-                    let char_count = self.count_neighbouring_mines_char(x, y);
-                    row.append_byte(char_count);
-                } else {
-                    row.append_byte(c);
-                }
-            };
+            // If it's an empty square (' '), count neighboring mines
+            if c == ' ' {
+                let char_count = self.count_neighbouring_mines_char(x, y);
+                row.append_byte(char_count);
+            } else {
+                row.append_byte(c);
+            }
+        };
 
         row
     }
@@ -52,12 +50,8 @@ impl BoardImpl of BoardTrait {
         let num_rows = self.num_rows;
 
         // Iterate through neighboring cells
-        for x1 in neighbouring_points(
-            x, num_cols
-        ) {
-            for y1 in neighbouring_points(
-                y, num_rows
-            ) {
+        for x1 in neighbouring_points(x, num_cols) {
+            for y1 in neighbouring_points(y, num_rows) {
                 let piece = self.pieces[y1].at(x1).expect('indexes should be correct');
                 if piece == '*' {
                     count += 1;
@@ -79,7 +73,7 @@ pub fn annotate(pieces: Span<ByteArray>) -> Array<ByteArray> {
         return array![];
     }
 
-    let board = Board { pieces, num_rows: pieces.len(), num_cols: pieces.at(0).len(), };
+    let board = Board { pieces, num_rows: pieces.len(), num_cols: pieces.at(0).len() };
 
     board.annotated()
 }

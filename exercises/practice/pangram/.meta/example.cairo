@@ -25,5 +25,5 @@ pub fn is_pangram(sentence: ByteArray) -> bool {
         curr += 1;
     };
 
-    return success;
+    success
 }

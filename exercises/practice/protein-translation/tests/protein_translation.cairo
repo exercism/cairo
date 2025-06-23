@@ -124,7 +124,7 @@ fn sequence_of_two_different_protein_codons_translates_into_proteins() {
 fn translate_rna_strand_into_correct_protein_list() {
     assert_eq!(
         proteins("AUGUUUUGG"),
-        array![AminoAcid::Methionine, AminoAcid::Phenylalanine, AminoAcid::Tryptophan]
+        array![AminoAcid::Methionine, AminoAcid::Phenylalanine, AminoAcid::Tryptophan],
     );
 }
 
@@ -157,7 +157,7 @@ fn translation_stops_if_stop_codon_in_middle_of_three_codon_sequence() {
 fn translation_stops_if_stop_codon_in_middle_of_six_codon_sequence() {
     assert_eq!(
         proteins("UGGUGUUAUUAAUGGUUU"),
-        array![AminoAcid::Tryptophan, AminoAcid::Cysteine, AminoAcid::Tyrosine]
+        array![AminoAcid::Tryptophan, AminoAcid::Cysteine, AminoAcid::Tyrosine],
     );
 }
 
@@ -185,6 +185,6 @@ fn incomplete_rna_sequence_cant_translate() {
 #[ignore]
 fn incomplete_rna_sequence_can_translate_if_valid_until_a_stop_codon() {
     assert_eq!(
-        proteins("UUCUUCUAAUGGU"), array![AminoAcid::Phenylalanine, AminoAcid::Phenylalanine]
+        proteins("UUCUUCUAAUGGU"), array![AminoAcid::Phenylalanine, AminoAcid::Phenylalanine],
     );
 }

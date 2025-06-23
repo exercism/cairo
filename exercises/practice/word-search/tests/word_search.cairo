@@ -27,8 +27,8 @@ fn should_locate_one_word_written_left_to_right() {
     let results = search(grid, words_to_search_for);
     let expected = array![
         SearchResult {
-            word: "clojure", start: Position { col: 1, row: 1 }, end: Position { col: 7, row: 1 }
-        }
+            word: "clojure", start: Position { col: 1, row: 1 }, end: Position { col: 7, row: 1 },
+        },
     ]
         .span();
 
@@ -49,8 +49,8 @@ fn should_locate_the_same_word_written_left_to_right_in_a_different_position() {
 
     let expected = array![
         SearchResult {
-            word: "clojure", start: Position { col: 3, row: 1 }, end: Position { col: 9, row: 1 }
-        }
+            word: "clojure", start: Position { col: 3, row: 1 }, end: Position { col: 9, row: 1 },
+        },
     ]
         .span();
 
@@ -71,8 +71,8 @@ fn should_locate_a_different_left_to_right_word() {
 
     let expected = array![
         SearchResult {
-            word: "coffee", start: Position { col: 1, row: 1 }, end: Position { col: 6, row: 1 }
-        }
+            word: "coffee", start: Position { col: 1, row: 1 }, end: Position { col: 6, row: 1 },
+        },
     ]
         .span();
 
@@ -93,8 +93,8 @@ fn should_locate_that_different_left_to_right_word_in_a_different_position() {
 
     let expected = array![
         SearchResult {
-            word: "coffee", start: Position { col: 2, row: 1 }, end: Position { col: 7, row: 1 }
-        }
+            word: "coffee", start: Position { col: 2, row: 1 }, end: Position { col: 7, row: 1 },
+        },
     ]
         .span();
 
@@ -116,8 +116,8 @@ fn should_locate_a_left_to_right_word_in_a_two_line_grid() {
 
     let expected = array![
         SearchResult {
-            word: "clojure", start: Position { col: 2, row: 2 }, end: Position { col: 8, row: 2 }
-        }
+            word: "clojure", start: Position { col: 2, row: 2 }, end: Position { col: 8, row: 2 },
+        },
     ]
         .span();
 
@@ -140,8 +140,8 @@ fn should_locate_a_left_to_right_word_in_a_three_line_grid() {
 
     let expected = array![
         SearchResult {
-            word: "clojure", start: Position { col: 1, row: 3 }, end: Position { col: 7, row: 3 }
-        }
+            word: "clojure", start: Position { col: 1, row: 3 }, end: Position { col: 7, row: 3 },
+        },
     ]
         .span();
 
@@ -171,8 +171,8 @@ fn should_locate_a_left_to_right_word_in_a_ten_line_grid() {
 
     let expected = array![
         SearchResult {
-            word: "clojure", start: Position { col: 1, row: 10 }, end: Position { col: 7, row: 10 }
-        }
+            word: "clojure", start: Position { col: 1, row: 10 }, end: Position { col: 7, row: 10 },
+        },
     ]
         .span();
 
@@ -203,8 +203,8 @@ fn should_locate_that_left_to_right_word_in_a_different_position_in_a_ten_line_g
 
     let expected = array![
         SearchResult {
-            word: "clojure", start: Position { col: 1, row: 9 }, end: Position { col: 7, row: 9 }
-        }
+            word: "clojure", start: Position { col: 1, row: 9 }, end: Position { col: 7, row: 9 },
+        },
     ]
         .span();
 
@@ -235,8 +235,8 @@ fn should_locate_a_different_left_to_right_word_in_a_ten_line_grid() {
 
     let expected = array![
         SearchResult {
-            word: "fortran", start: Position { col: 1, row: 7 }, end: Position { col: 7, row: 7 }
-        }
+            word: "fortran", start: Position { col: 1, row: 7 }, end: Position { col: 7, row: 7 },
+        },
     ]
         .span();
 
@@ -266,11 +266,11 @@ fn should_locate_multiple_words() {
 
     let expected = array![
         SearchResult {
-            word: "fortran", start: Position { col: 1, row: 7 }, end: Position { col: 7, row: 7 }
+            word: "fortran", start: Position { col: 1, row: 7 }, end: Position { col: 7, row: 7 },
         },
         SearchResult {
-            word: "clojure", start: Position { col: 1, row: 10 }, end: Position { col: 7, row: 10 }
-        }
+            word: "clojure", start: Position { col: 1, row: 10 }, end: Position { col: 7, row: 10 },
+        },
     ]
         .span();
 
@@ -291,8 +291,8 @@ fn should_locate_a_single_word_written_right_to_left() {
 
     let expected = array![
         SearchResult {
-            word: "elixir", start: Position { col: 6, row: 1 }, end: Position { col: 1, row: 1 }
-        }
+            word: "elixir", start: Position { col: 6, row: 1 }, end: Position { col: 1, row: 1 },
+        },
     ]
         .span();
 
@@ -322,11 +322,11 @@ fn should_locate_multiple_words_written_in_different_horizontal_directions() {
 
     let expected = array![
         SearchResult {
-            word: "elixir", start: Position { col: 6, row: 5 }, end: Position { col: 1, row: 5 }
+            word: "elixir", start: Position { col: 6, row: 5 }, end: Position { col: 1, row: 5 },
         },
         SearchResult {
-            word: "clojure", start: Position { col: 1, row: 10 }, end: Position { col: 7, row: 10 }
-        }
+            word: "clojure", start: Position { col: 1, row: 10 }, end: Position { col: 7, row: 10 },
+        },
     ]
         .span();
 
@@ -356,16 +356,16 @@ fn should_locate_words_written_top_to_bottom() {
 
     let expected = array![
         SearchResult {
-            word: "clojure", start: Position { col: 1, row: 10 }, end: Position { col: 7, row: 10 }
+            word: "clojure", start: Position { col: 1, row: 10 }, end: Position { col: 7, row: 10 },
         },
         SearchResult {
-            word: "elixir", start: Position { col: 6, row: 5 }, end: Position { col: 1, row: 5 }
+            word: "elixir", start: Position { col: 6, row: 5 }, end: Position { col: 1, row: 5 },
         },
         SearchResult {
             word: "ecmascript",
             start: Position { col: 10, row: 1 },
-            end: Position { col: 10, row: 10 }
-        }
+            end: Position { col: 10, row: 10 },
+        },
     ]
         .span();
 
@@ -396,19 +396,19 @@ fn should_locate_words_written_bottom_to_top() {
 
     let expected = array![
         SearchResult {
-            word: "clojure", start: Position { col: 1, row: 10 }, end: Position { col: 7, row: 10 }
+            word: "clojure", start: Position { col: 1, row: 10 }, end: Position { col: 7, row: 10 },
         },
         SearchResult {
-            word: "elixir", start: Position { col: 6, row: 5 }, end: Position { col: 1, row: 5 }
+            word: "elixir", start: Position { col: 6, row: 5 }, end: Position { col: 1, row: 5 },
         },
         SearchResult {
             word: "ecmascript",
             start: Position { col: 10, row: 1 },
-            end: Position { col: 10, row: 10 }
+            end: Position { col: 10, row: 10 },
         },
         SearchResult {
-            word: "rust", start: Position { col: 9, row: 5 }, end: Position { col: 9, row: 2 }
-        }
+            word: "rust", start: Position { col: 9, row: 5 }, end: Position { col: 9, row: 2 },
+        },
     ]
         .span();
 
@@ -438,22 +438,22 @@ fn should_locate_words_written_top_left_to_bottom_right() {
 
     let expected = array![
         SearchResult {
-            word: "clojure", start: Position { col: 1, row: 10 }, end: Position { col: 7, row: 10 }
+            word: "clojure", start: Position { col: 1, row: 10 }, end: Position { col: 7, row: 10 },
         },
         SearchResult {
-            word: "elixir", start: Position { col: 6, row: 5 }, end: Position { col: 1, row: 5 }
+            word: "elixir", start: Position { col: 6, row: 5 }, end: Position { col: 1, row: 5 },
         },
         SearchResult {
             word: "ecmascript",
             start: Position { col: 10, row: 1 },
-            end: Position { col: 10, row: 10 }
+            end: Position { col: 10, row: 10 },
         },
         SearchResult {
-            word: "rust", start: Position { col: 9, row: 5 }, end: Position { col: 9, row: 2 }
+            word: "rust", start: Position { col: 9, row: 5 }, end: Position { col: 9, row: 2 },
         },
         SearchResult {
-            word: "java", start: Position { col: 1, row: 1 }, end: Position { col: 4, row: 4 }
-        }
+            word: "java", start: Position { col: 1, row: 1 }, end: Position { col: 4, row: 4 },
+        },
     ]
         .span();
 
@@ -477,32 +477,32 @@ fn should_locate_words_written_bottom_right_to_top_left() {
         "clojurermt"
     ].span();
 
-    let words_to_search_for = array!["clojure", "elixir", "ecmascript", "rust", "java", "lua",]
+    let words_to_search_for = array!["clojure", "elixir", "ecmascript", "rust", "java", "lua"]
         .span();
 
     let results = search(grid, words_to_search_for);
 
     let expected = array![
         SearchResult {
-            word: "clojure", start: Position { col: 1, row: 10 }, end: Position { col: 7, row: 10 }
+            word: "clojure", start: Position { col: 1, row: 10 }, end: Position { col: 7, row: 10 },
         },
         SearchResult {
-            word: "elixir", start: Position { col: 6, row: 5 }, end: Position { col: 1, row: 5 }
+            word: "elixir", start: Position { col: 6, row: 5 }, end: Position { col: 1, row: 5 },
         },
         SearchResult {
             word: "ecmascript",
             start: Position { col: 10, row: 1 },
-            end: Position { col: 10, row: 10 }
+            end: Position { col: 10, row: 10 },
         },
         SearchResult {
-            word: "rust", start: Position { col: 9, row: 5 }, end: Position { col: 9, row: 2 }
+            word: "rust", start: Position { col: 9, row: 5 }, end: Position { col: 9, row: 2 },
         },
         SearchResult {
-            word: "java", start: Position { col: 1, row: 1 }, end: Position { col: 4, row: 4 }
+            word: "java", start: Position { col: 1, row: 1 }, end: Position { col: 4, row: 4 },
         },
         SearchResult {
-            word: "lua", start: Position { col: 8, row: 9 }, end: Position { col: 6, row: 7 }
-        }
+            word: "lua", start: Position { col: 8, row: 9 }, end: Position { col: 6, row: 7 },
+        },
     ]
         .span();
 
@@ -528,35 +528,35 @@ fn should_locate_words_written_bottom_left_to_top_right() {
     ].span();
 
     let words_to_search_for = array![
-        "clojure", "elixir", "ecmascript", "rust", "java", "lua", "lisp"
+        "clojure", "elixir", "ecmascript", "rust", "java", "lua", "lisp",
     ]
         .span();
 
     let results = search(grid, words_to_search_for);
     let expected = array![
         SearchResult {
-            word: "clojure", start: Position { col: 1, row: 10 }, end: Position { col: 7, row: 10 }
+            word: "clojure", start: Position { col: 1, row: 10 }, end: Position { col: 7, row: 10 },
         },
         SearchResult {
-            word: "elixir", start: Position { col: 6, row: 5 }, end: Position { col: 1, row: 5 }
+            word: "elixir", start: Position { col: 6, row: 5 }, end: Position { col: 1, row: 5 },
         },
         SearchResult {
             word: "ecmascript",
             start: Position { col: 10, row: 1 },
-            end: Position { col: 10, row: 10 }
+            end: Position { col: 10, row: 10 },
         },
         SearchResult {
-            word: "rust", start: Position { col: 9, row: 5 }, end: Position { col: 9, row: 2 }
+            word: "rust", start: Position { col: 9, row: 5 }, end: Position { col: 9, row: 2 },
         },
         SearchResult {
-            word: "java", start: Position { col: 1, row: 1 }, end: Position { col: 4, row: 4 }
+            word: "java", start: Position { col: 1, row: 1 }, end: Position { col: 4, row: 4 },
         },
         SearchResult {
-            word: "lua", start: Position { col: 8, row: 9 }, end: Position { col: 6, row: 7 }
+            word: "lua", start: Position { col: 8, row: 9 }, end: Position { col: 6, row: 7 },
         },
         SearchResult {
-            word: "lisp", start: Position { col: 3, row: 6 }, end: Position { col: 6, row: 3 }
-        }
+            word: "lisp", start: Position { col: 3, row: 6 }, end: Position { col: 6, row: 3 },
+        },
     ]
         .span();
 
@@ -581,7 +581,7 @@ fn should_locate_words_written_top_right_to_bottom_left() {
     ].span();
 
     let words_to_search_for = array![
-        "clojure", "elixir", "ecmascript", "rust", "java", "lua", "lisp", "ruby"
+        "clojure", "elixir", "ecmascript", "rust", "java", "lua", "lisp", "ruby",
     ]
         .span();
 
@@ -589,31 +589,31 @@ fn should_locate_words_written_top_right_to_bottom_left() {
 
     let expected = array![
         SearchResult {
-            word: "clojure", start: Position { col: 1, row: 10 }, end: Position { col: 7, row: 10 }
+            word: "clojure", start: Position { col: 1, row: 10 }, end: Position { col: 7, row: 10 },
         },
         SearchResult {
-            word: "elixir", start: Position { col: 6, row: 5 }, end: Position { col: 1, row: 5 }
+            word: "elixir", start: Position { col: 6, row: 5 }, end: Position { col: 1, row: 5 },
         },
         SearchResult {
             word: "ecmascript",
             start: Position { col: 10, row: 1 },
-            end: Position { col: 10, row: 10 }
+            end: Position { col: 10, row: 10 },
         },
         SearchResult {
-            word: "rust", start: Position { col: 9, row: 5 }, end: Position { col: 9, row: 2 }
+            word: "rust", start: Position { col: 9, row: 5 }, end: Position { col: 9, row: 2 },
         },
         SearchResult {
-            word: "java", start: Position { col: 1, row: 1 }, end: Position { col: 4, row: 4 }
+            word: "java", start: Position { col: 1, row: 1 }, end: Position { col: 4, row: 4 },
         },
         SearchResult {
-            word: "lua", start: Position { col: 8, row: 9 }, end: Position { col: 6, row: 7 }
+            word: "lua", start: Position { col: 8, row: 9 }, end: Position { col: 6, row: 7 },
         },
         SearchResult {
-            word: "lisp", start: Position { col: 3, row: 6 }, end: Position { col: 6, row: 3 }
+            word: "lisp", start: Position { col: 3, row: 6 }, end: Position { col: 6, row: 3 },
         },
         SearchResult {
-            word: "ruby", start: Position { col: 8, row: 6 }, end: Position { col: 5, row: 9 }
-        }
+            word: "ruby", start: Position { col: 8, row: 6 }, end: Position { col: 5, row: 9 },
+        },
     ]
         .span();
 
@@ -637,7 +637,7 @@ fn should_fail_to_locate_a_word_that_is_not_in_the_puzzle() {
     ].span();
 
     let words_to_search_for = array![
-        "clojure", "elixir", "ecmascript", "rust", "java", "lua", "lisp", "ruby", "haskell"
+        "clojure", "elixir", "ecmascript", "rust", "java", "lua", "lisp", "ruby", "haskell",
     ]
         .span();
 
@@ -645,31 +645,31 @@ fn should_fail_to_locate_a_word_that_is_not_in_the_puzzle() {
 
     let expected = array![
         SearchResult {
-            word: "clojure", start: Position { col: 1, row: 10 }, end: Position { col: 7, row: 10 }
+            word: "clojure", start: Position { col: 1, row: 10 }, end: Position { col: 7, row: 10 },
         },
         SearchResult {
-            word: "elixir", start: Position { col: 6, row: 5 }, end: Position { col: 1, row: 5 }
+            word: "elixir", start: Position { col: 6, row: 5 }, end: Position { col: 1, row: 5 },
         },
         SearchResult {
             word: "ecmascript",
             start: Position { col: 10, row: 1 },
-            end: Position { col: 10, row: 10 }
+            end: Position { col: 10, row: 10 },
         },
         SearchResult {
-            word: "rust", start: Position { col: 9, row: 5 }, end: Position { col: 9, row: 2 }
+            word: "rust", start: Position { col: 9, row: 5 }, end: Position { col: 9, row: 2 },
         },
         SearchResult {
-            word: "java", start: Position { col: 1, row: 1 }, end: Position { col: 4, row: 4 }
+            word: "java", start: Position { col: 1, row: 1 }, end: Position { col: 4, row: 4 },
         },
         SearchResult {
-            word: "lua", start: Position { col: 8, row: 9 }, end: Position { col: 6, row: 7 }
+            word: "lua", start: Position { col: 8, row: 9 }, end: Position { col: 6, row: 7 },
         },
         SearchResult {
-            word: "lisp", start: Position { col: 3, row: 6 }, end: Position { col: 6, row: 3 }
+            word: "lisp", start: Position { col: 3, row: 6 }, end: Position { col: 6, row: 3 },
         },
         SearchResult {
-            word: "ruby", start: Position { col: 8, row: 6 }, end: Position { col: 5, row: 9 }
-        }
+            word: "ruby", start: Position { col: 8, row: 6 }, end: Position { col: 5, row: 9 },
+        },
     ]
         .span();
 

@@ -42,6 +42,5 @@ fn sqrt(radicand: u64) -> u64 {
             candidate += 1;
         };
     }
-
-    return candidate;
+    candidate
 }

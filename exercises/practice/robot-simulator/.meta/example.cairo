@@ -62,7 +62,7 @@ pub impl RobotImpl of RobotTrait {
     }
 
     fn build(position: Position, direction: Direction) -> Robot {
-        Robot { position, direction, }
+        Robot { position, direction }
     }
 
     #[must_use]

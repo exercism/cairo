@@ -3,7 +3,7 @@ pub enum Plant {
     Radishes,
     Clover,
     Grass,
-    Violets
+    Violets,
 }
 
 #[derive(Drop)]
@@ -87,5 +87,5 @@ pub fn plants(diagram: ByteArray, student: Student) -> Array<Plant> {
     let plant3 = plant_from_char(line2[start]);
     let plant4 = plant_from_char(line2[start + 1]);
 
-    array![plant1, plant2, plant3, plant4,]
+    array![plant1, plant2, plant3, plant4]
 }

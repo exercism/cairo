@@ -1,7 +1,5 @@
 {
-    "blurb": "<todo>",
-    "authors": [
-        "<your_gh_username>"
-    ],
+    "blurb": "In Cairo, methods and associated functions allow you to organize functionality around specific types, making your code modular and intuitive.",
+    "authors": ["0xNeshi"],
     "contributors": []
 }

@@ -14,7 +14,7 @@ pub fn answer(question: ByteArray) -> i32 {
 
     let mut result = match parse_int(words[2]) {
         Option::Some(s) => s,
-        Option::None => panic!("syntax error")
+        Option::None => panic!("syntax error"),
     };
 
     let mut i = 3;
@@ -96,9 +96,8 @@ fn parse_int(num: @ByteArray) -> Option<i32> {
         i += 1;
     }
 
-    while i < size {
-        let re = char_to_digit(num[i]);
-        match re {
+    for i in i..size {
+        match char_to_digit(num[i]) {
             Option::Some(v) => {
                 if let Option::Some(num) = result {
                     result = Option::Some(num * 10 + v.into());
@@ -107,9 +106,8 @@ fn parse_int(num: @ByteArray) -> Option<i32> {
             Option::None => {
                 result = Option::None;
                 break;
-            }
+            },
         }
-        i += 1;
     };
 
     if let Option::Some(val) = result {

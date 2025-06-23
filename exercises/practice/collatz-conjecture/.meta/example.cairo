@@ -13,5 +13,5 @@ pub fn steps(number: usize) -> usize {
         count += 1;
     };
 
-    return count;
+    count
 }

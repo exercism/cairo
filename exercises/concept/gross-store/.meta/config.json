@@ -1,6 +1,6 @@
 {
   "authors": [
-    "<your_gh_username>"
+    "0xNeshi"
   ],
   "files": {
     "solution": [
@@ -19,5 +19,5 @@
   "forked_from": [
     "go/gross-store"
   ],
-  "blurb": "<blurb>"
+  "blurb": "Learn about maps by selling items by the dozen at the Gross Store."
 }

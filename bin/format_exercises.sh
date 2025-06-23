@@ -9,6 +9,9 @@ repo=$(git rev-parse --show-toplevel)
 # directory and format Cairo files
 exercises="$repo/exercises/*/*"
 
+# Capture all arguments passed to the script to pass them to scarb fmt
+SCARB_FMT_ARGS=("$@")
+
 for exercise_dir in $exercises; do
     cd "$exercise_dir"
 
@@ -17,6 +20,11 @@ for exercise_dir in $exercises; do
     if [ ! -s "$exercise_dir/Scarb.toml" ]; then
         echo "Exercise $exercise is just a stub, skipping"
         continue
+    fi
+
+    if [ ! -s "./src/lib.cairo" ]; then
+        echo "Could not locate scaffold implementation for $exercise"
+        exit 1
     fi
 
     # scarb fmt cannot currently format individual files, so we have to
@@ -34,12 +42,14 @@ for exercise_dir in $exercises; do
         exit 1
     fi
 
-    # move the solution file into the package
+    echo "Formatting $exercise..."
+
+    # copy the example solution file into the package
     cp "$solution_file" "$tmp_file"
 
-    scarb fmt
+    scarb fmt "${SCARB_FMT_ARGS[@]}"
 
-    # move the solution file back
+    # copy the example solution back in case it was formatted
     cp "$tmp_file" "$solution_file"
 
     rm "$tmp_file"

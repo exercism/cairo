@@ -12,7 +12,7 @@ pub impl OptionalBinaryTreeNodePartialEq of PartialEq<Option<Box<BinaryTreeNode>
         match (lhs, rhs) {
             (Option::Some(lhs), Option::Some(rhs)) => (*lhs).unbox() == (*rhs).unbox(),
             (Option::None, Option::None) => true,
-            _ => false
+            _ => false,
         }
     }
 }
@@ -63,14 +63,14 @@ pub impl BinaryTreeImpl of BinaryTreeTrait {
     fn left(self: @BinaryTree) -> @BinaryTree {
         @match self {
             Option::None => Option::None,
-            Option::Some(bst) => bst.left
+            Option::Some(bst) => bst.left,
         }
     }
 
     fn right(self: @BinaryTree) -> @BinaryTree {
         @match self {
             Option::None => Option::None,
-            Option::Some(bst) => bst.right
+            Option::Some(bst) => bst.right,
         }
     }
 }
@@ -78,19 +78,19 @@ pub impl BinaryTreeImpl of BinaryTreeTrait {
 #[derive(Drop, Copy, Debug, PartialEq)]
 enum Path {
     Left,
-    Right
+    Right,
 }
 
 #[derive(Drop, Copy, Debug, PartialEq)]
 struct Ancestor {
     path: Path,
-    node: BinaryTreeNode
+    node: BinaryTreeNode,
 }
 
 #[derive(Drop, Debug, PartialEq)]
 struct Zipper {
     node: BinaryTreeNode,
-    ancestors: Span<Ancestor>
+    ancestors: Span<Ancestor>,
 }
 
 #[generate_trait]
@@ -113,13 +113,13 @@ pub impl ZipperImpl of ZipperTrait {
 
     fn left(self: Zipper) -> Option<Zipper> {
         Self::new(
-            self.node.left, self.ancestors.append(Ancestor { path: Path::Left, node: self.node })
+            self.node.left, self.ancestors.append(Ancestor { path: Path::Left, node: self.node }),
         )
     }
 
     fn right(self: Zipper) -> Option<Zipper> {
         Self::new(
-            self.node.right, self.ancestors.append(Ancestor { path: Path::Right, node: self.node })
+            self.node.right, self.ancestors.append(Ancestor { path: Path::Right, node: self.node }),
         )
     }
 

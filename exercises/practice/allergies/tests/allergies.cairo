@@ -282,7 +282,7 @@ fn testing_for_cats_allergy_allergic_to_everything() {
 fn compare_allergy_vectors(expected: @Array<Allergen>, actual: @Array<Allergen>) {
     if actual.len() != expected.len() {
         panic!(
-            "Allergy vectors are of different lengths\n  expected {expected:?}\n  got {actual:?}"
+            "Allergy vectors are of different lengths\n  expected {expected:?}\n  got {actual:?}",
         );
     }
 

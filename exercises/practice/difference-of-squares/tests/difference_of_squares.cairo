@@ -1,8 +1,10 @@
-use difference_of_squares::{squareOfSum, sumOfSquares, differenceOfSquares};
+use difference_of_squares::{
+    square_of_sum, sum_of_squares, difference_of_squares as diff_of_squares,
+};
 
 #[test]
 fn square_of_sum_1() {
-    let output = squareOfSum(1);
+    let output = square_of_sum(1);
     let expected = 1;
     assert_eq!(output, expected);
 }
@@ -10,7 +12,7 @@ fn square_of_sum_1() {
 #[test]
 #[ignore]
 fn square_of_sum_5() {
-    let output = squareOfSum(5);
+    let output = square_of_sum(5);
     let expected = 225;
     assert_eq!(output, expected);
 }
@@ -18,7 +20,7 @@ fn square_of_sum_5() {
 #[test]
 #[ignore]
 fn square_of_sum_100() {
-    let output = squareOfSum(100);
+    let output = square_of_sum(100);
     let expected = 25502500;
     assert_eq!(output, expected);
 }
@@ -26,7 +28,7 @@ fn square_of_sum_100() {
 #[test]
 #[ignore]
 fn sum_of_squares_1() {
-    let output = sumOfSquares(1);
+    let output = sum_of_squares(1);
     let expected = 1;
     assert_eq!(output, expected);
 }
@@ -34,7 +36,7 @@ fn sum_of_squares_1() {
 #[test]
 #[ignore]
 fn sum_of_squares_5() {
-    let output = sumOfSquares(5);
+    let output = sum_of_squares(5);
     let expected = 55;
     assert_eq!(output, expected);
 }
@@ -42,7 +44,7 @@ fn sum_of_squares_5() {
 #[test]
 #[ignore]
 fn sum_of_squares_100() {
-    let output = sumOfSquares(100);
+    let output = sum_of_squares(100);
     let expected = 338350;
     assert_eq!(output, expected);
 }
@@ -50,7 +52,7 @@ fn sum_of_squares_100() {
 #[test]
 #[ignore]
 fn difference_of_squares_1() {
-    let output = differenceOfSquares(1);
+    let output = diff_of_squares(1);
     let expected = 0;
     assert_eq!(output, expected);
 }
@@ -58,7 +60,7 @@ fn difference_of_squares_1() {
 #[test]
 #[ignore]
 fn difference_of_squares_5() {
-    let output = differenceOfSquares(5);
+    let output = diff_of_squares(5);
     let expected = 170;
     assert_eq!(output, expected);
 }
@@ -66,7 +68,7 @@ fn difference_of_squares_5() {
 #[test]
 #[ignore]
 fn difference_of_squares_100() {
-    let output = differenceOfSquares(100);
+    let output = diff_of_squares(100);
     let expected = 25164150;
     assert_eq!(output, expected);
 }

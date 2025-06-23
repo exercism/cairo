@@ -43,7 +43,8 @@
         "uuid": "f120ab92-f277-434c-ae38-a3bb86cb67bf",
         "concepts": [
           "functions",
-          "mutability"
+          "mutability",
+          "integers"
         ],
         "prerequisites": [],
         "status": "beta"
@@ -56,7 +57,9 @@
           "booleans"
         ],
         "prerequisites": [
-          "functions"
+          "functions",
+          "mutability",
+          "integers"
         ],
         "status": "wip"
       },
@@ -68,31 +71,7 @@
           "felts"
         ],
         "prerequisites": [
-          "functions"
-        ],
-        "status": "wip"
-      },
-      {
-        "slug": "cars-assemble",
-        "name": "Cars Assemble",
-        "uuid": "57845c17-15e5-4c62-bbac-29ad633e9ebb",
-        "concepts": [
-          "integers"
-        ],
-        "prerequisites": [
-          "functions"
-        ],
-        "status": "wip"
-      },
-      {
-        "slug": "welcome-to-tech-palace",
-        "name": "Welcome To Tech Palace!",
-        "uuid": "f8108950-9819-4540-8a3a-880d0778806c",
-        "concepts": [
-          "strings"
-        ],
-        "prerequisites": [
-          "functions"
+          "booleans"
         ],
         "status": "wip"
       },
@@ -104,7 +83,7 @@
           "arrays"
         ],
         "prerequisites": [
-          "integers"
+          "felts"
         ],
         "status": "wip"
       },
@@ -113,11 +92,23 @@
         "name": "RPN Calculator",
         "uuid": "536d9f09-5910-4a26-93fd-2242667b0b87",
         "concepts": [
-          "control-flow"
+          "control-flow",
+          "enums"
         ],
         "prerequisites": [
-          "arrays",
-          "enums"
+          "arrays"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "welcome-to-tech-palace",
+        "name": "Welcome To Tech Palace!",
+        "uuid": "f8108950-9819-4540-8a3a-880d0778806c",
+        "concepts": [
+          "strings"
+        ],
+        "prerequisites": [
+          "control-flow"
         ],
         "status": "wip"
       },
@@ -152,7 +143,7 @@
         "name": "Red vs. Blue: Darwin Style",
         "uuid": "30761b1c-0c9a-4c91-8d16-1adf8bc4a0dd",
         "concepts": [
-          "packages-crates-modules"
+          "modules"
         ],
         "prerequisites": [
           "structs"
@@ -167,8 +158,7 @@
           "method-syntax"
         ],
         "prerequisites": [
-          "structs",
-          "references-and-snapshots"
+          "structs"
         ],
         "status": "wip"
       },
@@ -217,7 +207,6 @@
           "option"
         ],
         "prerequisites": [
-          "structs",
           "method-syntax"
         ],
         "status": "wip"
@@ -236,14 +225,15 @@
         "status": "wip"
       },
       {
-        "slug": "the-farm",
-        "name": "The Farm",
-        "uuid": "e167e30c-84b1-44da-b21c-70bc46688f20",
+        "slug": "calculator-conundrum",
+        "name": "Calculator Conundrum",
+        "uuid": "989df4b1-6d89-468d-96e0-47013e3cf99b",
         "concepts": [
           "error-handling"
         ],
         "prerequisites": [
-          "structs"
+          "traits",
+          "option"
         ],
         "status": "wip"
       },
@@ -260,14 +250,14 @@
         "status": "wip"
       },
       {
-        "slug": "chrono-realms-time-tree",
-        "name": "Chrono Realms Time Tree",
-        "uuid": "a72139a1-825e-4349-a6b5-400b665fbe07",
+        "slug": "chrono-realms-chrono-chain",
+        "name": "Chrono Realms Chrono Chain",
+        "uuid": "e04f808a-25dc-4448-bc45-d3da0db9819a",
         "concepts": [
           "smart-pointers"
         ],
         "prerequisites": [
-          "structs"
+          "traits"
         ],
         "status": "wip"
       }
@@ -477,7 +467,7 @@
         "name": "Armstrong Numbers",
         "uuid": "4aaa153d-3416-4101-8143-35b068a15451",
         "practices": [
-          "packages-crates-modules"
+          "modules"
         ],
         "prerequisites": [],
         "difficulty": 3
@@ -709,6 +699,14 @@
         "difficulty": 10
       },
       {
+        "slug": "resistor-color",
+        "name": "Resistor Color",
+        "uuid": "cc590998-e7a1-4972-bd32-cf13bf64c909",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
         "slug": "resistor-color-duo",
         "name": "Resistor Color Duo",
         "uuid": "5fd540f6-75d1-4b8f-ae56-08c246277e5d",
@@ -875,6 +873,22 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 4
+      },
+      {
+        "slug": "variable-length-quantity",
+        "name": "Variable Length Quantity",
+        "uuid": "66e4bb61-076a-4adb-b7a0-b216196e699e",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
+      },
+      {
+        "slug": "etl",
+        "name": "ETL",
+        "uuid": "b61157d4-6db8-4a52-a772-2e1037b3c071",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 3
       }
     ],
     "foregone": [
@@ -936,6 +950,11 @@
       "name": "Functions"
     },
     {
+      "uuid": "56b0dcb7-c9c3-4323-b297-873002b713d3",
+      "slug": "associated-items",
+      "name": "Associated Items"
+    },
+    {
       "uuid": "9be30113-b4fe-4cdd-9894-9afd593f2a90",
       "slug": "generics",
       "name": "Generic Types"
@@ -977,8 +996,8 @@
     },
     {
       "uuid": "52684fe6-9b8d-4974-8de4-f65d42fbf9c1",
-      "slug": "packages-crates-modules",
-      "name": "Packages, Crates and Modules"
+      "slug": "modules",
+      "name": "Modules"
     },
     {
       "uuid": "fe81e75b-b4d2-4ee8-9aaa-271e76468d0b",

@@ -18,5 +18,5 @@ pub fn distance(strand1: ByteArray, strand2: ByteArray) -> u256 {
         i += 1;
     };
 
-    return count;
+    count
 }

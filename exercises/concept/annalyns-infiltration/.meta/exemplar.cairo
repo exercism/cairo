@@ -11,7 +11,7 @@ pub fn can_signal_prisoner(archer_awake: bool, prisoner_awake: bool) -> bool {
 }
 
 pub fn can_free_prisoner(
-    knight_awake: bool, archer_awake: bool, prisoner_awake: bool, dog_present: bool
+    knight_awake: bool, archer_awake: bool, prisoner_awake: bool, dog_present: bool,
 ) -> bool {
     (prisoner_awake && !knight_awake && !archer_awake) || (dog_present && !archer_awake)
 }

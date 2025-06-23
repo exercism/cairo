@@ -15,7 +15,7 @@ pub enum AminoAcid {
 #[derive(Drop, Copy)]
 enum Codon {
     AminoAcid: AminoAcid,
-    Stop
+    Stop,
 }
 
 pub fn proteins(strand: ByteArray) -> Array<AminoAcid> {
@@ -37,9 +37,9 @@ pub fn proteins(strand: ByteArray) -> Array<AminoAcid> {
                     Codon::AminoAcid(amino_acid) => {
                         result.append(amino_acid);
                         codon_index += 3;
-                    }
+                    },
                 }
-            }
+            },
         }
     };
 

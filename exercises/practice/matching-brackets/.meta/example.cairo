@@ -40,7 +40,7 @@ pub fn is_paired(value: ByteArray) -> bool {
         result = stack.is_empty();
     }
 
-    return result;
+    result
 }
 
 fn paired_brackets() -> Felt252Dict<u8> {
@@ -48,5 +48,5 @@ fn paired_brackets() -> Felt252Dict<u8> {
     pairs.insert('{', '}');
     pairs.insert('[', ']');
     pairs.insert('(', ')');
-    return pairs;
+    pairs
 }

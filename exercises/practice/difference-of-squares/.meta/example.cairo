@@ -1,35 +1,19 @@
-pub fn squareOfSum(number: u64) -> u64 {
+pub fn square_of_sum(number: u64) -> u64 {
     let mut sum = 0;
-    let mut current = 1;
-
-    loop {
-        if current > number {
-            break;
-        }
-
+    for current in 1..(number + 1) {
         sum += current;
-        current += 1;
     };
-
-    return sum * sum;
+    sum * sum
 }
 
-pub fn sumOfSquares(number: u64) -> u64 {
+pub fn sum_of_squares(number: u64) -> u64 {
     let mut sum = 0;
-    let mut current = 1;
-
-    loop {
-        if current > number {
-            break;
-        }
-
+    for current in 1..(number + 1) {
         sum += current * current;
-        current += 1;
     };
-
-    return sum;
+    sum
 }
 
-pub fn differenceOfSquares(number: u64) -> u64 {
-    return squareOfSum(number) - sumOfSquares(number);
+pub fn difference_of_squares(number: u64) -> u64 {
+    square_of_sum(number) - sum_of_squares(number)
 }

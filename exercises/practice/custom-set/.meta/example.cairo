@@ -4,7 +4,7 @@ struct CustomSet<T> {
 }
 
 impl CustomSetEq<
-    T, +Copy<T>, +Drop<T>, +PartialEq<T>, +core::fmt::Display<T>
+    T, +Copy<T>, +Drop<T>, +PartialEq<T>, +core::fmt::Display<T>,
 > of PartialEq<CustomSet<T>> {
     fn eq(lhs: @CustomSet<T>, rhs: @CustomSet<T>) -> bool {
         if lhs.collection.len() != rhs.collection.len() {
@@ -16,10 +16,10 @@ impl CustomSetEq<
 
 #[generate_trait]
 pub impl CustomSetImpl<
-    T, +Copy<T>, +Drop<T>, +core::fmt::Display<T>, +PartialEq<T>
+    T, +Copy<T>, +Drop<T>, +core::fmt::Display<T>, +PartialEq<T>,
 > of CustomSetTrait<T> {
     fn new(input: @Array<T>) -> CustomSet<T> {
-        let mut set = CustomSet::<T> { collection: array![], };
+        let mut set = CustomSet::<T> { collection: array![] };
         let input = input.span();
         for val in input {
             set.add(val.clone());

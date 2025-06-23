@@ -36,6 +36,24 @@ There is also a special macro, called `panic!`, that allows a `ByteArray` to be 
 panic!("The error for the panic! Error message is not limited to 31 characters anymore");
 ```
 
+### The `assert!` Macro
+
+The `assert!` macro is a useful tool for enforcing specific conditions in your code.
+If the condition in `assert!` evaluates to `false`, the program will panic with a `ByteArray` error message.
+This is often used to verify assumptions during development and ensure values meet certain criteria.
+
+For example:
+
+```rust
+fn main() {
+    let x = 5;
+    assert!(x > 0, "x must be greater than zero");
+}
+```
+
+If `x` is not greater than zero, the program will panic with the message `"x must be greater than zero"`.
+`assert!` is helpful for checking invariants and preconditions without manually writing error-handling code.
+
 ### `nopanic` Notation
 
 Cairo `nopanic` notation indicates that a function will never panic.

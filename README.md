@@ -59,7 +59,7 @@ _Thoughtful suggestions will likely result faster & more enthusiastic responses 
 
 ## Testing
 
-Tests currently use Cairo v2.8.2 (included with Scarb v2.8.2).
+Tests currently use Cairo v2.9.2 (included with Scarb v2.9.2).
 
 To test all exercises, run `./bin/verify-exercises`.
 This command will iterate over all exercises and check to see if their exemplar/example implementation passes all the tests.

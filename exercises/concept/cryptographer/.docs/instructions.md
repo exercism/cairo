@@ -31,15 +31,15 @@ subtract_messages(123456789, 987654321)
 
 > **Note:** The return value should be a `felt252`.
 
-## 3. Verify the Integrity of a Multiplication Operation
+## 3. Calculate a Valid Product of Two Messages
 
-To ensure the integrity of encrypted data, the cryptographic system often multiplies two field elements (`felt252`).
+To ensure the integrity of encrypted data, the cryptographic system often multiplies two messages (`felt252`) to ensure their product stays within a valid range.
 The result must be computed modulo $P$ to ensure it remains within the valid range.
 
 Implement a function that takes in two `felt252` values and returns their product, ensuring the result stays within the valid range:
 
 ```rust
-verify_multiplication(382927772233671078546147897004315551461400594453673204174697055647611, 9449570)
+multiply_messages(382927772233671078546147897004315551461400594453673204174697055647611, 9449570)
 // => 123456789
 ```
 

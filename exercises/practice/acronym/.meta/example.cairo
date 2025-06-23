@@ -14,25 +14,25 @@ pub fn abbreviate(phrase: ByteArray) -> ByteArray {
         i += 1;
     };
 
-    return result;
+    result
 }
 
 fn to_uppercase(c: u8) -> u8 {
     if is_lowercase(c) {
-        return c - 32;
+        c - 32
     } else {
-        return c;
+        c
     }
 }
 
 fn is_letter(c: u8) -> bool {
-    return is_uppercase(c) || is_lowercase(c);
+    is_uppercase(c) || is_lowercase(c)
 }
 
 fn is_uppercase(c: u8) -> bool {
-    return c >= 'A' && c <= 'Z';
+    c >= 'A' && c <= 'Z'
 }
 
 fn is_lowercase(c: u8) -> bool {
-    return c >= 'a' && c <= 'z';
+    c >= 'a' && c <= 'z'
 }

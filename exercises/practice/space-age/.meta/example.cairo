@@ -20,7 +20,7 @@ const MICROSECONDS_IN_A_SECOND: u64 = 1_000_000;
 pub trait Planet<T> {
     const PERIOD: u256;
     fn age(
-        self: @T, seconds: u256
+        self: @T, seconds: u256,
     ) -> u256 {
         let microseconds = seconds * MICROSECONDS_IN_A_SECOND.into();
         // multiplying with 100 before the division makes the result

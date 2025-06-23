@@ -1,6 +1,6 @@
 {
   "authors": [
-    "<your_gh_username>"
+    "0xNeshi"
   ],
   "files": {
     "solution": [
@@ -19,5 +19,5 @@
   "forked_from": [
     "gleam/magician-in-training"
   ],
-  "blurb": "<blurb>"
+  "blurb": "Help Elyse with her Enchantments and learn about arrays in the process."
 }

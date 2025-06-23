@@ -1,3 +1,5 @@
+use core::num::traits::Pow;
+
 #[derive(Drop, Debug, PartialEq)]
 pub enum Error {
     InvalidInputBase,
@@ -45,7 +47,7 @@ fn convert_to_base_10(digits: Array<u32>, input_base: u32) -> u32 {
     while i < len {
         let digit = digits[i];
         let exp = len - 1 - i;
-        let pow = pow(input_base, exp);
+        let pow = input_base.pow(exp);
         sum += *digit * pow;
         i += 1;
     };
@@ -79,18 +81,4 @@ fn reverse_array(arr: Array<u32>) -> Array<u32> {
     };
 
     reversed
-}
-
-fn pow(base: u32, mut power: u32) -> u32 {
-    if base == 0 {
-        return base;
-    }
-    let base: u256 = base.into();
-    let mut result = 1_u256;
-    while power != 0 {
-        result *= base;
-        power -= 1;
-    };
-
-    result.try_into().expect('too large to fit output type')
 }

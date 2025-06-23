@@ -11,7 +11,7 @@ pub enum Category {
     LittleStraight,
     BigStraight,
     Choice,
-    Yacht
+    Yacht,
 }
 
 pub fn score(dice: [u8; 5], category: Category) -> u8 {

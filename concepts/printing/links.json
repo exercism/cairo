@@ -1,1 +1,10 @@
-[]
+[
+    {
+        "url": "https://book.cairo-lang.org/ch11-08-printing.html",
+        "description": "Printing in The Cairo book"
+    },
+    {
+        "url": "https://book.cairo-lang.org/appendix-03-derivable-traits.html#debug-for-printing-and-debugging",
+        "description": "Derivable Debug Trait in The Cairo Book"
+    }
+]

@@ -1,1 +1,18 @@
-[]
+[
+    {
+        "url": "https://book.cairo-lang.org/ch03-02-dictionaries.html",
+        "description": "Dictionaries in the Cairo book"
+    },
+    {
+        "url": "https://book.cairo-lang.org/ch12-01-custom-data-structures.html#simulating-a-dynamic-array-with-dicts",
+        "description": "Simulating a Dynamic Array with Dictionaries"
+    },
+    {
+        "url": "https://book.cairo-lang.org/ch12-01-custom-data-structures.html#dictionaries-as-struct-members",
+        "description": "Dictionaries as Struct Members"
+    },
+    {
+        "url": "https://book.cairo-lang.org/ch04-01-what-is-ownership.html#destruction-with-a-side-effect-the-destruct-trait",
+        "description": "Destruct Trait"
+    }
+]
