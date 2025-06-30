@@ -1,0 +1,20 @@
+{
+  "authors": [
+    "0xNeshi"
+  ],
+  "contributors": [
+    "BNAndras"
+  ],
+  "files": {
+    "solution": [
+      "src/lib.cairo"
+    ],
+    "test": [
+      "tests/flower_field.cairo"
+    ],
+    "example": [
+      ".meta/example.cairo"
+    ]
+  },
+  "blurb": "Mark all the flowers in a garden."
+}

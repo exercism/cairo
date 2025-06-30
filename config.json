@@ -787,6 +787,14 @@
         "difficulty": 2
       },
       {
+        "slug": "flower-field",
+        "name": "Flower Field",
+        "uuid": "cbbfed08-b32e-47cd-b8b8-2221a1804b1f",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 6
+      },
+      {
         "slug": "minesweeper",
         "name": "Minesweeper",
         "uuid": "393d862e-2736-49e7-ad7a-cda819b897c9",
