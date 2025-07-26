@@ -45,21 +45,22 @@ pub mod blue_remote_control_car_team {
     pub struct Motor {}
 }
 
-pub mod Combined {
+pub mod combined {
     use super::red_remote_control_car_team as Red;
     use super::blue_remote_control_car_team as Blue;
 
+    #[derive(Drop)]
     pub struct CarBuilder {}
 
     #[generate_trait]
     impl CarBuilderImpl of CarBuilderTrait {
-        fn build_red() -> Red::RemoteControlCar {
+        fn build_red(self: @CarBuilder) -> Red::RemoteControlCar {
             Red::RemoteControlCarTrait::new(
                 Red::Motor {}, Red::Chassis {}, Red::Telemetry {}, Red::RunningGear {},
             )
         }
 
-        fn build_blue() -> Blue::RemoteControlCar {
+        fn build_blue(self: @CarBuilder) -> Blue::RemoteControlCar {
             Blue::RemoteControlCarTrait::new(Blue::Motor {}, Blue::Chassis {}, Blue::Telemetry {})
         }
     }

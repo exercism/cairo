@@ -1,8 +1,8 @@
 #[derive(Drop)]
-pub struct RedRemoteControlCar {}
+struct RedRemoteControlCar {}
 
 #[generate_trait]
-pub impl RedRemoteControlCarImpl of RedRemoteControlCarTrait {
+impl RedRemoteControlCarImpl of RedRemoteControlCarTrait {
     fn new(
         motor: RedMotor, chassis: RedChassis, telemetry: RedTelemetry, runningGear: RedRunningGear,
     ) -> RedRemoteControlCar {
@@ -11,16 +11,16 @@ pub impl RedRemoteControlCarImpl of RedRemoteControlCarTrait {
 }
 
 #[derive(Drop)]
-pub struct RedRunningGear {}
+struct RedRunningGear {}
 
 #[derive(Drop)]
-pub struct RedTelemetry {}
+struct RedTelemetry {}
 
 #[derive(Drop)]
-pub struct RedChassis {}
+struct RedChassis {}
 
 #[derive(Drop)]
-pub struct RedMotor {}
+struct RedMotor {}
 
 #[derive(Drop)]
 struct BlueRemoteControlCar {}
@@ -43,6 +43,7 @@ struct BlueChassis {}
 #[derive(Drop)]
 struct BlueMotor {}
 
+#[derive(Drop)]
 struct CarBuilder {}
 
 #[generate_trait]
