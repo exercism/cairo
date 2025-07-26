@@ -5,7 +5,7 @@
 - [Modules][modules]: how to define modules.
 - [Paths][paths]: what are absolute and relative paths.
 - [Accessibility][accessibility]: how to expose paths with the `pub` keyword.
-- [Importing paths][using]: how to bring paths into scope with the `use` keyword. 
+- [Importing paths][using]: how to bring paths into scope with the `use` keyword.
 
 ## 1. Find a more appropriate way of isolating the code of the two teams
 
