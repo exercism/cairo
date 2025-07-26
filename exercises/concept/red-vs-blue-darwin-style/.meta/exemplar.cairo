@@ -53,7 +53,7 @@ pub mod combined {
     pub struct CarBuilder {}
 
     #[generate_trait]
-    impl CarBuilderImpl of CarBuilderTrait {
+    pub impl CarBuilderImpl of CarBuilderTrait {
         fn build_red(self: @CarBuilder) -> Red::RemoteControlCar {
             Red::RemoteControlCarTrait::new(
                 Red::Motor {}, Red::Chassis {}, Red::Telemetry {}, Red::RunningGear {},
