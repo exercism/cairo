@@ -46,7 +46,8 @@ pub mod blue_remote_control_car_team {
 }
 
 pub mod Combined {
-    use super::{red_remote_control_car_team as Red, blue_remote_control_car_team as Blue};
+    use super::red_remote_control_car_team as Red;
+    use super::blue_remote_control_car_team as Blue;
 
     pub struct CarBuilder {}
 

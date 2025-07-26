@@ -4,7 +4,7 @@
 
 - Know what modules are.
 - Know how to declare modules.
-- Know how to import modules.
+- Know how to import modules and paths.
 
 ## Out of scope
 
