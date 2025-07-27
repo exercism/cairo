@@ -155,7 +155,8 @@
         "name": "Health Statistics",
         "uuid": "69389197-e1dc-43bf-865d-d9b58d59b4e7",
         "concepts": [
-          "method-syntax"
+          "method-syntax",
+          "traits"
         ],
         "prerequisites": [
           "structs"
@@ -167,8 +168,7 @@
         "name": "Airport Robot",
         "uuid": "f0c994d7-d183-4dfa-9048-b20be6f3bf2e",
         "concepts": [
-          "generics",
-          "traits"
+          "generics"
         ],
         "prerequisites": [
           "method-syntax"
