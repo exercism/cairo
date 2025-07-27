@@ -9,11 +9,11 @@
 
 ## 1. Find a more appropriate way of isolating the code of the two teams
 
-- See this [article][modules] which discusses the syntax of modules.
+- See [this article][modules] which discusses the syntax of modules.
 
 ## 2. Simplify the naming system
 
-- See this [explanation][alias] on how to alias imports using the `use` directive.
+- See [this explanation][alias] on how to alias imports using the `use` directive.
 
 [modules]: https://www.starknet.io/cairo-book/ch07-02-defining-modules-to-control-scope.html
 [paths]: https://www.starknet.io/cairo-book/ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html
