@@ -14,14 +14,17 @@ The goal of this exercise is to teach the basics of ownership and structs in Cai
 
 ## Out of scope
 
-- Smart pointers
+- representation in memory
+- generic structs
+- struct update syntax
+- smart pointers
 
 ## Concepts
 
-- ownership
-- structs
-- references and snapshots
+- `ownership`
+- `structs`
+- `references and snapshots`
 
 ## Prerequisites
 
-- dictionaries
+- `dictionaries`
