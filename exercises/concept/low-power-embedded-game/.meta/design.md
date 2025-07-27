@@ -9,8 +9,6 @@ Introduce the student to tuples and how to work with them.
 - know how to create tuples
 - know how to destructure tuples into new variables, e.g. `let (x, y) = a_point;`;
 
-## Out of scope
-
 ## Concepts
 
 - tuples

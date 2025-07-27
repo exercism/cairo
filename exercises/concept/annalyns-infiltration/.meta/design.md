@@ -12,10 +12,8 @@
 
 ## Concepts
 
-- `booleans`: know of the existence of the `bool` type and its two values; know about boolean operators and how to build logical expressions with them; know of the boolean operator precedence rules.
+- `booleans`
 
 ## Prerequisites
-
-This exercise's prerequisites Concepts are:
 
 - `functions`

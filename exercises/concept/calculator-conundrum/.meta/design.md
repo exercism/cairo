@@ -9,8 +9,6 @@ Introduce the student to error handling in Cairo.
 - know how create recoverable errors.
 - know how create unrecoverable errors.
 
-## Out of scope
-
 ## Concepts
 
 - error-handling
