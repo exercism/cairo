@@ -13,8 +13,8 @@
 
 ## Concepts
 
-- `modules`
+- Modules
 
 ## Prerequisites
 
-- `structs`
+- Structs
