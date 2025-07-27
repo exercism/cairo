@@ -14,9 +14,7 @@
 
 ## Concepts
 
-The Concepts this exercise unlocks are:
-
-- `functions`
+- Functions
 
 ## Prerequisites
 
