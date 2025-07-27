@@ -2,7 +2,7 @@
 
 ## Modules
 
-Modules are a way to group related code and to avoid name clashes and are generally present in all but the most trivial code base.
+Modules are a way to group related code, to avoid name clashes, and are generally present in all but the most trivial code bases.
 
 The syntax is as follows:
 
@@ -14,9 +14,9 @@ mod my_module {
 }
 ```
 
-Types enclosed in modules are referred to outside the scope of the module by prefixing the type name with the double colon `::` syntax.
+Outside the scope of the module, types enclosed in modules are referred to by prefixing the type name with the double colon `::` syntax.
 
-Alternatively, and more usually, you can place a `use` directive at the top of the file (or within a module) and type can be used without the prefix.
+Alternatively, and more usually, you can place a `use` directive at the top of the file (or within a module) and then types can be used without the prefix.
 
 Within the same module there is no need to qualify type names.
 
