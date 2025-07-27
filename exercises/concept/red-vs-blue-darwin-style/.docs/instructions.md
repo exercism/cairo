@@ -23,6 +23,7 @@ You will see that, for these purposes, a module has advantages over prefixing ty
 ## 2. Simplify the naming system
 
 Management requires that the teams should be called "Red Remote Control Car Team" and "Blue Remote Control Car Team" in the definitions, and that these longs names should even be used in the code itself.
+
 However, the names are rather cumbersome when referencing the teams.
 
 Find a way to use the shorter identifiers "Red" and "Blue" within the module in which you'll be building the cars.
