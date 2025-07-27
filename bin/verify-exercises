@@ -48,16 +48,6 @@ for exercise_path in $exercises; do
 
     echo "Checking $exercise exercise..."
 
-    # Check if custom field is set to "skip-build-tests"
-    skip_build_tests=false
-    if [ -f "$exercise_path/.meta/config.json" ]; then
-        custom_value=$(jq -r '.custom // empty' "$exercise_path/.meta/config.json" 2>/dev/null || echo "")
-        if [ "$custom_value" = "skip-build-tests" ]; then
-            skip_build_tests=true
-            echo "Skipping build tests for $exercise (custom: skip-build-tests)"
-        fi
-    fi
-
     tmp_dir=$(mktemp -d)
     trap 'rm -rf $tmp_dir' EXIT INT TERM
 
@@ -77,14 +67,8 @@ for exercise_path in $exercises; do
 
     cd "$tmp_dir"
 
-    # test that the scaffold + tests combination compiles (unless skipped)
-    if [ "$skip_build_tests" = false ]; then
-        echo "Verifying stub..."
-    
-        scarb build --test
-    fi
-
-    echo "Verifying the example solution..."
+    # test that the scaffold + tests combination compiles
+    scarb build --test
 
     # Copy solution files to where Cargo expects them
     if [ -f "$repo/$exercise_path/.meta/example.cairo" ]; then
