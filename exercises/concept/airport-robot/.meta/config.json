@@ -1,6 +1,6 @@
 {
   "authors": [
-    "<your_gh_username>"
+    "0xNeshi"
   ],
   "files": {
     "solution": [
@@ -19,5 +19,6 @@
   "forked_from": [
     "go/airport-robot"
   ],
-  "blurb": "<blurb>"
+  "custom": "skip-build-tests",
+  "blurb": "Learn about generic types by programming an airport service robot."
 }
