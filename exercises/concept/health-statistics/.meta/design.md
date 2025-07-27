@@ -16,9 +16,9 @@ The goal of this exercise is to teach how to define methods on structs in Cairo.
 
 ## Concepts
 
-- `method-syntax`
-- `traits`
+- Method syntax
+- Traits
 
 ## Prerequisites
 
-- `structs`
+- Structs
