@@ -21,9 +21,9 @@ The goal of this exercise is to teach the basics of ownership and structs in Cai
 
 ## Concepts
 
-- ownership
-- structs
-- references and snapshots
+- Ownership
+- Structs
+- References and snapshots
 
 ## Prerequisites
 

@@ -12,8 +12,8 @@
 
 ## Concepts
 
-- `booleans`
+- Booleans
 
 ## Prerequisites
 
-- `functions`
+- Functions

@@ -11,12 +11,12 @@ Introduce the student to error handling in Cairo.
 
 ## Concepts
 
-- error-handling
+- Error handling
 
 ## Prerequisites
 
-- traits
-- option
+- Traits
+- The Option type
 
 ## Resources to refer to
 

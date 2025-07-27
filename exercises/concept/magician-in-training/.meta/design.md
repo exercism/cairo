@@ -16,8 +16,8 @@
 
 ## Concepts
 
-- `arrays`
+- Arrays
 
 ## Prerequisites
 
-- `integers`
+- Integers

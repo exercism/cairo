@@ -11,11 +11,11 @@ Introduce the student to tuples and how to work with them.
 
 ## Concepts
 
-- tuples
+- Tuples
 
 ## Prerequisites
 
-- traits
+- Traits
 
 ## Resources to refer to
 

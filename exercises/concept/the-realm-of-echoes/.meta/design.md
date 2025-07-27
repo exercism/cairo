@@ -19,13 +19,13 @@ Introduce students to the use of formatting traits like `Display` and `Debug` an
 
 ## Concepts
 
-- printing
+- Printing
 
 ## Prerequisites
 
-- traits
-- strings
-- structs
+- Traits
+- Strings
+- Structs
 
 ## Resources to Refer To
 
