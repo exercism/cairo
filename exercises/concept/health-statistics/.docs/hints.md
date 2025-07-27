@@ -7,7 +7,7 @@
 - The `new()` method receives the arguments we want to instantiate a `User` instance with.
   It should return an instance of `User` with the specified name, age, and weight.
 
-- Additional examples for defining and instantiating structs [are available here][structs].
+- See [structs documentation][structs] for additional examples on defining and instantiating structs.
 
 ## 2. Implement the getter methods
 
@@ -24,7 +24,7 @@ fn foo() -> i32 {
 }
 ```
 
-- Additional examples of defining methods on structs [are available here][methods].
+- See [methods documentation][methods] for some more examples of defining methods on structs.
 
 ## 3. Implement the setter methods
 
