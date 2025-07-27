@@ -50,9 +50,9 @@ for exercise_path in $exercises; do
 
     # Check if custom field is set to "skip-build-tests"
     skip_build_tests=false
-    if [ -f "$exercise_path/.meta/config.json" ]; then
-        custom_value=$(jq -r '.custom // empty' "$exercise_path/.meta/config.json" 2>/dev/null || echo "")
-        if [ "$custom_value" = "skip-build-tests" ]; then
+    if [[ -f "$exercise_path/.meta/config.json" ]]; then
+        custom_value=$(jq -r '.custom // empty' "$exercise_path/.meta/config.json" 2>/dev/null || true)
+        if [[ "$custom_value" = "skip-build-tests" ]]; then
             skip_build_tests=true
             echo "Skipping build tests for $exercise (custom: skip-build-tests)"
         fi
@@ -78,7 +78,7 @@ for exercise_path in $exercises; do
     cd "$tmp_dir"
 
     # test that the scaffold + tests combination compiles (unless skipped)
-    if [ "$skip_build_tests" = false ]; then
+    if [[ "$skip_build_tests" = false ]]; then
         echo "Verifying stub..."
     
         scarb build --test
