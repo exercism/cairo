@@ -9,16 +9,14 @@ Introduce the student to error handling in Cairo.
 - know how create recoverable errors.
 - know how create unrecoverable errors.
 
-## Out of scope
-
 ## Concepts
 
-- error-handling
+- Error handling
 
 ## Prerequisites
 
-- traits
-- option
+- Traits
+- The Option type
 
 ## Resources to refer to
 

@@ -17,8 +17,8 @@ The goal is to introduce the student to dictionaries.
 
 ## Concepts
 
-- dictionaries
+- Dictionaries
 
 ## Prerequisites
 
-- control flow
+- Control flow
