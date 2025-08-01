@@ -21,12 +21,12 @@ Teach students about operator overloading in Cairo through implementing custom o
 
 ## Concepts
 
-- operator overloading
-- derived traits
+- Operator overloading
+- Derived traits
 
 ## Prerequisites
 
-- generics
+- Generic types
 
 ## Resources to refer to
 

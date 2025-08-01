@@ -17,10 +17,8 @@ The goal of this exercise is to teach the student the basics of strings and the 
 
 ## Concepts
 
-The Concepts this exercise unlocks are:
-
-- `strings`
+- Strings
 
 ## Prerequisites
 
-- `control-flow`
+- Control flow

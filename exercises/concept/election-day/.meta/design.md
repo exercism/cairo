@@ -14,13 +14,16 @@ The goal of this exercise is to teach the basics of ownership and structs in Cai
 
 ## Out of scope
 
+- Representation in memory
+- Generic structs
+- Struct update syntax
 - Smart pointers
 
 ## Concepts
 
-- ownership
-- structs
-- references and snapshots
+- Ownership
+- Structs
+- References and snapshots
 
 ## Prerequisites
 
