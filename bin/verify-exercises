@@ -46,7 +46,7 @@ for exercise_path in $exercises; do
         continue
     fi
 
-    echo "Checking $exercise exercise..."
+    echo "Checking $exercise exercise"
 
     # Check if custom field is set to "skip-build-tests"
     skip_build_tests=false
@@ -79,12 +79,12 @@ for exercise_path in $exercises; do
 
     # test that the scaffold + tests combination compiles (unless skipped)
     if [[ "$skip_build_tests" = false ]]; then
-        echo "Verifying stub..."
+        echo "Verifying stub"
     
         scarb build --test
     fi
 
-    echo "Verifying the example solution..."
+    echo "Verifying the example solution"
 
     # Copy solution files to where Cargo expects them
     if [ -f "$repo/$exercise_path/.meta/example.cairo" ]; then
