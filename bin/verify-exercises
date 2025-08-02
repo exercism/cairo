@@ -51,7 +51,7 @@ for exercise_path in $exercises; do
     # Check if custom.skipStubVerification is set to true
     skip_build_tests=false
     if [[ -f "$exercise_path/.meta/config.json" ]]; then
-        skip_stub_verification=$(jq -r '.custom.skipStubVerification // false' "$exercise_path/.meta/config.json" 2>/dev/null || true)
+        skip_stub_verification=$(jq -r '.custom.skipStubVerification // false' "$exercise_path/.meta/config.json" 2>/dev/null)
         if [[ "$skip_stub_verification" = "true" ]]; then
             skip_build_tests=true
         fi
