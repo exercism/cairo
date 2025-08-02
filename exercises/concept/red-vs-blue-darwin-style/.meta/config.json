@@ -1,6 +1,6 @@
 {
   "authors": [
-    "<your_gh_username>"
+    "0xNeshi"
   ],
   "files": {
     "solution": [
@@ -19,5 +19,8 @@
   "forked_from": [
     "csharp/red-vs-blue-darwin-style"
   ],
-  "blurb": "<blurb>"
+  "blurb": "Learn about modules by managing car development teams.",
+  "custom": {
+    "skipStubVerification": true
+  }
 }
