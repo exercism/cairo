@@ -1,14 +1,12 @@
 use binary_search_tree::BinarySearchTreeTrait as BinarySearchTree;
 
 #[test]
-#[ignore]
 fn data_is_retained() {
     let bst = BinarySearchTree::new(array![4].span());
     assert_eq!(Option::Some(4), bst.value());
 }
 
 #[test]
-#[ignore]
 fn smaller_number_at_left_node() {
     let bst = BinarySearchTree::new(array![4, 2].span());
     assert_eq!(Option::Some(4), bst.value());
@@ -16,7 +14,6 @@ fn smaller_number_at_left_node() {
 }
 
 #[test]
-#[ignore]
 fn same_number_at_left_node() {
     let bst = BinarySearchTree::new(array![4, 4].span());
     assert_eq!(Option::Some(4), bst.value());
@@ -24,7 +21,6 @@ fn same_number_at_left_node() {
 }
 
 #[test]
-#[ignore]
 fn greater_number_at_right_node() {
     let bst = BinarySearchTree::new(array![4, 5].span());
     assert_eq!(Option::Some(4), bst.value());
@@ -32,7 +28,6 @@ fn greater_number_at_right_node() {
 }
 
 #[test]
-#[ignore]
 fn can_create_complex_tree() {
     let bst = BinarySearchTree::new(array![4, 2, 6, 1, 3, 5, 7].span());
     assert_eq!(Option::Some(4), bst.value());
@@ -45,7 +40,6 @@ fn can_create_complex_tree() {
 }
 
 #[test]
-#[ignore]
 fn can_sort_single_number() {
     let mut bts = BinarySearchTree::new(array![2].span());
     let expected = array![2].span();
@@ -53,7 +47,6 @@ fn can_sort_single_number() {
 }
 
 #[test]
-#[ignore]
 fn can_sort_if_second_number_is_smaller_than_first() {
     let mut bts = BinarySearchTree::new(array![2, 1].span());
     let expected = array![1, 2].span();
@@ -61,7 +54,6 @@ fn can_sort_if_second_number_is_smaller_than_first() {
 }
 
 #[test]
-#[ignore]
 fn can_sort_if_second_number_is_same_as_first() {
     let mut bts = BinarySearchTree::new(array![2, 2].span());
     let expected = array![2, 2].span();
@@ -69,7 +61,6 @@ fn can_sort_if_second_number_is_same_as_first() {
 }
 
 #[test]
-#[ignore]
 fn can_sort_if_second_number_is_greater_than_first() {
     let mut bts = BinarySearchTree::new(array![2, 3].span());
     let expected = array![2, 3].span();
@@ -77,7 +68,6 @@ fn can_sort_if_second_number_is_greater_than_first() {
 }
 
 #[test]
-#[ignore]
 fn can_sort_complex_tree() {
     let mut bts = BinarySearchTree::new(array![2, 1, 3, 6, 7, 5].span());
     let expected = array![1, 2, 3, 5, 6, 7].span();

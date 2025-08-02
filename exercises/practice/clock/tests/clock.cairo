@@ -3,7 +3,6 @@ use clock::ClockTrait;
 // Create a new clock with an initial time
 
 #[test]
-#[ignore]
 fn on_the_hour() {
     let t: ByteArray = "08:00";
     assert_eq!(ClockTrait::new(8, 0).to_string(), t);

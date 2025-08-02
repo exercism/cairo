@@ -1,7 +1,6 @@
 use raindrops::convert;
 
 #[test]
-#[ignore]
 fn the_sound_for_1_is_1() {
     assert_eq!(convert(1), "1");
 }

@@ -1,7 +1,6 @@
 use rna_transcription::to_rna;
 
 #[test]
-#[ignore]
 fn empty_RNA_sequence() {
     assert_eq!(to_rna(""), "");
 }

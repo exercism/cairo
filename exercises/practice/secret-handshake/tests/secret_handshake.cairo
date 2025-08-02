@@ -1,7 +1,6 @@
 use secret_handshake::commands;
 
 #[test]
-#[ignore]
 fn wink_for_one() {
     assert_eq!(commands(1), array!["wink"]);
 }

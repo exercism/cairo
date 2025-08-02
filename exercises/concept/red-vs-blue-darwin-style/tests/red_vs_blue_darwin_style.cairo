@@ -1,7 +1,6 @@
 use red_vs_blue_darwin_style::combined::{CarBuilder, CarBuilderTrait};
 
 #[test]
-#[ignore]
 fn module_for_car_builder_is_combined() {
     let _ = CarBuilder {};
 }

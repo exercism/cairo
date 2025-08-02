@@ -1,7 +1,6 @@
 use bob::response;
 
 #[test]
-#[ignore]
 fn stating_something() {
     let input = "Tom-ay-to, tom-aaaah-to.";
     assert_eq!("Whatever.", response(@input));

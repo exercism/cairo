@@ -4,7 +4,6 @@ const AGE: u32 = 89;
 const WEIGHT: u32 = 131;
 
 #[test]
-#[ignore]
 fn name() {
     let name = "John";
     let user = UserTrait::new(name.clone(), AGE, WEIGHT);

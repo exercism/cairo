@@ -4,7 +4,6 @@ use lucians_luscious_lasagna::{
 };
 
 #[test]
-#[ignore]
 fn expected_minutes_in_oven_is_correct() {
     assert_eq!(40, expected_minutes_in_oven());
 }

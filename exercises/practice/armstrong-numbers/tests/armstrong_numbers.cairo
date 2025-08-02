@@ -1,7 +1,6 @@
 use armstrong_numbers::is_armstrong_number;
 
 #[test]
-#[ignore]
 fn zero_is_an_armstrong_number() {
     assert!(is_armstrong_number(0))
 }

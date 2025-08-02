@@ -3,7 +3,6 @@ use atbash_cipher::{encode, decode};
 // Encode tests
 
 #[test]
-#[ignore]
 fn encode_yes() {
     let phrase = "yes";
     let output = encode(phrase);

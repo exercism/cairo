@@ -1,7 +1,6 @@
 use pangram::is_pangram;
 
 #[test]
-#[ignore]
 fn empty_sentence() {
     let sentence = "";
     assert!(!is_pangram(sentence));

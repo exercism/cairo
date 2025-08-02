@@ -1,7 +1,6 @@
 use calculator_conundrum::SimpleCalculatorTrait as SimpleCalculator;
 
 #[test]
-#[ignore]
 fn addition_with_small_operands() {
     assert_eq!(SimpleCalculator::calculate(22, 25, "+").unwrap(), "22 + 25 = 47");
 }

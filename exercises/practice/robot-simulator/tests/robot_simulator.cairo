@@ -1,7 +1,6 @@
 use robot_simulator::{Direction, RobotTrait};
 
 #[test]
-#[ignore]
 fn at_origin_facing_north() {
     let robot = RobotTrait::new(0, 0, Direction::North);
     assert_eq!(robot.position(), (0, 0));

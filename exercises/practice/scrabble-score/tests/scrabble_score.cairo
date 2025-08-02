@@ -1,7 +1,6 @@
 use scrabble_score::score;
 
 #[test]
-#[ignore]
 fn lowercase_letter() {
     let input = "a";
     let output = score(input);

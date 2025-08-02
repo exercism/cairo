@@ -4,7 +4,6 @@ use custom_set::CustomSetImpl;
 impl U32Set = CustomSetImpl::<u32>;
 
 #[test]
-#[ignore]
 fn sets_with_no_elements_are_empty() {
     let set = U32Set::new(@array![]);
     assert!(set.is_empty());

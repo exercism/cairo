@@ -16,7 +16,6 @@ fn assert_in_delta(expected: u256, actual: u256) {
 }
 
 #[test]
-#[ignore]
 fn age_on_earth() {
     let seconds = 1_000_000_000;
     let expected = 3169;

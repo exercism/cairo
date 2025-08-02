@@ -1,7 +1,6 @@
 use pascals_triangle::rows;
 
 #[test]
-#[ignore]
 fn zero_rows() {
     let output = rows(0);
     let expected: Array<Array<u32>> = array![];

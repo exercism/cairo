@@ -1,7 +1,6 @@
 use grains::{square, total};
 
 #[test]
-#[ignore]
 fn grains_on_square_1() {
     assert_eq!(square(1), 1);
 }

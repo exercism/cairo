@@ -1,7 +1,6 @@
 use knapsack::{maximum_value, Item};
 
 #[test]
-#[ignore]
 fn no_items() {
     let max_weight = 100;
     let items = array![];

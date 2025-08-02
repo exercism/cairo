@@ -1,7 +1,6 @@
 use luhn::valid;
 
 #[test]
-#[ignore]
 fn single_digit_strings_can_not_be_valid() {
     assert!(!valid("1"));
 }

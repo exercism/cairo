@@ -1,7 +1,6 @@
 use reverse_string::reverse;
 
 #[test]
-#[ignore]
 fn an_empty_string() {
     let value = "";
     let output = reverse(value);

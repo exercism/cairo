@@ -3,7 +3,6 @@ use chrono_realms_chrono_chain::{ChronoChainTrait, ChronoChain};
 const U32_MAX: u32 = 0xFFFFFFFF;
 
 #[test]
-#[ignore]
 fn build_empty_array() {
     let chrono_chain = ChronoChainTrait::build(array![]);
 

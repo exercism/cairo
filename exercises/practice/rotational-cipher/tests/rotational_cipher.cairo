@@ -1,7 +1,6 @@
 use rotational_cipher::rotate;
 
 #[test]
-#[ignore]
 fn rotate_a_by_0_same_output_as_input() {
     let text = "a";
     let shift_key = 0;

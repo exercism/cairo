@@ -2,7 +2,6 @@ use resistor_color::{color_code, colors, Color};
 
 
 #[test]
-#[ignore]
 fn black() {
     let output = color_code(Color::Black);
     let expected = 0;

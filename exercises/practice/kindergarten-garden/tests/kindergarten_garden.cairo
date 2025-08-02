@@ -1,7 +1,6 @@
 use kindergarten_garden::{plants, Plant, Student};
 
 #[test]
-#[ignore]
 fn garden_with_single_student() {
     let diagram = "RC
 GG";

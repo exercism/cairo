@@ -1,7 +1,6 @@
 use word_count::{count_words, WordResult};
 
 #[test]
-#[ignore]
 fn count_one_word() {
     let input = "word";
     let mut output = count_words(input);

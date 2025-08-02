@@ -1,7 +1,6 @@
 use welcome_to_tech_palace::*;
 
 #[test]
-#[ignore]
 fn welcome_message_for_customer_with_first_letter_capitalized() {
     let customer = 'Judy';
     let actual = welcome_message(customer);

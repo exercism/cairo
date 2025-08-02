@@ -1,7 +1,6 @@
 use election_day::*;
 
 #[test]
-#[ignore]
 fn test_new_vote_counter() {
     let vote_counter = new_vote_counter(2);
     assert!(vote_counter.value == @2, "vote counter should be 2");
@@ -50,7 +49,6 @@ fn test_display_result() {
 }
 
 #[test]
-#[ignore]
 fn test_decrement_votes_of_candidate() {
     let mut results = Default::default();
 

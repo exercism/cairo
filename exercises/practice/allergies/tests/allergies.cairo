@@ -1,7 +1,6 @@
 use allergies::{Allergen, AllergiesTrait};
 
 #[test]
-#[ignore]
 fn testing_for_eggs_allergy_not_allergic_to_anything() {
     let allergies = AllergiesTrait::new(0);
     assert!(!allergies.is_allergic_to(@Allergen::Eggs))

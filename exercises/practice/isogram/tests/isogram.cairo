@@ -1,7 +1,6 @@
 use isogram::is_isogram;
 
 #[test]
-#[ignore]
 fn empty_string() {
     let phrase = "";
     assert!(is_isogram(phrase));

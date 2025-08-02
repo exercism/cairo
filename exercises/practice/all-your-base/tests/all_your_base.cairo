@@ -1,7 +1,6 @@
 use all_your_base::{rebase, Error};
 
 #[test]
-#[ignore]
 fn single_bit_one_to_decimal() {
     let input_base = 2;
     let input_digits: Array<u32> = array![1];
