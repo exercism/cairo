@@ -1,6 +1,7 @@
 use isbn_verifier::is_valid;
 
 #[test]
+#[ignore]
 fn valid_isbn() {
     assert!(is_valid("3-598-21508-8"));
 }

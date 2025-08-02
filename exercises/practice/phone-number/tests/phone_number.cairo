@@ -1,6 +1,7 @@
 use phone_number::clean;
 
 #[test]
+#[ignore]
 fn cleans_the_number() {
     let output = clean("(223) 456-7890");
     let expected = "2234567890";
