@@ -1,8 +1,3 @@
-trait Greeter<T> {
-    fn language_name(self: @T) -> ByteArray;
-    fn greet(self: @T, name: ByteArray) -> ByteArray;
-}
-
-pub fn say_hello<T, +Greeter<T>, +Drop<T>>(name: ByteArray, greeter: T) -> ByteArray {
-    panic!("implement `say_hello`")
-}
+// Write your code here.
+// This exercise does not have tests for each individual task.
+// Try to solve all the tasks first before running the tests.

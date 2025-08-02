@@ -19,6 +19,8 @@
   "forked_from": [
     "go/airport-robot"
   ],
-  "custom": "skip-build-tests",
-  "blurb": "Learn about generic types by programming an airport service robot."
+  "blurb": "Learn about generic types by programming an airport service robot.",
+  "custom": {
+    "skipStubVerification": true
+  }
 }
