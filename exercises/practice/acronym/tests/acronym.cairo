@@ -1,6 +1,7 @@
 use acronym::abbreviate;
 
 #[test]
+#[ignore]
 fn basic() {
     let phrase = "Portable Network Graphics";
     assert_eq!("PNG", abbreviate(phrase));

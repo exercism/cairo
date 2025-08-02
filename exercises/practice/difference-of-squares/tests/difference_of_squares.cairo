@@ -3,6 +3,7 @@ use difference_of_squares::{
 };
 
 #[test]
+#[ignore]
 fn square_of_sum_1() {
     let output = square_of_sum(1);
     let expected = 1;

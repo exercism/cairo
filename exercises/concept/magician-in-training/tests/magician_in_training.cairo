@@ -1,6 +1,7 @@
 use magician_in_training::*;
 
 #[test]
+#[ignore]
 fn insert_top_test() {
     let stack = array![5, 9, 7, 1];
     let actual = insert_top(stack, 8);

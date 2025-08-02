@@ -1,6 +1,7 @@
 use roman_numerals::Roman;
 
 #[test]
+#[ignore]
 fn number_1_is_i() {
     let output: Roman = 1_u32.into();
     let expected: ByteArray = "I";

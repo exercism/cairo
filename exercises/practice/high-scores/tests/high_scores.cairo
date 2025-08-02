@@ -1,6 +1,7 @@
 use high_scores::HighScoresTrait as HighScores;
 
 #[test]
+#[ignore]
 fn list_of_scores() {
     let expected: Array<u32> = array![30, 50, 20, 70];
     let high_scores = HighScores::new(expected.clone());

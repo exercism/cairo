@@ -1,6 +1,7 @@
 use hamming::distance;
 
 #[test]
+#[ignore]
 fn empty_strands() {
     let output = distance("", "");
     let expected = 0;

@@ -3,6 +3,7 @@ use annalyns_infiltration::{can_fast_attack, can_spy, can_signal_prisoner, can_f
 // The following tests are for the `can_fast_attack` function.
 
 #[test]
+#[ignore]
 fn can_not_fast_attack_if_knight_is_awake() {
     let knight_awake = true;
     assert!(!can_fast_attack(knight_awake));

@@ -1,6 +1,7 @@
 use proverb::recite;
 
 #[test]
+#[ignore]
 fn zero_pieces() {
     let input: Array<ByteArray> = array![];
     let output = recite(@input);

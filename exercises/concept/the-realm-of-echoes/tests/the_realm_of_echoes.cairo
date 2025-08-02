@@ -3,6 +3,7 @@ use the_realm_of_echoes::{EchoStone, format_magical_chant};
 const U32_MAX: u32 = 0xFFFFFFFF;
 
 #[test]
+#[ignore]
 fn format_magical_chant_basic() {
     let chant1 = "abra";
     let chant2 = "cadabra";

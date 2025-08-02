@@ -136,6 +136,7 @@ fn assert_correct(input: @Array<Domino>) {
 }
 
 #[test]
+#[ignore]
 fn empty_input_empty_output() {
     let input: Array<Domino> = array![];
     assert_eq!(chain(@input), Option::Some(array![]));

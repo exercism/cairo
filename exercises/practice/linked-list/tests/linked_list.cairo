@@ -1,6 +1,7 @@
 use linked_list::{DoublyLinkedListTrait as DoublyLinkedList};
 
 #[test]
+#[ignore]
 fn pop_gets_element_from_the_list() {
     let mut list = DoublyLinkedList::<u32>::new();
     list.push(7);

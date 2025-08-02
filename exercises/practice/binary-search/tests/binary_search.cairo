@@ -1,6 +1,7 @@
 use binary_search::find;
 
 #[test]
+#[ignore]
 fn finds_a_value_in_an_array_with_one_element() {
     let arr: Array<u32> = array![6];
     assert_eq!(find(@arr, 6), Option::Some(0));

@@ -1,6 +1,7 @@
 use protein_translation::{proteins, AminoAcid};
 
 #[test]
+#[ignore]
 fn empty_rna_sequence_results_in_no_proteins() {
     assert_eq!(proteins(""), array![]);
 }

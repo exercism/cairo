@@ -1,6 +1,7 @@
 use series::slices;
 
 #[test]
+#[ignore]
 fn slices_of_one_from_one() {
     let input = "1";
     let length = 1;

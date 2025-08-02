@@ -1,6 +1,7 @@
 use sublist::{Comparison, sublist as check_sublist};
 
 #[test]
+#[ignore]
 fn empty_lists() {
     let list_one: Array<u32> = array![];
     let list_two: Array<u32> = array![];
