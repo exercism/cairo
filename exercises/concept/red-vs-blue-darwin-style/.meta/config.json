@@ -19,5 +19,8 @@
   "forked_from": [
     "csharp/red-vs-blue-darwin-style"
   ],
-  "blurb": "Learn about modules by managing car development teams."
+  "blurb": "Learn about modules by managing car development teams.",
+  "custom": {
+    "skipStubVerification": true
+  }
 }
