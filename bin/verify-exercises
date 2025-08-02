@@ -48,13 +48,12 @@ for exercise_path in $exercises; do
 
     echo "Checking $exercise exercise"
 
-    # Check if custom field is set to "skip-build-tests"
+    # Check if custom.skipStubVerification is set to true
     skip_build_tests=false
     if [[ -f "$exercise_path/.meta/config.json" ]]; then
-        custom_value=$(jq -r '.custom // empty' "$exercise_path/.meta/config.json" 2>/dev/null || true)
-        if [[ "$custom_value" = "skip-build-tests" ]]; then
+        skip_stub_verification=$(jq -r '.custom.skipStubVerification // false' "$exercise_path/.meta/config.json" 2>/dev/null)
+        if [[ "$skip_stub_verification" = "true" ]]; then
             skip_build_tests=true
-            echo "Skipping build tests for $exercise (custom: skip-build-tests)"
         fi
     fi
 
@@ -79,9 +78,10 @@ for exercise_path in $exercises; do
 
     # test that the scaffold + tests combination compiles (unless skipped)
     if [[ "$skip_build_tests" = false ]]; then
-        echo "Verifying stub"
-    
+        echo "Verifying stub"    
         scarb build --test
+    else
+        echo "Skipping verifying stub (custom.skipStubVerification: true)"
     fi
 
     echo "Verifying the example solution"
