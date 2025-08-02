@@ -1,6 +1,7 @@
 use eliuds_eggs::eggCount;
 
 #[test]
+#[ignore]
 fn zero_eggs() {
     let output = eggCount(0);
     let expected = 0;

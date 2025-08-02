@@ -1,6 +1,7 @@
 use matching_brackets::is_paired;
 
 #[test]
+#[ignore]
 fn paired_square_brackets() {
     let value = "[]";
     assert!(is_paired(value));

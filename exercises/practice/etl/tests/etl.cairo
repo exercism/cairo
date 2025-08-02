@@ -1,7 +1,8 @@
-use core::fmt::Formatter;
 use core::dict::Felt252Dict;
+use core::fmt::Formatter;
 
 #[test]
+#[ignore]
 fn transform_one_value() {
     let legacy_data = input_from(array![(1, array!['A'])]);
 
@@ -101,7 +102,7 @@ fn input_from(v: Array<(u32, Array<u8>)>) -> Felt252Dict<Nullable<Span<u8>>> {
     let mut dict: Felt252Dict<Nullable<Span<u8>>> = Default::default();
     for (num, letters) in v {
         dict.insert(num.into(), NullableTrait::new(letters.span()));
-    };
+    }
     dict
 }
 
@@ -109,7 +110,7 @@ fn expected_from(v: Array<(u8, u32)>) -> Felt252Dict<u32> {
     let mut dict: Felt252Dict<u32> = Default::default();
     for (char, num) in v {
         dict.insert(char.into(), num);
-    };
+    }
     dict
 }
 
@@ -123,7 +124,7 @@ fn assert_dicts_eq(expected: Felt252Dict<u32>, actual: Felt252Dict<u32>) {
             unequal = true;
             break;
         }
-    };
+    }
     if unequal {
         let mut f: Formatter = Default::default();
         writeln!(f, "\nexpected:").expect('write expected');
@@ -149,7 +150,7 @@ fn write_dict(mut f: Formatter, dict: Felt252Dict<u32>) -> Formatter {
             letter.append_byte(char);
             writeln!(f, "    \"{}\": {},", letter, points).expect('should write letter');
         }
-    };
+    }
     writeln!(f, "}}").expect('should write }');
     f
 }

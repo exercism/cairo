@@ -1,6 +1,7 @@
 use prime_factors::factors;
 
 #[test]
+#[ignore]
 fn no_factors() {
     let factors = factors(1);
     let expected = ArrayTrait::new();

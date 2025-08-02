@@ -1,6 +1,7 @@
 use semi_structured_logs::{error, info, log, warn, LogLevel};
 
 #[test]
+#[ignore]
 fn emits_info() {
     assert_eq!(info("Timezone changed"), "[INFO]: Timezone changed");
 }

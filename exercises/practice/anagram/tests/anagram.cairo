@@ -1,6 +1,7 @@
 use anagram::{anagrams_for, SetTrait as Set};
 
 #[test]
+#[ignore]
 fn no_matches() {
     let word: ByteArray = "diaper";
     let inputs = Set::new(array!["hello", "world", "zombies", "pants"]);

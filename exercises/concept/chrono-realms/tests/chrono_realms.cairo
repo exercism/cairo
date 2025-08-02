@@ -1,6 +1,7 @@
 use chrono_realms::TimeShard;
 
 #[test]
+#[ignore]
 fn test_add_time_shards() {
     let shard1 = TimeShard { value: 5 };
     let shard2 = TimeShard { value: 3 };

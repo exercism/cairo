@@ -1,6 +1,7 @@
 use collatz_conjecture::steps;
 
 #[test]
+#[ignore]
 fn zero_steps_for_one() {
     assert_eq!(steps(1), 0);
 }

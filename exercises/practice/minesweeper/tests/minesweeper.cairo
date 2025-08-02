@@ -1,6 +1,7 @@
 use minesweeper::annotate;
 
 #[test]
+#[ignore]
 fn no_rows() {
     let input = array![];
     let expected = array![];

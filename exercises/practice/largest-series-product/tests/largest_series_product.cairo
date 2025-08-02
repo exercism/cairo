@@ -1,6 +1,7 @@
 use largest_series_product::{lsp, Error};
 
 #[test]
+#[ignore]
 fn return_is_a_result() {
     let string_digits: ByteArray = "29";
     assert!(lsp(@string_digits, 2).is_ok());

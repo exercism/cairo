@@ -1,6 +1,7 @@
 use sum_of_multiples::sum;
 
 #[test]
+#[ignore]
 fn no_multiples_within_limit() {
     let factors: Array<u32> = array![3, 5];
     let limit = 1;

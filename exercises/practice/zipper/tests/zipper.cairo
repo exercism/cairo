@@ -1,6 +1,7 @@
-use zipper::{ZipperTrait as Zipper, BinaryTreeTrait as BinaryTree, OptionalBinaryTreeNodePartialEq};
+use zipper::{BinaryTreeTrait as BinaryTree, OptionalBinaryTreeNodePartialEq, ZipperTrait as Zipper};
 
 #[test]
+#[ignore]
 fn data_is_retained() -> Option<()> {
     let initial_tree = BinaryTree::new(
         1, BinaryTree::new(2, BinaryTree::empty(), BinaryTree::leaf(3)), BinaryTree::leaf(4),
@@ -12,6 +13,7 @@ fn data_is_retained() -> Option<()> {
 }
 
 #[test]
+#[ignore]
 fn left_right_and_value() -> Option<()> {
     let initial_tree = BinaryTree::new(
         1, BinaryTree::new(2, BinaryTree::empty(), BinaryTree::leaf(3)), BinaryTree::leaf(4),
@@ -22,6 +24,7 @@ fn left_right_and_value() -> Option<()> {
 }
 
 #[test]
+#[ignore]
 fn dead_end() -> Option<()> {
     let initial_tree = BinaryTree::new(
         1, BinaryTree::new(2, BinaryTree::empty(), BinaryTree::leaf(3)), BinaryTree::leaf(4),
@@ -32,6 +35,7 @@ fn dead_end() -> Option<()> {
 }
 
 #[test]
+#[ignore]
 fn tree_from_deep_focus() -> Option<()> {
     let initial_tree = BinaryTree::new(
         1, BinaryTree::new(2, BinaryTree::empty(), BinaryTree::leaf(3)), BinaryTree::leaf(4),
@@ -43,6 +47,7 @@ fn tree_from_deep_focus() -> Option<()> {
 }
 
 #[test]
+#[ignore]
 fn traversing_up_from_top() -> Option<()> {
     let initial_tree = BinaryTree::new(
         1, BinaryTree::new(2, BinaryTree::empty(), BinaryTree::leaf(3)), BinaryTree::leaf(4),
@@ -53,6 +58,7 @@ fn traversing_up_from_top() -> Option<()> {
 }
 
 #[test]
+#[ignore]
 fn left_right_and_up() -> Option<()> {
     let initial_tree = BinaryTree::new(
         1, BinaryTree::new(2, BinaryTree::empty(), BinaryTree::leaf(3)), BinaryTree::leaf(4),
@@ -63,6 +69,7 @@ fn left_right_and_up() -> Option<()> {
 }
 
 #[test]
+#[ignore]
 fn test_ability_to_descend_multiple_levels_and_return() -> Option<()> {
     let initial_tree = BinaryTree::new(
         1, BinaryTree::new(2, BinaryTree::empty(), BinaryTree::leaf(3)), BinaryTree::leaf(4),
@@ -73,6 +80,7 @@ fn test_ability_to_descend_multiple_levels_and_return() -> Option<()> {
 }
 
 #[test]
+#[ignore]
 fn set_value() -> Option<()> {
     let initial_tree = BinaryTree::new(
         1, BinaryTree::new(2, BinaryTree::empty(), BinaryTree::leaf(3)), BinaryTree::leaf(4),
@@ -86,6 +94,7 @@ fn set_value() -> Option<()> {
 }
 
 #[test]
+#[ignore]
 fn set_value_after_traversing_up() -> Option<()> {
     let initial_tree = BinaryTree::new(
         1, BinaryTree::new(2, BinaryTree::empty(), BinaryTree::leaf(3)), BinaryTree::leaf(4),
@@ -101,6 +110,7 @@ fn set_value_after_traversing_up() -> Option<()> {
 }
 
 #[test]
+#[ignore]
 fn set_left_with_leaf() -> Option<()> {
     let initial_tree = BinaryTree::new(
         1, BinaryTree::new(2, BinaryTree::empty(), BinaryTree::leaf(3)), BinaryTree::leaf(4),
@@ -116,6 +126,7 @@ fn set_left_with_leaf() -> Option<()> {
 }
 
 #[test]
+#[ignore]
 fn set_right_with_leaf() -> Option<()> {
     let initial_tree = BinaryTree::new(
         1, BinaryTree::new(2, BinaryTree::empty(), BinaryTree::leaf(3)), BinaryTree::leaf(4),
@@ -129,6 +140,7 @@ fn set_right_with_leaf() -> Option<()> {
 }
 
 #[test]
+#[ignore]
 fn set_right_with_subtree() -> Option<()> {
     let initial_tree = BinaryTree::new(
         1, BinaryTree::new(2, BinaryTree::empty(), BinaryTree::leaf(3)), BinaryTree::leaf(4),
@@ -149,6 +161,7 @@ fn set_right_with_subtree() -> Option<()> {
 }
 
 #[test]
+#[ignore]
 fn set_value_on_deep_focus() -> Option<()> {
     let initial_tree = BinaryTree::new(
         1, BinaryTree::new(2, BinaryTree::empty(), BinaryTree::leaf(3)), BinaryTree::leaf(4),
@@ -164,6 +177,7 @@ fn set_value_on_deep_focus() -> Option<()> {
 }
 
 #[test]
+#[ignore]
 fn different_paths_to_same_zipper() -> Option<()> {
     let initial_tree = BinaryTree::new(
         1, BinaryTree::new(2, BinaryTree::empty(), BinaryTree::leaf(3)), BinaryTree::leaf(4),

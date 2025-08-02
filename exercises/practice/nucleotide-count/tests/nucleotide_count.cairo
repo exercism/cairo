@@ -1,6 +1,7 @@
 use nucleotide_count::{counts, Counter};
 
 #[test]
+#[ignore]
 fn empty_strand() {
     let strand = "";
     let output = counts(strand);

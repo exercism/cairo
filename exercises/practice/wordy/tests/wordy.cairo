@@ -1,6 +1,7 @@
 use wordy::answer;
 
 #[test]
+#[ignore]
 fn just_a_number() {
     let input = "What is 5?";
     let output = answer(input);

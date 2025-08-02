@@ -1,6 +1,7 @@
 use nth_prime::prime;
 
 #[test]
+#[ignore]
 fn first_prime() {
     let output = prime(1);
     let expected = 2;

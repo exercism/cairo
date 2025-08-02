@@ -5,6 +5,7 @@ use rational_numbers::{RationalTrait as Rational, RationalAbsTrait, RationalPowT
 // Addition
 
 #[test]
+#[ignore]
 fn add_two_positive_rational_numbers() {
     assert_eq!(Rational::new(1, 2) + Rational::new(2, 3), Rational::new(7, 6));
 }

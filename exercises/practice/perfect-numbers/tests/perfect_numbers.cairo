@@ -3,6 +3,7 @@ use perfect_numbers::{classify, Classification};
 // Perfect numbers
 
 #[test]
+#[ignore]
 fn smallest_perfect_number() {
     assert_eq!(classify(6), Classification::Perfect);
 }

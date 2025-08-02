@@ -2,6 +2,7 @@ use core::dict::Felt252Dict;
 use gross_store::*;
 
 #[test]
+#[ignore]
 fn test_units() {
     let mut units = units();
 

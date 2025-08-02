@@ -1,6 +1,7 @@
 use resistor_color_duo::{value, Color};
 
 #[test]
+#[ignore]
 fn brown_and_black() {
     let colors = array![Color::Brown, Color::Black];
     let output = value(colors);

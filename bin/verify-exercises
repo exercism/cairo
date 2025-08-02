@@ -78,8 +78,17 @@ for exercise_path in $exercises; do
 
     # test that the scaffold + tests combination compiles (unless skipped)
     if [[ "$skip_build_tests" = false ]]; then
-        echo "Verifying stub"    
-        scarb build --test
+        echo "Verifying stub"
+        # allow only error output to be printed
+        timeout 20 scarb cairo-test --test-kind integration 2>&1 | { 
+            output=$(cat); 
+            if [[ $? -eq 124 ]]; then 
+                echo "$exercise timed out" && exit 1; 
+            elif echo "$output" | grep -q "could not compile" || ! echo "$output" | grep -q "test result: ok\."; then 
+                # scarb prints error output just as if it was success output, so we need to grep the error
+                echo "$output" && exit 1; 
+            fi; 
+        }
     else
         echo "Skipping verifying stub (custom.skipStubVerification: true)"
     fi
@@ -97,7 +106,7 @@ for exercise_path in $exercises; do
     fi
 
     # Exercism sets a timeout limit for tests
-    timeout 20 scarb cairo-test --include-ignored || (echo "$exercise timed out" && exit 1)
+    timeout 20 scarb cairo-test --include-ignored --test-kind integration || (echo "$exercise timed out" && exit 1)
 
     rm -rf "$tmp_dir"
 done

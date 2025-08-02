@@ -1,4 +1,5 @@
 #[test]
+#[ignore]
 fn first_generic_verse() {
     assert_eq!(
         beer_song::verse(99),

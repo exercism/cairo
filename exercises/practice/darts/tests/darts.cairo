@@ -1,6 +1,7 @@
 use darts::score;
 
 #[test]
+#[ignore]
 fn missed_target() {
     let output = score(-9, 9);
     let expected = 0;

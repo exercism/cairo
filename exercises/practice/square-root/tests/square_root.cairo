@@ -1,6 +1,7 @@
 use square_root::sqrt;
 
 #[test]
+#[ignore]
 fn root_of_1() {
     let output = sqrt(1);
     let expected = 1;

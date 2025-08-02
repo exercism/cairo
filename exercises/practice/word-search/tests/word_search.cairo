@@ -1,6 +1,7 @@
 use word_search::{search, SearchResult, Position};
 
 #[test]
+#[ignore]
 fn should_accept_an_initial_game_grid_and_a_target_search_word() {
     #[cairofmt::skip]
     let grid = array![

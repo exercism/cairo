@@ -1,6 +1,7 @@
 use yacht::{score, Category};
 
 #[test]
+#[ignore]
 fn is_yacht() {
     let dice = [5, 5, 5, 5, 5];
     let category = Category::Yacht;

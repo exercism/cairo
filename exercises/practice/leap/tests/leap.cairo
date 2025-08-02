@@ -1,6 +1,7 @@
 use leap::is_leap_year;
 
 #[test]
+#[ignore]
 fn year_not_divisible_by_4_in_common_year() {
     assert!(!is_leap_year(2015));
 }

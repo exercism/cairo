@@ -1,6 +1,7 @@
 use simple_linked_list::{SimpleLinkedListTrait, SimpleLinkedList};
 
 #[test]
+#[ignore]
 fn new_list_is_empty() {
     let list = SimpleLinkedListTrait::<u32>::new();
     assert_eq!(list.len(), 0, "list's length must be 0");
