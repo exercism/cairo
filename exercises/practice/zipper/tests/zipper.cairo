@@ -1,7 +1,6 @@
 use zipper::{BinaryTreeTrait as BinaryTree, OptionalBinaryTreeNodePartialEq, ZipperTrait as Zipper};
 
 #[test]
-#[ignore]
 fn data_is_retained() -> Option<()> {
     let initial_tree = BinaryTree::new(
         1, BinaryTree::new(2, BinaryTree::empty(), BinaryTree::leaf(3)), BinaryTree::leaf(4),

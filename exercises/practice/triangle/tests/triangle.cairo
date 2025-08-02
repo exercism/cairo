@@ -3,7 +3,6 @@ use triangle::{is_equilateral, is_isosceles, is_scalene};
 // Equilateral triangles
 
 #[test]
-#[ignore]
 fn equilateral_all_sides_are_equal() {
     let sides: [u64; 3] = [2, 2, 2];
     assert!(is_equilateral(sides));

@@ -2,7 +2,6 @@ use core::dict::Felt252Dict;
 use core::fmt::Formatter;
 
 #[test]
-#[ignore]
 fn transform_one_value() {
     let legacy_data = input_from(array![(1, array!['A'])]);
 
