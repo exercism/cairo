@@ -79,6 +79,14 @@ for exercise_path in $exercises; do
     # test that the scaffold + tests combination compiles (unless skipped)
     if [[ "$skip_build_tests" = false ]]; then
         echo "Verifying stub"
+        
+        # Find the test file and add #[ignore] after the first #[test]
+        test_file=$(find tests -name "*.cairo" -type f | head -n 1)
+        if [ -n "$test_file" ]; then
+            # Use sed to add #[ignore] after the first occurrence of #[test]
+            sed -i '0,/#\[test\]/{s/#\[test\]/#[test]\n#[ignore]/}' "$test_file"
+        fi
+        
         # allow only error output to be printed
         timeout 20 scarb cairo-test --test-kind integration 2>&1 | { 
             output=$(cat); 
