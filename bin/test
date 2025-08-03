@@ -13,7 +13,7 @@ repo=$(git rev-parse --show-toplevel)
 
 if [ "$#" -ne 1 ]; then
     echo "Error: Incorrect number of arguments. This script requires exactly one argument."
-    echo "Example: './bin/test two-fer'"
+    echo "Expected: './bin/test <exercise-slug>'"
     exit 1
 fi
     
