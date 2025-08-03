@@ -1,7 +1,7 @@
 # Introduction
 
 Generics allow you to write code that works with multiple types without duplication.
-You define generic types using angle brackets `<T>` where `T` is a placeholder for any type.
+Define generic types by using angle brackets `<T>` where `T` is a placeholder for any type.
 
 ```rust
 fn largest_list<T>(l1: Array<T>, l2: Array<T>) -> Array<T> {
@@ -13,7 +13,7 @@ fn largest_list<T>(l1: Array<T>, l2: Array<T>) -> Array<T> {
 }
 ```
 
-However, Cairo requires trait bounds to specify what operations the generic type must support.
+Cairo requires trait bounds to specify what operations the generic type must support.
 You can add constraints using the `+` syntax:
 
 ```rust
