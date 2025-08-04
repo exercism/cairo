@@ -60,6 +60,8 @@ for exercise_path in $exercises; do
     tmp_dir=$(mktemp -d)
     trap 'rm -rf $tmp_dir' EXIT INT TERM
 
+    cp ".tool-versions" "$tmp_dir"
+
     # copy the exercise to the temporary directory
     contents_to_copy=(
         "src"
