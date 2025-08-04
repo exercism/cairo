@@ -1,4 +1,4 @@
-use core::traits::{Add, Sub, PartialOrd};
+use core::traits::{Add, PartialOrd, Sub};
 
 // Define the TimeShard struct
 #[derive(Drop, Debug, PartialEq)]

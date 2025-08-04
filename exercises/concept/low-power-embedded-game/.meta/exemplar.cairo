@@ -15,7 +15,7 @@ pub impl EvensImpl<T, +Drop<T>, +Copy<T>> of EvensTrait<T> {
                 result.append(*self.at(i));
             }
             i += 2;
-        };
+        }
         result
     }
 }

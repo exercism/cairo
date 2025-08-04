@@ -1,4 +1,4 @@
-use rational_numbers::{RationalTrait as Rational, RationalAbsTrait, RationalPowTrait};
+use rational_numbers::{RationalAbsTrait, RationalPowTrait, RationalTrait as Rational};
 
 // Tests of type: Arithmetic
 

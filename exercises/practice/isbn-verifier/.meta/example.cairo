@@ -28,7 +28,7 @@ pub fn is_valid(isbn: ByteArray) -> bool {
             },
         }
         i += 1;
-    };
+    }
 
     // Step 4: Return true if valid (sum % 11 == 0).
     valid && sum % 11 == 0
@@ -42,7 +42,7 @@ fn filter(isbn: ByteArray) -> ByteArray {
             filtered_isbn.append_byte(isbn[i]);
         }
         i += 1;
-    };
+    }
     filtered_isbn
 }
 

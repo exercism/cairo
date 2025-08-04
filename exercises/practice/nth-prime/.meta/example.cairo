@@ -11,7 +11,7 @@ pub fn prime(n: u32) -> u32 {
             if is_prime(candidate) {
                 count += 1;
             }
-        };
+        }
         candidate
     }
 }
@@ -25,6 +25,6 @@ fn is_prime(n: u32) -> bool {
             break;
         }
         i += 1;
-    };
+    }
     result
 }

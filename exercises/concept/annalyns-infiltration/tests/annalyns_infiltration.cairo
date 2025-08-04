@@ -1,4 +1,4 @@
-use annalyns_infiltration::{can_fast_attack, can_spy, can_signal_prisoner, can_free_prisoner};
+use annalyns_infiltration::{can_fast_attack, can_free_prisoner, can_signal_prisoner, can_spy};
 
 // The following tests are for the `can_fast_attack` function.
 

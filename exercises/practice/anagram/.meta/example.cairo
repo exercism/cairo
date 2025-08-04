@@ -30,7 +30,7 @@ impl SetEq of PartialEq<Set> {
                     break;
                 }
                 j += 1;
-            };
+            }
             if j == len {
                 break false;
             }
@@ -55,7 +55,7 @@ pub fn anagrams_for(word: @ByteArray, candidates: @Set) -> Set {
         if is_anagram {
             anagrams.values.append(format!("{candidate}"));
         }
-    };
+    }
 
     anagrams
 }
@@ -87,7 +87,7 @@ fn sort_ignore_case(word: @ByteArray) -> ByteArray {
         i -= 1;
         let char: felt252 = word[i].into();
         ascii_chars.insert(char, ascii_chars.get(char) + 1);
-    };
+    }
 
     let mut sorted_word: ByteArray = "";
 
@@ -99,16 +99,16 @@ fn sort_ignore_case(word: @ByteArray) -> ByteArray {
         while count != 0 {
             sorted_word.append_byte(alphabet_char);
             count -= 1;
-        };
+        }
         // process lowercase char
         let lowercase_char = lowercase(@alphabet_char);
         let mut count = ascii_chars.get(lowercase_char.into());
         while count != 0 {
             sorted_word.append_byte(lowercase_char);
             count -= 1;
-        };
+        }
         alphabet_char += 1;
-    };
+    }
 
     sorted_word
 }

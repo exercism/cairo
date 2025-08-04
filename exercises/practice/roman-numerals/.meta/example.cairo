@@ -11,19 +11,8 @@ impl U32IntoRoman of Into<u32, Roman> {
         // it will soon be possible to use constant array variables
         // for now we have to define them within the function
         let mut roman_map: Span<(u32, ByteArray)> = array![
-            (1000, "M"),
-            (900, "CM"),
-            (500, "D"),
-            (400, "CD"),
-            (100, "C"),
-            (90, "XC"),
-            (50, "L"),
-            (40, "XL"),
-            (10, "X"),
-            (9, "IX"),
-            (5, "V"),
-            (4, "IV"),
-            (1, "I"),
+            (1000, "M"), (900, "CM"), (500, "D"), (400, "CD"), (100, "C"), (90, "XC"), (50, "L"),
+            (40, "XL"), (10, "X"), (9, "IX"), (5, "V"), (4, "IV"), (1, "I"),
         ]
             .span();
 
@@ -35,7 +24,7 @@ impl U32IntoRoman of Into<u32, Roman> {
                 value.append(roman_string);
                 current_num -= *numeric;
             }
-        };
+        }
 
         Roman { value }
     }

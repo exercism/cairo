@@ -22,7 +22,7 @@ pub fn is_paired(value: ByteArray) -> bool {
             while i < stop {
                 popped.append(*stack[i]);
                 i += 1;
-            };
+            }
 
             let last = *stack[stop];
             stack = popped.clone();
@@ -34,7 +34,7 @@ pub fn is_paired(value: ByteArray) -> bool {
             }
         }
         i += 1;
-    };
+    }
 
     if result {
         result = stack.is_empty();

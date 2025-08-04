@@ -1,4 +1,4 @@
-use all_your_base::{rebase, Error};
+use all_your_base::{Error, rebase};
 
 #[test]
 fn single_bit_one_to_decimal() {

@@ -11,7 +11,7 @@ pub fn clean(phrase: ByteArray) -> ByteArray {
         }
 
         i += 1;
-    };
+    }
 
     assert!(cleaned.len() >= 10, "must not be fewer than 10 digits");
 
@@ -24,10 +24,10 @@ pub fn clean(phrase: ByteArray) -> ByteArray {
         while i < cleaned.len() {
             sliced.append_byte(cleaned[i]);
             i += 1;
-        };
+        }
 
         cleaned = sliced.clone();
-    };
+    }
 
     assert!(cleaned.len() <= 11, "must not be greater than 11 digits");
     assert!(cleaned[0] != '0', "area code cannot start with zero");

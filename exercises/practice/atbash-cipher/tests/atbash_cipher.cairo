@@ -1,4 +1,4 @@
-use atbash_cipher::{encode, decode};
+use atbash_cipher::{decode, encode};
 
 // Encode tests
 

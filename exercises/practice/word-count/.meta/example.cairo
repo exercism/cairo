@@ -25,7 +25,7 @@ pub fn count_words(phrase: ByteArray) -> Span<WordResult> {
                 break;
             }
             j += 1;
-        };
+        }
 
         if !found {
             let word_and_count = WordResult { word: words[i].clone(), count: 1 };
@@ -33,7 +33,7 @@ pub fn count_words(phrase: ByteArray) -> Span<WordResult> {
         }
 
         i += 1;
-    };
+    }
 
     results.span()
 }
@@ -47,7 +47,7 @@ fn remove_index_from_array(arr: Array<WordResult>, index: u32) -> Array<WordResu
             new_arr.append(arr[i].clone());
         }
         i += 1;
-    };
+    }
 
     new_arr
 }
@@ -72,7 +72,7 @@ fn split_phrase_into_words(phrase: ByteArray) -> Array<ByteArray> {
         }
 
         i += 1;
-    };
+    }
 
     if current_word.len() > 0 {
         words.append(current_word);

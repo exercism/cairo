@@ -1,5 +1,5 @@
-use core::to_byte_array::AppendFormattedToByteArray;
 use core::dict::Felt252Dict;
+use core::to_byte_array::AppendFormattedToByteArray;
 
 #[derive(Drop, Copy)]
 pub struct VoteCounter {

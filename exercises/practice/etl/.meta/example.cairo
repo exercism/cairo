@@ -1,5 +1,5 @@
 use core::dict::Felt252Dict;
-use core::nullable::{match_nullable, FromNullableResult};
+use core::nullable::{FromNullableResult, match_nullable};
 
 pub fn transform(legacy: Felt252Dict<Nullable<Span<u8>>>) -> Felt252Dict<u32> {
     let mut legacy = legacy;
@@ -13,7 +13,7 @@ pub fn transform(legacy: Felt252Dict<Nullable<Span<u8>>>) -> Felt252Dict<u32> {
         for letter in letters {
             result.insert(lowercase(letter).into(), point);
         }
-    };
+    }
     result
 }
 

@@ -294,7 +294,7 @@ fn compare_allergy_vectors(expected: @Array<Allergen>, actual: @Array<Allergen>)
                 break;
             }
             j += 1;
-        };
+        }
         if j == actual.len() {
             panic!("Allergen missing\n  {expected_elem:?} should be in {actual:?}");
         }
@@ -360,10 +360,7 @@ fn list_when_more_than_eggs_but_not_peanuts() {
 fn list_when_lots_of_stuff() {
     let allergies = AllergiesTrait::new(248).allergies();
     let expected = @array![
-        Allergen::Strawberries,
-        Allergen::Tomatoes,
-        Allergen::Chocolate,
-        Allergen::Pollen,
+        Allergen::Strawberries, Allergen::Tomatoes, Allergen::Chocolate, Allergen::Pollen,
         Allergen::Cats,
     ];
 
@@ -375,14 +372,8 @@ fn list_when_lots_of_stuff() {
 fn list_when_everything() {
     let allergies = AllergiesTrait::new(255).allergies();
     let expected = @array![
-        Allergen::Eggs,
-        Allergen::Peanuts,
-        Allergen::Shellfish,
-        Allergen::Strawberries,
-        Allergen::Tomatoes,
-        Allergen::Chocolate,
-        Allergen::Pollen,
-        Allergen::Cats,
+        Allergen::Eggs, Allergen::Peanuts, Allergen::Shellfish, Allergen::Strawberries,
+        Allergen::Tomatoes, Allergen::Chocolate, Allergen::Pollen, Allergen::Cats,
     ];
 
     compare_allergy_vectors(expected, @allergies);
@@ -393,13 +384,8 @@ fn list_when_everything() {
 fn list_when_no_allergen_score_parts() {
     let allergies = AllergiesTrait::new(509).allergies();
     let expected = @array![
-        Allergen::Eggs,
-        Allergen::Shellfish,
-        Allergen::Strawberries,
-        Allergen::Tomatoes,
-        Allergen::Chocolate,
-        Allergen::Pollen,
-        Allergen::Cats,
+        Allergen::Eggs, Allergen::Shellfish, Allergen::Strawberries, Allergen::Tomatoes,
+        Allergen::Chocolate, Allergen::Pollen, Allergen::Cats,
     ];
 
     compare_allergy_vectors(expected, @allergies);

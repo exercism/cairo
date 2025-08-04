@@ -125,7 +125,7 @@ pub fn search(grid: Span<ByteArray>, words_to_search_for: Span<ByteArray>) -> Sp
                 }
             }
         }
-    };
+    }
 
     results.span()
 }
@@ -146,7 +146,7 @@ fn is_horizontal_match(grid: Span<ByteArray>, word: @ByteArray, row: usize, col:
             result = false;
             break;
         }
-    };
+    }
     result
 }
 
@@ -166,7 +166,7 @@ fn is_horizontal_reverse_match(
             result = false;
             break;
         }
-    };
+    }
     result
 }
 
@@ -183,7 +183,7 @@ fn is_vertical_match(grid: Span<ByteArray>, word: @ByteArray, row: usize, col: u
             result = false;
             break;
         }
-    };
+    }
     result
 }
 
@@ -202,7 +202,7 @@ fn is_vertical_reverse_match(
             result = false;
             break;
         }
-    };
+    }
     result
 }
 
@@ -221,7 +221,7 @@ fn is_diagonal_tl_br_match(
             result = false;
             break;
         }
-    };
+    }
 
     result
 }
@@ -242,7 +242,7 @@ fn is_diagonal_tr_bl_match(
             result = false;
             break;
         }
-    };
+    }
 
     result
 }
@@ -264,7 +264,7 @@ fn is_diagonal_bl_tr_match(
             result = false;
             break;
         }
-    };
+    }
     result
 }
 
@@ -284,7 +284,7 @@ fn is_diagonal_br_tl_match(
             result = false;
             break;
         }
-    };
+    }
 
     result
 }

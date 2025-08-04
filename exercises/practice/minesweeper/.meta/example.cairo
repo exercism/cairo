@@ -17,7 +17,7 @@ impl BoardImpl of BoardTrait {
         for y in 0..num_rows {
             let annotated_row = self.annotated_row(y);
             annotated_board.append(annotated_row);
-        };
+        }
 
         annotated_board
     }
@@ -38,7 +38,7 @@ impl BoardImpl of BoardTrait {
             } else {
                 row.append_byte(c);
             }
-        };
+        }
 
         row
     }
@@ -57,7 +57,7 @@ impl BoardImpl of BoardTrait {
                     count += 1;
                 }
             }
-        };
+        }
 
         // If no mines are adjacent, return ' ' (empty); otherwise, return the count as a char
         if count == 0 {

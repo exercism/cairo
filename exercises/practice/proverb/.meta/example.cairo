@@ -7,6 +7,6 @@ pub fn recite(items: @Array<ByteArray>) -> ByteArray {
             stanzas +=
                 format!("For want of a {} the {} was lost.\n", items[index], items[index + 1]);
         }
-    };
+    }
     stanzas
 }

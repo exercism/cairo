@@ -26,7 +26,7 @@ pub fn verses(start: u32, take_count: u32) -> ByteArray {
         }
         lyrics.append(@"\n");
         n -= 1;
-    };
+    }
 
     lyrics
 }

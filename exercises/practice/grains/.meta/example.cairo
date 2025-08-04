@@ -9,6 +9,6 @@ pub fn total() -> u64 {
     let mut result = 0;
     for s in 1..65_u8 {
         result += square(s);
-    };
+    }
     result
 }

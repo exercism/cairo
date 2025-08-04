@@ -51,7 +51,7 @@ pub fn answer(question: ByteArray) -> i32 {
         };
 
         i += 1;
-    };
+    }
 
     result
 }
@@ -79,7 +79,7 @@ fn split_question_into_words(question: ByteArray) -> Array<ByteArray> {
             current_word.append_byte(char);
         }
         i += 1;
-    };
+    }
 
     words
 }
@@ -108,7 +108,7 @@ fn parse_int(num: @ByteArray) -> Option<i32> {
                 break;
             },
         }
-    };
+    }
 
     if let Option::Some(val) = result {
         if (is_signed) {

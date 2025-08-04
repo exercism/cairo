@@ -1,4 +1,4 @@
-use core::fmt::{Display, Formatter, Error};
+use core::fmt::{Display, Error, Formatter};
 
 #[derive(Drop, PartialEq, Debug)]
 struct Clock {
@@ -31,7 +31,7 @@ pub impl ClockImpl of ClockTrait {
         let mut mins = minutes;
         while mins < 0 {
             mins += 1440;
-        };
+        }
         let mins: u32 = mins.try_into().unwrap();
         Clock { minutes: mins % 1440 }
     }

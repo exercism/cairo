@@ -1,4 +1,4 @@
-use simple_linked_list::{SimpleLinkedListTrait, SimpleLinkedList};
+use simple_linked_list::{SimpleLinkedList, SimpleLinkedListTrait};
 
 #[test]
 fn new_list_is_empty() {

@@ -1,4 +1,4 @@
-use yacht::{score, Category};
+use yacht::{Category, score};
 
 #[test]
 fn is_yacht() {

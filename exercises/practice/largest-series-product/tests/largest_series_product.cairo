@@ -1,4 +1,4 @@
-use largest_series_product::{lsp, Error};
+use largest_series_product::{Error, lsp};
 
 #[test]
 fn return_is_a_result() {

@@ -97,7 +97,7 @@ pub fn chain(dominoes: @Array<Domino>) -> Option<Array<Domino>> {
                 d.insert(x.into(), d.get(x.into()) + 1);
                 d.insert(y.into(), d.get(y.into()) + 1);
                 i += 1;
-            };
+            }
             let mut i = 0;
             let even_dot_types = loop {
                 if i == 6 {
@@ -129,13 +129,13 @@ fn chain_worker(dominoes: @Array<Domino>) -> Array<Domino> {
         i -= 1;
         let (x, y): Domino = *dominoes[i];
         t.add(x, y);
-    };
+    }
     let mut chain: Array<Domino> = array![];
     chain.append(first);
     let (_, mut x) = first;
     while let Option::Some(y) = t.pop_first(x) {
         chain.append((x, y));
         x = y;
-    };
+    }
     chain
 }

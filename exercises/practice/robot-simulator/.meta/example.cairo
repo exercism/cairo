@@ -87,7 +87,7 @@ pub impl RobotImpl of RobotTrait {
         while let Option::Some(instruction) = instructions.at(i) {
             robot = robot.execute(instruction.into());
             i += 1;
-        };
+        }
         robot
     }
 

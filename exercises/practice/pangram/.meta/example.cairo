@@ -12,7 +12,7 @@ pub fn is_pangram(sentence: ByteArray) -> bool {
             seen.insert(chr.into(), true);
         }
         i += 1;
-    };
+    }
 
     let mut success = true;
     let mut curr: u8 = 'a';
@@ -23,7 +23,7 @@ pub fn is_pangram(sentence: ByteArray) -> bool {
         }
 
         curr += 1;
-    };
+    }
 
     success
 }

@@ -1,4 +1,4 @@
-use word_search::{search, SearchResult, Position};
+use word_search::{Position, SearchResult, search};
 
 #[test]
 fn should_accept_an_initial_game_grid_and_a_target_search_word() {

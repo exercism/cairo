@@ -9,7 +9,7 @@ pub fn commands(number: u8) -> Array<ByteArray> {
             results.append(action);
         }
         i += 1;
-    };
+    }
 
     if number & 16 != 0 {
         let mut reversed: Array<ByteArray> = array![];
@@ -17,7 +17,7 @@ pub fn commands(number: u8) -> Array<ByteArray> {
         while i > 0 {
             i -= 1;
             reversed.append(results[i].clone());
-        };
+        }
 
         results = reversed;
     }

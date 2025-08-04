@@ -24,14 +24,14 @@ pub fn rows(count: u32) -> Array<Array<u32>> {
                 };
 
                 row.append(valueA + valueB);
-            };
+            }
 
             j += 1;
-        };
+        }
 
         rows.append(row);
         i += 1;
-    };
+    }
 
     rows
 }

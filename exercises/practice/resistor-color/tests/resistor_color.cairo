@@ -1,4 +1,4 @@
-use resistor_color::{color_code, colors, Color};
+use resistor_color::{Color, color_code, colors};
 
 
 #[test]
@@ -29,16 +29,8 @@ fn orange() {
 fn test_colors() {
     let output = colors();
     let expected = array![
-        Color::Black,
-        Color::Brown,
-        Color::Red,
-        Color::Orange,
-        Color::Yellow,
-        Color::Green,
-        Color::Blue,
-        Color::Violet,
-        Color::Grey,
-        Color::White,
+        Color::Black, Color::Brown, Color::Red, Color::Orange, Color::Yellow, Color::Green,
+        Color::Blue, Color::Violet, Color::Grey, Color::White,
     ];
     assert_eq!(output, expected);
 }

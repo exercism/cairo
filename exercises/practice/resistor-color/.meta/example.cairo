@@ -29,15 +29,7 @@ pub fn color_code(color: Color) -> u8 {
 
 pub fn colors() -> Array<Color> {
     array![
-        Color::Black,
-        Color::Brown,
-        Color::Red,
-        Color::Orange,
-        Color::Yellow,
-        Color::Green,
-        Color::Blue,
-        Color::Violet,
-        Color::Grey,
-        Color::White,
+        Color::Black, Color::Brown, Color::Red, Color::Orange, Color::Yellow, Color::Green,
+        Color::Blue, Color::Violet, Color::Grey, Color::White,
     ]
 }

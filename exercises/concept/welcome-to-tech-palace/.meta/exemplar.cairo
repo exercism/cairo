@@ -8,7 +8,7 @@ pub fn add_border(welcome_msg: ByteArray, num_stars_per_line: u32) -> ByteArray 
     let mut border: ByteArray = "";
     for _ in 0..num_stars_per_line {
         border.append_byte('*');
-    };
+    }
     border.clone() + "\n" + welcome_msg + "\n" + border
 }
 
@@ -17,15 +17,15 @@ pub fn clean_up_message(old_msg: ByteArray) -> ByteArray {
     let mut start = 0;
     while is_whitespace(old_msg[start]) || old_msg[start] == '*' {
         start += 1;
-    };
+    }
     let mut end = old_msg.len();
     while is_whitespace(old_msg[end - 1]) || old_msg[end - 1] == '*' {
         end -= 1;
-    };
+    }
     let mut clean_msg = "";
     for i in start..end {
         clean_msg.append_byte(old_msg[i]);
-    };
+    }
     clean_msg
 }
 
@@ -45,7 +45,7 @@ fn to_uppercase(input: u256) -> ByteArray {
     while remaining_bytes != 0 {
         uppercase_chars.append_byte(char_to_uppercase(get_last_byte(remaining_bytes)));
         remaining_bytes = remove_last_byte(remaining_bytes);
-    };
+    }
     uppercase_chars.rev()
 }
 

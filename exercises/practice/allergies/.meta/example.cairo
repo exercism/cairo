@@ -38,7 +38,7 @@ pub impl AllergiesImpl of AllergiesTrait {
                 break;
             }
             index += 1;
-        };
+        }
         found && (*self.score & 2_u32.pow(index)) != 0
     }
 
@@ -49,7 +49,7 @@ pub impl AllergiesImpl of AllergiesTrait {
             if self.is_allergic_to(allergen) {
                 result.append(*allergen);
             }
-        };
+        }
         result
     }
 }

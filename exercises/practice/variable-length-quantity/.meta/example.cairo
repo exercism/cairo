@@ -24,11 +24,11 @@ pub fn encode(integers: Array<u32>) -> Array<u32> {
             }
 
             temp_result.append(tmp);
-        };
+        }
 
         temp_result = reverse_array(temp_result);
         result.append_span(temp_result.span());
-    };
+    }
     result
 }
 
@@ -49,7 +49,7 @@ pub fn decode(integers: Array<u32>) -> Array<u32> {
             assert!(i + 1 != size, "incomplete sequence");
         }
         i += 1;
-    };
+    }
 
     res
 }
@@ -61,7 +61,7 @@ fn reverse_array(arr: Array<u32>) -> Array<u32> {
     while i > 0 {
         i -= 1;
         reversed.append(*arr[i]);
-    };
+    }
 
     reversed
 }

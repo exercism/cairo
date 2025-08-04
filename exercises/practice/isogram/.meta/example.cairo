@@ -17,7 +17,7 @@ pub fn is_isogram(phrase: ByteArray) -> bool {
         }
 
         i += 1;
-    };
+    }
 
     success
 }

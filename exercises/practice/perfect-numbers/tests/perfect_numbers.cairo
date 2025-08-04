@@ -1,4 +1,4 @@
-use perfect_numbers::{classify, Classification};
+use perfect_numbers::{Classification, classify};
 
 // Perfect numbers
 

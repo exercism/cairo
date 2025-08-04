@@ -1,4 +1,4 @@
-use resistor_color_duo::{value, Color};
+use resistor_color_duo::{Color, value};
 
 #[test]
 fn brown_and_black() {

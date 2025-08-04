@@ -25,13 +25,13 @@ pub impl HighScoresImpl of HighScoresTrait {
     fn personal_best(self: @HighScores) -> Option<u32> {
         if self.scores.is_empty() {
             return Option::None;
-        };
+        }
         let mut max = 0;
         for score in self.scores.span() {
             if score > @max {
                 max = *score;
             }
-        };
+        }
         Option::Some(max)
     }
 
@@ -62,14 +62,14 @@ fn insertion_sort(span: Span<u32>) -> Array<u32> {
         while j != 0 && elem > sorted.get(j - 1) {
             sorted.insert(j, sorted.get(j - 1));
             j -= 1;
-        };
+        }
         sorted.insert(j.into(), elem);
-    };
+    }
 
     // collect all elements into an array
     let mut sorted_arr: Array<u32> = array![];
     for i in 0..span.len() {
         sorted_arr.append(sorted.get(i.into()));
-    };
+    }
     sorted_arr
 }
