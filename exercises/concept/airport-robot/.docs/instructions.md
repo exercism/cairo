@@ -6,7 +6,7 @@ They have clunky, somewhat humanoid-looking robots that they are trying to use t
 Your first task on the job is to program the robot to greet people in their native language after they scanned their passports at the self-check-in counter.
 
 The robot is proud of its abilities so it will always say which language it can speak first and then greet the person.
-For example, if someone scans a German passport the robot would say:
+For example, if someone scans a German passport, the robot would say:
 
 ```txt
 I can speak German: Hallo Dietrich!
@@ -14,8 +14,7 @@ I can speak German: Hallo Dietrich!
 
 ## 1. Create the abstract greeting functionality
 
-You will not write the code for the different languages yourself.
-You need to structure your code so other developers can easily add languages.
+You need to structure your code so that you and other developers can easily add languages.
 
 As a first step, define a trait `Greeter` with two functions.
 
