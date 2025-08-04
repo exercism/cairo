@@ -18,12 +18,9 @@ fi
     
 slug="$1"
 
-if [[ -d "$repo/exercises/concept/$slug" ]]; then
-    exercise_path="$repo/exercises/concept/$slug"
-elif [[ -d "$repo/exercises/practice/$slug" ]]; then
-    exercise_path="$repo/exercises/practice/$slug"
-else
-    echo "No such exercise: $slug"
+exercise_path=( "$repo"/exercises/*/"$slug" )
+if [[ ! -d "$exercise_path" ]]; then
+    echo "No such exercise $slug"
     exit 1
 fi
 
