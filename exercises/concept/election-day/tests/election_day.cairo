@@ -49,6 +49,7 @@ fn test_display_result() {
 }
 
 #[test]
+#[ignore]
 fn test_decrement_votes_of_candidate() {
     let mut results = Default::default();
 
