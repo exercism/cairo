@@ -18,7 +18,7 @@ fi
     
 slug="$1"
 
-exercise_path="$repo"/exercises/*/"$slug"
+exercise_path="$repo/exercises/*/$slug"
 if [[ ! -d "$exercise_path" ]]; then
     echo "No such exercise $slug"
     exit 1
