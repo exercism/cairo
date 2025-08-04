@@ -12,10 +12,7 @@ The creator of `null` went so far as to call it his ['billion-dollar mistake'][b
 
 ## The `Option` Type
 
-To avoid these problems, Cairo does not use null-references.
-However, it still needs a safe way to indicate that a particular variable has no value.
-This is where `Option` comes in.
-Instead of having a variable which lacks a value, Cairo variables can use the `Option` enum.
+To avoid these problems, Cairo variables can use the `Option` enum to safely represent the lack of a value.
 This enum has two variants: `None`, Cairo's null-equivalent; and `Some(T)`, where `T` is a value of any type.
 
 It looks like this:
