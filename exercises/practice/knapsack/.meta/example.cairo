@@ -48,7 +48,7 @@ pub fn maximum_value(maximum_weight: u32, items: Span<Item>) -> u32 {
                 max_values.set(row, w, max_values.at(item_index, w));
             }
         }
-    };
+    }
 
     max_values.at(items.len(), maximum_weight)
 }

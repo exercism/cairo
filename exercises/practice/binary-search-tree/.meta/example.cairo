@@ -13,7 +13,7 @@ pub impl BinarySearchTreeImpl of BinarySearchTreeTrait {
         let mut bts: BinarySearchTree = Default::default();
         for value in tree_data {
             bts = bts.add(*value);
-        };
+        }
         bts
     }
 

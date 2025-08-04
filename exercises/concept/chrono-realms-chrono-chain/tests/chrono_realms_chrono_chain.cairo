@@ -1,4 +1,4 @@
-use chrono_realms_chrono_chain::{ChronoChainTrait, ChronoChain};
+use chrono_realms_chrono_chain::{ChronoChain, ChronoChainTrait};
 
 const U32_MAX: u32 = 0xFFFFFFFF;
 
@@ -139,7 +139,7 @@ fn build_large_array() {
         assert_eq!(value, count);
         count += 1;
         chrono_chain = next.unbox();
-    };
+    }
 
     match chrono_chain {
         ChronoChain::End => (),
@@ -225,6 +225,6 @@ fn array_in_range(range: core::ops::Range<u32>) -> Array<u32> {
     let mut arr = array![];
     for elem in range {
         arr.append(elem);
-    };
+    }
     arr
 }

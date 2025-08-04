@@ -1,4 +1,4 @@
-use protein_translation::{proteins, AminoAcid};
+use protein_translation::{AminoAcid, proteins};
 
 #[test]
 fn empty_rna_sequence_results_in_no_proteins() {

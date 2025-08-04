@@ -1,4 +1,4 @@
-use anagram::{anagrams_for, SetTrait as Set};
+use anagram::{SetTrait as Set, anagrams_for};
 
 #[test]
 fn no_matches() {

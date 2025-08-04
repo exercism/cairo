@@ -9,7 +9,7 @@ pub fn classify(number: u64) -> Classification {
     assert!(number > 0, "Classification is only possible for positive integers.");
     if number == 1 {
         return Classification::Deficient;
-    };
+    }
 
     let mut sum = 1;
     let mut i = 2;
@@ -24,7 +24,7 @@ pub fn classify(number: u64) -> Classification {
             sum += increment;
         }
         i += 1;
-    };
+    }
 
     if sum < number {
         Classification::Deficient

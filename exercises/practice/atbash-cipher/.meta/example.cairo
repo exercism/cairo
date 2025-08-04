@@ -17,7 +17,7 @@ pub fn encode(phrase: ByteArray) -> ByteArray {
             chunk_size += 1;
         }
         i += 1;
-    };
+    }
 
     result
 }
@@ -33,7 +33,7 @@ pub fn decode(phrase: ByteArray) -> ByteArray {
             result.append_byte(decoded);
         }
         i += 1;
-    };
+    }
     result
 }
 

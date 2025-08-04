@@ -12,7 +12,7 @@ pub fn abbreviate(phrase: ByteArray) -> ByteArray {
             capture = false;
         }
         i += 1;
-    };
+    }
 
     result
 }

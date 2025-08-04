@@ -50,11 +50,11 @@ fn lines(diagram: @ByteArray) -> [ByteArray; 2] {
     while diagram[i] != '\n' {
         line1.append_byte(diagram[i]);
         i += 1;
-    };
+    }
     // `i` is at the newline char index, so everything after it is line 2
     for i in (i + 1)..diagram.len() {
         line2.append_byte(diagram[i]);
-    };
+    }
 
     [line1, line2]
 }

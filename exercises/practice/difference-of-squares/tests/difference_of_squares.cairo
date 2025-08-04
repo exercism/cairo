@@ -1,5 +1,5 @@
 use difference_of_squares::{
-    square_of_sum, sum_of_squares, difference_of_squares as diff_of_squares,
+    difference_of_squares as diff_of_squares, square_of_sum, sum_of_squares,
 };
 
 #[test]

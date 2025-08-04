@@ -26,7 +26,7 @@ pub fn rebase(digits: Array<u32>, input_base: u32, output_base: u32) -> Result<A
             break;
         }
         i += 1;
-    };
+    }
 
     if response > 0 || i == 0 {
         let x = *digits.at(i);
@@ -50,7 +50,7 @@ fn convert_to_base_10(digits: Array<u32>, input_base: u32) -> u32 {
         let pow = input_base.pow(exp);
         sum += *digit * pow;
         i += 1;
-    };
+    }
 
     sum
 }
@@ -66,7 +66,7 @@ fn convert_from_base_10(mut digits: u32, output_base: u32) -> Array<u32> {
         let remainder = digits % output_base;
         digits /= output_base;
         result.append(remainder);
-    };
+    }
 
     reverse_array(result)
 }
@@ -78,7 +78,7 @@ fn reverse_array(arr: Array<u32>) -> Array<u32> {
     while i > 0 {
         i -= 1;
         reversed.append(*arr[i]);
-    };
+    }
 
     reversed
 }

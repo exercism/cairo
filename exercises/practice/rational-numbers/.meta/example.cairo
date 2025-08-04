@@ -76,7 +76,7 @@ pub impl RationalPow of RationalPowTrait {
     fn pow(self: @Rational, power: i128) -> Rational {
         if *self.numer == 0 {
             return *self;
-        };
+        }
 
         let power_abs = abs(power);
 
@@ -126,7 +126,7 @@ fn pow(base: u128, mut power: u128) -> u128 {
     while power != 0 {
         result *= base;
         power -= 1;
-    };
+    }
     result.try_into().expect('too large to fit output type')
 }
 
@@ -139,7 +139,7 @@ fn nth_root(m: u128, n: u128) -> u128 {
             break;
         }
         root += 1;
-    };
+    }
     root
 }
 
@@ -148,7 +148,7 @@ fn gcd_two_numbers(mut a: u128, mut b: u128) -> u128 {
         let r = a % b;
         a = b;
         b = r;
-    };
+    }
     a
 }
 

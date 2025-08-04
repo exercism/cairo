@@ -52,7 +52,7 @@ pub fn valid(candidate: ByteArray) -> bool {
         // Flip should_double for alternating digits
         should_double = !should_double;
         count_digits += 1;
-    };
+    }
 
     valid && count_digits > 1 && processed_digits_sum % 10 == 0
 }

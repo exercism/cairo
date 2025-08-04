@@ -7,7 +7,7 @@ pub fn score(word: ByteArray) -> u16 {
     while let Option::Some(char) = word.at(i) {
         score += values.get(lowercase(char).into());
         i += 1;
-    };
+    }
     score
 }
 

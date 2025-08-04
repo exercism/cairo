@@ -1,4 +1,4 @@
-use linked_list::{DoublyLinkedListTrait as DoublyLinkedList};
+use linked_list::DoublyLinkedListTrait as DoublyLinkedList;
 
 #[test]
 fn pop_gets_element_from_the_list() {

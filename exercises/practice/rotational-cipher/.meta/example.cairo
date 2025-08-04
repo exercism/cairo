@@ -17,7 +17,7 @@ pub fn rotate(text: ByteArray, shift_key: u8) -> ByteArray {
         }
         result.append_byte(encoded);
         i += 1;
-    };
+    }
 
     result
 }

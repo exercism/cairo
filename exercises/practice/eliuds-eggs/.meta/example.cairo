@@ -12,7 +12,7 @@ pub fn eggCount(number: u64) -> u64 {
         }
 
         current /= 2;
-    };
+    }
 
     count
 }
