@@ -11,10 +11,10 @@ pub struct Player {
 }
 ```
 
-Players in this game must reach level 10 before they unlock a mana pool so that they can start casting spells.
+Players in this game must reach level 10 before they unlock a mana pool, which they can use to cast spells.
 Before that point, the Player's mana is `Option::None`.
 
-You're working on two pieces of functionality in this game, the revive mechanic and the spell casting mechanic.
+You're working on two pieces of functionality in this game: the revive mechanic and the spell casting mechanic.
 
 The `revive` method should check to ensure that the Player is indeed dead (their health has reached 0), and if they are, the method should return a new Player instance with 100 health.
 If the Player's level is 10 or above, they should also be revived with 100 mana.
@@ -36,7 +36,7 @@ alive_player.revive()
 ```
 
 The `cast_spell` method takes a mutable reference to the Player as well as a `mana_cost` parameter indicating how much mana the spell costs.
-It returns the amount of damage that the cast spell performs, which will always be two times the mana cost of the spell if the spell is successfully cast.
+It returns the amount of damage that the cast spell performs.
 
 - If the player does not have access to a mana pool, attempting to cast the spell must decrease their health by the mana cost of the spell.
   The damage returned must be 0.
@@ -48,7 +48,8 @@ It returns the amount of damage that the cast spell performs, which will always 
   assert_eq!(not_a_wizard_yet.mana, Option::None);
   ```
 
-- If the player has a mana pool but insufficient mana, the method should not affect the pool, but instead return 0
+- If the player has a mana pool but insufficient mana, the method should not affect the pool.
+The damage returned must be 0.
 
   ```rust
   let low_mana_wizard = Player { health: 93, mana: Option::Some(3), level: 12 };
@@ -57,7 +58,9 @@ It returns the amount of damage that the cast spell performs, which will always 
   assert_eq!(low_mana_wizard.mana, Option::Some(3));
   ```
 
-- Otherwise, the `mana_cost` should be deducted from the Player's mana pool and the appropriate amount of damage should be returned.
+- Otherwise, the spell is cast successfully.
+  The `mana_cost` should be deducted from the Player's mana pool.
+  The damage returned must be two times the mana cost of the spell.
 
   ```rust
   let wizard = Player { health: 123, mana: Option::Some(30), level: 18 };
