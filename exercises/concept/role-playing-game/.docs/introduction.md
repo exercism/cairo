@@ -1,0 +1,80 @@
+# Introduction
+
+## Null-References
+
+If you have ever used another programming language (C/C++, Python, Java, Ruby, Lisp, etc.), it is likely that you have encountered `null` or `nil` before.
+The use of `null` or `nil` is how these languages indicate that a particular variable has no value.
+However, this makes accidentally using a `null` variable an easy (and frequent) mistake to make.
+As you might imagine, trying to call a function that isn't there, or access a value that doesn't exist can lead to all sorts of bugs and crashes.
+The creator of `null` went so far as to call it his ['billion-dollar mistake'][billion-dollar-mistake].
+
+[billion-dollar-mistake]: https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/
+
+## The `Option` Type
+
+To avoid these problems, Cairo variables can use the `Option` enum to safely represent the lack of a value.
+This enum has two variants: `None`, Cairo's null-equivalent; and `Some(T)`, where `T` is a value of any type.
+
+It looks like this:
+
+```rust
+enum Option<T> {
+    None,
+    Some(T),
+}
+```
+
+You can think of `Option` as a layer of safety between you and the problems that null-references can cause, while still retaining their conceptual usefulness.
+
+## Using `Option`
+
+Setting a variable to `None` is fairly straightforward:
+
+```rust
+let nothing: Option<u32> = Option::None;  // Variable nothing is set to None
+```
+
+However, if you wish for the `Option` type to carry a value, you cannot assign this value directly.
+An `Option` type variable and, say, an `i32` type variable are not equivalent.
+You need to use `Some`:
+
+```rust
+let wrong_way: Option<i32> = -4; // This will not work
+
+let right_way: Option<i32> = Option::Some(-4); // This will work
+let another_right_way = Option::Some(-4); // Compiler infers that this is Option<i32>
+```
+
+For the same reason the following will not work:
+
+```rust
+let number = 47;
+let option_number = Option::Some(15);
+
+let compile_error = number + option_number; // Cannot add an i32 and an Option<i32> - they are of different types
+```
+
+To get the value contained by `Some`, you need to first check that it exists:
+
+```rust
+let mut some_words = Option::Some("choose something to say"); // some_words set to something
+
+match some_words {
+    Option::Some(str) => println!("Here, we will {}", str),
+    Option::None => println!("I've got nothing to say"),
+} // Prints, "Here, we will choose something to say"
+
+some_words = Option::None; // some_words now set to None
+
+// Exactly the same match block as above
+match some_words {
+    Option::Some(str) => println!("Here, we will {}", str),
+    Option::None => println!("I've got nothing to say"),
+} // Prints, "I've got nothing to say"
+```
+
+Cairo has other tools other than `match` available for checking and accessing values contained within `Option`, but `match` should be familiar to you now.
+
+Consider this a demonstration of why Cairo uses `Option` instead of a null-reference.
+The point is that **you _must_ check** whether or not the `Option` variable is `Some` (in which case you can go ahead and extract and use the value contained within), or `None`.
+Otherwise your program will not compile; the compiler keeps you safe from `null`.

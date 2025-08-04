@@ -1,6 +1,6 @@
 {
   "authors": [
-    "<your_gh_username>"
+    "0xNeshi"
   ],
   "files": {
     "solution": [
@@ -19,5 +19,5 @@
   "forked_from": [
     "rust/role-playing-game"
   ],
-  "blurb": "<blurb>"
+  "blurb": "Learn about the `Option` enum by creating a minimal role-playing game"
 }
