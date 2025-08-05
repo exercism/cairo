@@ -1,6 +1,6 @@
 {
   "authors": [
-    "<your_gh_username>"
+    "0xNeshi"
   ],
   "files": {
     "solution": [
@@ -19,5 +19,5 @@
   "forked_from": [
     "rust/rpn-calculator"
   ],
-  "blurb": "Use some of `Array`'s methods to evaluate Reverse Polish notation"
+  "blurb": "Use some of `Span`'s methods to evaluate Reverse Polish notation"
 }
