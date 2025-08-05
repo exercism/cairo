@@ -1,4 +1,4 @@
-#[derive(Debug, Drop)]
+#[derive(Drop, Debug)]
 pub enum CalculatorInput {
     Add,
     Subtract,
