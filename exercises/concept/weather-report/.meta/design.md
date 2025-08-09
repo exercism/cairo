@@ -2,7 +2,6 @@
 
 ## Learning objectives
 
-- Know how to use control flow constructs.
 - Know how to use enums.
 - Know how to use pattern matching.
 
@@ -14,9 +13,9 @@
 
 ## Concepts
 
-- Control flow
 - Enums
+- Pattern matching basics
 
 ## Prerequisites
 
-- Arrays
+- Felts

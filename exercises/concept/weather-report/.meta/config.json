@@ -16,8 +16,5 @@
       "Scarb.toml"
     ]
   },
-  "forked_from": [
-    "rust/rpn-calculator"
-  ],
-  "blurb": "Use some of `Span`'s methods to evaluate Reverse Polish notation"
+  "blurb": "Learn enums while building a weather reporting system."
 }
