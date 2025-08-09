@@ -7,7 +7,7 @@
       "src/lib.cairo"
     ],
     "test": [
-      "tests/rpn_calculator.cairo"
+      "tests/weather_report.cairo"
     ],
     "exemplar": [
       ".meta/exemplar.cairo"

@@ -4,7 +4,8 @@ Enums in Cairo allow you to define a type that can be one of several named varia
 
 ## Basics
 
-Enums, short for enumerations, limit all possible values of some data to a predefined set. The possible values of an `enum` are called variants:
+Enums, short for enumerations, limit all possible values of some data to a predefined set.
+The possible values of an `enum` are called variants:
 
 ```rust
 #[derive(Drop)]
