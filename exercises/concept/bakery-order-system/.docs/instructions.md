@@ -31,7 +31,8 @@ apply_discount(8)  // Returns: 8 (no discount)
 
 ## 3. Create Baking Schedule
 
-Implement `baking_schedule` that creates a daily baking plan. The bakery bakes in batches of 5 orders per hour:
+Implement `baking_schedule` that creates a daily baking plan.
+The bakery bakes in batches of 5 orders per hour:
 
 ```rust
 baking_schedule(18) // Returns: [5, 5, 5, 3] (3 full batches + 3 remaining)

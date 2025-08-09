@@ -9,8 +9,8 @@
     "test": [
       "tests/bakery_order_system.cairo"
     ],
-    "example": [
-      ".meta/example.cairo"
+    "exemplar": [
+      ".meta/exemplar.cairo"
     ],
     "invalidator": [
       "Scarb.toml"
