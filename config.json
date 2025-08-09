@@ -92,11 +92,22 @@
         "name": "RPN Calculator",
         "uuid": "536d9f09-5910-4a26-93fd-2242667b0b87",
         "concepts": [
-          "control-flow",
           "enums"
         ],
         "prerequisites": [
           "arrays"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "bakery-order-system",
+        "name": "Bakery Order System",
+        "uuid": "536d9f09-5910-4a26-93fd-2242667b0b87",
+        "concepts": [
+          "control-flow"
+        ],
+        "prerequisites": [
+          "match-basics"
         ],
         "status": "wip"
       },
