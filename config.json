@@ -96,7 +96,7 @@
           "match-basics"
         ],
         "prerequisites": [
-          "felts"
+          "functions"
         ],
         "status": "wip"
       },
