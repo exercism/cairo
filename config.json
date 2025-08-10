@@ -109,7 +109,7 @@
         "prerequisites": [
           "match-basics"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "welcome-to-tech-palace",
