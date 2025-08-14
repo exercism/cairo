@@ -76,6 +76,14 @@
         "status": "wip"
       },
       {
+        "slug": "cars-assemble",
+        "name": "Cars Assemble",
+        "uuid": "57845c17-15e5-4c62-bbac-29ad633e9ebb",
+        "concepts": [],
+        "prerequisites": [],
+        "status": "deprecated"
+      },
+      {
         "slug": "magician-in-training",
         "name": "Magician in Training",
         "uuid": "b1f29e1f-adb7-4e37-8101-a1819f1179fa",
