@@ -57,11 +57,9 @@
           "booleans"
         ],
         "prerequisites": [
-          "functions",
-          "mutability",
-          "integers"
+          "functions"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "cryptographer",
@@ -71,9 +69,9 @@
           "felts"
         ],
         "prerequisites": [
-          "booleans"
+          "functions"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "cars-assemble",
@@ -91,9 +89,9 @@
           "arrays"
         ],
         "prerequisites": [
-          "felts"
+          "functions"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "rpn-calculator",
@@ -106,7 +104,7 @@
         "prerequisites": [
           "arrays"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "welcome-to-tech-palace",
@@ -118,7 +116,7 @@
         "prerequisites": [
           "control-flow"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "gross-store",
@@ -130,7 +128,7 @@
         "prerequisites": [
           "control-flow"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "election-day",
@@ -144,7 +142,7 @@
         "prerequisites": [
           "dictionaries"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "red-vs-blue-darwin-style",
@@ -156,7 +154,7 @@
         "prerequisites": [
           "structs"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "health-statistics",
@@ -169,7 +167,7 @@
         "prerequisites": [
           "structs"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "airport-robot",
@@ -181,7 +179,7 @@
         "prerequisites": [
           "method-syntax"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "low-power-embedded-game",
@@ -191,9 +189,9 @@
           "tuples"
         ],
         "prerequisites": [
-          "traits"
+          "method-syntax"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "the-realm-of-echoes",
@@ -203,9 +201,9 @@
           "printing"
         ],
         "prerequisites": [
-          "traits"
+          "method-syntax"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "role-playing-game",
@@ -217,7 +215,7 @@
         "prerequisites": [
           "method-syntax"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "magical-measurements",
@@ -227,10 +225,9 @@
           "type-conversion"
         ],
         "prerequisites": [
-          "option",
-          "printing"
+          "option"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "calculator-conundrum",
@@ -240,10 +237,9 @@
           "error-handling"
         ],
         "prerequisites": [
-          "traits",
           "option"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "chrono-realms",
@@ -255,7 +251,7 @@
         "prerequisites": [
           "generics"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "chrono-realms-chrono-chain",
@@ -265,9 +261,9 @@
           "smart-pointers"
         ],
         "prerequisites": [
-          "traits"
+          "error-handling"
         ],
-        "status": "wip"
+        "status": "beta"
       }
     ],
     "practice": [
