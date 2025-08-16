@@ -96,17 +96,17 @@
         "status": "wip"
       },
       {
-        "slug": "rpn-calculator",
-        "name": "RPN Calculator",
+        "slug": "weather-report",
+        "name": "Weather Report",
         "uuid": "536d9f09-5910-4a26-93fd-2242667b0b87",
         "concepts": [
-          "control-flow",
-          "enums"
+          "enums",
+          "match-basics"
         ],
         "prerequisites": [
-          "arrays"
+          "functions"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "welcome-to-tech-palace",

@@ -1,13 +1,13 @@
 {
   "authors": [
-    "<your_gh_username>"
+    "0xNeshi"
   ],
   "files": {
     "solution": [
       "src/lib.cairo"
     ],
     "test": [
-      "tests/rpn_calculator.cairo"
+      "tests/weather_report.cairo"
     ],
     "exemplar": [
       ".meta/exemplar.cairo"
@@ -16,8 +16,5 @@
       "Scarb.toml"
     ]
   },
-  "forked_from": [
-    "rust/rpn-calculator"
-  ],
-  "blurb": "Use some of `Array`'s methods to evaluate Reverse Polish notation"
+  "blurb": "Learn enums while building a weather reporting system."
 }
