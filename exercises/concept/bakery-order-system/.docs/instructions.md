@@ -17,16 +17,17 @@ calculate_total(Pastry::Cookie, 10)   // Returns: 10 (10 * 1)
 
 ## 2. Apply Volume Discounts
 
-Implement `apply_discount` that applies discounts based on order total:
+Implement `apply_discount` that applies discounts based on order total.
+Apply the percentage discount to the total, then round down to the nearest whole coin (floor).
 
 - Orders ≥ 20 coins: 10% discount
 - Orders ≥ 10 coins: 5% discount
 - Orders < 10 coins: no discount
 
 ```rust
-apply_discount(25) // Returns: 22 (25 - 10% = 22.5, rounded down)
-apply_discount(15) // Returns: 14 (15 - 5% = 14.25, rounded down)
-apply_discount(8)  // Returns: 8 (no discount)
+apply_discount(25) // Returns: 22
+apply_discount(15) // Returns: 14
+apply_discount(8)  // Returns: 8
 ```
 
 ## 3. Create Baking Schedule
