@@ -16,7 +16,7 @@ pub enum WeatherCondition {
 }
 ```
 
-Your goal is to emit a weather report as follows: `"Today is <CONDITION> with a temperature of <TEMPERATURE> degrees Celsius."`.
+You will need to format a weather report like `"Today is <CONDITION> with a temperature of <TEMPERATURE> degrees Celsius."`.
 You'll need to implement functions that correspond with weather conditions.
 
 For example, the below snippet demonstrates an expected output for the `get_weather_report` function.
