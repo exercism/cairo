@@ -94,17 +94,12 @@
         "status": "beta"
       },
       {
-        "slug": "weather-report",
-        "name": "Weather Report",
+        "slug": "rpn-calculator",
+        "name": "RPN Calculator",
         "uuid": "536d9f09-5910-4a26-93fd-2242667b0b87",
-        "concepts": [
-          "enums",
-          "match-basics"
-        ],
-        "prerequisites": [
-          "functions"
-        ],
-        "status": "beta"
+        "concepts": [],
+        "prerequisites": [],
+        "status": "deprecated"
       },
       {
         "slug": "welcome-to-tech-palace",
@@ -262,6 +257,19 @@
         ],
         "prerequisites": [
           "error-handling"
+        ],
+        "status": "beta"
+      },
+      {
+        "slug": "weather-report",
+        "name": "weather-report",
+        "uuid": "b91da5c2-f639-40cb-8a28-607228e6b48b",
+        "concepts": [
+          "enums",
+          "match-basics"
+        ],
+        "prerequisites": [
+          "functions"
         ],
         "status": "beta"
       }
