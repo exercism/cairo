@@ -1,13 +1,13 @@
 {
   "authors": [
-    "0xNeshi"
+    "<your_gh_username>"
   ],
   "files": {
     "solution": [
       "src/lib.cairo"
     ],
     "test": [
-      "tests/magical_measurements.cairo"
+      "tests/cars_assemble.cairo"
     ],
     "exemplar": [
       ".meta/exemplar.cairo"
@@ -16,5 +16,8 @@
       "Scarb.toml"
     ]
   },
-  "blurb": "Learn Cairo's type conversion traits while helping Astrid the alchemist standardize magical measurements."
+  "forked_from": [
+    "go/cars-assemble"
+  ],
+  "blurb": "Learn about numbers and type conversion by analyzing an assembly line in a car factory."
 }
