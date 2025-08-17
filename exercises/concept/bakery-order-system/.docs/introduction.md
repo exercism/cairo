@@ -25,7 +25,8 @@ let result = if condition { 5 } else { 10 };
 
 ## Loops
 
-Use `loop` to repeat code until a condition is met:
+Use `loop` to repeat code.
+A loop runs indefinitely unless you stop it; use `break` to exit the loop when a condition is met.
 
 ```rust
 let mut counter = 0;
