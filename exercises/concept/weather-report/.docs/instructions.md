@@ -17,16 +17,16 @@ pub enum WeatherCondition {
 ```
 
 You will need to format a weather report like `"Today is <CONDITION> with a temperature of <TEMPERATURE> degrees Celsius."`.
-You'll need to implement functions that correspond with weather conditions.
+You'll need to implement the function that outputs the correct weather conditions.
 
-For example, the below snippet demonstrates an expected output for the `get_weather_report` function.
+For example, the below snippet demonstrates an expected output for the `get_weather_report` function for a "rainy" day.
 
 ```rust
 get_weather_report(WeatherCondition::Rainy, "25")
 // Returns: "Today is RAINY with a temperature of 25 degrees Celsius."
 ```
 
-And for `sunny_day`:
+And for a "sunny" day:
 
 ```rust
 get_weather_report(WeatherCondition::Sunny, "30")

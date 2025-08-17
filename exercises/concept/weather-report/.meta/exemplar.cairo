@@ -6,7 +6,7 @@ pub enum WeatherCondition {
     Stormy,
 }
 
-pub fn get_weather_report(condition: WeatherCondition, temperature: ByteArray) -> ByteArray {
+pub fn get_weather_report(condition: WeatherCondition, temperature: u32) -> ByteArray {
     match condition {
         WeatherCondition::Sunny => format!(
             "Today is SUNNY with a temperature of {temperature} degrees Celsius.",
