@@ -102,18 +102,6 @@
         "status": "deprecated"
       },
       {
-        "slug": "bakery-order-system",
-        "name": "Bakery Order System",
-        "uuid": "a979b9a0-7fd9-46f7-bacf-f0044c3c9bb0",
-        "concepts": [
-          "control-flow"
-        ],
-        "prerequisites": [
-          "match-basics"
-        ],
-        "status": "wip"
-      },
-      {
         "slug": "welcome-to-tech-palace",
         "name": "Welcome To Tech Palace!",
         "uuid": "f8108950-9819-4540-8a3a-880d0778806c",
