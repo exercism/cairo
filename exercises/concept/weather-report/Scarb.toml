@@ -1,5 +1,5 @@
 [package]
-name = "magical_measurements"
+name = "weather_report"
 version = "0.1.0"
 edition = "2024_07"
 

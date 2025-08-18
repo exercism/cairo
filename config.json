@@ -57,11 +57,9 @@
           "booleans"
         ],
         "prerequisites": [
-          "functions",
-          "mutability",
-          "integers"
+          "functions"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "cryptographer",
@@ -71,9 +69,17 @@
           "felts"
         ],
         "prerequisites": [
-          "booleans"
+          "functions"
         ],
-        "status": "wip"
+        "status": "beta"
+      },
+      {
+        "slug": "cars-assemble",
+        "name": "Cars Assemble",
+        "uuid": "57845c17-15e5-4c62-bbac-29ad633e9ebb",
+        "concepts": [],
+        "prerequisites": [],
+        "status": "deprecated"
       },
       {
         "slug": "magician-in-training",
@@ -83,21 +89,17 @@
           "arrays"
         ],
         "prerequisites": [
-          "felts"
+          "functions"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "rpn-calculator",
         "name": "RPN Calculator",
         "uuid": "536d9f09-5910-4a26-93fd-2242667b0b87",
-        "concepts": [
-          "enums"
-        ],
-        "prerequisites": [
-          "arrays"
-        ],
-        "status": "wip"
+        "concepts": [],
+        "prerequisites": [],
+        "status": "deprecated"
       },
       {
         "slug": "bakery-order-system",
@@ -121,7 +123,7 @@
         "prerequisites": [
           "control-flow"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "gross-store",
@@ -133,7 +135,7 @@
         "prerequisites": [
           "control-flow"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "election-day",
@@ -147,7 +149,7 @@
         "prerequisites": [
           "dictionaries"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "red-vs-blue-darwin-style",
@@ -159,7 +161,7 @@
         "prerequisites": [
           "structs"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "health-statistics",
@@ -172,7 +174,7 @@
         "prerequisites": [
           "structs"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "airport-robot",
@@ -184,7 +186,7 @@
         "prerequisites": [
           "method-syntax"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "low-power-embedded-game",
@@ -194,9 +196,9 @@
           "tuples"
         ],
         "prerequisites": [
-          "traits"
+          "method-syntax"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "the-realm-of-echoes",
@@ -206,9 +208,9 @@
           "printing"
         ],
         "prerequisites": [
-          "traits"
+          "method-syntax"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "role-playing-game",
@@ -220,7 +222,7 @@
         "prerequisites": [
           "method-syntax"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "magical-measurements",
@@ -230,10 +232,9 @@
           "type-conversion"
         ],
         "prerequisites": [
-          "option",
-          "printing"
+          "option"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "calculator-conundrum",
@@ -243,10 +244,9 @@
           "error-handling"
         ],
         "prerequisites": [
-          "traits",
           "option"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "chrono-realms",
@@ -258,7 +258,7 @@
         "prerequisites": [
           "generics"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "chrono-realms-chrono-chain",
@@ -268,9 +268,22 @@
           "smart-pointers"
         ],
         "prerequisites": [
-          "traits"
+          "error-handling"
         ],
-        "status": "wip"
+        "status": "beta"
+      },
+      {
+        "slug": "weather-report",
+        "name": "weather-report",
+        "uuid": "b91da5c2-f639-40cb-8a28-607228e6b48b",
+        "concepts": [
+          "enums",
+          "match-basics"
+        ],
+        "prerequisites": [
+          "functions"
+        ],
+        "status": "beta"
       }
     ],
     "practice": [
