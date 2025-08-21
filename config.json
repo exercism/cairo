@@ -69,7 +69,7 @@
           "felts"
         ],
         "prerequisites": [
-          "functions"
+          "integers"
         ],
         "status": "beta"
       },
@@ -89,7 +89,22 @@
           "arrays"
         ],
         "prerequisites": [
-          "functions"
+          "mutability"
+        ],
+        "status": "beta"
+      },
+      {
+        "slug": "weather-report",
+        "name": "weather-report",
+        "uuid": "b91da5c2-f639-40cb-8a28-607228e6b48b",
+        "concepts": [
+          "enums",
+          "match-basics"
+        ],
+        "prerequisites": [
+          "arrays",
+          "booleans",
+          "felts"
         ],
         "status": "beta"
       },
@@ -109,6 +124,7 @@
           "control-flow"
         ],
         "prerequisites": [
+          "enums",
           "match-basics"
         ],
         "status": "beta"
@@ -147,7 +163,8 @@
           "references-and-snapshots"
         ],
         "prerequisites": [
-          "dictionaries"
+          "dictionaries",
+          "strings"
         ],
         "status": "beta"
       },
@@ -159,7 +176,7 @@
           "modules"
         ],
         "prerequisites": [
-          "structs"
+          "ownership"
         ],
         "status": "beta"
       },
@@ -184,7 +201,7 @@
           "generics"
         ],
         "prerequisites": [
-          "method-syntax"
+          "traits"
         ],
         "status": "beta"
       },
@@ -208,7 +225,7 @@
           "printing"
         ],
         "prerequisites": [
-          "method-syntax"
+          "modules"
         ],
         "status": "beta"
       },
@@ -220,7 +237,7 @@
           "option"
         ],
         "prerequisites": [
-          "method-syntax"
+          "traits"
         ],
         "status": "beta"
       },
@@ -232,7 +249,8 @@
           "type-conversion"
         ],
         "prerequisites": [
-          "option"
+          "option",
+          "printing"
         ],
         "status": "beta"
       },
@@ -244,7 +262,8 @@
           "error-handling"
         ],
         "prerequisites": [
-          "option"
+          "option",
+          "generics"
         ],
         "status": "beta"
       },
@@ -256,7 +275,8 @@
           "operator-overloading"
         ],
         "prerequisites": [
-          "generics"
+          "generics",
+          "tuples"
         ],
         "status": "beta"
       },
@@ -268,20 +288,9 @@
           "smart-pointers"
         ],
         "prerequisites": [
-          "error-handling"
-        ],
-        "status": "beta"
-      },
-      {
-        "slug": "weather-report",
-        "name": "weather-report",
-        "uuid": "b91da5c2-f639-40cb-8a28-607228e6b48b",
-        "concepts": [
-          "enums",
-          "match-basics"
-        ],
-        "prerequisites": [
-          "functions"
+          "error-handling",
+          "operator-overloading",
+          "type-conversion"
         ],
         "status": "beta"
       }
