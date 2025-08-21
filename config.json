@@ -74,14 +74,6 @@
         "status": "beta"
       },
       {
-        "slug": "cars-assemble",
-        "name": "Cars Assemble",
-        "uuid": "57845c17-15e5-4c62-bbac-29ad633e9ebb",
-        "concepts": [],
-        "prerequisites": [],
-        "status": "deprecated"
-      },
-      {
         "slug": "magician-in-training",
         "name": "Magician in Training",
         "uuid": "b1f29e1f-adb7-4e37-8101-a1819f1179fa",
@@ -107,14 +99,6 @@
           "felts"
         ],
         "status": "beta"
-      },
-      {
-        "slug": "rpn-calculator",
-        "name": "RPN Calculator",
-        "uuid": "536d9f09-5910-4a26-93fd-2242667b0b87",
-        "concepts": [],
-        "prerequisites": [],
-        "status": "deprecated"
       },
       {
         "slug": "bakery-order-system",
@@ -293,6 +277,22 @@
           "type-conversion"
         ],
         "status": "beta"
+      },
+      {
+        "slug": "cars-assemble",
+        "name": "Cars Assemble",
+        "uuid": "57845c17-15e5-4c62-bbac-29ad633e9ebb",
+        "concepts": [],
+        "prerequisites": [],
+        "status": "deprecated"
+      },
+      {
+        "slug": "rpn-calculator",
+        "name": "RPN Calculator",
+        "uuid": "536d9f09-5910-4a26-93fd-2242667b0b87",
+        "concepts": [],
+        "prerequisites": [],
+        "status": "deprecated"
       }
     ],
     "practice": [
