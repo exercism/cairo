@@ -1,10 +1,6 @@
 /// Types of pastries available in the bakery
 #[derive(Drop, PartialEq)]
-pub enum Pastry {
-    Croissant,
-    Muffin,
-    Cookie,
-}
+pub enum Pastry {}
 
 /// Calculate the total cost of an order
 pub fn calculate_total(pastry: Pastry, quantity: u32) -> u32 {
