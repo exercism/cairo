@@ -69,17 +69,9 @@
           "felts"
         ],
         "prerequisites": [
-          "functions"
+          "integers"
         ],
         "status": "beta"
-      },
-      {
-        "slug": "cars-assemble",
-        "name": "Cars Assemble",
-        "uuid": "57845c17-15e5-4c62-bbac-29ad633e9ebb",
-        "concepts": [],
-        "prerequisites": [],
-        "status": "deprecated"
       },
       {
         "slug": "magician-in-training",
@@ -89,17 +81,24 @@
           "arrays"
         ],
         "prerequisites": [
-          "functions"
+          "mutability"
         ],
         "status": "beta"
       },
       {
-        "slug": "rpn-calculator",
-        "name": "RPN Calculator",
-        "uuid": "536d9f09-5910-4a26-93fd-2242667b0b87",
-        "concepts": [],
-        "prerequisites": [],
-        "status": "deprecated"
+        "slug": "weather-report",
+        "name": "weather-report",
+        "uuid": "b91da5c2-f639-40cb-8a28-607228e6b48b",
+        "concepts": [
+          "enums",
+          "match-basics"
+        ],
+        "prerequisites": [
+          "arrays",
+          "booleans",
+          "felts"
+        ],
+        "status": "beta"
       },
       {
         "slug": "bakery-order-system",
@@ -109,6 +108,7 @@
           "control-flow"
         ],
         "prerequisites": [
+          "enums",
           "match-basics"
         ],
         "status": "beta"
@@ -147,7 +147,8 @@
           "references-and-snapshots"
         ],
         "prerequisites": [
-          "dictionaries"
+          "dictionaries",
+          "strings"
         ],
         "status": "beta"
       },
@@ -159,7 +160,7 @@
           "modules"
         ],
         "prerequisites": [
-          "structs"
+          "ownership"
         ],
         "status": "beta"
       },
@@ -184,7 +185,7 @@
           "generics"
         ],
         "prerequisites": [
-          "method-syntax"
+          "traits"
         ],
         "status": "beta"
       },
@@ -208,7 +209,7 @@
           "printing"
         ],
         "prerequisites": [
-          "method-syntax"
+          "modules"
         ],
         "status": "beta"
       },
@@ -220,7 +221,7 @@
           "option"
         ],
         "prerequisites": [
-          "method-syntax"
+          "traits"
         ],
         "status": "beta"
       },
@@ -232,7 +233,8 @@
           "type-conversion"
         ],
         "prerequisites": [
-          "option"
+          "option",
+          "printing"
         ],
         "status": "beta"
       },
@@ -244,7 +246,8 @@
           "error-handling"
         ],
         "prerequisites": [
-          "option"
+          "option",
+          "generics"
         ],
         "status": "beta"
       },
@@ -256,9 +259,40 @@
           "operator-overloading"
         ],
         "prerequisites": [
-          "generics"
+          "generics",
+          "tuples"
         ],
         "status": "beta"
+      },
+      {
+        "slug": "chrono-realms-chrono-chain",
+        "name": "Chrono Realms Chrono Chain",
+        "uuid": "e04f808a-25dc-4448-bc45-d3da0db9819a",
+        "concepts": [
+          "smart-pointers"
+        ],
+        "prerequisites": [
+          "error-handling",
+          "operator-overloading",
+          "type-conversion"
+        ],
+        "status": "beta"
+      },
+      {
+        "slug": "cars-assemble",
+        "name": "Cars Assemble",
+        "uuid": "57845c17-15e5-4c62-bbac-29ad633e9ebb",
+        "concepts": [],
+        "prerequisites": [],
+        "status": "deprecated"
+      },
+      {
+        "slug": "rpn-calculator",
+        "name": "RPN Calculator",
+        "uuid": "536d9f09-5910-4a26-93fd-2242667b0b87",
+        "concepts": [],
+        "prerequisites": [],
+        "status": "deprecated"
       },
       {
         "slug": "chrono-realms-time-tree",
@@ -275,31 +309,6 @@
         "concepts": [],
         "prerequisites": [],
         "status": "deprecated"
-      },
-      {
-        "slug": "chrono-realms-chrono-chain",
-        "name": "Chrono Realms Chrono Chain",
-        "uuid": "e04f808a-25dc-4448-bc45-d3da0db9819a",
-        "concepts": [
-          "smart-pointers"
-        ],
-        "prerequisites": [
-          "error-handling"
-        ],
-        "status": "beta"
-      },
-      {
-        "slug": "weather-report",
-        "name": "weather-report",
-        "uuid": "b91da5c2-f639-40cb-8a28-607228e6b48b",
-        "concepts": [
-          "enums",
-          "match-basics"
-        ],
-        "prerequisites": [
-          "functions"
-        ],
-        "status": "beta"
       }
     ],
     "practice": [
@@ -835,15 +844,6 @@
         "difficulty": 6
       },
       {
-        "slug": "minesweeper",
-        "name": "Minesweeper",
-        "uuid": "393d862e-2736-49e7-ad7a-cda819b897c9",
-        "practices": [],
-        "prerequisites": [],
-        "difficulty": 6,
-        "status": "deprecated"
-      },
-      {
         "slug": "kindergarten-garden",
         "name": "Kindergarten Garden",
         "uuid": "6e241be1-28ba-4658-a6de-a29f3471725d",
@@ -930,6 +930,15 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 3
+      },
+      {
+        "slug": "minesweeper",
+        "name": "Minesweeper",
+        "uuid": "393d862e-2736-49e7-ad7a-cda819b897c9",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 6,
+        "status": "deprecated"
       }
     ],
     "foregone": [
