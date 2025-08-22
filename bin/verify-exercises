@@ -74,6 +74,8 @@ for exercise_path in $exercises; do
         cp -r "$exercise_path/$c" "$tmp_dir"
     done
 
+    cp "$repo/.tool-versions" "$tmp_dir"
+
     cd "$tmp_dir"
 
     # test that the scaffold + tests combination compiles (unless skipped)
