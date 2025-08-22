@@ -5,24 +5,6 @@ use core::traits::{Add, Sub, PartialOrd};
 pub struct TimeShard {
     pub value: i32,
 }
+// TODO: implemented the imported traits for the `TimeShard` type
 
-// Implement Add for TimeShard
-impl TimeShardAdd of Add<TimeShard> {
-    fn add(lhs: TimeShard, rhs: TimeShard) -> TimeShard {
-        panic!("implement 'Add::<TimeShard>::add'")
-    }
-}
 
-// Implement Sub for TimeShard
-impl TimeShardSub of Sub<TimeShard> {
-    fn sub(lhs: TimeShard, rhs: TimeShard) -> TimeShard {
-        panic!("implement 'Sub::<TimeShard>::sub'")
-    }
-}
-
-// Implement PartialEq is already derived, so no need for manual implementation
-impl TimeShardPartialOrd of PartialOrd<TimeShard> {
-    fn lt(lhs: TimeShard, rhs: TimeShard) -> bool {
-        panic!("implement 'PartialOrd::<TimeShard>::lt'")
-    }
-}

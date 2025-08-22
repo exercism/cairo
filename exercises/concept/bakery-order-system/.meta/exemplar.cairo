@@ -1,3 +1,4 @@
+/// Types of pastries available in the bakery
 #[derive(Drop, PartialEq)]
 pub enum Pastry {
     Croissant,
@@ -5,6 +6,7 @@ pub enum Pastry {
     Cookie,
 }
 
+/// Calculate the total cost of an order
 pub fn calculate_total(pastry: Pastry, quantity: u32) -> u32 {
     let price_per_item = match pastry {
         Pastry::Croissant => 3,
@@ -15,6 +17,7 @@ pub fn calculate_total(pastry: Pastry, quantity: u32) -> u32 {
     price_per_item * quantity
 }
 
+/// Apply discount based on order size
 pub fn apply_discount(total: u32) -> u32 {
     if total >= 20 {
         // 10% discount: multiply by 90, divide by 100
@@ -28,6 +31,7 @@ pub fn apply_discount(total: u32) -> u32 {
     }
 }
 
+/// Generate the daily baking schedule
 pub fn baking_schedule(total_orders: u32) -> Array<u32> {
     let mut schedule = ArrayTrait::new();
     let mut remaining_orders = total_orders;
