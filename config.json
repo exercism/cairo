@@ -3,7 +3,7 @@
   "slug": "cairo",
   "active": true,
   "status": {
-    "concept_exercises": false,
+    "concept_exercises": true,
     "test_runner": true,
     "representer": false,
     "analyzer": false
@@ -46,8 +46,7 @@
           "mutability",
           "integers"
         ],
-        "prerequisites": [],
-        "status": "beta"
+        "prerequisites": []
       },
       {
         "slug": "annalyns-infiltration",
@@ -58,8 +57,7 @@
         ],
         "prerequisites": [
           "functions"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "cryptographer",
@@ -70,8 +68,7 @@
         ],
         "prerequisites": [
           "integers"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "magician-in-training",
@@ -82,8 +79,7 @@
         ],
         "prerequisites": [
           "mutability"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "weather-report",
@@ -97,8 +93,7 @@
           "arrays",
           "booleans",
           "felts"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "bakery-order-system",
@@ -110,8 +105,7 @@
         "prerequisites": [
           "enums",
           "match-basics"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "welcome-to-tech-palace",
@@ -122,8 +116,7 @@
         ],
         "prerequisites": [
           "control-flow"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "gross-store",
@@ -134,8 +127,7 @@
         ],
         "prerequisites": [
           "control-flow"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "election-day",
@@ -149,8 +141,7 @@
         "prerequisites": [
           "dictionaries",
           "strings"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "red-vs-blue-darwin-style",
@@ -161,8 +152,7 @@
         ],
         "prerequisites": [
           "ownership"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "health-statistics",
@@ -174,8 +164,7 @@
         ],
         "prerequisites": [
           "structs"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "airport-robot",
@@ -186,8 +175,7 @@
         ],
         "prerequisites": [
           "traits"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "low-power-embedded-game",
@@ -198,8 +186,7 @@
         ],
         "prerequisites": [
           "method-syntax"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "the-realm-of-echoes",
@@ -210,8 +197,7 @@
         ],
         "prerequisites": [
           "modules"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "role-playing-game",
@@ -222,8 +208,7 @@
         ],
         "prerequisites": [
           "traits"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "magical-measurements",
@@ -235,8 +220,7 @@
         "prerequisites": [
           "option",
           "printing"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "calculator-conundrum",
@@ -248,8 +232,7 @@
         "prerequisites": [
           "option",
           "generics"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "chrono-realms",
@@ -261,8 +244,7 @@
         "prerequisites": [
           "generics",
           "tuples"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "chrono-realms-chrono-chain",
@@ -275,8 +257,7 @@
           "error-handling",
           "operator-overloading",
           "type-conversion"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "cars-assemble",
