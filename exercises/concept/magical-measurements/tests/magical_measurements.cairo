@@ -1,6 +1,6 @@
 use magical_measurements::{
-    Essence, Elixir, convert_signed_to_unsigned, convert_unsigned_to_signed,
-    convert_essence_to_elixir,
+    Elixir, Essence, convert_essence_to_elixir, convert_signed_to_unsigned,
+    convert_unsigned_to_signed,
 };
 
 #[test]
