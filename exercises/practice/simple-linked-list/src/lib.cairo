@@ -1,4 +1,4 @@
-#[derive(Drop, Copy)]
+#[derive(Drop)]
 pub struct SimpleLinkedList<T> {}
 
 #[generate_trait]

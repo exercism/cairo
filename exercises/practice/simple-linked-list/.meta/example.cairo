@@ -1,4 +1,4 @@
-#[derive(Drop, Copy)]
+#[derive(Drop)]
 pub struct SimpleLinkedList<T> {
     head: List<T>,
     len: usize,
@@ -6,11 +6,13 @@ pub struct SimpleLinkedList<T> {
 
 type List<T> = Option<Box<Node<T>>>;
 
-#[derive(Drop, Copy)]
 struct Node<T> {
     data: T,
     next: List<T>,
 }
+
+impl NodeDrop<T, +Drop<T>> of Drop<Node<T>>; 
+impl NodeCopy<T, +Copy<T>> of Copy<Node<T>>; 
 
 #[generate_trait]
 pub impl SimpleLinkedListImpl<T, +Drop<T>, +Copy<T>> of SimpleLinkedListTrait<T> {
