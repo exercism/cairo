@@ -59,7 +59,7 @@ pub fn answer(question: ByteArray) -> i32 {
 
 fn split_question_into_words(question: ByteArray) -> Array<ByteArray> {
     let mut words: Array<ByteArray> = ArrayTrait::new();
-    let mut current_word = "";
+    let mut current_word: ByteArray = "";
 
     let mut i = 0;
     while i < question.len() {
