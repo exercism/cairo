@@ -42,6 +42,7 @@ pub fn decrement_votes_of_candidate(ref final_results: Felt252Dict<u32>, candida
     final_results.insert(candidate, votes - 1);
 }
 
+// Helper function showing how integers can be converted into the ByteArray type
 fn u32_to_bytearray(v: u32) -> ByteArray {
     let mut result = "";
     v.append_formatted_to_byte_array(ref result, 10);

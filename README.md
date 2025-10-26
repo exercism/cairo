@@ -57,14 +57,18 @@ _Thoughtful suggestions will likely result faster & more enthusiastic responses 
 
 <br>
 
-## Testing
+## Verifying
 
-Tests currently use Cairo v2.12.0 (included with Scarb v2.12.0).
+The track currently uses Cairo v2.12.0 (included with Scarb v2.12.0).
 
-To test all exercises, run `./bin/verify-exercises`.
-This command will iterate over all exercises and check to see if their exemplar/example implementation passes all the tests.
+To verify all exercises, run `./bin/verify-exercises`.
+This command will iterate over all exercises and check to see if the stub compiles and the exemplar/example implementation passes all the tests.
 
-To test a single exercise, run `./bin/verify-exercises <exercise-slug>`.
+To verify a single exercise, run `./bin/verify-exercises <exercise-slug>`.
+
+# Testing
+
+To check whether your solution passes the tests, just run `./bin/test <exercise-slug>`
 
 ### Track linting
 

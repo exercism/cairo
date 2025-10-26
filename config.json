@@ -3,7 +3,7 @@
   "slug": "cairo",
   "active": true,
   "status": {
-    "concept_exercises": false,
+    "concept_exercises": true,
     "test_runner": true,
     "representer": false,
     "analyzer": false
@@ -46,8 +46,7 @@
           "mutability",
           "integers"
         ],
-        "prerequisites": [],
-        "status": "beta"
+        "prerequisites": []
       },
       {
         "slug": "annalyns-infiltration",
@@ -57,11 +56,8 @@
           "booleans"
         ],
         "prerequisites": [
-          "functions",
-          "mutability",
-          "integers"
-        ],
-        "status": "wip"
+          "functions"
+        ]
       },
       {
         "slug": "cryptographer",
@@ -71,9 +67,8 @@
           "felts"
         ],
         "prerequisites": [
-          "booleans"
-        ],
-        "status": "wip"
+          "integers"
+        ]
       },
       {
         "slug": "magician-in-training",
@@ -83,22 +78,34 @@
           "arrays"
         ],
         "prerequisites": [
-          "felts"
-        ],
-        "status": "wip"
+          "mutability"
+        ]
       },
       {
-        "slug": "rpn-calculator",
-        "name": "RPN Calculator",
-        "uuid": "536d9f09-5910-4a26-93fd-2242667b0b87",
+        "slug": "weather-report",
+        "name": "weather-report",
+        "uuid": "b91da5c2-f639-40cb-8a28-607228e6b48b",
         "concepts": [
-          "control-flow",
-          "enums"
+          "enums",
+          "match-basics"
         ],
         "prerequisites": [
-          "arrays"
+          "arrays",
+          "booleans",
+          "felts"
+        ]
+      },
+      {
+        "slug": "bakery-order-system",
+        "name": "Bakery Order System",
+        "uuid": "a979b9a0-7fd9-46f7-bacf-f0044c3c9bb0",
+        "concepts": [
+          "control-flow"
         ],
-        "status": "wip"
+        "prerequisites": [
+          "enums",
+          "match-basics"
+        ]
       },
       {
         "slug": "welcome-to-tech-palace",
@@ -109,8 +116,7 @@
         ],
         "prerequisites": [
           "control-flow"
-        ],
-        "status": "wip"
+        ]
       },
       {
         "slug": "gross-store",
@@ -121,8 +127,7 @@
         ],
         "prerequisites": [
           "control-flow"
-        ],
-        "status": "wip"
+        ]
       },
       {
         "slug": "election-day",
@@ -134,9 +139,9 @@
           "references-and-snapshots"
         ],
         "prerequisites": [
-          "dictionaries"
-        ],
-        "status": "wip"
+          "dictionaries",
+          "strings"
+        ]
       },
       {
         "slug": "red-vs-blue-darwin-style",
@@ -146,9 +151,8 @@
           "modules"
         ],
         "prerequisites": [
-          "structs"
-        ],
-        "status": "wip"
+          "ownership"
+        ]
       },
       {
         "slug": "health-statistics",
@@ -160,8 +164,7 @@
         ],
         "prerequisites": [
           "structs"
-        ],
-        "status": "wip"
+        ]
       },
       {
         "slug": "airport-robot",
@@ -171,9 +174,8 @@
           "generics"
         ],
         "prerequisites": [
-          "method-syntax"
-        ],
-        "status": "wip"
+          "traits"
+        ]
       },
       {
         "slug": "low-power-embedded-game",
@@ -183,9 +185,8 @@
           "tuples"
         ],
         "prerequisites": [
-          "traits"
-        ],
-        "status": "wip"
+          "method-syntax"
+        ]
       },
       {
         "slug": "the-realm-of-echoes",
@@ -195,9 +196,8 @@
           "printing"
         ],
         "prerequisites": [
-          "traits"
-        ],
-        "status": "wip"
+          "modules"
+        ]
       },
       {
         "slug": "role-playing-game",
@@ -207,9 +207,8 @@
           "option"
         ],
         "prerequisites": [
-          "method-syntax"
-        ],
-        "status": "wip"
+          "traits"
+        ]
       },
       {
         "slug": "magical-measurements",
@@ -221,8 +220,7 @@
         "prerequisites": [
           "option",
           "printing"
-        ],
-        "status": "wip"
+        ]
       },
       {
         "slug": "calculator-conundrum",
@@ -232,10 +230,9 @@
           "error-handling"
         ],
         "prerequisites": [
-          "traits",
-          "option"
-        ],
-        "status": "wip"
+          "option",
+          "generics"
+        ]
       },
       {
         "slug": "chrono-realms",
@@ -245,9 +242,9 @@
           "operator-overloading"
         ],
         "prerequisites": [
-          "generics"
-        ],
-        "status": "wip"
+          "generics",
+          "tuples"
+        ]
       },
       {
         "slug": "chrono-realms-chrono-chain",
@@ -257,9 +254,42 @@
           "smart-pointers"
         ],
         "prerequisites": [
-          "traits"
-        ],
-        "status": "wip"
+          "error-handling",
+          "operator-overloading",
+          "type-conversion"
+        ]
+      },
+      {
+        "slug": "cars-assemble",
+        "name": "Cars Assemble",
+        "uuid": "57845c17-15e5-4c62-bbac-29ad633e9ebb",
+        "concepts": [],
+        "prerequisites": [],
+        "status": "deprecated"
+      },
+      {
+        "slug": "rpn-calculator",
+        "name": "RPN Calculator",
+        "uuid": "536d9f09-5910-4a26-93fd-2242667b0b87",
+        "concepts": [],
+        "prerequisites": [],
+        "status": "deprecated"
+      },
+      {
+        "slug": "chrono-realms-time-tree",
+        "name": "Chrono Realms Time Tree",
+        "uuid": "a72139a1-825e-4349-a6b5-400b665fbe07",
+        "concepts": [],
+        "prerequisites": [],
+        "status": "deprecated"
+      },
+      {
+        "slug": "the-farm",
+        "name": "The Farm",
+        "uuid": "e167e30c-84b1-44da-b21c-70bc46688f20",
+        "concepts": [],
+        "prerequisites": [],
+        "status": "deprecated"
       }
     ],
     "practice": [
@@ -795,15 +825,6 @@
         "difficulty": 6
       },
       {
-        "slug": "minesweeper",
-        "name": "Minesweeper",
-        "uuid": "393d862e-2736-49e7-ad7a-cda819b897c9",
-        "practices": [],
-        "prerequisites": [],
-        "difficulty": 6,
-        "status": "deprecated"
-      },
-      {
         "slug": "kindergarten-garden",
         "name": "Kindergarten Garden",
         "uuid": "6e241be1-28ba-4658-a6de-a29f3471725d",
@@ -890,6 +911,15 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 3
+      },
+      {
+        "slug": "minesweeper",
+        "name": "Minesweeper",
+        "uuid": "393d862e-2736-49e7-ad7a-cda819b897c9",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 6,
+        "status": "deprecated"
       }
     ],
     "foregone": [

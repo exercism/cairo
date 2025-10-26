@@ -1,9 +1,5 @@
 #[derive(Drop)]
-pub struct User {
-    name: ByteArray,
-    age: u32,
-    weight: u32,
-}
+pub struct User {}
 
 pub trait UserTrait {
     fn new(name: ByteArray, age: u32, weight: u32) -> User;

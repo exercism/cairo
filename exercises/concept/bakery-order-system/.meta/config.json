@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "0xNeshi"
+  ],
+  "files": {
+    "solution": [
+      "src/lib.cairo"
+    ],
+    "test": [
+      "tests/bakery_order_system.cairo"
+    ],
+    "exemplar": [
+      ".meta/exemplar.cairo"
+    ],
+    "invalidator": [
+      "Scarb.toml"
+    ]
+  },
+  "blurb": "Learn Cairo's control flow constructs while managing a bakery's daily operations.",
+  "custom": {
+    "skipStubVerification": true
+  }
+}
