@@ -1,4 +1,4 @@
-#[derive(Drop)]
+#[derive(Drop, Copy)]
 pub struct SimpleLinkedList<T> {
     head: List<T>,
     len: usize,
