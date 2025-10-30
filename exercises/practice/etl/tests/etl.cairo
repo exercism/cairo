@@ -53,44 +53,18 @@ fn more_keys() {
 fn full_dataset() {
     let legacy_data = input_from(
         array![
-            (1, array!['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T']),
-            (2, array!['D', 'G']),
-            (3, array!['B', 'C', 'M', 'P']),
-            (4, array!['F', 'H', 'V', 'W', 'Y']),
-            (5, array!['K']),
-            (8, array!['J', 'X']),
-            (10, array!['Q', 'Z']),
+            (1, array!['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T']), (2, array!['D', 'G']),
+            (3, array!['B', 'C', 'M', 'P']), (4, array!['F', 'H', 'V', 'W', 'Y']), (5, array!['K']),
+            (8, array!['J', 'X']), (10, array!['Q', 'Z']),
         ],
     );
 
     let expected = expected_from(
         array![
-            ('a', 1),
-            ('b', 3),
-            ('c', 3),
-            ('d', 2),
-            ('e', 1),
-            ('f', 4),
-            ('g', 2),
-            ('h', 4),
-            ('i', 1),
-            ('j', 8),
-            ('k', 5),
-            ('l', 1),
-            ('m', 3),
-            ('n', 1),
-            ('o', 1),
-            ('p', 3),
-            ('q', 10),
-            ('r', 1),
-            ('s', 1),
-            ('t', 1),
-            ('u', 1),
-            ('v', 4),
-            ('w', 4),
-            ('x', 8),
-            ('y', 4),
-            ('z', 10),
+            ('a', 1), ('b', 3), ('c', 3), ('d', 2), ('e', 1), ('f', 4), ('g', 2), ('h', 4),
+            ('i', 1), ('j', 8), ('k', 5), ('l', 1), ('m', 3), ('n', 1), ('o', 1), ('p', 3),
+            ('q', 10), ('r', 1), ('s', 1), ('t', 1), ('u', 1), ('v', 4), ('w', 4), ('x', 8),
+            ('y', 4), ('z', 10),
         ],
     );
 
@@ -101,7 +75,7 @@ fn input_from(v: Array<(u32, Array<u8>)>) -> Felt252Dict<Nullable<Span<u8>>> {
     let mut dict: Felt252Dict<Nullable<Span<u8>>> = Default::default();
     for (num, letters) in v {
         dict.insert(num.into(), NullableTrait::new(letters.span()));
-    };
+    }
     dict
 }
 
@@ -109,7 +83,7 @@ fn expected_from(v: Array<(u8, u32)>) -> Felt252Dict<u32> {
     let mut dict: Felt252Dict<u32> = Default::default();
     for (char, num) in v {
         dict.insert(char.into(), num);
-    };
+    }
     dict
 }
 
@@ -123,7 +97,7 @@ fn assert_dicts_eq(expected: Felt252Dict<u32>, actual: Felt252Dict<u32>) {
             unequal = true;
             break;
         }
-    };
+    }
     if unequal {
         let mut f: Formatter = Default::default();
         writeln!(f, "\nexpected:").expect('write expected');
@@ -149,7 +123,7 @@ fn write_dict(mut f: Formatter, dict: Felt252Dict<u32>) -> Formatter {
             letter.append_byte(char);
             writeln!(f, "    \"{}\": {},", letter, points).expect('should write letter');
         }
-    };
+    }
     writeln!(f, "}}").expect('should write }');
     f
 }

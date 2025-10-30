@@ -1,4 +1,4 @@
-use space_age::{Planet, Earth, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune};
+use space_age::{Earth, Jupiter, Mars, Mercury, Neptune, Planet, Saturn, Uranus, Venus};
 
 fn assert_in_delta(expected: u256, actual: u256) {
     // absolute value of the difference

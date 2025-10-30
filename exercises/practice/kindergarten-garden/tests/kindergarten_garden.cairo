@@ -1,4 +1,4 @@
-use kindergarten_garden::{plants, Plant, Student};
+use kindergarten_garden::{Plant, Student, plants};
 
 #[test]
 fn garden_with_single_student() {

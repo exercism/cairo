@@ -95,7 +95,7 @@ fn sort(arr: @Array<Domino>) -> Array<Domino> {
         sorted_arr.append(normalize(*arr[min_domino_index]));
         visited.insert(min_domino_index.into(), true);
         sorted_len += 1;
-    };
+    }
 
     sorted_arr
 }
@@ -104,7 +104,7 @@ fn next_min_index(arr: @Array<Domino>, ref visited: Felt252Dict<bool>) -> usize 
     let mut next_min_domino_index = 0;
     while visited.get(next_min_domino_index) {
         next_min_domino_index += 1;
-    };
+    }
     let mut min_domino_index: usize = next_min_domino_index.try_into().unwrap();
 
     let mut i = arr.len();
@@ -115,7 +115,7 @@ fn next_min_index(arr: @Array<Domino>, ref visited: Felt252Dict<bool>) -> usize 
                 min_domino_index = i;
             }
         }
-    };
+    }
     min_domino_index
 }
 

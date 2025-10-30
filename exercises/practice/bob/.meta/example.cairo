@@ -33,7 +33,7 @@ fn is_loud(input: @ByteArray) -> bool {
 
         uppercased.append_byte(to_uppercase(c));
         i += 1;
-    };
+    }
     has_letter && @uppercased == input
 }
 
@@ -81,7 +81,7 @@ fn trim(input: @ByteArray) -> ByteArray {
     let mut start = 0;
     while start < input.len() && is_whitespace(input[start]) {
         start += 1;
-    };
+    }
 
     let mut end = input.len() - 1;
     while end >= start {
@@ -90,13 +90,13 @@ fn trim(input: @ByteArray) -> ByteArray {
         }
 
         end -= 1;
-    };
+    }
 
     let mut j = start;
     while j <= end {
         result.append_byte(input[j]);
         j += 1;
-    };
+    }
 
     result
 }

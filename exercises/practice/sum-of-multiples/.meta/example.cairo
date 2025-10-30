@@ -9,18 +9,18 @@ pub fn sum(limit: u32, factors: Array<u32>) -> u32 {
             while x < limit {
                 if !contains(@multiples, x) {
                     multiples.append(x);
-                };
+                }
 
                 multiplier += 1;
                 x = f * multiplier;
             }
         }
-    };
+    }
 
     let mut total_sum = 0;
     for m in multiples {
         total_sum += m;
-    };
+    }
 
     total_sum
 }
@@ -34,6 +34,6 @@ fn contains(arr: @Array<u32>, value: u32) -> bool {
             break;
         }
         i += 1;
-    };
+    }
     result
 }

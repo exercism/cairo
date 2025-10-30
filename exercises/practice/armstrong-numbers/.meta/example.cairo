@@ -23,6 +23,6 @@ fn count_digits(mut num: u128) -> u32 {
     while num != 0 {
         num = num / 10;
         res += 1;
-    };
+    }
     res
 }

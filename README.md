@@ -59,7 +59,7 @@ _Thoughtful suggestions will likely result faster & more enthusiastic responses 
 
 ## Verifying
 
-The track currently uses Cairo v2.9.2 (included with Scarb v2.9.2).
+The track currently uses Cairo v2.12.2 (included with Scarb v2.12.2).
 
 To verify all exercises, run `./bin/verify-exercises`.
 This command will iterate over all exercises and check to see if the stub compiles and the exemplar/example implementation passes all the tests.

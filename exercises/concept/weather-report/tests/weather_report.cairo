@@ -1,4 +1,4 @@
-use weather_report::{get_weather_report, WeatherCondition};
+use weather_report::{WeatherCondition, get_weather_report};
 
 #[test]
 fn reports_sunny_weather() {

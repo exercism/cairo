@@ -1,4 +1,4 @@
-use core::fmt::{Display, Formatter, Error};
+use core::fmt::{Display, Error, Formatter};
 
 #[derive(Drop, PartialEq, Debug)]
 struct Clock {

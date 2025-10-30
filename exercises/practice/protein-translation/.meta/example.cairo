@@ -1,5 +1,5 @@
 use core::dict::Felt252Dict;
-use core::nullable::{match_nullable, FromNullableResult};
+use core::nullable::{FromNullableResult, match_nullable};
 
 #[derive(Drop, Debug, PartialEq, Copy)]
 pub enum AminoAcid {
@@ -41,7 +41,7 @@ pub fn proteins(strand: ByteArray) -> Array<AminoAcid> {
                 }
             },
         }
-    };
+    }
 
     assert!(codon_index >= strand.len() || stopped, "Invalid codon");
 

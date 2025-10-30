@@ -29,7 +29,7 @@ fn to_uppercase(input: u256) -> ByteArray {
     while remaining_bytes != 0 {
         uppercase_chars.append_byte(char_to_uppercase(get_last_byte(remaining_bytes)));
         remaining_bytes = remove_last_byte(remaining_bytes);
-    };
+    }
     uppercase_chars.rev()
 }
 

@@ -1,4 +1,4 @@
-use core::fmt::{Debug, Display, Formatter, Error};
+use core::fmt::{Debug, Display, Error, Formatter};
 
 pub fn format_magical_chant(chant1: ByteArray, chant2: ByteArray, chant3: ByteArray) -> ByteArray {
     panic!("implement 'format_magical_chant'")

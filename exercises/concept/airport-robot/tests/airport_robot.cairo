@@ -1,4 +1,4 @@
-use airport_robot::{Italian, French, say_hello};
+use airport_robot::{French, Italian, say_hello};
 
 #[test]
 fn test_say_hello_italian_name_without_spaces() {

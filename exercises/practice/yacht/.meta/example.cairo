@@ -105,7 +105,7 @@ fn count_dice(dice: Span<u8>) -> Counter {
             6 => counter.sixes += 1,
             _ => {},
         }
-    };
+    }
 
     counter
 }
@@ -114,6 +114,6 @@ fn sum(dice: Span<u8>) -> u8 {
     let mut sum = 0;
     for num in dice {
         sum += *num;
-    };
+    }
     sum
 }

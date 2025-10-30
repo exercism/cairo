@@ -15,7 +15,7 @@ pub impl ChronoChainImpl of ChronoChainTrait {
         let mut span = arr.span();
         while let Option::Some(value) = span.pop_back() {
             chain = ChronoChain::Link((*value, BoxTrait::new(chain)));
-        };
+        }
 
         chain
     }

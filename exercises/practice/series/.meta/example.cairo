@@ -10,9 +10,9 @@ pub fn slices(series: ByteArray, slice_length: usize) -> Array<ByteArray> {
         let mut slice = "";
         for j in i..(i + slice_length) {
             slice.append_byte(series[j]);
-        };
+        }
         all_slices.append(slice);
-    };
+    }
 
     all_slices
 }

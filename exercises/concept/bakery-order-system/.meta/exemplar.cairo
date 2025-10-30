@@ -48,7 +48,7 @@ pub fn baking_schedule(total_orders: u32) -> Array<u32> {
             schedule.append(remaining_orders);
             remaining_orders = 0;
         }
-    };
+    }
 
     schedule
 }

@@ -6,11 +6,13 @@ pub struct SimpleLinkedList<T> {
 
 type List<T> = Option<Box<Node<T>>>;
 
-#[derive(Drop, Copy)]
 struct Node<T> {
     data: T,
     next: List<T>,
 }
+
+impl NodeDrop<T, +Drop<T>> of Drop<Node<T>>;
+impl NodeCopy<T, +Copy<T>> of Copy<Node<T>>;
 
 #[generate_trait]
 pub impl SimpleLinkedListImpl<T, +Drop<T>, +Copy<T>> of SimpleLinkedListTrait<T> {
@@ -57,7 +59,7 @@ pub impl SimpleLinkedListImpl<T, +Drop<T>, +Copy<T>> of SimpleLinkedListTrait<T>
         let mut rev_list = SimpleLinkedListTrait::new();
         while let Option::Some(data) = self.pop() {
             rev_list.push(data);
-        };
+        }
         rev_list
     }
 }
@@ -69,7 +71,7 @@ impl ArrayIntoSimpleLinkedList<T, +Drop<T>, +Copy<T>> of Into<Array<T>, SimpleLi
         let mut list = SimpleLinkedListTrait::new();
         while let Option::Some(data) = self.pop_front() {
             list.push(data);
-        };
+        }
         list
     }
 }
@@ -81,7 +83,7 @@ impl SimpleLinkedListIntoArray<T, +Drop<T>, +Copy<T>> of Into<SimpleLinkedList<T
         let mut arr: Array<T> = array![];
         while let Option::Some(data) = reversed.pop() {
             arr.append(data);
-        };
+        }
         arr
     }
 }

@@ -1,4 +1,4 @@
-use bakery_order_system::{Pastry, calculate_total, apply_discount, baking_schedule};
+use bakery_order_system::{Pastry, apply_discount, baking_schedule, calculate_total};
 
 #[test]
 fn test_calculate_croissant_total() {

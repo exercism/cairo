@@ -23,7 +23,7 @@ pub impl CustomSetImpl<
         let input = input.span();
         for val in input {
             set.add(val.clone());
-        };
+        }
         set
     }
 
@@ -41,7 +41,7 @@ pub impl CustomSetImpl<
                 found = true;
                 break;
             }
-        };
+        }
         found
     }
 
@@ -59,7 +59,7 @@ pub impl CustomSetImpl<
                 break;
             }
             i += 1;
-        };
+        }
         i == self.collection.len()
     }
 
@@ -70,7 +70,7 @@ pub impl CustomSetImpl<
         if to_iterate.collection.len() > to_compare.collection.len() {
             to_iterate = other;
             to_compare = self;
-        };
+        }
 
         let mut i = 0;
         while let Option::Some(value) = to_iterate.collection.get(i) {
@@ -78,7 +78,7 @@ pub impl CustomSetImpl<
                 break;
             }
             i += 1;
-        };
+        }
 
         i == to_iterate.collection.len()
     }
@@ -93,7 +93,7 @@ pub impl CustomSetImpl<
         if to_iterate.collection.len() > to_compare.collection.len() {
             to_iterate = other;
             to_compare = self;
-        };
+        }
 
         let mut i = 0;
         while let Option::Some(boxed) = to_iterate.collection.get(i) {
@@ -102,7 +102,7 @@ pub impl CustomSetImpl<
                 collection.append(*value);
             }
             i += 1;
-        };
+        }
 
         Self::new(@collection)
     }
@@ -117,7 +117,7 @@ pub impl CustomSetImpl<
                 collection.append(*unboxed);
             }
             i += 1;
-        };
+        }
         Self::new(@collection)
     }
 
@@ -128,12 +128,12 @@ pub impl CustomSetImpl<
         while let Option::Some(value) = self.collection.get(i) {
             collection.append(*value.unbox());
             i += 1;
-        };
+        }
         let mut i = 0;
         while let Option::Some(value) = other.collection.get(i) {
             collection.append(*value.unbox());
             i += 1;
-        };
+        }
         Self::new(@collection)
     }
 }

@@ -1,4 +1,4 @@
-use nucleotide_count::{counts, Counter};
+use nucleotide_count::{Counter, counts};
 
 #[test]
 fn empty_strand() {

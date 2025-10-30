@@ -24,7 +24,7 @@ pub fn counts(strand: ByteArray) -> Counter {
             panic!("Invalid nucleotide in strand");
         }
         i += 1;
-    };
+    }
 
     counter
 }
