@@ -889,6 +889,14 @@
         "difficulty": 6
       },
       {
+        "slug": "transpose",
+        "name": "Transpose",
+        "uuid": "59b5d30b-62c1-4465-a44d-485c45f4aac2",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
         "slug": "isbn-verifier",
         "name": "ISBN Verifier",
         "uuid": "84645a75-35f9-44ff-bb1b-c4d8237c43d7",
