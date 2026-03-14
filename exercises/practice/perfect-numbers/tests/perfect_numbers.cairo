@@ -39,6 +39,12 @@ fn large_abundant_number() {
     assert_eq!(classify(33550335), Classification::Abundant);
 }
 
+#[test]
+#[ignore]
+fn perfect_square_abundant_number_is_classified_correctly() {
+    assert_eq!(classify(196), Classification::Abundant);
+}
+
 // Deficient numbers
 
 #[test]
