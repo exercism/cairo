@@ -15,15 +15,16 @@ pub fn classify(number: u64) -> Classification {
     let mut i = 2;
     let stop = sqrt(number);
 
-    while i < stop {
+    while i <= stop {
         if number % i == 0 {
-            let mut increment = i;
-            if i * i != number {
-                increment += number / i;
-            }
-            sum += increment;
+            sum += i + number / i;
         }
         i += 1;
+    }
+
+    if stop * stop == number {
+        // When `number` is a square number, we added the same divisor twice inside the loop.
+        sum -= stop;
     }
 
     if sum < number {
@@ -38,9 +39,10 @@ pub fn classify(number: u64) -> Classification {
 fn sqrt(radicand: u64) -> u64 {
     let mut candidate = 1;
     if radicand > 2 {
-        while (candidate * candidate) < radicand {
+        while (candidate * candidate) <= radicand {
             candidate += 1;
-        };
+        }
+        return candidate - 1;
     }
     candidate
 }
