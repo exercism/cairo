@@ -1,5 +1,7 @@
 # Instructions append
 
+## Implementation
+
 In Cairo, where there's no native support for floating-point numbers, we represent fractional values using integers.
 
 This approach is essential in blockchain development to maintain precision in calculations.
