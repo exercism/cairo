@@ -1,5 +1,7 @@
 # Instructions append
 
+## Implementation
+
 Implementing an efficient and modifiable tree structure in Cairo (or any purely functional language with immutable memory) is challenging because these languages are designed to avoid changing data after it’s created.
 This immutability means that instead of updating a tree node directly, a new version of the tree must be created whenever you modify it.
 
