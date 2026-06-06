@@ -67,12 +67,15 @@ description = "peek -> Can peek after a pop and push"
 
 [b97d00b6-2fab-435d-ae74-3233dcc13698]
 description = "toList LIFO -> Empty linked list to list is empty"
+include = false
 
 [eedeb95f-b5cf-431d-8ad6-5854ba6b251c]
 description = "toList LIFO -> To list with multiple values"
+include = false
 
 [838678de-eaf3-4c14-b34e-7e35b6d851e8]
 description = "toList LIFO -> To list after a pop"
+include = false
 
 [03fc83a5-48a8-470b-a2d2-a286c5e8365f]
 description = "toList FIFO -> Empty linked list to list is empty"
