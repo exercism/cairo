@@ -22,6 +22,13 @@ fn shouting_gibberish() {
 
 #[test]
 #[ignore]
+fn shouting_a_statement_containing_a_question_mark() {
+    let input = "DO LIONS EAT PEOPLE? AHHHHH.";
+    assert_eq!("Whoa, chill out!", response(@input));
+}
+
+#[test]
+#[ignore]
 fn asking_a_question() {
     let input = "Does this cryogenic chamber make me look fat?";
     assert_eq!("Sure.", response(@input));
