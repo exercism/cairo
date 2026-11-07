@@ -1,0 +1,14 @@
+fn most_common_word(words: Span<felt252>) -> (felt252, u32) {
+    let mut counts: Felt252Dict<u32> = Default::default();
+    let mut best = 0;
+    let mut best_count = 0;
+    for word in words {
+        let count = counts.get(*word) + 1;
+        counts.insert(*word, count);
+        if count > best_count {
+            best = *word;
+            best_count = count;
+        }
+    }
+    (best, best_count)
+}
