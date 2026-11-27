@@ -16,5 +16,6 @@
       "Scarb.toml"
     ]
   },
+  "icon": "wizards-and-warriors",
   "blurb": "Learn printing and formatting values with the art of EchoSpeak."
 }

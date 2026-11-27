@@ -16,5 +16,6 @@
       "Scarb.toml"
     ]
   },
+  "icon": "secrets",
   "blurb": "Learn how to work with the Felt type by helping a cryptographer configure a secure communication system."
 }

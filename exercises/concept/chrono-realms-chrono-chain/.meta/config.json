@@ -16,5 +16,6 @@
       "Scarb.toml"
     ]
   },
+  "icon": "doubly-linked-list",
   "blurb": "Learn smart pointers by building the magical Chrono Chain"
 }

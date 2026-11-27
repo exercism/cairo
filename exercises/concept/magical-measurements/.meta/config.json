@@ -16,5 +16,6 @@
       "Scarb.toml"
     ]
   },
+  "icon": "bread-and-potions",
   "blurb": "Learn Cairo's type conversion traits while helping Astrid the alchemist standardize magical measurements."
 }
