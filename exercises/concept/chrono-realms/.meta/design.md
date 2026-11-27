@@ -30,8 +30,8 @@ Teach students about operator overloading in Cairo through implementing custom o
 
 ## Resources to refer to
 
-- [Cairo Book - Traits]
-- [Cairo Book - Operator Overloading]
+- [Cairo Book - Traits][traits]
+- [Cairo Book - Operator Overloading][operator-overloading]
 
-[Cairo Book - Traits]: https://book.cairo-lang.org/ch08-02-traits-in-cairo.html
-[Cairo Book - Operator Overloading]: https://book.cairo-lang.org/ch12-03-operator-overloading.html
+[traits]: https://book.cairo-lang.org/ch08-02-traits-in-cairo.html
+[operator-overloading]: https://book.cairo-lang.org/ch12-03-operator-overloading.html

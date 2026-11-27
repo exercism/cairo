@@ -16,6 +16,7 @@
       "Scarb.toml"
     ]
   },
+  "icon": "time",
   "blurb": "Learn operator overloading by implementing custom operators for a time manipulation system",
   "custom": {
     "skipStubVerification": true

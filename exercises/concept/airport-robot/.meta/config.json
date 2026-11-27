@@ -19,6 +19,7 @@
   "forked_from": [
     "go/airport-robot"
   ],
+  "icon": "squeaky-clean",
   "blurb": "Learn about generic types by programming an airport service robot.",
   "custom": {
     "skipStubVerification": true
